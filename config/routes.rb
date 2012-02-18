@@ -4,17 +4,12 @@ Stormsavvy::Application.routes.draw do
 
   get "pages/index"
 
-  match '/about', :to => "pages#about"
-
-  get "pages/terms"
-
-  get "pages/about_us"
-
-  get "pages/faq"
-
-  get "pages/privacy"
-
-  get "pages/contact"
+  match '/about',    :to => "pages#about"
+  match '/terms',    :to => "pages#terms"
+  match '/about_us', :to => "pages#about_us"
+  match '/faq',      :to => "pages#faq"
+  match '/privacy',  :to => "pages#privacy"
+  match '/contact',  :to => "pages#contact"
 
   devise_for :users
 

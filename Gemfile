@@ -9,8 +9,9 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'cucumber-rails'
-  gem 'capybara'
   gem 'database_cleaner'
+  gem 'capybara'
+  gem 'cucumber'
   gem 'sqlite3'
 end
 
