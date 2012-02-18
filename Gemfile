@@ -10,6 +10,10 @@ group :test, :development do
 end
 
 gem 'pg'
+gem 'haml-rails'
+
+gem 'zurb-foundation', :group => :assets
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -32,7 +36,7 @@ gem 'heroku'
 group :test do
   gem 'rspec-rails'
   gem 'cucumber-rails'
-#  gem 'database-cleaner'
+  gem 'database_cleaner'
 end
 
 # To use ActiveModel has_secure_password
