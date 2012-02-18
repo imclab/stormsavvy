@@ -1,5 +1,7 @@
 Stormsavvy::Application.routes.draw do
   
+  resources :sites
+
   get "pages/index"
 
   get "pages/about"

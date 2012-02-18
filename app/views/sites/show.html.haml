@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @site.name
+%p
+  %b Description:
+  = @site.description
+%p
+  %b Costcode:
+  = @site.costcode
+%p
+  %b Size:
+  = @site.size
+%p
+  %b Exposed area:
+  = @site.exposed_area
+%p
+  %b Location:
+  = @site.location
+
+= link_to 'Edit', edit_site_path(@site)
+\|
+= link_to 'Back', sites_path
