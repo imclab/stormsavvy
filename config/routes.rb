@@ -1,8 +1,22 @@
 Stormsavvy::Application.routes.draw do
   
+  get "pages/index"
+
+  get "pages/about"
+
+  get "pages/terms"
+
+  get "pages/about_us"
+
+  get "pages/faq"
+
+  get "pages/privacy"
+
+  get "pages/contact"
+
   devise_for :users
 
-  root :to => "home#index"
+  root :to => "pages#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
