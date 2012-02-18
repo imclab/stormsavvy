@@ -4,6 +4,5 @@ Feature: User examine site data
 
   Scenario: User examines project listing
     Given a user is signed in
-    Then the user goes to the site index
-    #Then show me the page
-    And sees "Site Index"
+    And the user goes to the site index
+    Then the "user" should be on the "index" page

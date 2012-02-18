@@ -1,5 +1,5 @@
 Then /^the user goes to the site index$/ do
-  pending # express the regexp above with the code you wish you had
+  click_link("Sites")
 end
 
 Then /^sees "([^"]*)"$/ do |arg1|

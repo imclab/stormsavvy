@@ -9,7 +9,7 @@ Feature: The front page header and footer has certain required links
     Given reader is on home page
     #Then show me the page
     When the reader clicks "<anchor>"
-    Then the reader should be on the "<id>" page
+    Then the "reader" should be on the "<id>" page
 
     Scenarios: Let's go visit nav links
     | anchor  | id    |

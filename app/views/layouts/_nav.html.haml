@@ -5,6 +5,8 @@
         - if user_signed_in?
           \#{link_to "New Site", new_site_path} |
           |
+          \#{link_to "Sites", sites_path} |
+          |
           \#{link_to "Settings", edit_user_registration_path} |
           |
           \#{link_to "Sign out", destroy_user_session_path, :method => :delete }
