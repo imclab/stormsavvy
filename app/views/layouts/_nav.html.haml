@@ -11,12 +11,9 @@
         - else
           \#{link_to "New Site", new_user_session_path} |
           |
-          = link_to "Home", root_path
-          |
-          \#{link_to "About", '/about'} |
+          \#{link_to "Home", root_path} |
           |
           \#{link_to "Sites", sites_path} |
-          - count = Site.count
           |
           \#{link_to "Sign up", new_user_registration_path} |
           |

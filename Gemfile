@@ -1,16 +1,18 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :test, :development do
+  gem 'builder'
   gem 'rspec-rails'
+  gem 'rspec'
   gem 'factory_girl_rails'
   gem 'cucumber-rails'
   gem 'database_cleaner'
-  gem 'capybara'
+  gem 'capybara', :git => 'https://github.com/doolin/capybara'
   gem 'cucumber'
   gem 'sqlite3'
 end

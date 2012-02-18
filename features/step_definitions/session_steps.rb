@@ -15,7 +15,7 @@ Then /^the user signs in$/ do
 end
 
 Then /^is directed to the user's show page$/ do
-  page.should have_css("div.recipes")
+  page.should have_css("body.sites")
 end
 
 Given /^a user is signed in$/ do

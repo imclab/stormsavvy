@@ -6,13 +6,16 @@ Stormsavvy::Application.routes.draw do
 
   match '/about',    :to => "pages#about"
   match '/terms',    :to => "pages#terms"
-  match '/about_us', :to => "pages#about_us"
   match '/faq',      :to => "pages#faq"
   match '/privacy',  :to => "pages#privacy"
   match '/contact',  :to => "pages#contact"
 
   devise_for :users
-
+  # This is not needed when the sign_out method is changed from 
+  # :delete to :get in config/initializers/devise.rb
+  # devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
+  
+  
   root :to => "pages#index"
 
   # The priority is based upon order of creation:

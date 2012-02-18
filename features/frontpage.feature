@@ -7,14 +7,16 @@ Feature: The front page header and footer has certain required links
   
   Scenario Outline: Reader visits nav links
     Given reader is on home page
+    #Then show me the page
     When the reader clicks "<anchor>"
     Then the reader should be on the "<id>" page
 
     Scenarios: Let's go visit nav links
     | anchor  | id    |
-    | About   | about |
     | Sign in | new   |
     | Sign up | new   |
+    | Home    | index |
+    | About   | about |
 
   Scenario Outline: Reader visits footer links
     Given reader is on home page
@@ -24,12 +26,7 @@ Feature: The front page header and footer has certain required links
     Scenarios: Let's go visit footer links
     | anchor   | id       |
     | Terms    | terms    |
-    | About us | about_us |
+    | About us | about    |
     | FAQ      | faq      |
     | Privacy  | privacy  |
     | Contact  | contact  |
-
-  Scenario: Reader visits About page
-    Given reader is on home page
-    When the reader clicks "About"
-    Then the reader should be on the "about" page
