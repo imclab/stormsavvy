@@ -2,32 +2,45 @@
  * openrecipe.scss
  */
 
+@import 'variables';
 
 body {
   // Move this to public/images
-  background: #ccc url('http://subtlepatterns.com/patterns/white_sand.png');
+  background: #ccc url('http://subtlepatterns.com/patterns/paper.png');
   //background-color: #808000;
 }
 
 nav {
-  background-color: #F0DC82;
+  padding-top: 5px;
 }
 
-header {
-  background-color: #F0DC82;
+header, nav, footer {
+  background-color: $navbackground;
+  a {
+    color: #fff;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
 }
 
+/*
 header nav {
   text-align: right;
 }
+*/
 
 footer {
   //background-color: #D19FE8;
-  background-color: #F0DC82;
+  padding-top: 10px;
   position: fixed;
   bottom: 0px;
   width: 100%;
   //overflow: none;
+  p {
+    margin-bottom: 13px;
+  }
 }
 
 footer > .row {
@@ -38,6 +51,10 @@ h1, h2 {
   font-family: "adelle",serif;
   font-style: normal;
   font-weight: 600;
+  color: #fff;
+  a {
+    color: #fff;
+  }
 }
 
 h2 {
@@ -50,14 +67,19 @@ form label {
   font-style: normal;
 }
 
-
 .container {
   padding: 0 10px 0 10px;
   //background-color: #808000;  // hot pink
+  a {
+    color: darken($navbackground, 9%);
+  }
+  h1, h2 {
+    color: darken($navbackground, 9%);    
+  }
 }
 
-.container .row {
-  //background-color: #FF69B4;
+.row.index-page {
+  margin-top: 25px;
 }
 
 /* For modern browsers */
@@ -69,6 +91,17 @@ form label {
 
 .cf:after {
     clear:both;
+}
+
+
+/** Main copy */
+div.copy h3 {
+  font-size: 22px;
+}
+
+.copy img {
+  margin: 0 1em 1em 0;
+  border: 3px solid #eee;
 }
 
 ul.social-links li {

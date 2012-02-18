@@ -1,22 +1,22 @@
-%nav#topbar-asset.container
+%nav#topbar-asset
   .row
     .twelve.columns
       %nav#user_nav.align-right
         - if user_signed_in?
-          \#{link_to "New Recipe", new_recipe_path} |
+          \#{link_to "New Site", new_site_path} |
           |
           \#{link_to "Settings", edit_user_registration_path} |
           |
           \#{link_to "Sign out", destroy_user_session_path, :method => :delete }
         - else
-          \#{link_to "New Recipe", new_user_session_path} |
+          \#{link_to "New Site", new_user_session_path} |
           |
           = link_to "Home", root_path
           |
           \#{link_to "About", '/about'} |
           |
-          \#{link_to "Recipes", recipes_path} |
-          - count = Recipe.count
+          \#{link_to "Sites", sites_path} |
+          - count = Site.count
           |
           \#{link_to "Sign up", new_user_registration_path} |
           |

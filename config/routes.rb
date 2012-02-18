@@ -4,7 +4,7 @@ Stormsavvy::Application.routes.draw do
 
   get "pages/index"
 
-  get "pages/about"
+  match '/about', :to => "pages#about"
 
   get "pages/terms"
 
