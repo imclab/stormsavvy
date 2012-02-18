@@ -17,6 +17,7 @@ Feature: The front page header and footer has certain required links
     | Sign in | new     |
     | Sign up | new     |
 
+  @wip
   Scenario Outline: Reader visits footer links
     Given reader is on home page
     When the reader clicks "<anchor>"

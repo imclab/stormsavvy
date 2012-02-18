@@ -1,11 +1,11 @@
 Given /^reader is on home page$/ do
-  pending # express the regexp above with the code you wish you had
+  visit('/')
 end
 
-When /^the reader clicks "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^the reader clicks "([^"]*)"$/ do |link|
+  click_link(link)
 end
 
-Then /^the reader should be on the "([^"]*)" page$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^the reader should be on the "([^"]*)" page$/ do |id|
+  page.should have_css("body##{id}")
 end
