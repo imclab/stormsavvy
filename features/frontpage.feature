@@ -14,7 +14,6 @@ Feature: The front page header and footer has certain required links
     Scenarios: Let's go visit nav links
     | anchor  | id      |
     | About   | about   |
-    | Recipes | index   |
     | Sign in | new     |
     | Sign up | new     |
 
@@ -25,12 +24,12 @@ Feature: The front page header and footer has certain required links
     #Then show me the page
 
     Scenarios: Let's go visit footer links
-    | anchor  | id      |
-    | Terms   | terms   |
-    | Team    | team    |
-    | FAQ     | faq     |
-    | Privacy | privacy |
-    | Contact | contact |
+    | anchor   | id       |
+    | Terms    | terms    |
+    | About us | about_us |
+    | FAQ      | faq      |
+    | Privacy  | privacy  |
+    | Contact  | contact  |
 
   Scenario: Reader visits About page
     Given reader is on home page
