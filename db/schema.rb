@@ -11,7 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218052846) do
+ActiveRecord::Schema.define(:version => 20120220224745) do
+
+  create_table "dashboards", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "preferences"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "inspection_events", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "type"
+    t.text     "description"
+    t.datetime "date"
+    t.datetime "submitted"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "startdate"
+    t.datetime "finishdate"
+    t.boolean  "active"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "sites", :force => true do |t|
     t.string   "name"
@@ -44,5 +72,16 @@ ActiveRecord::Schema.define(:version => 20120218052846) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "weather_events", :force => true do |t|
+    t.integer  "site_id"
+    t.datetime "eventdate"
+    t.float    "duration"
+    t.float    "rainfall"
+    t.boolean  "inspected"
+    t.boolean  "qualifying"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
