@@ -1,5 +1,15 @@
 Stormsavvy::Application.routes.draw do
   
+  resources :inspection_events
+
+  resources :weather_events
+
+  get "dashboard/index"
+
+  get "dashboard/edit"
+
+  resources :projects
+
   resources :sites
 
   get "pages/index"
@@ -16,7 +26,7 @@ Stormsavvy::Application.routes.draw do
   # devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
   
   
-  root :to => "pages#index"
+  root :to => "dashboard#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

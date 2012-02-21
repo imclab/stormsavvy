@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Site:
+  = @inspection_event.site_id
+%p
+  %b Type:
+  = @inspection_event.type
+%p
+  %b Description:
+  = @inspection_event.description
+%p
+  %b Date:
+  = @inspection_event.date
+%p
+  %b Submitted:
+  = @inspection_event.submitted
+
+= link_to 'Edit', edit_inspection_event_path(@inspection_event)
+\|
+= link_to 'Back', inspection_events_path

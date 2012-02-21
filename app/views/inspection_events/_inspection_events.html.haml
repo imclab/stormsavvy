@@ -1,0 +1,23 @@
+%table
+  %tr
+    %th Site
+    %th Type
+    %th Description
+    %th Date
+    %th Submitted
+    %th
+    %th
+    %th
+
+  - @inspection_events.each do |inspection_event|
+    %tr
+      %td= inspection_event.site_id
+      %td= inspection_event.type
+      %td= inspection_event.description
+      %td= inspection_event.date
+      %td= inspection_event.submitted
+      %td= link_to 'Show', inspection_event
+      %td= link_to 'Edit', edit_inspection_event_path(inspection_event)
+      %td= link_to 'Destroy', inspection_event, :confirm => 'Are you sure?', :method => :delete
+
+%br

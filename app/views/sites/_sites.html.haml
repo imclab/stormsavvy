@@ -1,0 +1,25 @@
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Costcode
+    %th Size
+    %th Exposed area
+    %th Location
+    %th
+    %th
+    %th
+
+  - @sites.each do |site|
+    %tr
+      %td= site.name
+      %td= site.description
+      %td= site.costcode
+      %td= site.size
+      %td= site.exposed_area
+      %td= site.location
+      %td= link_to 'Show', site
+      %td= link_to 'Edit', edit_site_path(site)
+      %td= link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete
+
+%br

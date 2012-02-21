@@ -1,0 +1,2 @@
+module InspectionEventsHelper
+end
