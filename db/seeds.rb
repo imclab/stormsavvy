@@ -5,3 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Location.create(:name => "El Cerrito", :zipcode => 94530, :lat => 37.9202057, :long => -122.2937428)
