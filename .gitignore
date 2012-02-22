@@ -15,6 +15,7 @@
 /tmp
 
 *.rdebug
+*.bak
 
 .project
 .sass-cache
