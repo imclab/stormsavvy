@@ -1,5 +1,11 @@
 Stormsavvy::Application.routes.draw do
   
+  get "location/index"
+
+  get "location/new"
+
+  get "location/create"
+
   resources :inspection_events
 
   resources :weather_events
