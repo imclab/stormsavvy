@@ -18,6 +18,8 @@ Stormsavvy::Application.routes.draw do
 
   resources :sites
 
+  resources :locations  
+
   get "pages/index"
 
   match '/about',    :to => "pages#about"

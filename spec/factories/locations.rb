@@ -2,8 +2,9 @@
 
 FactoryGirl.define do
   factory :location do
-    zipcode 1
-    lat 1.5
-    long 1.5
+    zipcode "94503"
+    lat      37.9202057
+    long    -122.293742
+    name    'El Cerrito'
   end
 end

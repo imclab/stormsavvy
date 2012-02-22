@@ -8,7 +8,6 @@ Factory.define :user do |u|
   u.lastname              "Doolin"
 end
 
-
 Factory.define :site do |s|
   s.name           "Marin Shores"
   s.description    "Some short, descriptive text for testing."
