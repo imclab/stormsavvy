@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
 
   def edit
   end
-  
+
   private
-  
+
 end
