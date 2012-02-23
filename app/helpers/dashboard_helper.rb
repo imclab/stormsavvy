@@ -12,15 +12,14 @@ include Typhoeus
               :timeout       => 2000, # milliseconds
               :cache_timeout => 60, # seconds
               :params        => {:field1 => "a field"})
-hydra = Typhoeus::Hydra.new
-hydra.queue(request)
-hydra.run
-hydra.queue(request)
-hydra.run
-
-response = request.response
-doc   = Nokogiri::XML(response.body)
-#binding.pry
+    hydra = Typhoeus::Hydra.new
+    hydra.queue(request)
+    hydra.run
+    hydra.queue(request)
+    hydra.run
+    response = request.response
+    doc   = Nokogiri::XML(response.body)
+    #binding.pry
     return doc.xpath("//temperature").map { |n| n.content.to_i }
   end
 
