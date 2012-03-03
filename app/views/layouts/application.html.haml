@@ -6,12 +6,11 @@
     = javascript_include_tag :application
     %meta{:charset => "utf-8"}
     = csrf_meta_tag
+
   %body{ template_id, template_class }
     = render 'layouts/header'
     .container
-      .row
-        .span12
-          = yield
+      = yield
 
     = render 'layouts/footer'
     = render 'layouts/analytics'

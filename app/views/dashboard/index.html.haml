@@ -1,9 +1,5 @@
-%h2.dashboard Dashboard
-
 .row
-  .span9
-    %h2 Project data
-    = render 'dashboard/main'
-
-  .span3
-    = render 'dashboard/sidebar'
+  .span12
+    .row
+      .span8= render 'dashboard/modules'
+      .span4= render 'dashboard/sidebar'
