@@ -7,10 +7,6 @@ gem 'typhoeus'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development do 
-  gem 'mysql2'
-end
-
 group :test, :development do
   gem 'builder'
   gem 'rspec-rails'
@@ -22,6 +18,7 @@ group :test, :development do
   gem 'cucumber'
   gem 'sqlite3'
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'spork-rails'
 #  gem 'pry-nav'
 end
 
