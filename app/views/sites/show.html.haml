@@ -22,6 +22,6 @@
         %b Location:
         = @site.location
 
-      = link_to 'Edit', edit_site_path(@site)
+      = link_to 'Edit', edit_project_site_path(@site.project, @site)
       \|
       = link_to 'Back', sites_path

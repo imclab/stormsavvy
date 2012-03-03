@@ -1,7 +1,10 @@
-%h1 Editing weather_event
+.container
+  .row
+    .span12
+      %h1 Editing weather_event
 
-= render 'form'
+      = render 'form'
 
-= link_to 'Show', @weather_event
-\|
-= link_to 'Back', weather_events_path
+      = link_to 'Show', @weather_event
+      \|
+      = link_to 'Back', weather_events_path
