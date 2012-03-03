@@ -6,26 +6,34 @@
         - @project.errors.full_messages.each do |msg|
           %li= msg
 
-  .cf
-    = f.label :name
-    .input
-      = f.text_field :name
-  .cf
-    = f.label :description
-    .input
-      = f.text_area :description, :rows => "5"
-  .cf
-    = f.label :startdate
-    .input
-      = f.datetime_select :startdate
-  .cf
-    = f.label :finishdate
-    .input
-      = f.datetime_select :finishdate
-  .cf
-    = f.label :active
-    .input
-      = f.check_box :active
+  %fieldset
+    %legend
+      Project Details
+      .cf
+        = f.label :name
+        .input
+          = f.text_field :name
+      .cf
+        = f.label :description
+        .input
+          = f.text_area :description, :rows => "5"
+      .cf
+        = f.label :startdate
+        .input
+          = f.datetime_select :startdate
+      .cf
+        = f.label :finishdate
+        .input
+          = f.datetime_select :finishdate
+      .cf
+        = f.label :active
+        .input
+          = f.check_box :active
+  %fieldset
+    %legend
+      Site Details
+
+
 
   .actions
     = f.submit 'Save', :class => "btn btn-primary"

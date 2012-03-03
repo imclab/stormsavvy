@@ -15,7 +15,7 @@ Then /^the user signs in$/ do
 end
 
 Then /^is directed to the user's show page$/ do
-  page.should have_css("body.sites")
+  page.should have_content("Active Projects")
 end
 
 Given /^a user is signed in$/ do
