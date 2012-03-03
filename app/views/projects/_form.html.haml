@@ -36,7 +36,7 @@
     %legend
       Site Details
 
-      = f.fields_for @site do |site|
+      = f.fields_for :sites do |site|
         .control-group
           = site.label :name, :class => "control-label"
           .controls
