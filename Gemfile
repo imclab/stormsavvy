@@ -7,12 +7,16 @@ gem 'typhoeus'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+group :development do 
+  gem 'mysql2'
+end
+
 group :test, :development do
   gem 'builder'
   gem 'rspec-rails'
   gem 'rspec'
   gem 'factory_girl_rails'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara', :git => 'https://github.com/doolin/capybara'
   gem 'cucumber'
