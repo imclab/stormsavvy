@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'typhoeus'
+gem 'nokogiri'
 
 group :test, :development do
   gem 'builder'

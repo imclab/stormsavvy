@@ -233,6 +233,7 @@ DEPENDENCIES
   haml-rails
   heroku
   jquery-rails
+  nokogiri
   pg
   rails
   rspec
