@@ -9,7 +9,7 @@
           %li=link_to "Settings", edit_user_registration_path
           %li=link_to "Sign out", destroy_user_session_path
         - else
-          %li=link_to "Plans & Pricing", ""
-          %li=link_to "Feature Tour", ""
+          %li=link_to "Plans & Pricing", plans_path
+          %li=link_to "Feature Tour", features_path
           %li=link_to "Sign up", new_user_registration_path
           %li=link_to "Sign in", new_user_session_path

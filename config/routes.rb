@@ -22,11 +22,13 @@ Stormsavvy::Application.routes.draw do
 
   get "pages/index"
 
-  match '/about',    :to => "pages#about"
-  match '/terms',    :to => "pages#terms"
-  match '/faq',      :to => "pages#faq"
-  match '/privacy',  :to => "pages#privacy"
-  match '/contact',  :to => "pages#contact"
+  match '/about',    :to => "pages#about", :as => :about
+  match '/terms',    :to => "pages#terms", :as => :terms
+  match '/faq',      :to => "pages#faq", :as => :faq
+  match '/privacy',  :to => "pages#privacy", :as => :privacy
+  match '/contact',  :to => "pages#contact", :as => :contact
+  match '/plans-and-pricing',  :to => "pages#plans", :as => :plans
+  match '/features',  :to => "pages#features", :as => :features
 
   devise_for :users
   # This is not needed when the sign_out method is changed from
