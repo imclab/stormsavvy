@@ -1,6 +1,7 @@
 module DashboardHelper
 
 include Typhoeus
+include Nokogiri
 
   def seven_day_temp
     xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=168&interval=6&lat=37.92021&lon=-122.29374"
