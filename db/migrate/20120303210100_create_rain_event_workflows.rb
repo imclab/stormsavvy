@@ -1,6 +1,6 @@
-class CreateWorkflows < ActiveRecord::Migration
+class CreateRainEventWorkflows < ActiveRecord::Migration
   def change
-    create_table :workflows do |t|
+    create_table :rain_event_workflows do |t|
       t.integer :hours_before_rain
       t.boolean :reap
       t.boolean :cem2030

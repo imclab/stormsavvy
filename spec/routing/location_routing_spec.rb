@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe LocationController do
+describe LocationsController do
   describe "routing" do
 
     it "routes to #index" do
