@@ -1,7 +1,0 @@
-%h1 Listing sites
-<<<<<<< HEAD
-=======
--# binding.pry
->>>>>>> 1fdc93bff1fda33cfcb8958f61db1f076d05d5bb
-= render 'sites/sites'
-= link_to 'New Site', new_site_path
