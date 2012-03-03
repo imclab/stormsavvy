@@ -18,13 +18,14 @@ group :test, :development do
   gem 'cucumber'
   gem 'sqlite3'
   gem 'ruby-debug19', :require => 'ruby-debug'
+#  gem 'pry-nav'
 end
 
 gem 'pg'
 gem 'haml-rails'
 
 gem 'zurb-foundation', :group => :assets
-gem 'pry-rails', :group => :development
+#gem 'pry-rails', :group => :development
 
 # Gems used only for assets and not required
 # in production environments by default.
