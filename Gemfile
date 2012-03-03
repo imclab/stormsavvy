@@ -24,8 +24,6 @@ end
 
 gem 'pg'
 gem 'haml-rails'
-
-gem 'zurb-foundation', :group => :assets
 #gem 'pry-rails', :group => :development
 
 # Gems used only for assets and not required
@@ -36,11 +34,12 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
+  gem 'twitter-bootstrap-rails'
+
 end
 
 gem 'jquery-rails'
 
-gem 'foundation'
 gem 'devise'
 gem 'heroku'
 

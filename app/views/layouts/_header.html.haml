@@ -1,5 +1,15 @@
-%header
-  .row
-    .twelve.columns
-      %h1= link_to 'StormSavvy', root_path
-      -#= render 'shared/social_buttons'
+.navbar
+  .navbar-inner
+    .container
+      =link_to "Storm Savvy", root_path, :class => "brand"
+      .nav
+        - if user_signed_in?
+          %li=link_to "New Site", new_site_path
+          %li=link_to "Sites", sites_path
+          %li=link_to "Settings", edit_user_registration_path
+          %li=link_to "Sign out", destroy_user_session_path
+        - else
+          %li=link_to "Plans & Pricing", plans_path
+          %li=link_to "Feature Tour", features_path
+          %li=link_to "Sign up", new_user_registration_path
+          %li=link_to "Sign in", new_user_session_path
