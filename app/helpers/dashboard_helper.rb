@@ -2,7 +2,7 @@ module DashboardHelper
 
 include Typhoeus
 
-  def current_weather
+  def seven_day_temp
     xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=168&interval=6&lat=37.92021&lon=-122.29374"
     table = "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=38.4373944&lon=-123.0620193&clrindex=0&table=custom&duration=7&interval=6"
     request = Typhoeus::Request.new(xml,

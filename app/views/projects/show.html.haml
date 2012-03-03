@@ -1,24 +1,27 @@
-%p#notice= notice
+.container
+  .row
+    .span12
+      %p#notice= notice
 
-%p
-  %b User:
-  = @project.user_id
-%p
-  %b Name:
-  = @project.name
-%p
-  %b Description:
-  = @project.description
-%p
-  %b Startdate:
-  = @project.startdate
-%p
-  %b Finishdate:
-  = @project.finishdate
-%p
-  %b Active:
-  = @project.active
+      %p
+        %b User:
+        = @project.user_id
+      %p
+        %b Name:
+        = @project.name
+      %p
+        %b Description:
+        = @project.description
+      %p
+        %b Startdate:
+        = @project.startdate
+      %p
+        %b Finishdate:
+        = @project.finishdate
+      %p
+        %b Active:
+        = @project.active
 
-= link_to 'Edit', edit_project_path(@project)
-\|
-= link_to 'Back', projects_path
+      = link_to 'Edit', edit_project_path(@project)
+      \|
+      = link_to 'Back', projects_path

@@ -1,4 +1,7 @@
-%h1 Listing weather_events
-= render 'weather_events/weather_events'
+.container
+  .row
+    .span12
+      %h1 Listing Weather Events
+      = render 'weather_events/weather_events'
 
-= link_to 'New Weather event', new_weather_event_path
+      = link_to 'New Weather event', new_weather_event_path
