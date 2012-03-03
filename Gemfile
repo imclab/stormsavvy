@@ -12,12 +12,13 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'factory_girl_rails'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara', :git => 'https://github.com/doolin/capybara'
   gem 'cucumber'
   gem 'sqlite3'
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'spork-rails'
 #  gem 'pry-nav'
 end
 
