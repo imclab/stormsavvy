@@ -19,6 +19,11 @@
         %b Active:
         = @project.active
 
+      %p
+        %b Sites
+        - @project.sites.each do |site|
+          = link_to site.name, project_site_path(@project, site)
+
       = link_to 'Edit', edit_project_path(@project)
       \|
       = link_to 'Back', projects_path

@@ -14,9 +14,11 @@ Stormsavvy::Application.routes.draw do
 
   get "dashboard/edit"
 
-  resources :projects
+  resources :projects do
+    resources :sites
+  end
 
-  resources :sites
+
 
   resources :locations
 
