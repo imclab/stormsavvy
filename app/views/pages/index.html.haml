@@ -1,27 +1,49 @@
-%h1 Welcome to Storm Savvy
-#featureCopy
-  %ul
-    %li StormSavvy helps you keep your job site SWPPPP compliant.
-    %li Check it out:
-    %li Document alert management system.
-    %li Email alerts
+#hero.bottom-20
+  .container
+    .row
+      .span7
+        %h1 Welcome to Storm Savvy
+        %hr
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+          ligula dui, condimentum quis posuere vel, placerat non lorem. Maecenas
+          erat eros, congue ut dictum fringilla, mollis id nulla. Integer nunc
+          quam, sollicitudin sit amet consequat posuere, malesuada consequat nibh.
+          Aliquam iaculis nulla a lectus adipiscing vel tincidunt nunc volutpat.
+          Fusce vitae diam ligula, in dignissim sem.
 
-#featureImages
-  .row
-    .span2
-      = image_tag "//placehold.it/140x140"
-    .span10
-      %h3 Do-It-Yourself: Simple and Easy to Use
-      %p StormSavvy saves you time and lets you focus on the rest of your project.
-  .row
-    .span2
-      = image_tag "//placehold.it/140x140"
-    .span10
-      %h3 Do-It-Yourself: Simple and Easy to Use
-      %p StormSavvy saves you time and lets you focus on the rest of your project.
-  .row
-    .span2
-      = image_tag "//placehold.it/140x140"
-    .span10
-      %h3 Do-It-Yourself: Simple and Easy to Use
-      %p StormSavvy saves you time and lets you focus on the rest of your project.
+          %p.top-20
+            =link_to "Sign Up"
+            or
+            =link_to "Learn More", "", :class => "btn btn-primary"
+      .span5
+        = image_tag "/assets/home/hero.png"
+
+#homeContent.bottom-20
+  .container
+    .row
+      .span12
+
+        = render 'shared/cta-bar'
+
+        #featureImages.top-20.bottom-10
+          .row
+            .span2
+              = image_tag "//placehold.it/140x140"
+            .span10
+              %h3 Easy as 1-2-3
+              %p Setup your site, check for alerts and report online.
+          .row
+            .span2
+              = image_tag "//placehold.it/140x140"
+            .span10
+              %h3 Instant Alerts
+              %p Always be up to speed with email/SMS alerts when reports and inspections are due
+          .row
+            .span2
+              = image_tag "//placehold.it/140x140"
+            .span10
+              %h3 Real-Time Weather Data
+              %p Track your site more closely with forecasts and climate data
+
+        = render 'shared/cta-bar'

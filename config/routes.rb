@@ -1,5 +1,5 @@
 Stormsavvy::Application.routes.draw do
-  
+
   get "location/index"
 
   get "location/new"
@@ -18,7 +18,7 @@ Stormsavvy::Application.routes.draw do
 
   resources :sites
 
-  resources :locations  
+  resources :locations
 
   get "pages/index"
 
@@ -29,11 +29,11 @@ Stormsavvy::Application.routes.draw do
   match '/contact',  :to => "pages#contact"
 
   devise_for :users
-  # This is not needed when the sign_out method is changed from 
+  # This is not needed when the sign_out method is changed from
   # :delete to :get in config/initializers/devise.rb
   # devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
-  
-  
+
+
   root :to => "dashboard#index"
 
   # The priority is based upon order of creation:
