@@ -22,6 +22,7 @@ group :test, :development do
   gem 'cucumber'
   gem 'sqlite3'
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'spork-rails'
 #  gem 'pry-nav'
 end
 
