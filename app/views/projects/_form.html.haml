@@ -20,16 +20,18 @@
     .control-group
       = f.label :startdate, :class => "control-label"
       .controls
-        = f.datetime_select :startdate
+        = f.text_field :startdate, :class => "datePicker"
 
     .control-group
       = f.label :finishdate, :class => "control-label"
       .controls
-        = f.datetime_select :finishdate
+        = f.text_field :finishdate, :class => "datePicker"
     .control-group
+
       = f.label :active, :class => "control-label"
       .controls
         = f.check_box :active
+
   %fieldset
     %legend
       Site Details
