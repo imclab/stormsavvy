@@ -1,4 +1,4 @@
-= form_for @project do |f|
+= form_for @project, :html => { :class => "form-horizontal"} do |f|
   -if @project.errors.any?
     #error_explanation
       %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
@@ -7,31 +7,47 @@
           %li= msg
 
   %fieldset
-    %legend
-      Project Details
-      .cf
-        = f.label :name
-        .input
-          = f.text_field :name
-      .cf
-        = f.label :description
-        .input
-          = f.text_area :description, :rows => "5"
-      .cf
-        = f.label :startdate
-        .input
-          = f.datetime_select :startdate
-      .cf
-        = f.label :finishdate
-        .input
-          = f.datetime_select :finishdate
-      .cf
-        = f.label :active
-        .input
-          = f.check_box :active
+    %legend Project Details
+    .control-group
+      = f.label :name, :class => "control-label"
+      .controls
+        = f.text_field :name
+    .control-group
+      = f.label :description, :class => "control-label"
+      .controls
+        = f.text_area :description, :rows => "5"
+
+    .control-group
+      = f.label :startdate, :class => "control-label"
+      .controls
+        = f.datetime_select :startdate
+
+    .control-group
+      = f.label :finishdate, :class => "control-label"
+      .controls
+        = f.datetime_select :finishdate
+    .control-group
+      = f.label :active, :class => "control-label"
+      .controls
+        = f.check_box :active
   %fieldset
     %legend
       Site Details
+
+      = f.fields_for @site do |site|
+        .control-group
+          = site.label :name, :class => "control-label"
+          .controls
+            = site.text_field :name
+        .control-group
+          = site.label :description, :class => "control-label"
+          .controls
+            = site.text_area :description, :rows => "5"
+
+        .control-group
+          = site.label :costcode, :class => "control-label"
+          .controls
+            = site.text_field :costcode
 
 
 
