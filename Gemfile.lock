@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/ryanb/nested_form.git
+  revision: 486e0f0e93f3ca455d5d0fc7869053257b6afce2
+  specs:
+    nested_form (0.2.0)
+
+GIT
   remote: https://github.com/doolin/capybara
   revision: 43202ee8ef3ba75eea26636d359a5346bbbf37fc
   specs:
@@ -235,6 +241,7 @@ DEPENDENCIES
   haml-rails
   heroku
   jquery-rails
+  nested_form!
   nokogiri
   pg
   rails
