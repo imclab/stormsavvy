@@ -1,26 +1,21 @@
-%table.table.table-condensed
-  %tr
-
-    %th Project Name
-    %th Sites
-    %th Action Required?
-    %th Status
-    %th Actions
-
+.cf
   - @projects.each do |project|
-    %tr
+    .project.closed{ :class=>"#{cycle('even','odd')}" }
+      .cf.headline
+        %h3.pull-left=project.name
+        .small.more_details.pull-right
+          =link_to "More Details"
 
-      %td= project.name
+      .more_details_box.is_hidden
+        %ul
+          %li
+            %strong # of Sites:
+            = project.sites.count
+          %li
+            %strong Last Updated:
+            = project.updated_at
+          %li
+            %strong Last Event:
+            = "Rain Event on 2012-3-1"
 
-      %td= project.sites.count
-      %td= "#todo: note pending reports"
-      %td= project.active ? "Active" : "Inactive"
-      %td
-        = link_to 'Show', project
-        |
-        = link_to 'Edit', edit_project_path(project)
-        |
-        = link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
-
-%br
 
