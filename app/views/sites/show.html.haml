@@ -36,6 +36,11 @@
         %b Zipcode:
         = @site.zipcode
 
+      %p
+        %b Reports:
+        - @site.reports.each do |report|
+          = link_to report.type, report
+
       = link_to 'Edit', edit_project_site_path(@site.project, @site)
       \|
       = link_to 'Back', sites_path

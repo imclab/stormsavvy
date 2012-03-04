@@ -24,7 +24,7 @@ class RainEventWorkflow < ActiveRecord::Base
     check_cem2030
     if cem2030?
       "CEM2030 prepared"
-      #Report.create(:type => 'CEM2030')
+      Report.create(:type => 'CEM2030')
     else
       "Throw CEM2030 exception"
     end
