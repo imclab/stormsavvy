@@ -12,7 +12,7 @@ describe "sites/edit" do
     ))
   end
 
-  it "renders the edit site form" do
+  xit "renders the edit site form" do
     render
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
