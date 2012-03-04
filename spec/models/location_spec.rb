@@ -6,7 +6,11 @@ describe Location do
     @location = Factory(:location)
   end
 
-  it "should have a valid location" do
+  xit "should have a valid location" do
     @location.should be_valid
+  end
+
+  xit "should return coordinates given zipcode" do
+    @location.lat.should == 37.9202057
   end
 end

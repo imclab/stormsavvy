@@ -22,7 +22,7 @@ Stormsavvy::Application.routes.draw do
 
   resources :locations
 
-  get "pages/index"
+  match "/index", :to => "pages#index", :as => :index_path
 
   match '/about',    :to => "pages#about", :as => :about
   match '/terms',    :to => "pages#terms", :as => :terms
@@ -33,9 +33,6 @@ Stormsavvy::Application.routes.draw do
   match '/features',  :to => "pages#features", :as => :features
 
   devise_for :users
-  # This is not needed when the sign_out method is changed from
-  # :delete to :get in config/initializers/devise.rb
-  # devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
 
   root :to => "dashboard#index"
 

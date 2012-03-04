@@ -4,15 +4,19 @@ describe LocationsController do
 
   describe "GET 'index'" do
     it "returns http success" do
-      get 'index'
+      get Location.all
       response.should be_success
     end
   end
 
   describe "GET 'new'" do
     it "returns http success" do
-      get 'new'
-      response.should be_success
+      # get Location.new
+      # response.should be_success
+
+      location = Location.create! valid_attributes
+      get :new, {:id => location.to_param}, valid_session
+      assigns(:location).should eq(location)
     end
   end
 
