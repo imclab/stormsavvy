@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120304002345) do
+ActiveRecord::Schema.define(:version => 20120304011752) do
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
@@ -81,6 +81,13 @@ ActiveRecord::Schema.define(:version => 20120304002345) do
     t.datetime "updated_at",   :null => false
     t.integer  "user_id"
     t.integer  "project_id"
+    t.integer  "zipcode"
+    t.float    "lat"
+    t.float    "long"
+    t.integer  "address_1"
+    t.integer  "address_2"
+    t.integer  "city"
+    t.integer  "state"
   end
 
   create_table "users", :force => true do |t|
