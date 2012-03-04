@@ -28,11 +28,11 @@ Stormsavvy::Application.routes.draw do
   match '/privacy',  :to => "pages#privacy"
   match '/contact',  :to => "pages#contact"
 
-  devise_for :users
+  # devise_for :users
   # This is not needed when the sign_out method is changed from 
   # :delete to :get in config/initializers/devise.rb
-  # devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
   
+  devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
   
   root :to => "dashboard#index"
 
