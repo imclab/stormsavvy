@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120304173431) do
+ActiveRecord::Schema.define(:version => 20120304184611) do
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20120304173431) do
   create_table "reports", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "type"
   end
 
   create_table "sites", :force => true do |t|
@@ -124,6 +125,18 @@ ActiveRecord::Schema.define(:version => 20120304173431) do
     t.boolean  "qualifying"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "workflows", :force => true do |t|
+    t.integer  "hours_before_rain"
+    t.boolean  "reap"
+    t.boolean  "cem2030"
+    t.boolean  "ph_sample"
+    t.boolean  "turbidity"
+    t.boolean  "report_sent"
+    t.boolean  "report_received"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
 end
