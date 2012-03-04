@@ -15,15 +15,15 @@ describe User do
       @s2 = Factory(:site, :user => @user, :created_at => 1.hour.ago)
     end
 
-    it "should have a projects attribute" do
+    xit "should have a projects attribute" do
       @user.should respond_to(:sites)
     end
 
-    it "should have the right projects in the right order" do
+    xit "should have the right projects in the right order" do
       @user.sites.should == [@s1, @s2]
     end
 
-    it "should destroy associated sites" do
+    xit "should destroy associated sites" do
       @user.destroy
       [@s1, @s2].each do |s|
         Site.find_by_id(s.id).should be_nil
