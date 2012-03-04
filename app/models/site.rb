@@ -48,4 +48,18 @@ class Site < ActiveRecord::Base
     hydra.run
 
   end
+
+  def weather_trigger?(trigger_level = 50, time_ahead = 24.hours)  
+    pop_point = self.get_pop_at_point(time_ahead)
+    if pop_point
+      pop_point.pop >= trigger_level
+    else
+      return "No data found"
+    end
+  end
+
+  def get_pop_at_point(time_ahead = 24.hours, granularity = 6.hours)
+    time_ahead_point = Time.now + time_ahead
+    record = self.site_pop.where("date > ? AND date <= ?", time_ahead_point - granularity / 2, time_ahead_point + granularity / 2).first
+  end
 end
