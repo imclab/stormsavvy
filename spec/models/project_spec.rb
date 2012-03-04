@@ -16,8 +16,8 @@ describe Project do
   it "should have project attributes" do
     @project.name.should == "Hwy 101 Corridor"
     @project.startdate.should == DateTime.new
-	@project.finishdate.should == DateTime.new
-	@project.active.should == false
+  	@project.finishdate.should == DateTime.new
+  	@project.active.should == false
   end
 
   it "should create a new instance given valid attributes" do
@@ -40,4 +40,5 @@ describe Project do
       @project.should == @project
     end    
   end
+
 end
