@@ -3,7 +3,7 @@ class Location < ActiveRecord::Base
   geocoded_by :address, :latitude => :lat, :longitude => :long
   after_save :geocode
 
-  def self.latlong(zipcode)
+  def latlong(zipcode)
     l = self.where(:zipcode => zipcode).first
     [] << l.lat << l.long
   end
