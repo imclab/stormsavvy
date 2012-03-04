@@ -9,4 +9,8 @@ describe Location do
   it "should have a valid location" do
     @location.should be_valid
   end
+
+  it "should return coordinates given zipcode" do
+    @location.lat.should == 37.9202057
+  end
 end
