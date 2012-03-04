@@ -7,7 +7,8 @@ include Nokogiri
 
     #l = Location.where(:zipcode => zipcode).first
     #xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=168&interval=6&lat=#{l.lat}&lon=#{l.long}"
-    ll = Location::latlong(zipcode.to_i)
+    l = Location.new
+    ll = l.latlong(zipcode.to_i)
     xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=168&interval=6&lat=#{ll[0]}&lon=#{ll[1]}"
 #=begin    
     
