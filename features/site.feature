@@ -2,6 +2,7 @@ Feature: User examine site data
   User has need to examine the site data to
   determine the status and stuff.
 
+  @wip
   Scenario: User examines project listing
     Given a user is signed in
     #Then I debug

@@ -1,0 +1,65 @@
+.container
+  .row
+    .span12
+      %h2 Edit Report
+      = form_for @report do |f|
+        %fieldset#site_information
+          %legend Site Information
+
+          .control-group
+            = f.label :site_information_name
+            .control
+              = f.text_field :site_information_name, :value => @report.site.name
+
+          .control-group
+            = f.label :site_address_1
+            .control
+              = f.text_field :site_address_1, :value => @report.site.address_1
+
+          .control-group
+            = f.label :site_address_2
+            .control
+              = f.text_field :site_address_2, :value => @report.site.address_2
+
+          .control-group
+            = f.label :site_city
+            .control
+              = f.text_field :site_city, :value => @report.site.city
+
+          .control-group
+            = f.label :site_state
+            .control
+              = f.select :site_state, Carmen.states, {:include_blank => true}, :selected => @report.site.state
+
+        %fieldset#company_information
+          %legend Company Information
+          .control-group
+            = f.label :contractor_name
+            .control
+              = f.text_field :contractor_name, :value => current_user.contractor_name
+
+          .control-group
+            = f.label :contractor_address_1
+            .control
+              = f.text_field :contractor_address_1, :value => current_user.contractor_address_1
+
+          .control-group
+            = f.label :contractor_address_2
+            .control
+              = f.text_field :contractor_address_2, :value => current_user.contractor_address_2
+
+          .control-group
+            = f.label :contractor_city
+            .control
+              = f.text_field :contractor_city, :value => current_user.contractor_city
+          .control-group
+            = f.label :contactor_state
+            .control
+              = f.text_field :contactor_state, :value => current_user.contactor_state
+
+          .control-group
+            = f.label :contactor_zipcode
+            .control
+              = f.text_field :contactor_zipcode, :value => current_user.contactor_zipcode
+        .actions
+          = f.submit "Save Report", :class => "btn btn-primary"

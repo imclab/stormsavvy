@@ -14,7 +14,7 @@ describe RainEventWorkflow do
     @rew.hours_before_rain = 48
     @rew.chance_of_rain = 55
     @rew.reap = false
-    @rew.check_reap.should =~ /Prepare REAP/
+    @rew.check_reap.should =~ /REAP prepared/
   end
 
   it "should check on CEM2045 status 48 hours before rain" do
@@ -28,14 +28,23 @@ describe RainEventWorkflow do
     @rew.hours_before_rain = 48
     @rew.chance_of_rain = 55
     @rew.reap = false
-    @rew.check_cem2030.should =~ /Prepare CEM2030/    
+    @rew.check_cem2030.should =~ /CEM2030 prepared/    
   end
 
   it "should check on CEM2030 status 24 hours before rain" do
     @rew.hours_before_rain = 48
     @rew.chance_of_rain = 55
     @rew.cem2030 = true
-    @rew.check_cem2030.should_not =~ /Prepare CEM2030/
+    @rew.check_cem2030.should_not =~ /CEM2030 prepared/
+  end
+  
+  it "should check to see if rain is imminent" do
+    @rew.hours_before_rain = 23
+    @rew.chance_of_rain = 55
+    @rew.reap = false
+    lambda do
+      @rew.rain_imminent?
+    end.should change(Report, :count).by(1)
   end
 
 end
