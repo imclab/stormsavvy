@@ -1,0 +1,27 @@
+.navbar-inner {
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+padding-top: .3em;
+padding-bottom: .3em;
+
+  .nav {
+    li {
+      a {
+
+        -webkit-border-radius: 3px;
+        -moz-border-radius:    3px;
+        border-radius:         3px;
+        border: 1px solid transparent;
+        &:hover{
+          display: block;
+          background: #333 ;
+          -webkit-box-shadow:inset 0px 1px 1px #111;
+          -moz-box-shadow:   inset 0px 1px 1px #111;
+          box-shadow:        inset 0px 1px 1px #111;
+          border: 1px solid #000;
+        }
+      }
+    }
+  }
+}
