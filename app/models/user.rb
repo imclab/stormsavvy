@@ -9,4 +9,10 @@ class User < ActiveRecord::Base
   has_many :sites, :dependent => :destroy
 
   has_many :projects, :dependent => :destroy
+
+  def send_pop_alerts
+    @name = self.firstname
+    UserMailer.pop_alert(self).deliver
+  end
+
 end
