@@ -41,9 +41,9 @@ describe Project do
     end    
   end
 
-  describe "date format validations"
+  describe "date format validations" do
 
-  it "start date should be less than finish date" do
+    it "start date should be less than finish date" do
       @project = project.create(@attr)
       @project.startdate.should < @project.finishdate
     end
