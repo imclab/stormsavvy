@@ -183,4 +183,16 @@ ActiveRecord::Schema.define(:version => 20120304224217) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "workflows", :force => true do |t|
+    t.integer  "hours_before_rain"
+    t.boolean  "reap"
+    t.boolean  "cem2030"
+    t.boolean  "ph_sample"
+    t.boolean  "turbidity"
+    t.boolean  "report_sent"
+    t.boolean  "report_received"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
 end
