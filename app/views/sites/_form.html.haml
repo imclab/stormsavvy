@@ -6,23 +6,29 @@
         - @site.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .cf
     = f.label :name
-    = f.text_field :name
-  .field
+    .input
+      = f.text_field :name
+  .cf
     = f.label :description
-    = f.text_field :description
-  .field
+    .input
+      = f.text_field :description
+  .cf
     = f.label :costcode
-    = f.text_field :costcode
-  .field
+    .input
+      = f.text_field :costcode
+  .cf
     = f.label :size
-    = f.text_field :size
-  .field
+    .input
+      = f.text_field :size
+  .cf
     = f.label :exposed_area
-    = f.text_field :exposed_area
-  .field
+    .input
+      = f.text_field :exposed_area
+  .cf
     = f.label :location
-    = f.text_field :location
+    .input
+      = f.text_field :location
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => "btn"

@@ -1,0 +1,29 @@
+.widget {
+  background: #d0d5d8; /* Old browsers */
+  background: -moz-linear-gradient(top, #d0d5d8 0%, #e3e4e5 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d0d5d8), color-stop(100%,#e3e4e5)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #d0d5d8 0%,#e3e4e5 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #d0d5d8 0%,#e3e4e5 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #d0d5d8 0%,#e3e4e5 100%); /* IE10+ */
+  background: linear-gradient(top, #d0d5d8 0%,#e3e4e5 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0d5d8', endColorstr='#e3e4e5',GradientType=0 ); /* IE6-9 */
+
+  -webkit-box-shadow: 0px 1px 0 #aaa, inset 0px -1px 0 #ddd;
+  -moz-box-shadow:    0px 1px 0 #aaa, inset 0px -1px 0 #ddd;
+  box-shadow:         0px 1px 0 #aaa, inset 0px -1px 0 #ddd;
+
+  border-top: 1px solid #aaa;
+
+  border-left: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+
+  overflow: hidden;
+  .inner {
+    padding: 1em;
+    border-top: 1px solid #fff;
+  }
+}
