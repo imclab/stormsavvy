@@ -1,0 +1,17 @@
+= form_for @report do |f|
+  -if @report.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+      %ul
+        - @project.errors.full_messages.each do |msg|
+          %li= msg
+
+  .control-group
+    = f.label :type
+    .controls
+      = f.text_field :type, :disabled => true
+
+  .control-group
+    =f.label :site_id
+    .controls
+      = f.text_field :site_id

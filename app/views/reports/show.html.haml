@@ -1,0 +1,6 @@
+.container
+  .row
+    .span12
+      %h2 View Report
+      %b Site:
+      = link_to @report.site.name, project_site_path(@report.site.project, @report.site)
