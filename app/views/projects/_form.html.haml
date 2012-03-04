@@ -35,8 +35,8 @@
   %fieldset
     %legend
       Site Details
+      = f.link_to_add "Add a new site", :sites
       = f.fields_for :sites, do |site|
-        = site.object.state
         .control-group
           = site.label :name, :class => "control-label"
           .controls
@@ -77,9 +77,6 @@
             = site.text_field :zipcode
 
         = site.link_to_remove "Remove this site"
-
-      = f.link_to_add "Add a new site", :sites
-
 
   .actions
     = f.submit 'Save', :class => "btn btn-primary"
