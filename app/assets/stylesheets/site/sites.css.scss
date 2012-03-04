@@ -1,3 +1,19 @@
 // Place all the styles related to the Sites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.project_name_link:after {
+  content: "(+)";
+}
+
+.project_name_link.open_list:after {
+  content: "(-)";
+}
+
+.project_sites_list {
+  li {
+    a:after {
+      content: "" !important;
+    }
+  }
+}
