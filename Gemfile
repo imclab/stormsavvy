@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 gem 'rails'
 gem 'typhoeus'
 gem 'nokogiri'
+gem 'geocoder'
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :test, :development do
   gem 'builder'
