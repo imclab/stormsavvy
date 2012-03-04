@@ -40,8 +40,7 @@ class AddFieldsToReport < ActiveRecord::Migration
     add_column :reports, :site_information_acres_total_project_area,                         :decimal
     add_column :reports, :site_information_acres_total_project_disturbed_soil_area,          :decimal
     add_column :reports, :site_information_acres_current_phase_disturbed_soil_area,          :decimal
-    add_column :reports, :site_information_acres_current_phase_inactive_disturbed_soil_area, :decimal
-
+ 
     add_column :reports, :inspection_type, :string
 
     add_column :reports, :storm_information_time_elapsed_since_last_storm,  :string
@@ -53,6 +52,6 @@ class AddFieldsToReport < ActiveRecord::Migration
 
     add_column :reports, :storm_information_percipitation_amount_from_last_form, :decimal
     add_column :reports, :storm_information_expected_percipitaion_amount,        :decimal
-    add_column :reports, :storm_information_percipitation_amount_from_storm_recorded_from_site_rain_gauge, :decimal
+
   end
 end
