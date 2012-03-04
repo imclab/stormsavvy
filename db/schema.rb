@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120304024758) do
+ActiveRecord::Schema.define(:version => 20120304021655) do
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
@@ -84,8 +84,8 @@ ActiveRecord::Schema.define(:version => 20120304024758) do
     t.integer  "zipcode"
     t.float    "lat"
     t.float    "long"
-    t.string   "address_1"
-    t.string   "address_2"
+    t.integer  "address_1"
+    t.integer  "address_2"
     t.string   "city"
     t.string   "state"
   end
