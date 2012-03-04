@@ -1,0 +1,10 @@
+.panel {
+  background: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  overflow: hidden;
+  .inner {
+    padding: 1em;
+  }
+}

@@ -9,7 +9,8 @@
 
   %body{ template_id, template_class }
     = render 'layouts/header'
-    = yield
+    .bottom-10
+      = yield
 
     = render 'layouts/footer'
     = render 'layouts/analytics'
