@@ -41,10 +41,9 @@ describe Project do
     end    
   end
 
-<<<<<<< HEAD
-  describe "date format validations"
+  describe "date format validations" do
 
-  it "start date should be less than finish date" do
+    it "start date should be less than finish date" do
       @project = project.create(@attr)
       @project.startdate.should < @project.finishdate
     end
@@ -61,6 +60,5 @@ describe Project do
         @project.save!
       }.to raise_error(ActiveRecord::RecordNotSaved)
     end
-=======
->>>>>>> f8a89da7ff21fb9f3842809df691d3a655a7fa82
+  end
 end
