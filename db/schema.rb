@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(:version => 20120304094935) do
     t.float    "amount_of_rain"
   end
 
+  create_table "site_pops", :force => true do |t|
+    t.datetime "date"
+    t.integer  "pop"
+    t.integer  "site_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "sites", :force => true do |t|
     t.string   "name"
     t.string   "description"
