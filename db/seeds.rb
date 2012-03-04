@@ -19,11 +19,22 @@ end
 
 # Project seed data
 @project = Project.create(
-  :name => "Hwy 1",
-  :description => "AC Overlay", 
+  :name => "Hwy 101 Corridor",
+  :description => "Highway irmprovements in Marin/Sonoma counties", 
   :startdate => "2011-02-20 12:01:00",
   :startdate => "2012-02-20 12:01:00" 
   )
 
 # Site seed data
-
+@site = Site.create(
+  :name => "MSN-A1",
+  :description => "Hwy 101 Novato - PM 18.6-22.3",
+  :costcode => "264064", 
+  :size => "20 acres", 
+  :address1 => "320 Deere Lane",
+  :address2 => "", 
+  :state=> "California", 
+  :zipcode => "99999", 
+  :city => "Novato", 
+  :exposed_area => "10 acres"
+  )
