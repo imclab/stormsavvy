@@ -16,3 +16,14 @@ Location.transaction do
     puts "#{idx} lines imported" if idx % 100 == 0
   end
 end
+
+# Project seed data
+@project = Project.create(
+  :name => "Hwy 1",
+  :description => "AC Overlay", 
+  :startdate => "2011-02-20 12:01:00",
+  :startdate => "2012-02-20 12:01:00" 
+  )
+
+# Site seed data
+
