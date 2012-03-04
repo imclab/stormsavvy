@@ -40,3 +40,4 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'heroku'
 gem 'prawn'
+gem "prawnto"

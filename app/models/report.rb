@@ -20,13 +20,14 @@ class Report < ActiveRecord::Base
   :project_identifer_number,
   :wdid_number
 
-  before_save :generate_report
+  before_save :link_report_to_project
 
 
 private
 
-  def generate_report
-
+  def link_report_to_project
+    @project = self.site.project
+    self.project_id = @project.id
   end
 
 end

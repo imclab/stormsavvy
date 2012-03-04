@@ -61,3 +61,5 @@
             = f.label :contactor_zipcode
             .control
               = f.text_field :contactor_zipcode, :value => current_user.contactor_zipcode
+        .actions
+          = f.submit "Save Report", :class => "btn btn-primary"
