@@ -9,6 +9,13 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :background => "#{Rails.root}/public/reports/cem2030/cem-2030-1.png", :scale => 0.5}, :inline=>true
+      end
+    end
   end
 
   def new
@@ -17,6 +24,23 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(params[:report])
+  end
+
+  def edit
+    @report = Report.find(params[:id])
+  end
+
+  def update
+    @report = Report.find(params[:id])
+    respond_to do |format|
+      if @report.update_attributes(params[:report])
+        format.html { redirect_to @report, notice: 'Report was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @report.errors, status: :unprocessable_entity }
+    end
+    end
   end
 
   def CEM2035

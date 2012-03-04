@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120304190756) do
+ActiveRecord::Schema.define(:version => 20120304224217) do
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
@@ -71,10 +71,50 @@ ActiveRecord::Schema.define(:version => 20120304190756) do
   end
 
   create_table "reports", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                                                      :null => false
+    t.datetime "updated_at",                                                                      :null => false
     t.string   "type"
     t.integer  "site_id"
+    t.string   "project_id"
+    t.string   "site_information_name"
+    t.string   "site_address_1"
+    t.string   "site_address_2"
+    t.string   "site_city"
+    t.string   "site_state"
+    t.integer  "site_zipcode"
+    t.string   "contractor_name"
+    t.string   "contractor_address_1"
+    t.string   "contractor_address_2"
+    t.string   "contractor_city"
+    t.string   "contactor_state"
+    t.integer  "contactor_zipcode"
+    t.string   "contract_number"
+    t.string   "project_identifer_number"
+    t.string   "wdid_number"
+    t.integer  "project_risk_level"
+    t.string   "water_polution_control_manager_name"
+    t.string   "water_polution_control_manager_company_name"
+    t.string   "water_polution_control_manager_phone_number"
+    t.string   "water_polution_control_manager_emergancy_phone_number"
+    t.string   "inspector_name"
+    t.date     "date_of_inspection"
+    t.string   "weather_condition"
+    t.string   "precipitation_condition"
+    t.string   "wind_condition"
+    t.string   "construction_phase"
+    t.decimal  "site_information_acres_total_project_area"
+    t.decimal  "site_information_acres_total_project_disturbed_soil_area"
+    t.decimal  "site_information_acres_current_phase_disturbed_soil_area"
+    t.decimal  "site_information_acres_current_phase_inactive_disturbed_soil_area"
+    t.string   "inspection_type"
+    t.string   "storm_information_time_elapsed_since_last_storm"
+    t.decimal  "storm_information_percipitation_since_last_storm"
+    t.datetime "storm_information_time_storm_is_expected"
+    t.decimal  "storm_information_time_elapsed_since_storm_began"
+    t.decimal  "storm_information_time_elapsed_since_storm"
+    t.decimal  "storm_information_percipitation_amount_from_last_form"
+    t.decimal  "storm_information_expected_percipitaion_amount"
+    t.decimal  "storm_information_percipitation_amount_from_storm_recorded_from_site_rain_gauge"
   end
 
   create_table "site_pops", :force => true do |t|
@@ -103,6 +143,7 @@ ActiveRecord::Schema.define(:version => 20120304190756) do
     t.string   "address_2"
     t.string   "city"
     t.string   "state"
+    t.string   "risk_level"
   end
 
   create_table "users", :force => true do |t|
@@ -120,6 +161,12 @@ ActiveRecord::Schema.define(:version => 20120304190756) do
     t.string   "lastname"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "contractor_name"
+    t.string   "contractor_address_1"
+    t.string   "contractor_address_2"
+    t.string   "contractor_city"
+    t.string   "contactor_state"
+    t.integer  "contactor_zipcode"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -134,6 +181,18 @@ ActiveRecord::Schema.define(:version => 20120304190756) do
     t.boolean  "qualifying"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "workflows", :force => true do |t|
+    t.integer  "hours_before_rain"
+    t.boolean  "reap"
+    t.boolean  "cem2030"
+    t.boolean  "ph_sample"
+    t.boolean  "turbidity"
+    t.boolean  "report_sent"
+    t.boolean  "report_received"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
 end
