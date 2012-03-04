@@ -2,9 +2,8 @@
   .span8
     .panel
       .inner
-        %h2
-          Active Projects
-          %span.small.pull-right
-            =link_to "(See all projects)", projects_path
+        .headline.bottom-10.cf
+          %h2.pull-left Active Projects
+          .pull-right
+            = link_to 'New Project', new_project_path, :class => "btn"
         = render 'projects/projects'
-        = link_to 'New Project', new_project_path, :class => "btn"

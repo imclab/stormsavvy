@@ -1,7 +1,7 @@
 .cf
   - @projects.each do |project|
-    .project.closed
-      .cf
+    .project.closed{ :class=>"#{cycle('even','odd')}" }
+      .cf.headline
         %h3.pull-left=project.name
         .small.more_details.pull-right
           =link_to "More Details"

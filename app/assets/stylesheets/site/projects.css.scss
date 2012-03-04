@@ -1,3 +1,35 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.project {
+  .headline {
+    padding: .5em;
+  }
+}
+
+.project.open {
+  margin-bottom: -9px;
+  .more_details a:after {
+    content: " (-)";
+  }
+}
+
+.project.closed {
+  .more_details a:after {
+    content: " (+)";
+  }
+}
+
+.project.even {
+  background: #eee;
+  &:hover {
+    background: #ccc;
+  }
+}
+.project.odd {
+  background: #f1f1f1;
+  &:hover {
+    background: #ccc;
+  }
+}
