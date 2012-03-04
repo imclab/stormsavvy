@@ -1,12 +1,18 @@
 class Site < ActiveRecord::Base
 
   attr_accessible :name, :description, :costcode, :size, :address_1, :address_2, :state, :zipcode, :city, :exposed_area
+
   belongs_to :project
   has_many :reports
   geocoded_by :address, :latitude => :lat, :longitude => :long
   after_validation :geocode
 
   validates_presence_of :name
+  geocoded_by :address, :latitude => :lat, :longitude => :long
+  after_validation :geocode
+
+  has_many :site_pop
+
 
   def self.latlong(zipcode)
     l = self.where(:zipcode => zipcode).first
@@ -34,7 +40,11 @@ class Site < ActiveRecord::Base
         xml = response.body
         noko = Nokogiri::XML(xml)
         pop24 = noko.xpath("//app:probOfPrecip12hourly").text
-        puts "change of rain at site #{s.name} - #{pop24}"
+        datetime = noko.xpath("//app:validTime").text
+        puts "at #{datetime} : pop #{pop24}"
+
+        # Save noaa data to db
+        SitePop.create!(:date => datetime, :pop => pop24, :site => s)
       end
     end
 
