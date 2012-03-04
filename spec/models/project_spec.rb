@@ -40,4 +40,24 @@ describe Project do
       @project.should == @project
     end    
   end
+
+  describe "date format validations"
+
+  it "start date should be less than finish date" do
+      @project = project.create(@attr)
+      @project.startdate.should < @project.finishdate
+    end
+
+    it "start date should not be greater than finish date" do
+      @project = @project.create(@attr)
+      @project.startdate.should_not > @project.finishdate
+    end
+
+    it "finish date should raise error" do
+      @project = @project.create(@attr)
+      @project.finishdate=(DateTime.new(1999))
+      expect {
+        @project.save!
+      }.to raise_error(ActiveRecord::RecordNotSaved)
+    end
 end
