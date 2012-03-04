@@ -19,6 +19,10 @@ class ReportsController < ApplicationController
     @report = Report.new(params[:report])
   end
 
+  def edit
+    @report = Report.find(params[:id])
+  end
+
   def CEM2035
     pdf = Prawn::Document.new
     pdf.text "CEM2035"

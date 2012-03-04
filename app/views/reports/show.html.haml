@@ -4,3 +4,5 @@
       %h2 View Report
       %b Site:
       = link_to @report.site.name, project_site_path(@report.site.project, @report.site)
+- current_user.projects.each do |project|
+  = project.sites.name
