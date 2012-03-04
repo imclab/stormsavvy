@@ -21,8 +21,20 @@
         %b Exposed area:
         = @site.exposed_area
       %p
-        %b Location:
-        = @site.location
+        %b Address:
+        = @site.address_1
+      %p
+        %b Address:
+        = @site.address_2
+      %p
+        %b City:
+        = @site.city
+      %p
+        %b State:
+        = @site.state
+      %p
+        %b Zipcode:
+        = @site.zipcode
 
       = link_to 'Edit', edit_project_site_path(@site.project, @site)
       \|

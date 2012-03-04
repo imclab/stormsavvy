@@ -1,11 +1,11 @@
 class Site < ActiveRecord::Base
 
-  attr_accessible :name, :description, :costcode, :size, :address_1, :address_2, :state, :zipcode
+  attr_accessible :name, :description, :costcode, :size, :address_1, :address_2, :state, :zipcode, :city, :exposed_area
 
   belongs_to :project
   geocoded_by :address, :latitude => :lat, :longitude => :long
 
-  validates_presence_of :name
+
   after_validation :geocode
 
   def self.latlong(zipcode)
