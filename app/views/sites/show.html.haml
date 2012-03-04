@@ -2,7 +2,9 @@
   .row
     .span12
       %p#notice= notice
-
+      %p
+        %b Project:
+        = link_to @site.project.name, project_path(@site.project)
       %p
         %b Name:
         = @site.name
@@ -22,6 +24,6 @@
         %b Location:
         = @site.location
 
-      = link_to 'Edit', edit_site_path(@site)
+      = link_to 'Edit', edit_project_site_path(@site.project, @site)
       \|
       = link_to 'Back', sites_path

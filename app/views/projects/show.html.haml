@@ -4,9 +4,6 @@
       %p#notice= notice
 
       %p
-        %b User:
-        = @project.user_id
-      %p
         %b Name:
         = @project.name
       %p
@@ -21,6 +18,11 @@
       %p
         %b Active:
         = @project.active
+
+      %p
+        %b Sites
+        - @project.sites.each do |site|
+          = link_to site.name, project_site_path(@project, site)
 
       = link_to 'Edit', edit_project_path(@project)
       \|

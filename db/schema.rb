@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120303232235) do
+ActiveRecord::Schema.define(:version => 20120304002345) do
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(:version => 20120303232235) do
     t.integer  "user_id"
     t.string   "name"
     t.text     "description"
-    t.datetime "startdate"
-    t.datetime "finishdate"
+    t.date     "startdate"
+    t.date     "finishdate"
     t.boolean  "active"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20120303232235) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "user_id"
+    t.integer  "project_id"
   end
 
   create_table "users", :force => true do |t|

@@ -1,7 +1,10 @@
-%h1 Editing site
+.container
+  .row
+    .span12
+      %h1 Editing site
 
-= render 'form'
+      = render 'form'
 
-= link_to 'Show', @site
-\|
-= link_to 'Back', sites_path
+      = link_to 'Show', @site
+      \|
+      = link_to 'Back', projects_path

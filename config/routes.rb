@@ -1,5 +1,10 @@
 Stormsavvy::Application.routes.draw do
 
+  get "dashboard/index"
+  get "dashboard/edit"
+
+  get "sites", :to => "sites#users_sites"
+
   get "location/index"
 
   get "location/new"
@@ -7,16 +12,13 @@ Stormsavvy::Application.routes.draw do
   get "location/create"
 
   resources :inspection_events
-
   resources :weather_events
 
-  get "dashboard/index"
+  resources :projects do
+    resources :sites
+  end
 
-  get "dashboard/edit"
 
-  resources :projects
-
-  resources :sites
 
   resources :locations
 
