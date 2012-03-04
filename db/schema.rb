@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(:version => 20120304190756) do
     t.string   "type"
     t.integer  "site_id"
   end
-  
+
   create_table "site_pops", :force => true do |t|
     t.datetime "date"
     t.integer  "pop"
