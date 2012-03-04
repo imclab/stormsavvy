@@ -35,7 +35,6 @@ Stormsavvy::Application.routes.draw do
   # :delete to :get in config/initializers/devise.rb
   # devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
 
-
   root :to => "dashboard#index"
 
   # The priority is based upon order of creation:
