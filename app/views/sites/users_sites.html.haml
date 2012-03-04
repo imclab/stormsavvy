@@ -6,5 +6,8 @@
     .span12
       %ul
         - @projects.each do |project|
-          - project.sites.each do |site|
-            %li= link_to site.name, project_site_path(project, site)
+          %li
+            = link_to project.name, project_path(project)
+            %ul
+              - project.sites.each do |site|
+                %li= link_to site.name, project_site_path(project, site)
