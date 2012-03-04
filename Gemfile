@@ -10,6 +10,10 @@ gem 'iron_worker'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+group :development do
+  gem 'letter_opener'
+end
+
 group :test, :development do
   gem 'builder'
   gem 'rspec-rails'
