@@ -42,7 +42,9 @@ describe RainEventWorkflow do
     @rew.hours_before_rain = 23
     @rew.chance_of_rain = 55
     @rew.reap = false
-    @rew.rain_imminent?.should =~ /CEM2030 prepared/
+    lambda do
+      @rew.rain_imminent?
+    end.should change(Report, :count).by(1)
   end
 
 end
