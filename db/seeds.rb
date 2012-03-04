@@ -18,7 +18,7 @@ Location.transaction do
 end
 
 # Project seed data
-@project = Project.create(
+Project.create(
   :name => "Hwy 101 Corridor",
   :description => "Highway irmprovements in Marin/Sonoma counties", 
   :startdate => "2011-02-20 12:01:00",
@@ -26,7 +26,7 @@ end
   )
 
 # Site seed data
-@site = Site.create(
+Site.create(
   :name => "MSN-A1",
   :description => "Hwy 101 Novato - PM 18.6-22.3",
   :costcode => "264064", 
@@ -38,3 +38,11 @@ end
   :city => "Novato", 
   :exposed_area => "10 acres"
   )
+
+# User seed data
+User.create(
+  :email => "name@stormsavvy.com", 
+  :password => "Dark&Stormy",
+  :password_confirmation => "Dark&Stormy")
+
+# 
