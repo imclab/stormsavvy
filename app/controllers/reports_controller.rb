@@ -13,7 +13,7 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        prawnto :prawn=>{:page_layout=>:landscape, :background => "#{Rails.root}/public/rails.png"}, :inline=>true
+        prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :background => "#{Rails.root}/public/reports/cem2030/cem-2030-1.png", :scale => 0.5}, :inline=>true
       end
     end
   end
