@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  require 'carmen'
+  include Carmen
+
   # GET /projects
   # GET /projects.json
   def index

@@ -4,6 +4,7 @@ gem 'rails'
 gem 'typhoeus'
 gem 'nokogiri'
 gem 'geocoder'
+gem 'carmen'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

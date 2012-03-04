@@ -1,0 +1,41 @@
+= f.fields_for :sites do |site|
+  .control-group
+    = site.label :name, :class => "control-label"
+    .controls
+      = site.text_field :name
+  .control-group
+    = site.label :description, :class => "control-label"
+    .controls
+      = site.text_area :description, :rows => "5"
+
+  .control-group
+    = site.label :costcode, :class => "control-label"
+    .controls
+      = site.text_field :costcode
+
+  .control-group
+    =site.label :address_1, :class => "control-label"
+    .controls
+      = site.text_field :address_1
+
+  .control-group
+    =site.label :address_2, :class => "control-label"
+    .controls
+      = site.text_field :address_2
+
+  .control-group
+    =site.label :city, :class => "control-label"
+    .controls
+      = site.text_field :city
+
+  .control-group
+    =site.label :state, :class => "control-label"
+    .controls
+      = site.select :state, Carmen.states, {:include_blank => true}, :tabindex => "1"
+
+  .control-group
+    =site.label :zipcode, :class => "control-label"
+    .controls
+      = site.text_field :zipcode
+
+  = site.link_to_remove "Remove this site"

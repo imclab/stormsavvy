@@ -51,6 +51,7 @@ GEM
     arel (3.0.0)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
+    carmen (0.2.12)
     childprocess (0.3.1)
       ffi (~> 1.0.6)
     coffee-rails (3.2.2)
@@ -231,6 +232,7 @@ PLATFORMS
 DEPENDENCIES
   builder
   capybara!
+  carmen
   coffee-rails (~> 3.2.1)
   cucumber
   cucumber-rails
