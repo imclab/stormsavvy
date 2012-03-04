@@ -2,7 +2,9 @@
   .inner
     %h5 Seven Day Temperate
     %hr
-    %p= "Weather is #{seven_day_temp(94530).last}"
+    %p= "Weather is "
+    -#= seven_day_temp(94530).last
+    = seven_day_temp('90210').last
 
 #current_action_items.widget.bottom-10
   .inner
