@@ -1,26 +1,26 @@
 %table.table.table-condensed
   %tr
 
-    %th Name
-
-    %th Startdate
-    %th Finishdate
-    %th Active
-    %th
-    %th
-    %th
+    %th Project Name
+    %th Sites
+    %th Action Required?
+    %th Status
+    %th Actions
 
   - @projects.each do |project|
     %tr
 
       %td= project.name
 
-      %td= project.startdate
-      %td= project.finishdate
-      %td= project.active
-      %td= link_to 'Show', project
-      %td= link_to 'Edit', edit_project_path(project)
-      %td= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+      %td= project.sites.count
+      %td= "#todo: note pending reports"
+      %td= project.active ? "Active" : "Inactive"
+      %td
+        = link_to 'Show', project
+        |
+        = link_to 'Edit', edit_project_path(project)
+        |
+        = link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
 
 %br
 

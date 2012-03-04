@@ -2,8 +2,12 @@
   .container
     .row
       .span12
+        .pull-left
+          %span.st_facebook_hcount{ :st_url => "http://www.stormsavvy.com" }
+          |
+          %span.st_twitter_hcount{ :st_url => "http://www.stormsavvy.com" }
 
-        %p.pull-right
+        .pull-right
           = link_to "Contact", '/contact'
           \ 
           \#{link_to "Privacy", '/privacy'} 
