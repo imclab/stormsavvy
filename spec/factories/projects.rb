@@ -3,10 +3,10 @@
 FactoryGirl.define do
   factory :project do
     user_id 1
-    name "MyString"
-    description "MyText"
-    startdate "2012-02-20 13:15:11"
-    finishdate "2012-02-20 13:15:11"
+    name "Hwy 101 Corridor"
+    description "Highway Improvements"
+    startdate DateTime.new
+    finishdate DateTime.new
     active false
   end
 end
