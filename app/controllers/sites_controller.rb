@@ -10,6 +10,10 @@ class SitesController < ApplicationController
     end
   end
 
+  def users_sites
+    @projects = current_user.projects
+  end
+
   # GET /sites/1
   # GET /sites/1.json
   def show
