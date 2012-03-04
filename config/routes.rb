@@ -22,7 +22,7 @@ Stormsavvy::Application.routes.draw do
 
   resources :locations
 
-  match "/index", :to => "pages#index", :as => :index_path
+  match "/index", :to => "pages#index", :as => :index
 
   match '/about',    :to => "pages#about", :as => :about
   match '/terms',    :to => "pages#terms", :as => :terms
