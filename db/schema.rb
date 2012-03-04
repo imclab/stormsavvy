@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(:version => 20120304190756) do
     t.string   "type"
     t.integer  "site_id"
   end
-  
+
   create_table "site_pops", :force => true do |t|
     t.datetime "date"
     t.integer  "pop"
@@ -134,18 +134,6 @@ ActiveRecord::Schema.define(:version => 20120304190756) do
     t.boolean  "qualifying"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "workflows", :force => true do |t|
-    t.integer  "hours_before_rain"
-    t.boolean  "reap"
-    t.boolean  "cem2030"
-    t.boolean  "ph_sample"
-    t.boolean  "turbidity"
-    t.boolean  "report_sent"
-    t.boolean  "report_received"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
   end
 
 end
