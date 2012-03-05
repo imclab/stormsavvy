@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20120304230203) do
     t.decimal  "storm_information_percipitation_amount_from_last_form"
     t.decimal  "storm_information_expected_percipitaion_amount"
     t.decimal  "storm_information_percipitation_amount_from_storm_recorded_from_site_rain_gauge"
+    t.string   "status"
   end
 
   create_table "site_pops", :force => true do |t|

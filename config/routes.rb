@@ -6,10 +6,9 @@ Stormsavvy::Application.routes.draw do
   get "sites", :to => "sites#users_sites"
 
   get "location/index"
-
   get "location/new"
-
   get "location/create"
+  get "noaa/secret"
 
   resources :inspection_events
   resources :weather_events
