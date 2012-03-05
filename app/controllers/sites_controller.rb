@@ -19,6 +19,9 @@ class SitesController < ApplicationController
   def show
     @site = Site.find(params[:id])
 
+    @completed_reports = @site.reports.completed
+    @needs_attention_reports = @site.reports.needs_attention
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @site }

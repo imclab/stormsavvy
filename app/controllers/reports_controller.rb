@@ -4,7 +4,8 @@ class ReportsController < ApplicationController
   STATIC_REPORTS = %w[CEM2035 CEM2057 CEM2052]
 
   def index
-    @reports = Report.all
+    @completed_reports = Report.completed
+    @needs_attention_reports = Reports.needs_attention
   end
 
   def show
