@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120304224217) do
+ActiveRecord::Schema.define(:version => 20120304230203) do
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
