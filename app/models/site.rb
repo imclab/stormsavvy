@@ -67,4 +67,14 @@ class Site < ActiveRecord::Base
     time_ahead_point = Time.now + time_ahead
     record = self.site_pop.where("date > ? AND date <= ?", time_ahead_point - granularity / 2, time_ahead_point + granularity / 2).first
   end
+
+  def current_pop
+    current_pop = self.site_pop.order("date ASC").where("date >= ?", Time.now).first
+    if current_pop
+      return current_pop.pop
+    else
+      return "N/A"
+    end
+  end
+
 end
