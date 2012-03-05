@@ -1,4 +1,8 @@
 class Report < ActiveRecord::Base
+
+  scope :needs_attention, where(status: "needs_attention")
+  scope :completed, where(status: "complete")
+
   belongs_to :site
 
   attr_accessible :type,
