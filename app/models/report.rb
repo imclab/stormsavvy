@@ -1,4 +1,8 @@
 class Report < ActiveRecord::Base
+
+  scope :needs_attention, where(status: "needs_attention")
+  scope :completed, where(status: "complete")
+
   belongs_to :site
 
   attr_accessible :type,
@@ -20,10 +24,14 @@ class Report < ActiveRecord::Base
   :project_identifer_number,
   :wdid_number
 
-  before_save :link_report_to_project
-
+  #before_save :link_report_to_project
+  before_update :change_report_status
 
 private
+
+  def change_report_status
+    self.status = "complete"
+  end
 
   def link_report_to_project
     @project = self.site.project

@@ -8,6 +8,10 @@ class DashboardController < ApplicationController
       @sites = Site.all
       @weather_events = WeatherEvent.all
       @inspection_events = InspectionEvent.all
+
+      @completed_reports = Report.completed
+      @needs_attention_reports = Report.needs_attention
+
     end
   end
 

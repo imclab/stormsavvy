@@ -1,2 +1,2 @@
-- @reports.each do |report|
-  = report
+= Report.needs_attention.count
+= Report.completed.count

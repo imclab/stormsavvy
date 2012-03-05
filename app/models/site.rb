@@ -23,7 +23,7 @@ class Site < ActiveRecord::Base
     "#{self.address_1} #{self.address_2} #{self.city} #{self.state} #{self.zipcode}".strip
   end
 
-  def self.get_24_pop
+  def self.get_noaa_pop_data
 
     hydra = Typhoeus::Hydra.new
 
@@ -41,10 +41,18 @@ class Site < ActiveRecord::Base
         noko = Nokogiri::XML(xml)
         pop24 = noko.xpath("//app:probOfPrecip12hourly").text
         datetime = noko.xpath("//app:validTime").text
-        puts "at #{datetime} : pop #{pop24}"
 
         # Save noaa data to db
-        SitePop.create!(:date => datetime, :pop => pop24, :site => s)
+        sitepop = SitePop.create!(:date => datetime, :pop => pop24, :site => s)
+
+        # Create report if needed
+        if pop24.to_i > 25
+          puts "Site #{s.name} hit 25% threshold"
+          r = Report.new
+          r.site_id = s.id
+          r.status = "needs_attention"
+          r.save
+        end
       end
     end
 
