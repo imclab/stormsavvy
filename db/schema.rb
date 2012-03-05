@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20120304230203) do
     t.decimal  "site_information_acres_total_project_area"
     t.decimal  "site_information_acres_total_project_disturbed_soil_area"
     t.decimal  "site_information_acres_current_phase_disturbed_soil_area"
+    t.decimal  "site_information_acres_current_phase_inactive_disturbed_soil_area"
     t.string   "inspection_type"
     t.string   "storm_information_time_elapsed_since_last_storm"
     t.decimal  "storm_information_percipitation_since_last_storm"
@@ -113,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20120304230203) do
     t.decimal  "storm_information_time_elapsed_since_storm"
     t.decimal  "storm_information_percipitation_amount_from_last_form"
     t.decimal  "storm_information_expected_percipitaion_amount"
+    t.decimal  "storm_information_percipitation_amount_from_storm_recorded_from_site_rain_gauge"
   end
 
   create_table "site_pops", :force => true do |t|
