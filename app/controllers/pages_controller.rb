@@ -28,4 +28,7 @@ class PagesController < ApplicationController
 
   def features
   end
+
+  def team
+  end
 end
