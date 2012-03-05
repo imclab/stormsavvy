@@ -6,10 +6,9 @@ Stormsavvy::Application.routes.draw do
   get "sites", :to => "sites#users_sites"
 
   get "location/index"
-
   get "location/new"
-
   get "location/create"
+  get "noaa/secret"
 
   resources :inspection_events
   resources :weather_events
@@ -34,6 +33,7 @@ Stormsavvy::Application.routes.draw do
   match '/contact',  :to => "pages#contact", :as => :contact
   match '/plans-and-pricing',  :to => "pages#plans", :as => :plans
   match '/features',  :to => "pages#features", :as => :features
+  match '/team',      :to => "pages#team", :as => :team
 
   devise_for :users
 
