@@ -1,0 +1,3 @@
+class NOAAForecast
+
+end
