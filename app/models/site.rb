@@ -31,6 +31,7 @@ class Site < ActiveRecord::Base
       latlng = "#{s.lat}%2C#{s.long}"
       begin_time = (Time.now + 22.hours).xmlschema
       end_time = (Time.now + 26.hours).xmlschema
+      binding.pry
       url = "http://graphical.weather.gov/xml/SOAP_server/ndfdXMLclient.php?whichClient=GmlLatLonList&lat=&lon=&listLatLon=&lat1=&lon1=&lat2=&lon2=&resolutionSub=&listLat1=&listLon1=&listLat2=&listLon2=&resolutionList=&endPoint1Lat=&endPoint1Lon=&endPoint2Lat=&endPoint2Lon=&listEndPoint1Lat=&listEndPoint1Lon=&listEndPoint2Lat=&listEndPoint2Lon=&zipCodeList=&listZipCodeList=&centerPointLat=&centerPointLon=&distanceLat=&distanceLon=&resolutionSquare=&listCenterPointLat=&listCenterPointLon=&listDistanceLat=&listDistanceLon=&listResolutionSquare=&citiesLevel=&listCitiesLevel=&sector=&gmlListLatLon=#{latlng}&featureType=Forecast_Gml2Point&requestedTime=&startTime=&endTime=&compType=&propertyName=&product=time-series&begin=#{begin_time}&end=#{end_time}&Unit=e&pop12=pop12&Submit=Submit"
 
       request = Typhoeus::Request.new(url)

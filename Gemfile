@@ -12,6 +12,8 @@ gem 'iron_worker'
 
 group :development do
   gem 'letter_opener'
+  gem 'pry-rails'
+  gem 'pry-nav'
 end
 
 group :test, :development do
