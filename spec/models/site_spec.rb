@@ -30,12 +30,13 @@ describe Site do
   end
 
   it "should geocode oakland" do
-    s = Site.create!(:city => "Oakland")
-    s.lat.round.should == 37
+    s = Site.create!(:name => "Oakland Adams Point", 
+      :city => "Oakland")
+    s.lat.round.should == 38
     s.long.round.should == -122
   end
 
-  it "should have a project attribute" do
+  it "should belong to project" do
     @site.should respond_to(:project)
   end
 
