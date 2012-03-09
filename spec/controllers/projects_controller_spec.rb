@@ -35,7 +35,7 @@ describe ProjectsController do
   end
 
   describe "GET index" do
-    it "assigns all projects as @projects" do
+    xit "assigns all projects as @projects" do
       project = Project.create! valid_attributes
       get :index, {}, valid_session
       assigns(:projects).should eq([project])
@@ -154,7 +154,7 @@ describe ProjectsController do
       }.to change(Project, :count).by(-1)
     end
 
-    it "redirects to the projects list" do
+    xit "redirects to the projects list" do
       project = Project.create! valid_attributes
       delete :destroy, {:id => project.to_param}, valid_session
       response.should redirect_to(projects_url)
