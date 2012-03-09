@@ -34,6 +34,8 @@ gem 'pg'
 gem 'haml-rails'
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
 
+gem 'simplecov', :require => false, :group => :test
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
