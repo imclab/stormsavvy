@@ -14,8 +14,9 @@ Then /^the user signs in$/ do
   click_button "Sign in"
 end
 
-Then /^is directed to the user's show page$/ do
-  page.should have_content("Active Projects")
+Then /^is directed to the user's Dashboard$/ do
+  page.should have_selector("body.dashboard")
+  page.should have_selector("body#index")
 end
 
 Given /^a user is signed in$/ do
