@@ -5,7 +5,7 @@ Feature: Users sign in and sign out
   these scenarios describe page flow for signed in users,
   and what happens when a user signs out.
 
-  @wip
+  #@wip
   Scenario: User signs in
     Given a user is not signed in
     Then the user signs in
