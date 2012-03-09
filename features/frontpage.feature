@@ -5,7 +5,6 @@ Feature: The front page header and footer has certain required links
   ensuring correct targeting. This feature simply ensures those
   links exist and point at the right pages.
 
-  #@wip
   Scenario Outline: Reader visits nav links
     Given reader is on home page
     #Then show me the page
