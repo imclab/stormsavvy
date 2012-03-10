@@ -20,9 +20,10 @@ describe Project do
   	@project.active.should == false
   end
 
-  xit "should create a new instance given valid attributes" do
+  it "should create a new instance given valid attributes" do
     project = Project.new(@attr)
-    project.first.should be_valid
+    project.save
+    project.should be_valid
   end
   
   describe "project associations" do
@@ -31,11 +32,11 @@ describe Project do
       @project = Project.new(@attr)
     end
     
-    xit "should have a project attribute" do
+    it "should be associated with a user" do
       @project.should respond_to(:user)
     end
     
-    it "should have the correct associated member" do
+    it "should have the correct associated user" do
       #@project.should == @project.id
       @project.should == @project
     end    
@@ -43,18 +44,18 @@ describe Project do
 
   describe "date format validations" do
 
-    xit "start date should be less than finish date" do
-      @project = project.create(@attr)
+    it "start date should be less than finish date" do
+      @project = Project.create(@attr)
       @project.startdate.should < @project.finishdate
     end
 
-    xit "start date should not be greater than finish date" do
-      @project = @project.create(@attr)
+    it "start date should not be greater than finish date" do
+      @project = Project.create(@attr)
       @project.startdate.should_not > @project.finishdate
     end
 
-    xit "finish date should raise error" do
-      @project = @project.create(@attr)
+    it "finish date should raise error" do
+      @project = Project.create(@attr)
       @project.finishdate=(DateTime.new(1999))
       expect {
         @project.save!

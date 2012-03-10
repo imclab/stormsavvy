@@ -17,6 +17,7 @@ class Site < ActiveRecord::Base
     "#{self.address_1} #{self.address_2} #{self.city} #{self.state} #{self.zipcode}".strip
   end
 
+#=begin
   def self.get_noaa_pop_data
 
     hydra = Typhoeus::Hydra.new
@@ -56,6 +57,7 @@ class Site < ActiveRecord::Base
     hydra.run
 
   end
+#=end
 
   def weather_trigger?(trigger_level = 50, time_ahead = 24.hours)  
     pop_point = self.get_pop_at_point(time_ahead)
