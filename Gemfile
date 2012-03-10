@@ -50,3 +50,4 @@ gem 'devise'
 gem 'heroku'
 gem 'prawn'
 gem "prawnto"
+gem 'simple_form'
