@@ -4,15 +4,13 @@ class Site < ActiveRecord::Base
 
   belongs_to :project
   has_many :reports
+  has_many :site_pop
+
   geocoded_by :address, :latitude => :lat, :longitude => :long
   after_validation :geocode
 
   validates_presence_of :name
   validates :zipcode, :presence => true
-  geocoded_by :address, :latitude => :lat, :longitude => :long
-  after_validation :geocode
-
-  has_many :site_pop
 
 
   def address
