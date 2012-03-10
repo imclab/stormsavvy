@@ -17,6 +17,8 @@ Stormsavvy::Application.routes.draw do
     match "/reports/#{name}" => "reports##{name}"
   end
 
+  # Projects controller needs #show, redirect to root instead.
+  match '/projects' => 'dashboard#index'
   resources :projects do
     resources :sites
   end
