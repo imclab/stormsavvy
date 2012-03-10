@@ -1,9 +1,9 @@
 - if current_user
   #current_weather.widget.bottom-10
     .inner
-      %h5 Seven Day Temperature
+      %h5 Weather Report
       %hr
-      %p= "Weather is"
+      %p= "Today's chance of rain: #{chance_of_rain}%"
   #current_action_items.widget.bottom-10
     .inner
       %h5 Pending Reports
