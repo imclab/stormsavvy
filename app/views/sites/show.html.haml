@@ -1,6 +1,6 @@
 .container
   .row
-    .span12
+    .span8
       %h2 Site information
       %p#notice= notice
       %p
@@ -37,22 +37,8 @@
         %b Zipcode:
         = @site.zipcode
 
-      %p
-        %b Reports:
-        %h5 Pending Reports
-        - unless @needs_attention_reports.empty?
-          - @needs_attention_reports.each do |report|
-            %ul
-              %li= link_to "Report for #{report.site.name}", edit_report_path(report)
-        - else
-          You have no pending reports.
-
-        %h5 Completed Reports
-        - unless @completed_reports.empty?
-          %ul
-            - @completed_reports.each do |cr|
-              %li= link_to "Completed Report for #{cr.site.name}", report_path(cr, :pdf)
-
       = link_to 'Edit', edit_project_site_path(@site.project, @site)
       \|
       = link_to 'Back', project_path(@site.project_id)
+
+    .span4= render 'sites/weather_report'
