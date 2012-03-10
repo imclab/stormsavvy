@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120310233046) do
+ActiveRecord::Schema.define(:version => 20120310233643) do
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
@@ -166,8 +166,8 @@ ActiveRecord::Schema.define(:version => 20120310233046) do
     t.string   "contractor_address_1"
     t.string   "contractor_address_2"
     t.string   "contractor_city"
-    t.string   "contactor_state"
-    t.integer  "contactor_zipcode"
+    t.string   "contractor_state"
+    t.string   "contractor_zipcode"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
