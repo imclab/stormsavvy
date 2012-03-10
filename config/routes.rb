@@ -1,7 +1,6 @@
 Stormsavvy::Application.routes.draw do
 
   get "dashboard/index"
-  get "dashboard/edit"
 
   get "sites", :to => "sites#users_sites"
 
