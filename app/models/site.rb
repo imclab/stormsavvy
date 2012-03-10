@@ -14,12 +14,6 @@ class Site < ActiveRecord::Base
 
   has_many :site_pop
 
-=begin
-  def self.latlong(zipcode)
-    l = self.where(:zipcode => zipcode).first
-    [] << l.lat << l.long
-  end
-=end
 
   def address
     "#{self.address_1} #{self.address_2} #{self.city} #{self.state} #{self.zipcode}".strip
