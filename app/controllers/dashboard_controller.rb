@@ -15,9 +15,4 @@ class DashboardController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  private
-
 end
