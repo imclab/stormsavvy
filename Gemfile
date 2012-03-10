@@ -12,8 +12,6 @@ gem 'iron_worker'
 
 group :development do
   gem 'letter_opener'
-  gem 'pry-rails'
-  gem 'pry-nav'
 end
 
 group :test, :development do
@@ -28,6 +26,9 @@ group :test, :development do
   gem 'sqlite3'
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'spork-rails'
+  gem 'pry-rails'
+  gem 'pry-nav'
+#  gem 'pry-stack_explorer'
 end
 
 gem 'pg'
