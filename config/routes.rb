@@ -18,23 +18,22 @@ Stormsavvy::Application.routes.draw do
   end
 
   # Projects controller needs #show, redirect to root instead.
-  match '/projects' => 'dashboard#index'
+  match '/projects' => 'dashboard#index', :via => :get
   resources :projects do
     resources :sites
   end
 
   resources :locations
 
-  match "/index", :to => "pages#index", :as => :index
-
-  match '/about',    :to => "pages#about", :as => :about
-  match '/terms',    :to => "pages#terms", :as => :terms
-  match '/faq',      :to => "pages#faq", :as => :faq
-  match '/privacy',  :to => "pages#privacy", :as => :privacy
-  match '/contact',  :to => "pages#contact", :as => :contact
+  match "/index",     :to => "pages#index",          :as => :index
+  match '/about',     :to => "pages#about",          :as => :about
+  match '/terms',     :to => "pages#terms",          :as => :terms
+  match '/faq',       :to => "pages#faq",            :as => :faq
+  match '/privacy',   :to => "pages#privacy",        :as => :privacy
+  match '/contact',   :to => "pages#contact",        :as => :contact
   match '/plans-and-pricing',  :to => "pages#plans", :as => :plans
-  match '/features',  :to => "pages#features", :as => :features
-  match '/team',      :to => "pages#team", :as => :team
+  match '/features',  :to => "pages#features",       :as => :features
+  match '/team',      :to => "pages#team",           :as => :team
 
   devise_for :users
 

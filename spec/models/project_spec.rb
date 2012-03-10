@@ -25,7 +25,26 @@ describe Project do
     project.save
     project.should be_valid
   end
-  
+
+  describe "validations" do
+    it "should require a name" do
+      @project.name = ''
+      @project.should_not be_valid
+    end
+    it "should require a description" do
+      @project.description = ''
+      @project.should_not be_valid
+    end
+    it "requires a starting date" do
+      @project.startdate = ''
+      @project.should_not be_valid
+    end
+    it "requires a finishing date" do
+      @project.finishdate = ''
+      @project.should_not be_valid
+    end
+  end
+
   describe "project associations" do
 
     before(:each) do
