@@ -4,7 +4,9 @@ describe SitesController do
   describe "routing" do
 
     xit "routes to #index" do
-      get("/sites").should route_to("sites#index")
+      get :index#, :project_id => 1
+      response.code.should eq("200")
+      #get("projects/1/sites").should route_to("sites#index")
     end
 
     xit "routes to #new" do
