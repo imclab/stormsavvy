@@ -4,14 +4,15 @@ require 'csv'
 
 class ForecastExaminer
 
-  attr_accessor :forecast
+  attr_reader :forecast
   attr_reader :rain
 
   @@imminent   = (0..4).to_a.map {|e| e*6}
   @@warning    = (5..8).to_a.map {|e| e*6}
   @@watch      = (9..28).to_a.map {|e| e*6}
 
-  def initialize(forecast)
+  def initialize(site, forecast)
+    @site = site 
     @forecast = forecast
   end
 
@@ -22,6 +23,7 @@ class ForecastExaminer
     # compact return a copy of the array with nil elements removed
     forecast = index.compact.map { |e| e*6 }
     set_rain_state(forecast)
+    add_report
   end
 
   private
@@ -36,6 +38,12 @@ class ForecastExaminer
       @rain = :watch
     else
       @rain = :clear
+    end
+  end
+
+  def add_report
+    if @rain == :warning or @rain == :imminent
+      @site.reports.create
     end
   end
 
