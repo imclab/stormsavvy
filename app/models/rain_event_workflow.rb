@@ -15,9 +15,12 @@ class RainEventWorkflow < ActiveRecord::Base
 =end
 
   def rain_imminent?
+    chance_of_rain > 50 && hours_before_rain < 24
+=begin
     if chance_of_rain > 50 && hours_before_rain < 24
       start_rain_event_workflow
     end
+=end
   end
 
   def start_rain_event_workflow
@@ -25,20 +28,13 @@ class RainEventWorkflow < ActiveRecord::Base
     if cem2030?
       "CEM2030 prepared"
       Report.create(:type => 'CEM2030')
-    else
-      "Throw CEM2030 exception"
     end
   end
 
   # Will need to have some logic here for updating 
   # rain status
-  def has_rained
-    if amount_of_rain > 0.5
-      check_turbidity
-      check_ph
-      prepare_cem2051
-      prepare_cem2052
-    end
+  def has_rained?
+    amount_of_rain > 0.5
   end
 
   # We'll make this send a message to the user in the future.

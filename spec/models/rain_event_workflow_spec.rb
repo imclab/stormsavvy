@@ -43,8 +43,24 @@ describe RainEventWorkflow do
     @rew.chance_of_rain = 55
     @rew.reap = false
     lambda do
-      @rew.rain_imminent?
+      if @rew.rain_imminent?
+        @rew.start_rain_event_workflow
+      end
     end.should change(Report, :count).by(1)
   end
 
+  it "should check to see whether it has rained" do
+    @rew.amount_of_rain = 0.51
+    @rew.has_rained?.should be_true
+  end
+
+  xit "creates the correct notifications for rain events" do
+    @rew.amount_of_rain = 0.55
+    if @rew.has_rained?
+      check_turbidity
+      check_ph
+      prepare_cem2051
+      prepare_cem2052
+    end
+  end
 end
