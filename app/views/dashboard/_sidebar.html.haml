@@ -7,7 +7,7 @@
         - current_user.projects.each do |project|
           - project.sites.each do |site|
             %li
-              %i= "#{site.name}: "
+              %i=link_to site.name, project_site_path(project, site)
               = "#{chance_of_rain(site.zipcode)}% chance of rain"
 
   #current_action_items.widget.bottom-10
