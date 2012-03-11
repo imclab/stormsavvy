@@ -22,12 +22,14 @@ describe "dashboard/index" do
     it "should show Active Projects to signed in user" do
       render
       rendered.should have_selector('div#modules')
+      view.should render_template('dashboard/_modules')
       rendered.should =~ /Active Projects/
     end
 
     it "should show the Dashboard sidebar to signed in user" do
       render
       rendered.should have_selector('div#dashboard-sidebar')
+      view.should render_template('dashboard/_sidebar')
     end
 
   end
