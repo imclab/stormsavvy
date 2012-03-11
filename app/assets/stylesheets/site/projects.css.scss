@@ -6,10 +6,27 @@
   .headline {
     padding: .5em;
   }
-}
 
-.project.open {
+  &:hover {
+    .more_details {
+      color: #000;
+    }
+  }
 
+  .more_details {
+    font-size: 16px;
+    margin: 6px 0 0 0;
+    color: white;
+  }
+
+  .view_project_link {
+    display: block;
+    text-align: center;
+    background: black;
+    color: white;
+    padding: .5em;
+    font-weight: 900;
+  }
 }
 
 
