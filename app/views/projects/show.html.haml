@@ -1,29 +1,29 @@
-.container
-  .row
-    .span12
-      %p#notice= notice
-      %h2 Project page
-      %p
-        %b Name:
-        = @project.name
-      %p
-        %b Description:
-        = @project.description
-      %p
-        %b Startdate:
-        = @project.startdate
-      %p
-        %b Finishdate:
-        = @project.finishdate
-      %p
-        %b Active:
-        = @project.active
 
-      %p
-        %b Sites
-        - @project.sites.each do |site|
-          = link_to site.name, project_site_path(@project, site)
+.row
+  .span12
+    %p#notice= notice
+    %h2 Project page
+    %p
+      %b Name:
+      = @project.name
+    %p
+      %b Description:
+      = @project.description
+    %p
+      %b Startdate:
+      = @project.startdate
+    %p
+      %b Finishdate:
+      = @project.finishdate
+    %p
+      %b Active:
+      = @project.active
 
-      = link_to 'Edit', edit_project_path(@project)
-      \|
-      = link_to 'Back', projects_path
+    %p
+      %b Sites
+      - @project.sites.each do |site|
+        = link_to site.name, project_site_path(@project, site)
+
+    = link_to 'Edit', edit_project_path(@project)
+    \|
+    = link_to 'Back', projects_path

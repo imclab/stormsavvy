@@ -1,14 +1,14 @@
-.container
-  .row
-    .span12
-      .row
-        .span8
-          .panel
-            .inner
-              %h1 All Sites
-              %hr
-              = render 'sites/sites'
-              = link_to 'New Site', new_site_path
 
-        .span4= render 'dashboard/sidebar'
+.row
+  .span12
+    .row
+      .span8
+        .panel
+          .inner
+            %h1 All Sites
+            %hr
+            = render 'sites/sites'
+            = link_to 'New Site', new_site_path
+
+      .span4= render 'dashboard/sidebar'
 

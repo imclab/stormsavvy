@@ -10,6 +10,8 @@
   %body{ template_id, template_class }
     = render 'layouts/header'
     .bottom-10
+    = render :partial => "pages/hero" if is_public_home?
+    .container
       = yield
 
     = render 'layouts/footer'
