@@ -55,6 +55,7 @@ GEM
     carmen (0.2.12)
     childprocess (0.3.1)
       ffi (~> 1.0.6)
+    chunky_png (1.2.5)
     coderay (1.0.5)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -66,6 +67,12 @@ GEM
     columnize (0.3.6)
     commonjs (0.2.0)
       therubyracer (~> 0.9.9)
+    compass (0.12.rc.1)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.0.rc.3)
+      compass (~> 0.12.rc.0)
     cucumber (1.1.5)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.2)
@@ -92,6 +99,7 @@ GEM
       factory_girl (~> 2.6.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
+    fssm (0.2.8.1)
     geocoder (1.1.1)
     gherkin (2.8.0)
       json (>= 1.4.6)
@@ -277,6 +285,7 @@ DEPENDENCIES
   capybara!
   carmen
   coffee-rails (~> 3.2.1)
+  compass-rails
   cucumber
   cucumber-rails
   database_cleaner

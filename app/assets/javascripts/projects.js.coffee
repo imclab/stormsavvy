@@ -8,5 +8,5 @@ jQuery ->
   # Unfold sites when you click on a project row
   $('.more_details').on "click", (e) ->
     e.preventDefault()
-    $(this).closest(".project").toggleClass("closed").toggleClass "open"
+    $(this).children(".icon").toggleClass 'is_hidden'
     $(this).closest('.project').children(".more_details_box").toggleClass "is_hidden"

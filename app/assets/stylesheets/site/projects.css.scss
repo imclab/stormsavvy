@@ -9,17 +9,9 @@
 }
 
 .project.open {
-  margin-bottom: -9px;
-  .more_details a:after {
-    content: " (-)";
-  }
+
 }
 
-.project.closed {
-  .more_details a:after {
-    content: " (+)";
-  }
-}
 
 .project.even {
   background: #eee;

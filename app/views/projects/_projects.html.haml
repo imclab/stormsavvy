@@ -4,7 +4,9 @@
       .cf.headline
         %h3.pull-left=project.name
         .small.more_details.pull-right
-          =link_to "More Details"
+          %i{ :class => "icon icon-plus" }
+          %i{ :class => "icon icon-minus is_hidden" }
+
 
       .more_details_box.is_hidden
         %ul
