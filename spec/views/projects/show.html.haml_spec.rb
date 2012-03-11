@@ -9,14 +9,25 @@ describe "projects/show" do
       :active => false
     ))
     @user = Factory(:user)
+    @needs_attention_reports = Report.needs_attention
     sign_in @user
   end
 
-  xit "renders attributes in <p>" do
+  it "renders attributes in <p>" do
     render
     rendered.should match(/1/)
     rendered.should match(/Name/)
     rendered.should match(/MyText/)
     rendered.should match(/false/)
+  end
+
+  it "renders the project attributes" do
+    render
+    render.should have_selector('div#project-attributes')
+  end
+
+  it "renders the project sidebar" do
+    render
+    render.should have_selector('div#project-sidebar')
   end
 end
