@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "projects/index" do
+
   before(:each) do
     assign(:projects, [
       stub_model(Project,
@@ -18,15 +19,13 @@ describe "projects/index" do
     ])
   end
 
-  xit "renders a list of projects" do
+  it "renders the project attributes" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => 1.to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "Name".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => false.to_s, :count => 2
+    render.should have_selector('div#all-projects')
+  end
+
+  it "renders the project sidebar" do
+    render
+    render.should have_selector('div#projects-sidebar')
   end
 end

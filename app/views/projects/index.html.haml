@@ -2,12 +2,12 @@
 .row
   .span12
     .row
-      .span8
+      .span8#all-projects
         .panel
           .inner
             %h1 All Projects
             = render 'projects/projects'
             = link_to 'New Project', new_project_path
 
-      .span4= render 'dashboard/sidebar'
+      .span4#projects-sidebar= render 'dashboard/sidebar'
 
