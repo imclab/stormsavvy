@@ -4,14 +4,13 @@ require 'weather/noaa_forecast'
 require 'weather/forecast_examiner'
 
   attr_reader :rain_state, :max_rain
-  
+
   def chance_of_rain(zipcode)
     zipcode = 90210 unless zipcode.present?
     nf = NOAAForecast.new(zipcode)
     nf.seven_day_temp(zipcode)
     precipitation_state(nf.noaa_forecast)
     @max_rain = nf.noaa_forecast[0][0..4].max
-
   end
 
   def precipitation_state(forecast)
