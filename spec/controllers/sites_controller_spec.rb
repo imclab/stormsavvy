@@ -65,7 +65,11 @@ describe SitesController do
 
   describe "GET edit" do
     xit "assigns the requested site as @site" do
-      site = Site.create! valid_attributes
+      site0 = Site.create! valid_attributes
+      p site0.to_param
+      project = Factory.create(:project)
+      site = project.sites.create! valid_attributes
+      p site.to_param
       get :edit, {:id => site.to_param}, valid_session
       assigns(:site).should eq(site)
     end
@@ -127,9 +131,11 @@ describe SitesController do
       end
 
       xit "redirects to the site" do
-        site = Site.create! valid_attributes
+        #site = Site.create! valid_attributes
+        project = Factory(:project)
+        site = project.sites.create! valid_attributes
         put :update, {:id => site.to_param, :site => valid_attributes}, valid_session
-        response.should redirect_to(site)
+        response.should redirect_to(project_site_path)
       end
     end
 
