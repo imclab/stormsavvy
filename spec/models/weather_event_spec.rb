@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe WeatherEvent do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "creates a valid model" do
+    we = WeatherEvent.new
+    we.should be_valid
+  end
 end
