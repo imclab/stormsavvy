@@ -16,8 +16,7 @@ class NOAAForecast
   end
 
   def seven_day_temp(zipcode)
-    #binding.pry
-    latlong = get_lat_long(94530)
+    latlong = get_lat_long(zipcode)
     response = ping_noaa(latlong, 168, 6)
     get_weather_data(response.body)
   end
