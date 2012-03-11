@@ -1,21 +1,20 @@
 require 'spec_helper'
 
 describe "projects/edit" do
+
   before(:each) do
-    @project = assign(:project, stub_model(Project,
-      :user_id => 1,
-      :name => "MyString",
+    @user = Factory(:user)
+    @project = @user.projects.create!({
+      :name        => "MyString",
       :description => "MyText",
-      :active => false
-    ))
+      :startdate   => 5.days.ago,
+      :finishdate  => 1.day.ago,
+      :active      => false})
   end
 
-  xit "renders the edit project form" do
+  it "renders the edit project form" do
     render
-
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => projects_path(@project), :method => "post" do
-      assert_select "input#project_user_id", :name => "project[user_id]"
       assert_select "input#project_name", :name => "project[name]"
       assert_select "textarea#project_description", :name => "project[description]"
       assert_select "input#project_active", :name => "project[active]"
