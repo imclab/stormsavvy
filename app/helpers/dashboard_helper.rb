@@ -1,5 +1,6 @@
 module DashboardHelper
 
+=begin
 require 'weather/noaa_forecast'
 require 'weather/forecast_examiner'
 
@@ -23,5 +24,6 @@ require 'weather/forecast_examiner'
     fe.find_rain_chance()
     @rain_state = fe.rain
   end
+=end
 
 end
