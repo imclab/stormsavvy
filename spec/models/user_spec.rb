@@ -11,24 +11,27 @@ describe User do
 
     before(:each) do
       @user = Factory(:user)
-      @s1 = Factory(:site, :user => @user, :created_at => 1.day.ago)
-      @s2 = Factory(:site, :user => @user, :created_at => 1.hour.ago)
+      @p1 = Factory(:project, :user => @user, :created_at => 1.day.ago)
+      @p2 = Factory(:project, :user => @user, :created_at => 1.hour.ago)
     end
 
-    xit "should have a projects attribute" do
-      @user.should respond_to(:sites)
+    it "should respond to projects" do
+      @user.should respond_to(:projects)
     end
 
-    xit "should have the right projects in the right order" do
-      @user.sites.should == [@s1, @s2]
+    it "should have the right projects in the right order" do
+      @user.projects.should == [@p1, @p2]
     end
 
-    xit "should destroy associated sites" do
+    it "should destroy associated sites" do
       @user.destroy
-      [@s1, @s2].each do |s|
-        Site.find_by_id(s.id).should be_nil
+      [@p1, @p2].each do |p|
+        Project.find_by_id(p.id).should be_nil
       end
     end
   end
 
+  describe "notification system" do
+    it "user will be notified when relevant events occur"
+  end
 end
