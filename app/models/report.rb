@@ -22,20 +22,15 @@ class Report < ActiveRecord::Base
 
   :contract_number,
   :project_identifer_number,
-  :wdid_number
+  :wdid_number,
+  :status
 
-  #before_save :link_report_to_project
   before_update :change_report_status
 
 private
 
   def change_report_status
     self.status = "complete"
-  end
-
-  def link_report_to_project
-    @project = self.site.project
-    self.project_id = @project.id
   end
 
 end
