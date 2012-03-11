@@ -41,7 +41,9 @@ class ForecastExaminer
     end
   end
 
+  # TODO: fire events to listeners
   def add_report
+    # TODO: should traverse listener queue for conditions and callbacks
     if @rain == :warning or @rain == :imminent
       @site.reports.create
     end
