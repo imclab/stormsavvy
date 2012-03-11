@@ -8,8 +8,8 @@ require 'weather/forecast_examiner'
   def chance_of_rain(zipcode)
     zipcode = 90210 unless zipcode.present?
     nf = NOAAForecast.new(zipcode)
-    nf.seven_day_temp(zipcode)
-    precipitation_state(nf.noaa_forecast)
+    nf.seven_day_weather(zipcode)
+    #precipitation_state(nf.noaa_forecast)
     @max_rain = nf.noaa_forecast[0][0..4].max
 
   end

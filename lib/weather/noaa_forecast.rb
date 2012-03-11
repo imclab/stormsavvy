@@ -15,7 +15,7 @@ class NOAAForecast
     @interval = interval
   end
 
-  def seven_day_temp(zipcode)
+  def seven_day_weather(zipcode)
     latlong = get_lat_long(zipcode)
     response = ping_noaa(latlong, 168, 6)
     get_weather_data(response.body)

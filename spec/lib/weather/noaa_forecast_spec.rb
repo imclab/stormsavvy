@@ -16,7 +16,7 @@ describe NOAAForecast do
 
   it "NOAA weather forecast for one week should have 29 elements" do
     nf = NOAAForecast.new(94530,168,6)
-    nf.seven_day_temp(94530)
+    nf.seven_day_weather(94530)
     nf.noaa_forecast[0].size.should == @fullcount
   end
 
