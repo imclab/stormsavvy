@@ -124,18 +124,23 @@ describe SitesController do
         put :update, {:id => site.to_param, :site => {'these' => 'params'}}, valid_session
       end
 
-      xit "assigns the requested site as @site" do
-        site = Site.create! valid_attributes
-        put :update, {:id => site.to_param, :site => valid_attributes}, valid_session
-        assigns(:site).should eq(site)
-      end
-
-      xit "redirects to the site" do
+      it "assigns the requested site as @site" do
         #site = Site.create! valid_attributes
         project = Factory(:project)
         site = project.sites.create! valid_attributes
         put :update, {:id => site.to_param, :site => valid_attributes}, valid_session
-        response.should redirect_to(project_site_path)
+        assigns(:site).should eq(site)
+      end
+
+      it "redirects to the site" do
+        #site = Site.create! valid_attributes
+        project = Factory(:project)
+        site = project.sites.create! valid_attributes
+        put :update, {:id => site.to_param, :site => valid_attributes}, valid_session
+        # This doesn't work, and it should, suspect a bug in nested route handling.
+        #response.should redirect_to(project_site)
+        # This, however, does work. Ugly.
+        response.should redirect_to("/projects/#{project.id}/sites/#{site.id}")
       end
     end
 
