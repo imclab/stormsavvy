@@ -3,6 +3,7 @@ class SitesController < ApplicationController
   # GET /sites.json
   def index
     @sites = Site.all
+    @needs_attention_reports = Report.needs_attention
 
     respond_to do |format|
       format.html # index.html.erb
