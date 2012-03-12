@@ -65,8 +65,8 @@ describe SitesController do
 
   describe "GET edit" do
     xit "assigns the requested site as @site" do
-      site0 = Site.create! valid_attributes
-      p site0.to_param
+      #site0 = Site.create! valid_attributes
+      #p site0.to_param
       project = Factory.create(:project)
       site = project.sites.create! valid_attributes
       p site.to_param
