@@ -27,11 +27,19 @@ describe SitesController do
     {:zipcode => 94530, :name => 'El Cerrito'}
   end
   
+  def project_attributes
+    {:name => 'v', :description => 'b', :startdate => 5.days.ago, :finishdate => 1.day.ago}
+  end
+
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # SitesController. Be sure to keep this updated too.
   def valid_session
     {}
+  end
+
+  before(:each) do
+    @user = Factory(:user)
   end
 
   describe "GET index" do
@@ -64,33 +72,38 @@ describe SitesController do
   end
 
   describe "GET edit" do
-    xit "assigns the requested site as @site" do
+    it "assigns the requested site as @site" do
       #site0 = Site.create! valid_attributes
       #p site0.to_param
-      project = Factory.create(:project)
-      site = project.sites.create! valid_attributes
-      p site.to_param
-      get :edit, {:id => site.to_param}, valid_session
+      sign_in @user
+      @project = @user.projects.create! project_attributes
+      site = @project.sites.create! valid_attributes
+      get :edit, {:id => site.to_param, :project_id => @project.id}
       assigns(:site).should eq(site)
     end
   end
 
   describe "POST create" do
+
+    before(:each) do
+      @project = @user.projects.create! project_attributes
+    end
+
     describe "with valid params" do
       xit "creates a new Site" do
         expect {
-          post :create, {:site => valid_attributes}, valid_session
+          post :create, {:site => valid_attributes, :project_id => @project.id}
         }.to change(Site, :count).by(1)
       end
 
       xit "assigns a newly created site as @site" do
-        post :create, {:site => valid_attributes}, valid_session
+        post :create, {:site => valid_attributes, :project_id => @project.id}
         assigns(:site).should be_a(Site)
         assigns(:site).should be_persisted
       end
 
       xit "redirects to the created site" do
-        post :create, {:site => valid_attributes}, valid_session
+        post :create, {:site => valid_attributes, :project_id => @project.id}
         response.should redirect_to(Site.last)
       end
     end
@@ -99,14 +112,14 @@ describe SitesController do
       it "assigns a newly created but unsaved site as @site" do
         # Trigger the behavior that occurs when invalid params are submitted
         Site.any_instance.stub(:save).and_return(false)
-        post :create, {:site => {}}, valid_session
+        post :create, {:site => {}, :project_id => @project.id}
         assigns(:site).should be_a_new(Site)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Site.any_instance.stub(:save).and_return(false)
-        post :create, {:site => {}}, valid_session
+        post :create, {:site => {}, :project_id => @project.id}
         response.should render_template("new")
       end
     end
