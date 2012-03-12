@@ -11,5 +11,6 @@ require 'spec_helper'
 #   end
 # end
 describe NoaaHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "knows about itself" do
+  end
 end
