@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Dashboard do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "creates a valid model" do
+    db = Dashboard.create!
+    db.should be_valid
+  end
 end

@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe InspectionEvent do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "creates a valid Inspection Event" do
+    ie = InspectionEvent.create!
+    ie.should be_valid
+  end
 end
