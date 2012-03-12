@@ -1,12 +1,24 @@
 require "spec_helper"
 
 describe SitesController do
+
   describe "routing" do
 
-    xit "routes to #index" do
-      get :index#, :project_id => 1
-      response.code.should eq("200")
-      #get("projects/1/sites").should route_to("sites#index")
+    @@attrs = {
+      :name => 'Project',
+      :description => 'My description',
+      :startdate => 5.days.ago,
+      :finishdate => 1.day.ago
+    }
+
+    before(:each) do
+      @user = Factory(:user)
+      @project = @user.projects.create!(@@attrs)
+    end
+
+    it "routes to #index" do
+      { :get => project_sites_path(@project.to_param) }
+      .should route_to(:controller => "sites", :action => "index", :project_id => @project.to_param)
     end
 
     xit "routes to #new" do
