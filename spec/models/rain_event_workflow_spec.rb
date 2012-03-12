@@ -54,13 +54,4 @@ describe RainEventWorkflow do
     @rew.has_rained?.should be_true
   end
 
-  xit "creates the correct notifications for rain events" do
-    @rew.amount_of_rain = 0.55
-    if @rew.has_rained?
-      check_turbidity
-      check_ph
-      prepare_cem2051
-      prepare_cem2052
-    end
-  end
 end
