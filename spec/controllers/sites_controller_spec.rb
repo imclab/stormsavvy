@@ -90,21 +90,21 @@ describe SitesController do
     end
 
     describe "with valid params" do
-      xit "creates a new Site" do
+      it "creates a new Site" do
         expect {
           post :create, {:site => valid_attributes, :project_id => @project.id}
         }.to change(Site, :count).by(1)
       end
 
-      xit "assigns a newly created site as @site" do
+      it "assigns a newly created site as @site" do
         post :create, {:site => valid_attributes, :project_id => @project.id}
         assigns(:site).should be_a(Site)
         assigns(:site).should be_persisted
       end
 
-      xit "redirects to the created site" do
+      it "redirects to the created site" do
         post :create, {:site => valid_attributes, :project_id => @project.id}
-        response.should redirect_to(Site.last)
+        response.should redirect_to(project_site_path(@project.id,Site.last))
       end
     end
 
