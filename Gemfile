@@ -28,6 +28,7 @@ group :test, :development do
   gem 'spork-rails'
   gem 'pry-rails'
   gem 'pry-nav'
+  gem 'awesome_print'
 #  gem 'pry-stack_explorer'
 end
 
