@@ -3,7 +3,9 @@
     .inner
       %h5 Weather Report
       %hr
-      %p= "Today's chance of rain: #{chance_of_rain(@site.zipcode)}%"
+      %p
+        -#="Today's chance of rain: #{chance_of_rain(@site.zipcode)}%"
+        ="Today's chance of rain: #{@site.chance_of_rain}%"
   #current_action_items.widget.bottom-10
     .inner
       %h5 Pending Reports

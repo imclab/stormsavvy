@@ -16,7 +16,10 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+
     @project = current_user.projects.find(params[:id])
+    @sites = @project.sites
+    @needs_attention_reports = Report.needs_attention
 
     respond_to do |format|
       format.html # show.html.erb
