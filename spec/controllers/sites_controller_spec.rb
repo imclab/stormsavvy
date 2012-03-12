@@ -137,9 +137,9 @@ describe SitesController do
         project = Factory(:project)
         site = project.sites.create! valid_attributes
         put :update, {:id => site.to_param, :site => valid_attributes}, valid_session
-        # This doesn't work, and it should, suspect a bug in nested route handling.
-        #response.should redirect_to(project_site)
-        # This, however, does work. Ugly.
+        # http://guides.rubyonrails.org/routing.html#creating-paths-and-urls-from-objects
+        response.should redirect_to(project_site_path(project,site))
+        # This also works.
         response.should redirect_to("/projects/#{project.id}/sites/#{site.id}")
       end
     end
