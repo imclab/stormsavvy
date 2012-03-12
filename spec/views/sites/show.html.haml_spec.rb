@@ -6,19 +6,17 @@ describe "sites/show" do
       :description => "Description",
       :costcode => "Costcode",
       :size => "Size",
-      :exposed_area => "Exposed Area",
-      :location => "Location"
+      :exposed_area => "Exposed Area"
     ))
     @project = Factory(:project)
     @site.project_id = @project.id
   end
 
-  xit "renders attributes in <p>" do
+  it "renders attributes in <p>" do
     render
     rendered.should match(/Description/)
     rendered.should match(/Costcode/)
     rendered.should match(/Size/)
     rendered.should match(/Exposed Area/)
-    rendered.should match(/Location/)
   end
 end
