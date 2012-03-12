@@ -8,8 +8,10 @@ describe "projects/show" do
       :description => "MyText",
       :active => false
     ))
+    #@project = Factory(:project)
     @user = Factory(:user)
     @needs_attention_reports = Report.needs_attention
+    @sites = @project.sites
     sign_in @user
   end
 
