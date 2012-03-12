@@ -31,7 +31,4 @@ describe User do
     end
   end
 
-  describe "notification system" do
-    it "user will be notified when relevant events occur"
-  end
 end
