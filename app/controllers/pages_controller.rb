@@ -31,4 +31,11 @@ class PagesController < ApplicationController
 
   def team
   end
+
+  def popemail
+    UserMailer.pop.deliver
+  end
+
+  def sendemail
+  end
 end

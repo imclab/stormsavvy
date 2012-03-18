@@ -66,6 +66,12 @@ describe PagesController do
     end
   end
 
+  describe "Get 'POP email'" do
+    it "returns success" do
+      get :popemail
+      response.should be_success
+    end
+  end
 
 =begin
   describe "GET 'new'" do

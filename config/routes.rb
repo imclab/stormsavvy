@@ -34,6 +34,8 @@ Stormsavvy::Application.routes.draw do
   match '/plans-and-pricing',  :to => "pages#plans", :as => :plans
   match '/features',  :to => "pages#features",       :as => :features
   match '/team',      :to => "pages#team",           :as => :team
+  match '/popemail',  :to => "pages#popemail",       :as => :popemail
+  match '/sendemail', :to => "pages#sendemail",      :as => :sendemail
 
   devise_for :users
 
