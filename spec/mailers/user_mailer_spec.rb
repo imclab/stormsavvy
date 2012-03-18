@@ -17,7 +17,7 @@ describe UserMailer do
 
   it "should send Pop emails" do
     user = Factory(:user)
-    UserMailer.pop(user).deliver
+    UserMailer.pop.deliver
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
