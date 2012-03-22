@@ -16,4 +16,12 @@ class UserMailer < ActionMailer::Base
   def pop_alert(user)
     mail(:to => user.email, :subject => "Daily weather alerts")
   end
+
+  def pester_admins
+    admins = ['david.doolin@gmail.com', 
+              'david.doolin+storm@gmail.com']
+    admins.each do |a|
+      mail(:to => a, :subject => 'Storm Savvy is working great today!')
+    end
+  end
 end
