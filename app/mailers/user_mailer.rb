@@ -17,11 +17,7 @@ class UserMailer < ActionMailer::Base
     mail(:to => user.email, :subject => "Daily weather alerts")
   end
 
-  def pester_admins
-    admins = ['david.doolin@gmail.com', 
-              'david.doolin+storm@gmail.com']
-    admins.each do |a|
-      mail(:to => a, :subject => 'Storm Savvy is working great today!')
-    end
+  def pester_admins(email)
+    mail(:to => email, :subject => 'Storm Savvy is working great today!')
   end
 end
