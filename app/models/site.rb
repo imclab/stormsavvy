@@ -21,16 +21,17 @@ class Site < ActiveRecord::Base
   end
 
 
-  attr_reader :rain_state, :max_rain
+  attr_reader :rain_state, :max_rain, :chance_of_rain
   
   def chance_of_rain
     #zipcode = 90210 unless self.zipcode.present?
-    nf = NOAAForecast.new(@zipcode)
-    #nf.seven_day_weather(@zipcode)
     #binding.pry
-    nf.forecast(@lat, @long)
+    nf = NOAAForecast.new(94530)
+    nf.seven_day_weather(94530)
+    #nf.forecast(@lat, @long)
     precipitation_state(nf.noaa_forecast)
-    @max_rain = nf.noaa_forecast[0][0..4].max
+    @max_rain = nf.noaa_forecast[0][0..5].max
+    #binding.pry
   end
 
   def precipitation_state(forecast)

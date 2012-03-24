@@ -11,7 +11,7 @@
               %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
               .span
                 %i=link_to "#{site.name}: ", project_site_path(project, site)
-                = "#{site.chance_of_rain}% chance of rain"
+                = "#{site.max_rain}% chance of rain"
   #current_action_items.widget.bottom-10
     .inner
       %h5 Pending Reports
