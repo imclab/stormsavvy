@@ -32,7 +32,7 @@ describe NOAAForecast do
     nf = NOAAForecast.new(94530,168,6)
     nf.seven_day_weather
     #p nf.noaa_forecast
-    nf.noaa_forecast[0][0..5].max.should == 93
+    nf.noaa_forecast[0][0..5].max.should == 77 
   end
 
   it "NOAA weather forecast blows it's gourd if given nil zipcode" do
