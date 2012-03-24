@@ -8,7 +8,6 @@ class NOAAForecast
   include Nokogiri
 
   attr_reader :noaa_forecast
-  attr_reader :zipcode
 
   def initialize(zipcode, duration = 168, interval = 6)
     @zipcode  = zipcode

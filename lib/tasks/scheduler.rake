@@ -2,18 +2,30 @@
 desc "This task is called by the Heroku scheduler add-on"
 
 task :dailynotice => :environment do
-    admins = ['kharma+storm@gmail.com', 
-              'david.doolin+storm@gmail.com']
-    admins.each do |address|
-      UserMailer.pester_admins(address).deliver
-    end
+  admins = ['david.doolin+stormsavvy@gmail.com']
+  admins.each do |address|
+    UserMailer.pester_admins(address).deliver
+  end
+end
 
-task :weatherforecast => :environment do
+task :noaaforecast => :environment do
 	test_users = ['kharma+storm@gmail.com', 
-              'david.doolin+storm@gmail.com']
-      test_users.each do |address|
+                'david.doolin+storm@gmail.com']
+  test_users.each do |address|
 	  UserMailer.noaa_forecast(address).deliver
 	end
+end
+
+task :weatherforecast => :environment do
+  test_users = ['david.doolin+storm@gmail.com']
+  test_users.each do |address|
+    UserMailer.weather_forecast(address).deliver
+  end
+end
+
+task :umtest => :environment do
+  UserMailer.umtest
+end
 
 # task :stormpopnotice => :environment do
 # 	test_users = ['kharma+storm@gmail.com', 
@@ -22,4 +34,4 @@ task :weatherforecast => :environment do
 #       test_users.each do |address|
 # 	  UserMailer.pop_alert(address).deliver
 # 	end
-end
+#end

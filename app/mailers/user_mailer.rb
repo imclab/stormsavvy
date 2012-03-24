@@ -18,11 +18,25 @@ class UserMailer < ActionMailer::Base
   end
 
   def pester_admins(email)
+    @greeting = "Yo yo yo!"
     mail(:to => email, :subject => 'Storm Savvy is working great today!')
   end
 
-  def noaa_forecast(email)
-    mail(:to => email, :subject => 'Storm Savvy NOAA Forecast')
+  # NOAA-specific data
+  def noaa_forecast(user)
+    mail(:to => user.email, :subject => 'Storm Savvy NOAA Forecast')
   end
 
+  def weather_forecast(email)
+    @greeting = "It's Storm Savvy weather time!"
+    mail(:to => email, :subject => 'Storm Savvy Weather Forecast')
+  end
+
+  def umtest
+    admins = ['david.doolin+stormsavvy@gmail.com']
+    user = User.where(:email => 'david.doolin@gmail.com')
+    admins.each do |address|
+      mail(:to => address, :subject => 'From the :umtest method of UserMailer').deliver
+    end
+  end
 end
