@@ -21,6 +21,20 @@ describe UserMailer do
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
+  xit "should send weather forecast emails" do
+    user = Factory(:user)
+    site = Factory(:site)
+    UserMailer.noaa_forecast(email).deliver
+    ActionMailer::Base.deliveries.should_not be_empty
+  end
+
+  xit "should send stormpop alert emails" do
+    user = Factory(:user)
+    site = Factory(:site)
+    user.sites.change_of_rain == :imminent
+    UserMailer.pop_alert(user).deliver
+    ActionMailer::Base.deliveries.should_not be_empty
+  end
 
 =begin
   describe "alert" do

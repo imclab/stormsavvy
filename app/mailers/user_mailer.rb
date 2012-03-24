@@ -20,4 +20,9 @@ class UserMailer < ActionMailer::Base
   def pester_admins(email)
     mail(:to => email, :subject => 'Storm Savvy is working great today!')
   end
+
+  def noaa_forecast(email)
+    mail(:to => email, :subject => 'Storm Savvy NOAA Forecast')
+  end
+
 end
