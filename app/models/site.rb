@@ -26,8 +26,8 @@ class Site < ActiveRecord::Base
   def chance_of_rain
     #zipcode = 90210 unless self.zipcode.present?
     #binding.pry
-    nf = NOAAForecast.new(94530)
-    nf.seven_day_weather(94530)
+    nf = NOAAForecast.new(zipcode.to_i)
+    nf.seven_day_weather
     #nf.forecast(@lat, @long)
     precipitation_state(nf.noaa_forecast)
     @max_rain = nf.noaa_forecast[0][0..5].max

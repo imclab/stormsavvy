@@ -12,18 +12,19 @@ describe NOAAForecast do
     # Write up the error message as a result of the following:
     #nf.class.should = NOAAForecast
     nf.class.should == NOAAForecast
+    nf.zipcode.should == 94530
   end
 
   it "NOAA weather forecast for one week should have 29 elements" do
     nf = NOAAForecast.new(94530,168,6)
-    nf.seven_day_weather(94530)
+    nf.seven_day_weather
     p nf.noaa_forecast[0].size
     nf.noaa_forecast[0].size.should == @fullcount
   end
 
   it "temporary hard coded result" do
     nf = NOAAForecast.new(94530,168,6)
-    nf.seven_day_weather(94530)
+    nf.seven_day_weather
     #p nf.noaa_forecast
     nf.noaa_forecast[0][0..5].max.should == 51
   end
@@ -36,7 +37,7 @@ describe NOAAForecast do
 
   it "requires a valid zipcode for retrieving lat long" do
     nf = NOAAForecast.new(94530,168,6)
-    latlong = nf.get_lat_long(94530)
+    latlong = nf.get_lat_long
     latlong.size.should == 2
   end
 

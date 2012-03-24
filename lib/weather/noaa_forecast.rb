@@ -8,6 +8,7 @@ class NOAAForecast
   include Nokogiri
 
   attr_reader :noaa_forecast
+  attr_reader :zipcode
 
   def initialize(zipcode, duration = 168, interval = 6)
     @zipcode  = zipcode
@@ -15,14 +16,14 @@ class NOAAForecast
     @interval = interval
   end
 
-  def seven_day_weather(zipcode)
-    latlong = get_lat_long(zipcode)
+  def seven_day_weather
+    latlong = get_lat_long
     response = ping_noaa(latlong, 168, 6)
     get_weather_data(response.body)
   end
 
-  def get_lat_long(zipcode)
-    results = Geocoder.search(zipcode)
+  def get_lat_long
+    results = Geocoder.search(@zipcode)
     # TODO: Factor out this ugly thing into a Google result getter.
     return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
   end
