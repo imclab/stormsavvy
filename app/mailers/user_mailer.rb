@@ -23,8 +23,8 @@ class UserMailer < ActionMailer::Base
   end
 
   # NOAA-specific data
-  def noaa_forecast(user)
-    mail(:to => user.email, :subject => 'Storm Savvy NOAA Forecast')
+  def noaa_forecast(email)
+    mail(:to => email, :subject => 'Storm Savvy NOAA Forecast')
   end
 
   def weather_forecast(email)
