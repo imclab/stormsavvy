@@ -23,8 +23,8 @@ class UserMailer < ActionMailer::Base
   end
 
   # NOAA-specific data
-  def noaa_forecast(user)
-    mail(:to => user.email, :subject => 'Storm Savvy NOAA Forecast')
+  def noaa_forecast(email)
+    mail(:to => email, :subject => 'Storm Savvy NOAA Forecast')
   end
 
   def weather_forecast(email)
@@ -33,7 +33,8 @@ class UserMailer < ActionMailer::Base
   end
 
   def umtest
-    admins = ['david.doolin+stormsavvy@gmail.com']
+    admins = ['david.doolin+stormsavvy@gmail.com',
+              'paul.maki+stormsavvy@gmail.com']
     user = User.where(:email => 'david.doolin@gmail.com')
     admins.each do |address|
       mail(:to => address, :subject => 'From the :umtest method of UserMailer').deliver

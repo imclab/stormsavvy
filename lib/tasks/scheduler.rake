@@ -2,7 +2,9 @@
 desc "This task is called by the Heroku scheduler add-on"
 
 task :dailynotice => :environment do
-  admins = ['david.doolin+stormsavvy@gmail.com']
+  admins = ['david.doolin+stormsavvy@gmail.com',
+            'kharma@gmail.com',
+            'paul.maki@gmail.com']
   admins.each do |address|
     UserMailer.pester_admins(address).deliver
   end
