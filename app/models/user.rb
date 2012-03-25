@@ -17,4 +17,11 @@ class User < ActiveRecord::Base
     UserMailer.pop_alert(self).deliver
   end
 
+  def has_site?
+    self.projects.each do |projects|
+      return true if projects.sites.count > 0
+    end
+    return false 
+  end
+
 end

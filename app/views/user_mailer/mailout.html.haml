@@ -1,0 +1,10 @@
+%h2 Your project alerts
+%hr
+%ul
+  - @user.projects.each do |project|
+    %li
+      = project.name
+      %ul
+        - project.sites.each do |site| 
+          %li
+            = "#{site.name} => chance of rain = #{site.chance_of_rain}%"
