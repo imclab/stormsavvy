@@ -41,19 +41,13 @@ class UserMailer < ActionMailer::Base
     end
   end
 
-  def mailout
+  def mailout(to = nil)
+    @users = User.all
     User.all.each do |user|
-      ending = "\r\n"
-      body = "Your projects" + ending
-      body += "=" * 15 + ending
-      user.projects.each do |project|
-        body += "Project  #{project.name}" + ending
-
-        project.sites.each do |site|
-          body += "  Site #{site.name} | Percent of Precipatation #{site.chance_of_rain}%" + ending
-        end
+      @user = user 
+      if user.has_site?
+        mail(:to => user.email, :subject => "Project estimate").deliver
       end
-      mail(:to => user.email, :subject => "Your projects", :body => body).deliver
     end
   end
 

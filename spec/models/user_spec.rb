@@ -31,4 +31,29 @@ describe User do
     end
   end
 
+  context :has_site do
+
+    before(:each) do 
+      @user = Factory(:user)
+    end
+
+    it "should respond to has_site?" do
+      @user.should respond_to(:has_site?)
+    end
+
+    it "should reply appropriately if user has a site" do
+      project = Factory(:project)
+      site = Factory(:site)
+      project.sites << site
+      assert_equal @user.has_site?, true
+    end
+
+    it "should reply appropriately if user does not have site" do
+      project = Factory(:project)
+      site = Factory(:site)
+      assert_equal @user.has_site?, false
+    end
+
+  end
+
 end
