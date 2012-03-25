@@ -4,6 +4,7 @@
     %title StormSavvy
     = stylesheet_link_tag :application
     = javascript_include_tag 'http://w.sharethis.com/button/buttons.js', :application
+    = render 'shared/google_analytics'
     %meta{:charset => "utf-8"}
     = csrf_meta_tag
 
@@ -15,4 +16,3 @@
       = yield
 
     = render 'layouts/footer'
-    = render 'layouts/analytics'
