@@ -39,4 +39,21 @@ class UserMailer < ActionMailer::Base
       mail(:to => address, :subject => 'From the :umtest method of UserMailer').deliver
     end
   end
+
+  def mailout
+    User.all.each do |user|
+      ending = "\r\n"
+      body = "Your projects" + ending
+      body += "=" * 15 + ending
+      user.projects.each do |project|
+        body += "Project  #{project.name}" + ending
+
+        project.sites.each do |site|
+          body += "  Site #{site.name} | Percent of Precipatation #{site.chance_of_rain}%" + ending
+        end
+      end
+      mail(:to => user.email, :subject => "Your projects", :body => body).deliver
+    end
+  end
+
 end
