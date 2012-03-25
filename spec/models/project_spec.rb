@@ -51,14 +51,50 @@ describe Project do
       @project = Project.new(@attr)
     end
     
-    it "should be associated with a user" do
-      @project.should respond_to(:user)
+    context :user do 
+      it "should be associated with a user" do
+        @project.should respond_to(:user)
+      end
+      
+      it "should have the correct associated user" do
+        #@project.should == @project.id
+        @project.should == @project
+      end    
     end
-    
-    it "should have the correct associated user" do
-      #@project.should == @project.id
-      @project.should == @project
-    end    
+
+    context :site do 
+
+      before(:each) do 
+        @site = Factory(:site)
+        @site2 = Site.new(:name => "Test Site", :zipcode => 94610)
+      end
+
+      it "should be associated with sites" do 
+        @project.should respond_to(:sites)
+      end
+
+      it "should be able to add 1 site" do
+        @project.sites.count.should == 1
+      end
+
+      it "should not able to add invalid sites" do
+        @project.sites << Site.new
+        @project.sites.count.should == 1
+      end
+
+      it "should be able to add multiple sites" do
+        @project.sites << @site2
+        @site2.save
+        @project.sites.count.should be > 1
+      end
+      
+      it "should be able to delete an added site" do
+        precount = @project.sites.count
+        @project.sites << @site2
+        @project.sites.delete
+        @project.sites.count.should == precount
+      end
+    end
   end
 
   describe "date format validations" do
