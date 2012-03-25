@@ -27,20 +27,6 @@ class UserMailer < ActionMailer::Base
     mail(:to => email, :subject => 'Storm Savvy NOAA Forecast')
   end
 
-  def weather_forecast(email)
-    @greeting = "It's Storm Savvy weather time!"
-    mail(:to => email, :subject => 'Storm Savvy Weather Forecast')
-  end
-
-  def umtest
-    admins = ['david.doolin+stormsavvy@gmail.com',
-              'paul.maki+stormsavvy@gmail.com']
-    #user = User.where(:email => 'david.doolin@gmail.com')
-    admins.each do |address|
-      mail(:to => address, :subject => 'From the :umtest method of UserMailer').deliver
-    end
-  end
-
   def mailout(to = nil)
     @users = User.all
     User.all.each do |user|

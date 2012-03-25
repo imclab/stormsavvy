@@ -18,13 +18,6 @@ task :noaaforecast => :environment do
 	end
 end
 
-task :weatherforecast => :environment do
-  test_users = ['david.doolin+storm@gmail.com']
-  test_users.each do |address|
-    UserMailer.weather_forecast(address).deliver
-  end
-end
-
 task :umtest => :environment do
   UserMailer.umtest
 end
