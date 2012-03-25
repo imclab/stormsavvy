@@ -28,6 +28,12 @@ describe UserMailer do
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
+  it "should send something via mailout" do   
+    user = Factory(:user)
+    UserMailer.mailout.deliver
+    ActionMailer::Base.deliveries.should_not be_empty
+  end
+
   xit "should send stormpop alert emails" do
     user = Factory(:user)
     site = Factory(:site)
