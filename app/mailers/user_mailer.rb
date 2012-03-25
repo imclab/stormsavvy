@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
   #default :from => "alerts@stormsavvy.com"
-  default from: "doolin@inventiumsystems.com"
+  default :from => "doolin@inventiumsystems.com"
   #default :from => "david.doolin@gmail.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -35,7 +35,7 @@ class UserMailer < ActionMailer::Base
   def umtest
     admins = ['david.doolin+stormsavvy@gmail.com',
               'paul.maki+stormsavvy@gmail.com']
-    user = User.where(:email => 'david.doolin@gmail.com')
+    #user = User.where(:email => 'david.doolin@gmail.com')
     admins.each do |address|
       mail(:to => address, :subject => 'From the :umtest method of UserMailer').deliver
     end

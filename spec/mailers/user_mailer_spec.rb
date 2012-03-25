@@ -23,22 +23,18 @@ describe UserMailer do
 
   it "should send weather forecast emails" do
     user = Factory(:user)
-    # site = Factory(:site)
     UserMailer.noaa_forecast(user.email).deliver
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
   it "should send something via mailout" do   
-    user = Factory(:user)
-    UserMailer.mailout.deliver
-    ActionMailer::Base.deliveries.should_not be_empty
-  end
-
-  xit "should send stormpop alert emails" do
-    user = Factory(:user)
-    site = Factory(:site)
-    user.sites.change_of_rain == :imminent
-    UserMailer.pop_alert(user).deliver
+    user = Factory.create(:user)
+    project = user.projects.create!(:name => 'foo', :description => 'bar', :startdate => 3.days.ago, :finishdate => 1.day.ago)
+    site = project.sites.create!(:name => "Oakland Adams Point", :zipcode => 94610)
+    # Note that the site is not associated with the user, only the project.
+    # Lots of intricate associations coming.
+    #p user.sites.first
+    UserMailer.mailout
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
