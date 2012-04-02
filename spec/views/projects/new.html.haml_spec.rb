@@ -18,4 +18,17 @@ describe "projects/new" do
       assert_select "input#project_active", :name => "project[active]"
     end
   end
+
+  # Flash message calling twitterized_type method in application helper.
+  xit "shows flash message" do
+    assign(:project, stub_model(Project,
+      :user_id => 2,
+      :name => "FlashTest",
+      :description => "SeeMessage",
+      :active => false
+    ).as_new_record)
+    rendered.should have_selector "data-alert",
+      :class => twitterized_type(:notice),
+      :count => 1
+  end
 end
