@@ -99,6 +99,12 @@ describe ProjectsController do
         post :create, {:project => valid_attributes}
         response.should redirect_to(Project.last)
       end
+
+      it "responds with flash message" do
+        sign_in @user
+        post :create, {:project => valid_attributes}
+        flash[:notice].should == "Project was successfully created."
+      end
     end
 
     describe "with invalid params" do
