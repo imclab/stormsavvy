@@ -66,6 +66,8 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
+        # Flash message test using Twitter Bootstrap applicaton helper method
+        # flash[:notice] = "Flash message test"
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
