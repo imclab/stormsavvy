@@ -25,3 +25,4 @@ coverage
 .idea
 .rvmrc
 .DS_Store
+dump.rdb

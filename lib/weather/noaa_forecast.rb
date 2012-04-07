@@ -32,7 +32,7 @@ class NOAAForecast
     response = ping_noaa(latlong, 168, 6)
     get_weather_data(response.body)
   end
-  
+
   def ping_noaa(latlong, duration, interval)
     xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
     request = Typhoeus::Request.new(xml,
