@@ -1,7 +1,7 @@
 class Report < ActiveRecord::Base
 
   scope :needs_attention, where(status: "needs_attention")
-  scope :completed, where(status: "complete")
+  scope :completed, where(status: "completed")
 
   belongs_to :site
 
@@ -48,14 +48,16 @@ class Report < ActiveRecord::Base
   # highway_construction / plant_establishment / 
   # suspension_of_work
 
-  :site_information,
-  # total_area / total_DSA / current_DSA / inactive_DSA
+  :total_area, 
+  :total_DSA, 
+  :current_DSA, 
+  :inactive_DSA,
 
   :inspection_type,
   # weekly / quarterly / pre_storm / during_storm / 
   # post-storm
 
-  :time_elapsed, 
+  :time_elapsed_last_storm, 
   # x_days
 
   :precipitation_received, 
@@ -67,16 +69,16 @@ class Report < ActiveRecord::Base
   :expected_precipitation_amount,
   # x_inches
 
-  :time_elapsed, 
+  :time_elapsed_during_storm, 
   # x_hours_minutes
 
-  :gauge_reading, 
+  :gauge_reading_during_storm, 
   # x_inches
 
-  :time_elapsed_began, 
+  :time_elapsed_post_storm, 
   # x_hours_minutes
 
-  :gauge_reading_began 
+  :gauge_reading_post_storm
   # x_inches
 
   before_update :change_report_status
@@ -84,7 +86,7 @@ class Report < ActiveRecord::Base
 private
 
   def change_report_status
-    self.status = "complete"
+    self.status = "completed"
   end
 
 end
