@@ -7,9 +7,9 @@ describe Report do
     r.should be_valid
   end
 
-  xit "should respond to sites" do
+  it "should respond to sites" do
     r = Report.new
-    r.should respond_to(:sites)
+    r.should respond_to(:site)
   end
 
   it "should change status on update" do
@@ -17,7 +17,7 @@ describe Report do
     r.status.should be_nil
     r.contractor_name = "Ghilotti Bros"
     r.save
-    r.status.should == "complete"
+    r.status.should == "completed"
   end
 
   context 'scopes' do
