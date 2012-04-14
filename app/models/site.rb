@@ -3,7 +3,16 @@ require 'weather/forecast_examiner'
 
 class Site < ActiveRecord::Base
 
-  attr_accessible :name, :description, :costcode, :size, :address_1, :address_2, :state, :zipcode, :city, :exposed_area
+  attr_accessible :name, 
+  :description, 
+  :costcode, 
+  :size, 
+  :address_1, 
+  :address_2, 
+  :state, 
+  :zipcode, 
+  :city, 
+  :exposed_area
 
   belongs_to :project
   has_many :reports
