@@ -24,7 +24,8 @@
         = f.input :project_identifier_number, :input_html => { :value => @report.site.project_identifier_number }
         = f.input :wdid_number, :input_html => { :value => @report.site.wdid_number }
         = f.input :status, :input_html => { :value => @report.site.project_wdid_number }
-
+      %fieldset#company_information
+        %legend WPC Contact
 
       .actions
         = f.submit "Save Report", :class => "btn btn-primary"
