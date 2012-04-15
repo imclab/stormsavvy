@@ -24,7 +24,19 @@ class UserMailer < ActionMailer::Base
 
   # NOAA-specific data
   def noaa_forecast(email)
-    mail(:to => email, :subject => 'Storm Savvy NOAA Forecast')
+    @users = User.all
+    @users.each do |user|
+      user.sites.each do |s|
+        @greeting = "Hi #{user.email}"
+        @forecast = s.forecast
+        mail(:to => user.email, :subject => "Storm Savvy NOAA Forecast for #{s.name}").deliver
+      end
+#      if user.has_site?
+#        @site = user.sites[0]
+#        mail(:to => user.email, :subject => "Storm Savvy NOAA Forecast for #{@site.name}").deliver
+#      end
+    end
+    #mail(:to => email, :subject => 'Storm Savvy NOAA Forecast')
   end
 
   def mailout(to = nil)

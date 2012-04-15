@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   :contactor_state, 
   :contactor_zipcode
 
-  has_many :sites, :dependent => :destroy
+  has_many :sites, :dependent => :destroy, :through => :projects
 
   has_many :projects, :dependent => :destroy
 
