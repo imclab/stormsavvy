@@ -1,7 +1,7 @@
 class Report < ActiveRecord::Base
 
   scope :needs_attention, where(status: "needs_attention")
-  scope :completed, where(status: "complete")
+  scope :completed, where(status: "completed")
 
   belongs_to :site
 
@@ -23,14 +23,70 @@ class Report < ActiveRecord::Base
   :contract_number,
   :project_identifer_number,
   :wdid_number,
-  :status
+  :status,
+
+  :submitted_by_contractor,
+  :submitted_by_date,
+  
+  :wpc_manager,
+  :wpc_phone,
+  :wpc_emergency_phone,
+
+  :inspector_name,
+  :inspection_date,
+
+  :weather_condition, 
+  # clear / partly cloudy / cloudy
+
+  :precipitation_condition, 
+  # misty/ light_rain / rain / heavy_rain / hail / snow
+
+  :wind_condition,
+  # none / less_5mph / more_5mph
+
+  :construction_phase,
+  # highway_construction / plant_establishment / 
+  # suspension_of_work
+
+  :total_area, 
+  :total_DSA, 
+  :current_DSA, 
+  :inactive_DSA,
+
+  :inspection_type,
+  # weekly / quarterly / pre_storm / during_storm / 
+  # post-storm
+
+  :time_elapsed_last_storm, 
+  # x_days
+
+  :precipitation_received, 
+  # x_inches
+
+  :time_storm_expected, 
+  # x_time, x_date
+
+  :expected_precipitation_amount,
+  # x_inches
+
+  :time_elapsed_during_storm, 
+  # x_hours_minutes
+
+  :gauge_reading_during_storm, 
+  # x_inches
+
+  :time_elapsed_post_storm, 
+  # x_hours_minutes
+
+  :gauge_reading_post_storm
+  # x_inches
 
   before_update :change_report_status
 
 private
 
   def change_report_status
-    self.status = "complete"
+    self.status = "completed"
   end
 
 end

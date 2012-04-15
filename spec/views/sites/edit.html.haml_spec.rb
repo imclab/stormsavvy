@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "sites/edit" do
 
   before(:each) do
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     @project = @user.projects.create!({:name => 'foo', :description => 'bar', :startdate => 5.days.ago, :finishdate => 1.day.ago})
     @site = @project.sites.create!({:name => 'foo site', :zipcode => '94530'})
   end
