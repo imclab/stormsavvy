@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe "reports/edit" do
 
+  # Comment back in and unmark two spec below 
+  # when ready to fix factory spec.
+
   # before(:each) do
   #   @report = Factory(:report)
   # end
