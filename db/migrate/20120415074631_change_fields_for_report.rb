@@ -21,14 +21,14 @@ class ChangeFieldsForReport < ActiveRecord::Migration
 	add_column :reports, :current_DSA, 			 	:decimal
 	add_column :reports, :inactive_DSA,			 	:decimal
 
-	add_column :reports, :inspection_type,		 	:string
-	add_column :reports, :time_elapsed_last_storm, 	:decimal
-	add_column :reports, :precipitation_received,  	:decimal
-	add_column :reports, :time_storm_expected,  	:decimal
+	add_column :reports, :inspection_type,		 		 :string
+	add_column :reports, :time_elapsed_last_storm, 		 :decimal
+	add_column :reports, :precipitation_received,  		 :decimal
+	add_column :reports, :time_storm_expected,  		 :decimal
 	add_column :reports, :expected_precipitation_amount, :decimal
-	add_column :reports, :time_elapsed_during_storm, :decimal
-	add_column :reports, :gauge_reading_during_storm, :decimal
-	add_column :reports, :time_elapsed_post_storm, :decimal
-	add_column :reports, :gauge_reading_post_storm, :decimal
+	add_column :reports, :time_elapsed_during_storm,  	 :decimal
+	add_column :reports, :gauge_reading_during_storm, 	 :decimal
+	add_column :reports, :time_elapsed_post_storm, 		 :decimal
+	add_column :reports, :gauge_reading_post_storm, 	 :decimal
   end
 end
