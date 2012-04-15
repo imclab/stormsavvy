@@ -27,7 +27,7 @@ class Report < ActiveRecord::Base
 
   :submitted_by_contractor,
   :submitted_by_date,
-
+  
   :wpc_manager,
   :wpc_phone,
   :wpc_emergency_phone,
