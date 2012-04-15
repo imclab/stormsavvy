@@ -5,11 +5,11 @@
       %fieldset#site_information
         %legend Site Information
         = f.input :site_information_name, :input_html => { :value => @report.site.site_information_name }
-        = f.input :site_address_1, :input_html => { :value => @report.site.address_1 }
-        = f.input :site_address_2, :input_html => { :value => @report.site.address_2 }
-        = f.input :site_city, :input_html => { :value => @report.site.city }
-        = f.input :site_state, :input_html => { :value => @report.site.state }
-        = f.input :site_zipcode, :input_html => { :value => @report.site.zipcode }
+        / = f.input :site_address_1, :input_html => { :value => @report.site.address_1 }
+        / = f.input :site_address_2, :input_html => { :value => @report.site.address_2 }
+        / = f.input :site_city, :input_html => { :value => @report.site.city }
+        / = f.input :site_state, :input_html => { :value => @report.site.state }
+        / = f.input :site_zipcode, :input_html => { :value => @report.site.zipcode }
 
       %fieldset#company_information
         %legend Company Information
@@ -22,15 +22,15 @@
 
       %fieldset#contract_information
         %legend Contract Information
-        = f.input :contract_number, :input_html => { :value => @report.site.contract_number }
-        = f.input :project_identifier_number, :input_html => { :value => @report.site.project_identifier_number }
-        = f.input :wdid_number, :input_html => { :value => @report.site.wdid_number }
-        = f.input :status, :input_html => { :value => @report.site.status }
+        / = f.input :contract_number, :input_html => { :value => @report.site.contract_number }
+        / = f.input :project_identifier_number, :input_html => { :value => @report.site.project_identifier_number }
+        / = f.input :wdid_number, :input_html => { :value => @report.site.wdid_number }
+        / = f.input :status, :input_html => { :value => @report.site.status }
 
       %fieldset#submittal_information
         %legend Submittal Information
-        = f.input :submitted_by_contractor, :input_html => { :value => @report.site.submitted_by_contractor }
-        = f.input :submitted_by_date, :input_html => { :value => @report.site.submitted_by_date }
+        / = f.input :submitted_by_contractor, :input_html => { :value => @report.site.submitted_by_contractor }
+        / = f.input :submitted_by_date, :input_html => { :value => @report.site.submitted_by_date }
 
       %fieldset#wpc_information
         %legend WPC Information
