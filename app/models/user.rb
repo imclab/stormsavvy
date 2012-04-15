@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   :remember_me, 
   :firstname, 
   :lastname,
+
+  # Report fields associated with user
   :contractor_name, 
   :contractor_address_1, 
   :contractor_address_2, 
