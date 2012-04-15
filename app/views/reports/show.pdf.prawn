@@ -11,32 +11,32 @@ pdf.text @report.project_identifer_number
 pdf.text @report.wdid_number
 pdf.text @report.status
 
-pdf.text @submitted_by_contractor
-pdf.text @submitted_by_date
+pdf.text @report.submitted_by_contractor
+pdf.text @report.submitted_by_date
 
-pdf.text @wpc_manager
-pdf.text @wpc_phone
-pdf.text @wpc_emergency_phone
+pdf.text @report.wpc_manager
+pdf.text @report.wpc_phone
+pdf.text @report.wpc_emergency_phone
 
-pdf.text @inspector_name
-pdf.text @inspection_date
+pdf.text @report.inspector_name
+pdf.text @report.inspection_date
 
-pdf.text @weather_condition
-pdf.text @precipitation_condition 
-pdf.text @wind_condition
-pdf.text @construction_phase
-pdf.text @total_area
-pdf.text @total_DSA 
-pdf.text @current_DSA
-pdf.text @inactive_DSA
-pdf.text @inspection_type
+pdf.text @report.weather_condition
+pdf.text @report.precipitation_condition 
+pdf.text @report.wind_condition
+pdf.text @report.construction_phase
+pdf.text @report.total_area
+pdf.text @report.total_DSA 
+pdf.text @report.current_DSA
+pdf.text @report.inactive_DSA
+pdf.text @report.inspection_type
   
-pdf.text @time_elapsed
-pdf.text @precipitation_received 
-pdf.text @time_storm_expected
-pdf.text @expected_precipitation_amount
+pdf.text @report.time_elapsed
+pdf.text @report.precipitation_received 
+pdf.text @report.time_storm_expected
+pdf.text @report.expected_precipitation_amount
 
-pdf.text @time_elapsed 
-pdf.text @gauge_reading
-pdf.text @time_elapsed_began 
-pdf.text @gauge_reading_began 
+pdf.text @report.time_elapsed 
+pdf.text @report.gauge_reading
+pdf.text @report.time_elapsed_began 
+pdf.text @report.gauge_reading_began 
