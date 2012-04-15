@@ -19,8 +19,8 @@ FactoryGirl.define do
   	wdid_number "000020"
   	status "Active"
 
-  	submitted_by_contractor "4-1-12"
-  	submitted_by_date "4-1-12"
+  	# submitted_by_contractor "4-1-12"
+  	# submitted_by_date "4-1-12"
 
   	wpc_manager "Tom Barr - GBI"
   	wpc_phone "415-760-9011"
