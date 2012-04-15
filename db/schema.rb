@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120310233643) do
+ActiveRecord::Schema.define(:version => 20120415074631) do
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
@@ -114,6 +114,24 @@ ActiveRecord::Schema.define(:version => 20120310233643) do
     t.decimal  "storm_information_percipitation_amount_from_last_form"
     t.decimal  "storm_information_expected_percipitaion_amount"
     t.string   "status"
+    t.date     "submitted_by_contractor"
+    t.date     "submitted_by_date"
+    t.string   "wpc_manager"
+    t.string   "wpc_phone"
+    t.string   "wpc_emergency_phone"
+    t.date     "inspection_date"
+    t.decimal  "total_area"
+    t.decimal  "total_DSA"
+    t.decimal  "current_DSA"
+    t.decimal  "inactive_DSA"
+    t.decimal  "time_elapsed_last_storm"
+    t.decimal  "precipitation_received"
+    t.decimal  "time_storm_expected"
+    t.decimal  "expected_precipitation_amount"
+    t.decimal  "time_elapsed_during_storm"
+    t.decimal  "gauge_reading_during_storm"
+    t.decimal  "time_elapsed_post_storm"
+    t.decimal  "gauge_reading_post_storm"
   end
 
   create_table "site_pops", :force => true do |t|
