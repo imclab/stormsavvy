@@ -42,8 +42,8 @@ FactoryGirl.define do
 
   	inspection_type "Weekly"
 
-	time_elapsed_last_storm "5 days" 
-	precipitation_received "2 inches"
+	  time_elapsed_last_storm "5 days" 
+	  precipitation_received "2 inches"
   	time_storm_expected "N/A"
   	expected_precipitation_amount "N/A"
   	time_elapsed_during_storm "N/A"
