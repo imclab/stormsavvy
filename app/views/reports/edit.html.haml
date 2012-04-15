@@ -4,12 +4,13 @@
     = simple_nested_form_for @report do |f|
       %fieldset#site_information
         %legend Site Information
-        = f.input :site_information_name, :input_html => { :value => @report.site.name }
+        = f.input :site_information_name, :input_html => { :value => @report.site.site_information_name }
         = f.input :site_address_1, :input_html => { :value => @report.site.address_1 }
         = f.input :site_address_2, :input_html => { :value => @report.site.address_2 }
         = f.input :site_city, :input_html => { :value => @report.site.city }
         = f.input :site_state, :input_html => { :value => @report.site.state }
         = f.input :site_zipcode, :input_html => { :value => @report.site.zipcode }
+
       %fieldset#company_information
         %legend Company Information
         = f.input :contractor_name, :input_html => { :value => current_user.contractor_name }
@@ -18,14 +19,61 @@
         = f.input :contractor_city, :input_html => { :value => current_user.contractor_city }
         = f.input :contactor_state, :input_html => { :value => current_user.contractor_state }
         = f.input :contactor_zipcode, :as => :string, :input_html => { :value => current_user.contractor_zipcode }
-      %fieldset#company_information
-        %legend Contract Data
+
+      %fieldset#contract_information
+        %legend Contract Information
         = f.input :contract_number, :input_html => { :value => @report.site.contract_number }
         = f.input :project_identifier_number, :input_html => { :value => @report.site.project_identifier_number }
         = f.input :wdid_number, :input_html => { :value => @report.site.wdid_number }
-        = f.input :status, :input_html => { :value => @report.site.project_wdid_number }
-      %fieldset#company_information
-        %legend WPC Contact
+        = f.input :status, :input_html => { :value => @report.site.status }
+
+      %fieldset#submittal_information
+        %legend Submittal Information
+        = f.input :submitted_by_contractor, :input_html => { :value => @report.site.submitted_by_contractor }
+        = f.input :submitted_by_date, :input_html => { :value => @report.site.submitted_by_date }
+
+      %fieldset#wpc_information
+        %legend WPC Information
+        = f.input :wpc_manager, :input_html => { :value => @report.site.wpc_manager }
+        = f.input :wpc_phone, :input_html => { :value => @report.site.wpc_phone }
+        = f.input :wpc_emergency_phone, :input_html => { :value => @report.site.wpc_emergency_phone }
+
+      %fieldset#insepctor_name
+        %legend Inspector Name
+        = f.input :inspector_name, :input_html => { :value => @report.site.inspector_name }
+        = f.input :inspection_date, :input_html => { :value => @report.site.inspection_date }
+
+      %fieldset#weather_conditions
+        %legend Weather Conditions
+        = f.input :weather_condition, :input_html => { :value => @report.site.weather_condition }
+        = f.input :precipitation_condition, :input_html => { :value => @report.site.precipitation_condition }
+        = f.input :wind_condition, :input_html => { :value => @report.site.wind_condition }      
+
+      %fieldset#construction_phase
+        %legend Construction Phase
+        = f.input :construction_phase, :input_html => { :value => @report.site.construction_phase }
+
+      %fieldset#site_area
+        %legend Site Area
+        = f.input :total_area, :input_html => { :value => @report.site.total_area }
+        = f.input :total_DSA, :input_html => { :value => @report.site.total_DSA }
+        = f.input :current_DSA, :input_html => { :value => @report.site.current_DSA }
+        = f.input :inactive_DSA, :input_html => { :value => @report.site.inactive_DSA }
+
+      %fieldset#inspection_type
+        %legend Inspection Type
+        = f.input :inspection_type, :input_html => { :value => @report.site.inspection_type }
+
+      %fieldset#storm_information
+        %legend Storm Information
+        = f.input :time_elapsed_last_storm, :input_html => { :value => @report.site.time_elapsed_last_storm }
+        = f.input :precipitation_received, :input_html => { :value => @report.site.precipitation_received }
+        = f.input :time_storm_expected, :input_html => { :value => @report.site.time_storm_expected }
+        = f.input :expected_precipitation_amount, :input_html => { :value => @report.site.expected_precipitation_amount }    
+        = f.input :time_elapsed_during_storm, :input_html => { :value => @report.site.time_elapsed_during_storm }        
+        = f.input :gauge_reading_during_storm, :input_html => { :value => @report.site.gauge_reading_during_storm }
+        = f.input :time_elapsed_post_storm, :input_html => { :value => @report.site.time_elapsed_post_storm }
+        = f.input :gauge_reading_post_storm, :input_html => { :value => @report.site.time_elapsed_post_storm }
 
       .actions
         = f.submit "Save Report", :class => "btn btn-primary"
