@@ -5,7 +5,7 @@ describe Site do
   describe "validations" do
 
     before(:each) do
-      @site   = Factory.create(:site)
+      @site = Factory.create(:site)
     end
 
     it "should have a name" do
