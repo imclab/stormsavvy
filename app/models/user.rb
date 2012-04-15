@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :firstname, :lastname,
   :contractor_name, :contractor_address_1, :contractor_address_2, :contractor_city, :contactor_state, :contactor_zipcode
 
-  has_many :sites, :dependent => :destroy
+  has_many :sites, :dependent => :destroy, :through => :projects
 
   has_many :projects, :dependent => :destroy
 
