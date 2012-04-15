@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe "reports/edit" do
 
-  # before(:each) do
-  #   @report = Factory(:report)
-  # end
+  before(:each) do
+    @report = Factory(:report)
+  end
 
-  xit "renders the edit report form" do
+  it "renders the edit report form" do
     render
-    xassert_select "form", :method => 'post' do 
+    assert_select "form", :method => 'post' do 
       assert_select "input#site_information_name", 
            :name => "report[site_information_name]"
       assert_select "input#site_address_1", 
