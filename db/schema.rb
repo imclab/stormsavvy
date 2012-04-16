@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416032616) do
+ActiveRecord::Schema.define(:version => 20120416040431) do
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(:version => 20120416032616) do
     t.string   "contractor_address_2"
     t.string   "contractor_city"
     t.string   "contract_number"
-    t.string   "project_identifer_number"
     t.string   "wdid_number"
     t.integer  "project_risk_level"
     t.string   "inspector_name"
@@ -131,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20120416032616) do
     t.string   "water_pollution_control_manager_emergency_phone_number"
     t.decimal  "storm_information_expected_precipitation_amount"
     t.decimal  "storm_information_precipitation_amount_from_last_form"
+    t.string   "project_identifier_number"
   end
 
   create_table "site_pops", :force => true do |t|
