@@ -21,8 +21,11 @@ class User < ActiveRecord::Base
   :contactor_zipcode
 
   has_many :sites, :dependent => :destroy, :through => :projects
-
   has_many :projects, :dependent => :destroy
+
+  # Implement presence of unique email 
+  # validates :email, :presence => true
+  # validates_uniqueness_of :email
 
   def send_pop_alerts
     @name = self.firstname
