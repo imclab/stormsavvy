@@ -29,6 +29,11 @@ describe User do
         Project.find_by_id(p.id).should be_nil
       end
     end
+
+    # it "should enforce unique email" do
+    #   m1 = Factory(:user)
+    #   m2 = Factory.build(:user, :email => m1.email).should_not be_valid
+    # end
   end
 
   context :has_site do
