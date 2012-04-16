@@ -21,7 +21,7 @@ class Report < ActiveRecord::Base
   :contactor_zipcode,
 
   :contract_number,
-  :project_identifer_number,
+  :project_identifier_number,
   :wdid_number,
   :status,
 
