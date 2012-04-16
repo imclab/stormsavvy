@@ -22,32 +22,32 @@ describe Report do
 
   context :report do 
 
-    before(:each) do 
-      @report = Factory(:report)
-      @report2 = Report.new
-    end
+    # before(:each) do 
+    #   @report = Factory(:report)
+    #   @report2 = Report.new
+    # end
 
-    it "should be able to add 1 site" do
+    xit "should be able to add 1 site" do
       @project.site.reports.count.should == 1
     end
 
-    it "should not able to add invalid reports" do
+    xit "should not able to add invalid reports" do
       @project.site.reports << Report.new
       @project.site.reports.count.should == 1
     end
 
-    # it "should be able to add multiple sites" do
-    #   @project.sites << @site2
-    #   @site2.save
-    #   @project.sites.count.should be > 1
-    # end
+    xit "should be able to add multiple reports" do
+      @project.site.reports << @report2
+      @report2.save
+      @project.site.reports.count.should be > 1
+    end
     
-    # it "should be able to delete an added site" do
-    #   precount = @project.sites.count
-    #   @project.sites << @site2
-    #   @project.sites.delete
-    #   @project.sites.count.should == precount
-    # end
+    xit "should be able to delete an added site" do
+      precount = @project.site.reports.count
+      @project.site.reprots << @site2
+      @project.site.reports.delete
+      @project.site.reports.count.should == precount
+    end
   end
 
   context 'scopes' do
