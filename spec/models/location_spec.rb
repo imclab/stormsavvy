@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Location do
 
   before(:each) do
-    @location = Factory(:location)
+    @location = FactoryGirl.create(:location)
   end
 
   it "should have a valid location" do

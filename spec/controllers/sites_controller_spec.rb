@@ -39,7 +39,7 @@ describe SitesController do
   end
 
   before(:each) do
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
   end
 
   describe "GET index" do
@@ -145,7 +145,7 @@ describe SitesController do
 
       it "assigns the requested site as @site" do
         #site = Site.create! valid_attributes
-        project = Factory(:project)
+        project = FactoryGirl.create(:project)
         site = project.sites.create! valid_attributes
         put :update, {:id => site.to_param, :site => valid_attributes}, valid_session
         assigns(:site).should eq(site)
@@ -153,7 +153,7 @@ describe SitesController do
 
       it "redirects to the site" do
         #site = Site.create! valid_attributes
-        project = Factory(:project)
+        project = FactoryGirl.create(:project)
         site = project.sites.create! valid_attributes
         put :update, {:id => site.to_param, :site => valid_attributes}, valid_session
         # http://guides.rubyonrails.org/routing.html#creating-paths-and-urls-from-objects

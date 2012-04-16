@@ -8,7 +8,7 @@ describe "sites/show" do
       :size => "Size",
       :exposed_area => "Exposed Area"
     ))
-    @project = Factory(:project)
+    @project = FactoryGirl.create(:project)
     @site.project_id = @project.id
   end
 

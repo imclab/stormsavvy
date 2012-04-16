@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Project do
 
   before :each do
-  	@project = Factory(:project)
+  	@project = FactoryGirl.create(:project)
   	@attr = {
   	  :name => "Hwy 99",
   	  :description => "Pothole Repair",
@@ -65,7 +65,7 @@ describe Project do
     context :site do 
 
       before(:each) do 
-        @site = Factory(:site)
+        @site = FactoryGirl.create(:site)
         @site2 = Site.new(:name => "Test Site", :zipcode => 94610)
       end
 

@@ -5,13 +5,13 @@ describe "reports/edit" do
   # Comment back in and unmark two spec below 
   # when ready to fix factory spec.
 
-  # before(:each) do
-  #   @report = Factory(:report)
-  # end
+  before(:each) do
+    @report = FactoryGirl.create(:report)
+  end
 
-  xit "renders the edit report form" do
+  it "renders the edit report form" do
     render
-    xassert_select "form", :method => 'post' do 
+    assert_select "form", :method => 'post' do 
       assert_select "input#site_information_name", 
            :name => "report[site_information_name]"
       assert_select "input#site_address_1", 

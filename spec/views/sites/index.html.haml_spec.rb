@@ -20,7 +20,7 @@ describe "sites/index" do
         :project_id => 1
       )
     ])
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     @project = @user.projects.create!({:name => 'fff', :description => "vvv", :startdate => 5.days.ago, :finishdate => 1.day.ago})
   end
 
