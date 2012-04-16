@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120415074631) do
+ActiveRecord::Schema.define(:version => 20120416032616) do
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
@@ -86,16 +86,10 @@ ActiveRecord::Schema.define(:version => 20120415074631) do
     t.string   "contractor_address_1"
     t.string   "contractor_address_2"
     t.string   "contractor_city"
-    t.string   "contactor_state"
-    t.integer  "contactor_zipcode"
     t.string   "contract_number"
     t.string   "project_identifer_number"
     t.string   "wdid_number"
     t.integer  "project_risk_level"
-    t.string   "water_polution_control_manager_name"
-    t.string   "water_polution_control_manager_company_name"
-    t.string   "water_polution_control_manager_phone_number"
-    t.string   "water_polution_control_manager_emergancy_phone_number"
     t.string   "inspector_name"
     t.date     "date_of_inspection"
     t.string   "weather_condition"
@@ -107,12 +101,9 @@ ActiveRecord::Schema.define(:version => 20120415074631) do
     t.decimal  "site_information_acres_current_phase_disturbed_soil_area"
     t.string   "inspection_type"
     t.string   "storm_information_time_elapsed_since_last_storm"
-    t.decimal  "storm_information_percipitation_since_last_storm"
     t.datetime "storm_information_time_storm_is_expected"
     t.decimal  "storm_information_time_elapsed_since_storm_began"
     t.decimal  "storm_information_time_elapsed_since_storm"
-    t.decimal  "storm_information_percipitation_amount_from_last_form"
-    t.decimal  "storm_information_expected_percipitaion_amount"
     t.string   "status"
     t.date     "submitted_by_contractor"
     t.date     "submitted_by_date"
@@ -132,6 +123,14 @@ ActiveRecord::Schema.define(:version => 20120415074631) do
     t.decimal  "gauge_reading_during_storm"
     t.decimal  "time_elapsed_post_storm"
     t.decimal  "gauge_reading_post_storm"
+    t.string   "contractor_state"
+    t.integer  "contractor_zipcode"
+    t.string   "water_pollution_control_manager_name"
+    t.string   "water_pollution_control_manager_company_name"
+    t.string   "water_pollution_control_manager_phone_number"
+    t.string   "water_pollution_control_manager_emergency_phone_number"
+    t.decimal  "storm_information_expected_precipitation_amount"
+    t.decimal  "storm_information_precipitation_amount_from_last_form"
   end
 
   create_table "site_pops", :force => true do |t|
