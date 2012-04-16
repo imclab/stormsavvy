@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20120416032616) do
     t.datetime "storm_information_time_storm_is_expected"
     t.decimal  "storm_information_time_elapsed_since_storm_began"
     t.decimal  "storm_information_time_elapsed_since_storm"
+    t.decimal  "storm_information_percipitation_amount_from_storm_recorded_from_site_rain_gauge"
     t.string   "status"
     t.date     "submitted_by_contractor"
     t.date     "submitted_by_date"
