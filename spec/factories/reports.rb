@@ -15,7 +15,7 @@ FactoryGirl.define do
   	contractor_zipcode 94901
 
   	contract_number "04-264064"
-  	project_identifer_number "000010"
+  	project_identifier_number "000010"
   	wdid_number "000020"
   	status "Active"
 
