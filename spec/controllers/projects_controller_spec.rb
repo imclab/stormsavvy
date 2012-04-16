@@ -40,7 +40,7 @@ describe ProjectsController do
   end
 
   before(:each) do
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
   end
 
   describe "GET index" do

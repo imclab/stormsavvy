@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "projects/edit" do
 
   before(:each) do
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     @project = @user.projects.create!({
       :name        => "MyString",
       :description => "MyText",

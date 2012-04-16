@@ -5,7 +5,7 @@ describe Site do
   describe "validations" do
 
     before(:each) do
-      @site = Factory.create(:site)
+      @site = FactoryGirl.create(:site)
     end
 
     it "should have a name" do
@@ -22,8 +22,8 @@ describe Site do
   describe "associations" do
     
     before(:each) do
-      @project = Factory(:project)
-      @site = Factory.create(:site)
+      @project = FactoryGirl.create(:project)
+      @site = FactoryGirl.create(:site)
     end
 
    it "should create a new instance given valid attributes" do
@@ -43,7 +43,7 @@ describe Site do
   describe "attributes" do
 
     before :each do
-      @site   = Factory.create(:site)
+      @site   = FactoryGirl.create(:site)
     end
 
     it "should have name" do

@@ -11,7 +11,7 @@ describe SitesController do
         :description => 'My description',
         :startdate => 5.days.ago,
         :finishdate => 1.day.ago}
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       @project = @user.projects.create!(attrs)
       # Stub this later to speed it up...
       @site = @project.sites.create!({:name => 'My site', :zipcode => '94530'})

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe RainEventWorkflow do
   
   before(:each) do
-    @rew = Factory(:rain_event_workflow)
+    @rew = FactoryGirl.create(:rain_event_workflow)
   end
 
   it "default model is valid" do

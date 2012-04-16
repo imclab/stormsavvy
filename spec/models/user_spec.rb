@@ -10,9 +10,9 @@ describe User do
   describe "site associations" do
 
     before(:each) do
-      @user = Factory(:user)
-      @p1 = Factory(:project, :user => @user, :created_at => 1.day.ago)
-      @p2 = Factory(:project, :user => @user, :created_at => 1.hour.ago)
+      @user = FactoryGirl.create(:user)
+      @p1 = FactoryGirl.create(:project, :user => @user, :created_at => 1.day.ago)
+      @p2 = FactoryGirl.create(:project, :user => @user, :created_at => 1.hour.ago)
     end
 
     it "should respond to projects" do
@@ -34,7 +34,7 @@ describe User do
   context :has_site do
 
     before(:each) do 
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
     end
 
     it "should respond to has_site?" do
@@ -42,15 +42,15 @@ describe User do
     end
 
     it "should reply appropriately if user has a site" do
-      project = Factory(:project)
-      site = Factory(:site)
+      project = FactoryGirl.create(:project)
+      site = FactoryGirl.create(:site)
       project.sites << site
       assert_equal @user.has_site?, true
     end
 
     it "should reply appropriately if user does not have site" do
-      project = Factory(:project)
-      site = Factory(:site)
+      project = FactoryGirl.create(:project)
+      site = FactoryGirl.create(:site)
       assert_equal @user.has_site?, false
     end
 

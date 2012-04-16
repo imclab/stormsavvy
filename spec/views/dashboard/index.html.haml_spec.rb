@@ -7,9 +7,9 @@ describe "dashboard/index" do
   end
 
   before(:each) do
-    @user = Factory(:user)
-    @p1 = Factory(:project)
-    @p2 = Factory(:project)
+    @user = FactoryGirl.create(:user)
+    @p1 = FactoryGirl.create(:project)
+    @p2 = FactoryGirl.create(:project)
     @projects = [@p1, @p2]
     @needs_attention_reports = Report.needs_attention
     #@s1 = @p1.sites.create(site_attributes)

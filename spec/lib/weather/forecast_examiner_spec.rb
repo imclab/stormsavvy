@@ -13,7 +13,7 @@ describe ForecastExaminer do
   end
 
   before(:each) do
-    @project = Factory(:project)
+    @project = FactoryGirl.create(:project)
     @site = @project.sites.create!({:name => 'My Site', :zipcode => '94530'})
     @fe = ForecastExaminer.new(@site, [@data[0],@data[1]])
   end

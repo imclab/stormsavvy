@@ -6,7 +6,7 @@ describe "reports/edit" do
   # when ready to fix factory spec.
 
   before(:each) do
-    @report = Factory(:report)
+    @report = FactoryGirl.create(:report)
   end
 
   it "renders the edit report form" do

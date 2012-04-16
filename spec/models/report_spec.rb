@@ -23,7 +23,7 @@ describe Report do
   context :report do 
 
     # before(:each) do 
-    #   @report = Factory(:report)
+    #   @report = FactoryGirl.create(:report)
     #   @report2 = Report.new
     # end
 
