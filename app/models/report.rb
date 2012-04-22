@@ -17,8 +17,8 @@ class Report < ActiveRecord::Base
   :contractor_address_1,
   :contractor_address_2,
   :contractor_city,
-  :contactor_state,
-  :contactor_zipcode,
+  :contractor_state,
+  :contractor_zipcode,
 
   :contract_number,
   :project_identifier_number,
