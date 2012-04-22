@@ -3,8 +3,8 @@ pdf.text @report.site_information_name
 pdf.text @report.site_address_1
 pdf.text @report.site_address_2
 pdf.text @report.contractor_city
-pdf.text @report.contactor_state
-pdf.text @report.contactor_zipcode
+pdf.text @report.contractor_state
+pdf.text @report.contractor_zipcode
 
 pdf.text @report.contract_number
 pdf.text @report.project_identifer_number
