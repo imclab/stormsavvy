@@ -1,22 +1,27 @@
 require 'spec_helper'
+require 'prawn'
 
-# describe "prawn" do
+describe "prawn report" do
 
-# 	before(:each) do
-# 	  @pdf = pdf.render
-# 	end
+  before(:each) do
+    @report = FactoryGirl.create(:report)
+  end
 
-# 	describe "when creating pdf" do
-# 		reader = PDF::Reader.new("somefile.pdf")
+	describe "when creating pdf" do
+		pdf = Prawn::Document.new
+    pdf.text "CEM2030"
+    pdf.render_file "CEM2030.pdf"
+    # send_data pdf.render, type: "application/pdf", disposition: "inline"
 
-# 		reader.pages.each do |page|
-# 		  puts page.fonts
-# 		  puts page.text
-# 		  puts page.raw_content
-# 		 end
+		# @pdf.pages.each do |page|
+		#   puts page.fonts
+		#   puts page.text
+		#   puts page.raw_content
+		#  end
 
-# 	  page_counter = PDF::Inspector.analyze(@pdf)
-# 	  page_counter.pages.size.should == 1
-# 	  @pdf.page_count.should == 1
-# 	end
-# end
+		# Previous call from pdf-reader gem
+	  page_counter = PDF::Inspector.analyze(@pdf)
+	  page_counter.pages.size.should == 1
+	  @pdf.page_count.should == 1
+	end
+end
