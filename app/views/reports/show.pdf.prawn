@@ -4,10 +4,11 @@ pdf.text @report.site_address_1
 pdf.text @report.site_address_2
 pdf.text @report.contractor_city
 pdf.text @report.contractor_state
-pdf.text @report.contractor_zipcode
 
+
+pdf.move_right 250
 pdf.text @report.contract_number
-pdf.text @report.project_identifer_number
+pdf.text @report.project_identifier_number
 pdf.text @report.wdid_number
 pdf.text @report.status
 
