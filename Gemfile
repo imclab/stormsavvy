@@ -29,7 +29,7 @@ group :test, :development do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'awesome_print'
-  # gem 'pdf-reader'
+  gem 'pdf-inspector', :require => "pdf/inspector"
   # gem 'pry-stack_explorer'
 end
 
