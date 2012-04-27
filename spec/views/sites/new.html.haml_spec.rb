@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "sites/new" do
+
   before(:each) do
     assign(:site, stub_model(Site,
       :name => "MyString",
@@ -22,7 +23,7 @@ describe "sites/new" do
       assert_select "input#site_costcode", :name => "site[costcode]"
       assert_select "input#site_size", :name => "site[size]"
       assert_select "input#site_exposed_area", :name => "site[exposed_area]"
-      assert_select "input#site_location", :name => "site[location]"
+      #assert_select "input#site_location", :name => "site[location]"
     end
   end
 end

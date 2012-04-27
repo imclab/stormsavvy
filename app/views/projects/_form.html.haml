@@ -1,82 +1,30 @@
-= nested_form_for @project, :html => { :class => "form-horizontal"} do |f|
-  -if @project.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
-      %ul
-        - @project.errors.full_messages.each do |msg|
-          %li= msg
-
+= simple_nested_form_for @project, :html => { :class => 'form-horizontal' } do |f|
   %fieldset
     %legend Project Details
-    .control-group
-      = f.label :name, :class => "control-label"
-      .controls
-        = f.text_field :name
-    .control-group
-      = f.label :description, :class => "control-label"
-      .controls
-        = f.text_area :description, :rows => "5"
-
-    .control-group
-      = f.label :startdate, :class => "control-label"
-      .controls
-        = f.text_field :startdate, :class => "datePicker"
-
-    .control-group
-      = f.label :finishdate, :class => "control-label"
-      .controls
-        = f.text_field :finishdate, :class => "datePicker"
-    .control-group
-
-      = f.label :active, :class => "control-label"
-      .controls
-        = f.check_box :active
+    = f.input :name, :hint => "Name of this project"
+    = f.input :description
+    = f.input :startdate, :as => :string, :input_html => { :class => 'datePicker' }
+    = f.input :finishdate, :as => :string, :input_html => { :class => 'datePicker' }
+    = f.input :active
 
   %fieldset
     %legend
-      Site Details
-      = f.link_to_add "Add a new site", :sites
-      = f.fields_for :sites, do |site|
-        .control-group
-          = site.label :name, :class => "control-label"
-          .controls
-            = site.text_field :name
-        .control-group
-          = site.label :description, :class => "control-label"
-          .controls
-            = site.text_area :description, :rows => "5"
+      Project Sites
+    = f.link_to_add "Add a new site", :sites
+    .sitesWrapper
+      = f.fields_for :sites do |site|
+        .sitesInner
+          = site.link_to_remove "Remove this site"
+          = site.input :name
+          = site.input :description
+          = site.input :costcode
+          = site.input :address_1
+          = site.input :address_2
+          = site.input :city
+          = site.input :state, :as => :select, :collection => Carmen.states
+          = site.input :zipcode, :as => :string
 
-        .control-group
-          = site.label :costcode, :class => "control-label"
-          .controls
-            = site.text_field :costcode
-
-        .control-group
-          =site.label :address_1, :class => "control-label"
-          .controls
-            = site.text_field :address_1
-
-        .control-group
-          =site.label :address_2, :class => "control-label"
-          .controls
-            = site.text_field :address_2
-
-        .control-group
-          =site.label :city, :class => "control-label"
-          .controls
-            = site.text_field :city
-
-        .control-group
-          =site.label :state, :class => "control-label"
-          .controls
-            = site.select :state, Carmen.states, {:include_blank => true}, :selected => site.object.state
-
-        .control-group
-          =site.label :zipcode, :class => "control-label"
-          .controls
-            = site.text_field :zipcode
-
-        = site.link_to_remove "Remove this site"
-
-  .actions
-    = f.submit 'Save', :class => "btn btn-primary"
+  .form-actions
+    = link_to "Cancel", projects_path, :confirm => "Are you sure you want to cancel?"
+    |
+    = f.submit

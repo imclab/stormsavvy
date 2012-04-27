@@ -8,17 +8,28 @@ describe "projects/show" do
       :description => "MyText",
       :active => false
     ))
+    #@project = FactoryGirl.create(:project)
+    @user = FactoryGirl.create(:user)
+    @needs_attention_reports = Report.needs_attention
+    @sites = @project.sites
+    sign_in @user
   end
 
   it "renders attributes in <p>" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/1/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Name/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/MyText/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/false/)
+  end
+
+  it "renders the project attributes" do
+    render
+    render.should have_selector('div#project-attributes')
+  end
+
+  it "renders the project sidebar" do
+    render
+    render.should have_selector('div#project-sidebar')
   end
 end

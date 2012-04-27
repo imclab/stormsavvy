@@ -1,1 +1,1 @@
-Geocoder::Configuration.lookup = :yahoo
+Geocoder::Configuration.lookup = :google

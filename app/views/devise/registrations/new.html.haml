@@ -1,21 +1,21 @@
-.container
-  .row
-    .span12
-      %h2 Sign up
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-        = devise_error_messages!
-        .cf
-          = f.label :email
-          .input
-            = f.email_field :email
-        .cf
-          = f.label :password
-          .input
-            = f.password_field :password
-        .cf
-          = f.label :password_confirmation
-          .input
-            = f.password_field :password_confirmation
-        .actions
-          = f.submit "Sign up", :class => "btn"
-      = render "links"
+
+.row
+  .span12
+    %h2 Sign up
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      .cf
+        = f.label :email
+        .input
+          = f.email_field :email
+      .cf
+        = f.label :password
+        .input
+          = f.password_field :password
+      .cf
+        = f.label :password_confirmation
+        .input
+          = f.password_field :password_confirmation
+      .actions
+        = f.submit "Sign up", :class => "btn"
+    = render "links"

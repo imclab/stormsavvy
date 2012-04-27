@@ -4,7 +4,7 @@ describe ProjectsController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/projects").should route_to("projects#index")
+      get("/projects").should route_to("dashboard#index")
     end
 
     it "routes to #new" do

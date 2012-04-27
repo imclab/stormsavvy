@@ -3,7 +3,7 @@ require 'spec_helper'
 describe RainEventWorkflow do
   
   before(:each) do
-    @rew = Factory(:rain_event_workflow)
+    @rew = FactoryGirl.create(:rain_event_workflow)
   end
 
   it "default model is valid" do
@@ -43,8 +43,15 @@ describe RainEventWorkflow do
     @rew.chance_of_rain = 55
     @rew.reap = false
     lambda do
-      @rew.rain_imminent?
+      if @rew.rain_imminent?
+        @rew.start_rain_event_workflow
+      end
     end.should change(Report, :count).by(1)
+  end
+
+  it "should check to see whether it has rained" do
+    @rew.amount_of_rain = 0.51
+    @rew.has_rained?.should be_true
   end
 
 end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Project do
 
   before :each do
-  	@project = Factory(:project)
+  	@project = FactoryGirl.create(:project)
   	@attr = {
   	  :name => "Hwy 99",
   	  :description => "Pothole Repair",
@@ -22,23 +22,79 @@ describe Project do
 
   it "should create a new instance given valid attributes" do
     project = Project.new(@attr)
-    project.first.should be_valid
+    project.save
+    project.should be_valid
   end
-  
+
+  describe "validations" do
+    it "should require a name" do
+      @project.name = ''
+      @project.should_not be_valid
+    end
+    it "should require a description" do
+      @project.description = ''
+      @project.should_not be_valid
+    end
+    it "requires a starting date" do
+      @project.startdate = ''
+      @project.should_not be_valid
+    end
+    it "requires a finishing date" do
+      @project.finishdate = ''
+      @project.should_not be_valid
+    end
+  end
+
   describe "project associations" do
 
     before(:each) do
       @project = Project.new(@attr)
     end
     
-    xit "should have a project attribute" do
-      @project.should respond_to(:user)
+    context :user do 
+      it "should be associated with a user" do
+        @project.should respond_to(:user)
+      end
+      
+      it "should have the correct associated user" do
+        #@project.should == @project.id
+        @project.should == @project
+      end    
     end
-    
-    it "should have the correct associated member" do
-      #@project.should == @project.id
-      @project.should == @project
-    end    
+
+    context :site do 
+
+      before(:each) do 
+        @site = FactoryGirl.create(:site)
+        @site2 = Site.new(:name => "Test Site", :zipcode => 94610)
+      end
+
+      it "should be associated with sites" do 
+        @project.should respond_to(:sites)
+      end
+
+      it "should be able to add 1 site" do
+        @project.sites.count.should == 1
+      end
+
+      it "should not able to add invalid sites" do
+        @project.sites << Site.new
+        @project.sites.count.should == 1
+      end
+
+      it "should be able to add multiple sites" do
+        @project.sites << @site2
+        @site2.save
+        @project.sites.count.should be > 1
+      end
+      
+      it "should be able to delete an added site" do
+        precount = @project.sites.count
+        @project.sites << @site2
+        @project.sites.delete
+        @project.sites.count.should == precount
+      end
+    end
   end
 
   describe "date format validations" do

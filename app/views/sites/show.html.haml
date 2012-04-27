@@ -1,57 +1,44 @@
-.container
-  .row
-    .span12
-      %p#notice= notice
-      %p
-        %b Project:
-        = link_to @site.project.name, project_path(@site.project)
-      %p
-        %b Name:
-        = @site.name
-      %p
-        %b Description:
-        = @site.description
-      %p
-        %b Costcode:
-        = @site.costcode
-      %p
-        %b Size:
-        = @site.size
-      %p
-        %b Exposed area:
-        = @site.exposed_area
-      %p
-        %b Address:
-        = @site.address_1
-      %p
-        %b Address:
-        = @site.address_2
-      %p
-        %b City:
-        = @site.city
-      %p
-        %b State:
-        = @site.state
-      %p
-        %b Zipcode:
-        = @site.zipcode
 
-      %p
-        %b Reports:
-        %h5 Pending Reports
-        - unless @needs_attention_reports.empty?
-          - @needs_attention_reports.each do |report|
-            %ul
-              %li= link_to "Report for #{report.site.name}", edit_report_path(report)
-        - else
-          You have no pending reports.
+.row
+  .span8
+    %h2 Site information
+    %p#notice= notice
+    %p
+      %b Project:
+      = link_to @site.project.name, project_path(@site.project)
+    %p
+      %b Site Name:
+      = @site.name
+    %p
+      %b Description:
+      = @site.description
+    %p
+      %b Costcode:
+      = @site.costcode
+    %p
+      %b Size:
+      = @site.size
+    %p
+      %b Exposed area:
+      = @site.exposed_area
+    %p
+      %b Address:
+      = @site.address_1
+    %p
+      %b Address:
+      = @site.address_2
+    %p
+      %b City:
+      = @site.city
+    %p
+      %b State:
+      = @site.state
+    %p
+      %b Zipcode:
+      = @site.zipcode
 
-        %h5 Completed Reports
-        - unless @completed_reports.empty?
-          %ul
-            - @completed_reports.each do |cr|
-              %li= link_to "Completed Report for #{cr.site.name}", report_path(cr, :pdf)
+    = link_to 'Edit', edit_project_site_path(@site.project, @site)
+    \|
+    = link_to 'Back', project_path(@site.project_id)
 
-      = link_to 'Edit', edit_project_site_path(@site.project, @site)
-      \|
-      = link_to 'Back', sites_path
+  .span4= render 'sites/weather_report'

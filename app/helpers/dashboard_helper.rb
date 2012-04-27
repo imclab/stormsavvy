@@ -1,34 +1,28 @@
 module DashboardHelper
 
-include Typhoeus
-include Nokogiri
+=begin
+require 'weather/noaa_forecast'
+require 'weather/forecast_examiner'
 
-  def seven_day_temp(zipcode)
+  attr_reader :rain_state, :max_rain
 
-    #l = Location.where(:zipcode => zipcode).first
-    #xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=168&interval=6&lat=#{l.lat}&lon=#{l.long}"
-    l = Location.new
-    ll = l.latlong(zipcode.to_i)
-    xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=168&interval=6&lat=#{ll[0]}&lon=#{ll[1]}"
-#=begin    
-    
-    #table = "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{l.lat}&lon=#{l.long}&clrindex=0&table=custom&duration=7&interval=6"
-    request = Typhoeus::Request.new(xml,
-              :body          => "this is a request body",
-              :method        => :post,
-              :headers       => {:Accept => "text/html"},
-              :timeout       => 2000, # milliseconds
-              :cache_timeout => 60, # seconds
-              :params        => {:field1 => "a field"})
-    hydra = Typhoeus::Hydra.new
-    hydra.queue(request)
-    hydra.run
-    hydra.queue(request)
-    hydra.run
-    response = request.response
-    doc   = Nokogiri::XML(response.body)
-    #binding.pry
-    return doc.xpath("//temperature").map { |n| n.content.to_i }
-#=end
+  def chance_of_rain(zipcode)
+    zipcode = 90210 unless zipcode.present?
+    nf = NOAAForecast.new(zipcode)
+    nf.seven_day_weather(zipcode)
+    #precipitation_state(nf.noaa_forecast)
+    @max_rain = nf.noaa_forecast[0][0..4].max
   end
+
+  def precipitation_state(forecast)
+    if forecast == [[],[]]
+      @rain_state = :null
+      return
+    end
+    fe = ForecastExaminer.new(forecast)
+    fe.find_rain_chance()
+    @rain_state = fe.rain
+  end
+=end
+
 end

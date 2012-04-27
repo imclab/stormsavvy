@@ -27,3 +27,18 @@
     border-top: 1px solid #fff;
   }
 }
+
+#current_weather {
+  li {
+    list-style: none;
+    margin-left: -20px;
+  }
+
+  .span {
+    display: inline-block;
+    float: right;
+    width: 225px;
+    margin: 9px 0 0 0;
+    padding: 0;
+  }
+}

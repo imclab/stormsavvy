@@ -24,9 +24,13 @@ describe SitesController do
   # Site. As you add validations to Site, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:zipcode => 94530, :name => 'El Cerrito'}
   end
   
+  def project_attributes
+    {:name => 'v', :description => 'b', :startdate => 5.days.ago, :finishdate => 1.day.ago}
+  end
+
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # SitesController. Be sure to keep this updated too.
@@ -34,8 +38,18 @@ describe SitesController do
     {}
   end
 
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+  end
+
   describe "GET index" do
-    xit "assigns all sites as @sites" do
+
+    it "has a 200 status code" do
+      get :index#, :projects_id => 1
+      response.code.should eq("200")
+    end
+
+    it "assigns all sites as @sites" do
       site = Site.create! valid_attributes
       get :index, {}, valid_session
       assigns(:sites).should eq([site])
@@ -43,7 +57,7 @@ describe SitesController do
   end
 
   describe "GET show" do
-    xit "assigns the requested site as @site" do
+    it "assigns the requested site as @site" do
       site = Site.create! valid_attributes
       get :show, {:id => site.to_param}, valid_session
       assigns(:site).should eq(site)
@@ -51,52 +65,67 @@ describe SitesController do
   end
 
   describe "GET new" do
-    xit "assigns a new site as @site" do
+    it "assigns a new site as @site" do
       get :new, {}, valid_session
       assigns(:site).should be_a_new(Site)
     end
   end
 
   describe "GET edit" do
-    xit "assigns the requested site as @site" do
-      site = Site.create! valid_attributes
-      get :edit, {:id => site.to_param}, valid_session
+    it "assigns the requested site as @site" do
+      #site0 = Site.create! valid_attributes
+      #p site0.to_param
+      sign_in @user
+      @project = @user.projects.create! project_attributes
+      site = @project.sites.create! valid_attributes
+      get :edit, {:id => site.to_param, :project_id => @project.id}
       assigns(:site).should eq(site)
     end
   end
 
   describe "POST create" do
+
+    before(:each) do
+      @project = @user.projects.create! project_attributes
+    end
+
     describe "with valid params" do
-      xit "creates a new Site" do
+      it "creates a new Site" do
         expect {
-          post :create, {:site => valid_attributes}, valid_session
+          post :create, {:site => valid_attributes, :project_id => @project.id}
         }.to change(Site, :count).by(1)
       end
 
-      xit "assigns a newly created site as @site" do
-        post :create, {:site => valid_attributes}, valid_session
+      it "assigns a newly created site as @site" do
+        post :create, {:site => valid_attributes, :project_id => @project.id}
         assigns(:site).should be_a(Site)
         assigns(:site).should be_persisted
       end
 
-      xit "redirects to the created site" do
-        post :create, {:site => valid_attributes}, valid_session
-        response.should redirect_to(Site.last)
+      it "redirects to the created site" do
+        post :create, {:site => valid_attributes, :project_id => @project.id}
+        response.should redirect_to(project_site_path(@project.id, Site.last))
+      end
+
+      it "responds with flash message" do
+        sign_in @user
+        post :create, {:site => valid_attributes, :project_id => @project.id}
+        flash[:notice].should == "Site was successfully created."
       end
     end
 
     describe "with invalid params" do
-      xit "assigns a newly created but unsaved site as @site" do
+      it "assigns a newly created but unsaved site as @site" do
         # Trigger the behavior that occurs when invalid params are submitted
         Site.any_instance.stub(:save).and_return(false)
-        post :create, {:site => {}}, valid_session
+        post :create, {:site => {}, :project_id => @project.id}
         assigns(:site).should be_a_new(Site)
       end
 
-      xit "re-renders the 'new' template" do
+      it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Site.any_instance.stub(:save).and_return(false)
-        post :create, {:site => {}}, valid_session
+        post :create, {:site => {}, :project_id => @project.id}
         response.should render_template("new")
       end
     end
@@ -104,7 +133,7 @@ describe SitesController do
 
   describe "PUT update" do
     describe "with valid params" do
-      xit "updates the requested site" do
+      it "updates the requested site" do
         site = Site.create! valid_attributes
         # Assuming there are no other sites in the database, this
         # specifies that the Site created on the previous line
@@ -114,21 +143,28 @@ describe SitesController do
         put :update, {:id => site.to_param, :site => {'these' => 'params'}}, valid_session
       end
 
-      xit "assigns the requested site as @site" do
-        site = Site.create! valid_attributes
+      it "assigns the requested site as @site" do
+        #site = Site.create! valid_attributes
+        project = FactoryGirl.create(:project)
+        site = project.sites.create! valid_attributes
         put :update, {:id => site.to_param, :site => valid_attributes}, valid_session
         assigns(:site).should eq(site)
       end
 
-      xit "redirects to the site" do
-        site = Site.create! valid_attributes
+      it "redirects to the site" do
+        #site = Site.create! valid_attributes
+        project = FactoryGirl.create(:project)
+        site = project.sites.create! valid_attributes
         put :update, {:id => site.to_param, :site => valid_attributes}, valid_session
-        response.should redirect_to(site)
+        # http://guides.rubyonrails.org/routing.html#creating-paths-and-urls-from-objects
+        response.should redirect_to(project_site_path(project,site))
+        # This also works.
+        response.should redirect_to("/projects/#{project.id}/sites/#{site.id}")
       end
     end
 
     describe "with invalid params" do
-      xit "assigns the site as @site" do
+      it "assigns the site as @site" do
         site = Site.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Site.any_instance.stub(:save).and_return(false)
@@ -136,7 +172,7 @@ describe SitesController do
         assigns(:site).should eq(site)
       end
 
-      xit "re-renders the 'edit' template" do
+      it "re-renders the 'edit' template" do
         site = Site.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Site.any_instance.stub(:save).and_return(false)
@@ -147,14 +183,14 @@ describe SitesController do
   end
 
   describe "DELETE destroy" do
-    xit "destroys the requested site" do
+    it "destroys the requested site" do
       site = Site.create! valid_attributes
       expect {
         delete :destroy, {:id => site.to_param}, valid_session
       }.to change(Site, :count).by(-1)
     end
 
-    xit "redirects to the sites list" do
+    it "redirects to the sites list" do
       site = Site.create! valid_attributes
       delete :destroy, {:id => site.to_param}, valid_session
       response.should redirect_to(sites_url)

@@ -26,13 +26,20 @@ group :test, :development do
   gem 'sqlite3'
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'spork-rails'
+  gem 'pry-rails'
+  gem 'pry-nav'
+  gem 'awesome_print'
+  gem 'pdf-inspector', :require => "pdf/inspector"
+  # gem 'pry-stack_explorer'
 end
 
 gem 'pg'
 gem 'haml-rails'
-gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
+
+gem 'simplecov', :require => false, :group => :test
 
 group :assets do
+  gem "compass-rails"
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
@@ -45,3 +52,5 @@ gem 'devise'
 gem 'heroku'
 gem 'prawn'
 gem "prawnto"
+gem 'simple_form'
+gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"

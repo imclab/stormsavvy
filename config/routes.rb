@@ -1,7 +1,6 @@
 Stormsavvy::Application.routes.draw do
 
   get "dashboard/index"
-  get "dashboard/edit"
 
   get "sites", :to => "sites#users_sites"
 
@@ -18,22 +17,25 @@ Stormsavvy::Application.routes.draw do
     match "/reports/#{name}" => "reports##{name}"
   end
 
+  # Projects controller needs #show, redirect to root instead.
+  match '/projects' => 'dashboard#index', :via => :get
   resources :projects do
     resources :sites
   end
 
   resources :locations
 
-  match "/index", :to => "pages#index", :as => :index
-
-  match '/about',    :to => "pages#about", :as => :about
-  match '/terms',    :to => "pages#terms", :as => :terms
-  match '/faq',      :to => "pages#faq", :as => :faq
-  match '/privacy',  :to => "pages#privacy", :as => :privacy
-  match '/contact',  :to => "pages#contact", :as => :contact
+  match '/index',     :to => "pages#index",          :as => :index
+  match '/about',     :to => "pages#about",          :as => :about
+  match '/terms',     :to => "pages#terms",          :as => :terms
+  match '/faq',       :to => "pages#faq",            :as => :faq
+  match '/privacy',   :to => "pages#privacy",        :as => :privacy
+  match '/contact',   :to => "pages#contact",        :as => :contact
   match '/plans-and-pricing',  :to => "pages#plans", :as => :plans
-  match '/features',  :to => "pages#features", :as => :features
-  match '/team',      :to => "pages#team", :as => :team
+  match '/features',  :to => "pages#features",       :as => :features
+  match '/team',      :to => "pages#team",           :as => :team
+  match '/popemail',  :to => "pages#popemail",       :as => :popemail
+  match '/sendemail', :to => "pages#sendemail",      :as => :sendemail
 
   devise_for :users
 

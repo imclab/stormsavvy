@@ -10,15 +10,25 @@ describe "projects/new" do
     ).as_new_record)
   end
 
-  xit "renders new project form" do
+  it "renders new project form" do
     render
-
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => projects_path, :method => "post" do
-      assert_select "input#project_user_id", :name => "project[user_id]"
       assert_select "input#project_name", :name => "project[name]"
       assert_select "textarea#project_description", :name => "project[description]"
       assert_select "input#project_active", :name => "project[active]"
     end
+  end
+
+  # Flash message calling twitterized_type method in application helper.
+  xit "shows flash message" do
+    assign(:project, stub_model(Project,
+      :user_id => 2,
+      :name => "FlashTest",
+      :description => "SeeMessage",
+      :active => false
+    ).as_new_record)
+    rendered.should have_selector "data-alert",
+      :class => twitterized_type(:notice),
+      :count => 1
   end
 end

@@ -7,6 +7,9 @@
 # Ignore bundler config
 /.bundle
 
+# simplecov
+coverage
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
@@ -22,3 +25,5 @@
 .idea
 .rvmrc
 .DS_Store
+dump.rdb
+Gemfile.lock

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305005002) do
+ActiveRecord::Schema.define(:version => 20120416040431) do
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
@@ -86,16 +86,9 @@ ActiveRecord::Schema.define(:version => 20120305005002) do
     t.string   "contractor_address_1"
     t.string   "contractor_address_2"
     t.string   "contractor_city"
-    t.string   "contactor_state"
-    t.integer  "contactor_zipcode"
     t.string   "contract_number"
-    t.string   "project_identifer_number"
     t.string   "wdid_number"
     t.integer  "project_risk_level"
-    t.string   "water_polution_control_manager_name"
-    t.string   "water_polution_control_manager_company_name"
-    t.string   "water_polution_control_manager_phone_number"
-    t.string   "water_polution_control_manager_emergancy_phone_number"
     t.string   "inspector_name"
     t.date     "date_of_inspection"
     t.string   "weather_condition"
@@ -107,13 +100,37 @@ ActiveRecord::Schema.define(:version => 20120305005002) do
     t.decimal  "site_information_acres_current_phase_disturbed_soil_area"
     t.string   "inspection_type"
     t.string   "storm_information_time_elapsed_since_last_storm"
-    t.decimal  "storm_information_percipitation_since_last_storm"
     t.datetime "storm_information_time_storm_is_expected"
     t.decimal  "storm_information_time_elapsed_since_storm_began"
     t.decimal  "storm_information_time_elapsed_since_storm"
-    t.decimal  "storm_information_percipitation_amount_from_last_form"
-    t.decimal  "storm_information_expected_percipitaion_amount"
     t.string   "status"
+    t.date     "submitted_by_contractor"
+    t.date     "submitted_by_date"
+    t.string   "wpc_manager"
+    t.string   "wpc_phone"
+    t.string   "wpc_emergency_phone"
+    t.date     "inspection_date"
+    t.decimal  "total_area"
+    t.decimal  "total_DSA"
+    t.decimal  "current_DSA"
+    t.decimal  "inactive_DSA"
+    t.decimal  "time_elapsed_last_storm"
+    t.decimal  "precipitation_received"
+    t.decimal  "time_storm_expected"
+    t.decimal  "expected_precipitation_amount"
+    t.decimal  "time_elapsed_during_storm"
+    t.decimal  "gauge_reading_during_storm"
+    t.decimal  "time_elapsed_post_storm"
+    t.decimal  "gauge_reading_post_storm"
+    t.string   "contractor_state"
+    t.integer  "contractor_zipcode"
+    t.string   "water_pollution_control_manager_name"
+    t.string   "water_pollution_control_manager_company_name"
+    t.string   "water_pollution_control_manager_phone_number"
+    t.string   "water_pollution_control_manager_emergency_phone_number"
+    t.decimal  "storm_information_expected_precipitation_amount"
+    t.decimal  "storm_information_precipitation_amount_from_last_form"
+    t.string   "project_identifier_number"
   end
 
   create_table "site_pops", :force => true do |t|
@@ -135,7 +152,7 @@ ActiveRecord::Schema.define(:version => 20120305005002) do
     t.datetime "updated_at",   :null => false
     t.integer  "user_id"
     t.integer  "project_id"
-    t.integer  "zipcode"
+    t.string   "zipcode"
     t.float    "lat"
     t.float    "long"
     t.string   "address_1"
@@ -164,8 +181,8 @@ ActiveRecord::Schema.define(:version => 20120305005002) do
     t.string   "contractor_address_1"
     t.string   "contractor_address_2"
     t.string   "contractor_city"
-    t.string   "contactor_state"
-    t.integer  "contactor_zipcode"
+    t.string   "contractor_state"
+    t.string   "contractor_zipcode"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

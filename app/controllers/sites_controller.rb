@@ -3,6 +3,7 @@ class SitesController < ApplicationController
   # GET /sites.json
   def index
     @sites = Site.all
+    @needs_attention_reports = Report.needs_attention
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,11 +49,14 @@ class SitesController < ApplicationController
   # POST /sites
   # POST /sites.json
   def create
-    @site = Site.new(params[:site])
+    #site = Site.new(params[:site])
+    @project = Project.find(params[:project_id])
+    @site = @project.sites.build(params[:site])
 
     respond_to do |format|
       if @site.save
-        format.html { redirect_to @site, notice: 'Site was successfully created.' }
+        #format.html { redirect_to @site, notice: 'Site was successfully created.' }
+        format.html { redirect_to project_site_path(@site.project_id, @site), notice: 'Site was successfully created.' }
         format.json { render json: @site, status: :created, location: @site }
       else
         format.html { render action: "new" }

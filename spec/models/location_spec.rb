@@ -3,14 +3,22 @@ require 'spec_helper'
 describe Location do
 
   before(:each) do
-    @location = Factory(:location)
+    @location = FactoryGirl.create(:location)
   end
 
-  xit "should have a valid location" do
+  it "should have a valid location" do
     @location.should be_valid
   end
 
-  xit "should return coordinates given zipcode" do
-    @location.lat.should == 37.9202057
+  it "should geocode on the address" do
+    location = Location.new({ :address_1 => '6016 B Avila St.',
+                              :address_2 => '6016 B Avila St.',
+                              :city      => 'El Cerrito',
+                              :state     => 'CA',
+                              :zipcode   => 94530 })
+    location.should be_valid
+    location.save
+    location.lat.should  ==  37.9028433
+    location.long.should == -122.3052743
   end
 end

@@ -16,7 +16,10 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+
     @project = current_user.projects.find(params[:id])
+    @sites = @project.sites
+    @needs_attention_reports = Report.needs_attention
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,6 +47,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = current_user.projects.build(params[:project])
+    @project.save
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -62,6 +66,8 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
+        # Flash message test using Twitter Bootstrap applicaton helper method
+        # flash[:notice] = "Flash message test"
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
