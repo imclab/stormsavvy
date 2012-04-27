@@ -30,6 +30,7 @@ group :test, :development do
   gem 'pry-nav'
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
+  gem 'therubyracer'
   # gem 'pry-stack_explorer'
 end
 
@@ -52,5 +53,6 @@ gem 'devise'
 gem 'heroku'
 gem 'prawn'
 gem "prawnto"
+gem 'pdf-reader'
 gem 'simple_form'
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
