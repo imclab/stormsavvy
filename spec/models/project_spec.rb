@@ -100,17 +100,17 @@ describe Project do
   describe "date format validations" do
 
     it "start date should be less than finish date" do
-      @project = project.new(@attr)
+      @project = Project.new(@attr)
       @project.startdate.should < @project.finishdate
     end
 
     it "start date should not be greater than finish date" do
-      @project = @project.new(@attr)
+      @project = Project.new(@attr)
       @project.startdate.should_not > @project.finishdate
     end
 
     it "finish date should raise error" do
-      @project = @project.new(@attr)
+      @project = Project.new(@attr)
       @project.finishdate=(DateTime.new(1999))
       expect {
         @project.save!
