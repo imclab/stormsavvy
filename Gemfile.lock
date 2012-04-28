@@ -308,6 +308,7 @@ DEPENDENCIES
   nested_form!
   nokogiri
   pdf-inspector
+  pdf-reader
   pg
   prawn
   prawnto
@@ -322,6 +323,7 @@ DEPENDENCIES
   simplecov
   spork-rails
   sqlite3
+  therubyracer
   twitter-bootstrap-rails
   typhoeus
   uglifier (>= 1.0.3)
