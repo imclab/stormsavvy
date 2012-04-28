@@ -9,7 +9,7 @@ describe "reports/edit" do
     @report = FactoryGirl.create(:report)
   end
 
-  xit "renders the edit report form" do
+  it "renders the edit report form" do
     render
     assert_select "form", :method => 'post' do 
       assert_select "input#report_site_information_name", 
@@ -17,7 +17,7 @@ describe "reports/edit" do
     end
   end
 
-  xit "renders the edit report form" do
+  it "renders the edit report form" do
     render
     assert_select "form", :method => 'post' do 
       assert_select "input#report_site_address_1", 
@@ -53,10 +53,19 @@ describe "reports/edit" do
       assert_select "input#report_status", 
            :name => "report[status]"
 
-#      assert_select "input#report_submitted_by_contractor", 
-#           :name => "report[submitted_by_contractor]"
-#      assert_select "input#report_submitted_by_date", 
-#           :name => "report[submitted_by_date]"
+     assert_select "select#report_submitted_by_contractor_1i", 
+          :name => "report[submitted_by_contractor(1i)]"
+     assert_select "select#report_submitted_by_contractor_2i", 
+          :name => "report[submitted_by_contractor(2i)]"
+     assert_select "select#report_submitted_by_contractor_3i", 
+          :name => "report[submitted_by_contractor(3i)]"
+
+     assert_select "select#report_submitted_by_date_1i", 
+          :name => "report[submitted_by_date(1i)]"
+     assert_select "select#report_submitted_by_date_2i", 
+          :name => "report[submitted_by_date(2i)]"
+     assert_select "select#report_submitted_by_date_3i", 
+          :name => "report[submitted_by_date(3i)]"
 
       assert_select "input#report_wpc_manager", 
            :name => "report[wpc_manager]"
