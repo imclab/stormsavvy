@@ -2,6 +2,21 @@
   .span12
     %h2 Edit Report
     = simple_nested_form_for @report do |f|
+      .row
+        .span4
+          %fieldset#weather_conditions
+            %legend Weather Conditions
+            = f.collection_radio_buttons :weather_condition, [[:clear, 'Clear'] ,[:partly_cloudy, 'Partly Cloudy'], [:cloudy, 'Cloudy']], :first, :last
+        .span4
+          %fieldset#wind_conditions
+            %legend Wind Conditions
+            = f.collection_radio_buttons :wind_condition, [[:none, 'None'] ,[:lessthan5, 'Less than 5 mph'], [:greaterthan5, 'Greater than 5 mph']], :first, :last
+
+        .span4
+          %fieldset#precipitation_conditions
+            %legend Precipitation Conditions
+            = f.collection_radio_buttons :precipitation_condition, [[:misty, 'Misty'], [:light_rain, 'Light Rain'], [:rain, 'Rain'], [:heavy_rain, 'Heavy Rain'], [:hail, 'Hail'], [:snow, 'Snow']], :first, :last
+
       %fieldset#site_information
         %legend Site Information
         = f.input :site_information_name, :input_html => { :value => @report.site_information_name }
@@ -42,12 +57,6 @@
         %legend Inspector Name
         = f.input :inspector_name, :input_html => { :value => @report.inspector_name }
         = f.input :inspection_date, :input_html => { :value => @report.inspection_date }
-
-      %fieldset#weather_conditions
-        %legend Weather Conditions
-        = f.input :weather_condition, :input_html => { :value => @report.weather_condition }
-        = f.input :precipitation_condition, :input_html => { :value => @report.precipitation_condition }
-        = f.input :wind_condition, :input_html => { :value => @report.wind_condition }      
 
       %fieldset#construction_phase
         %legend Construction Phase

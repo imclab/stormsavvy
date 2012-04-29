@@ -15,7 +15,9 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :background => "#{Rails.root}/public/reports/cem2030/cem-2030-1.png", :scale => 0.5}, :inline=>true
+        # Comment out png background rendering, reset later
+        # prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :background => "#{Rails.root}/public/reports/cem2030/cem-2030-1.png", :scale => 0.5}, :inline=>true
+        prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :scale => 0.5}, :inline=>true
       end
     end
   end
