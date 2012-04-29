@@ -45,7 +45,9 @@
 
       %fieldset#weather_conditions
         %legend Weather Conditions
-        = f.input :weather_condition, :input_html => { :value => @report.weather_condition }
+        = f.collection_radio_buttons :weather_condition, [[:clear, 'Clear'] ,[:partly_cloudy, 'Partly Cloudy'], [:cloudy, 'Cloudy']], :first, :last
+        / = f.check_box :weather_condition
+        -#= f.collection_check_boxes :hint => true, [[true, 'Yes'] ,[false, 'No']], :first, :last
         = f.input :precipitation_condition, :input_html => { :value => @report.precipitation_condition }
         = f.input :wind_condition, :input_html => { :value => @report.wind_condition }      
 
