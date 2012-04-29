@@ -12,10 +12,30 @@ describe "reports/edit" do
   it "renders the edit report form" do
     render
     assert_select "form", :method => 'post' do 
-      assert_select "input#report_site_information_name", 
-           :name => "report[site_information_name]"
+      assert_select "input#report_site_information_name" 
     end
   end
+
+  it "renders fieldset for weather conditions" do
+    render
+    assert_select "form", :method => 'post' do
+      assert_select "fieldset#weather_conditions" do
+        assert_select "input#report_weather_condition_clear",
+          :name => "report[weather_condition]",
+          :value => 'clear',
+          :content => 'Clear'
+        assert_select "input#report_weather_condition_partly_cloudy",
+          :name => "report[weather_condition]",
+          :value => 'partly_cloudy',
+          :content => 'Partly Cloudy'
+        assert_select "input#report_weather_condition_cloudy",
+          :name => "report[weather_condition]",
+          :value => 'cloudy',
+          :content => 'Cloudy'  
+      end
+    end
+  end
+
 
   it "renders the edit report form" do
     render
@@ -83,8 +103,6 @@ describe "reports/edit" do
       assert_select "select#report_inspection_date_3i",
            :name => "report[inspection_date(3i)]"
 
-      assert_select "input#report_weather_condition", 
-           :name => "report[weather_condition]"      
       assert_select "input#report_precipitation_condition", 
            :name => "report[precipitation_condition]"
       assert_select "input#report_wind_condition", 
@@ -120,7 +138,7 @@ describe "reports/edit" do
       assert_select "input#report_time_elapsed_post_storm", 
            :name => "report[time_elapsed_post_storm]"           
       assert_select "input#report_gauge_reading_post_storm", 
-           :name => "report[gauge_reading_post_storm]"      
+           :name => "report[gauge_reading_post_storm]"  
     end
   end
 end
