@@ -11,7 +11,7 @@ address_string = ["#{@report.site_information_name}\n",
 				 "#{@report.site_address_2}\n",
 				 "#{@report.contractor_city}\n",
 				 "#{@report.contractor_state}"].join
-# address_string = "asdffoobarbaz \n asdf foo bar baz \n asdf foo bar baz"
+# address_string = "test string here \n more text here \n and some more here"
 
 pdf.stroke_color('FF0000')
 pdf.stroke_bounds
