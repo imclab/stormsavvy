@@ -17,6 +17,13 @@
             %legend Precipitation Conditions
             = f.collection_radio_buttons :precipitation_condition, [[:misty, 'Misty'], [:light_rain, 'Light Rain'], [:rain, 'Rain'], [:heavy_rain, 'Heavy Rain'], [:hail, 'Hail'], [:snow, 'Snow']], :first, :last
 
+      .row
+        .span6
+          %fieldset#construction_phase
+            %legend Construction Phase
+            = f.input :construction_phase, :input_html => { :value => @report.construction_phase }
+
+
       %fieldset#site_information
         %legend Site Information
         = f.input :site_information_name, :input_html => { :value => @report.site_information_name }
@@ -57,10 +64,6 @@
         %legend Inspector Name
         = f.input :inspector_name, :input_html => { :value => @report.inspector_name }
         = f.input :inspection_date, :input_html => { :value => @report.inspection_date }
-
-      %fieldset#construction_phase
-        %legend Construction Phase
-        = f.input :construction_phase, :input_html => { :value => @report.construction_phase }
 
       %fieldset#site_area
         %legend Site Area
