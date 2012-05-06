@@ -6,6 +6,22 @@ pdf.text @report.contractor_city
 pdf.text @report.contractor_state
 # pdf.text @report.contractor_zipcode
 
+address_string = ["#{@report.site_information_name}\n",
+				 "#{@report.site_address_1}\n",
+				 "#{@report.site_address_2}\n",
+				 "#{@report.contractor_city}\n",
+				 "#{@report.contractor_state}"].join
+# address_string = "test string here \n more text here \n and some more here"
+
+pdf.stroke_color('FF0000')
+pdf.stroke_bounds
+pdf.fill_color "ffff00"
+pdf.fill_rectangle([0, 850], 200, 75)
+pdf.fill_color(100,0,0,0)
+options = {:size => 20, :width => 350, :height => 150, :at => [0, 800]}
+pdf.text_box(address_string, options) 
+
+pdf.move_down 90
 pdf.text @report.contract_number
 pdf.text @report.project_identifier_number
 pdf.text @report.wdid_number
