@@ -31,6 +31,7 @@ group :test, :development do
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'therubyracer'
+  gem 'email_spec'
   # gem 'pry-stack_explorer'
 end
 
