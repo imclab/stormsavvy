@@ -1,5 +1,9 @@
 Stormsavvy::Application.routes.draw do
 
+  get "alert_pages/sender"
+
+  get "alert_pages/thankyou"
+
   get "dashboard/index"
 
   get "sites", :to => "sites#users_sites"
