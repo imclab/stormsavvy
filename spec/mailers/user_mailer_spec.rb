@@ -18,11 +18,6 @@ describe UserMailer do
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
-  xit "should send weather forecast emails" do
-    user = FactoryGirl.create(:user)
-    UserMailer.noaa_forecast(user.email).deliver
-    ActionMailer::Base.deliveries.should_not be_empty
-  end
 
   it "should send something via mailout" do   
     user = FactoryGirl.create(:user)
