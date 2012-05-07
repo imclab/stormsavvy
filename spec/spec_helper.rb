@@ -6,6 +6,13 @@ require 'spork'
 require "prawn"
 require "pdf/reader"
 require "pdf/inspector"
+require "email_spec"
+
+RSpec.configure do |config|
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
+end
+
 Prawn.debug = true
 
 def create_pdf(klass=Prawn::Document)
