@@ -1,7 +1,8 @@
 
 .row
   .span8#project-attributes
-    %p#notice= notice
+    - if notice
+      %p#notice.alert.alert-success= notice
     %h2 Project page
     %p
       %b Name:
