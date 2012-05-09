@@ -43,8 +43,13 @@ describe ReportsController do
   end
 
   describe "POST create" do
+
+    before :each do
+      # Pull out create method call into before block
+      post :create, {:report => valid_attributes}, valid_session
+    end
+
     describe "with valid params" do
-      # Comment out spec until report attributes are flushed out.
       xit "creates new Report" do
         expect {
           post :create, {:report => valid_attributes}, valid_session
