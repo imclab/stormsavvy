@@ -28,6 +28,13 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(params[:report])
+    respond_to do |format|
+    format.html do
+       render :partial => "/reports/reports"
+   end
+end    
+  end
+
   end
 
   def edit
@@ -43,7 +50,7 @@ class ReportsController < ApplicationController
       else
         format.html { render action: "edit" }
         format.json { render json: @report.errors, status: :unprocessable_entity }
-    end
+      end
     end
   end
 
