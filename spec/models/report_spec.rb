@@ -22,13 +22,14 @@ describe Report do
 
   context :report do 
 
-    # before(:each) do 
-    #   @report = FactoryGirl.create(:report)
-    #   @report2 = Report.new
-    # end
+    before(:each) do 
+      @report = FactoryGirl.create(:report)
+      @report2 = Report.new
+    end
 
-    xit "should be able to add 1 site" do
-      @project.site.reports.count.should == 1
+    it "should be able to add 1 site" do
+      expect { Report.create }.to change(Report, :count).by(+1)
+      # @report.count.should == 1
     end
 
     xit "should not able to add invalid reports" do
