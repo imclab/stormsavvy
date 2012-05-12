@@ -30,7 +30,23 @@ describe Report do
       @reports = [@r1, @r2]
     end
 
-    it "should be able to add 1 site" do
+    it "should add 3 reports" do
+      FactoryGirl.create(:report)
+      FactoryGirl.create(:report)
+      FactoryGirl.create(:report)
+      Report.count.should == 5
+    end
+
+    it "should work with insert method" do
+      [@r3, @r4].each do |r|
+        FactoryGirl.create(:report)
+      end
+
+      @reports.insert(2, @r3, @r4)
+      @reports.count.should == 4
+    end
+
+    it "should be able to add 1 report" do
       expect { Report.create }.to change(Report, :count).by(+1)
     end
 
