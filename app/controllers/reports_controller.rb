@@ -31,8 +31,7 @@ class ReportsController < ApplicationController
     respond_to do |format|
     format.html do
        render :partial => "/reports/reports"
-   end
-end    
+    end    
   end
 
   end
