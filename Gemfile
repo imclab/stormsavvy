@@ -32,6 +32,7 @@ group :test, :development do
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'therubyracer'
   gem 'email_spec'
+  gem 'rspec-http', '~> 0.9'
   # gem 'pry-stack_explorer'
 end
 
