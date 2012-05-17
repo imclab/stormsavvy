@@ -22,27 +22,10 @@ class UserMailer < ActionMailer::Base
     mail(:to => email, :subject => 'Storm Savvy is working great today!')
   end
 
-  # NOAA-specific data
-  def noaa_forecast(email)
-    @users = User.all
-    @users.each do |user|
-      user.sites.each do |s|
-        @greeting = "Hi #{user.email}"
-        @forecast = s.forecast
-        mail(:to => user.email, :subject => "Storm Savvy NOAA Forecast for #{s.name}").deliver
-      end
-#      if user.has_site?
-#        @site = user.sites[0]
-#        mail(:to => user.email, :subject => "Storm Savvy NOAA Forecast for #{@site.name}").deliver
-#      end
-    end
-    #mail(:to => email, :subject => 'Storm Savvy NOAA Forecast')
-  end
-
   def mailout(to = nil)
     @users = User.all
-    User.all.each do |user|
-      @user = user 
+    @users.each do |user|
+      @user = user # `@user` is needed for the template
       if user.has_site?
         mail(:to => user.email, :subject => "Project estimate").deliver
       end

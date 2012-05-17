@@ -1,5 +1,9 @@
 Stormsavvy::Application.routes.draw do
 
+  get "alert_pages/sender"
+
+  get "alert_pages/thankyou"
+
   get "dashboard/index"
 
   get "sites", :to => "sites#users_sites"
@@ -11,7 +15,7 @@ Stormsavvy::Application.routes.draw do
 
   resources :inspection_events
   resources :weather_events
-  resources :reports
+  resources :reports 
 
   ReportsController::STATIC_REPORTS.each do |name|
     match "/reports/#{name}" => "reports##{name}"

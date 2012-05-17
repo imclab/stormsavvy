@@ -22,31 +22,52 @@ describe Report do
 
   context :report do 
 
-    # before(:each) do 
-    #   @report = FactoryGirl.create(:report)
-    #   @report2 = Report.new
-    # end
+    before(:each) do 
+      [@r1, @r2].each do |r|
+        FactoryGirl.create(:report)
+      end
 
-    xit "should be able to add 1 site" do
-      @project.site.reports.count.should == 1
+      @reports = [@r1, @r2]
     end
 
-    xit "should not able to add invalid reports" do
-      @project.site.reports << Report.new
-      @project.site.reports.count.should == 1
+    it "should add 3 reports" do
+      FactoryGirl.create(:report)
+      FactoryGirl.create(:report)
+      FactoryGirl.create(:report)
+      Report.count.should == 5
     end
 
-    xit "should be able to add multiple reports" do
-      @project.site.reports << @report2
-      @report2.save
-      @project.site.reports.count.should be > 1
+    it "should work with insert method" do
+      [@r3, @r4].each do |r|
+        FactoryGirl.create(:report)
+      end
+
+      @reports.insert(2, @r3, @r4)
+      @reports.count.should == 4
+    end
+
+    it "should be able to add 1 report" do
+      expect { Report.create }.to change(Report, :count).by(+1)
+    end
+
+    it "should not able to add invalid reports" do
+      @r3 = Report.create
+      expect { @reports << @r3 }.to change(Report, :count).by(0)
+    end
+
+    it "should be able to add multiple reports" do
+      [@r3, @r4].each do |r|
+        FactoryGirl.create(:report)
+      end
+      
+      @reports.push(@r3, @r4)
+      @reports.count.should == 4
     end
     
-    xit "should be able to delete an added site" do
-      precount = @project.site.reports.count
-      @project.site.reprots << @site2
-      @project.site.reports.delete
-      @project.site.reports.count.should == precount
+    it "should be able to delete an added site" do
+      precount = @reports.count
+      @reports.delete_at(1)
+      @reports.count.should == precount - 1
     end
   end
 

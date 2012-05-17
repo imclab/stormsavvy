@@ -50,6 +50,7 @@ class ProjectsController < ApplicationController
     @project.save
     respond_to do |format|
       if @project.save
+#        format.html { redirect_to(@project, :flash => { :success => 'Project was successfully created.'}) }
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else

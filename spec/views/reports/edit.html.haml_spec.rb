@@ -9,15 +9,75 @@ describe "reports/edit" do
     @report = FactoryGirl.create(:report)
   end
 
-  xit "renders the edit report form" do
+  it "renders the edit report form" do
     render
     assert_select "form", :method => 'post' do 
-      assert_select "input#report_site_information_name", 
-           :name => "report[site_information_name]"
+      assert_select "input#report_site_information_name" 
     end
   end
 
-  xit "renders the edit report form" do
+  it "renders fieldset for weather conditions" do
+    render
+    assert_select "form", :method => 'post' do
+      assert_select "fieldset#weather_conditions" do
+        assert_select "input#report_weather_condition_clear",
+          :name => "report[weather_condition]",
+          :value => 'clear',
+          :content => 'Clear'
+        assert_select "input#report_weather_condition_partly_cloudy",
+          :name => "report[weather_condition]",
+          :value => 'partly_cloudy',
+          :content => 'Partly Cloudy'
+        assert_select "input#report_weather_condition_cloudy",
+          :name => "report[weather_condition]",
+          :value => 'cloudy',
+          :content => 'Cloudy'  
+      end
+    end
+  end
+
+  it "renders fieldset for wind conditions" do
+    render
+    assert_select "form", :method => 'post' do
+      assert_select "fieldset#wind_conditions" do
+        assert_select "input#report_wind_condition_none",
+          :name => "report[wind_condition]",
+          :value => 'none',
+          :content => 'None'
+        assert_select "input#report_wind_condition_lessthan5",
+          :name => "report[wind_condition]",
+          :value => 'lessthan5',
+          :content => 'Less than 5 mph'
+        assert_select "input#report_wind_condition_greaterthan5",
+          :name => "report[wind_condition]",
+          :value => 'greaterthan5',
+          :content => 'Greater than 5 mph'  
+      end
+    end
+  end
+
+  it "renders fieldset for precipitation conditions" do
+    render
+    assert_select "form", :method => 'post' do
+      assert_select "fieldset#precipitation_conditions" do
+        assert_select "input#report_precipitation_condition_misty",
+          :name => "report[precipitation_condition]",
+          :value => 'misty',
+          :content => 'Misty'
+        assert_select "input#report_precipitation_condition_light_rain",
+          :name => "report[precipitation_condition]",
+          :value => 'light_rain',
+          :content => 'Light Rain'
+        assert_select "input#report_precipitation_condition_rain",
+          :name => "report[precipitation_condition]",
+          :value => 'rain',
+          :content => 'Rain'  
+      end
+    end
+  end
+
+
+  it "renders the edit report form" do
     render
     assert_select "form", :method => 'post' do 
       assert_select "input#report_site_address_1", 
@@ -53,10 +113,19 @@ describe "reports/edit" do
       assert_select "input#report_status", 
            :name => "report[status]"
 
-#      assert_select "input#report_submitted_by_contractor", 
-#           :name => "report[submitted_by_contractor]"
-#      assert_select "input#report_submitted_by_date", 
-#           :name => "report[submitted_by_date]"
+     assert_select "select#report_submitted_by_contractor_1i", 
+          :name => "report[submitted_by_contractor(1i)]"
+     assert_select "select#report_submitted_by_contractor_2i", 
+          :name => "report[submitted_by_contractor(2i)]"
+     assert_select "select#report_submitted_by_contractor_3i", 
+          :name => "report[submitted_by_contractor(3i)]"
+
+     assert_select "select#report_submitted_by_date_1i", 
+          :name => "report[submitted_by_date(1i)]"
+     assert_select "select#report_submitted_by_date_2i", 
+          :name => "report[submitted_by_date(2i)]"
+     assert_select "select#report_submitted_by_date_3i", 
+          :name => "report[submitted_by_date(3i)]"
 
       assert_select "input#report_wpc_manager", 
            :name => "report[wpc_manager]"
@@ -73,13 +142,6 @@ describe "reports/edit" do
            :name => "report[inspection_date(2i)]"
       assert_select "select#report_inspection_date_3i",
            :name => "report[inspection_date(3i)]"
-
-      assert_select "input#report_weather_condition", 
-           :name => "report[weather_condition]"      
-      assert_select "input#report_precipitation_condition", 
-           :name => "report[precipitation_condition]"
-      assert_select "input#report_wind_condition", 
-           :name => "report[wind_condition]"
 
       assert_select "input#report_construction_phase", 
            :name => "report[construction_phase]"
@@ -111,7 +173,7 @@ describe "reports/edit" do
       assert_select "input#report_time_elapsed_post_storm", 
            :name => "report[time_elapsed_post_storm]"           
       assert_select "input#report_gauge_reading_post_storm", 
-           :name => "report[gauge_reading_post_storm]"      
+           :name => "report[gauge_reading_post_storm]"  
     end
   end
 end

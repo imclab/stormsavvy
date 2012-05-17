@@ -32,4 +32,10 @@ describe "projects/show" do
     render
     render.should have_selector('div#project-sidebar')
   end
+
+  it "renders flash message" do
+    flash[:notice] = "This is a flash message"
+    render 
+    rendered.should =~ /This is a flash message/
+  end
 end
