@@ -33,7 +33,8 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @sites = @project.sites.build
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render html: @project, :notice => 'show me the money',
+                    :flash => { :error => 'Error here' } }
       format.json { render json: @project }
     end
   end
@@ -54,7 +55,9 @@ class ProjectsController < ApplicationController
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
-        format.html { render action: "new" }
+        #binding.pry
+        #format.html { render action: "new", notice: 'Project was unsuccessfully created.' }
+        format.html { render action: "new", :flash => { :error => 'Please fix the problems shown.' } }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end

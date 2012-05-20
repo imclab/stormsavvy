@@ -15,6 +15,10 @@
     .bottom-10
     = render :partial => "pages/hero" if is_public_home?
     .container
+      - flash.each do |name, msg|
+        %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+          %a.close{"data-dismiss" => "alert"} ×
+          -#= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
       = yield
 
     = render 'layouts/footer'

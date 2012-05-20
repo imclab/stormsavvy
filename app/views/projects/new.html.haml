@@ -1,6 +1,19 @@
 
 .row
+  -# flash = { :error => 'Error message defined in the view =(' }
+  %p Some text here.
+  - flash.each do |name, msg|
+    %h4 We got a flash message
+    %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+      %a.close{"data-dismiss" => "alert"} ×
+      -#= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+      %p= msg
+  -# notice = 'wtf?'
+  - if notice
+    %h4 Got a notice
+    %p#notice.alert.alert-success= notice
   .span12
+
     %h1 New project
 
     = render 'form'

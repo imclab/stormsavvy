@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails'
 gem 'typhoeus'
@@ -24,7 +24,7 @@ group :test, :development do
   gem 'capybara', :git => 'https://github.com/doolin/capybara'
   gem 'cucumber'
   gem 'sqlite3'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+#  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'spork-rails'
   gem 'pry-rails'
   gem 'pry-nav'
@@ -32,8 +32,8 @@ group :test, :development do
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'therubyracer'
   gem 'email_spec'
-  gem 'rspec-http', '~> 0.9'
-  gem 'rest-assured'
+#  gem 'rspec-http', '~> 0.9'
+#  gem 'rest-assured'
   # gem 'pry-stack_explorer'
 end
 
@@ -48,7 +48,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
-
 end
 
 gem 'jquery-rails'
