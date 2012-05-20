@@ -20,7 +20,7 @@ describe "projects/new" do
   end
 
   # Flash message calling twitterized_type method in application helper.
-  xit "shows flash message" do
+  it "shows flash message" do
     flash[:error] = "Form fields are incorrect"
     render
     p rendered
