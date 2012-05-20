@@ -33,6 +33,7 @@ group :test, :development do
   gem 'therubyracer'
   gem 'email_spec'
   gem 'rspec-http', '~> 0.9'
+  gem 'rest-assured'
   # gem 'pry-stack_explorer'
 end
 
