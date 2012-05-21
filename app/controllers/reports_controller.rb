@@ -53,6 +53,18 @@ class ReportsController < ApplicationController
     end
   end
 
+  # DELETE /reports/1
+  # DELETE /reports/1.json
+  def destroy
+    @report = Report.find(params[:id])
+    @report.destroy
+
+    respond_to do |format|
+      format.html { redirect_to projects_url }
+      format.json { head :no_content }
+    end
+  end
+
   def CEM2035
     pdf = Prawn::Document.new
     pdf.text "CEM2035"
