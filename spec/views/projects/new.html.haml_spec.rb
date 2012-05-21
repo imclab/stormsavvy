@@ -23,7 +23,7 @@ describe "projects/new" do
   it "shows flash message" do
     flash[:error] = "Form fields are incorrect"
     render
-    p rendered
+    #p rendered
     rendered.should have_selector('div.alert-error')#, :class => twitterized_type(:alert), :count => 1)
   end
 end
