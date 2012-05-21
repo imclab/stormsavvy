@@ -38,4 +38,11 @@ describe "projects/show" do
     render 
     rendered.should =~ /This is a flash message/
   end
+
+  it "renders edit / back / delete" do
+    render
+    rendered.should match(/Edit/)
+    rendered.should match(/Back/)
+    rendered.should match(/Delete/)
+  end
 end
