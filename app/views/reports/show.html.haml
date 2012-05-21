@@ -4,5 +4,7 @@
       View Report
       .small
         = link_to "Download PDF", report_path(@report, :pdf)
-    %b Site:
-    = link_to @report.site.name, project_site_path(@report.site.project, @report.site)
+        \|
+        = link_to 'Delete', report_path(@report), :method => :delete
+      %b Site:
+      = link_to @report.site.name, project_site_path(@report.site.project, @report.site)
