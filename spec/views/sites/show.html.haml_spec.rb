@@ -19,4 +19,11 @@ describe "sites/show" do
     rendered.should match(/Size/)
     rendered.should match(/Exposed Area/)
   end
+
+  it "has Edit / Back / Delete" do
+    render
+    rendered.should match(/Edit/)
+    rendered.should match(/Back/)
+    rendered.should match(/Delete/)
+  end
 end
