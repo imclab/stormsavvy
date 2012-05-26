@@ -32,6 +32,10 @@ describe "dashboard/index" do
       view.should render_template('dashboard/_sidebar')
     end
 
+    it "Dashboard contains new report link" do
+      render
+      rendered.should have_selector('div#dashboard-sidebar')
+      rendered.should =~ /New Report/
+    end
   end
-
 end
