@@ -21,3 +21,8 @@
           = link_to "Report for #{report.site.name}", edit_report_path(report)
       - else
         You have no pending reports.
+    .inner
+      %h5 New Report
+      %hr
+        = link_to "New Report", new_report_path
+

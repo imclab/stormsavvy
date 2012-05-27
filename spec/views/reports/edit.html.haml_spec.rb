@@ -11,7 +11,6 @@ describe "reports/edit" do
 
   it "renders the edit report form" do
     render
-    p rendered
     assert_select "form", :method => 'post' do 
       assert_select "input#report_site_information_name" 
     end
