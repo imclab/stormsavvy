@@ -14,6 +14,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def pop_alert(user)
+    @greeting = "Here daily weather alerts for each of your sites: "
     mail(:to => user.email, :subject => "Daily weather alerts")
   end
 
