@@ -80,7 +80,7 @@ class ReportsController < ApplicationController
 
   def CEM2052
     pdf = Prawn::Document.new
-    pdf.text "CEM2057"
+    pdf.text "CEM2052"
     send_data pdf.render, type: "application/pdf", disposition: "inline"
   end
 
