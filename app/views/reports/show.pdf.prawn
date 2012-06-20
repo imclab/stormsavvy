@@ -14,8 +14,9 @@ address_string = ["#{@report.site_information_name}\n",
 				 "#{@report.contractor_state}"].join
 # address_string = "test string here \n more text here \n and some more here"
 
-pdf.stroke_color('FF0000')
-pdf.stroke_bounds
+# pdf.stroke_color('FF0000')
+# pdf.stroke_bounds
+
 pdf.fill_color "ffff00"
 pdf.fill_rectangle([0, 850], 200, 75)
 pdf.fill_color(100,0,0,0)

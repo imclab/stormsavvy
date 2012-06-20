@@ -1,4 +1,7 @@
-fieldset#weather_conditions, fieldset#wind_conditions, fieldset#precipitation_conditions {
+fieldset#weather_conditions, 
+fieldset#wind_conditions, 
+fieldset#precipitation_conditions 
+{
 
 	border-style: solid;
   border-width: 2px;
@@ -6,7 +9,7 @@ fieldset#weather_conditions, fieldset#wind_conditions, fieldset#precipitation_co
 
   legend {
   	margin-top: 15px;
-  	border: solid 1px;
+  	border: solid 2px;
 		color: #A32100;
 		font-size: 100%;
   }

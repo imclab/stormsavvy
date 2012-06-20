@@ -18,6 +18,9 @@ class ReportsController < ApplicationController
         # Comment out png background rendering, reset later
         prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :background => "#{Rails.root}/public/reports/cem2030/cem-2030-1.png", :scale => 0.5}, :inline=>true
         prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :scale => 0.5}, :inline=>true
+
+        # Alternative path for storing pdf images
+        prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :background => "#{Rails.root}/app/assets/images/cem-2030-1.png", :scale => 0.5}, :inline=>true
       end
     end
   end
@@ -80,7 +83,7 @@ class ReportsController < ApplicationController
 
   def CEM2052
     pdf = Prawn::Document.new
-    pdf.text "CEM2057"
+    pdf.text "CEM2052"
     send_data pdf.render, type: "application/pdf", disposition: "inline"
   end
 
