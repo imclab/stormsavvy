@@ -1,4 +1,4 @@
-= form_for @report do |f|
+= simple_nested_form_for @report do |f|
   -if @report.errors.any?
     #error_explanation
       %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
@@ -15,3 +15,8 @@
     =f.label :site_id
     .controls
       = f.text_field :site_id
+
+  .form-actions
+    = link_to "Cancel", reports_path, :confirm => "Are you sure you want to cancel?"
+    |
+    = f.submit
