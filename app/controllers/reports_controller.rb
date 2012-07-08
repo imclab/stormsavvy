@@ -33,7 +33,7 @@ class ReportsController < ApplicationController
     @report = Report.new(params[:report])
     respond_to do |format|
     format.html do
-       render :partial => "/reports/reports"
+      render :partial => "/reports/reports"
     end
   end
 
