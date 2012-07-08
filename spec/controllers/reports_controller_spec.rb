@@ -6,7 +6,7 @@ describe ReportsController do
   def valid_attributes
     {}
   end
-  
+
   def valid_session
     {}
   end
@@ -84,7 +84,7 @@ describe ReportsController do
         response.should render_template("new")
       end
     end
-  end  
+  end
 
   describe "PUT update" do
     describe "with valid params" do
@@ -135,13 +135,13 @@ describe ReportsController do
     xit "destroys the requested report" do
       report = Report.create! valid_attributes
       expect {
-        delete :destroy, {:id => report.to_param}, valid_session
+        delete :destroy, :id => report #{:id => report.to_param, :report => {}}, valid_session
       }.to change(Report, :count).by(-1)
     end
 
     xit "redirects to the reports list" do
       report = Report.create! valid_attributes
-      delete :destroy, {:id => report.to_param}, valid_session
+      delete :destroy, :id => report #{:id => report.to_param}, valid_session
       response.should redirect_to(reports_url)
     end
   end
