@@ -32,22 +32,22 @@ pdf.text @report.status
 # pdf.text @report.submitted_by_contractor
 # pdf.text @report.submitted_by_date
 
-pdf.text @report.wpc_manager
-pdf.text @report.wpc_phone
-pdf.text @report.wpc_emergency_phone
+# pdf.text @report.wpc_manager
+# pdf.text @report.wpc_phone
+# pdf.text @report.wpc_emergency_phone
 
-pdf.text @report.inspector_name
+# pdf.text @report.inspector_name
 # pdf.text @report.inspection_date
 
-pdf.text @report.weather_condition
-pdf.text @report.precipitation_condition 
-pdf.text @report.wind_condition
-pdf.text @report.construction_phase
+# pdf.text @report.weather_condition
+# pdf.text @report.precipitation_condition 
+# pdf.text @report.wind_condition
+# pdf.text @report.construction_phase
 # pdf.text @report.total_area
 # pdf.text @report.total_DSA 
 # pdf.text @report.current_DSA
 # pdf.text @report.inactive_DSA
-pdf.text @report.inspection_type
+# pdf.text @report.inspection_type
   
 # pdf.text @report.time_elapsed_last_storm
 # pdf.text @report.precipitation_received 
