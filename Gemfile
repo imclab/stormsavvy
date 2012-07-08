@@ -21,7 +21,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
-  gem 'capybara', :git => 'https://github.com/doolin/capybara'
+  gem 'capybara'
   gem 'cucumber'
   gem 'sqlite3'
 #  gem 'ruby-debug19', :require => 'ruby-debug'

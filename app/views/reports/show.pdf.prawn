@@ -14,8 +14,9 @@ address_string = ["#{@report.site_information_name}\n",
 				 "#{@report.contractor_state}"].join
 # address_string = "test string here \n more text here \n and some more here"
 
-pdf.stroke_color('FF0000')
-pdf.stroke_bounds
+# pdf.stroke_color('FF0000')
+# pdf.stroke_bounds
+
 pdf.fill_color "ffff00"
 pdf.fill_rectangle([0, 850], 200, 75)
 pdf.fill_color(100,0,0,0)
@@ -31,22 +32,22 @@ pdf.text @report.status
 # pdf.text @report.submitted_by_contractor
 # pdf.text @report.submitted_by_date
 
-pdf.text @report.wpc_manager
-pdf.text @report.wpc_phone
-pdf.text @report.wpc_emergency_phone
+# pdf.text @report.wpc_manager
+# pdf.text @report.wpc_phone
+# pdf.text @report.wpc_emergency_phone
 
-pdf.text @report.inspector_name
+# pdf.text @report.inspector_name
 # pdf.text @report.inspection_date
 
-pdf.text @report.weather_condition
-pdf.text @report.precipitation_condition 
-pdf.text @report.wind_condition
-pdf.text @report.construction_phase
+# pdf.text @report.weather_condition
+# pdf.text @report.precipitation_condition 
+# pdf.text @report.wind_condition
+# pdf.text @report.construction_phase
 # pdf.text @report.total_area
 # pdf.text @report.total_DSA 
 # pdf.text @report.current_DSA
 # pdf.text @report.inactive_DSA
-pdf.text @report.inspection_type
+# pdf.text @report.inspection_type
   
 # pdf.text @report.time_elapsed_last_storm
 # pdf.text @report.precipitation_received 

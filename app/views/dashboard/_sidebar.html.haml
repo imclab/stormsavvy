@@ -7,7 +7,7 @@
         - current_user.projects.each do |project|
           - project.sites.each do |site|
             %li.cf
-              - site.chance_of_rain # not sure why, but this needs to be called before site.rain_state in order for rain state to show up
+              / - site.chance_of_rain # not sure why, but this needs to be called before site.rain_state in order for rain state to show up
               %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
               .span
                 %i=link_to "#{site.name}: ", project_site_path(project, site)
@@ -21,8 +21,10 @@
           = link_to "Report for #{report.site.name}", edit_report_path(report)
       - else
         You have no pending reports.
+  #current_daily_diary.widget.bottom-10
     .inner
       %h5 New Report
       %hr
-        = link_to "CEM 6401", new_report_path
+        / = link_to "CEM 2030", show_report_path
+        = link_to "CEM 2030", new_report_path
 

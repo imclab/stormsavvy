@@ -18,6 +18,9 @@ class ReportsController < ApplicationController
         # Comment out png background rendering, reset later
         prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :background => "#{Rails.root}/public/reports/cem2030/cem-2030-1.png", :scale => 0.5}, :inline=>true
         prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :scale => 0.5}, :inline=>true
+
+        # Alternative path for storing pdf images
+        # prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :background => "#{Rails.root}/app/assets/images/cem-2030-1.png", :scale => 0.5}, :inline=>true
       end
     end
   end
@@ -28,12 +31,28 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(params[:report])
-    respond_to do |format|
-    format.html do
-       render :partial => "/reports/reports"
-    end
-  end
+    
+    # Testing for report.id
+    report_number_id = print(@report.id)
+    print "#{report_number_id}\n"
 
+    respond_to do |format|
+      if @report.save(params[:report])
+        format.html { redirect_to @report, notice: 'Report was successfully created.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @report.errors, status: :unprocessable_entity }
+      end
+    end
+
+    # respond_to do |format|
+    #   format.html do
+    #     render :partial => "/reports/reports"
+    #   end
+    # end
+
+    
   end
 
   def edit
@@ -80,7 +99,7 @@ class ReportsController < ApplicationController
 
   def CEM2052
     pdf = Prawn::Document.new
-    pdf.text "CEM2057"
+    pdf.text "CEM2052"
     send_data pdf.render, type: "application/pdf", disposition: "inline"
   end
 
