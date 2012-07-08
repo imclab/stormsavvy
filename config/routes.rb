@@ -16,6 +16,7 @@ Stormsavvy::Application.routes.draw do
   resources :inspection_events
   resources :weather_events
   resources :reports 
+  resources :locations
 
   ReportsController::STATIC_REPORTS.each do |name|
     match "/reports/#{name}" => "reports##{name}"
@@ -26,8 +27,6 @@ Stormsavvy::Application.routes.draw do
   resources :projects do
     resources :sites
   end
-
-  resources :locations
 
   match '/index',     :to => "pages#index",          :as => :index
   match '/about',     :to => "pages#about",          :as => :about

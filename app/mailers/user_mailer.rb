@@ -9,12 +9,18 @@ class UserMailer < ActionMailer::Base
   #   en.alert_mailer.pop.subject
   #
   def pop
-    @greeting = "Hi"
+    @greeting = "Hello"
     mail to: "david.doolin@gmail.com", :subject => 'booyah'
   end
 
   def pop_alert(user)
-    mail(:to => user.email, :subject => "Daily weather alerts")
+    @greeting = "Hello"
+    mail(:to => user.email, :subject => "Pop alerts")
+  end
+
+  def noaa_alert(user)
+    @greeting = "Hello"
+    mail(:to => user.email, :subject => "Daily weather forecasts")
   end
 
   def pester_admins(email)

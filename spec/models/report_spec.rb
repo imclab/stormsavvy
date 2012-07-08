@@ -2,72 +2,76 @@ require 'spec_helper'
 
 describe Report do
 
-  it "should create a valid report" do
-    r = Report.new
-    r.should be_valid
-  end
+  before(:each) do 
+    @reports1 = [@r1, @r2]
+    @reports2 = [@r3, @r4]
 
-  it "should respond to sites" do
-    r = Report.new
-    r.should respond_to(:site)
-  end
-
-  it "should change status on update" do
-    r = Report.create
-    r.status.should be_nil
-    r.contractor_name = "Ghilotti Bros"
-    r.save
-    r.status.should == "completed"
-  end
-
-  context :report do 
-
-    before(:each) do 
-      [@r1, @r2].each do |r|
-        FactoryGirl.create(:report)
-      end
-
-      @reports = [@r1, @r2]
+    [@r1, @r2].each do |r|
+      FactoryGirl.create(:report)
     end
 
-    it "should add 3 reports" do
+    [@r3, @r4].each do |r|
       FactoryGirl.create(:report)
-      FactoryGirl.create(:report)
-      FactoryGirl.create(:report)
-      Report.count.should == 5
     end
+  end
 
-    it "should work with insert method" do
-      [@r3, @r4].each do |r|
-        FactoryGirl.create(:report)
-      end
+  # Testing framework count methods
+  context 'counting' do 
 
-      @reports.insert(2, @r3, @r4)
-      @reports.count.should == 4
-    end
-
-    it "should be able to add 1 report" do
+    it "should increase report count by 1" do
       expect { Report.create }.to change(Report, :count).by(+1)
     end
+  end
 
-    it "should not able to add invalid reports" do
-      @r3 = Report.create
-      expect { @reports << @r3 }.to change(Report, :count).by(0)
+  context 'CRUD operations' do
+    it "should insert 4 reports" do
+      @reports2.insert(2, @r3, @r4)
+      @reports2.count.should == 4
+
+      @reports2.push(@r3, @r4)
+      @reports2.count.should == 6
     end
 
-    it "should be able to add multiple reports" do
-      [@r3, @r4].each do |r|
-        FactoryGirl.create(:report)
-      end
-      
-      @reports.push(@r3, @r4)
-      @reports.count.should == 4
+    it "should delete added report" do
+      precount = @reports1.count
+      @reports1.delete_at(1)
+      @reports1.count.should == precount - 1
     end
-    
-    it "should be able to delete an added site" do
-      precount = @reports.count
-      @reports.delete_at(1)
-      @reports.count.should == precount - 1
+
+    it "should find report by id" do
+      @r1 = Report.find(1)
+
+      # Print and verify @r1.id
+      number_id = print(@r1.id)
+      print "#{number_id}\n"
+
+      @r6 = Report.create
+
+      # Print and verify @r6.id
+      report_number_id = print(@r6.id)
+      print "#{report_number_id}\n"
+
+      # Print and verify @r6.object_id
+      report_object_id = print(@r6.object_id)
+      print "#{report_object_id}\n"
+    end
+
+    it "should not insert invalid reports" do
+      r = Report.new
+      r.should be_valid
+
+      @r5 = Report.create
+      expect { @reports2 << @r5 }.to change(Report, :count).by(0)
+    end
+  end
+
+  context 'status' do
+    it "should change status on update" do
+      r = Report.create
+      r.status.should be_nil
+      r.contractor_name = "Ghilotti Bros"
+      r.save
+      r.status.should == "completed"
     end
   end
 

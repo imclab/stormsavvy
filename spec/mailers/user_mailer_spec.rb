@@ -6,18 +6,23 @@ describe UserMailer do
 
   before { ActionMailer::Base.deliveries = [] }
 
-  it "should send Pop Alert emails" do
-    user = FactoryGirl.create(:user)
-    UserMailer.pop_alert(user).deliver
-    ActionMailer::Base.deliveries.should_not be_empty
-  end
-
   it "should send Pop emails" do
     user = FactoryGirl.create(:user)
     UserMailer.pop.deliver
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
+  it "should send Pop Alert emails" do
+    user = FactoryGirl.create(:user)
+    UserMailer.pop_alert(user).deliver
+    ActionMailer::Base.deliveries.should_not be_empty
+  end
+
+  it "should send NOAA Alert emails" do
+    user = FactoryGirl.create(:user)
+    UserMailer.noaa_alert(user).deliver
+    ActionMailer::Base.deliveries.should_not be_empty
+  end
 
   it "should send something via mailout" do   
     user = FactoryGirl.create(:user)
