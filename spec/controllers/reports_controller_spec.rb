@@ -25,6 +25,10 @@ describe ReportsController do
       get :show, {:id => report.to_param}, valid_session
       assigns(:report).should eq(report)
     end
+
+    it "renders png from app/assets/images directory" do
+      # Write prawn spec here
+    end
   end
 
   describe "GET new" do
