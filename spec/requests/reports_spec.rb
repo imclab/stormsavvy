@@ -14,7 +14,8 @@ describe "Reports" do
   describe "GET /reports" do
     xit "should GET /reports" do
       @report = FactoryGirl.create(:report)
-      get report_path(:report => @report.id)
+      # check report_path, @report.id not found
+      get report_path(:report => @report.id) 
       # response.status.should be(200)
     end
 
@@ -28,6 +29,7 @@ describe "Reports" do
 		xit "should view and create new report" do
 			visit '/'
 			current_path.should == '/'
+      # check current_path, user may not be logged in?
 			click_link 'CEM 2030'
 
 			visit '/reports/new'
