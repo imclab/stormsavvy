@@ -23,7 +23,7 @@ class ReportsController < ApplicationController
         prawnto :prawn=>{
                          :page_layout=>:portrait, 
                          :page_size => [855,1006], 
-                         :background => "#{Rails.root}/app/assets/images/cem-2030-1.png", 
+                         :background => "#{Rails.root}/app/assets/images/CEM2030-1.png", 
                          :scale => 0.5
                         }, :inline=>true
       end
