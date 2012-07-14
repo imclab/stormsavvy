@@ -50,19 +50,19 @@ describe ReportsController do
     end
 
     describe "with valid params" do
-      xit "creates new Report" do
+      it "creates new Report" do
         expect {
           post :create, {:report => valid_attributes}, valid_session
         }.to change(Report, :count).by(1)
       end
 
-      xit "assigns newly created report as @report" do
+      it "assigns newly created report as @report" do
         post :create, {:report => valid_attributes}, valid_session
         assigns(:report).should be_a(Report)
         assigns(:report).should be_persisted
       end
 
-      xit "redirects to the created inspection_event" do
+      it "redirects to the created inspection_event" do
         post :create, {:report => valid_attributes}, valid_session
         response.should redirect_to(Report.last)
       end
@@ -132,17 +132,17 @@ describe ReportsController do
 
   describe "DELETE destroy" do
   	# Comment out spec until report attributes are flushed out.
-    xit "destroys the requested report" do
+    it "destroys the requested report" do
       report = Report.create! valid_attributes
       expect {
         delete :destroy, :id => report #{:id => report.to_param, :report => {}}, valid_session
       }.to change(Report, :count).by(-1)
     end
 
-    xit "redirects to the reports list" do
+    it "redirects to the reports list" do
       report = Report.create! valid_attributes
       delete :destroy, :id => report #{:id => report.to_param}, valid_session
-      response.should redirect_to(reports_url)
+      response.should redirect_to(projects_url)
     end
   end
 
