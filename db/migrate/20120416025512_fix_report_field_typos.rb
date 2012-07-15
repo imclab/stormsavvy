@@ -1,10 +1,10 @@
 class FixReportFieldTypos < ActiveRecord::Migration
   def change
     # Fixing typos in AddFieldsToReport migration file
-    # remove_column :reports, :contactor_state,    :string
-    # remove_column :reports, :contactor_zipcode,  :integer
-    # add_column    :reports, :contractor_state,   :string
-    # add_column    :reports, :contractor_zipcode, :integer
+    remove_column :reports, :contactor_state,    :string
+    remove_column :reports, :contactor_zipcode,  :integer
+    add_column    :reports, :contractor_state,   :string
+    add_column    :reports, :contractor_zipcode, :integer
 
   #   remove_column :reports, :water_polution_control_manager_emergancy_phone_number, :string
   #   add_column    :reports, :water_polution_control_manager_emergency_phone_number, :string
