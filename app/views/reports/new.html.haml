@@ -40,7 +40,10 @@
         = f.input :contractor_address_2, :input_html => { :value => @report.contractor_address_2 }
         = f.input :contractor_city, :input_html => { :value => @report.contractor_city }
         = f.input :contractor_state, :input_html => { :value => @report.contractor_state }
-        = f.input :contractor_zipcode, :as => :string, :input_html => { :value => @report.contractor_zipcode }
+
+        / Debugging "unpack" error in prawn, maybe integer type throwing off rendering?
+        = f.input :contractor_zipcode, :input_html => { :value => @report.contractor_zipcode }
+        / = f.input :contractor_zipcode, :as => :integer, :input_html => { :value => @report.contractor_zipcode }
 
       %fieldset#contract_information
         %legend Contract Information
