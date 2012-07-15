@@ -15,11 +15,7 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        # Comment out png background rendering, reset later
-        # prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :background => "#{Rails.root}/public/reports/cem2030/cem-2030-1.png", :scale => 0.5}, :inline=>true
-        # prawnto :prawn=>{:page_layout=>:portrait, :page_size => [855,1006], :scale => 0.5}, :inline=>true
-
-        # Alternative path for storing pdf images, 
+        # Updated path to assets/images for new CEM 2030
         prawnto :prawn=>{
                          :page_layout=>:portrait, 
                          :page_size => [855,1006], 
@@ -109,3 +105,4 @@ class ReportsController < ApplicationController
   end
 
 end
+  
