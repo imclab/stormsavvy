@@ -1,42 +1,67 @@
-pdf.move_down 90
+# Coordinate markers
 
-pdf.text @report.site_information_name
-pdf.text @report.site_address_1
-pdf.text @report.site_address_2
-pdf.text @report.site_city
-pdf.text @report.site_state
+pdf.fill_color "ffff00"
+pdf.fill_rectangle([-20, 850], 20, 900)
+pdf.fill_color(100,0,0,0)
 
-pdf.text_box "#{@report.site_zipcode}", :size => 12, :at => [0,600]
+marker1 = ["850\n"].join
+options1 = {:size => 12, :width => 30, :at => [-20, 850]}
 
-# pdf.text @report.site_zipcode
+marker2 = ["800\n"].join
+options2 = {:size => 12, :width => 30, :at => [-20, 800]}
 
-pdf.text @report.contractor_city
-pdf.text @report.contractor_state
-# pdf.text @report.contractor_zipcode
+marker3 = ["750\n"].join
+options3 = {:size => 12, :width => 30, :at => [-20, 750]}
 
-address_string = ["#{@report.site_information_name}\n",
-				 "#{@report.site_address_1}\n",
-				 "#{@report.site_address_2}\n",
-				 "#{@report.contractor_city}\n",
-				 "#{@report.contractor_state}"].join
-# address_string = "test string here \n more text here \n and some more here"
+marker4 = ["700\n"].join
+options4 = {:size => 12, :width => 30, :at => [-20, 700]}
+
+marker5 = ["650\n"].join
+options5 = {:size => 12, :width => 30, :at => [-20, 650]}
+
+marker6 = ["600\n"].join
+options6 = {:size => 12, :width => 30, :at => [-20, 600]}
+
+marker7 = ["550\n"].join
+options7 = {:size => 12, :width => 30, :at => [-20, 550]}
+
+marker8 = ["500\n"].join
+options8 = {:size => 12, :width => 30, :at => [-20, 500]}
+
+marker9 = ["450\n"].join
+options9 = {:size => 12, :width => 30, :at => [-20, 450]}
+
+marker10 = ["400\n"].join
+options10 = {:size => 12, :width => 30, :at => [-20, 400]}
+
+pdf.text_box(marker1, options1) 
+pdf.text_box(marker2, options2)
+pdf.text_box(marker3, options3)
+pdf.text_box(marker4, options4)
+pdf.text_box(marker5, options5)
+pdf.text_box(marker6, options6)
+pdf.text_box(marker7, options7)
+pdf.text_box(marker8, options8)
+pdf.text_box(marker9, options9)
+pdf.text_box(marker10, options10)
 
 # Boundary border
 # pdf.stroke_color('FF0000')
 # pdf.stroke_bounds
 
-# Address box
-# pdf.fill_color "ffff00"
-# pdf.fill_rectangle([0, 850], 200, 75)
-# pdf.fill_color(100,0,0,0)
-# options = {:size => 20, :width => 350, :height => 150, :at => [0, 800]}
-# pdf.text_box(address_string, options) 
+# Using pdf.text_box method
+pdf.fill_color "FF0000"
+pdf.text_box "#{@report.site_information_name}", :size => 12, :at => [0,850]
+pdf.text_box "#{@report.site_address_1}", :size => 12, :at => [0,835]
+pdf.text_box "#{@report.site_address_2}", :size => 12, :at => [0,820]
+pdf.text_box "#{@report.site_city}, #{@report.site_state}", :size => 12, :at => [0,805]
+pdf.text_box "#{@report.site_zipcode}", :size => 12, :at => [0,790]
 
 pdf.move_down 90
 pdf.text @report.contract_number
 pdf.text @report.project_identifier_number
 pdf.text @report.wdid_number
-pdf.text @report.status
+# pdf.text @report.status
 
 # pdf.text @report.submitted_by_contractor
 # pdf.text @report.submitted_by_date
