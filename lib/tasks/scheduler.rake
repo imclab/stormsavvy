@@ -11,10 +11,9 @@ namespace :scheduler do
 
   task :stormpopnotice => :environment do
     test_users = ['kharma@gmail.com']
-      if user.sites.precipitation_state(forecast) == :imminent then
-        test_users.each do |address|
-          UserMailer.pop_alert(address).deliver
-        end
+    if user.sites.precipitation_state(forecast) == :imminent then
+      test_users.each do |address|
+        UserMailer.pop_alert(address).deliver
       end
     end
   end
