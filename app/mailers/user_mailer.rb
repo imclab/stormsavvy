@@ -1,13 +1,8 @@
 class UserMailer < ActionMailer::Base
-  #default :from => "alerts@stormsavvy.com"
   default :from => "doolin@inventiumsystems.com"
+  #default :from => "alerts@stormsavvy.com"
   #default :from => "david.doolin@gmail.com"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.alert_mailer.pop.subject
-  #
   def pop
     @greeting = "Hello"
     mail to: "david.doolin@gmail.com", :subject => 'booyah'
