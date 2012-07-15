@@ -9,14 +9,13 @@ namespace :scheduler do
     end
   end
 
-  # task :stormpopnotice => :environment do
-  #   test_users = ['kharma+storm@gmail.com', 
-  #               'david.doolin+storm@gmail.com']
-  #     if user.sites.precipitation_state(forecast) == :imminent then
-  #       test_users.each do |address|
-  #     UserMailer.pop_alert(address).deliver
-  #   end
-  # end
+  task :stormpopnotice => :environment do
+    test_users = ['kharma@gmail.com']
+      if user.sites.precipitation_state(forecast) == :imminent then
+        test_users.each do |address|
+      UserMailer.pop_alert(address).deliver
+    end
+  end
 
   task :noaaforecast => :environment do
   	test_users = ['david.doolin+storm@gmail.com', 
