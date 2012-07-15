@@ -7,9 +7,6 @@ gem 'geocoder'
 gem 'carmen'
 gem 'iron_worker'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 group :development do
   gem 'letter_opener'
 end
@@ -24,7 +21,6 @@ group :test, :development do
   gem 'capybara'
   gem 'cucumber'
   gem 'sqlite3'
-#  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'spork-rails'
   gem 'pry-rails'
   gem 'pry-nav'
@@ -34,13 +30,9 @@ group :test, :development do
   gem 'email_spec'
 #  gem 'rspec-http', '~> 0.9'
 #  gem 'rest-assured'
-  # gem 'pry-stack_explorer'
+#  gem 'pry-stack_explorer'
+#  gem 'ruby-debug19', :require => 'ruby-debug'
 end
-
-gem 'pg'
-gem 'haml-rails'
-
-gem 'simplecov', :require => false, :group => :test
 
 group :assets do
   gem "compass-rails"
@@ -58,3 +50,6 @@ gem "prawnto"
 gem 'pdf-reader'
 gem 'simple_form'
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
+gem 'pg'
+gem 'haml-rails'
+gem 'simplecov', :require => false, :group => :test
