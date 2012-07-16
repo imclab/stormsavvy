@@ -3,7 +3,6 @@ class AlertMailer < ActionMailer::Base
 
   def pop
     @greeting = "Hi"
-
     mail to: "to@example.org"
   end
 end

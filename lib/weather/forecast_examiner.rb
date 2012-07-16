@@ -1,6 +1,4 @@
-
 require 'csv'
-
 
 class ForecastExaminer
 

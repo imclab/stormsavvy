@@ -7,7 +7,7 @@ describe AlertMailer do
     it "renders the headers" do
       mail.subject.should eq("Pop")
       mail.to.should eq(["to@example.org"])
-      mail.from.should eq(["from@example.com"])
+      mail.from.should eq(["doolin@inventiumsystems.com"])
     end
 
     it "renders the body" do

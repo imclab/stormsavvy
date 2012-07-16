@@ -1,6 +1,6 @@
 namespace :scheduler do
 
-  desc "This task is called by the Heroku scheduler add-on" 
+  desc "Mails out pester admins email" 
   task :dailynotice => :environment do
     admins = ['david.doolin+stormsavvy@gmail.com',
               'kharma@gmail.com',]
@@ -9,6 +9,7 @@ namespace :scheduler do
     end
   end
 
+  desc "Mails out POP alert notification"
   task :stormpopnotice => :environment do
     test_users = ['kharma@gmail.com']
     if user.sites.precipitation_state(forecast) == :imminent then
@@ -18,16 +19,20 @@ namespace :scheduler do
     end
   end
 
+  desc "Mails out NOAA forecast notification"
   task :noaaforecast => :environment do
-  	test_users = ['david.doolin+storm@gmail.com', 
-                  'kharma@gmail.com']
+  	test_users = ['kharma@gmail.com']
     test_users.each do |address|
-  	  #UserMailer.noaa_alert(address).deliver
-      UserMailer.noaa_alert(address)
+  	  UserMailer.noaa_alert(address).deliver
   	end
   end
 
-  task :umtest => :environment do
-    UserMailer.umtest
+  desc "Mails out project and site names"
+  task :mailout => :environment do
+    UserMailer.mailout
   end
+
+  # task :umtest => :environment do
+  #   UserMailer.umtest
+  # end
 end
