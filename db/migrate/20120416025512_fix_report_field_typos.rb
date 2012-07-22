@@ -2,13 +2,8 @@ class FixReportFieldTypos < ActiveRecord::Migration
   def change
     # Fixing typos in AddFieldsToReport migration file
 
-<<<<<<< HEAD
     # Comment out remove_column / fails heroku migration
     
-=======
-    # Comment out remove_column - fails heroku deployment
-
->>>>>>> mvp
     # remove_column :reports, :contactor_state,    :string
     # remove_column :reports, :contactor_zipcode,  :integer
     add_column    :reports, :contractor_state,   :string

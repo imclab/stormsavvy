@@ -2,12 +2,8 @@ class ChangeTyposForReport < ActiveRecord::Migration
   def change
     # Fixing typos in AddFieldsToReport migration file
 
-<<<<<<< HEAD
     # Comment out remove_column / fails heroku migration
-=======
-    # Comment out remove_column - fails heroku deployment
 
->>>>>>> mvp
     # remove_column :reports, :water_polution_control_manager_name, 	:string
     add_column :reports, :water_pollution_control_manager_name, 	:string
 
