@@ -1,9 +1,9 @@
 # Render pdf in view - not controller
 
 # Set image path to ~/local/src/prawn/data/images
-img = "#{Prawn::DATADIR}/images/CEM2030-2012_Page_01.png"
+img = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
 
-Prawn::Document.generate("page1.pdf",
+Prawn::Document.generate("#{Rails.root}/app/views/reports/#{@report.id}.pdf",
 						 :background => img,
 						 :margin => 100
 						 ) do
@@ -23,7 +23,7 @@ Prawn::Document.generate("page1.pdf",
   pdf.fill_color "ffff00"
   pdf.fill_rectangle([-20, 850], 20, 900)
   pdf.fill_color(100,0,0,0)
-  
+
 end
 
 page1 = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
