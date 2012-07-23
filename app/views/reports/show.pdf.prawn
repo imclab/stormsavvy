@@ -1,3 +1,36 @@
+# Render pdf in view - not controller
+
+# Set image path to ~/local/src/prawn/data/images
+img = "#{Prawn::DATADIR}/images/CEM2030-2012_Page_01.png"
+
+Prawn::Document.generate("page1.pdf",
+						 :background => img,
+						 :margin => 100
+						 ) do
+
+  pdf.text "My report caption", :size => 18, :align => :right
+  
+  pdf.move_down font.height * 2
+  
+  pdf.text "Here is my text explaning this report. " * 20,
+    :size => 12, :align => :left, :leading => 2
+  
+  pdf.move_down font.height
+  
+  pdf.text "I'm using a soft background. " * 40,
+    :size => 12, :align => :left, :leading => 2
+
+  pdf.fill_color "ffff00"
+  pdf.fill_rectangle([-20, 850], 20, 900)
+  pdf.fill_color(100,0,0,0)
+  
+end
+
+page1 = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
+
+pdf.image page1
+pdf.text "This is pdf with background image ready to fill in"
+
 # Coordinate markers
 
 pdf.fill_color "ffff00"
@@ -92,3 +125,11 @@ pdf.text @report.wdid_number
 # pdf.text @report.gauge_reading_during_storm
 # pdf.text @report.time_elapsed_post_storm 
 # pdf.text @report.gauge_reading_post_storm
+
+# Start new page in view per prawn manual instruction
+pdf.start_new_page
+
+page2 = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_02.png"
+
+pdf.image page2 
+pdf.text "This is pdf with background image ready to fill in"
