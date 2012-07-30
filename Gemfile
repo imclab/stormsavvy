@@ -45,7 +45,6 @@ end
 gem 'jquery-rails'
 gem 'devise'
 gem 'heroku'
-gem 'prawn', :path => "~/local/src/prawn"
 gem "prawnto"
 gem 'pdf-reader'
 gem 'simple_form'
