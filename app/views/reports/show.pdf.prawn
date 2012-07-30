@@ -1,12 +1,41 @@
 # Render pdf in view - not controller
 
-# Set image path to ~/local/src/prawn/data/images
+
+
+Prawn::Document.generate "start_new_page_demo.pdf", :page_size => "A4" do
+ 
+run_before_new_page do |pdf, options|
+  options[:top_margin] = cm2pt(4.0)
+end
+
+run_after_new_page do
+  #image "#{Rails.root}/app/assets/images/CEM2030-2012_Page_02.png",
+    # :at  => [-bounds.absolute_left, Prawn::Document::SIZES["A4"][1] - bounds.absolute_bottom],
+    # :fit => Prawn::Document::SIZES["A4"]
+end
+
+# This image only appears on the first page.
+#image "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png",
+  # :at  => [-bounds.absolute_left, Prawn::Document::SIZES["A4"][1] - bounds.absolute_bottom],
+  # :fit => Prawn::Document::SIZES["A4"]
+
+
+  # Draw enough text to ensure that a second page is created.
+  pdf.text_box "Hello, page 1!\n\n"
+  pdf.text_box "lorem ipsum" * 400
+  pdf.text_box "\nAnd now we're on another page."
+
+end
+
 img = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
 
-Prawn::Document.generate("#{Rails.root}/app/views/reports/#{@report.id}.pdf",
-						 :background => img,
-						 :margin => 100
+Prawn::Document.generate(
+						 "#{Rails.root}/app/views/reports/#{@report.id}.pdf",
+						 # :background => "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
 						 ) do
+
+	page1 = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
+	pdf.image page1
 
   pdf.text "My report caption", :size => 18, :align => :right
   
@@ -20,63 +49,54 @@ Prawn::Document.generate("#{Rails.root}/app/views/reports/#{@report.id}.pdf",
   pdf.text "I'm using a soft background. " * 40,
     :size => 12, :align => :left, :leading => 2
 
-  pdf.fill_color "ffff00"
-  pdf.fill_rectangle([-20, 850], 20, 900)
-  pdf.fill_color(100,0,0,0)
+	# Coordinate markers
+
+	pdf.fill_color "ffff00"
+	pdf.fill_rectangle([-20, 850], 20, 900)
+	pdf.fill_color(100,0,0,0)
+
+	marker1 = ["850\n"].join
+	options1 = {:size => 12, :width => 30, :at => [-20, 850]}
+
+	marker2 = ["800\n"].join
+	options2 = {:size => 12, :width => 30, :at => [-20, 800]}
+
+	marker3 = ["750\n"].join
+	options3 = {:size => 12, :width => 30, :at => [-20, 750]}
+
+	marker4 = ["700\n"].join
+	options4 = {:size => 12, :width => 30, :at => [-20, 700]}
+
+	marker5 = ["650\n"].join
+	options5 = {:size => 12, :width => 30, :at => [-20, 650]}
+
+	marker6 = ["600\n"].join
+	options6 = {:size => 12, :width => 30, :at => [-20, 600]}
+
+	marker7 = ["550\n"].join
+	options7 = {:size => 12, :width => 30, :at => [-20, 550]}
+
+	marker8 = ["500\n"].join
+	options8 = {:size => 12, :width => 30, :at => [-20, 500]}
+
+	marker9 = ["450\n"].join
+	options9 = {:size => 12, :width => 30, :at => [-20, 450]}
+
+	marker10 = ["400\n"].join
+	options10 = {:size => 12, :width => 30, :at => [-20, 400]}
+
+	pdf.text_box(marker1, options1) 
+	pdf.text_box(marker2, options2)
+	pdf.text_box(marker3, options3)
+	pdf.text_box(marker4, options4)
+	pdf.text_box(marker5, options5)
+	pdf.text_box(marker6, options6)
+	pdf.text_box(marker7, options7)
+	pdf.text_box(marker8, options8)
+	pdf.text_box(marker9, options9)
+	pdf.text_box(marker10, options10)
 
 end
-
-page1 = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
-
-pdf.image page1
-pdf.text "This is pdf with background image ready to fill in"
-
-# Coordinate markers
-
-pdf.fill_color "ffff00"
-pdf.fill_rectangle([-20, 850], 20, 900)
-pdf.fill_color(100,0,0,0)
-
-marker1 = ["850\n"].join
-options1 = {:size => 12, :width => 30, :at => [-20, 850]}
-
-marker2 = ["800\n"].join
-options2 = {:size => 12, :width => 30, :at => [-20, 800]}
-
-marker3 = ["750\n"].join
-options3 = {:size => 12, :width => 30, :at => [-20, 750]}
-
-marker4 = ["700\n"].join
-options4 = {:size => 12, :width => 30, :at => [-20, 700]}
-
-marker5 = ["650\n"].join
-options5 = {:size => 12, :width => 30, :at => [-20, 650]}
-
-marker6 = ["600\n"].join
-options6 = {:size => 12, :width => 30, :at => [-20, 600]}
-
-marker7 = ["550\n"].join
-options7 = {:size => 12, :width => 30, :at => [-20, 550]}
-
-marker8 = ["500\n"].join
-options8 = {:size => 12, :width => 30, :at => [-20, 500]}
-
-marker9 = ["450\n"].join
-options9 = {:size => 12, :width => 30, :at => [-20, 450]}
-
-marker10 = ["400\n"].join
-options10 = {:size => 12, :width => 30, :at => [-20, 400]}
-
-pdf.text_box(marker1, options1) 
-pdf.text_box(marker2, options2)
-pdf.text_box(marker3, options3)
-pdf.text_box(marker4, options4)
-pdf.text_box(marker5, options5)
-pdf.text_box(marker6, options6)
-pdf.text_box(marker7, options7)
-pdf.text_box(marker8, options8)
-pdf.text_box(marker9, options9)
-pdf.text_box(marker10, options10)
 
 # Boundary border
 # pdf.stroke_color('FF0000')
@@ -91,21 +111,21 @@ pdf.text_box "#{@report.site_city}, #{@report.site_state}", :size => 12, :at => 
 pdf.text_box "#{@report.site_zipcode}", :size => 12, :at => [0,790]
 
 pdf.move_down 90
-pdf.text @report.contract_number
-pdf.text @report.project_identifier_number
-pdf.text @report.wdid_number
-# pdf.text @report.status
+pdf.text_box @report.contract_number
+pdf.text_box @report.project_identifier_number
+pdf.text_box @report.wdid_number
+pdf.text_box @report.status
 
 # pdf.text @report.submitted_by_contractor
 # pdf.text @report.submitted_by_date
-
+# 
 # pdf.text @report.wpc_manager
 # pdf.text @report.wpc_phone
 # pdf.text @report.wpc_emergency_phone
-
+# 
 # pdf.text @report.inspector_name
 # pdf.text @report.inspection_date
-
+# 
 # pdf.text @report.weather_condition
 # pdf.text @report.precipitation_condition 
 # pdf.text @report.wind_condition
@@ -115,12 +135,12 @@ pdf.text @report.wdid_number
 # pdf.text @report.current_DSA
 # pdf.text @report.inactive_DSA
 # pdf.text @report.inspection_type
-  
+#   
 # pdf.text @report.time_elapsed_last_storm
-# pdf.text @report.precipitation_received 
+# pdf.text @report.precipitation_received
 # pdf.text @report.time_storm_expected
 # pdf.text @report.expected_precipitation_amount
-
+# 
 # pdf.text @report.time_elapsed_during_storm 
 # pdf.text @report.gauge_reading_during_storm
 # pdf.text @report.time_elapsed_post_storm 
