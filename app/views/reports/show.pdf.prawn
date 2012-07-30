@@ -1,37 +1,10 @@
 # Render pdf in view - not controller
 
-
-
-Prawn::Document.generate "start_new_page_demo.pdf", :page_size => "A4" do
- 
-run_before_new_page do |pdf, options|
-  options[:top_margin] = cm2pt(4.0)
-end
-
-run_after_new_page do
-  #image "#{Rails.root}/app/assets/images/CEM2030-2012_Page_02.png",
-    # :at  => [-bounds.absolute_left, Prawn::Document::SIZES["A4"][1] - bounds.absolute_bottom],
-    # :fit => Prawn::Document::SIZES["A4"]
-end
-
-# This image only appears on the first page.
-#image "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png",
-  # :at  => [-bounds.absolute_left, Prawn::Document::SIZES["A4"][1] - bounds.absolute_bottom],
-  # :fit => Prawn::Document::SIZES["A4"]
-
-
-  # Draw enough text to ensure that a second page is created.
-  pdf.text_box "Hello, page 1!\n\n"
-  pdf.text_box "lorem ipsum" * 400
-  pdf.text_box "\nAnd now we're on another page."
-
-end
-
 img = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
 
 Prawn::Document.generate(
 						 "#{Rails.root}/app/views/reports/#{@report.id}.pdf",
-						 # :background => "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
+						 :background => "#{Prawn::DATADIR}/images/CEM2030-2012_Page_01.png"
 						 ) do
 
 	page1 = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
@@ -113,38 +86,38 @@ pdf.text_box "#{@report.site_zipcode}", :size => 12, :at => [0,790]
 pdf.move_down 90
 pdf.text_box @report.contract_number
 pdf.text_box @report.project_identifier_number
-pdf.text_box @report.wdid_number
-pdf.text_box @report.status
-
-# pdf.text @report.submitted_by_contractor
-# pdf.text @report.submitted_by_date
+# pdf.text_box @report.wdid_number
+# pdf.text_box @report.status
 # 
-# pdf.text @report.wpc_manager
-# pdf.text @report.wpc_phone
-# pdf.text @report.wpc_emergency_phone
+# pdf.text_box @report.submitted_by_contractor
+# pdf.text_box @report.submitted_by_date
 # 
-# pdf.text @report.inspector_name
-# pdf.text @report.inspection_date
+# pdf.text_box @report.wpc_manager
+# pdf.text_box @report.wpc_phone
+# pdf.text_box @report.wpc_emergency_phone
 # 
-# pdf.text @report.weather_condition
-# pdf.text @report.precipitation_condition 
-# pdf.text @report.wind_condition
-# pdf.text @report.construction_phase
-# pdf.text @report.total_area
-# pdf.text @report.total_DSA 
-# pdf.text @report.current_DSA
-# pdf.text @report.inactive_DSA
-# pdf.text @report.inspection_type
+# pdf.text_box @report.inspector_name
+# pdf.text_box @report.inspection_date
+# 
+# pdf.text_box @report.weather_condition
+# pdf.text_box @report.precipitation_condition 
+# pdf.text_box @report.wind_condition
+# pdf.text_box @report.construction_phase
+# pdf.text_box @report.total_area
+# pdf.text_box @report.total_DSA 
+# pdf.text_box @report.current_DSA
+# pdf.text_box @report.inactive_DSA
+# pdf.text_box @report.inspection_type
 #   
-# pdf.text @report.time_elapsed_last_storm
-# pdf.text @report.precipitation_received
-# pdf.text @report.time_storm_expected
-# pdf.text @report.expected_precipitation_amount
+# pdf.text_box @report.time_elapsed_last_storm
+# pdf.text_box @report.precipitation_received
+# pdf.text_box @report.time_storm_expected
+# pdf.text_box @report.expected_precipitation_amount
 # 
-# pdf.text @report.time_elapsed_during_storm 
-# pdf.text @report.gauge_reading_during_storm
-# pdf.text @report.time_elapsed_post_storm 
-# pdf.text @report.gauge_reading_post_storm
+# pdf.text_box @report.time_elapsed_during_storm 
+# pdf.text_box @report.gauge_reading_during_storm
+# pdf.text_box @report.time_elapsed_post_storm 
+# pdf.text_box @report.gauge_reading_post_storm
 
 # Start new page in view per prawn manual instruction
 pdf.start_new_page
