@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   require 'prawn'
-  
+
   include PrawnHelper
 
   STATIC_REPORTS = %w[CEM2035 CEM2057 CEM2052]
@@ -19,9 +19,9 @@ class ReportsController < ApplicationController
       format.pdf do
         # Updated path to assets/images for new CEM 2030
         # prawnto :prawn=>{
-        #                  :page_layout=>:portrait, 
-        #                  :page_size => [855,1006], 
-        #                  :background => "#{Rails.root}/app/assets/images/CEM2030-1.png", 
+        #                  :page_layout=>:portrait,
+        #                  :page_size => [855,1006],
+        #                  :background => "#{Rails.root}/app/assets/images/CEM2030-1.png",
         #                  :scale => 0.5
         #                 }, :inline=>true
       end
@@ -34,7 +34,7 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(params[:report])
-    
+
     # Testing for report.id
     report_number_id = print(@report.id)
     print "#{report_number_id}\n"
@@ -55,7 +55,7 @@ class ReportsController < ApplicationController
     #   end
     # end
 
-    
+
   end
 
   def edit
@@ -107,4 +107,3 @@ class ReportsController < ApplicationController
   end
 
 end
-  

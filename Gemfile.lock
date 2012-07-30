@@ -1,15 +1,16 @@
 GIT
-  remote: git://github.com/ryanb/nested_form.git
-  revision: ef71a326c27c3583172d72719bb3422e0efc7f0c
-  specs:
-    nested_form (0.2.2)
-
-PATH
-  remote: ~/local/src/prawn
+  remote: git://github.com/WalterYu/prawn.git
+  revision: baa6e80b1a11efac91a0160dfab257744bbf9bde
   specs:
     prawn (1.0.0.rc1)
       pdf-reader (>= 0.9.0)
       ttfunk (~> 1.0.3)
+
+GIT
+  remote: git://github.com/ryanb/nested_form.git
+  revision: ef71a326c27c3583172d72719bb3422e0efc7f0c
+  specs:
+    nested_form (0.2.2)
 
 GEM
   remote: http://rubygems.org/
@@ -175,8 +176,6 @@ GEM
       slop (~> 3.3.1)
     pry-nav (0.2.2)
       pry (~> 0.9.10)
-    pry-rails (0.1.6)
-      pry
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -305,7 +304,6 @@ DEPENDENCIES
   prawn!
   prawnto
   pry-nav
-  pry-rails
   rails
   rspec
   rspec-rails

@@ -22,7 +22,7 @@ group :test, :development do
   gem 'cucumber'
   gem 'sqlite3'
   gem 'spork-rails'
-  gem 'pry-rails'
+
   gem 'pry-nav'
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
@@ -45,6 +45,7 @@ end
 gem 'jquery-rails'
 gem 'devise'
 gem 'heroku'
+gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
 gem "prawnto"
 gem 'pdf-reader'
 gem 'simple_form'
