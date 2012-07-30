@@ -1,7 +1,5 @@
 class ReportsController < ApplicationController
   require 'prawn'
-  
-  include PrawnHelper
 
   STATIC_REPORTS = %w[CEM2035 CEM2057 CEM2052]
 
