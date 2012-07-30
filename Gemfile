@@ -9,7 +9,7 @@ gem 'carmen'
 gem 'jquery-rails'
 gem 'devise'
 gem 'heroku'
-gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
+gem 'prawn' # , :git => "git://github.com/WalterYu/prawn.git"
 gem 'prawnto'
 gem 'pdf-reader'
 gem 'simple_form'
@@ -37,7 +37,7 @@ group :test, :development do
   gem 'builder'
 
   # Point prawn to local
-  gem 'prawn', :path => "~/local/src/prawn"
+  # gem 'prawn', :path => "~/local/src/prawn"
 
   # Comment out pry due to issues with 1.9.3
   # gem 'pry-stack_explorer'
