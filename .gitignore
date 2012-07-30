@@ -27,3 +27,4 @@ coverage
 .DS_Store
 dump.rdb
 db/development
+app/views/reports/*.pdf
