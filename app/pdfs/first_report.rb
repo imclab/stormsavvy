@@ -15,25 +15,25 @@ class FirstReport < ReportsPdf
 
   def first_page
     page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.png")
-    report_header_block
+    full_report_header_block
     start_new_page
   end
 
   def second_page
     page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.png")
-    report_header_block
+    simple_report_header_block
     start_new_page
   end
 
   def third_page
     page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_03.png")
-    report_header_block
+    simple_report_header_block
     start_new_page
   end
 
   def fourth_page
     page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_04.png")
-    report_header_block
+    simple_report_header_block
     start_new_page
   end
 

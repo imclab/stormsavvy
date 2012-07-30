@@ -1,7 +1,12 @@
 module ReportsHeaderMethods
-  def report_header_block
+  def full_report_header_block
     project_name_and_address
     contractor_name_and_address
+  end
+
+  def simple_report_header_block
+    project_name_and_address
+    contract_number
   end
 
   def project_name_and_address
@@ -33,6 +38,20 @@ module ReportsHeaderMethods
   end
 
   def contract_number
+    formatted_text_box(
+      [{ text: "#{@report.contract_number}\n" }],
+      width: 200,
+      at: [270, 675],
+      size: 10
+    )
+  end
 
+  def project_id_number
+    formatted_text_box(
+      [{ text: "#{@report.project_identifier_number}\n" }],
+      width: 200,
+      at: [270, 675],
+      size: 10
+    )
   end
 end
