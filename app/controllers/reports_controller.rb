@@ -16,12 +16,12 @@ class ReportsController < ApplicationController
       format.html
       format.pdf do
         # Updated path to assets/images for new CEM 2030
-        prawnto :prawn=>{
-                         :page_layout=>:portrait, 
-                         :page_size => [855,1006], 
-                         :background => "#{Rails.root}/app/assets/images/CEM2030-1.png", 
-                         :scale => 0.5
-                        }, :inline=>true
+        # prawnto :prawn=>{
+        #                  :page_layout=>:portrait, 
+        #                  :page_size => [855,1006], 
+        #                  :background => "#{Rails.root}/app/assets/images/CEM2030-1.png", 
+        #                  :scale => 0.5
+        #                 }, :inline=>true
       end
     end
   end
