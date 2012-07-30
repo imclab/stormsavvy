@@ -1,8 +1,6 @@
 class ReportsController < ApplicationController
   require 'prawn'
 
-  include PrawnHelper
-
   STATIC_REPORTS = %w[CEM2035 CEM2057 CEM2052]
 
   def index
@@ -13,17 +11,11 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-
     respond_to do |format|
       format.html
       format.pdf do
-        # Updated path to assets/images for new CEM 2030
-        # prawnto :prawn=>{
-        #                  :page_layout=>:portrait,
-        #                  :page_size => [855,1006],
-        #                  :background => "#{Rails.root}/app/assets/images/CEM2030-1.png",
-        #                  :scale => 0.5
-        #                 }, :inline=>true
+        pdf = FirstReport.new @report, view_context, background: "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.png"
+        send_data pdf.render, filename: "report_#{@report.id}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
   end

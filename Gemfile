@@ -6,7 +6,6 @@ gem 'nokogiri'
 gem 'geocoder'
 gem 'carmen'
 gem 'iron_worker'
-
 group :development do
   gem 'letter_opener'
 end
@@ -46,7 +45,6 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'heroku'
 gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
-gem "prawnto"
 gem 'pdf-reader'
 gem 'simple_form'
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"

@@ -56,6 +56,9 @@ GEM
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
     carmen (0.2.13)
+    cells (3.8.5)
+      actionpack (~> 3.0)
+      railties (~> 3.0)
     childprocess (0.3.4)
       ffi (~> 1.0, >= 1.0.6)
     chunky_png (1.2.5)
@@ -167,9 +170,6 @@ GEM
       ruby-rc4
     pg (0.14.0)
     polyglot (0.3.3)
-    prawnto (0.1.1)
-      prawn
-      rails (>= 2.1)
     pry (0.9.10)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -282,6 +282,7 @@ DEPENDENCIES
   builder
   capybara
   carmen
+  cells
   coffee-rails (~> 3.2.1)
   compass-rails
   cucumber
@@ -302,7 +303,6 @@ DEPENDENCIES
   pdf-reader
   pg
   prawn!
-  prawnto
   pry-nav
   rails
   rspec
