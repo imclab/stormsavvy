@@ -9,28 +9,28 @@ pdf = Prawn::Document.new(:background => "#{Prawn::DATADIR}/images/CEM2030-2012_
 # pdf.image page1
 
 pdf.fill_color "FF0000"
-pdf.text_box "#{@report.site_information_name}", 							:size => 10, :at => [20,670]
-pdf.text_box "#{@report.site_address_1}", 										:size => 10, :at => [20,660]
-pdf.text_box "#{@report.site_address_2}", 										:size => 10, :at => [20,650]
-pdf.text_box "#{@report.site_city}, #{@report.site_state}", 	:size => 10, :at => [20,630]
-pdf.text_box "#{@report.site_zipcode}", 											:size => 10, :at => [20,620]
+pdf.text_box "#{@report.site_information_name}", :size => 10, :at => [20,670]
+pdf.text_box "#{@report.site_address_1}", :size => 10, :at => [20,660]
+pdf.text_box "#{@report.site_address_2}", :size => 10, :at => [20,650]
+pdf.text_box "#{@report.site_city}, #{@report.site_state}", :size => 10, :at => [20,630]
+pdf.text_box "#{@report.site_zipcode}", :size => 10, :at => [20,620]
 
-pdf.move_down 90
+# pdf.move_down 90
 
-pdf.text_box "#{@report.contract_number}", :size => 12, :at => [0,0]
-pdf.text_box "#{@report.project_identifier_number}", :size => 12, :at => [0,200]
-pdf.text_box "#{@report.wdid_number}", :size => 12, :at => [0,400]
-pdf.text_box "#{@report.status}", :size => 12, :at => [0,800]
+pdf.text_box "#{@report.contract_number}", :size => 10, :at => [200, 650]
+pdf.text_box "#{@report.project_identifier_number}", :size => 10, :at => [0,200]
+pdf.text_box "#{@report.wdid_number}", :size => 10, :at => [0,400]
+pdf.text_box "#{@report.status}", :size => 10, :at => [0,800]
 
 # Throwing error on report fields
 
 # pdf.text_box @report.submitted_by_contractor
 # pdf.text_box @report.submitted_by_date
-# 
-# pdf.text_box @report.wpc_manager
-# pdf.text_box @report.wpc_phone
-# pdf.text_box @report.wpc_emergency_phone
-# 
+ 
+pdf.text_box @report.wpc_manager
+pdf.text_box @report.wpc_phone
+pdf.text_box @report.wpc_emergency_phone
+
 # pdf.text_box @report.inspector_name
 # pdf.text_box @report.inspection_date
 # 

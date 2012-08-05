@@ -28,8 +28,14 @@ group :test, :development do
   gem 'cucumber'
   gem 'sqlite3'
   gem 'spork-rails'
+<<<<<<< HEAD
   gem 'simplecov', :require => false
 
+=======
+
+  gem 'pry-nav'
+  gem 'awesome_print'
+>>>>>>> mvp
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'therubyracer'
   gem 'email_spec'
@@ -57,4 +63,19 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
+<<<<<<< HEAD
 end
+=======
+end
+
+gem 'jquery-rails'
+gem 'devise'
+gem 'heroku'
+gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
+gem 'pdf-reader'
+gem 'simple_form'
+gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
+gem 'pg'
+gem 'haml-rails'
+gem 'simplecov', :require => false, :group => :test
+>>>>>>> mvp

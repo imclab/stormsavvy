@@ -11,17 +11,11 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-
     respond_to do |format|
       format.html
       format.pdf do
-        # Updated path to assets/images for new CEM 2030
-        # prawnto :prawn=>{
-        #                  :page_layout=>:portrait, 
-        #                  :page_size => [855,1006], 
-        #                  :background => "#{Rails.root}/app/assets/images/CEM2030-1.png", 
-        #                  :scale => 0.5
-        #                 }, :inline=>true
+        pdf = FirstReport.new @report, view_context, background: "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.png"
+        send_data pdf.render, filename: "report_#{@report.id}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
   end
@@ -32,7 +26,7 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(params[:report])
-    
+
     # Testing for report.id
     report_number_id = print(@report.id)
     print "#{report_number_id}\n"
@@ -53,7 +47,7 @@ class ReportsController < ApplicationController
     #   end
     # end
 
-    
+
   end
 
   def edit
@@ -105,4 +99,3 @@ class ReportsController < ApplicationController
   end
 
 end
-  
