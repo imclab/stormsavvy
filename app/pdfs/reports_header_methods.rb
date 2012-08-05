@@ -12,10 +12,10 @@ module ReportsHeaderMethods
   def project_name_and_address
     formatted_text_box(
       [
-        { text: "#{@report.site.name}\n" },
-        { text: "#{@report.site.address_1}\n" },
-        { text: "#{@report.site.address_2}\n" },
-        { text: "#{@report.site.city}, #{@report.site.state}" }
+        { text: "#{@report.site_information_name}\n" }, 
+        { text: "#{@report.site_address_1}\n" },
+        { text: "#{@report.site_address_2}\n" },
+        { text: "#{@report.site_city} #{@report.site_state}, #{@report.site_zipcode}\n" }
       ],
       width: 200,
       at: [-18, 670],
