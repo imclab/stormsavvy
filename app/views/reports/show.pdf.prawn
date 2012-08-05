@@ -9,11 +9,11 @@ pdf = Prawn::Document.new(:background => "#{Prawn::DATADIR}/images/CEM2030-2012_
 # pdf.image page1
 
 pdf.fill_color "FF0000"
-pdf.text_box "#{@report.site_information_name}", 							:size => 10, :at => [20,670]
-pdf.text_box "#{@report.site_address_1}", 										:size => 10, :at => [20,660]
-pdf.text_box "#{@report.site_address_2}", 										:size => 10, :at => [20,650]
-pdf.text_box "#{@report.site_city}, #{@report.site_state}", 	:size => 10, :at => [20,630]
-pdf.text_box "#{@report.site_zipcode}", 											:size => 10, :at => [20,620]
+pdf.text_box "#{@report.site_information_name}", :size => 10, :at => [20,670]
+pdf.text_box "#{@report.site_address_1}", :size => 10, :at => [20,660]
+pdf.text_box "#{@report.site_address_2}", :size => 10, :at => [20,650]
+pdf.text_box "#{@report.site_city}, #{@report.site_state}", :size => 10, :at => [20,630]
+pdf.text_box "#{@report.site_zipcode}", :size => 10, :at => [20,620]
 
 pdf.move_down 90
 
