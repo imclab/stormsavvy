@@ -2,6 +2,8 @@ module ReportsHeaderMethods
   def full_report_header_block
     project_name_and_address
     contractor_name_and_address
+    wpc_name_and_company
+    contract_number
   end
 
   def simple_report_header_block
@@ -37,20 +39,65 @@ module ReportsHeaderMethods
     )
   end
 
-  def contract_number
+  def wpc_name_and_company
     formatted_text_box(
-      [{ text: "#{@report.contract_number}\n" }],
+      [
+        { text: "#{@report.wpc_manager }\n" },
+      ],
       width: 200,
-      at: [270, 675],
+      at: [-18, 520],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.wpc_phone}\n" },
+      ],
+      width: 200,
+      at: [270, 520],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.wpc_emergency_phone}\n" }
+      ],
+      width: 200,
+      at: [270, 496],
       size: 10
     )
   end
 
-  def project_id_number
+  def contract_number
     formatted_text_box(
-      [{ text: "#{@report.project_identifier_number}\n" }],
+      [
+        { text: "#{@report.contract_number}\n" },
+
+        # Field needs conversion to checkbox.
+        # { text: "#{@report.status}\n" }
+      ],
       width: 200,
       at: [270, 675],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.project_identifier_number}\n"},
+
+        # Field needs conversion to checkbox.
+        # { text: "#{@report.status}\n" }
+      ],
+      width: 200,
+      at: [270, 650],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.wdid_number}\n" },
+
+        # Field needs conversion to checkbox.
+        # { text: "#{@report.status}\n" }
+      ],
+      width: 200,
+      at: [270, 625],
       size: 10
     )
   end
