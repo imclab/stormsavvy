@@ -4,6 +4,9 @@ module ReportsHeaderMethods
     contractor_name_and_address
     wpc_name_and_company
     contract_number
+    inspector_name_and_date
+    site_information
+    storm_information
   end
 
   def simple_report_header_block
@@ -101,4 +104,125 @@ module ReportsHeaderMethods
       size: 10
     )
   end
+
+  def inspector_name_and_date
+    formatted_text_box(
+      [
+        { text: "#{@report.inspector_name }\n" },
+      ],
+      width: 200,
+      at: [-18, 450],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.inspection_date }\n" },
+      ],
+      width: 200,
+      at: [450, 450],
+      size: 10
+    )
+  end  
+
+  def site_information
+    formatted_text_box(
+      [
+        { text: "#{@report.total_area }\n" },
+      ],
+      width: 200,
+      at: [270, 360],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.total_DSA }\n" },
+      ],
+      width: 200,
+      at: [270, 345],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.current_DSA }\n" },
+      ],
+      width: 200,
+      at: [270, 330],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.inactive_DSA }\n" },
+      ],
+      width: 200,
+      at: [270, 315],
+      size: 10
+    )    
+  end  
+
+  def storm_information
+    formatted_text_box(
+      [
+        { text: "#{@report.time_elapsed_last_storm }\n" },
+      ],
+      width: 200,
+      at: [140, 260],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.precipitation_received }\n" },
+      ],
+      width: 200,
+      at: [355, 260],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.time_storm_expected }\n" },
+      ],
+      width: 200,
+      at: [270, 280],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.expected_precipitation_amount }\n" },
+      ],
+      width: 200,
+      at: [270, 270],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.time_elapsed_during_storm }\n" },
+      ],
+      width: 200,
+      at: [270, 260],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.gauge_reading_during_storm }\n" },
+      ],
+      width: 200,
+      at: [270, 250],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.time_elapsed_post_storm }\n" },
+      ],
+      width: 200,
+      at: [270, 240],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.gauge_reading_post_storm }\n" },
+      ],
+      width: 200,
+      at: [270, 230],
+      size: 10
+    )                    
+  end  
 end
