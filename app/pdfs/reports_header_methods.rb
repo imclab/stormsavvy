@@ -2,8 +2,13 @@ module ReportsHeaderMethods
   def full_report_header_block
     project_name_and_address
     contractor_name_and_address
+    submittal_information
     wpc_name_and_company
     contract_number
+    weather_conditions
+    inspector_name_and_date
+    site_information
+    storm_information
   end
 
   def simple_report_header_block
@@ -39,10 +44,29 @@ module ReportsHeaderMethods
     )
   end
 
+  def submittal_information
+    formatted_text_box(
+      [
+        { text: "#{@report.submitted_by_contractor}\n" },
+      ],
+      width: 200,
+      at: [-18, 542],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.submitted_by_date}\n" },
+      ],
+      width: 200,
+      at: [450, 542],
+      size: 10
+    )
+  end
+
   def wpc_name_and_company
     formatted_text_box(
       [
-        { text: "#{@report.wpc_manager }\n" },
+        { text: "#{@report.wpc_manager}\n" },
       ],
       width: 200,
       at: [-18, 520],
@@ -101,4 +125,148 @@ module ReportsHeaderMethods
       size: 10
     )
   end
+
+  def inspector_name_and_date
+    formatted_text_box(
+      [
+        { text: "#{@report.inspector_name}\n" },
+      ],
+      width: 200,
+      at: [-18, 450],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.inspection_date}\n" },
+      ],
+      width: 200,
+      at: [450, 450],
+      size: 10
+    )
+  end  
+
+  def weather_conditions
+    formatted_text_box(
+      [
+        if {:clear => @report.weather_condition}
+          { text: "X" }      
+        end
+      ],
+      width: 200,
+      at: [-12, 415],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if {:partly_cloudy => @report.weather_condition}
+          { text: "X" }      
+        end
+      ],
+      width: 200,
+      at: [-12, 400],
+      size: 10
+    )
+  end
+
+  def site_information
+    formatted_text_box(
+      [
+        { text: "#{@report.total_area}\n" },
+      ],
+      width: 200,
+      at: [270, 360],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.total_DSA}\n" },
+      ],
+      width: 200,
+      at: [270, 345],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.current_DSA}\n" },
+      ],
+      width: 200,
+      at: [270, 330],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.inactive_DSA}\n" },
+      ],
+      width: 200,
+      at: [270, 315],
+      size: 10
+    )    
+  end  
+
+  def storm_information
+    formatted_text_box(
+      [
+        { text: "#{@report.time_elapsed_last_storm}\n" },
+      ],
+      width: 200,
+      at: [140, 260],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.precipitation_received}\n" },
+      ],
+      width: 200,
+      at: [355, 260],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.time_storm_expected}\n" },
+      ],
+      width: 200,
+      at: [140, 227],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.expected_precipitation_amount}\n" },
+      ],
+      width: 200,
+      at: [355, 227],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.time_elapsed_during_storm}\n" },
+      ],
+      width: 200,
+      at: [140, 182],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.gauge_reading_during_storm}\n" },
+      ],
+      width: 200,
+      at: [355, 182],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.time_elapsed_post_storm}\n" },
+      ],
+      width: 200,
+      at: [140, 150],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.gauge_reading_post_storm}\n" },
+      ],
+      width: 200,
+      at: [355, 150],
+      size: 10
+    )                    
+  end  
 end
