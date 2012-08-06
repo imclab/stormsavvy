@@ -1,0 +1,32 @@
+fieldset#site_information,
+fieldset#company_information,
+fieldset#contract_information,
+fieldset#weather_conditions, 
+fieldset#wind_conditions, 
+fieldset#precipitation_conditions 
+{
+
+	border-style: clear;
+  border-width: 2px;
+  border-color: #A23;
+
+  legend {
+  	margin-top: 15px;
+  	border: clear;
+		color: #A32100;
+		font-size: 100%;
+  }
+
+  input {
+  	display: inline;
+  }
+  
+  label {
+  	display: inline;
+  }
+  
+  span {
+  	display: block;
+  	padding: 0 15px;
+  }
+}
