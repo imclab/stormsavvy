@@ -2,8 +2,10 @@ module ReportsHeaderMethods
   def full_report_header_block
     project_name_and_address
     contractor_name_and_address
+    submittal_information
     wpc_name_and_company
     contract_number
+    weather_conditions
     inspector_name_and_date
     site_information
     storm_information
@@ -38,6 +40,25 @@ module ReportsHeaderMethods
       ],
       width: 200,
       at: [-18, 603],
+      size: 10
+    )
+  end
+
+  def submittal_information
+    formatted_text_box(
+      [
+        { text: "#{@report.submitted_by_contractor}\n" },
+      ],
+      width: 200,
+      at: [-18, 542],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        { text: "#{@report.submitted_by_date}\n" },
+      ],
+      width: 200,
+      at: [450, 542],
       size: 10
     )
   end
@@ -124,6 +145,18 @@ module ReportsHeaderMethods
     )
   end  
 
+  def weather_conditions
+    formatted_text_box(
+      [
+        # Find correct method for radiobutton
+        # { checked: "#{@report.weather_condition }\n" },
+      ],
+      width: 200,
+      at: [-18, 470],
+      size: 10
+    )
+  end
+
   def site_information
     formatted_text_box(
       [
@@ -181,7 +214,7 @@ module ReportsHeaderMethods
         { text: "#{@report.time_storm_expected }\n" },
       ],
       width: 200,
-      at: [270, 280],
+      at: [140, 227],
       size: 10
     )
     formatted_text_box(
@@ -189,7 +222,7 @@ module ReportsHeaderMethods
         { text: "#{@report.expected_precipitation_amount }\n" },
       ],
       width: 200,
-      at: [270, 270],
+      at: [355, 227],
       size: 10
     )
     formatted_text_box(
@@ -197,7 +230,7 @@ module ReportsHeaderMethods
         { text: "#{@report.time_elapsed_during_storm }\n" },
       ],
       width: 200,
-      at: [270, 260],
+      at: [140, 182],
       size: 10
     )
     formatted_text_box(
@@ -205,7 +238,7 @@ module ReportsHeaderMethods
         { text: "#{@report.gauge_reading_during_storm }\n" },
       ],
       width: 200,
-      at: [270, 250],
+      at: [355, 182],
       size: 10
     )
     formatted_text_box(
@@ -213,7 +246,7 @@ module ReportsHeaderMethods
         { text: "#{@report.time_elapsed_post_storm }\n" },
       ],
       width: 200,
-      at: [270, 240],
+      at: [140, 150],
       size: 10
     )
     formatted_text_box(
@@ -221,7 +254,7 @@ module ReportsHeaderMethods
         { text: "#{@report.gauge_reading_post_storm }\n" },
       ],
       width: 200,
-      at: [270, 230],
+      at: [355, 150],
       size: 10
     )                    
   end  
