@@ -28,7 +28,23 @@
             = f.input :project_identifier_number, :input_html => { :value => @report.project_identifier_number }
             = f.input :wdid_number, :input_html => { :value => @report.wdid_number }
             = f.input :status, :input_html => { :value => @report.status }
-
+      .row
+        .span4
+          %fieldset#submittal_information
+            %legend Submittal Information
+            = f.input :submitted_by_contractor, :input_html => { :value => @report.submitted_by_contractor }
+            = f.input :submitted_by_date, :input_html => { :value => @report.submitted_by_date }
+        .span4
+          %fieldset#wpc_information
+            %legend WPC Information
+            = f.input :wpc_manager, :input_html => { :value => @report.wpc_manager }
+            = f.input :wpc_phone, :input_html => { :value => @report.wpc_phone }
+            = f.input :wpc_emergency_phone, :input_html => { :value => @report.wpc_emergency_phone }
+        .span4
+          %fieldset#inspector_name
+            %legend Inspector Name
+            = f.input :inspector_name, :input_html => { :value => @report.inspector_name }
+            = f.input :inspection_date, :input_html => { :value => @report.inspection_date }
       .row
         .span4
           %fieldset#weather_conditions
@@ -45,44 +61,23 @@
             = f.collection_radio_buttons :precipitation_condition, [[:misty, 'Misty'], [:light_rain, 'Light Rain'], [:rain, 'Rain'], [:heavy_rain, 'Heavy Rain'], [:hail, 'Hail'], [:snow, 'Snow']], :first, :last
 
       .row
-        .span6
+        .span4
           %fieldset#construction_phase
             %legend Construction Phase
             = f.input :construction_phase, :input_html => { :value => @report.construction_phase }
+        .span4
+          %fieldset#inspection_type
+            %legend Inspection Type
+            = f.input :inspection_type, :input_html => { :value => @report.inspection_type }
+        .span4
+          %fieldset#site_area
+            %legend Site Area
+            = f.input :total_area, :input_html => { :value => @report.total_area }
+            = f.input :total_DSA, :input_html => { :value => @report.total_DSA }
+            = f.input :current_DSA, :input_html => { :value => @report.current_DSA }
+            = f.input :inactive_DSA, :input_html => { :value => @report.inactive_DSA }
 
 
-
-
-
-
-
-
-      %fieldset#submittal_information
-        %legend Submittal Information
-        = f.input :submitted_by_contractor, :input_html => { :value => @report.submitted_by_contractor }
-        = f.input :submitted_by_date, :input_html => { :value => @report.submitted_by_date }
-
-      %fieldset#wpc_information
-        %legend WPC Information
-        = f.input :wpc_manager, :input_html => { :value => @report.wpc_manager }
-        = f.input :wpc_phone, :input_html => { :value => @report.wpc_phone }
-        = f.input :wpc_emergency_phone, :input_html => { :value => @report.wpc_emergency_phone }
-
-      %fieldset#insepctor_name
-        %legend Inspector Name
-        = f.input :inspector_name, :input_html => { :value => @report.inspector_name }
-        = f.input :inspection_date, :input_html => { :value => @report.inspection_date }
-
-      %fieldset#site_area
-        %legend Site Area
-        = f.input :total_area, :input_html => { :value => @report.total_area }
-        = f.input :total_DSA, :input_html => { :value => @report.total_DSA }
-        = f.input :current_DSA, :input_html => { :value => @report.current_DSA }
-        = f.input :inactive_DSA, :input_html => { :value => @report.inactive_DSA }
-
-      %fieldset#inspection_type
-        %legend Inspection Type
-        = f.input :inspection_type, :input_html => { :value => @report.inspection_type }
 
       %fieldset#storm_information
         %legend Storm Information
