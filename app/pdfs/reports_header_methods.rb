@@ -1,4 +1,11 @@
 module ReportsHeaderMethods
+
+  # Implement checkbox here: 
+  # git://gist.github.com/58890.git
+
+  CHECKBOX        = "\xE2\x98\x90" # "☐"
+  FILLED_CHECKBOX = "\xE2\x98\x91" # "☑"
+
   def full_report_header_block
     project_name_and_address
     contractor_name_and_address
@@ -146,10 +153,16 @@ module ReportsHeaderMethods
   end  
 
   def weather_conditions
+
+    # Implement checkbox here: 
+    # git://gist.github.com/58890.git
+
     formatted_text_box(
       [
         if {:clear => @report.weather_condition}
-          { text: "X" }      
+          {text: "#{CHECKBOX} Not done yet"}
+        else
+          {text: "#{FILLED_CHECKBOX} Complete!"}
         end
       ],
       width: 200,
@@ -159,7 +172,9 @@ module ReportsHeaderMethods
     formatted_text_box(
       [
         if {:partly_cloudy => @report.weather_condition}
-          { text: "X" }      
+          {text: "#{CHECKBOX} Not done yet"}
+        else
+          {text: "#{FILLED_CHECKBOX} Complete!"}
         end
       ],
       width: 200,
