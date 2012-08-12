@@ -13,6 +13,10 @@ module ReportsHeaderMethods
     wpc_name_and_company
     contract_number
     weather_conditions
+    wind_conditions
+    construction_phase
+    inspection_type
+    precipitation_conditions
     inspector_name_and_date
     site_information
     storm_information
@@ -159,28 +163,284 @@ module ReportsHeaderMethods
 
     formatted_text_box(
       [
-        if {:clear => @report.weather_condition}
-          {text: "#{CHECKBOX} Not done yet"}
+        if @report.weather_condition == "clear"
+          {text: "X"}
         else
-          {text: "#{FILLED_CHECKBOX} Complete!"}
+          {text: " "}
         end
       ],
       width: 200,
-      at: [-12, 415],
+      at: [-10, 415],
       size: 10
     )
     formatted_text_box(
       [
-        if {:partly_cloudy => @report.weather_condition}
-          {text: "#{CHECKBOX} Not done yet"}
+        if @report.weather_condition == "partly_cloudy"  
+          {text: "X"}
         else
-          {text: "#{FILLED_CHECKBOX} Complete!"}
+          {text: " "}
         end
       ],
       width: 200,
-      at: [-12, 400],
+      at: [-10, 400],
       size: 10
     )
+        formatted_text_box(
+      [
+        if @report.weather_condition == "cloudy"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [-10, 385],
+      size: 10
+    )
+  end
+
+  def precipitation_conditions
+
+    # Implement checkbox here: 
+    # git://gist.github.com/58890.git
+
+    formatted_text_box(
+      [
+        if @report.precipitation_condition == "none"
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [140, 430],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.precipitation_condition == "misty"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [140, 415],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.precipitation_condition == "light_rain"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [140, 400],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.precipitation_condition == "rain"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [140, 385],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.precipitation_condition == "heavy_rain"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [235, 415],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.precipitation_condition == "hail"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [235, 400],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.precipitation_condition == "snow"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [235, 385],
+      size: 10
+    )            
+  end
+
+  def wind_conditions
+
+    # Implement checkbox here: 
+    # git://gist.github.com/58890.git
+
+    formatted_text_box(
+      [
+        if @report.wind_condition == "none"
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [375, 415],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.wind_condition == "lessthan5"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [375, 400],
+      size: 10
+    )
+        formatted_text_box(
+      [
+        if @report.wind_condition == "greaterthan5"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [375, 385],
+      size: 10
+    )
+  end
+
+  def construction_phase
+
+    # Implement checkbox here: 
+    # git://gist.github.com/58890.git
+
+    formatted_text_box(
+      [
+        if @report.construction_phase == "highway_construction"
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [-10, 350],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.construction_phase == "plant_establishment"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [-10, 335],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.weather_condition == "work_suspension"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [-10, 320],
+      size: 10
+    )
+  end
+
+  def inspection_type
+
+    # Implement checkbox here: 
+    # git://gist.github.com/58890.git
+
+    formatted_text_box(
+      [
+        if @report.inspection_type == "weekly"
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [-10, 265],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.inspection_type == "quarterly"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [-10, 250],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.inspection_type == "pre_storm"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [-10, 225],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.inspection_type == "during_storm"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [-10, 190],
+      size: 10
+    )
+    formatted_text_box(
+      [
+        if @report.inspection_type == "post_storm"  
+          {text: "X"}
+        else
+          {text: " "}
+        end
+      ],
+      width: 200,
+      at: [-10, 160],
+      size: 10
+    )        
   end
 
   def site_information
