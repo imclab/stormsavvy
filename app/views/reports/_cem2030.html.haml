@@ -83,17 +83,17 @@
             = f.input :time_elapsed_last_storm, :input_html => { :value => @report.time_elapsed_last_storm }
             = f.input :precipitation_received, :input_html => { :value => @report.precipitation_received }
         .span4
-          %fieldset#storm_information            
+          %fieldset#storm_information
             %legend Storm Information / Pre-Storm
             = f.input :time_storm_expected, :input_html => { :value => @report.time_storm_expected }
             = f.input :expected_precipitation_amount, :input_html => { :value => @report.expected_precipitation_amount }
         .span4
-          %fieldset#storm_information            
+          %fieldset#storm_information
             %legend Storm Information / During Rain Event    
             = f.input :time_elapsed_during_storm, :input_html => { :value => @report.time_elapsed_during_storm }        
             = f.input :gauge_reading_during_storm, :input_html => { :value => @report.gauge_reading_during_storm }
         .span4
-          %fieldset#storm_information            
+          %fieldset#storm_information
             %legend Storm Information / Post-Storm
             = f.input :time_elapsed_post_storm, :input_html => { :value => @report.time_elapsed_post_storm }
             = f.input :gauge_reading_post_storm, :input_html => { :value => @report.gauge_reading_post_storm }
