@@ -112,8 +112,8 @@ class Report < ActiveRecord::Base
   # preserve_existing_vegetation
 
   :DSA_management_location1
-  :DSA_management_location1
-  :DSA_management_location1
+  :DSA_management_location2
+  :DSA_management_location3
   # DSA_management
 
   :DSA_management_if_created1
@@ -131,32 +131,60 @@ class Report < ActiveRecord::Base
   :DSA_management_linear_sediment3
   # DSA_management
 
-  :rain_event_boolean1
-  :rain_event_boolean2
-  :rain_event_boolean3
+  :DSA_management_rain_event1
+  :DSA_management_rain_event2
+  :DSA_management_rain_event3
   # DSA_management
 
-  :DSA_activity_boolean1
-  :DSA_activity_boolean2
-  :DSA_activity_boolean3
+  :DSA_management_if_activity1
+  :DSA_management_if_activity2
+  :DSA_management_if_activity3
   # DSA_management
 
-  :last_activity_date1
-  :last_activity_date2
-  :last_activity_date3
+  :DSA_management_last_activity1
+  :DSA_management_last_activity2
+  :DSA_management_last_activity3
   # DSA_management
 
-  :active_DSA_days1
-  :active_DSA_days2
-  :active_DSA_days3
+  :DSA_management_active_duration1
+  :DSA_management_active_duration2
+  :DSA_management_active_duration3
   # DSA_management
 
-  :comments4
-  :comments5
-  :comments6
+  :DSA_management_comments1
+  :DSA_management_comments2
+  :DSA_management_comments3
   # DSA_management
 
-  
+  :temporary_stabilization_location1
+  :temporary_stabilization_location2
+  :temporary_stabilization_location3
+  # temporary_stabilization
+
+  :temporary_stabilization_inactive_covered1
+  :temporary_stabilization_inactive_covered2
+  :temporary_stabilization_inactive_covered3
+  # temporary_stabilization
+
+  :temporary_stabilization_complete_coverage1
+  :temporary_stabilization_complete_coverage2
+  :temporary_stabilization_complete_coverage3
+  # temporary_stabilization
+
+  :temporary_stabilization_visible_erosion1
+  :temporary_stabilization_visible_erosion2
+  :temporary_stabilization_visible_erosion3
+  # temporary_stabilization
+
+  :temporary_stabilization_photos1
+  :temporary_stabilization_photos2
+  :temporary_stabilization_photos3
+  # temporary_stabilization
+
+  :temporary_stabilization_comments1
+  :temporary_stabilization_comments2
+  :temporary_stabilization_comments3
+  # temporary_stabilization
 
   before_update :change_report_status
 
