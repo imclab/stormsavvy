@@ -81,6 +81,83 @@ class Report < ActiveRecord::Base
   :gauge_reading_post_storm
   # x_inches
 
+  :existing_vegetation_location1
+  :existing_vegetation_location2
+  :existing_vegetation_location3
+  # preserve_existing_vegetation
+
+  :existing_vegetation_right_location1
+  :existing_vegetation_right_location2
+  :existing_vegetation_right_location3
+  # preserve_existing_vegetation
+
+  :existing_vegetation_properly_installed1
+  :existing_vegetation_properly_installed2
+  :existing_vegetation_properly_installed3
+  # preserve_existing_vegetation
+
+  :existing_vegetation_maintenance_necessary1
+  :existing_vegetation_maintenance_necessary2
+  :existing_vegetation_maintenance_necessary3
+  # preserve_existing_vegetation
+
+  :existing_vegetation_photos1
+  :existing_vegetation_photos2
+  :existing_vegetation_photos3
+  # preserve_existing_vegetation
+
+  :existing_vegetation_comments1
+  :existing_vegetation_comments2
+  :existing_vegetation_comments3
+  # preserve_existing_vegetation
+
+  :DSA_management_location1
+  :DSA_management_location1
+  :DSA_management_location1
+  # DSA_management
+
+  :DSA_management_if_created1
+  :DSA_management_if_created2
+  :DSA_management_if_created3
+  # DSA_management
+
+  :DSA_management_date_created1
+  :DSA_management_date_created2
+  :DSA_management_date_created3
+  # DSA_management
+
+  :DSA_management_linear_sediment1
+  :DSA_management_linear_sediment2
+  :DSA_management_linear_sediment3
+  # DSA_management
+
+  :rain_event_boolean1
+  :rain_event_boolean2
+  :rain_event_boolean3
+  # DSA_management
+
+  :DSA_activity_boolean1
+  :DSA_activity_boolean2
+  :DSA_activity_boolean3
+  # DSA_management
+
+  :last_activity_date1
+  :last_activity_date2
+  :last_activity_date3
+  # DSA_management
+
+  :active_DSA_days1
+  :active_DSA_days2
+  :active_DSA_days3
+  # DSA_management
+
+  :comments4
+  :comments5
+  :comments6
+  # DSA_management
+
+  
+
   before_update :change_report_status
 
 private
