@@ -26,7 +26,7 @@ group :test, :development do
   gem 'pry-nav'
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
-  gem 'therubyracer', '~> 0.9.2'
+  gem 'therubyracer'
   gem 'email_spec'
 #  gem 'rspec-http', '~> 0.9'
 #  gem 'rest-assured'
@@ -35,11 +35,11 @@ group :test, :development do
 end
 
 group :assets do
-  gem "compass-rails"
+  gem 'compass-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails', '~> 2.0.1.0'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
