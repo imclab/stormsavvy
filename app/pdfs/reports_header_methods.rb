@@ -7,6 +7,8 @@ module ReportsHeaderMethods
   FILLED_CHECKBOX = "\xE2\x98\x91" # "☑"
 
   def full_report_header_block
+
+    # page 1 categories
     project_name_and_address
     contractor_name_and_address
     submittal_information
@@ -20,6 +22,40 @@ module ReportsHeaderMethods
     inspector_name_and_date
     site_information
     storm_information
+
+    # page 2 categories
+    preserve_vegetation
+    dsa_management
+    temp_stabilization
+
+    # page 3 categories
+    linear_sediment
+    di_protection
+
+    # page 4 categories
+    stockpile_management
+    inactive_stockpile_management
+
+    # page 5 categories
+    sediment_basin
+    tracking_control
+    wind_erosion
+    dewatering_operation
+
+    # page 6 categories
+    temp_stream_crossing
+    material_storage
+    waste_management
+
+    # page 7 categories
+    project_specific1
+    project_specific2
+
+    # page 8 categories
+    general_comments
+    required_action1
+    required_action2
+    required_action3
   end
 
   def simple_report_header_block
@@ -542,6 +578,11 @@ module ReportsHeaderMethods
       width: 200,
       at: [355, 150],
       size: 10
-    )                    
-  end  
+    )
+  end
+
+  # preserve_vegetation
+  # dsa_management
+  # temp_stabilization
+
 end
