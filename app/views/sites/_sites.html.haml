@@ -1,4 +1,4 @@
-%table
+%table.table.table-condensed
   %tr
     %th Name
     %th Description
@@ -18,8 +18,8 @@
       %td= site.size
       %td= site.exposed_area
       %td= site.location
-      %td= link_to 'Show', site
-      %td= link_to 'Edit', edit_site_path(site)
-      %td= link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', project_site_path(site.project_id, site)
+      %td= link_to 'Edit', edit_project_site_path(site.project_id, site)
+      %td= link_to 'Destroy', project_site_path(site.project_id, site), :confirm => 'Are you sure?', :method => :delete
 
 %br

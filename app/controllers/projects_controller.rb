@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  require 'carmen'
+  include Carmen
+
   # GET /projects
   # GET /projects.json
   def index
@@ -13,7 +16,10 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @project = Project.find(params[:id])
+
+    @project = current_user.projects.find(params[:id])
+    @sites = @project.sites
+    @needs_attention_reports = Report.needs_attention
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,29 +31,34 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
-
+    @sites = @project.sites.build
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render html: @project, :notice => 'show me the money',
+                    :flash => { :error => 'Error here' } }
       format.json { render json: @project }
     end
   end
 
   # GET /projects/1/edit
   def edit
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
   end
 
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(params[:project])
-
+    @project = current_user.projects.build(params[:project])
+    @project.save
     respond_to do |format|
       if @project.save
+#        format.html { redirect_to(@project, :flash => { :success => 'Project was successfully created.'}) }
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
-        format.html { render action: "new" }
+        #binding.pry
+        #format.html { render action: "new", notice: 'Project was unsuccessfully created.' }
+        format.html { flash.now[:error] = "Flash now set from bad form"
+                      render action: "new" }#, :flash => { :error => 'Please fix the problems shown.' } }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
@@ -56,10 +67,12 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.json
   def update
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
+        # Flash message test using Twitter Bootstrap applicaton helper method
+        # flash[:notice] = "Flash message test"
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else

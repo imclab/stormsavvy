@@ -1,9 +1,7 @@
-%h2.dashboard Dashboard
-
 .row
-  .nine.columns.main
-    %h2 Project data
-    = render 'dashboard/main'
-  .three.columns.sidebar
-    %h2 Sidebar
-    = render 'dashboard/sidebar'
+  .span12
+    .row
+      .span8#modules= render 'dashboard/modules'
+      .span4#dashboard-sidebar= render 'dashboard/sidebar'
+
+

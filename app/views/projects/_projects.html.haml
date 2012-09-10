@@ -1,27 +1,25 @@
-
-%table
-  %tr
-    %th User
-    %th Name
-    %th Description
-    %th Startdate
-    %th Finishdate
-    %th Active
-    %th
-    %th
-    %th
-
+.cf
   - @projects.each do |project|
-    %tr
-      %td= project.user_id
-      %td= project.name
-      %td= project.description
-      %td= project.startdate
-      %td= project.finishdate
-      %td= project.active
-      %td= link_to 'Show', project
-      %td= link_to 'Edit', edit_project_path(project)
-      %td= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+    .project.closed{ :class=>"#{cycle('even','odd')}" }
+      .cf.headline
+        %h3.pull-left=project.name
+        .small.more_details.pull-right
+          %i{ :class => "icon icon-plus" }
+          %i{ :class => "icon icon-minus is_hidden" }
 
-%br
+
+      .more_details_box.is_hidden
+        %ul
+          %li
+            %strong # of Sites:
+            = project.sites.count
+          %li
+            %strong Last Updated:
+            = project.updated_at
+          %li
+            %strong Last Event:
+            = "Rain Event on 2012-3-1"
+
+        = link_to "View Project", project, :class => "view_project_link"
+
 

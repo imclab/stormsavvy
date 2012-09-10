@@ -10,15 +10,20 @@ describe "projects/new" do
     ).as_new_record)
   end
 
-  it "renders new project form" do
+  xit "renders new project form" do
     render
-
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => projects_path, :method => "post" do
-      assert_select "input#project_user_id", :name => "project[user_id]"
       assert_select "input#project_name", :name => "project[name]"
       assert_select "textarea#project_description", :name => "project[description]"
       assert_select "input#project_active", :name => "project[active]"
     end
+  end
+
+  # Flash message calling twitterized_type method in application helper.
+  it "shows flash message" do
+    flash[:error] = "Form fields are incorrect"
+    render
+    #p rendered
+    rendered.should have_selector('div.alert-error')#, :class => twitterized_type(:alert), :count => 1)
   end
 end

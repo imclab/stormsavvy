@@ -1,0 +1,25 @@
+- if current_user
+  #current_weather.widget.bottom-10
+    .inner
+      %h5 Weather Report
+      %hr
+      %p
+        -#="Today's chance of rain: #{chance_of_rain(@site.zipcode)}%"
+        ="Today's chance of rain: #{@site.chance_of_rain}%"
+  #current_action_items.widget.bottom-10
+    .inner
+      %h5 Pending Reports
+      %hr
+      - unless @needs_attention_reports.empty?
+        - @needs_attention_reports.each do |report|
+          = link_to "Report for #{report.site.name}", edit_report_path(report)
+      - else
+        You have no pending reports.
+  #current_action_items.widget.bottom-10
+    .inner
+      %h5 Completed Reports
+      %hr
+      - unless @completed_reports.empty?
+        %ul
+          - @completed_reports.each do |cr|
+            %li= link_to "Completed Report for #{cr.site.name}", report_path(cr, :pdf)

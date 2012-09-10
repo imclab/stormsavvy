@@ -1,34 +1,59 @@
 require "spec_helper"
 
 describe SitesController do
+
   describe "routing" do
 
+
+    before(:each) do
+      attrs = {
+        :name => 'Project',
+        :description => 'My description',
+        :startdate => 5.days.ago,
+        :finishdate => 1.day.ago}
+      @user = FactoryGirl.create(:user)
+      @project = @user.projects.create!(attrs)
+      # Stub this later to speed it up...
+      @site = @project.sites.create!({:name => 'My site', :zipcode => '94530'})
+    end
+
     it "routes to #index" do
-      get("/sites").should route_to("sites#index")
+      { :get => project_sites_path(@project.to_param) }
+      .should route_to(:controller => "sites", :action => "index", :project_id => @project.to_param)
     end
 
     it "routes to #new" do
-      get("/sites/new").should route_to("sites#new")
+      { :get => new_project_site_path(@project.to_param) }
+      .should route_to(:controller => "sites", :action => "new", :project_id => @project.to_param)
     end
 
     it "routes to #show" do
-      get("/sites/1").should route_to("sites#show", :id => "1")
+      { :get => project_site_path(@project.to_param, @site.to_param) }
+      .should route_to(:controller => "sites", :action => "show", 
+                       :project_id => @project.to_param, :id => @site.to_param)
     end
 
     it "routes to #edit" do
-      get("/sites/1/edit").should route_to("sites#edit", :id => "1")
+      { :get => edit_project_site_path(@project.to_param, @site.to_param) }
+      .should route_to(:controller => "sites", :action => "edit", 
+                       :project_id => @project.to_param, :id => @site.to_param)
     end
 
     it "routes to #create" do
-      post("/sites").should route_to("sites#create")
+      { :post => project_sites_path(@project.to_param) }
+      .should route_to(:controller => "sites", :action => "create", :project_id => @project.to_param)
     end
 
     it "routes to #update" do
-      put("/sites/1").should route_to("sites#update", :id => "1")
+      { :put => project_site_path(@project.to_param, @site.to_param) }
+      .should route_to(:controller => "sites", :action => "update", 
+                       :project_id => @project.to_param, :id => @site.to_param)
     end
 
     it "routes to #destroy" do
-      delete("/sites/1").should route_to("sites#destroy", :id => "1")
+      { :delete => project_site_path(@project.to_param, @site.to_param) }
+      .should route_to(:controller => "sites", :action => "destroy", 
+                       :project_id => @project.to_param, :id => @site.to_param)
     end
 
   end

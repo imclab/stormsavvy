@@ -9,7 +9,7 @@ describe "sites/index" do
         :costcode => "Costcode",
         :size => "Size",
         :exposed_area => "Exposed Area",
-        :location => "Location"
+        :project_id => 1
       ),
       stub_model(Site,
         :name => "Name",
@@ -17,24 +17,19 @@ describe "sites/index" do
         :costcode => "Costcode",
         :size => "Size",
         :exposed_area => "Exposed Area",
-        :location => "Location"
+        :project_id => 1
       )
     ])
+    @user = FactoryGirl.create(:user)
+    @project = @user.projects.create!({:name => 'fff', :description => "vvv", :startdate => 5.days.ago, :finishdate => 1.day.ago})
   end
 
   it "renders a list of sites" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Name".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Description".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Costcode".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Size".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Exposed Area".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "Location".to_s, :count => 2
   end
 end

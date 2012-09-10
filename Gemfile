@@ -1,57 +1,55 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails'
+gem 'typhoeus'
+gem 'nokogiri'
+gem 'geocoder'
+gem 'carmen'
+gem 'iron_worker'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+group :development do
+  gem 'letter_opener'
+end
 
 group :test, :development do
   gem 'builder'
   gem 'rspec-rails'
   gem 'rspec'
   gem 'factory_girl_rails'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
-  gem 'capybara', :git => 'https://github.com/doolin/capybara'
+  gem 'capybara'
   gem 'cucumber'
   gem 'sqlite3'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'spork-rails'
+
+  gem 'pry-nav'
+  gem 'awesome_print'
+  gem 'pdf-inspector', :require => "pdf/inspector"
+  gem 'therubyracer'
+  gem 'email_spec'
+#  gem 'rspec-http', '~> 0.9'
+#  gem 'rest-assured'
+#  gem 'pry-stack_explorer'
+#  gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
-gem 'pg'
-gem 'haml-rails'
-
-gem 'zurb-foundation', :group => :assets
-gem 'pry-rails', :group => :development
-
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
+  gem 'compass-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
+  gem 'twitter-bootstrap-rails'
 end
 
+gem 'less-rails-bootstrap'
 gem 'jquery-rails'
-
-gem 'foundation'
 gem 'devise'
 gem 'heroku'
-
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
+gem 'pdf-reader'
+gem 'simple_form'
+gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
+gem 'pg'
+gem 'haml-rails'
+gem 'simplecov', :require => false, :group => :test

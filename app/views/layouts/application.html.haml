@@ -2,16 +2,23 @@
 %html
   %head
     %title StormSavvy
+    %link{:href => "https://plus.google.com/100567972543112604606", :rel => "publisher"}/
     = stylesheet_link_tag :application
-    = javascript_include_tag :application
+    = javascript_include_tag 'http://w.sharethis.com/button/buttons.js', :application
+    = render 'shared/google_analytics'
     %meta{:charset => "utf-8"}
     = csrf_meta_tag
+
   %body{ template_id, template_class }
-    = render 'layouts/nav'
+    =render :partial => "shared/flash_messages", :locals => {:flash => flash}
     = render 'layouts/header'
+    .bottom-10
+    = render :partial => "pages/hero" if is_public_home?
     .container
-      .row
-        .twelve.columns.centered
-          = yield
+      - flash.each do |name, msg|
+        %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+          %a.close{"data-dismiss" => "alert"} ×
+          -#= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+      = yield
+
     = render 'layouts/footer'
-    = render 'layouts/analytics'

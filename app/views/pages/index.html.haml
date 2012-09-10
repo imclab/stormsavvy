@@ -1,13 +1,30 @@
-.row.index-page
-  .twelve.columns.centered
-    %h1 Welcome to StormSavvy!
-    %p
-      StormSavvy helps you keep your job site SWPPPP compliant.
-    %p
-      Check it out:
-    %ul
-      %li
-        Document alert management system.
-      %li
-        Email alerts
-    = render 'pages/maincopy'
+#homeContent
+  .row
+    .span12
+
+      = render 'shared/cta-bar'
+
+      #featureImages.bottom-10
+        .row
+          .span2
+            = image_tag "/assets/legos-140.jpg"
+          .span10
+            %h2 Easy as 1-2-3
+            %p 
+            %h3 Setup Your Site. Check For Alerts. Report Online.
+        .row
+          .span2
+            = image_tag "/assets/data-140.jpg"
+          .span10
+            %h2 Real-Time Weather Data
+            %p 
+            %h3 Geolocation NOAA Forecasts
+        .row
+          .span2
+            = image_tag "/assets/alerts-140.jpg"
+          .span10
+            %h2 Instant Alerts (Coming Soon)
+            %p 
+            %h3 Email Notifications Before Rain Events and Deadlines.
+
+      = render 'shared/cta-bar'

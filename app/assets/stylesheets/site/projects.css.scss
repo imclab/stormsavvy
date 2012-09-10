@@ -1,3 +1,51 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.project {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  .headline {
+    padding: .5em;
+  }
+
+  &:hover {
+    .more_details {
+      color: #000;
+    }
+  }
+
+  .more_details {
+    font-size: 16px;
+    margin: 6px 0 0 0;
+    color: white;
+  }
+
+  .view_project_link {
+    display: block;
+    text-align: center;
+    background: black;
+    color: white;
+    padding: .5em;
+    font-weight: 900;
+  }
+}
+
+
+.project.even {
+  background: #eee;
+  &:hover {
+    background: #ccc;
+  }
+}
+.project.odd {
+  background: #f1f1f1;
+  &:hover {
+    background: #ccc;
+  }
+}

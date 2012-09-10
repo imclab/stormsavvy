@@ -1,3 +1,48 @@
+
+require 'rubygems'
+require 'spork'
+
+# Prawn spec setup:
+require "prawn"
+require "pdf/reader"
+require "pdf/inspector"
+require "email_spec"
+
+RSpec.configure do |config|
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
+end
+
+Prawn.debug = true
+
+def create_pdf(klass=Prawn::Document)
+  @pdf = klass.new(:margin => 0)
+end    
+
+# Make some methods public to assist in testing
+module Prawn::Graphics
+  public :map_to_absolute
+end
+
+# SimpleCov setup:
+require 'simplecov'
+SimpleCov.start 'rails'
+
+#uncomment the following line to use spork with the debugger
+#require 'spork/ext/ruby-debug'
+
+Spork.prefork do
+  # Loading more in this block will cause your tests to run faster. However,
+  # if you change any configuration or code from libraries loaded here, you'll
+  # need to restart spork for it take effect.
+
+end
+
+Spork.each_run do
+  # This code will be run each time you run your specs.
+
+end
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)

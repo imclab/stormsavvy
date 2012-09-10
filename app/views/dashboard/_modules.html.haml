@@ -1,0 +1,9 @@
+.row.bottom-10
+  .span8
+    .panel
+      .inner
+        .headline.bottom-10.cf
+          %h2.pull-left Active Projects
+          .pull-right
+            = link_to 'New Project', new_project_path, :class => "btn"
+        = render 'projects/projects'

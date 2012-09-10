@@ -10,25 +10,55 @@ describe User do
   describe "site associations" do
 
     before(:each) do
-      @user = Factory(:user)
-      @s1 = Factory(:site, :user => @user, :created_at => 1.day.ago)
-      @s2 = Factory(:site, :user => @user, :created_at => 1.hour.ago)
+      @user = FactoryGirl.create(:user)
+      @p1 = FactoryGirl.create(:project, :user => @user, :created_at => 1.day.ago)
+      @p2 = FactoryGirl.create(:project, :user => @user, :created_at => 1.hour.ago)
     end
 
-    it "should have a projects attribute" do
-      @user.should respond_to(:sites)
+    it "should respond to projects" do
+      @user.should respond_to(:projects)
     end
 
     it "should have the right projects in the right order" do
-      @user.sites.should == [@s1, @s2]
+      @user.projects.should == [@p1, @p2]
     end
 
     it "should destroy associated sites" do
       @user.destroy
-      [@s1, @s2].each do |s|
-        Site.find_by_id(s.id).should be_nil
+      [@p1, @p2].each do |p|
+        Project.find_by_id(p.id).should be_nil
       end
     end
+
+    # it "should enforce unique email" do
+    #   m1 = Factory(:user)
+    #   m2 = Factory.build(:user, :email => m1.email).should_not be_valid
+    # end
+  end
+
+  context :has_site do
+
+    before(:each) do 
+      @user = FactoryGirl.create(:user)
+    end
+
+    it "should respond to has_site?" do
+      @user.should respond_to(:has_site?)
+    end
+
+    it "should reply appropriately if user has a site" do
+      project = FactoryGirl.create(:project)
+      site = FactoryGirl.create(:site)
+      project.sites << site
+      assert_equal @user.has_site?, true
+    end
+
+    it "should reply appropriately if user does not have site" do
+      project = FactoryGirl.create(:project)
+      site = FactoryGirl.create(:site)
+      assert_equal @user.has_site?, false
+    end
+
   end
 
 end

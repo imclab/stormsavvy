@@ -1,28 +1,40 @@
-= form_for @project do |f|
-  -if @project.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
-      %ul
-        - @project.errors.full_messages.each do |msg|
-          %li= msg
+= simple_nested_form_for @project, :html => { :class => 'form-horizontal' } do |f|
+  - if f.error_notification
+    .alert.alert-error.fade.in
+      %a.close{"data-dismiss" => "alert", :href => "#"} ×
+      = f.error_notification
+  - flash.each do |name, msg|
+    %h4 We got a flash  in the form
+    %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+      %a.close{"data-dismiss" => "alert"} ×
+      -#= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+      %p= msg
+  %fieldset
+    %legend Project Details
+    = f.input :name, :hint => "Name of this project"
+    = f.input :description
+    = f.input :startdate, :as => :string, :input_html => { :class => 'datePicker' }
+    = f.input :finishdate, :as => :string, :input_html => { :class => 'datePicker' }
+    = f.input :active
 
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :startdate
-    = f.datetime_select :startdate
-  .field
-    = f.label :finishdate
-    = f.datetime_select :finishdate
-  .field
-    = f.label :active
-    = f.check_box :active
-  .actions
-    = f.submit 'Save'
+  %fieldset
+    %legend
+      Project Sites
+    = f.link_to_add "Add a new site", :sites
+    .sitesWrapper
+      = f.fields_for :sites do |site|
+        .sitesInner
+          = site.link_to_remove "Remove this site"
+          = site.input :name
+          = site.input :description
+          = site.input :costcode
+          = site.input :address_1
+          = site.input :address_2
+          = site.input :city
+          = site.input :state, :as => :select, :collection => Carmen.states
+          = site.input :zipcode, :as => :string
+
+  .form-actions
+    = link_to "Cancel", projects_path, :confirm => "Are you sure you want to cancel?"
+    |
+    = f.submit

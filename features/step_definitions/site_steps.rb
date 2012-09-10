@@ -1,11 +1,10 @@
-Then /^the user goes to the site index$/ do
-  click_link("Sites")
+Then /^the user should be on his or her dashbaord$/ do
+  page.should have_selector("body.dashboard")
+  page.should have_selector("body#index")
 end
 
-Then /^sees "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^I debug$/ do
-  debugger
+Then /^the user should see "([^"]*)"$/ do |arg1|
+  page.should have_selector('h2') do |s|
+    s.should have_content(arg1)
+  end
 end

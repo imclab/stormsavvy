@@ -18,4 +18,11 @@ describe "inspection_events/show" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/MyText/)
   end
+
+  it "renders edit / back / delete links" do
+    render
+    rendered.should match(/Edit/)
+    rendered.should match(/Back/)
+    rendered.should match(/Delete/)
+  end
 end

@@ -1,0 +1,24 @@
+require 'spec_helper'
+
+describe "reports/show" do
+  before(:each) do
+    # @project = assign(:project, stub_model(Project,
+    #   :user_id => 1,
+    #   :name => "Name",
+    #   :description => "MyText",
+    #   :active => false
+    # ))
+    @report = FactoryGirl.create(:report)
+    # @user = FactoryGirl.create(:user)
+    # @needs_attention_reports = Report.needs_attention
+    # @sites = @project.sites
+    # sign_in @user
+  end
+
+  xit "renders edit / back / delete" do
+    render
+    rendered.should match(/Edit/)
+    rendered.should match(/Back/)
+    rendered.should match(/Delete/)
+  end
+end

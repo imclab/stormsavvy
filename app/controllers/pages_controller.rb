@@ -22,4 +22,20 @@ class PagesController < ApplicationController
 
   def contact
   end
+
+  def plans
+  end
+
+  def features
+  end
+
+  def team
+  end
+
+  def popemail
+    UserMailer.pop.deliver
+  end
+
+  def sendemail
+  end
 end

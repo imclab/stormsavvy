@@ -5,6 +5,38 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  has_many :sites, :dependent => :destroy
+  attr_accessible :email, 
+  :password, 
+  :password_confirmation, 
+  :remember_me, 
+  :firstname, 
+  :lastname,
+
+  # Report fields associated with user
+  :contractor_name, 
+  :contractor_address_1, 
+  :contractor_address_2, 
+  :contractor_city, 
+  :contactor_state, 
+  :contactor_zipcode
+
+  has_many :sites, :dependent => :destroy, :through => :projects
+  has_many :projects, :dependent => :destroy
+
+  # Implement presence of unique email 
+  # validates :email, :presence => true
+  # validates_uniqueness_of :email
+
+  def send_pop_alerts
+    @name = self.firstname
+    UserMailer.pop_alert(self).deliver
+  end
+
+  def has_site?
+    self.projects.each do |projects|
+      return true if projects.sites.count > 0
+    end
+    return false 
+  end
+
 end

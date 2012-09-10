@@ -1,28 +1,56 @@
-= form_for @site do |f|
+= form_for [@project, @site] do |f|
   -if @site.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@site.errors.count, "error")} prohibited this site from being saved:"
+      %h2= "#{pluralize(@f.errors.count, "error")} prohibited this site from being saved:"
       %ul
         - @site.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .cf
     = f.label :name
-    = f.text_field :name
-  .field
+    .input
+      = f.text_field :name
+  .cf
     = f.label :description
-    = f.text_field :description
-  .field
+    .input
+      = f.text_field :description
+  .cf
     = f.label :costcode
-    = f.text_field :costcode
-  .field
+    .input
+      = f.text_field :costcode
+  .cf
     = f.label :size
-    = f.text_field :size
-  .field
+    .input
+      = f.text_field :size
+  .cf
     = f.label :exposed_area
-    = f.text_field :exposed_area
-  .field
-    = f.label :location
-    = f.text_field :location
+    .input
+      = f.text_field :exposed_area
+
+  .control-group
+    =f.label :address_1, :class => "control-label"
+    .controls
+      = f.text_field :address_1
+
+  .control-group
+    =f.label :address_2, :class => "control-label"
+    .controls
+      = f.text_field :address_2
+
+  .control-group
+    =f.label :city, :class => "control-label"
+    .controls
+      = f.text_field :city
+
+  .control-group
+    =f.label :state, :class => "control-label"
+    .controls
+      = f.select :state, Carmen.states, {:include_blank => true}, :selected => f.object.state
+
+  .control-group
+    =f.label :zipcode, :class => "control-label"
+    .controls
+      = f.text_field :zipcode
+
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => "btn"
