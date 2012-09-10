@@ -1,2 +1,4 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+StormSavvy.com: MVC & API Docs
+
+lib/noaa: SS API for parsing NOAA weather API data
+models/pdf: SS API related to Prawn PDF for generating reports
