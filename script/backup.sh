@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# hdeploy2.sh
+# backup.sh
 
-# Bash deployment script:
+# Bash backup script:
 # Temp Repos: ssbs2 = staging, ssbs = production
 # Real Repos: stormsavvy2 = staging, stormavvy = production
 
@@ -36,15 +36,3 @@ rm -rf ~/src/ss-production
 cd ~/src
 git clone git@heroku.com:stormsavvy2.git ss-staging
 git clone git@heroku.com:stormsavvy.git ss-production
-
-# Deploy to real staging
-cd ~/src/stormsavvy
-git push git@heroku.com:stormsavvy2.git master
-heroku run rake db:migrate --app stormsavvy2
-heroku open --app stormsavvy2
-
-# Deploy to real production 
-cd ~/src/stormsavvy
-git push git@heroku.com:stormsavvy.git master
-heroku run rake db:migrate --app stormsavvy
-heroku open --app stormsavvy
