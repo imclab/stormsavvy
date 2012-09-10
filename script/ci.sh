@@ -12,4 +12,4 @@ heroku logs --app ssci
 
 cd ~/src/stormsavvy/script
 ./ci.sh
-sleep 30
+sleep 300
