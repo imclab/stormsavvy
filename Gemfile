@@ -42,6 +42,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
+gem 'less-rails-bootstrap'
 gem 'jquery-rails'
 gem 'devise'
 gem 'heroku'
