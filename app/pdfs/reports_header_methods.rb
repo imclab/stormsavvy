@@ -431,7 +431,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        if @report.inspection_type == "quarterly"  
+        if @report.inspection_type == "quarterly"
           {text: "X"}
         else
           {text: " "}
@@ -443,7 +443,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        if @report.inspection_type == "pre_storm"  
+        if @report.inspection_type == "pre_storm"
           {text: "X"}
         else
           {text: " "}
@@ -455,7 +455,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        if @report.inspection_type == "during_storm"  
+        if @report.inspection_type == "during_storm"
           {text: "X"}
         else
           {text: " "}
@@ -467,7 +467,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        if @report.inspection_type == "post_storm"  
+        if @report.inspection_type == "post_storm"
           {text: "X"}
         else
           {text: " "}
@@ -482,7 +482,7 @@ module ReportsHeaderMethods
   def site_information
     formatted_text_box(
       [
-        { text: "#{@report.total_area}\n" },
+        { text: "#{@report.total_area}\n" }
       ],
       width: 200,
       at: [270, 360],
@@ -490,7 +490,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        { text: "#{@report.total_DSA}\n" },
+        { text: "#{@report.total_DSA}\n" }
       ],
       width: 200,
       at: [270, 345],
@@ -498,7 +498,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        { text: "#{@report.current_DSA}\n" },
+        { text: "#{@report.current_DSA}\n" }
       ],
       width: 200,
       at: [270, 330],
@@ -506,7 +506,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        { text: "#{@report.inactive_DSA}\n" },
+        { text: "#{@report.inactive_DSA}\n" }
       ],
       width: 200,
       at: [270, 315],
@@ -517,7 +517,7 @@ module ReportsHeaderMethods
   def storm_information
     formatted_text_box(
       [
-        { text: "#{@report.time_elapsed_last_storm}\n" },
+        { text: "#{@report.time_elapsed_last_storm}\n" }
       ],
       width: 200,
       at: [140, 260],
@@ -525,7 +525,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        { text: "#{@report.precipitation_received}\n" },
+        { text: "#{@report.precipitation_received}\n" }
       ],
       width: 200,
       at: [355, 260],
@@ -590,6 +590,7 @@ module ReportsHeaderMethods
       width: 200,
       at: [600, 150],
       size: 10
+    )
   end
 
   def dsa_management
