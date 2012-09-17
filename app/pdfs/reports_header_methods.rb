@@ -2,7 +2,7 @@ module ReportsHeaderMethods
 
   # Implement checkbox here: 
   # git://gist.github.com/58890.git
-
+           
   CHECKBOX        = "\xE2\x98\x90" # "☐"
   FILLED_CHECKBOX = "\xE2\x98\x91" # "☑"
 
@@ -533,7 +533,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        { text: "#{@report.time_storm_expected}\n" },
+        { text: "#{@report.time_storm_expected}\n" }
       ],
       width: 200,
       at: [140, 227],
@@ -541,7 +541,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        { text: "#{@report.expected_precipitation_amount}\n" },
+        { text: "#{@report.expected_precipitation_amount}\n" }
       ],
       width: 200,
       at: [355, 227],
@@ -549,7 +549,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        { text: "#{@report.time_elapsed_during_storm}\n" },
+        { text: "#{@report.time_elapsed_during_storm}\n" }
       ],
       width: 200,
       at: [140, 182],
@@ -557,7 +557,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        { text: "#{@report.gauge_reading_during_storm}\n" },
+        { text: "#{@report.gauge_reading_during_storm}\n" }
       ],
       width: 200,
       at: [355, 182],
@@ -565,7 +565,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        { text: "#{@report.time_elapsed_post_storm}\n" },
+        { text: "#{@report.time_elapsed_post_storm}\n" }
       ],
       width: 200,
       at: [140, 150],
@@ -573,7 +573,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        { text: "#{@report.gauge_reading_post_storm}\n" },
+        { text:"#{@report.gauge_reading_post_storm}\n" }
       ],
       width: 200,
       at: [355, 150],
@@ -581,8 +581,90 @@ module ReportsHeaderMethods
     )
   end
 
-  # preserve_vegetation
-  # dsa_management
-  # temp_stabilization
+  # page 2 categories
+  def preserve_vegetation
+    
+  end
 
+  def dsa_management
+    
+  end
+  
+  def temp_stabilization
+    
+  end
+
+  # page 3 categories
+  def linear_sediment
+    
+  end
+
+  def di_protection
+
+  end
+
+  # page 4 categories
+  def stockpile_management
+    
+  end
+
+  def inactive_stockpile_management
+    
+  end
+
+  # page 5 categories
+  def sediment_basin
+    
+  end
+
+  def tracking_control
+
+  end
+
+  def wind_erosion
+
+  end
+
+  def dewatering_operation
+
+  end
+
+  # page 6 categories
+  def temp_stream_crossing
+
+  end
+
+  def material_storage
+
+  end
+
+  def waste_management
+    
+  end
+
+  # page 7 categories
+  def project_specific1
+
+  end
+
+  def project_specific2
+
+  end
+
+  # page 8 categories
+  def general_comments
+
+  end
+
+  def required_action1
+    
+  end
+
+  def required_action2
+    
+  end
+
+  def required_action3
+
+  end
 end
