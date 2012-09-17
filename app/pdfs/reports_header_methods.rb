@@ -573,7 +573,7 @@ module ReportsHeaderMethods
     )
     formatted_text_box(
       [
-        { text:"#{@report.gauge_reading_post_storm}\n" }
+        { text: "#{@report.gauge_reading_post_storm}\n" }
       ],
       width: 200,
       at: [355, 150],
@@ -583,7 +583,13 @@ module ReportsHeaderMethods
 
   # page 2 categories
   def preserve_vegetation
-    
+    formatted_text_box(
+      [
+        { text: "#{@report.existing_vegetation_location1}\n" }
+      ],
+      width: 200,
+      at: [600, 150],
+      size: 10
   end
 
   def dsa_management
