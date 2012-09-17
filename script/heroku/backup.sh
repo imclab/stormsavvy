@@ -39,6 +39,6 @@ heroku logs --app ssbs
 # rm -rf ~/src/ss-staging
 # rm -rf ~/src/ss-production
 
-cd ~/src
-git clone git@heroku.com:stormsavvy2.git ss-staging
-git clone git@heroku.com:stormsavvy.git ss-production
+# cd ~/src
+# git clone git@heroku.com:stormsavvy2.git ss-staging
+# git clone git@heroku.com:stormsavvy.git ss-production
