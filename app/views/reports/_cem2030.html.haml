@@ -1,6 +1,8 @@
 .row
   .span12
-    %h4 Weekly Inspection (CEM2030)
+    %h3 Weekly Inspection (CEM2030)
+    %br
+    %h4 Page 1
     = simple_nested_form_for @report do |f|
       .row
         .span4
@@ -97,6 +99,18 @@
             %legend Storm Information / Post-Storm
             = f.input :time_elapsed_post_storm, :input_html => { :value => @report.time_elapsed_post_storm }
             = f.input :gauge_reading_post_storm, :input_html => { :value => @report.gauge_reading_post_storm }
+
+      // Indent 6 spaces
+      %h4 Page 2
+      %br 
+      
+      .row
+        .span4
+          %fieldset#preserve_vegetation
+          %legend Preserve Vegetation
+          = f.input :existing_vegetation_location1, :input_html => { :value => @report.existing_vegetation_location1}
+          = f.input :existing_vegetation_location2, :input_html => { :value => @report.existing_vegetation_location2}
+          = f.input :existing_vegetation_location3, :input_html => { :value => @report.existing_vegetation_location3}
 
       .actions
         = f.submit "Save Report", :class => "btn btn-primary"
