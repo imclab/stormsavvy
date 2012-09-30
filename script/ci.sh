@@ -2,14 +2,13 @@
 
 # ci.sh
 
-# Bash CI script.
+# bash ci script.
 
 git add .
-git commit -m 'nothing to see here, just the ci script running...'
+git commit -m 'heroku deploy with bash'
 git push git@heroku.com:ssci.git master
 heroku run rake db:migrate --app ssci
 heroku logs --app ssci
 
-cd ~/src/stormsavvy/script
-./ci.sh
+./script/ci.sh
 sleep 300
