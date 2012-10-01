@@ -16,7 +16,8 @@
                 = image_tag("/assets/sunny_weather.png")
               %td
                 %i=link_to "#{site.name}: ", project_site_path(project, site)
-                = "#{site.max_rain}% chance of rain"
+                = "5% chance of rain"
+                /= "#{site.max_rain}% chance of rain"
               %br
   #current_action_items.widget.bottom-10
     .inner
