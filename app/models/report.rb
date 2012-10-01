@@ -186,9 +186,9 @@ class Report < ActiveRecord::Base
   :temporary_stabilization_comments2,
   :temporary_stabilization_comments3
   # temporary_stabilization
-=end
 
   before_update :change_report_status
+=end
 
 private
 
