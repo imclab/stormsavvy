@@ -12,6 +12,7 @@
               .span
                 %i=link_to "#{site.name}: ", project_site_path(project, site)
                 = "#{site.max_rain}% chance of rain"
+      %br
   #current_action_items.widget.bottom-10
     .inner
       %h5 
@@ -24,6 +25,7 @@
           = link_to "Report for #{report.site.name}", edit_report_path(report)
       - else
         You have no pending reports.
+      %br
   #current_daily_diary.widget.bottom-10
     .inner
       %h5 
@@ -48,3 +50,4 @@
       = link_to "CEM 2061 Notice of Discharge Report"
       %br
       = link_to "CEM 2070 Annual Certification"
+      %br
