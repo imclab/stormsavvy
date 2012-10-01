@@ -2,14 +2,17 @@
   .span12
     %h2
       View Report
+    %br
       .small
         =image_tag("/assets/CEM2030-2012_Page_01.png")
-        %br
-        = link_to "Download PDF", report_path(@report, :pdf)
-        \|
-        = link_to 'Edit', edit_report_path(@report)
-        \|
-        = link_to 'Delete', report_path(@report), :method => :delete
+      %br
+    %h2
+      = link_to "Download PDF", report_path(@report, :pdf)
+      \|
+      = link_to 'Edit', edit_report_path(@report)
+      \|
+      = link_to 'Delete', report_path(@report), :method => :delete
+    %br
 
       / Comment out until site link is necessary
       / %b Site:
