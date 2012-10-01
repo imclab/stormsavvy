@@ -14,7 +14,9 @@
                 = "#{site.max_rain}% chance of rain"
   #current_action_items.widget.bottom-10
     .inner
-      %h5 Pending Reports
+      %h5 
+        Pending Reports
+      %hr
       = link_to "9-30-12 CEM 2030 Weekly Inspection Report", new_report_path
       %hr
       - unless @needs_attention_reports.empty?
@@ -24,7 +26,8 @@
         You have no pending reports.
   #current_daily_diary.widget.bottom-10
     .inner
-      %h5 Report Forms 
+      %h5 
+        Report Forms 
       %hr
       = link_to "CEM 2023 Weekly Training"
       %br
