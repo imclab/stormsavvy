@@ -63,7 +63,7 @@ class Report < ActiveRecord::Base
   :precipitation_received,
   # x_inches
 
-  :time_storm_expected
+  :time_storm_expected,
   # x_time, x_date
 
   :expected_precipitation_amount,
