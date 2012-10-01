@@ -66,6 +66,7 @@ class Report < ActiveRecord::Base
   :time_storm_expected,
   # x_time, x_date
 
+=begin
   :expected_precipitation_amount,
   # x_inches
 
@@ -185,6 +186,7 @@ class Report < ActiveRecord::Base
   :temporary_stabilization_comments2,
   :temporary_stabilization_comments3
   # temporary_stabilization
+=end
 
   before_update :change_report_status
 
