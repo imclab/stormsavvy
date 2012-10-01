@@ -8,7 +8,7 @@
           - project.sites.each do |site|
             %li.cf
               / - site.chance_of_rain # not sure why, but this needs to be called before site.rain_state in order for rain state to show up
-              %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
+              / %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
                 .span
                   %tr
                   %td
@@ -16,7 +16,7 @@
                   %td
                     %i=link_to "#{site.name}: ", project_site_path(project, site)
                     = "#{site.max_rain}% chance of rain"
-      %br
+                  %br
   #current_action_items.widget.bottom-10
     .inner
       %h5 
