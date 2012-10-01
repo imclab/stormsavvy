@@ -9,15 +9,14 @@
             %li.cf
               / - site.chance_of_rain # not sure why, but this needs to be called before site.rain_state in order for rain state to show up
               / %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
-              .span
-                %tr
-                %td
-                  = image_tag("/assets/sunny_weather.png")
-                %td
-                  %i=link_to "#{site.name}: ", project_site_path(project, site)
-                  %br
-                    = "#{site.max_rain}% chance of rain"
-                %br
+              / .span
+              %tr
+              %td
+                = image_tag("/assets/sunny_weather.png")
+              %td
+                %i=link_to "#{site.name}: ", project_site_path(project, site)
+                = "#{site.max_rain}% chance of rain"
+              %br
   #current_action_items.widget.bottom-10
     .inner
       %h5 
