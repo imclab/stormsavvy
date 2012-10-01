@@ -66,7 +66,6 @@ class Report < ActiveRecord::Base
   :time_storm_expected
   # x_time, x_date
 
-=begin
   :expected_precipitation_amount,
   # x_inches
 
@@ -79,9 +78,10 @@ class Report < ActiveRecord::Base
   :time_elapsed_post_storm,
   # x_hours_minutes
 
-  :gauge_reading_post_storm,
+  :gauge_reading_post_storm
   # x_inches
 
+=begin
   :existing_vegetation_location1,
   :existing_vegetation_location2,
   :existing_vegetation_location3,
