@@ -10,6 +10,6 @@ git push -f git@heroku.com:ssci.git master
 heroku run rake db:migrate --app ssci
 heroku logs --app ssci
 
-cd ~/src/stormsavvy/script
+cd ~/src/stormsavvy/script/heroku
 ./ci.sh
 sleep 300
