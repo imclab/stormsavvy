@@ -6,7 +6,7 @@
 
 git add .
 git commit -m 'nothing to see here, just the ci script running...'
-git push git@heroku.com:ssci.git master
+git push -f git@heroku.com:ssci.git master
 heroku run rake db:migrate --app ssci
 heroku logs --app ssci
 
