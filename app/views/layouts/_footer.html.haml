@@ -1,21 +1,19 @@
-%footer
+.footer
   .container
     .row
       .span12
-        .wrap
-          .main
-            .pull-left.social
-              %span.st_facebook_hcount{ :st_url => "http://www.stormsavvy.com" }
-              |
-              %span.st_twitter_hcount{ :st_url => "http://www.stormsavvy.com" }
-              |
-              %span.st_plusone_hcount{ :st_url => "http://www.stormsavvy.com" }
+        .pull-left.social
+          %span.st_facebook_hcount{ :st_url => "http://www.stormsavvy.com" }
+          |
+          %span.st_twitter_hcount{ :st_url => "http://www.stormsavvy.com" }
+          |
+          %span.st_plusone_hcount{ :st_url => "http://www.stormsavvy.com" }
 
-            .pull-right
-              = link_to "Contact", '/contact'
-              \ 
-              \#{link_to "Privacy", '/privacy'} 
-              \#{link_to "Terms", '/terms'} 
-              \#{link_to "Team", '/team'} 
-              \#{link_to "About us", '/about'} 
-              \#{link_to "FAQ", '/faq'} 
+        .pull-right
+          = link_to "Contact", '/contact'
+          \ 
+          \#{link_to "Privacy", '/privacy'} 
+          \#{link_to "Terms", '/terms'} 
+          \#{link_to "Team", '/team'} 
+          \#{link_to "About us", '/about'} 
+          \#{link_to "FAQ", '/faq'} 
