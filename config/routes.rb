@@ -28,6 +28,8 @@ Stormsavvy::Application.routes.draw do
     resources :sites
   end
 
+  match '/footer',    :to => "pages#footer",         :as => :footer
+
   match '/index',     :to => "pages#index",          :as => :index
   match '/about',     :to => "pages#about",          :as => :about
   match '/terms',     :to => "pages#terms",          :as => :terms
