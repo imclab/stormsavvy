@@ -9,4 +9,4 @@
 @import "compass/reset.scss";
 @import "compass/layout.scss";
  
-@include sticky-footer(54px);
+@include sticky-footer(0px);
