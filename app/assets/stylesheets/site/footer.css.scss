@@ -1,4 +1,9 @@
-.footer {
+@import "compass/reset.scss";
+@import "compass/layout.scss";
+ 
+@include sticky-footer(54px, "#footer");
+
+#footer {
   position:fixed;
   bottom:0;
   background: url("/assets/footerBG.png");
