@@ -20,18 +20,12 @@
 
 # Deploy to new temp staging repo
 cd ~/src/stormsavvy
-git add .
-git commit -m 'nothing to see here... bash script running'
 git push git@heroku.com:ssbs2.git master
-heroku run rake db:migrate --app ssbs2
 heroku restart --app ssbs2
 heroku logs --app ssbs2
 
 # Deploy to new temp production repo
-git add .
-git commit -m 'nothing to see here... bash script running'
 git push git@heroku.com:ssbs.git master
-heroku run rake db:migrate --app ssbs
 heroku restart  --app ssbs
 heroku logs --app ssbs
 
