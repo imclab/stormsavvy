@@ -1,8 +1,11 @@
 class AlertMailer < ActionMailer::Base
-  default :from => "doolin@inventiumsystems.com"
+  default :from => "alerts@stormsavvy.com"
 
   def pop
-    @greeting = "Hi"
-    mail to: "to@example.org"
+    @greeting = "Storm Savvy Weather Alert"
+    mail(
+      :to => "#{user.login} <#{user.email}>",
+      :subject => "Storm Savv Weather Alert" 
+      )
   end
 end
