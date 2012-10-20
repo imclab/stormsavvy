@@ -7,12 +7,12 @@ describe "layouts/application.html.haml" do
     stub_template "shared/_cta-bar.html.haml" => 'sidebar template'
     stub_template "shared/_flash_messages.html.haml" => 'flash message template'
   end
-  
+
   it "renders the sidebar" do
     render
     rendered.should contain 'sidebar template'
   end
-  
+
   context "using content_for(:title)" do
     let(:page_title) { "Building This Site" }
 
