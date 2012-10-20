@@ -78,9 +78,10 @@ class Report < ActiveRecord::Base
   :time_elapsed_post_storm,
   # x_hours_minutes
 
-  :gauge_reading_post_storm,
+  :gauge_reading_post_storm
   # x_inches
 
+=begin
   :existing_vegetation_location1,
   :existing_vegetation_location2,
   :existing_vegetation_location3,
@@ -187,6 +188,7 @@ class Report < ActiveRecord::Base
   # temporary_stabilization
 
   before_update :change_report_status
+=end
 
 private
 
