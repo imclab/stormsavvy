@@ -4,7 +4,7 @@
       %a.close{"data-dismiss" => "alert", :href => "#"} ×
       = f.error_notification
   - flash.each do |name, msg|
-    %h4 We got a flash  in the form
+    %h4 We got a flash in the form
     %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
       %a.close{"data-dismiss" => "alert"} ×
       -#= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
