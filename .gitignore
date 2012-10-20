@@ -13,3 +13,6 @@ log/
 public/.DS_Store
 test/stormsavvy/
 tmp/
+
+app/pdfs/reports_header_methods.txt
+app/models/report.txt

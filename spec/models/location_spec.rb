@@ -18,7 +18,7 @@ describe Location do
                               :zipcode   => 94530 })
     location.should be_valid
     location.save
-    location.lat.should  ==  37.9028433
-    location.long.should == -122.3052743
+    location.lat.should  == 37.902889
+    location.long.should == -122.304598
   end
 end
