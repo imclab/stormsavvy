@@ -1,6 +1,7 @@
 .DS_Store
 .rvmrc
 .sass-cache/
+.gemrc
 app/assets/images/.DS_Store
 coverage/
 db/development
