@@ -7,6 +7,8 @@ module ApplicationHelper
   def template_class
     unless params[:controller].nil?
       {:class => "#{params[:controller].gsub(/\//,'-')} #{params[:action]}"}
+    else
+      {:class => "FIXME"}
     end
   end
 

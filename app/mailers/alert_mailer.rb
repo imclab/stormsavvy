@@ -5,7 +5,7 @@ class AlertMailer < ActionMailer::Base
     @greeting = "Storm Savvy Weather Alert"
     mail(
       :to => "#{user.login} <#{user.email}>",
-      :subject => "Storm Savv Weather Alert" 
+      :subject => "Storm Savvy Weather Alert" 
       )
   end
 end
