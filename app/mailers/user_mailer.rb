@@ -7,7 +7,7 @@ class UserMailer < ActionMailer::Base
     mail(
       :to => "#{user.login} <#{user.email}>",
       :subject => "Storm Savvy POP Alert"
-      )
+      ).deliver
   end
 
   def pop_alert(user)
@@ -15,7 +15,7 @@ class UserMailer < ActionMailer::Base
     mail(
       :to => "#{user.login} <#{user.email}>",
       :subject => "Storm Savvy POP Alert"
-      )
+      ).deliver
   end
 
   def noaa_alert(user)
@@ -23,7 +23,7 @@ class UserMailer < ActionMailer::Base
     mail(
       :to => "#{user.login} <#{user.email}>",
       :subject => "Daily weather forecasts"
-      )
+      ).deliver
   end
 
   def pester_admins(email)
@@ -31,7 +31,7 @@ class UserMailer < ActionMailer::Base
     mail(
       :to => "walter@stormsavvy.com",
       :subject => 'Storm Savvy is working great today!'
-      )
+      ).deliver
   end
 
   def mailout(to = nil)
