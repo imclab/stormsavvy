@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails'
 gem 'typhoeus'
 gem 'nokogiri'
-gem 'geocoder'
+gem 'geocoder', :github => 'doolin/geocoder'
 gem 'carmen'
 gem 'iron_worker'
 
