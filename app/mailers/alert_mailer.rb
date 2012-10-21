@@ -1,6 +1,8 @@
 class AlertMailer < ActionMailer::Base
   default :from => "alerts@stormsavvy.com"
 
+# Refactor alertmailer to action mailer
+=begin
   def pop
     @greeting = "Storm Savvy Weather Alert"
     mail(
@@ -8,4 +10,6 @@ class AlertMailer < ActionMailer::Base
       :subject => "Storm Savvy Weather Alert" 
       )
   end
+=end
+
 end
