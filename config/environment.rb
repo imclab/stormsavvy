@@ -21,7 +21,7 @@ ActionMailer::Base.smtp_settings = {
 }
 =end
 
-# Switch over to stormsavvy.com
+# Switch over from sendgrid to stormsavvy.com smtp
 ActionMailer::Base.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
