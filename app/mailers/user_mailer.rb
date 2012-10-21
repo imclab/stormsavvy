@@ -31,7 +31,7 @@ class UserMailer < ActionMailer::Base
     mail(
       :to => "walter@stormsavvy.com",
       :subject => 'Storm Savvy is working great today!'
-      )
+      ).deliver
   end
 
   def mailout(to = nil)
