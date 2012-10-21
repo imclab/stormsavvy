@@ -14,7 +14,7 @@ class UserMailer < ActionMailer::Base
     @greeting = "Greetings"
     mail(
       :to => "#{user.login} <#{user.email}>",
-      :subject => "Daily weather forecasts"
+      :subject => "Storm Savvy Daily Weather Forecasts"
       ).deliver
   end
 
@@ -33,7 +33,7 @@ class UserMailer < ActionMailer::Base
       if user.has_site?
         mail(
           :to => user.email, 
-          :subject => "Project Status"
+          :subject => "Storm Savvy Project Status Notification"
           ).deliver
       end
     end
