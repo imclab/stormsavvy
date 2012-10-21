@@ -2,14 +2,6 @@ class UserMailer < ActionMailer::Base
   default :from => "alerts@stormsavvy.com"
   # default :from => "doolin@inventiumsystems.com"
 
-  def pop
-    @greeting = "Greetings"
-    mail(
-      :to => "#{user.login} <#{user.email}>",
-      :subject => "Storm Savvy POP Alert"
-      ).deliver
-  end
-
   def pop_alert(user)
     @greeting = "Greetings"
     mail(
