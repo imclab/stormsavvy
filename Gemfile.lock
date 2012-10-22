@@ -6,6 +6,12 @@ GIT
       pdf-reader (>= 0.9.0, < 2.0)
       ttfunk (~> 1.0.3)
 
+GIT
+  remote: git://github.com/doolin/geocoder.git
+  revision: 660f4934b87e5e663f368a1092ab16b31f97caa3
+  specs:
+    geocoder (1.1.4)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -98,7 +104,6 @@ GEM
       railties (>= 3.0.0)
     ffi (1.1.5)
     fssm (0.2.9)
-    geocoder (1.1.4)
     gherkin (2.11.5)
       json (>= 1.4.6)
     haml (3.1.7)
@@ -286,7 +291,7 @@ DEPENDENCIES
   devise
   email_spec
   factory_girl_rails
-  geocoder
+  geocoder!
   haml-rails
   heroku
   iron_worker
