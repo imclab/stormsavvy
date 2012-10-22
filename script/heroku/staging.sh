@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # deploy.sh
-
 # Bash staging deployment script.
 
 cd ~/src/stormsavvy

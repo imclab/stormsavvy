@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # ci.sh
-
 # bash ci script.
 
 git push git@heroku.com:ssci.git master
