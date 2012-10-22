@@ -2,21 +2,33 @@ require "spec_helper"
 
 describe AlertMailer do
 
-# Refactor alertmailer to usermailer
-=begin
-  describe "pop" do
-    let(:mail) { AlertMailer.pop }
+  before { ActionMailer::Base.deliveries = [] }
+
+  describe "pop_alert" do
+    let(:mail) { AlertMailer.pop_alert }
 
     it "renders the headers" do
-      mail.subject.should eq("Pop")
-      mail.to.should eq(["to@example.org"])
-      mail.from.should eq(["doolin@inventiumsystems.com"])
+      mail.subject.should eq("Storm Savvy POP Alert")
+      mail.to.should eq(["#{user.login} <#{user.email}>"])
+      mail.from.should eq(["alerts@stormsavvy.com"])
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("Hi")
+      mail.body.encoded.should match("Greetings")
     end
 
   end
-=end
+
+  it "should send Pop Alert emails" do
+    user = FactoryGirl.create(:user)
+    UserMailer.pop_alert(user).deliver
+    ActionMailer::Base.deliveries.should_not be_empty
+  end
+
+  it "should send NOAA Alert emails" do
+    user = FactoryGirl.create(:user)
+    UserMailer.noaa_alert(user).deliver
+    ActionMailer::Base.deliveries.should_not be_empty
+  end
+
 end
