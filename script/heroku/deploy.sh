@@ -2,10 +2,14 @@
 
 # deploy.sh
 
-# Bash deployment script.
+# Bash and deployment script instructions:
+# 1. Commit all changes
+# 2. Run only on master branch
 
-# Deploy to real staging
 cd ~/src/stormsavvy
+git push github master
+git push bitbucket master
+
 ./script/heroku/ci.sh
 ./script/heroku/backup.sh
 ./script/heroku/staging.sh
