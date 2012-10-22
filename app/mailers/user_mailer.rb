@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
       @user = user # `@user` is needed for the template
       if user.has_site?
         mail(
-          :to => user.email, 
+          :to => user.email,
           :subject => "Storm Savvy Project Status Notification"
           ).deliver
       end

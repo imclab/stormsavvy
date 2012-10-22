@@ -9,6 +9,8 @@ Stormsavvy::Application.initialize!
 #  config.project_id = ENV['IRONIO_ID']
 #end
 
+=begin
+# sendgrid smtp settings
 ActionMailer::Base.smtp_settings = {
   :user_name => ENV['SENDGRID_USERNAME'],
   :password => ENV['SENDGRID_PASSWORD'],
@@ -19,7 +21,7 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true
 }
 
-=begin
+# gmail smtp settings
 ActionMailer::Base.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
