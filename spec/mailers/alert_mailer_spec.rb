@@ -4,6 +4,10 @@ describe AlertMailer do
 
   before { ActionMailer::Base.deliveries = [] }
 
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+  end
+
   describe "pop_alert" do
     let(:mail) { AlertMailer.pop_alert }
 
@@ -20,14 +24,12 @@ describe AlertMailer do
   end
 
   it "should send Pop Alert emails" do
-    user = FactoryGirl.create(:user)
-    UserMailer.pop_alert(user).deliver
+    UserMailer.pop_alert(@user).deliver
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
   it "should send NOAA Alert emails" do
-    user = FactoryGirl.create(:user)
-    UserMailer.noaa_alert(user).deliver
+    UserMailer.noaa_alert(@user).deliver
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
