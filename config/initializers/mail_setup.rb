@@ -8,7 +8,7 @@
 	  :authentication       => 'plain',
 	  :enable_starttls_auto => true
 	}
-	
+
 	# ActionMailer::Base.smtp_settings = {
 	#   :user_name 						=> ENV['STORMSAVVY_GMAIL_USERNAME'],
 	#   :password 						=> ENV['STORMSAVVY_GMAIL_PASSWORD'],
