@@ -49,11 +49,26 @@ Stormsavvy::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # Disable delivery errors, bad email addresses will be ignored
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default :charset => "utf-8"
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = {
     :host => 'stormsavvy.com'
     }
+
+  # Load gmail smtp settings from config/config.yml file
+  # config.action_mailer.smtp_settings = {
+  #   :user_name            => APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
+  #   :password             => APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
+  #   # :user_name            => ENV['STORMSAVVY_GMAIL_USERNAME'],
+  #   # :password             => ENV['STORMSAVVY_GMAIL_PASSWORD'],
+  #   :address              => "smtp.gmail.com",
+  #   :port                 => 587,
+  #   :domain               => 'stormsavvy.com',
+  #   :authentication       => 'plain',
+  #   :enable_starttls_auto => true
+  # }
 
   # Enable threaded mode
   # config.threadsafe!
