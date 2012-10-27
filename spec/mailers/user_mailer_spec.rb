@@ -43,23 +43,23 @@ describe UserMailer do
       @mailer = UserMailer.mailout.deliver
     end
 
-    xit "should send something via mailout" do
+    it "should send something via mailout" do
       ActionMailer::Base.deliveries.should_not be_empty
     end
 
-    xit "should render successfully" do
-      lambda { UserMailer.mailout(@email).deliver }.should_not raise_error
+    it "should render successfully" do
+      lambda { UserMailer.mailout.deliver }.should_not raise_error
     end
 
-    xit "it should have an alert" do
+    it "it should have an alert" do
       @mailer.body.should have_css('.chance-of-rain', :text => 'chance of rain')
     end
 
-    xit "should have a list of projects" do
+    it "should have a list of projects" do
       @mailer.body.should have_selector("ul.projects")
     end
 
-    xit "should have a list of sites" do
+    it "should have a list of sites" do
       @mailer.body.should have_selector("ul.sites")
     end
   end
