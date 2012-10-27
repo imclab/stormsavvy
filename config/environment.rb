@@ -4,13 +4,12 @@ require File.expand_path('../application', __FILE__)
 # Initialize the rails application
 Stormsavvy::Application.initialize!
 
-# Settings located at config/initializers/mail_setup.rb
 # ActionMailer::Base.smtp_settings = {
 #   :address              => "smtp.gmail.com",
 #   :port                 => 587,
 #   :domain               => 'stormsavvy.com',
-#   :user_name            => ENV["STORMSAVVY_GMAIL_USERNAME"],
-#   :password             => ENV["STORMSAVVY_GMAIL_PASSWORD"],
+#   :user_name            => ENV['STORMSAVVY_GMAIL_USERNAME'],
+#   :password             => ENV['STORMSAVVY_GMAIL_PASSWORD'],
 #   :authentication       => 'plain',
 #   :enable_starttls_auto => true
 # }
