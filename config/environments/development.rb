@@ -43,6 +43,18 @@ Stormsavvy::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
+  # Loads yaml password configuration file in development
+  APP_CONFIG = YAML.load_file(File.join(Rails.root, 'config', 'config.yml'))[Rails.env]
+  config.action_mailer.smtp_settings = {
+    :user_name            => APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
+    :password             => APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'stormsavvy.com',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
+    }
+
   # config.action_mailer.delivery_method = :letter_opener
   # config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   # config.action_mailer.perform_deliveries = true
