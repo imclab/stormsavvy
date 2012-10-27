@@ -22,4 +22,3 @@ app/models/report.txt
 script/heroku/
 script/mailer/
 script/repo/
-config/config.yml
