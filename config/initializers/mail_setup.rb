@@ -1,4 +1,5 @@
 # Authenticates using config/config.yml file
+# TODO: Migrate back to SendGrid in production.
 	ActionMailer::Base.smtp_settings = {
 		:user_name            => APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
 	  :password             => APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
