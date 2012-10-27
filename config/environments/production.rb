@@ -56,19 +56,15 @@ Stormsavvy::Application.configure do
   config.action_mailer.default_url_options = {
     :host => 'stormsavvy.com'
     }
-
-  # Load gmail smtp settings from config/config.yml file
-  # config.action_mailer.smtp_settings = {
-  #   :user_name            => APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
-  #   :password             => APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
-  #   # :user_name            => ENV['STORMSAVVY_GMAIL_USERNAME'],
-  #   # :password             => ENV['STORMSAVVY_GMAIL_PASSWORD'],
-  #   :address              => "smtp.gmail.com",
-  #   :port                 => 587,
-  #   :domain               => 'stormsavvy.com',
-  #   :authentication       => 'plain',
-  #   :enable_starttls_auto => true
-  # }
+  config.action_mailer.smtp_settings = {
+    :user_name            => ENV['SENDGRID_USERNAME'],
+    :password             => ENV['SENDGRID_PASSWORD'],
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'stormsavvy.com',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
+  }
 
   # Enable threaded mode
   # config.threadsafe!

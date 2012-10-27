@@ -1,13 +1,14 @@
 # Authenticates using config/config.yml file
-	ActionMailer::Base.smtp_settings = {
-		:user_name            => APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
-	  :password             => APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
-	  :address              => "smtp.gmail.com",
-	  :port                 => 587,
-	  :domain               => 'stormsavvy.com',
-	  :authentication       => 'plain',
-	  :enable_starttls_auto => true
-	}
+# TODO: Migrate back to SendGrid in production.
+	# ActionMailer::Base.smtp_settings = {
+	# 	:user_name            => APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
+	#   :password             => APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
+	#   :address              => "smtp.gmail.com",
+	#   :port                 => 587,
+	#   :domain               => 'stormsavvy.com',
+	#   :authentication       => 'plain',
+	#   :enable_starttls_auto => true
+	# }
 
 	# ActionMailer::Base.smtp_settings = {
 	#   :user_name 						=> ENV['STORMSAVVY_GMAIL_USERNAME'],

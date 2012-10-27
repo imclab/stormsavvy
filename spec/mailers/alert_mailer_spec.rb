@@ -5,27 +5,34 @@ describe AlertMailer do
   before { ActionMailer::Base.deliveries = [] }
 
   before(:each) do
-    @user = FactoryGirl.create(:user)
+    # TODO: Debug user factory table
+    # @user = FactoryGirl.create(:user)
+    @user = User.create!(
+      :firstname              => 'Walter',
+      :lastname               => 'Yu',
+      :email                  => 'walter@stormsavvy.com',
+      :password               => 'DarkAndStormy',
+      :password_confirmation  => 'DarkAndStormy'
+      )
   end
 
   describe "pop_alert" do
-    let(:mail) { AlertMailer.pop_alert }
+    let(:mail) { AlertMailer.pop_alert(@user).deliver }
 
     it "renders the headers" do
       mail.subject.should eq("Storm Savvy POP Alert")
-      mail.to.should eq(["#{@user.login} <#{@user.email}>"])
+      mail.to.should eq(["#{@user.email}"])
       mail.from.should eq(["alerts@stormsavvy.com"])
     end
 
-    it "renders the body" do
+    xit "renders the body" do
       mail.body.encoded.should match("Greetings")
     end
 
-  end
-
-  it "should send Pop Alert emails" do
-    AlertMailer.pop_alert(@user).deliver
-    ActionMailer::Base.deliveries.should_not be_empty
+    it "delivers and receives mailer" do
+      AlertMailer.pop_alert(@user).deliver
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
   end
 
   it "should send NOAA Alert emails" do

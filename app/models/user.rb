@@ -10,15 +10,15 @@ class User < ActiveRecord::Base
   :password_confirmation,
   :remember_me,
   :firstname,
-  :lastname,
+  :lastname
 
   # Report fields associated with user
-  :contractor_name,
-  :contractor_address_1,
-  :contractor_address_2,
-  :contractor_city,
-  :contactor_state,
-  :contactor_zipcode
+  # :contractor_name,
+  # :contractor_address_1,
+  # :contractor_address_2,
+  # :contractor_city,
+  # :contactor_state,
+  # :contactor_zipcode
 
   has_many :projects, :dependent => :destroy
   has_many :sites, :dependent => :destroy, :through => :projects
