@@ -6,34 +6,34 @@ describe UserMailer do
 
   before(:each) do
 
-    @user = User.create!(
-      :firstname              => 'Walter',
-      :lastname               => 'Yu',
-      :email                  => 'walter@stormsavvy.com',
-      :password               => 'DarkAndStormy',
-      :password_confirmation  => 'DarkAndStormy'
-      )
-    @project = Project.create!(
-      :user_id                => 1,
-      :name                   => "EC Park & Rec",
-      :description            => "Jungle Gym, etc.",
-      :startdate              => DateTime.new,
-      :finishdate             => DateTime.new,
-      :active                 => false
-      )
-    @site = Site.create!(
-      :name                   => "EC Jungle Gym",
-      :description            => "New Playground",
-      :costcode               => "450AZC",
-      :size                   => "20 acres",
-      :exposed_area           => "10 acres",
-      :zipcode                => 94610
-      )
+    # @user = User.create!(
+    #   :firstname              => 'Walter',
+    #   :lastname               => 'Yu',
+    #   :email                  => 'walter@stormsavvy.com',
+    #   :password               => 'DarkAndStormy',
+    #   :password_confirmation  => 'DarkAndStormy'
+    #   )
+    # @project = Project.create!(
+    #   :user_id                => 1,
+    #   :name                   => "EC Park & Rec",
+    #   :description            => "Jungle Gym, etc.",
+    #   :startdate              => DateTime.new,
+    #   :finishdate             => DateTime.new,
+    #   :active                 => false
+    #   )
+    # @site = Site.create!(
+    #   :name                   => "EC Jungle Gym",
+    #   :description            => "New Playground",
+    #   :costcode               => "450AZC",
+    #   :size                   => "20 acres",
+    #   :exposed_area           => "10 acres",
+    #   :zipcode                => 94610
+    #   )
 
     # TODO: Debug spec factory tables
-    # @user = FactoryGirl.create(:user)
-    # @project = FactoryGirl.create(:project)
-    # @site = FactoryGirl.create(:site)
+    @user = FactoryGirl.create(:user)
+    @project = FactoryGirl.create(:project)
+    @site = FactoryGirl.create(:site)
   end
 
   describe "mailout mailer" do
