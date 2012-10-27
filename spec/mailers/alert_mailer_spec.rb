@@ -5,7 +5,14 @@ describe AlertMailer do
   before { ActionMailer::Base.deliveries = [] }
 
   before(:each) do
-    @user = FactoryGirl.create(:user)
+    # @user = FactoryGirl.create(:user)
+    @user = User.create!(
+      :firstname              => 'Walter',
+      :lastname               => 'Yu',
+      :email                  => 'walter@stormsavvy.com',
+      :password               => 'DarkAndStormy',
+      :password_confirmation  => 'DarkAndStormy'
+      )
   end
 
   describe "pop_alert" do
