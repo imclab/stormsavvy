@@ -13,7 +13,7 @@ describe AlertMailer do
 
     it "renders the headers" do
       mail.subject.should eq("Storm Savvy POP Alert")
-      mail.to.should eq(["#{user.login} <#{user.email}>"])
+      mail.to.should eq(["#{@user.login} <#{@user.email}>"])
       mail.from.should eq(["alerts@stormsavvy.com"])
     end
 
@@ -24,12 +24,12 @@ describe AlertMailer do
   end
 
   it "should send Pop Alert emails" do
-    UserMailer.pop_alert(@user).deliver
+    AlertMailer.pop_alert(@user).deliver
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
   it "should send NOAA Alert emails" do
-    UserMailer.noaa_alert(@user).deliver
+    AlertMailer.noaa_alert(@user).deliver
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
