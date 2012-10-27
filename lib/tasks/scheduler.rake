@@ -44,7 +44,7 @@ namespace :scheduler do
       'kharma@gmail.com'
       ]
     test_users.each do |address|
-    UserMailer.mailout
+      UserMailer.mailout
+    end
   end
-
 end
