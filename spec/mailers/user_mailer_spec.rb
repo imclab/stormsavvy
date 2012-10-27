@@ -5,7 +5,7 @@ describe UserMailer do
   before { ActionMailer::Base.deliveries = [] }
 
   before(:each) do
-    # @user = FactoryGirl.create(:user)
+
     @user = User.create!(
       :firstname              => 'Walter',
       :lastname               => 'Yu',
