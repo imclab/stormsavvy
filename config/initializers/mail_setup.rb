@@ -1,5 +1,4 @@
-if Rails.env == "development"
-# # Authenticates using config/config.yml file
+# Authenticates using config/config.yml file
 	ActionMailer::Base.smtp_settings = {
 		:user_name            => APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
 	  :password             => APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
