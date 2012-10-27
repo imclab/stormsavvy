@@ -5,17 +5,20 @@ describe UserMailer do
   before { ActionMailer::Base.deliveries = [] }
 
   before(:each) do
-    @user = FactoryGirl.create(:user)
-    @project = @user.projects.create!(
-      :name => 'foo',
-      :description => 'bar',
-      :startdate => 3.days.ago,
-      :finishdate => 1.day.ago
+    # @user = FactoryGirl.create(:user)
+    @user = User.create!(
+      :firstname              => 'Walter',
+      :lastname               => 'Yu',
+      :email                  => 'walter@stormsavvy.com',
+      :password               => 'DarkAndStormy',
+      :password_confirmation  => 'DarkAndStormy'
       )
-    @site = @project.sites.create!(
-      :name => "Oakland Adams Point",
-      :zipcode => 94610
-      )
+    @project = FactoryGirl.create(:project)
+    @site = FactoryGirl.create(:site)
+    # @site = @project.sites.create!(
+    #   :name => "Oakland Adams Point",
+    #   :zipcode => 94610
+    #   )
   end
 
   describe "mailout mailer" do
