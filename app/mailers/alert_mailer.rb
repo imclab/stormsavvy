@@ -12,7 +12,7 @@ class AlertMailer < ActionMailer::Base
   def noaa_alert(user)
     @greeting = "Greetings"
     mail(
-      :to => "#{user.firstname user.lastname} <#{user.email}>",
+      :to => "#{user.firstname} #{user.lastname} <#{user.email}>",
       :subject => "Storm Savvy Daily Weather Forecasts"
       ).deliver
   end
