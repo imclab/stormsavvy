@@ -33,7 +33,8 @@ class PagesController < ApplicationController
   end
 
   def popemail
-    UserMailer.pop.deliver
+    # TODO: Alert mailer necessary here?
+    # AlertMailer.pop_alert(user).deliver
   end
 
   def sendemail
