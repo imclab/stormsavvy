@@ -14,9 +14,9 @@ class UserMailer < ActionMailer::Base
 
   def mailout(to = nil)
     mail(
-      :from => "alerts@stormsavvy.com",
-      :subject => "Storm Savvy Project Status Notification"
-      )
+      :from     => "alerts@stormsavvy.com",
+      :subject  => "Storm Savvy Project Status Notification"
+      ).deliver
     @users = User.all
     @users.each do |user|
       @user = user # `@user` is needed for the template
