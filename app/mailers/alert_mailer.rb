@@ -4,7 +4,7 @@ class AlertMailer < ActionMailer::Base
   def pop_alert(user)
     @greeting = "Greetings"
     mail(
-      :to => "#{user.firstname user.lastname} <#{user.emasl}>",
+      :to => "#{user.firstname} #{user.lastname} <#{user.email}>",
       :subject => "Storm Savvy POP Alert"
       ).deliver
   end
