@@ -19,3 +19,4 @@ app/pdfs/reports_header_methods.txt
 app/models/report.txt
 
 script/mailer/
+script/heroku/*.dump
