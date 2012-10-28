@@ -6,11 +6,11 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
-  :password,
-  :password_confirmation,
-  :remember_me,
-  :firstname,
-  :lastname
+    :password,
+    :password_confirmation,
+    :remember_me,
+    :firstname,
+    :lastname
 
   # Report fields associated with user
   # :contractor_name,
