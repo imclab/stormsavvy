@@ -1,4 +1,5 @@
 class AlertMailer < ActionMailer::Base
+
   default :from => "alerts@stormsavvy.com"
 
   def pop_alert(user)
