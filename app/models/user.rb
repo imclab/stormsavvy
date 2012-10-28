@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
 
   # Implement presence of unique email
   validates :email, :presence => true
+  validates :password
   validates_uniqueness_of :email
 
   def send_pop_alerts
