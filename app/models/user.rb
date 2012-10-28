@@ -23,9 +23,10 @@ class User < ActiveRecord::Base
   has_many :projects, :dependent => :destroy
   has_many :sites, :dependent => :destroy, :through => :projects
 
-  # Implement presence of unique email
   validates :email, :presence => true
-  validates :password
+  validates_presence_of :email,
+    :password,
+    :password_confirmation
   validates_uniqueness_of :email
 
   def send_pop_alerts
