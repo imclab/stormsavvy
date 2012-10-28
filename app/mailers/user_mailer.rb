@@ -1,4 +1,7 @@
 class UserMailer < ActionMailer::Base
+
+  require './lib/weather/forecast_examiner.rb'
+
   default :from => "alerts@stormsavvy.com"
   # default :from => "doolin@inventiumsystems.com"
 
