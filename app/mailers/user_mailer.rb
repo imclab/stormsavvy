@@ -27,4 +27,21 @@ class UserMailer < ActionMailer::Base
       end
     end
   end
+
+  def noaa_forecast(to = nil)
+    mail(
+      :from     => "alerts@stormsavvy.com",
+      :to       => "walter@stormsavvy.com",
+      :subject  => "NOAA Forecast Notification"
+      ).deliver
+    @users = User.all
+    @users.each do |user|
+      @user = user # `@user` is needed for the template
+      if user.has_site?
+        mail(
+          :to => user.email
+          ).deliver
+      end
+    end
+  end
 end
