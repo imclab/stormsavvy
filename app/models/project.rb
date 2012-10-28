@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :sites
 
-  validates_presence_of :name, 
+  validates_presence_of :name,
     :description,
     :startdate,
     :finishdate
