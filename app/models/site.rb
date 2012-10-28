@@ -24,11 +24,9 @@ class Site < ActiveRecord::Base
   validates_presence_of :name
   validates :zipcode, :presence => true
 
-
   def address
     "#{self.address_1} #{self.address_2} #{self.city} #{self.state} #{self.zipcode}".strip
   end
-
 
   attr_reader :rain_state, :max_rain, :chance_of_rain, :forecast
   
