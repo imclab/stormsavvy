@@ -25,13 +25,12 @@ class User < ActiveRecord::Base
 
   validates :email, :presence => true
   validates_presence_of :email,
-    :password,
-    :password_confirmation
+    :password
   validates_uniqueness_of :email
 
   def send_pop_alerts
     @name = self.firstname
-    UserMailer.pop_alert(self).deliver
+    AlertMailer.pop_alert(self).deliver
   end
 
   def has_site?
