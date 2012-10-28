@@ -18,6 +18,4 @@ tmp/
 app/pdfs/reports_header_methods.txt
 app/models/report.txt
 
-script/heroku/
 script/mailer/
-script/repo/
