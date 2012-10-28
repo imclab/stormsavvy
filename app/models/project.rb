@@ -25,6 +25,4 @@ class Project < ActiveRecord::Base
       raise ActiveRecord::RecordNotSaved, 'Starting date must precede finishing date'
     end
   end
-
-
 end
