@@ -7,7 +7,26 @@
           / Starting Managing Your Site and Stormwater More Effectively Today.
         %p
         %h4
-          Sign Up Here To Begin.
+          Sign Up Here Today, In Less Than A Minute.
+
+          = javascript_include_tag :defaults, "nested_form"
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            = devise_error_messages!
+            .cf
+              = f.label :email
+              .input
+                = f.email_field :email
+            .cf
+              = f.label :password
+              .input
+                = f.password_field :password
+            .cf
+              = f.label :password_confirmation
+              .input
+                = f.password_field :password_confirmation
+            .actions
+              = f.submit "Sign up", :class => "btn"
+
           / Why continue managing your site and stormwater with paper
           / documentation when web technologies are available?
         %hr
