@@ -52,9 +52,6 @@ class Site < ActiveRecord::Base
     precipitation_state(nf.noaa_forecast)
     @forecast = nf.noaa_forecast
     #binding.pry
-
-    # Testing output for dashboard and mailer:
-    puts @forecast
   end
 
   def precipitation_state(forecast)
