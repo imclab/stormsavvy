@@ -3,7 +3,11 @@ require 'spec_helper'
 describe User do
   
   it "should create a valid user" do
-    @user = User.create(:email => 'foo@bar.com', :password => 'foobar')
+    @user = User.create(
+      :email => 'foo@bar.com', 
+      :password => 'foobarbaz',
+      :password_confirmation => 'foobarbaz'
+      )
     @user.should be_valid
   end
 
