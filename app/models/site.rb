@@ -21,7 +21,8 @@ class Site < ActiveRecord::Base
   geocoded_by :address, :latitude => :lat, :longitude => :long
   after_validation :geocode
 
-  validates_presence_of :name
+  validates_presence_of :name,
+    :zipcode
   validates :zipcode, :presence => true
 
   def address
