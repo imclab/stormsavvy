@@ -55,8 +55,4 @@ class NOAAForecast
     @noaa_forecast =  [] << pop << qpf
   end
 
-  def show_weather_data
-    puts @noaa_forecast
-  end
-
 end
