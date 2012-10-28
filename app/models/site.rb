@@ -30,7 +30,7 @@ class Site < ActiveRecord::Base
   end
 
   attr_reader :rain_state, :max_rain, :chance_of_rain, :forecast
-  
+
   def chance_of_rain
     #zipcode = 90210 unless self.zipcode.present?
     #binding.pry
