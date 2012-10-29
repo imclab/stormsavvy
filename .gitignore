@@ -6,8 +6,8 @@ app/assets/images/.DS_Store
 coverage/
 db/development
 db/development.sqlite3
-db/production.sqlite3
 db/test.sqlite3
+db/test.sqlite3-journal
 doc/erd/stormsavvy.mwb.bak
 doc/intro.md
 g++-4.2
@@ -20,3 +20,7 @@ app/pdfs/reports_header_methods.txt
 app/models/report.txt
 
 script/mailer/
+<<<<<<< HEAD
+=======
+script/heroku/*.dump
+>>>>>>> ef05f75d96073fd8e610553b9cad5863da2f584c

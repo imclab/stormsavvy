@@ -3,11 +3,19 @@ class Project < ActiveRecord::Base
   has_many :sites
 
   #has_many :reports, :through => :sites
-  attr_accessible :name, :description, :startdate, :finishdate, :active, :sites_attributes
+  attr_accessible :name,
+    :description,
+    :startdate,
+    :finishdate,
+    :active,
+    :sites_attributes
 
   accepts_nested_attributes_for :sites
 
-  validates_presence_of :name, :description, :startdate, :finishdate
+  validates_presence_of :name,
+    :description,
+    :startdate,
+    :finishdate
 
   before_save :check_dates
 
@@ -17,6 +25,4 @@ class Project < ActiveRecord::Base
       raise ActiveRecord::RecordNotSaved, 'Starting date must precede finishing date'
     end
   end
-
-
 end

@@ -35,7 +35,7 @@ Stormsavvy::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # Testing development with production mailer settings
+  # Testing with production mailer settings
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = {
     :host => 'stormsavvy.com'

@@ -1,16 +1,14 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
-  :password,
-  :password_confirmation,
-  :remember_me,
-  :firstname,
-  :lastname
+    :password,
+    :password_confirmation,
+    :remember_me,
+    :firstname,
+    :lastname
 
   # Report fields associated with user
   # :contractor_name,
@@ -23,13 +21,14 @@ class User < ActiveRecord::Base
   has_many :projects, :dependent => :destroy
   has_many :sites, :dependent => :destroy, :through => :projects
 
-  # Implement presence of unique email
   validates :email, :presence => true
+  validates_presence_of :email,
+    :password
   validates_uniqueness_of :email
 
   def send_pop_alerts
     @name = self.firstname
-    UserMailer.pop_alert(self).deliver
+    AlertMailer.pop_alert(self).deliver
   end
 
   def has_site?
@@ -39,4 +38,11 @@ class User < ActiveRecord::Base
     return false 
   end
 
+  def list_sites    
+    self.projects.each do |projects|
+      @sites = Array.new
+      @sites = [] << self.projects.sites.count
+    end
+    return @sites.print
+  end
 end

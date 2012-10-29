@@ -4,9 +4,9 @@ development:
   STORMSAVVY_GMAIL_PASSWORD: DarkAndStormy
 
 test:
-  perform_authentication: false
-
-production:
   perform_authentication: true
   STORMSAVVY_GMAIL_USERNAME: alerts@stormsavvy.com
   STORMSAVVY_GMAIL_PASSWORD: DarkAndStormy
+
+production:
+  perform_authentication: false
