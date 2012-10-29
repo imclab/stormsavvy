@@ -26,6 +26,16 @@ class User < ActiveRecord::Base
     :password
   validates_uniqueness_of :email
 
+  def initialize
+    # Dummy object for use in rails console.
+    @user = self.new(
+      :firstname  => "walter",
+      :lastname   => "yu",
+      :email      => "walter@stormsavvy.com",
+      :password   => "foobarbaz"
+    )
+  end
+
   def send_pop_alerts
     @name = self.firstname
     AlertMailer.pop_alert(self).deliver
