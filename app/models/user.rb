@@ -38,4 +38,9 @@ class User < ActiveRecord::Base
     return false 
   end
 
+  def list_sites
+    self.projects.each do |projects|
+      puts projects.sites.name
+    end
+  end
 end
