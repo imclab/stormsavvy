@@ -45,13 +45,13 @@ class User < ActiveRecord::Base
     self.projects.each do |projects|
       return true if projects.sites.count > 0
     end
-    return false 
+    return false
   end
 
-  def list_sites    
+  def list_sites
     self.projects.each do |projects|
       @sites = Array.new
-      @sites = [] << self.projects.sites.count
+      @sites = [] << projects.sites.count
     end
     return @sites.print
   end
