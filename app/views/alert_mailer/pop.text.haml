@@ -1,3 +1,6 @@
-AlertMailer#pop
+= @greeting ", <#{@name.email}>"
 
-= @greeting + ", find me in app/views/alert_mailer/pop.text.haml"
+Here are your POP alerts:
+
+- @alerts.each do |a|
+  = a.message
