@@ -62,6 +62,10 @@ describe UserMailer do
     it "should have a list of sites" do
       @mailer.body.should have_selector("ul.sites")
     end
+
+    it "it should have an alert" do
+      @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
+    end
   end
 
 end
