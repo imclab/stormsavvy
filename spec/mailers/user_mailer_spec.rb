@@ -52,11 +52,7 @@ describe UserMailer do
     end
 
     it "should render successfully" do
-      lambda { UserMailer.mailout.deliver }.should_not raise_error
-    end
-
-    it "it should have an alert" do
-      @mailer.body.should have_css('.chance-of-rain', :text => 'chance of rain')
+      lambda { @mailer }.should_not raise_error
     end
 
     it "should have a list of projects" do
