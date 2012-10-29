@@ -38,9 +38,11 @@ class User < ActiveRecord::Base
     return false 
   end
 
-  def list_sites
+  def list_sites    
     self.projects.each do |projects|
-      puts projects.sites.name
+      @sites = Array.new
+      @sites = [] << self.projects.sites.count
     end
+    return @sites.print
   end
 end
