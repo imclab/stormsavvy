@@ -1,3 +1,8 @@
-= @greeting + @user.sites.forecast
+= @greeting
 
 This the pester admin email, letting you know that Storm Savvy is up and running.
+
+%h2 Your project alerts
+%hr
+%ul.projects
+  = "Alerts for your projects: #{ @user.list_sites }"
