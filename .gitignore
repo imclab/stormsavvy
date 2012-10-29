@@ -7,6 +7,7 @@ coverage/
 db/development
 db/development.sqlite3
 db/test.sqlite3
+db/test.sqlite3-journal
 doc/erd/stormsavvy.mwb.bak
 doc/intro.md
 g++-4.2
