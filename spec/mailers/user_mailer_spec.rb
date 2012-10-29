@@ -32,7 +32,10 @@ describe UserMailer do
 
     # TODO: Debug spec factory tables
     @user = FactoryGirl.create(:user)
-    @project = FactoryGirl.create(:project)
+    @p1 = FactoryGirl.create(:project, :user => @user, :created_at => 1.day.ago)
+    @p2 = FactoryGirl.create(:project, :user => @user, :created_at => 1.hour.ago)
+    @projects = [ @p1, @p2]
+    # @project = FactoryGirl.create(:project)
     @site = FactoryGirl.create(:site)
   end
 
