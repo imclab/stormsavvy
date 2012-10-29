@@ -1,9 +1,5 @@
 #!/bin/bash
 
-<<<<<<< HEAD
-# Bash script for deploying master branch
-
-=======
 # Bash script for master branch repo pull and push:
 # 1. Assumes that all changes have been committed
 # 2. Run only changes have been committed / merged
@@ -15,5 +11,4 @@
 
 # bitbucket=git@bitbucket.org:doolin/stormsavvy.git
 git pull bitbucket master
->>>>>>> ef05f75d96073fd8e610553b9cad5863da2f584c
 git push bitbucket master
