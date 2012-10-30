@@ -8,15 +8,15 @@ class User < ActiveRecord::Base
     :password_confirmation,
     :remember_me,
     :firstname,
-    :lastname
+    :lastname,
 
-  # Report fields associated with user
-  # :contractor_name,
-  # :contractor_address_1,
-  # :contractor_address_2,
-  # :contractor_city,
-  # :contactor_state,
-  # :contactor_zipcode
+    # Report fields associated with user
+    # :contractor_name,
+    # :contractor_address_1,
+    # :contractor_address_2,
+    # :contractor_city,
+    # :contactor_state,
+    # :contactor_zipcode
 
   has_many :projects, :dependent => :destroy
   has_many :sites, :dependent => :destroy, :through => :projects
@@ -26,17 +26,14 @@ class User < ActiveRecord::Base
     :password
   validates_uniqueness_of :email
 
-=begin
-  def initialize
-    # Dummy object for use in rails console.
-    @user = self.new(
-      :firstname  => "walter",
-      :lastname   => "yu",
-      :email      => "walter@stormsavvy.com",
-      :password   => "foobarbaz"
-    )
-  end
-=end
+  # def initialize
+  #   @user = self.new(
+  #     :firstname  => "walter",
+  #     :lastname   => "yu",
+  #     :email      => "walter@stormsavvy.com",
+  #     :password   => "foobarbaz"
+  #   )
+  # end
 
   def send_pop_alerts
     @name = self.firstname
