@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
     :password_confirmation,
     :remember_me,
     :firstname,
-    :lastname,
+    :lastname
 
     # Report fields associated with user
     # :contractor_name,
