@@ -3,15 +3,15 @@ require 'weather/forecast_examiner'
 
 class Site < ActiveRecord::Base
 
-  attr_accessible :name, 
-  :description, 
-  :costcode, 
-  :size, 
-  :address_1, 
-  :address_2, 
-  :state, 
-  :zipcode, 
-  :city, 
+  attr_accessible :name,
+  :description,
+  :costcode,
+  :size,
+  :address_1,
+  :address_2,
+  :state,
+  :zipcode,
+  :city,
   :exposed_area
 
   belongs_to :project
@@ -21,17 +21,16 @@ class Site < ActiveRecord::Base
   geocoded_by :address, :latitude => :lat, :longitude => :long
   after_validation :geocode
 
-  validates_presence_of :name
+  validates_presence_of :name,
+    :zipcode
   validates :zipcode, :presence => true
-
 
   def address
     "#{self.address_1} #{self.address_2} #{self.city} #{self.state} #{self.zipcode}".strip
   end
 
-
   attr_reader :rain_state, :max_rain, :chance_of_rain, :forecast
-  
+
   def chance_of_rain
     #zipcode = 90210 unless self.zipcode.present?
     #binding.pry

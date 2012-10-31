@@ -35,12 +35,30 @@ Stormsavvy::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.delivery_method = :letter_opener
-  #config.action_mailer.delivery_method = :smtp
-
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # Testing with production mailer settings
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {
+    :host => 'stormsavvy.com'
+    }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"
+
+  # Loads yaml password configuration file in development
+  APP_CONFIG = YAML.load_file(File.join(Rails.root, 'config', 'config.yml'))[Rails.env]
+  config.action_mailer.smtp_settings = {
+    :user_name            => APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
+    :password             => APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'stormsavvy.com',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
+    }
+
+  # config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default :charset => "utf-8"
 
 end

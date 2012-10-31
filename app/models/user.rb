@@ -1,42 +1,57 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, 
-  :password, 
-  :password_confirmation, 
-  :remember_me, 
-  :firstname, 
-  :lastname,
+  attr_accessible :email,
+    :password,
+    :password_confirmation,
+    :remember_me,
+    :firstname,
+    :lastname
 
-  # Report fields associated with user
-  :contractor_name, 
-  :contractor_address_1, 
-  :contractor_address_2, 
-  :contractor_city, 
-  :contactor_state, 
-  :contactor_zipcode
+    # Report fields associated with user
+    # :contractor_name,
+    # :contractor_address_1,
+    # :contractor_address_2,
+    # :contractor_city,
+    # :contactor_state,
+    # :contactor_zipcode
 
-  has_many :sites, :dependent => :destroy, :through => :projects
   has_many :projects, :dependent => :destroy
+  has_many :sites, :dependent => :destroy, :through => :projects
 
-  # Implement presence of unique email 
-  # validates :email, :presence => true
-  # validates_uniqueness_of :email
+  validates :email, :presence => true
+  validates_presence_of :email,
+    :password
+  validates_uniqueness_of :email
+
+  # def initialize
+  #   @user = self.new(
+  #     :firstname  => "walter",
+  #     :lastname   => "yu",
+  #     :email      => "walter@stormsavvy.com",
+  #     :password   => "foobarbaz"
+  #   )
+  # end
 
   def send_pop_alerts
     @name = self.firstname
-    UserMailer.pop_alert(self).deliver
+    AlertMailer.pop_alert(self).deliver
   end
 
   def has_site?
     self.projects.each do |projects|
       return true if projects.sites.count > 0
     end
-    return false 
+    return false
   end
 
+  def list_sites
+    self.projects.each do |projects|
+      @sites = Array.new
+      @sites = [] << projects.sites.count
+    end
+    return @sites.print
+  end
 end

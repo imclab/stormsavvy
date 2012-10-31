@@ -10,7 +10,7 @@
     = csrf_meta_tag
 
   %body{ template_id, template_class }
-    =render :partial => "shared/flash_messages", :locals => {:flash => flash}
+    = render :partial => "shared/flash_messages", :locals => {:flash => flash}
     = render 'layouts/header'
     .bottom-10
     = render :partial => "pages/hero" if is_public_home?
@@ -18,7 +18,7 @@
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
           %a.close{"data-dismiss" => "alert"} ×
-          -#= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+          = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
       = yield
-
-    = render 'layouts/footer'
+%footer
+  = render 'layouts/footer'

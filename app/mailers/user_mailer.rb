@@ -1,36 +1,73 @@
 class UserMailer < ActionMailer::Base
-  default :from => "doolin@inventiumsystems.com"
-  #default :from => "alerts@stormsavvy.com"
-  #default :from => "david.doolin@gmail.com"
 
-  def pop
-    @greeting = "Hello"
-    mail to: "david.doolin@gmail.com", :subject => 'booyah'
-  end
+  # require './lib/weather/forecast_examiner.rb'
 
-  def pop_alert(user)
-    @greeting = "Hello"
-    mail(:to => user.email, :subject => "Pop alerts")
-  end
-
-  def noaa_alert(user)
-    @greeting = "Hello"
-    mail(:to => user.email, :subject => "Daily weather forecasts")
-  end
+  default :from => "alerts@stormsavvy.com"
+  # default :from => "doolin@inventiumsystems.com"
 
   def pester_admins(email)
-    @greeting = "Yo yo yo!"
-    mail(:to => email, :subject => 'Storm Savvy is working great today!')
-  end
+    @greeting = "Greetings"
 
-  def mailout(to = nil)
+    # mail(
+    #   :from     => "alerts@stormsavvy.com",
+    #   :to       => "walter@stormsavvy.com",
+    #   :subject  => "Storm Savvy is working great today!"
+    #   ).deliver
+
     @users = User.all
     @users.each do |user|
       @user = user # `@user` is needed for the template
-      if user.has_site?
-        mail(:to => user.email, :subject => "Project estimate").deliver
+
+      if @user.has_site?
+        mail(
+          :from     => "alerts@stormsavvy.com",
+          :to       => @user.email,
+          :subject  => "Storm Savvy Project Status Notification"
+          ).deliver
+      else
+        mail(
+          :from     => "alerts@stormsavvy.com",
+          :to       => "walter@stormsavvy.com",
+          :subject  => "No New Project Status Notification"
+          ).deliver
       end
     end
   end
 
+  def mailout(to = nil)
+    @greeting = "Greetings"
+    @users = User.all
+
+    @users.each do |user|
+      @user = user # `@user` is needed for the template
+
+      if @user.has_site?
+        mail(
+          :from     => "alerts@stormsavvy.com",
+          :to       => @user.email,
+          :subject  => "Storm Savvy Project Status Notification"
+          ).deliver
+      else
+        mail(
+          :from     => "alerts@stormsavvy.com",
+          :to       => "alerts@stormsavvy.com",
+          :subject  => "Storm Savvy Project Status Notification"
+          ).deliver
+      end
+    end
+  end
+
+  def noaa_forecast(to = nil)
+    @users = User.all
+    @users.each do |user|
+      @user = user # `@user` is needed for the template
+      if user.has_site?
+        mail(
+          :from     => "alerts@stormsavvy.com",
+          :to       => user.email,
+          :subject  => "NOAA Forecast Notification"
+          ).deliver
+      end
+    end
+  end
 end

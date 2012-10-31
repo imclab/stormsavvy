@@ -1,69 +1,70 @@
 require "spec_helper"
 
-# http://robaldred.co.uk/2009/12/testing-actionmailer-models-with-rspec/
-# http://stackoverflow.com/questions/5843284/clearing-out-activemailerbase-deliveries-after-rspec-test
 describe UserMailer do
 
   before { ActionMailer::Base.deliveries = [] }
 
-  it "should send Pop emails" do
-    user = FactoryGirl.create(:user)
-    UserMailer.pop.deliver
-    ActionMailer::Base.deliveries.should_not be_empty
+  before(:each) do
+
+    # @user = User.create!(
+    #   :firstname              => 'Walter',
+    #   :lastname               => 'Yu',
+    #   :email                  => 'walter@stormsavvy.com',
+    #   :password               => 'DarkAndStormy',
+    #   :password_confirmation  => 'DarkAndStormy'
+    #   )
+    # @project = Project.create!(
+    #   :user_id                => 1,
+    #   :name                   => "EC Park & Rec",
+    #   :description            => "Jungle Gym, etc.",
+    #   :startdate              => DateTime.new,
+    #   :finishdate             => DateTime.new,
+    #   :active                 => false
+    #   )
+    # @site = Site.create!(
+    #   :name                   => "EC Jungle Gym",
+    #   :description            => "New Playground",
+    #   :costcode               => "450AZC",
+    #   :size                   => "20 acres",
+    #   :exposed_area           => "10 acres",
+    #   :zipcode                => 94610
+    #   )
+
+    # TODO: Debug spec factory tables
+    @user = FactoryGirl.create(:user)
+    @p1 = FactoryGirl.create(:project, :user => @user, :created_at => 1.day.ago)
+    @p2 = FactoryGirl.create(:project, :user => @user, :created_at => 1.hour.ago)
+    @projects = [ @p1, @p2]
+    # @project = FactoryGirl.create(:project)
+    @site = FactoryGirl.create(:site)
   end
 
-  it "should send Pop Alert emails" do
-    user = FactoryGirl.create(:user)
-    UserMailer.pop_alert(user).deliver
-    ActionMailer::Base.deliveries.should_not be_empty
-  end
+  describe "mailout mailer" do
 
-  it "should send NOAA Alert emails" do
-    user = FactoryGirl.create(:user)
-    UserMailer.noaa_alert(user).deliver
-    ActionMailer::Base.deliveries.should_not be_empty
-  end
-
-  it "should send something via mailout" do   
-    user = FactoryGirl.create(:user)
-    project = user.projects.create!(:name => 'foo', :description => 'bar', :startdate => 3.days.ago, :finishdate => 1.day.ago)
-    site = project.sites.create!(:name => "Oakland Adams Point", :zipcode => 94610)
-    # Note that the site is not associated with the user, only the project.
-    # Lots of intricate associations coming.
-    #p user.sites.first
-    UserMailer.mailout
-    ActionMailer::Base.deliveries.should_not be_empty
-  end
-
-  describe "mailout" do
-
+    # TODO: Debug project factory table
     before(:each) do
-      user = FactoryGirl.create(:user)
-      project = user.projects.create!(:name => 'foo', :description => 'bar', :startdate => 3.days.ago, :finishdate => 1.day.ago)
-      site = project.sites.create!(:name => "Oakland Adams Point", :zipcode => 94610)
+      @receipient = "walter@stormsavvy.com"
+      @mailer = UserMailer.mailout(@recipient).deliver
+    end
+
+    it "should send something via mailout" do
+      ActionMailer::Base.deliveries.should_not be_empty
     end
 
     it "should render successfully" do
-      lambda { UserMailer.mailout  }.should_not raise_error
+      lambda { @mailer }.should_not raise_error
     end
 
-    describe "rendered without error" do
+    it "should have a list of projects" do
+      @mailer.body.should have_selector("ul.projects")
+    end
 
-      before(:each) do
-        @mailer = UserMailer.mailout
-      end
+    it "should have a list of sites" do
+      @mailer.body.should have_selector("ul.sites")
+    end
 
-      it "it should have an alert" do
-        @mailer.body.should have_css('.chance-of-rain', :text => 'chance of rain')
-      end
-
-      it "should have a list of projects" do
-        @mailer.body.should have_selector("ul.projects")
-      end
-
-      it "should have a list of sites" do
-        @mailer.body.should have_selector("ul.sites")
-      end
+    it "it should have an alert" do
+      @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
     end
   end
 

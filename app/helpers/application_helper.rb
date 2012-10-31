@@ -5,7 +5,11 @@ module ApplicationHelper
   end
 
   def template_class
-    {:class => "#{params[:controller].gsub(/\//,'-')} #{params[:action]}"}
+    unless params[:controller].nil?
+      {:class => "#{params[:controller].gsub(/\//,'-')} #{params[:action]}"}
+    else
+      {:class => "FIXME"}
+    end
   end
 
   def is_public_home?

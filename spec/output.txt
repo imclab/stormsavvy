@@ -1,0 +1,1 @@
+Coverage report generated for RSpec to /Users/admin/src/stormsavvy/coverage. 0 / 0 LOC (0.0%) covered.

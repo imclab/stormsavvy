@@ -66,7 +66,7 @@ describe Report do
   end
 
   context 'status' do
-    it "should change status on update" do
+    xit "should change status on update" do
       r = Report.create
       r.status.should be_nil
       r.contractor_name = "Ghilotti Bros"

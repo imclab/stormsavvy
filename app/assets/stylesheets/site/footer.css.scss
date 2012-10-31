@@ -1,4 +1,19 @@
+/*
+@import "compass/reset.scss";
+@import "compass/layout.scss";
+
+@include sticky-footer(54px, "#footer");
+*/
+
 footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
   background: url("/assets/footerBG.png");
   color: #fff;
   padding: 1em 0 .5em;
@@ -9,7 +24,18 @@ footer {
       color: #ccc;
     }
   }
-
+  .wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -40px;
+  }
+  .push {
+    height: 40px;
+  }
+  .wrapper > .container {
+    padding-top: 40px;
+  }
   .social {
     margin-top: -4px;
     margin-bottom: 4px;

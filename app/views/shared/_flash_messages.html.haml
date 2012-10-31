@@ -1,5 +1,12 @@
-- flash.each do |type, message|
-  %div.alert-message.fade.in{ "data-alert" => "alert", :class => twitterized_type(type) }
-    %a.close{:href => "#"} ×
-    %p
-      = message
+/ Flash message rendered inside /views/application.html.haml
+/ - flash.each do |type, message|
+/   %div.alert-message.fade.in{ "data-alert" => "alert", :class => twitterized_type(type) }
+/     %a.close{:href => "#"} ×
+/     %p
+/     = message
+
+/ Alternative dialogue box styling.
+/ .alert
+/   %a.close{"data-dismiss" => "alert"} ×
+/   %p
+/     = message

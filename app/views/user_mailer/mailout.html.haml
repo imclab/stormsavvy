@@ -1,10 +1,12 @@
 %h2 Your project alerts
 %hr
 %ul.projects
-  - @user.projects.each do |project|
-    %li
-      = project.name
-      %ul.sites
-        - project.sites.each do |site| 
-          %li.chance-of-rain
-            = "#{site.name} => chance of rain = #{site.chance_of_rain}%"
+  = "Alerts for your projects: #{ @user.list_sites }"
+/ TODO: Make sure site info can render in partial.
+/ - @projects.each do |project|
+/   %li
+/     = project.name
+/     %ul.sites
+/       - project.sites.each do |site| 
+/         %li.chance-of-rain
+/           = "#{site.name} => chance of rain = #{site.chance_of_rain}%"
