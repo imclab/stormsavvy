@@ -1,3 +1,5 @@
+require 'pp'
+
 class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
@@ -29,76 +31,42 @@ class User < ActiveRecord::Base
     :password
   validates_uniqueness_of :email
 
-  # For use in console only.
-  def create_user
-    @testem_user = User.create!(
-      :email    => 'barney@bear.com',
-      :password => 'technocali'
-      )
-  end
-
-  # For use in console only.
-  def create_project
-    @testem_project = @testem_user.projects.create(
-      :name => 'ec park and rec',
-      :description => 'playground improvements',
-      :startdate => DateTime.new(2011),
-      :finishdate => DateTime.new(2012)
-      )
-  end
-
-  # For use in console only.
-  def create_site
-    @testem_site = @testem_project.sites.create(
-      :name => 'ec jungle gym',
-      :zipcode => 94530
-      )
-  end
-
-  def clean_sites
-    @user_user.delete
-    @testem_project.delete
-    @testem_site.delete
-  end
-
   def has_site?
-    self.projects.each do |projects|
-      return true if projects.sites.count > 0
+    self.projects.each do |p|
+      return true if p.sites.count > 0
     end
     return false
   end
 
-  def map_sites
-    self.sites.each do |site|
-      @sites_array = self.sites.map { |s| s.name }
-    end
-  end
-
   def print_sites
-    puts @sites_array 
-  end
-
-  def list_sites
-    self.projects.each do |projects|
-      if self.has_site? == true
-        self.map_sites
-        self.print_sites
-      end
-      return false
+    self.sites.each do |s|
+      @site = pp s.name
+      pp @site
     end
+    return pp @site
   end
 
   def map_forecasts
-    self.sites.each do |site|
-      @forecasts_array = self.sites.map { |s| s.forecast }
+    self.sites.each do |s|
+      @forecasts_array = pp s.forecast
     end
   end
 
-  def print_forecasts
+  def puts_forecasts
     puts @forecasts_array 
   end
 
-  def send_pop_alerts
+  def print_forecasts
+    self.sites.each do |forecasts|
+      if self.has_site? == true
+        self.map_forecasts
+        self.puts_forecasts
+      end
+      puts "No sites = no forecasts"
+    end
+  end
+
+  def mail_alerts
     @name = self.firstname
     AlertMailer.pop_alert(self).deliver
   end
