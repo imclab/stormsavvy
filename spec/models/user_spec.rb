@@ -57,30 +57,29 @@ describe User do
       end
     end
 
-    xit "should enforce unique email" do
-      m1 = Factory(:user)
-      m2 = Factory.build(:user, :email => m1.email).should_not be_valid
+    it "should enforce unique email" do
+      # m1 = Factory(:user)
+      # m2 = Factory.build(:user, :email => m1.email).should_not be_valid
+      @user2 = FactoryGirl.build(
+        :user,
+        :email => @user.email
+        ).should_not be_valid
     end
   end
 
   context :has_site do
 
-    it "should respond to has_site?" do
-      @user.projects.build
+    it "should respond and reply appropriately if user has_site?" do
       @user.should respond_to(:has_site?)
-    end
-
-    it "should reply appropriately if user has a site" do
-      project = FactoryGirl.create(:project)
-      site = FactoryGirl.create(:site)
-      project.sites << site
       assert_equal @user.has_site?, true
     end
 
     it "should reply appropriately if user does not have site" do
-      project = FactoryGirl.create(:project)
-      site = FactoryGirl.create(:site)
-      assert_equal @user.has_site?, false
+      user = User.create(
+        :email =>     'foo@bar.com',
+        :password =>  'foobarbaz'
+        )
+      assert_equal user.has_site?, false
     end
   end
 
