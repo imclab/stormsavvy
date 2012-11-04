@@ -24,6 +24,7 @@ Stormsavvy::Application.routes.draw do
 
   # Projects controller needs #show, redirect to root instead.
   match '/projects' => 'dashboard#index', :via => :get
+
   resources :projects do
     resources :sites
   end
