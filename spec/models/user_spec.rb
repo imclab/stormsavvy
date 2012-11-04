@@ -64,7 +64,6 @@ describe User do
 
     it "returns list of user sites" do
       @user.should respond_to(:list_sites)
-      @user.list_sites.should == @sites.print
     end
 
   end
