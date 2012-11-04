@@ -88,7 +88,6 @@ describe User do
     it "returns list of user sites" do
       @user.should respond_to(:list_sites)
     end
-
   end
 
 end
