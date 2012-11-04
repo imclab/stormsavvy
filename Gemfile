@@ -45,7 +45,6 @@ end
 gem 'less-rails-bootstrap'
 gem 'jquery-rails'
 gem 'devise'
-gem 'heroku'
 gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
 gem 'pdf-reader'
 gem 'simple_form'
@@ -53,3 +52,6 @@ gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
 gem 'pg'
 gem 'haml-rails'
 gem 'simplecov', :require => false, :group => :test
+
+# Heroku gem deprecated, use the toolbelt
+# gem 'heroku'
