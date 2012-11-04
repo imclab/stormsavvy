@@ -68,23 +68,38 @@ class User < ActiveRecord::Base
     return false
   end
 
+  def map_sites
+    self.sites.each do |site|
+      @sites_array = self.sites.map { |s| s.name }
+    end
+  end
+
+  def print_sites
+    puts @sites_array 
+  end
+
   def list_sites
     self.projects.each do |projects|
       if self.has_site? == true
-        @projects.sites.each do |site|
-          puts site
-        end
-        # sites_array = self.sites.map { |s| s.name }
-        # puts sites_array 
+        self.map_sites
+        self.print_sites
       end
       return false
     end
   end
 
-  # def build_sites
-  #   @user = User.new(:email => 'foo@bar.com')
-  #   @project = @user.projects.build
-  #   @site = @project.sites.build
-  # end
+  def map_forecasts
+    self.sites.each do |site|
+      @forecasts_array = self.sites.map { |s| s.forecast }
+    end
+  end
 
+  def print_forecasts
+    puts @forecasts_array 
+  end
+
+  def send_pop_alerts
+    @name = self.firstname
+    AlertMailer.pop_alert(self).deliver
+  end
 end
