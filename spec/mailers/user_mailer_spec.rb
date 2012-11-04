@@ -42,7 +42,7 @@ describe UserMailer do
   describe "mailout mailer" do
 
     # TODO: Debug project factory table
-    before(:each) do
+    before(:each) do      
       @receipient = "walter@stormsavvy.com"
       @mailer = UserMailer.mailout(@recipient).deliver
     end
