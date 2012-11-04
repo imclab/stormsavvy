@@ -10,6 +10,7 @@ gem 'iron_worker'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'less-rails-bootstrap'
+
 gem 'jquery-rails'
 gem 'devise'
 gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
@@ -29,6 +30,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'factory_girl_rails'
+
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara'
@@ -51,7 +53,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails', , :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 end
 
 # Heroku gem deprecated, use the toolbelt
