@@ -25,8 +25,10 @@ Stormsavvy::Application.routes.draw do
   # Projects controller needs #show, redirect to root instead.
   match '/projects' => 'dashboard#index', :via => :get
 
-  resources :projects do
-    resources :sites
+  resources :user do
+    resources :projects do
+      resources :sites
+    end
   end
 
   match '/footer',    :to => "pages#footer",         :as => :footer
