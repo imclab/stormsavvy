@@ -284,6 +284,7 @@ DEPENDENCIES
   haml-rails
   iron_worker
   jquery-rails
+  less-rails
   less-rails-bootstrap
   letter_opener
   nested_form
