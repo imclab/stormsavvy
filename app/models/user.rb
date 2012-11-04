@@ -29,9 +29,36 @@ class User < ActiveRecord::Base
     :password
   validates_uniqueness_of :email
 
-  def send_pop_alerts
-    @name = self.firstname
-    AlertMailer.pop_alert(self).deliver
+  # For use in console only.
+  def create_user
+    @testem_user = User.create!(
+      :email    => 'barney@bear.com',
+      :password => 'technocali'
+      )
+  end
+
+  # For use in console only.
+  def create_project
+    @testem_project = @testem_user.projects.create(
+      :name => 'ec park and rec',
+      :description => 'playground improvements',
+      :startdate => DateTime.new(2011),
+      :finishdate => DateTime.new(2012)
+      )
+  end
+
+  # For use in console only.
+  def create_site
+    @testem_site = @testem_project.sites.create(
+      :name => 'ec jungle gym',
+      :zipcode => 94530
+      )
+  end
+
+  def clean_sites
+    @user_user.delete
+    @testem_project.delete
+    @testem_site.delete
   end
 
   def has_site?
