@@ -40,18 +40,9 @@ describe User do
   end
 
   context :has_site do
-=begin
-    before(:each) do 
-      @user = User.create(
-        :email => 'foo@bar.com', 
-        :password => 'foobarbaz',
-        :password_confirmation => 'foobarbaz'
-        )
-      # TODO: Resolve duplicate user factory table error.
-      # @user = FactoryGirl.create(:user)
-    end
-=end
+
     it "should respond to has_site?" do
+      @user.projects.build
       @user.should respond_to(:has_site?)
     end
 
