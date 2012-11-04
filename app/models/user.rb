@@ -19,21 +19,15 @@ class User < ActiveRecord::Base
     # :contactor_zipcode
 
   has_many :projects, :dependent => :destroy
+  accepts_nested_attributes_for :projects
+
   has_many :sites, :dependent => :destroy, :through => :projects
+  accepts_nested_attributes_for :sites
 
   validates :email, :presence => true
   validates_presence_of :email,
     :password
   validates_uniqueness_of :email
-
-  # def initialize
-  #   @user = self.new(
-  #     :firstname  => "walter",
-  #     :lastname   => "yu",
-  #     :email      => "walter@stormsavvy.com",
-  #     :password   => "foobarbaz"
-  #   )
-  # end
 
   def send_pop_alerts
     @name = self.firstname
