@@ -43,9 +43,21 @@ class User < ActiveRecord::Base
 
   def list_sites
     self.projects.each do |projects|
-      @sites = Array.new
-      @sites = [] << projects.sites.count
+      if self.has_site? == true
+        @projects.sites.each do |site|
+          puts site
+        end
+        # sites_array = self.sites.map { |s| s.name }
+        # puts sites_array 
+      end
+      return false
     end
-    return @sites.print
   end
+
+  # def build_sites
+  #   @user = User.new(:email => 'foo@bar.com')
+  #   @project = @user.projects.build
+  #   @site = @project.sites.build
+  # end
+
 end
