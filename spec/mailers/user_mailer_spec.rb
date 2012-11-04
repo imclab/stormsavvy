@@ -42,7 +42,7 @@ describe UserMailer do
   describe "mailout mailer" do
 
     # TODO: Debug project factory table
-    before(:each) do      
+    before(:each) do
       @receipient = "walter@stormsavvy.com"
       @mailer = UserMailer.mailout(@recipient).deliver
     end
@@ -55,15 +55,9 @@ describe UserMailer do
       lambda { @mailer }.should_not raise_error
     end
 
-    it "should have a list of projects" do
+    it "should have list of projects, site and POP" do
       @mailer.body.should have_selector("ul.projects")
-    end
-
-    it "should have a list of sites" do
       @mailer.body.should have_selector("ul.sites")
-    end
-
-    it "it should have an alert" do
       @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
     end
   end
