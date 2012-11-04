@@ -81,5 +81,4 @@ describe UserMailer do
       @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
     end
   end
-
 end
