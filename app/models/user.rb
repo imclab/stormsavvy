@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
     :password_confirmation,
     :remember_me,
     :firstname,
-    :lastname
+    :lastname,
+    :projects_attributes
 
     # Report fields associated with user
     # :contractor_name,
