@@ -33,16 +33,18 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   def has_site?
-    self.projects.each do |p|
-      return true if p.sites.count > 0
+    self.projects.each do |project|
+      return true if project.sites.count > 0
     end
     return false
   end
 
   def print_sites
-    self.sites.each do |s|
-      @site = pp s.name
-      pp @site
+    self.projects.each do |project|
+      project.sites.each do |site|
+        @site = pp site.name
+        pp @site
+      end
     end
     return pp @site
   end
