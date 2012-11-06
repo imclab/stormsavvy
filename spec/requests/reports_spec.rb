@@ -2,12 +2,14 @@ require 'spec_helper'
 
 describe "Reports" do
 	before :each do
-		@user = User.create(:email => "integration@stormsavvy.com", 
-												:password => "automation")
+		@user = FactoryGirl.create(
+      :user,
+      :email    => 'integration@stormsavvy.com',
+      :password => 'automateyourspec!')
 		visit '/'
     click_link 'Sign in'
     fill_in 'Email', :with => 'integration@stormsavvy.com'
-    fill_in 'Password', :with => 'automation'
+    fill_in 'Password', :with => 'automateyourspec!'
     click_button 'Sign in'
 	end
 
