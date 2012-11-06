@@ -13,28 +13,21 @@ Stormsavvy::Application.routes.draw do
 
   resources :inspection_events
   resources :weather_events
-  resources :reports 
+  resources :reports
   resources :locations
 
-  resources :users
-  resources :projects
-  resources :sites
+  resources :projects do
+    resources :sites
+  end
 
   ReportsController::STATIC_REPORTS.each do |name|
     match "/reports/#{name}" => "reports##{name}"
   end
 
   # Projects controller needs #show, redirect to root instead.
-  match '/projects' => 'dashboard#index', :via => :get
-
-  resources :users do
-    resources :projects do
-      resources :sites
-    end
-  end
+  match '/projects',  :to => "dashboard#index",      :via => :get
 
   match '/footer',    :to => "pages#footer",         :as => :footer
-
   match '/index',     :to => "pages#index",          :as => :index
   match '/about',     :to => "pages#about",          :as => :about
   match '/terms',     :to => "pages#terms",          :as => :terms
