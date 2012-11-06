@@ -29,7 +29,6 @@ describe User do
       :zipcode => 94530
       )
     @sites = [@s1, @s2]
-
   end
 
   it "should create a valid user" do
