@@ -66,7 +66,7 @@ describe User do
     end
   end
 
-  context :has_site do
+  context :has_site? do
 
     it "should respond and reply appropriately if user has_site?" do
       @user.should respond_to(:has_site?)
@@ -82,10 +82,10 @@ describe User do
     end
   end
 
-  context :list_sites do
+  context :print_sites do
 
     it "returns list of user sites" do
-      @user.should respond_to(:list_sites)
+      @user.should respond_to(:print_sites)
     end
   end
 
