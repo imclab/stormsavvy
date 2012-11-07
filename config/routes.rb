@@ -11,10 +11,14 @@ Stormsavvy::Application.routes.draw do
   get "location/create"
   get "noaa/secret"
 
-  resources :inspection_events
-  resources :weather_events
-  resources :reports
-  resources :locations
+  resources :inspection_events,
+    :weather_events,
+    :reports,
+    :locations
+
+  # Projects controller needs #show, redirect to root instead,
+  # place before nested resource so that it is mapped properly.
+  match '/projects', :to => "dashboard#index", :via => :get
 
   resources :projects do
     resources :sites
