@@ -1,5 +1,7 @@
 Stormsavvy::Application.routes.draw do
 
+  devise_for :users
+
   get "alert_pages/sender"
   get "alert_pages/thankyou"
   get "dashboard/index"
@@ -40,8 +42,6 @@ Stormsavvy::Application.routes.draw do
   match '/team',      :to => "pages#team",           :as => :team
   match '/popemail',  :to => "pages#popemail",       :as => :popemail
   match '/sendemail', :to => "pages#sendemail",      :as => :sendemail
-
-  devise_for :users
 
   root :to => "dashboard#index"
 
