@@ -50,7 +50,7 @@ class ForecastExaminer
 
   def mail_alert
     if @rain == :warning or @rain == :imminent
-      UserMailer.pop_alert(@user)
+      AlertMailer.pop_alert(@user)
     end
   end
 
