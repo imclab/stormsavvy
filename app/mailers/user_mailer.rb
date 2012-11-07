@@ -23,12 +23,12 @@ class UserMailer < ActionMailer::Base
           :to       => @user.email,
           :subject  => "Storm Savvy Project Status Notification"
           ).deliver
-      else
-        mail(
-          :from     => "alerts@stormsavvy.com",
-          :to       => "walter@stormsavvy.com",
-          :subject  => "No New Project Status Notification"
-          ).deliver
+      # else
+      #   mail(
+      #     :from     => "alerts@stormsavvy.com",
+      #     :to       => "walter@stormsavvy.com",
+      #     :subject  => "No New Project Status Notification"
+      #     ).deliver
       end
     end
   end
@@ -46,12 +46,12 @@ class UserMailer < ActionMailer::Base
           :to       => @user.email,
           :subject  => "Storm Savvy Project Status Notification"
           ).deliver
-      else
-        mail(
-          :from     => "alerts@stormsavvy.com",
-          :to       => "alerts@stormsavvy.com",
-          :subject  => "No New Project Status Notification"
-          ).deliver
+      # else
+      #   mail(
+      #     :from     => "alerts@stormsavvy.com",
+      #     :to       => "alerts@stormsavvy.com",
+      #     :subject  => "No New Project Status Notification"
+      #     ).deliver
       end
     end
   end
@@ -66,12 +66,12 @@ class UserMailer < ActionMailer::Base
           :to       => user.email,
           :subject  => "NOAA Forecast Notification"
           ).deliver
-      else
-        mail(
-          :from     => "alerts@stormsavvy.com",
-          :to       => "alerts@stormsavvy.com",
-          :subject  => "No New Project Status Notification"
-          ).deliver
+      # else
+      #   mail(
+      #     :from     => "alerts@stormsavvy.com",
+      #     :to       => "alerts@stormsavvy.com",
+      #     :subject  => "No New Project Status Notification"
+      #     ).deliver
       end
     end
   end
