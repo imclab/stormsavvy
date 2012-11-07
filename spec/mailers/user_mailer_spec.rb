@@ -32,31 +32,50 @@ describe UserMailer do
 
     # TODO: Debug spec factory tables
     @user = FactoryGirl.create(:user)
-    @p1 = FactoryGirl.create(
-      :project, 
-      :user => @user, 
-      :created_at => 1.day.ago
-      )
-    @p2 = FactoryGirl.create(
-      :project, 
-      :user => @user, 
-      :created_at => 1.hour.ago
-      )
-    @projects = [@p1, @p2]
+    # @p1 = FactoryGirl.create(
+    #   :project, 
+    #   :user => @user, 
+    #   :created_at => 1.day.ago
+    #   )
+    # @p2 = FactoryGirl.create(
+    #   :project, 
+    #   :user => @user, 
+    #   :created_at => 1.hour.ago
+    #   )
+    # @projects = [@p1, @p2]
     
-    @s1 = FactoryGirl.create(
-      :site, 
-      :project => @p1, 
-      :name => 'ec jungle gym', 
+    # @s1 = FactoryGirl.create(
+    #   :site, 
+    #   :project => @p1, 
+    #   :name => 'ec jungle gym', 
+    #   :zipcode => 94530
+    #   )
+    # @s2 = FactoryGirl.create(
+    #   :site, 
+    #   :project => @p2, 
+    #   :name => 'ec playground slide', 
+    #   :zipcode => 94530
+    #   )
+    # @sites = [@s1, @s2]
+
+    # Build using new and save methods
+    @project1 = @user.projects.new(
+      :name => 'ec park and rec',
+      :description => 'playground improvements',
+      :startdate => DateTime.new(2011),
+      :finishdate => DateTime.new(2012)
+      )
+    @project1.save
+    @site1 = @project1.sites.new(
+      :name => 'ec jungle gym',
       :zipcode => 94530
       )
-    @s2 = FactoryGirl.create(
-      :site, 
-      :project => @p2, 
-      :name => 'ec playground slide', 
+    @site1.save
+    @site2 = @project1.sites.new(
+      :name => 'ec playground',
       :zipcode => 94530
       )
-    @sites = [@s1, @s2]
+    @site2.save    
   end
 
   describe "mailout mailer" do
