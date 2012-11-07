@@ -15,7 +15,7 @@ describe "Reports" do
 	end
 
   describe "GET /reports" do
-    xit "should GET /reports" do
+    it "should GET /reports" do
       @report = FactoryGirl.create(:report)
       # check report_path, @report.id not found
       get report_path(:report => @report.id) 
@@ -29,7 +29,7 @@ describe "Reports" do
       page.should have_content('Storm Savvy')
     end
 
-		xit "should view and create new report" do
+		it "should view and create new report" do
 			visit '/'
 			current_path.should == '/'
       # check current_path, user may not be logged in?
