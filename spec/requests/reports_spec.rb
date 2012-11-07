@@ -5,7 +5,8 @@ describe "Reports" do
 		@user = FactoryGirl.create(
       :user,
       :email    => 'integration@stormsavvy.com',
-      :password => 'automateyourspec!')
+      :password => 'automateyourspec!',
+      :password_confirmation => 'automateyourspec!')
 		visit '/'
     click_link 'Sign in'
     fill_in 'Email', :with => 'integration@stormsavvy.com'
