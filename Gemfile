@@ -38,7 +38,10 @@ group :test, :development do
   gem 'sqlite3'
   gem 'spork-rails'
 
+  gem 'pry'
+  gem 'pry-remote'
   gem 'pry-nav'
+
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'email_spec'
