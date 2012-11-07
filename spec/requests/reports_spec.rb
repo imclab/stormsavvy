@@ -30,7 +30,6 @@ describe "Reports" do
     end
 
 		it "should view and create new report" do
-			visit '/'
 			current_path.should == '/'
       # check current_path, user may not be logged in?
 			click_link 'CEM 2030'
