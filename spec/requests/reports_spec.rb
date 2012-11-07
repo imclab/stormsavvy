@@ -37,7 +37,7 @@ describe "Reports" do
 			visit '/reports/new'
 			current_path.should == '/reports/new'
 			page.should have_content('New Report')
-      click_link 'Save Report'
+      click_button 'Save Report'
     end
   end
 end
