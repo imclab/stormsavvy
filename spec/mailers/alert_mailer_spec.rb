@@ -7,16 +7,28 @@ describe AlertMailer do
   before(:each) do
     # TODO: Debug user factory table
     # @user = FactoryGirl.create(:user)
-    @user = User.create!(
+    @user = User.create(
       :firstname              => 'Walter',
       :lastname               => 'Yu',
       :email                  => 'walter@stormsavvy.com',
       :password               => 'DarkAndStormy',
       :password_confirmation  => 'DarkAndStormy'
       )
+    @project = FactoryGirl.create(
+      :project, 
+      :user => @user, 
+      :created_at => 1.day.ago
+      )
+    @site = FactoryGirl.create(
+      :site, 
+      :project => @project, 
+      :name => 'ec jungle gym', 
+      :zipcode => 94530
+      )
   end
 
   describe "pop_alert" do
+    binding.pry
     let(:mail) { AlertMailer.pop_alert(@user).deliver }
 
     it "renders the headers" do

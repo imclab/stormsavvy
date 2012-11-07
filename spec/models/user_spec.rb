@@ -4,31 +4,31 @@ describe User do
 
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @p1 = FactoryGirl.create(
+    @project1 = FactoryGirl.create(
       :project, 
       :user => @user, 
       :created_at => 1.day.ago
       )
-    @p2 = FactoryGirl.create(
+    @project2 = FactoryGirl.create(
       :project, 
       :user => @user, 
       :created_at => 1.hour.ago
       )
-    @projects = [@p1, @p2]
+    # @projects = [@p1, @p2]
     
-    @s1 = FactoryGirl.create(
+    @site1 = FactoryGirl.create(
       :site, 
-      :project => @p1, 
+      :project => @project1, 
       :name => 'ec jungle gym', 
       :zipcode => 94530
       )
-    @s2 = FactoryGirl.create(
+    @ssite2 = FactoryGirl.create(
       :site, 
-      :project => @p2, 
+      :project => @project2, 
       :name => 'ec playground slide', 
       :zipcode => 94530
       )
-    @sites = [@s1, @s2]
+    # @sites = [@s1, @s2]
   end
 
   it "should create a valid user" do
