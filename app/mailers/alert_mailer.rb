@@ -6,6 +6,7 @@ class AlertMailer < ActionMailer::Base
 
     @greeting = "Greetings,"
     @users = User.all
+    
     @users.each do |user|
       @user = user # `@user` is needed for the template
       if @user.has_site?
