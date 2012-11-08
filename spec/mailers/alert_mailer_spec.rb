@@ -29,7 +29,9 @@ describe AlertMailer do
   end
 
   describe "pop_alert" do
-    let(:mail) { AlertMailer.pop_alert(@user).deliver }
+    let(:mail) { 
+      AlertMailer.pop_alert(@user)#.deliver 
+    }
 
     it "renders the headers" do
       mail.subject.should eq("Storm Savvy POP Alert")
