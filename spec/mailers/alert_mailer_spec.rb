@@ -25,10 +25,10 @@ describe AlertMailer do
       :name => 'ec jungle gym', 
       :zipcode => 94530
       )
+    binding.pry
   end
 
   describe "pop_alert" do
-    binding.pry
     let(:mail) { AlertMailer.pop_alert(@user).deliver }
 
     it "renders the headers" do
