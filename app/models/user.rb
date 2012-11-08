@@ -50,8 +50,8 @@ class User < ActiveRecord::Base
   end
 
   def map_forecasts
-    self.sites.each do |s|
-      @forecasts_array = pp s.forecast
+    self.sites.each do |site|
+      @forecasts_array = pp site.forecast
     end
   end
 
