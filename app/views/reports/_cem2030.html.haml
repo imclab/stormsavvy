@@ -17,19 +17,36 @@
         .span4
           %fieldset#company_information
             %legend Company Information
+            = f.input :contractor_name, :input_html => { :value => @report.contractor_name }
+            = f.input :contractor_address_1, :input_html => { :value => @report.contractor_address_1 }
+            = f.input :contractor_address_2, :input_html => { :value => @report.contractor_address_2 }
+            = f.input :contractor_city, :input_html => { :value => @report.contractor_city }
+            = f.input :contractor_state, :input_html => { :value => @report.contractor_state }
+            = f.input :contractor_zipcode, :as => :string, :input_html => { :value => @report.contractor_zipcode }
         .span4
           %fieldset#contract_information
             %legend Contract Information
+            = f.input :contract_number, :input_html => { :value => @report.contract_number }
+            = f.input :project_identifier_number, :input_html => { :value => @report.project_identifier_number }
+            = f.input :wdid_number, :input_html => { :value => @report.wdid_number }
+            = f.input :status, :input_html => { :value => @report.status }            
       .row
         .span4
           %fieldset#submittal_information
             %legend Submittal Information
+            = f.input :submitted_by_contractor, :input_html => { :value => @report.submitted_by_contractor }
+            = f.input :submitted_by_date, :input_html => { :value => @report.submitted_by_date }            
         .span4
           %fieldset#wpc_information
             %legend WPC Information
+            = f.input :wpc_manager, :input_html => { :value => @report.wpc_manager }
+            = f.input :wpc_phone, :input_html => { :value => @report.wpc_phone }
+            = f.input :wpc_emergency_phone, :input_html => { :value => @report.wpc_emergency_phone }            
         .span4
           %fieldset#inspector_name
             %legend Inspector Name
+            = f.input :inspector_name, :input_html => { :value => @report.inspector_name }
+            = f.input :inspection_date, :input_html => { :value => @report.inspection_date }            
       .row
         .span4
           %fieldset#weather_conditions
