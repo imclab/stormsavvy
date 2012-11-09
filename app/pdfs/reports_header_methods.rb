@@ -83,7 +83,7 @@ module ReportsHeaderMethods
         { text: "#{@report.contractor_name}\n" },
         { text: "#{@report.contractor_address_1}\n" },
         { text: "#{@report.contractor_address_2}\n" },
-        # { text: "#{@report.contractor_city}, #{@report.contractor_state}" }
+        { text: "#{@report.contractor_city}, #{@report.contractor_state}" }
       ],
       width: 200,
       at: [-18, 603],
