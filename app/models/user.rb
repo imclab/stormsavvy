@@ -1,3 +1,5 @@
+require 'pp'
+
 class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
@@ -8,51 +10,67 @@ class User < ActiveRecord::Base
     :password_confirmation,
     :remember_me,
     :firstname,
-    :lastname
+    :lastname,
+    :projects_attributes
 
-  # Report fields associated with user
-  # :contractor_name,
-  # :contractor_address_1,
-  # :contractor_address_2,
-  # :contractor_city,
-  # :contactor_state,
-  # :contactor_zipcode
+    # Report fields associated with user
+    # :contractor_name,
+    # :contractor_address_1,
+    # :contractor_address_2,
+    # :contractor_city,
+    # :contactor_state,
+    # :contactor_zipcode
 
   has_many :projects, :dependent => :destroy
+  accepts_nested_attributes_for :projects
+
   has_many :sites, :dependent => :destroy, :through => :projects
+  accepts_nested_attributes_for :sites
 
   validates :email, :presence => true
   validates_presence_of :email,
     :password
   validates_uniqueness_of :email
 
-  def initialize
-    # Dummy object for use in rails console.
-    @user = self.new(
-      :firstname  => "walter",
-      :lastname   => "yu",
-      :email      => "walter@stormsavvy.com",
-      :password   => "foobarbaz"
-    )
-  end
-
-  def send_pop_alerts
-    @name = self.firstname
-    AlertMailer.pop_alert(self).deliver
-  end
-
   def has_site?
-    self.projects.each do |projects|
-      return true if projects.sites.count > 0
+    self.projects.each do |project|
+      return true if project.sites.count > 0
     end
     return false
   end
 
-  def list_sites
-    self.projects.each do |projects|
-      @sites = Array.new
-      @sites = [] << projects.sites.count
+  def print_sites
+    self.projects.each do |project|
+      project.sites.each do |site|
+        @site = pp site.name
+        pp @site
+      end
     end
-    return @sites.print
+    return pp @site
+  end
+
+  def map_forecasts
+    self.sites.each do |site|
+      @forecasts_array = pp site.forecast
+    end
+  end
+
+  def puts_forecasts
+    puts @forecasts_array 
+  end
+
+  def print_forecasts
+    self.sites.each do |forecasts|
+      if self.has_site? == true
+        self.map_forecasts
+        self.puts_forecasts
+      end
+      puts "No sites = no forecasts"
+    end
+  end
+
+  def mail_alerts
+    @name = self.firstname
+    AlertMailer.pop_alert(self).deliver
   end
 end

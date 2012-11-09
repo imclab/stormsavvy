@@ -22,6 +22,7 @@ class ForecastExaminer
     forecast = index.compact.map { |e| e*6 }
     set_rain_state(forecast)
     add_report
+    mail_alert
   end
 
   private
@@ -44,6 +45,12 @@ class ForecastExaminer
     # TODO: should traverse listener queue for conditions and callbacks
     if @rain == :warning or @rain == :imminent
       @site.reports.create
+    end
+  end
+
+  def mail_alert
+    if @rain == :warning or @rain == :imminent
+      AlertMailer.pop_alert(@user)
     end
   end
 

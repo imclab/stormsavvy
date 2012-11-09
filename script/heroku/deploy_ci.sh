@@ -4,9 +4,9 @@
 
 cd ~/src/stormsavvy/script/heroku
 
-git push git@heroku.com:ssci.git master
-heroku restart --app ssci
-heroku logs --app ssci
-./deploy_ci.sh
+git push git@heroku.com:stormsavvy3.git master
+# heroku restart --app stormsavvy3 
+heroku logs --app stormsavvy3
 
+./deploy_ci.sh
 sleep 300
