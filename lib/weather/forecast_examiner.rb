@@ -22,7 +22,6 @@ class ForecastExaminer
     forecast = index.compact.map { |e| e*6 }
     set_rain_state(forecast)
     add_report
-    mail_alert
   end
 
   private

@@ -25,10 +25,11 @@ describe AlertMailer do
       :name => 'ec jungle gym', 
       :zipcode => 94530
       )
-    # binding.pry
   end
 
   describe "pop_alert" do
+
+    # TODO: Debug printing loop when pop_alert is called.
     let(:mail) { 
       AlertMailer.pop_alert(@user)#.deliver 
     }
