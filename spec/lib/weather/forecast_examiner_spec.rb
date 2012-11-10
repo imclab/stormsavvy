@@ -13,10 +13,10 @@ describe ForecastExaminer do
   end
 
   before(:each) do
-    @project = FactoryGirl.create(:project)
-    @site = @project.sites.create!({
-      :project => @project,
-      :name => 'ec jungle gym', 
+    @project = FactoryGirl.build(:project)
+    @site = @project.sites.build({
+      # :project => @project,
+      :name => 'ec jungle gym',
       :zipcode => '94530'
       })
     @fe = ForecastExaminer.new(@site, [@data[0],@data[1]])
