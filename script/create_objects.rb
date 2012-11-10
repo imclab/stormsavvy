@@ -46,3 +46,7 @@ end
 # Create weather event
 we = WeatherEvent.new
 we.save
+
+# Create new project    
+@project = Project.new
+@sites = @project.sites.build
