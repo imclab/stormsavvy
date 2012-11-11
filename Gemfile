@@ -7,6 +7,20 @@ gem 'geocoder', :github => 'doolin/geocoder'
 gem 'carmen'
 gem 'iron_worker'
 
+gem 'therubyracer'
+gem 'less-rails'
+gem 'less-rails-bootstrap'
+
+gem 'jquery-rails'
+gem 'devise'
+gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
+gem 'pdf-reader'
+gem 'simple_form'
+gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
+gem 'pg'
+gem 'haml-rails'
+gem 'simplecov', :require => false, :group => :test
+
 group :development do
   gem 'letter_opener'
 end
@@ -16,6 +30,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'factory_girl_rails'
+
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara'
@@ -23,10 +38,12 @@ group :test, :development do
   gem 'sqlite3'
   gem 'spork-rails'
 
+  gem 'pry'
+  gem 'pry-remote'
   gem 'pry-nav'
+
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
-  gem 'therubyracer'
   gem 'email_spec'
 #  gem 'rspec-http', '~> 0.9'
 #  gem 'rest-assured'
@@ -42,14 +59,5 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
-gem 'less-rails-bootstrap'
-gem 'jquery-rails'
-gem 'devise'
-gem 'heroku'
-gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
-gem 'pdf-reader'
-gem 'simple_form'
-gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
-gem 'pg'
-gem 'haml-rails'
-gem 'simplecov', :require => false, :group => :test
+# Heroku gem deprecated, use the toolbelt
+# gem 'heroku'

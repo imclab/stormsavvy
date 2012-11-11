@@ -1,6 +1,1 @@
-= @greeting ", <#{@name.email}>"
-
-Here are your POP alerts:
-
-- @alerts.each do |a|
-  = a.message
+= "Hello #{@user.email},\n Here are your projects: #{@user.print_sites}."

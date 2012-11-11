@@ -7,15 +7,13 @@
         - current_user.projects.each do |project|
           - project.sites.each do |site|
             %li
-<<<<<<< HEAD
               %i=link_to site.name, project_site_path(project, site)
               = chance_of_rain(site.zipcode)
               \% chance of rain,
               = @rain_state
-=======
+
               %i= "#{site.name}: "
               = "#{chance_of_rain(site.zipcode)}% chance of rain"
->>>>>>> cecaae2a90cbb608a82be08417d39e406b432b9e
 
   #current_action_items.widget.bottom-10
     .inner

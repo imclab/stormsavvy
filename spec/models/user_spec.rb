@@ -1,17 +1,40 @@
 require 'spec_helper'
 
 describe User do
+
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @p1 = FactoryGirl.create(:project, :user => @user, :created_at => 1.day.ago)
-    @p2 = FactoryGirl.create(:project, :user => @user, :created_at => 1.hour.ago)
+    @project1 = FactoryGirl.create(
+      :project, 
+      :user => @user, 
+      :created_at => 1.day.ago
+      )
+    @project2 = FactoryGirl.create(
+      :project, 
+      :user => @user, 
+      :created_at => 1.hour.ago
+      )
+    # @projects = [@p1, @p2]
+    
+    @site1 = FactoryGirl.create(
+      :site, 
+      :project => @project1, 
+      :name => 'ec jungle gym', 
+      :zipcode => 94530
+      )
+    @ssite2 = FactoryGirl.create(
+      :site, 
+      :project => @project2, 
+      :name => 'ec playground slide', 
+      :zipcode => 94530
+      )
+    # @sites = [@s1, @s2]
   end
 
-  xit "should create a valid user" do
-    @user = User.create(
-      :email => 'foo@bar.com', 
-      :password => 'foobarbaz',
-      :password_confirmation => 'foobarbaz'
+  it "should create a valid user" do
+    user = User.create(
+      :email =>     'foo@bar.com',
+      :password =>  'foobarbaz'
       )
     @user.should be_valid
   end
@@ -33,49 +56,37 @@ describe User do
       end
     end
 
-    xit "should enforce unique email" do
-      m1 = Factory(:user)
-      m2 = Factory.build(:user, :email => m1.email).should_not be_valid
+    it "should enforce unique email" do
+      # m1 = Factory(:user)
+      # m2 = Factory.build(:user, :email => m1.email).should_not be_valid
+      @user2 = FactoryGirl.build(
+        :user,
+        :email => @user.email
+        ).should_not be_valid
     end
   end
 
-  context :has_site do
-=begin
-    before(:each) do 
-      @user = User.create(
-        :email => 'foo@bar.com', 
-        :password => 'foobarbaz',
-        :password_confirmation => 'foobarbaz'
-        )
-      # TODO: Resolve duplicate user factory table error.
-      # @user = FactoryGirl.create(:user)
-    end
-=end
-    it "should respond to has_site?" do
-      @user.should respond_to(:has_site?)
-    end
+  context :has_site? do
 
-    it "should reply appropriately if user has a site" do
-      project = FactoryGirl.create(:project)
-      site = FactoryGirl.create(:site)
-      project.sites << site
+    it "should respond and reply appropriately if user has_site?" do
+      @user.should respond_to(:has_site?)
       assert_equal @user.has_site?, true
     end
 
     it "should reply appropriately if user does not have site" do
-      project = FactoryGirl.create(:project)
-      site = FactoryGirl.create(:site)
-      assert_equal @user.has_site?, false
+      user = User.create(
+        :email =>     'foo@bar.com',
+        :password =>  'foobarbaz'
+        )
+      assert_equal user.has_site?, false
     end
   end
 
-  context :list_sites do
+  context :print_sites do
 
     it "returns list of user sites" do
-      @user.should respond_to(:list_sites)
-      @user.list_sites.should == @sites.print
+      @user.should respond_to(:print_sites)
     end
-
   end
 
 end

@@ -1,0 +1,18 @@
+%table
+  %tr
+    %th
+    %th Date
+    %th POP
+  %tbody
+    / - CSV.foreach(Rails.root.to_s + '/spec/lib/weather/ss_fc_fixture.csv') do |period|
+    /   %tr
+    /     %td.icon
+    /       <img src="#{period['icon_url']}" height="64" />
+    /     %td.date
+    /       - DisplayDate.new.set_epoch((period['date']['epoch']).to_i)
+    /       = "#{DisplayDate.new.get_day('day')},"
+    /       = DisplayDate.new.get_date('date')
+    /       = "#{DisplayDate.new.get_month('month')}."
+    /       = DisplayDate.new.get_year('year')
+    /     %td.pop
+    /       = "#{period['pop']}"
