@@ -1,7 +1,9 @@
 %h2 Your project alerts
 %hr
 %ul.projects
-  = "Alerts for your projects: #{ @user.print_sites }"
+  -# TODO: Spec print_sites and move to user mailer helper
+  -#= "Alerts for your projects: #{ @user.print_sites }"
+  = "Alerts for your projects:"
 / TODO: Make sure site info can render in partial.
 / - @projects.each do |project|
 /   %li

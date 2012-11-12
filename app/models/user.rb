@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   end
 
   def puts_forecasts
-    puts @forecasts_array 
+    puts @forecasts_array
   end
 
   def print_forecasts

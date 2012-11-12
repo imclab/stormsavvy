@@ -6,57 +6,7 @@ describe UserMailer do
 
   before(:each) do
 
-    # @user = User.create!(
-    #   :firstname              => 'Walter',
-    #   :lastname               => 'Yu',
-    #   :email                  => 'walter@stormsavvy.com',
-    #   :password               => 'DarkAndStormy',
-    #   :password_confirmation  => 'DarkAndStormy'
-    #   )
-    # @project = Project.create!(
-    #   :user_id                => 1,
-    #   :name                   => "EC Park & Rec",
-    #   :description            => "Jungle Gym, etc.",
-    #   :startdate              => DateTime.new,
-    #   :finishdate             => DateTime.new,
-    #   :active                 => false
-    #   )
-    # @site = Site.create!(
-    #   :name                   => "EC Jungle Gym",
-    #   :description            => "New Playground",
-    #   :costcode               => "450AZC",
-    #   :size                   => "20 acres",
-    #   :exposed_area           => "10 acres",
-    #   :zipcode                => 94610
-    #   )
-
-    # TODO: Debug spec factory tables
     @user = FactoryGirl.create(:user)
-    # @p1 = FactoryGirl.create(
-    #   :project, 
-    #   :user => @user, 
-    #   :created_at => 1.day.ago
-    #   )
-    # @p2 = FactoryGirl.create(
-    #   :project, 
-    #   :user => @user, 
-    #   :created_at => 1.hour.ago
-    #   )
-    # @projects = [@p1, @p2]
-    
-    # @s1 = FactoryGirl.create(
-    #   :site, 
-    #   :project => @p1, 
-    #   :name => 'ec jungle gym', 
-    #   :zipcode => 94530
-    #   )
-    # @s2 = FactoryGirl.create(
-    #   :site, 
-    #   :project => @p2, 
-    #   :name => 'ec playground slide', 
-    #   :zipcode => 94530
-    #   )
-    # @sites = [@s1, @s2]
 
     # Build using new and save methods
     @project1 = @user.projects.new(
@@ -66,16 +16,18 @@ describe UserMailer do
       :finishdate => DateTime.new(2012)
       )
     @project1.save
+
     @site1 = @project1.sites.new(
       :name => 'ec jungle gym',
       :zipcode => 94530
       )
     @site1.save
+
     @site2 = @project1.sites.new(
       :name => 'ec playground',
       :zipcode => 94530
       )
-    @site2.save    
+    @site2.save
   end
 
   describe "mailout mailer" do
