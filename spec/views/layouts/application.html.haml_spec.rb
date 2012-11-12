@@ -12,27 +12,31 @@ describe "layouts/application.html.haml" do
 
 =begin
   it "renders the sidebar" do
-    render 
+    render
     rendered.should contain 'sidebar template'
   end
 =end
 
   context "using content_for(:title)" do
-    let(:page_title) { "Building This Site" }
+
+    let(:page_title) { "StormSavvy" }
+    let(:brand_title) { "Storm Savvy" }
 
     before do
       view.content_for(:title) { page_title }
       render
     end
 
-    xit "sets <title>" do
-      rendered.should have_selector :title,
-        :content => "aRailsDemo | #{page_title}"
+    it "sets <title>" do
+      rendered.should have_selector "title", :text => "#{page_title}"
+      rendered.should have_selector "title", :text => "StormSavvy"
     end
 
-    xit "sets <h1>" do
-      rendered.should have_selector :h1,
-        :content => page_title
+    it "sets link and brand title" do
+      rendered.should have_selector "a", :text => "#{brand_title}"
+      rendered.should have_selector "a.brand", :text => "Storm Savvy"
+      rendered.should_not have_selector "a.dskfjghsldfkjgh", :text => "Storm Savvy"
     end
+
   end
 end

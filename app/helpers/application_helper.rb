@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+
+  def title
+    "StormSavvy"
+  end
+
   def template_id
     {:id => params[:action] }
   end

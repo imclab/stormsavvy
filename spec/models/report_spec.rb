@@ -52,16 +52,6 @@ describe Report do
     end
   end
 
-  context 'status' do
-    xit "should change status on update" do
-      r = Report.create
-      r.status.should be_nil
-      r.contractor_name = "Ghilotti Bros"
-      r.save
-      r.status.should == "completed"
-    end
-  end
-
   context 'scopes' do
     it "should ony return reports needing attention" do
       Report.needs_attention.where_values_hash.should == 
