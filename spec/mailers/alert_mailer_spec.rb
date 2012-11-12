@@ -34,13 +34,13 @@ describe AlertMailer do
       AlertMailer.pop_alert(@user)#.deliver 
     }
 
-    xit "renders the headers" do
+    it "renders the headers" do
       mail.subject.should eq("Storm Savvy POP Alert")
       mail.to.should eq(["#{@user.email}"])
       mail.from.should eq(["alerts@stormsavvy.com"])
     end
 
-    xit "renders the body" do
+    it "renders the body" do
       mail.body.encoded.should match("Greetings")
     end
 
