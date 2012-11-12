@@ -1,5 +1,3 @@
-#site_spec.rb
-
 require 'spec_helper'
 
 describe Site do
@@ -22,7 +20,7 @@ describe Site do
   end
 
   describe "associations" do
-    
+
     before(:each) do
       @project = FactoryGirl.create(:project)
       @site = FactoryGirl.create(:site)
@@ -34,18 +32,18 @@ describe Site do
                              :zipcode => 94610)
       @project.sites.first.should be_valid
     end
-  
+
     # TTD for handling belongs_to
     it "should have a project attribute" do
       @site.should respond_to(:project)
     end
-    
+
   end
 
   describe "attributes" do
 
     before :each do
-      @site   = FactoryGirl.create(:site)
+      @site = FactoryGirl.create(:site)
     end
 
     it "should have name" do

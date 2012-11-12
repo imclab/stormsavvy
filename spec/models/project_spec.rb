@@ -66,6 +66,7 @@ describe Project do
       before(:each) do
         @project = FactoryGirl.create(:project)
         @site = FactoryGirl.create(:site)
+        @site2 = FactoryGirl.create(:site)
         # @site = @project.sites.new
         # @site.save
         # @site = FactoryGirl.create(:site)
@@ -77,12 +78,19 @@ describe Project do
       end
 
       it "should be able to add 1 site" do
-        @project.sites.count.should == 1
+        lambda{
+          FactoryGirl.create(
+            :site,
+            :project => @project
+          )
+        }.should change(@project.sites, :count).by(1)
+
       end
 
       it "should not able to add invalid sites" do
-        @project.sites << Site.new
-        @project.sites.count.should == 1
+        lambda{
+          @project.sites << Site.new
+        }.should change(@project.sites, :count).by(0)
       end
 
       it "should be able to add multiple sites" do
