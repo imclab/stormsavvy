@@ -14,21 +14,21 @@ describe User do
       :user => @user, 
       :created_at => 1.hour.ago
       )
-    # @projects = [@p1, @p2]
-    
+    @projects = [@project1, @project2]
+
     @site1 = FactoryGirl.create(
       :site, 
       :project => @project1, 
       :name => 'ec jungle gym', 
       :zipcode => 94530
       )
-    @ssite2 = FactoryGirl.create(
+    @site2 = FactoryGirl.create(
       :site, 
       :project => @project2, 
       :name => 'ec playground slide', 
       :zipcode => 94530
       )
-    # @sites = [@s1, @s2]
+    @sites = [@site1, @site2]
   end
 
   it "should create a valid user" do
@@ -46,12 +46,12 @@ describe User do
     end
 
     it "should have the right projects in the right order" do
-      @user.projects.should == [@p1, @p2]
+      @user.projects.should == [@project1, @project2]
     end
 
     it "should destroy associated sites" do
       @user.destroy
-      [@p1, @p2].each do |p|
+      [@project1, @project2].each do |p|
         Project.find_by_id(p.id).should be_nil
       end
     end
