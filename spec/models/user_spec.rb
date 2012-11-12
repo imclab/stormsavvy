@@ -82,11 +82,4 @@ describe User do
     end
   end
 
-  context :print_sites do
-
-    it "returns list of user sites" do
-      @user.should respond_to(:print_sites)
-    end
-  end
-
 end

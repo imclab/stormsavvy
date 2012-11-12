@@ -39,16 +39,6 @@ class User < ActiveRecord::Base
     return false
   end
 
-  def print_sites
-    self.projects.each do |project|
-      project.sites.each do |site|
-        @site = pp site.name
-        pp @site
-      end
-    end
-    return pp @site
-  end
-
   def map_forecasts
     self.sites.each do |site|
       @forecasts_array = pp site.forecast

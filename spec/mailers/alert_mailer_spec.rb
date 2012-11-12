@@ -44,7 +44,7 @@ describe AlertMailer do
       mail.body.encoded.should match("Greetings")
     end
 
-    xit "delivers and receives mailer" do
+    it "delivers and receives mailer" do
       AlertMailer.pop_alert(@user)#.deliver
       ActionMailer::Base.deliveries.should_not be_empty
     end

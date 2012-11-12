@@ -29,10 +29,6 @@ site2 = project.sites.new(
   )
 site2.save
 
-# Check for user site forecasts
-user.sites
-user.print_sites
-
 # Check for user sites
 sites = user.sites
 puts sites

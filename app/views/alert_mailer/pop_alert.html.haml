@@ -1,1 +1,7 @@
-= "Hello #{@user.email},\n Here are your projects: #{@user.print_sites}."
+= "Hello #{@user.email},\n"
+
+= "Here are your projects:"
+
+- @user.projects.each do |p|
+  - p.sites.each do |s|
+    = "#{s.name}\n"
