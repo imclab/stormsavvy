@@ -29,8 +29,6 @@ describe ForecastExaminer do
 
     it "should check for rain warning" do
       lambda do
-        # puts @data[8]
-        # puts @data[9]
         forecast = [@data[8], @data[9]]
         @fe = ForecastExaminer.new(@site, forecast)
         @fe.find_rain_chance()
@@ -40,8 +38,6 @@ describe ForecastExaminer do
 
     it "should check for rain imminent" do
       lambda do
-        print @data[6], "\n"
-        print @data[7], "\n"
         forecast = [@data[6], @data[7]]
         @fe = ForecastExaminer.new(@site, forecast)
         @fe.find_rain_chance()
