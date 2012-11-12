@@ -1,7 +1,7 @@
 module AlertMailerHelper
 
   def greeting
-    "Hallo the house!"
+    "Greetings from StormSavvy"
   end
 
 end
