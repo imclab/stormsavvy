@@ -1,7 +1,8 @@
 = "#{@greeting} #{@user.email},\n"
 
-= "Here are your projects:"
+= "Here are your projects and forecasts:"
 
 - @user.projects.each do |p|
   - p.sites.each do |s|
     = "#{s.name}\n"
+    = "#{s.forecast}\n"
