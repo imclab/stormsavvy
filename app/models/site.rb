@@ -12,11 +12,13 @@ class Site < ActiveRecord::Base
   :state,
   :zipcode,
   :city,
-  :exposed_area
+  :exposed_area,
+  :project_attributes
 
   belongs_to :project
   has_many :reports
   has_many :site_pop
+  accepts_nested_attributes_for :project
 
   geocoded_by :address, :latitude => :lat, :longitude => :long
   after_validation :geocode
