@@ -1,14 +1,10 @@
 require 'spec_helper'
 
-describe "pages/thankyou" do
+describe "user_mailer/thankyou" do
 
-  describe "index page components" do
-
-    xit "shows the 'Thank You' page" do
-      render
-      rendered.should =~ /Thank You/
-    end
-
+  it "thanks user for signing up" do
+    render
+    rendered.should =~ /Thank you/
   end
 
 end
