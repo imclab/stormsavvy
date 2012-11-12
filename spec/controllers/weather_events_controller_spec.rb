@@ -12,8 +12,6 @@ describe WeatherEventsController do
 
   describe "GET index" do
     it "assigns all weather_events as @weather_events" do
-      # w = WeatherEvent.create! valid_attributes
-      # puts w.id
       get :index, {}, valid_session
       expect(assigns(:weather_events)).to eq(WeatherEvent.all)
     end

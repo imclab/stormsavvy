@@ -40,20 +40,7 @@ describe Report do
 
     it "should find report by id" do
       @r1 = Report.find(1)
-
-      # Print and verify @r1.id
-      number_id = print(@r1.id)
-      print "#{number_id}\n"
-
-      @r6 = Report.create
-
-      # Print and verify @r6.id
-      report_number_id = print(@r6.id)
-      print "#{report_number_id}\n"
-
-      # Print and verify @r6.object_id
-      report_object_id = print(@r6.object_id)
-      print "#{report_object_id}\n"
+      @r1.id.should eq(1)
     end
 
     it "should not insert invalid reports" do

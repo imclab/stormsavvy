@@ -17,10 +17,7 @@ describe "Reports" do
   describe "GET /reports" do
     it "should GET /reports" do
       @report = FactoryGirl.build(:report)
-      # check report_path, @report.id not found
-      puts "reports_path: ", reports_path(:report => @report.id), "\n"
       get reports_path(:report => @report.id)
-      # response.status.should be(200)
     end
 
     it "should have correct content on homepage" do
@@ -32,9 +29,7 @@ describe "Reports" do
 
 		it "should view and create new report" do
 			current_path.should == '/'
-      # check current_path, user may not be logged in?
 			click_link 'CEM 2030'
-
 			visit '/reports/new'
 			current_path.should == '/reports/new'
 			page.should have_content('New Report')
