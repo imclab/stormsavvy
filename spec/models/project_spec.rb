@@ -50,22 +50,23 @@ describe Project do
     before(:each) do
       @project = Project.new(@attr)
     end
-    
+
     context :user do 
       it "should be associated with a user" do
         @project.should respond_to(:user)
       end
-      
+
       it "should have the correct associated user" do
-        #@project.should == @project.id
         @project.should == @project
       end    
     end
 
     context :site do 
 
-      before(:each) do 
-        @site = FactoryGirl.create(:site)
+      before(:each) do
+        @site = @project.sites.new
+        @site.save
+        # @site = FactoryGirl.create(:site)
         @site2 = Site.new(:name => "Test Site", :zipcode => 94610)
       end
 
@@ -87,7 +88,7 @@ describe Project do
         @site2.save
         @project.sites.count.should be > 1
       end
-      
+
       it "should be able to delete an added site" do
         precount = @project.sites.count
         @project.sites << @site2
