@@ -30,7 +30,7 @@ describe AlertMailer do
   describe "pop_alert" do
 
     # TODO: Debug printing loop when pop_alert is called.
-    let(:mail) { 
+    let(:mail) {
       AlertMailer.pop_alert(@user)#.deliver 
     }
 
@@ -41,17 +41,17 @@ describe AlertMailer do
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("Greetings")
+      mail.body.encoded.should match("Greetings from StormSavvy")
     end
 
     it "delivers and receives mailer" do
-      AlertMailer.pop_alert(@user)#.deliver
+      AlertMailer.pop_alert(@user)
       ActionMailer::Base.deliveries.should_not be_empty
     end
   end
 
   it "should send NOAA Alert emails" do
-    AlertMailer.noaa_alert(@user)#.deliver
+    AlertMailer.noaa_alert(@user)
     ActionMailer::Base.deliveries.should_not be_empty
   end
 
