@@ -5,3 +5,4 @@
 gem install autotest
 gem install autotest-growl
 gem install autotest-fsevent
+gem install ZenTest
