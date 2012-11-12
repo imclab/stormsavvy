@@ -13,33 +13,36 @@ describe ForecastExaminer do
   end
 
   before(:each) do
-    @project = FactoryGirl.build(:project)
-    @site = @project.sites.build({
-      # :project => @project,
+    @project = FactoryGirl.create(:project)
+    @site = @project.sites.create({
       :name => 'ec jungle gym',
       :zipcode => '94530'
       })
-    @fe = ForecastExaminer.new(@site, [@data[0],@data[1]])
   end
 
   it "should be a valid class" do
+    @fe = ForecastExaminer.new(@site, [@data[0],@data[1]])
     @fe.class.should == ForecastExaminer
   end
 
   describe "report generating events" do
-    
+
     it "should check for rain warning" do
-      forecast = [@data[8], @data[9]]
       lambda do
+        # puts @data[8]
+        # puts @data[9]
+        forecast = [@data[8], @data[9]]
         @fe = ForecastExaminer.new(@site, forecast)
-        @fe.find_rain_chance(50, 6)
+        @fe.find_rain_chance()
         @fe.rain.should == :warning
       end.should change(Report, :count).by(1)
     end
 
     it "should check for rain imminent" do
-      forecast = [@data[6], @data[7]]
       lambda do
+        print @data[6], "\n"
+        print @data[7], "\n"
+        forecast = [@data[6], @data[7]]
         @fe = ForecastExaminer.new(@site, forecast)
         @fe.find_rain_chance()
         @fe.rain.should == :imminent
@@ -51,14 +54,14 @@ describe ForecastExaminer do
   it "should check for rain watch" do
     forecast = [@data[2], @data[3]]
     @fe = ForecastExaminer.new(@site, forecast)
-    @fe.find_rain_chance(50, 6)
+    @fe.find_rain_chance(50, 27)
     @fe.rain.should == :watch
   end
 
   it "should check for clear" do
     forecast = [@data[0], @data[1]]
     @fe = ForecastExaminer.new(@site, forecast)
-    @fe.find_rain_chance(50, 6)
+    @fe.find_rain_chance(50, 27)
     @fe.rain.should == :clear
   end
 
