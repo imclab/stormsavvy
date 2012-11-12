@@ -64,10 +64,12 @@ describe Project do
     context :site do 
 
       before(:each) do
-        @site = @project.sites.new
-        @site.save
+        @project = FactoryGirl.create(:project)
+        @site = FactoryGirl.create(:site)
+        # @site = @project.sites.new
+        # @site.save
         # @site = FactoryGirl.create(:site)
-        @site2 = Site.new(:name => "Test Site", :zipcode => 94610)
+        # @site2 = Site.new(:name => "Test Site", :zipcode => 94610)
       end
 
       it "should be associated with sites" do 
