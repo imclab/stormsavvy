@@ -17,7 +17,7 @@ Prawn.debug = true
 
 def create_pdf(klass=Prawn::Document)
   @pdf = klass.new(:margin => 0)
-end    
+end
 
 # Make some methods public to assist in testing
 module Prawn::Graphics
@@ -54,6 +54,11 @@ require 'rspec/autorun'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
+
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
+
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
