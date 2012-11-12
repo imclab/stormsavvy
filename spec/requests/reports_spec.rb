@@ -16,9 +16,10 @@ describe "Reports" do
 
   describe "GET /reports" do
     it "should GET /reports" do
-      @report = FactoryGirl.create(:report)
+      @report = FactoryGirl.build(:report)
       # check report_path, @report.id not found
-      get report_path(:report => @report.id) 
+      puts "reports_path: ", reports_path(:report => @report.id), "\n"
+      get reports_path(:report => @report.id)
       # response.status.should be(200)
     end
 
