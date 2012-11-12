@@ -84,7 +84,6 @@ describe Project do
             :project => @project
           )
         }.should change(@project.sites, :count).by(1)
-
       end
 
       it "should not able to add invalid sites" do
@@ -94,15 +93,17 @@ describe Project do
       end
 
       it "should be able to add multiple sites" do
-        @project.sites << @site2
-        @site2.save
-        @project.sites.count.should be > 1
+        lambda{
+          @project.sites << @site2
+          @site2.save
+        }.should change(@project.sites, :count).by(1)
       end
 
       it "should be able to delete an added site" do
         precount = @project.sites.count
         @project.sites << @site2
-        @project.sites.delete
+        @site2.save
+        @site2.delete
         @project.sites.count.should == precount
       end
     end
