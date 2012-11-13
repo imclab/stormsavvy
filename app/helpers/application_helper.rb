@@ -1,6 +1,5 @@
 module ApplicationHelper
 
-
   def title
     "StormSavvy"
   end

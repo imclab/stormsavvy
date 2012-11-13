@@ -3,7 +3,12 @@ require 'spec_helper'
 describe ProjectsController do
 
   def valid_attributes
-    { :name => 'My Project', :description => 'What a great project', :startdate => 5.days.ago, :finishdate => 1.day.ago }
+    {
+      :name => 'My Project',
+      :description => 'What a great project',
+      :startdate => 5.days.ago,
+      :finishdate => 1.day.ago
+    }
   end
 
   def valid_session

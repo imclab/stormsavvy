@@ -1,12 +1,15 @@
 require 'spec_helper'
 
+include ApplicationHelper
+
 describe "Reports" do
 	before :each do
 		@user = FactoryGirl.create(
       :user,
       :email    => 'integration@stormsavvy.com',
       :password => 'automateyourspec!',
-      :password_confirmation => 'automateyourspec!')
+      :password_confirmation => 'automateyourspec!'
+    )
 		visit '/'
     click_link 'Sign in'
     fill_in 'Email', :with => 'integration@stormsavvy.com'
