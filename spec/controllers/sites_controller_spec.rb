@@ -2,20 +2,22 @@ require 'spec_helper'
 
 describe SitesController do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Site. As you add validations to Site, be sure to
-  # update the return value of this method accordingly.
   def valid_attributes
-    {:zipcode => 94530, :name => 'El Cerrito'}
-  end
-  
-  def project_attributes
-    {:name => 'v', :description => 'b', :startdate => 5.days.ago, :finishdate => 1.day.ago}
+    {
+      :zipcode => 94530,
+      :name => 'El Cerrito'
+    }
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # SitesController. Be sure to keep this updated too.
+  def project_attributes
+    {
+      :name => 'v',
+      :description => 'b',
+      :startdate => 5.days.ago,
+      :finishdate => 1.day.ago
+    }
+  end
+
   def valid_session
     {}
   end
@@ -27,8 +29,10 @@ describe SitesController do
 
   describe "GET index" do
 
-    xit "has a 200 status code" do
-      get project_site_path(:project_id => @project.id)
+    it "has a 200 status code" do
+      get project_site_path(
+        :project_id => @project.sites(:id)
+      )
       # get :index, :projects_id => 1
       response.code.should eq("200")
     end

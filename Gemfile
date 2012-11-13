@@ -6,6 +6,7 @@ gem 'nokogiri'
 gem 'geocoder', :github => 'doolin/geocoder'
 gem 'carmen'
 gem 'iron_worker'
+gem 'activeadmin'
 
 gem 'therubyracer'
 gem 'less-rails'
@@ -58,6 +59,3 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
 end
-
-# Heroku gem deprecated, use the toolbelt
-# gem 'heroku'
