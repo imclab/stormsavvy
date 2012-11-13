@@ -30,10 +30,8 @@ describe SitesController do
   describe "GET index" do
 
     it "has a 200 status code" do
-      get project_site_path(
-        :project_id => @project.sites(:id)
-      )
-      # get :index, :projects_id => 1
+      site = @project.sites.create! valid_attributes
+      get :edit, {:id => site.to_param, :project_id => @project.id}
       response.code.should eq("200")
     end
 
