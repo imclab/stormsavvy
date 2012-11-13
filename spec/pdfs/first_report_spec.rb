@@ -7,4 +7,8 @@ describe FirstReport do
     @site = @project.sites.create!({:name => 'EC Jungle Gym', 
       :zipcode => '94530'})
   end
+
+  describe :build_report do
+    
+  end
 end
