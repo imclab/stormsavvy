@@ -22,8 +22,7 @@ module ApplicationHelper
     end
   end
 
-  # Method for handling message types in Bootstrap.
-  def twitterized_type(type)
+  def twitterized_type(type) # Handles bootstrap message types.
     case type
       when :alert
         "warning"
