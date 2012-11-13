@@ -5,7 +5,8 @@ gem 'typhoeus'
 gem 'nokogiri'
 gem 'geocoder', :github => 'doolin/geocoder'
 gem 'carmen'
-gem 'iron_worker'
+
+gem 'iron_worker_ng'
 gem 'activeadmin'
 
 gem 'therubyracer'
