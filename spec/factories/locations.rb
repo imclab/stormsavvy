@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory(location) do
+  factory :location do
     address_1  '6016 B Avila St.'
     address_2  '6016 B Avila St.'
     city     'El Cerrito'
