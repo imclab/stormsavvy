@@ -12,7 +12,7 @@ describe FirstReport do
     create_pdf
   end
 
-  it "should read the basic attributes correctly" do
+  xit "should read the basic attributes correctly" do
     print Prawn::Images::JPG.methods
 
     @jpg = Prawn::Images::JPG.new(@img_data)
@@ -33,7 +33,7 @@ describe FirstReport do
     output.scan(/Type \/XObject/).size.should == 1
   end
 
-  it "should return the image info object" do
+  xit "should return the image info object" do
     info =  @pdf.image(@filename)
     info.should.be.kind_of(Prawn::Images::JPG)
     info.height.should == 453
