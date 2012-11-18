@@ -27,63 +27,63 @@ class FirstReport < ReportsPdf
   # Test method for rendering entire pdf with Prawn.
   def testem_page
     testem_fields(
-      # "#{Prawn::DATADIR}/images/reports/testem_fields.pdf"
-      "#{Rails.root}/app/assets/images/reports/testem_fields.pdf"
+      "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
+      # "#{Rails.root}/app/assets/images/reports/testem_fields.pdf"
     )
     start_new_page
   end
 
   def first_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.png")
+    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf")
     full_report_header_block
     start_new_page
   end
 
   def second_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.png")
+    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf")
     simple_report_header_block
     start_new_page
   end
 
   def third_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_03.png")
+    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_03.pdf")
     simple_report_header_block
     start_new_page
   end
 
   def fourth_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_04.png")
+    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_04.pdf")
     simple_report_header_block
     start_new_page
   end
 
   def fifth_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_05.png")
+    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_05.pdf")
     simple_report_header_block
     start_new_page
   end
 
   def sixth_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_06.png")
+    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_06.pdf")
     simple_report_header_block
     start_new_page
   end  
 
   def seventh_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_07.png")
+    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_07.pdf")
     simple_report_header_block
     start_new_page
   end  
 
   def eighth_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_08.png")
+    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_08.pdf")
     simple_report_header_block
     start_new_page
   end  
 
   def ninth_page
     # Do not start new page on last page!
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_09.png")
+    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_09.pdf")
     simple_report_header_block
   end  
 end

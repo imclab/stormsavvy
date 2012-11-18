@@ -47,7 +47,7 @@ Stormsavvy::Application.routes.draw do
   match '/popemail',  :to => "pages#popemail",       :as => :popemail
   match '/sendemail', :to => "pages#sendemail",      :as => :sendemail
 
-  # Testing out pdf rendering with Prawn.
+  # Route for pdf demo.
   match '/pdf',       :to => "reports#CEM2030",      :as => :pdf
 
   root :to => "dashboard#index"
