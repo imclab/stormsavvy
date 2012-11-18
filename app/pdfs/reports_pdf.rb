@@ -7,6 +7,7 @@ class ReportsPdf < Prawn::Document
     :fit => Prawn::Document::PageGeometry::SIZES["A4"]
   end
 
+  # Test method for rendering entire pdf with Prawn.
   def testem_fields(filename)
     pdf = Prawn::Document.new(
       :template => filename,

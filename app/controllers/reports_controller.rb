@@ -79,7 +79,11 @@ class ReportsController < ApplicationController
   end
 
   def CEM2030
-    pdf = Prawn::Document.new
+    filename = "#{Rails.root}/app/assets/images/reports/testem_fields.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
     send_data pdf.render, type: "application/pdf", disposition: "inline"
   end
 

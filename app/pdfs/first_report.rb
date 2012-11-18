@@ -11,6 +11,8 @@ class FirstReport < ReportsPdf
 
     testem_page
 
+    # Render entire pdf with Prawn vs. custom fields.
+
     # first_page
     # second_page
     # third_page
@@ -22,9 +24,11 @@ class FirstReport < ReportsPdf
     # ninth_page
   end
 
+  # Test method for rendering entire pdf with Prawn.
   def testem_page
     testem_fields(
-      "#{Prawn::DATADIR}/images/reports/testem_fields.pdf"
+      # "#{Prawn::DATADIR}/images/reports/testem_fields.pdf"
+      "#{Rails.root}/app/assets/images/reports/testem_fields.pdf"
     )
     start_new_page
   end

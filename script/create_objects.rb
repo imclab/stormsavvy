@@ -53,5 +53,6 @@ we.save
 report = FirstReport.new(report, view, options)
 report.save
 
+# Test report objects
 report = ReportsPdf.new
 report.testem_fields
