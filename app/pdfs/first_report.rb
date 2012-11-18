@@ -3,19 +3,30 @@ class FirstReport < ReportsPdf
     super top_margin: 70
     @report = report
     @view = view
+
     build_report
   end
 
   def build_report
-    first_page
-    second_page
-    third_page
-    fourth_page
-    fifth_page
-    sixth_page
-    seventh_page
-    eighth_page
-    ninth_page
+
+    testem_page
+
+    # first_page
+    # second_page
+    # third_page
+    # fourth_page
+    # fifth_page
+    # sixth_page
+    # seventh_page
+    # eighth_page
+    # ninth_page
+  end
+
+  def testem_page
+    testem_fields(
+      "#{Prawn::DATADIR}/images/reports/testem_fields.pdf"
+    )
+    start_new_page
   end
 
   def first_page
