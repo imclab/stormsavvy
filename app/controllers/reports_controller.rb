@@ -14,7 +14,8 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = FirstReport.new @report, view_context, background: "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.png"
+        # pdf = FirstReport.new @report, view_context, background: "#{Prawn::DATADIR}/images/reports/CEM2031-2012_Page_01.png"
+        pdf = FirstReport.new @report, view_context, background: "#{Prawn::DATADIR}/images/reports/testem_fields.pdf"
         send_data pdf.render, filename: "report_#{@report.id}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
@@ -46,8 +47,6 @@ class ReportsController < ApplicationController
     #     render :partial => "/reports/reports"
     #   end
     # end
-
-
   end
 
   def edit
