@@ -2,6 +2,9 @@ require 'spec_helper'
 
 include ApplicationHelper
 
+include Warden::Test::Helpers
+Warden.test_mode!
+
 describe "Reports" do
 	before :each do
 		@user = FactoryGirl.create(
@@ -10,33 +13,39 @@ describe "Reports" do
       :password => 'automateyourspec!',
       :password_confirmation => 'automateyourspec!'
     )
-		visit '/'
-    click_link 'Sign in'
-    fill_in 'Email', :with => 'integration@stormsavvy.com'
-    fill_in 'Password', :with => 'automateyourspec!'
-    click_button 'Sign in'
+    login_as(@user, :scope => :user)
+    visit '/reports'
 	end
 
-  describe "GET /reports" do
+  describe "GET /reports", :type => :feature do
+
+
+    it "should have correct content on homepage" do
+      current_path.should == '/reports'
+      #page.should have_content('Storm Savvy')
+      click_link 'Storm Savvy'
+      page.should have_selector('a', :text => 'Storm Savvy')
+    end
+
     it "should GET /reports" do
       @report = FactoryGirl.build(:report)
       get reports_path(:report => @report.id)
-    end
-
-    it "should have correct content on homepage" do
-      current_path.should == '/'
-      page.should have_content('Storm Savvy')
-      click_link 'Storm Savvy'
-      page.should have_content('Storm Savvy')
+      Warden.test_reset!
     end
 
 		it "should view and create new report" do
-			current_path.should == '/'
-			click_link 'CEM 2030'
 			visit '/reports/new'
-			current_path.should == '/reports/new'
-			page.should have_content('New Report')
-      click_button 'Save Report'
+      page.body.should_not be_nil
+			page.body.should have_selector('h2', :text => 'New Report')
     end
+
+		it "saves the new report" do
+			visit '/reports/new'
+      page.body.should_not be_nil
+      click_button 'Save Report'
+			page.body.should have_selector('h2', :text => 'View Report')
+      current_path.should == report_path(1)
+    end
+
   end
 end

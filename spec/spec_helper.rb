@@ -13,6 +13,7 @@ require 'capybara/rspec'
 RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
+  config.include Devise::TestHelpers, :type => :controller
 end
 
 Prawn.debug = true
