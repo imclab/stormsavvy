@@ -7,17 +7,11 @@ class UserMailer < ActionMailer::Base
 
   def pester_admins(email)
     @greeting = "Greetings"
-    @users = User.all
-    @users.each do |user|
-      @user = user # `@user` is needed for the template
-      if @user.has_site?
-        mail(
-          :from     => "alerts@stormsavvy.com",
-          :to       => @user.email,
-          :subject  => "Storm Savvy Project Status Notification"
-          ).deliver
-      end
-    end
+    mail(
+      :from     => "alerts@stormsavvy.com",
+      :to       => email,
+      :subject  => "Storm Savvy Is Working Great Today!"
+      ).deliver
   end
 
   def mailout(to = nil)
