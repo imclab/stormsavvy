@@ -14,29 +14,38 @@ describe "Reports" do
       :password_confirmation => 'automateyourspec!'
     )
     login_as(@user, :scope => :user)
+    visit '/reports'
 	end
 
-  describe "GET /reports" do
+  describe "GET /reports", :type => :feature do
+
+
+    it "should have correct content on homepage" do
+      current_path.should == '/reports'
+      #page.should have_content('Storm Savvy')
+      click_link 'Storm Savvy'
+      page.should have_content('Storm Savvy')
+    end
+
     it "should GET /reports" do
       @report = FactoryGirl.build(:report)
       get reports_path(:report => @report.id)
       Warden.test_reset!
     end
 
-    it "should have correct content on homepage" do
-      current_path.should == '/'
-      page.should have_content('Storm Savvy')
-      click_link 'Storm Savvy'
-      page.should have_content('Storm Savvy')
+		it "should view and create new report" do
+			visit '/reports/new'
+      page.body.should_not be_nil
+			page.body.should have_selector('h2', :text => 'New Report')
     end
 
-		it "should view and create new report" do
-			current_path.should == '/'
-			click_link 'CEM 2030'
+		it "saves the new report" do
 			visit '/reports/new'
-			current_path.should == '/reports/new'
-			page.should have_content('New Report')
+      page.body.should_not be_nil
       click_button 'Save Report'
+      current_path.should == "/reports/#{@report.id}"
+			page.body.should have_selector('h2', :text => 'View Report')
     end
+
   end
 end
