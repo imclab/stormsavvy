@@ -47,12 +47,6 @@ we.save
 @project = Project.new
 @sites = @project.sites.build
 
-# Create first report
-@report = report
-@view = view
-report = FirstReport.new(report, view, options)
-report.save
-
 # Test report objects
 report = ReportsPdf.new
 report.testem_fields
