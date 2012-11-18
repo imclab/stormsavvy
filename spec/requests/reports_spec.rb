@@ -2,6 +2,9 @@ require 'spec_helper'
 
 include ApplicationHelper
 
+include Warden::Test::Helpers
+Warden.test_mode!
+
 describe "Reports" do
 	before :each do
 		@user = FactoryGirl.create(
@@ -10,17 +13,14 @@ describe "Reports" do
       :password => 'automateyourspec!',
       :password_confirmation => 'automateyourspec!'
     )
-		visit '/'
-    click_link 'Sign in'
-    fill_in 'Email', :with => 'integration@stormsavvy.com'
-    fill_in 'Password', :with => 'automateyourspec!'
-    click_button 'Sign in'
+    login_as(@user, :scope => :user)
 	end
 
   describe "GET /reports" do
     it "should GET /reports" do
       @report = FactoryGirl.build(:report)
       get reports_path(:report => @report.id)
+      Warden.test_reset!
     end
 
     it "should have correct content on homepage" do
