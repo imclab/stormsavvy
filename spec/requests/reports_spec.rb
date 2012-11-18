@@ -43,8 +43,8 @@ describe "Reports" do
 			visit '/reports/new'
       page.body.should_not be_nil
       click_button 'Save Report'
-      current_path.should == "/reports/#{@report.id}"
 			page.body.should have_selector('h2', :text => 'View Report')
+      current_path.should == report_path(1)
     end
 
   end
