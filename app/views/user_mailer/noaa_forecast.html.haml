@@ -1,11 +1,1 @@
-Here is your NOAA forecast:
-
-%ul
-  - current_user.projects.each do |project| 
-    - project.sites.each do |site|
-      %li.cf
-         - site.chance_of_rain
-         %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
-         .span
-            %i=link_to "#{site.name}: ", project_site_path(project, site)
-            = "#{site.max_rain}% chance of rain"
+Future email feature that will show the NOAA forecast.

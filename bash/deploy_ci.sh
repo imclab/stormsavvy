@@ -2,7 +2,7 @@
 
 # Bash ci script.
 
-cd ~/src/stormsavvy/script/heroku
+cd ~/src/stormsavvy/bash
 
 git push git@heroku.com:stormsavvy3.git master
 # heroku restart --app stormsavvy3 

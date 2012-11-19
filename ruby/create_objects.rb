@@ -1,6 +1,5 @@
 # Run inside console for testing nested attributes and mailers.
 
-# Reload, delete and re-create user objects.
 user.delete
 project.delete
 site.delete
@@ -29,24 +28,22 @@ site2 = project.sites.new(
   )
 site2.save
 
-# Check for user sites
 sites = user.sites
 puts sites
 
-# Use pp to output site names
 user.sites.each do |s|
   @site = pp s.name
   pp @site
 end
 
-# Create weather event
 we = WeatherEvent.new
 we.save
 
-# Create new project    
-@project = Project.new
-@sites = @project.sites.build
+project = Project.new
+sites = @project.sites.build
 
-# Test report objects
 report = ReportsPdf.new
 report.testem_fields
+
+email = "walter@stormsavvy.com"
+UserMailer.pester_admins(email)

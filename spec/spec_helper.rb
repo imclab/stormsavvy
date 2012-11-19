@@ -1,4 +1,3 @@
-
 require 'rubygems'
 require 'spork'
 
@@ -8,7 +7,7 @@ require "pdf/reader"
 require "pdf/inspector"
 require "email_spec"
 require 'capybara/rspec'
-
+require "devise"
 
 RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
