@@ -7,19 +7,18 @@ class NOAAForecast
   include Typhoeus
   include Nokogiri
 
-  attr_reader :noaa_forecast, :xml
 
   def initialize(zipcode, duration = 168, interval = 6)
     @zipcode  = zipcode
     @duration = duration
     @interval = interval
-    @xml = ""
   end
 
   def seven_day_weather
     latlong = get_lat_long(@zipcode)
-    response = ping_noaa(latlong, 168, 6)
-    get_weather_data(response.body)
+    @duration = 168
+    @interval = 6
+    return get_forecast(latlong)
   end
 
   def get_lat_long(zipcode)
@@ -28,18 +27,13 @@ class NOAAForecast
     return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
   end
 
-  def forecast(lat, long)
-    latlong = [] << lat << long  
-    response = ping_noaa(latlong, 168, 6)
-    get_weather_data(response.body)
-  end
-
-  def xml
-    @xml
+  def get_forecast(latlong)
+    response = ping_noaa(latlong, @duration, @interval)
+    return parse_weather_data(response)
   end
 
   def ping_noaa(latlong, duration, interval)
-    @xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
+    xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
     request = Typhoeus::Request.new(xml,
               :body          => "this is a request body",
               :method        => :post,
@@ -50,15 +44,15 @@ class NOAAForecast
     hydra = Typhoeus::Hydra.new
     hydra.queue(request)
     hydra.run
-    #response = request.response
-    return request.response
+    return request.response.body
   end
 
-  def get_weather_data(xmldoc)
+  def parse_weather_data(xmldoc)
     doc   = Nokogiri::XML(xmldoc)
     pop = doc.xpath("//pop").map { |n| n.content.to_i }
     qpf = doc.xpath("//qpf").map { |n| n.content.to_i }
-    @noaa_forecast =  [] << pop << qpf
+    noaa_forecast =  [] << pop << qpf
+    return noaa_forecast
   end
 
 end
