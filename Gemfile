@@ -12,15 +12,18 @@ gem 'activeadmin'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'less-rails-bootstrap'
+gem 'haml-rails'
 
 gem 'jquery-rails'
 gem 'devise'
 gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
 gem 'pdf-reader'
+
 gem 'simple_form'
 gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
+
 gem 'pg'
-gem 'haml-rails'
+
 gem 'simplecov', :require => false, :group => :test
 
 group :development do
@@ -59,4 +62,5 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-sass'
 end

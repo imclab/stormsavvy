@@ -10,3 +10,6 @@ RAILS_ENV=development bundle exec rake assets:precompile
 
 RAILS_ENV=production bundle exec rake assets:clean
 RAILS_ENV=production bundle exec rake assets:precompile
+
+cd ~/src/stormsavvy/bash
+./clean_assets.sh
