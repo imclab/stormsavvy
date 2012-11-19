@@ -8,7 +8,6 @@ describe UserMailer do
 
     @user = FactoryGirl.create(:user)
 
-    # Build using new and save methods
     @project1 = @user.projects.new(
       :name => 'ec park and rec',
       :description => 'playground improvements',
@@ -33,8 +32,8 @@ describe UserMailer do
   describe "pester_admins" do
 
     before(:each) do
-      receipient = "walter@stormsavvy.com"
-      @mailer = UserMailer.mailout(recipient).deliver
+      @receipient = "walter@stormsavvy.com"
+      @mailer = UserMailer.mailout(@recipient).deliver
     end
 
     it "should send something via mailout" do
@@ -45,8 +44,9 @@ describe UserMailer do
       lambda { @mailer }.should_not raise_error
     end
 
-    it "should have list of projects, site and POP" do
-      @mailer.body.should have_selector("ul.projects")
+    it "should not have empty text body" do
+      @mailer.body.should_not be_nil
+      # @mailer.body.should have_selector("ul.projects")
       # @mailer.body.should have_selector("ul.sites")
       # @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
     end
@@ -56,8 +56,8 @@ describe UserMailer do
 
     # TODO: Debug project factory table
     before(:each) do
-      receipient = "walter@stormsavvy.com"
-      @mailer = UserMailer.mailout(recipient).deliver
+      @receipient = "walter@stormsavvy.com"
+      @mailer = UserMailer.mailout(@recipient).deliver
     end
 
     it "should send something via mailout" do
@@ -76,5 +76,27 @@ describe UserMailer do
     end
   end
 
+  describe "noaa_forecast" do
+
+    before(:each) do
+      @receipient = "walter@stormsavvy.com"
+      @mailer = UserMailer.noaa_forecast(@recipient).deliver
+    end
+
+    it "should send something via mailout" do
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
+
+    it "should render successfully" do
+      lambda { @mailer }.should_not raise_error
+    end
+
+    it "should have text in body" do
+      @mailer.body.should_not be_empty
+      # @mailer.body.should have_selector("ul.projects")
+      # @mailer.body.should have_selector("ul.sites")
+      # @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
+    end
+  end
 
 end
