@@ -61,9 +61,4 @@ Stormsavvy::Application.configure do
   # config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.default :charset => "utf-8"
 
-  # Debugging Bootstrap header issue
-  config.serve_static_assets = false
-  config.less.compress = true
-  config.assets.debug = true
-  
 end

@@ -10,11 +10,6 @@ class FirstReport < ReportsPdf
   end
 
   def build_report
-
-    # testem_page
-
-    # Render entire pdf with Prawn vs. custom fields.
-
     first_page
     second_page
     third_page
