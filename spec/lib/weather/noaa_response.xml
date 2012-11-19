@@ -1,28 +1,474 @@
-<?xml version="1.0" ?>
-<griddedForecast duration="168 hours">
-  <forecastCreationTime>Thu Jan 01 00:00:00 1970 UTC</forecastCreationTime>
-  <latitude units="degrees"></latitude> 
-  <longitude units="degrees"></longitude> 
-  <elevation units="feet above mean sea-level"></elevation> 
+
+<?xml version="1.0" ?><griddedForecast duration="168 hours">
+      <forecastCreationTime>Sun Nov 18 23:02:24 2012 UTC</forecastCreationTime>
+  <latitude units="degrees">37.926
+</latitude> 
+  <longitude units="degrees">-122.306
+</longitude> 
+  <elevation units="feet above mean sea-level">499
+</elevation> 
   <duration>168</duration> 
   <interval>6</interval>
 
         <forecastDay>
-        	<validDate>Jan 01</validDate>
+          <validDate>Nov 18</validDate>
             <period>
-    	<validTime timezone="UTC">00</validTime>
-    	    	    	<temperature units="degrees F">0</temperature>
-    	<dewpoint units="degrees F">0</dewpoint>
-    	<rh units="percent">0</rh>
-    	<skyCover units="percent">0</skyCover>
-    	<windSpeed units="mph">0</windSpeed>
-    	<windDirection units="angular degrees">0</windDirection>
-    	<windGust units="mph">0</windGust>
-    	<pop units="percent">0</pop>
-    	<qpf units="inches">0.00</qpf>
-    	<snowAmt units="inches">0.00</snowAmt>
-    	<snowLevel units="feet"></snowLevel>
-    	    	<wx> </wx>
+      <validTime timezone="UTC">00</validTime>
+                  <temperature units="degrees F">58</temperature>
+      <dewpoint units="degrees F">55</dewpoint>
+      <rh units="percent">90</rh>
+      <skyCover units="percent">90</skyCover>
+      <windSpeed units="mph">7</windSpeed>
+      <windDirection units="angular degrees">180</windDirection>
+      <windGust units="mph">10</windGust>
+      <pop units="percent">90</pop>
+      <qpf units="inches">0.23</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">6704</snowLevel>
+            <wx>Def RW</wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">06</validTime>
+            <minTemp units="degrees F">50</minTemp>     <temperature units="degrees F">52</temperature>
+      <dewpoint units="degrees F">51</dewpoint>
+      <rh units="percent">96</rh>
+      <skyCover units="percent">95</skyCover>
+      <windSpeed units="mph">16</windSpeed>
+      <windDirection units="angular degrees">170</windDirection>
+      <windGust units="mph">20</windGust>
+      <pop units="percent">78</pop>
+      <qpf units="inches">0.05</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">6704</snowLevel>
+            <wx>Def RW</wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">12</validTime>
+                  <temperature units="degrees F">51</temperature>
+      <dewpoint units="degrees F">50</dewpoint>
+      <rh units="percent">98</rh>
+      <skyCover units="percent">38</skyCover>
+      <windSpeed units="mph">2</windSpeed>
+      <windDirection units="angular degrees">240</windDirection>
+      <windGust units="mph">2</windGust>
+      <pop units="percent">16</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">5452</snowLevel>
+            <wx>SChc RW</wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">18</validTime>
+      <maxTemp units="degrees F">58</maxTemp>           <temperature units="degrees F">54</temperature>
+      <dewpoint units="degrees F">50</dewpoint>
+      <rh units="percent">86</rh>
+      <skyCover units="percent">45</skyCover>
+      <windSpeed units="mph">4</windSpeed>
+      <windDirection units="angular degrees">220</windDirection>
+      <windGust units="mph">5</windGust>
+      <pop units="percent">8</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">5452</snowLevel>
+            <wx> </wx>
+    </period>
+          </forecastDay>
+                  <forecastDay>
+          <validDate>Nov 19</validDate>
+            <period>
+      <validTime timezone="UTC">00</validTime>
+                  <temperature units="degrees F">57</temperature>
+      <dewpoint units="degrees F">48</dewpoint>
+      <rh units="percent">74</rh>
+      <skyCover units="percent">97</skyCover>
+      <windSpeed units="mph">6</windSpeed>
+      <windDirection units="angular degrees">230</windDirection>
+      <windGust units="mph">8</windGust>
+      <pop units="percent">7</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">5210</snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">06</validTime>
+            <minTemp units="degrees F">50</minTemp>     <temperature units="degrees F">51</temperature>
+      <dewpoint units="degrees F">48</dewpoint>
+      <rh units="percent">88</rh>
+      <skyCover units="percent">51</skyCover>
+      <windSpeed units="mph">3</windSpeed>
+      <windDirection units="angular degrees">150</windDirection>
+      <windGust units="mph">4</windGust>
+      <pop units="percent">0</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">5210</snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">12</validTime>
+                  <temperature units="degrees F">50</temperature>
+      <dewpoint units="degrees F">48</dewpoint>
+      <rh units="percent">93</rh>
+      <skyCover units="percent">57</skyCover>
+      <windSpeed units="mph">6</windSpeed>
+      <windDirection units="angular degrees">160</windDirection>
+      <windGust units="mph">7</windGust>
+      <pop units="percent">14</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">6623</snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">18</validTime>
+      <maxTemp units="degrees F">62</maxTemp>           <temperature units="degrees F">56</temperature>
+      <dewpoint units="degrees F">51</dewpoint>
+      <rh units="percent">85</rh>
+      <skyCover units="percent">60</skyCover>
+      <windSpeed units="mph">10</windSpeed>
+      <windDirection units="angular degrees">160</windDirection>
+      <windGust units="mph">13</windGust>
+      <pop units="percent">12</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">6623</snowLevel>
+            <wx> </wx>
+    </period>
+          </forecastDay>
+                  <forecastDay>
+          <validDate>Nov 20</validDate>
+            <period>
+      <validTime timezone="UTC">00</validTime>
+                  <temperature units="degrees F">60</temperature>
+      <dewpoint units="degrees F">52</dewpoint>
+      <rh units="percent">73</rh>
+      <skyCover units="percent">63</skyCover>
+      <windSpeed units="mph">6</windSpeed>
+      <windDirection units="angular degrees">180</windDirection>
+      <windGust units="mph">7</windGust>
+      <pop units="percent">14</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">7448</snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">06</validTime>
+            <minTemp units="degrees F">50</minTemp>     <temperature units="degrees F">53</temperature>
+      <dewpoint units="degrees F">50</dewpoint>
+      <rh units="percent">89</rh>
+      <skyCover units="percent">63</skyCover>
+      <windSpeed units="mph">9</windSpeed>
+      <windDirection units="angular degrees">160</windDirection>
+      <windGust units="mph">12</windGust>
+      <pop units="percent">14</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">7448</snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">12</validTime>
+                  <temperature units="degrees F">52</temperature>
+      <dewpoint units="degrees F">51</dewpoint>
+      <rh units="percent">94</rh>
+      <skyCover units="percent">70</skyCover>
+      <windSpeed units="mph">6</windSpeed>
+      <windDirection units="angular degrees">180</windDirection>
+      <windGust units="mph">8</windGust>
+      <pop units="percent">14</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">7856</snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">18</validTime>
+      <maxTemp units="degrees F">63</maxTemp>           <temperature units="degrees F">57</temperature>
+      <dewpoint units="degrees F">53</dewpoint>
+      <rh units="percent">88</rh>
+      <skyCover units="percent">71</skyCover>
+      <windSpeed units="mph">7</windSpeed>
+      <windDirection units="angular degrees">180</windDirection>
+      <windGust units="mph">9</windGust>
+      <pop units="percent">24</pop>
+      <qpf units="inches">0.01</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">7856</snowLevel>
+            <wx>SChc R</wx>
+    </period>
+          </forecastDay>
+                  <forecastDay>
+          <validDate>Nov 21</validDate>
+            <period>
+      <validTime timezone="UTC">00</validTime>
+                  <temperature units="degrees F">61</temperature>
+      <dewpoint units="degrees F">54</dewpoint>
+      <rh units="percent">78</rh>
+      <skyCover units="percent">80</skyCover>
+      <windSpeed units="mph">9</windSpeed>
+      <windDirection units="angular degrees">210</windDirection>
+      <windGust units="mph">12</windGust>
+      <pop units="percent">50</pop>
+      <qpf units="inches">0.10</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">7344</snowLevel>
+            <wx>Chc R</wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">06</validTime>
+            <minTemp units="degrees F">52</minTemp>     <temperature units="degrees F">55</temperature>
+      <dewpoint units="degrees F">53</dewpoint>
+      <rh units="percent">91</rh>
+      <skyCover units="percent">82</skyCover>
+      <windSpeed units="mph">11</windSpeed>
+      <windDirection units="angular degrees">190</windDirection>
+      <windGust units="mph">14</windGust>
+      <pop units="percent">59</pop>
+      <qpf units="inches">0.14</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">7344</snowLevel>
+            <wx>Lkly R</wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">12</validTime>
+                  <temperature units="degrees F">54</temperature>
+      <dewpoint units="degrees F">53</dewpoint>
+      <rh units="percent">95</rh>
+      <skyCover units="percent">76</skyCover>
+      <windSpeed units="mph">9</windSpeed>
+      <windDirection units="angular degrees">200</windDirection>
+      <windGust units="mph">12</windGust>
+      <pop units="percent">65</pop>
+      <qpf units="inches">0.01</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">7126</snowLevel>
+            <wx>Lkly R</wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">18</validTime>
+      <maxTemp units="degrees F">62</maxTemp>           <temperature units="degrees F">58</temperature>
+      <dewpoint units="degrees F">55</dewpoint>
+      <rh units="percent">90</rh>
+      <skyCover units="percent">75</skyCover>
+      <windSpeed units="mph">5</windSpeed>
+      <windDirection units="angular degrees">210</windDirection>
+      <windGust units="mph">6</windGust>
+      <pop units="percent">49</pop>
+      <qpf units="inches">0.02</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">7126</snowLevel>
+            <wx>Chc RW</wx>
+    </period>
+          </forecastDay>
+                  <forecastDay>
+          <validDate>Nov 22</validDate>
+            <period>
+      <validTime timezone="UTC">00</validTime>
+                  <temperature units="degrees F">59</temperature>
+      <dewpoint units="degrees F">54</dewpoint>
+      <rh units="percent">82</rh>
+      <skyCover units="percent">69</skyCover>
+      <windSpeed units="mph">6</windSpeed>
+      <windDirection units="angular degrees">240</windDirection>
+      <windGust units="mph">8</windGust>
+      <pop units="percent">11</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">6869</snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">06</validTime>
+            <minTemp units="degrees F">54</minTemp>     <temperature units="degrees F">52</temperature>
+      <dewpoint units="degrees F">49</dewpoint>
+      <rh units="percent">92</rh>
+      <skyCover units="percent">69</skyCover>
+      <windSpeed units="mph">5</windSpeed>
+      <windDirection units="angular degrees">280</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">11</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">6869</snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">12</validTime>
+                  <temperature units="degrees F">51</temperature>
+      <dewpoint units="degrees F">49</dewpoint>
+      <rh units="percent">94</rh>
+      <skyCover units="percent">46</skyCover>
+      <windSpeed units="mph">3</windSpeed>
+      <windDirection units="angular degrees">330</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">5</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet">
+</snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">18</validTime>
+      <maxTemp units="degrees F">63</maxTemp>           <temperature units="degrees F">56</temperature>
+      <dewpoint units="degrees F">51</dewpoint>
+      <rh units="percent">84</rh>
+      <skyCover units="percent">46</skyCover>
+      <windSpeed units="mph">2</windSpeed>
+      <windDirection units="angular degrees">20</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">5</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet"></snowLevel>
+            <wx> </wx>
+    </period>
+          </forecastDay>
+                  <forecastDay>
+          <validDate>Nov 23</validDate>
+            <period>
+      <validTime timezone="UTC">00</validTime>
+                  <temperature units="degrees F">60</temperature>
+      <dewpoint units="degrees F">50</dewpoint>
+      <rh units="percent">70</rh>
+      <skyCover units="percent">47</skyCover>
+      <windSpeed units="mph">6</windSpeed>
+      <windDirection units="angular degrees">300</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">4</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet"></snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">06</validTime>
+            <minTemp units="degrees F">50</minTemp>     <temperature units="degrees F">52</temperature>
+      <dewpoint units="degrees F">48</dewpoint>
+      <rh units="percent">87</rh>
+      <skyCover units="percent">47</skyCover>
+      <windSpeed units="mph">5</windSpeed>
+      <windDirection units="angular degrees">310</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">4</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet"></snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">12</validTime>
+                  <temperature units="degrees F">51</temperature>
+      <dewpoint units="degrees F">49</dewpoint>
+      <rh units="percent">91</rh>
+      <skyCover units="percent">43</skyCover>
+      <windSpeed units="mph">1</windSpeed>
+      <windDirection units="angular degrees">280</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">5</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet"></snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">18</validTime>
+      <maxTemp units="degrees F">63</maxTemp>           <temperature units="degrees F">56</temperature>
+      <dewpoint units="degrees F">51</dewpoint>
+      <rh units="percent">81</rh>
+      <skyCover units="percent">43</skyCover>
+      <windSpeed units="mph">3</windSpeed>
+      <windDirection units="angular degrees">230</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">5</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet"></snowLevel>
+            <wx> </wx>
+    </period>
+          </forecastDay>
+                  <forecastDay>
+          <validDate>Nov 24</validDate>
+            <period>
+      <validTime timezone="UTC">00</validTime>
+                  <temperature units="degrees F">61</temperature>
+      <dewpoint units="degrees F">49</dewpoint>
+      <rh units="percent">65</rh>
+      <skyCover units="percent">51</skyCover>
+      <windSpeed units="mph">5</windSpeed>
+      <windDirection units="angular degrees">250</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">6</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet"></snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">06</validTime>
+            <minTemp units="degrees F">50</minTemp>     <temperature units="degrees F">54</temperature>
+      <dewpoint units="degrees F">49</dewpoint>
+      <rh units="percent">85</rh>
+      <skyCover units="percent">51</skyCover>
+      <windSpeed units="mph">3</windSpeed>
+      <windDirection units="angular degrees">250</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">6</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet"></snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">12</validTime>
+                  <temperature units="degrees F">53</temperature>
+      <dewpoint units="degrees F">50</dewpoint>
+      <rh units="percent">91</rh>
+      <skyCover units="percent">57</skyCover>
+      <windSpeed units="mph">2</windSpeed>
+      <windDirection units="angular degrees">240</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">8</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet"></snowLevel>
+            <wx> </wx>
+    </period>
+        <period>
+      <validTime timezone="UTC">18</validTime>
+      <maxTemp units="degrees F">64</maxTemp>           <temperature units="degrees F">58</temperature>
+      <dewpoint units="degrees F">52</dewpoint>
+      <rh units="percent">81</rh>
+      <skyCover units="percent">57</skyCover>
+      <windSpeed units="mph">1</windSpeed>
+      <windDirection units="angular degrees">190</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">8</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet"></snowLevel>
+            <wx> </wx>
+    </period>
+          </forecastDay>
+                  <forecastDay>
+          <validDate>Nov 25</validDate>
+            <period>
+      <validTime timezone="UTC">00</validTime>
+                  <temperature units="degrees F">62</temperature>
+      <dewpoint units="degrees F">50</dewpoint>
+      <rh units="percent">66</rh>
+      <skyCover units="percent">64</skyCover>
+      <windSpeed units="mph">3</windSpeed>
+      <windDirection units="angular degrees">270</windDirection>
+      <windGust units="mph">0</windGust>
+      <pop units="percent">11</pop>
+      <qpf units="inches">0.00</qpf>
+      <snowAmt units="inches">0.00</snowAmt>
+      <snowLevel units="feet"></snowLevel>
+            <wx> </wx>
     </period>
     </forecastDay>
 </griddedForecast>
+
