@@ -10,8 +10,6 @@ gem 'iron_worker_ng'
 gem 'activeadmin'
 
 gem 'therubyracer'
-gem 'less-rails'
-gem 'less-rails-bootstrap'
 gem 'haml-rails'
 
 gem 'jquery-rails'
@@ -63,6 +61,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
-
-  gem 'bootstrap-sass-rails'
+  gem 'less-rails'
+  gem 'less-rails-bootstrap'
 end
