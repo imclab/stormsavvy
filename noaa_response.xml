@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<griddedForecast duration="168 hours">
+  <forecastCreationTime>Thu Jan 01 00:00:00 1970 UTC</forecastCreationTime>
+  <latitude units="degrees"></latitude> 
+  <longitude units="degrees"></longitude> 
+  <elevation units="feet above mean sea-level"></elevation> 
+  <duration>168</duration> 
+  <interval>6</interval>
+
+        <forecastDay>
+        	<validDate>Jan 01</validDate>
+            <period>
+    	<validTime timezone="UTC">00</validTime>
+    	    	    	<temperature units="degrees F">0</temperature>
+    	<dewpoint units="degrees F">0</dewpoint>
+    	<rh units="percent">0</rh>
+    	<skyCover units="percent">0</skyCover>
+    	<windSpeed units="mph">0</windSpeed>
+    	<windDirection units="angular degrees">0</windDirection>
+    	<windGust units="mph">0</windGust>
+    	<pop units="percent">0</pop>
+    	<qpf units="inches">0.00</qpf>
+    	<snowAmt units="inches">0.00</snowAmt>
+    	<snowLevel units="feet"></snowLevel>
+    	    	<wx> </wx>
+    </period>
+    </forecastDay>
+</griddedForecast>
