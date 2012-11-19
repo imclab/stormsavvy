@@ -59,6 +59,9 @@ module Stormsavvy
 
     # Recommended by Devise
     config.assets.initialize_on_precompile = false
+<<<<<<< HEAD
     
+=======
+>>>>>>> parent of 05988a0... run assets precompile and debugging bootstrap
   end
 end
