@@ -16,9 +16,9 @@ class NOAAForecast
 
   def seven_day_weather
     latlong = get_lat_long(@zipcode)
-    response = ping_noaa(latlong, 168, 6)
-    forecast = parse_weather_data(response)
-    return forecast
+    @duration = 168
+    @interval = 6
+    return get_forecast(latlong)
   end
 
   def get_lat_long(zipcode)
@@ -27,9 +27,8 @@ class NOAAForecast
     return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
   end
 
-  def forecast(lat, long)
-    latlong = [] << lat << long
-    response = ping_noaa(latlong, 168, 6)
+  def get_forecast(latlong)
+    response = ping_noaa(latlong, @duration, @interval)
     return parse_weather_data(response)
   end
 
