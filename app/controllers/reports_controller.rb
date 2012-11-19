@@ -80,7 +80,16 @@ class ReportsController < ApplicationController
 
   def CEM2030
     # filename = "#{Rails.root}/app/assets/images/reports/testem_fields.pdf"
-    "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
+    # @report = Report.new(params[:report])
+    # redirect_to @report
+
+    # @report = Report.create
+    # pdf = FirstReport.new @report, view_context, background: "#{Rails.root}/app/assets/images/reports/CEM2030-2012_Page_01.pdf"
+    # send_data pdf.render, type: "application/pdf", disposition: "inline"
+
+
+    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
+    filename = "#{Rails.root}/app/assets/images/reports/testem_again.pdf"
     pdf = Prawn::Document.new(
       :template => filename,
       :page_size => "A4"
