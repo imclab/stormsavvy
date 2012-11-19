@@ -21,7 +21,6 @@ gem 'simple_form'
 gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
 
 gem 'pg'
-gem 'thin'
 
 gem 'simplecov', :require => false, :group => :test
 
