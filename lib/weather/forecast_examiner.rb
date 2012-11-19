@@ -10,7 +10,7 @@ class ForecastExaminer
   @@watch      = (9..28).to_a.map {|e| e*6}
 
   def initialize(site, forecast)
-    @site = site 
+    @site = site
     @forecast = forecast
   end
 
