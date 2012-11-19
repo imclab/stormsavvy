@@ -59,5 +59,9 @@ module Stormsavvy
 
     # Recommended by Devise
     config.assets.initialize_on_precompile = false
+
+    # Debugging Bootstrap header issue
+    config.serve_static_assets = false
+    config.less.compress = true
   end
 end
