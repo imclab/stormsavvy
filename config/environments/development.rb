@@ -30,7 +30,7 @@ Stormsavvy::Application.configure do
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Do not compress assets
-  config.assets.compress = true
+  config.assets.compress = false
 
   # Expands the lines which load the assets
   config.assets.debug = true
@@ -60,10 +60,4 @@ Stormsavvy::Application.configure do
   # config.action_mailer.perform_deliveries = true
   # config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.default :charset => "utf-8"
-
-  # Debugging Bootstrap header issue
-  config.serve_static_assets = false
-  config.less.compress = true
-  config.assets.debug = true
-  
 end
