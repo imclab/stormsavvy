@@ -17,26 +17,27 @@ fieldset#site_area,
 fieldset#storm_information
 {
 
-	border-style: clear;
+  border-style: clear;
   border-width: 2px;
   border-color: #A23;
 
   legend {
-  	margin-top: 15px;
-  	border: clear;
-		color: #A32100;
-		font-size: 100%;
+    margin-top: 15px;
+    border: clear;
+    color: #A32100;
+    font-size: 100%;
   }
 
   input {
-  	display: inline;
+    display: inline;
   }
   
   label {
-  	display: inline;
+    display: inline;
   }
   
   span {
-  	display: block;
-  	padding: 0 15px;
+    display: block;
+    padding: 0 15px;
   }
+}

@@ -25,6 +25,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     Ascii85 (1.0.2)
+    ZenTest (4.8.2)
     actionmailer (3.2.9)
       actionpack (= 3.2.9)
       mail (~> 2.4.4)
@@ -309,6 +310,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ZenTest
   activeadmin
   awesome_print
   builder
