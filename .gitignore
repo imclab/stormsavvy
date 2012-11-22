@@ -24,7 +24,6 @@ doc/intro.md
 g++-4.2
 log/
 public/.DS_Store
-public/assets/
 test/stormsavvy/
 tmp/
 vendor/cache/
