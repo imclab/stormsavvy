@@ -1,3 +1,12 @@
+@import url('bootstrap.css');
+@import url('bootstrap-responsive.css');
+
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+}
+
 .nav li {
   padding-top: 5px;
 }
@@ -21,58 +30,4 @@
   font-size: 18px;
   font-weight: 200;
   line-height: 27px;
-}
-
-.loud {
-  color: grey;
-  font-weight: 200;
-  font-size: 24px;
-  margin-bottom: 5px;
-  line-height: 1;
-}
-
-
-
-fieldset#site_information,
-fieldset#company_information,
-fieldset#contract_information,
-
-fieldset#submittal_information,
-fieldset#wpc_information,
-fieldset#inspector_name,
-
-fieldset#weather_conditions, 
-fieldset#wind_conditions, 
-fieldset#precipitation_conditions,
-
-fieldset#construction_phase,
-fieldset#inspection_type,
-fieldset#site_area,
-
-fieldset#storm_information
-{
-
-	border-style: clear;
-  border-width: 2px;
-  border-color: #A23;
-
-  legend {
-  	margin-top: 15px;
-  	border: clear;
-		color: #A32100;
-		font-size: 100%;
-  }
-
-  input {
-  	display: inline;
-  }
-  
-  label {
-  	display: inline;
-  }
-  
-  span {
-  	display: block;
-  	padding: 0 15px;
-  }
 }
