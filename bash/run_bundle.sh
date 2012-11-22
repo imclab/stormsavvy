@@ -3,9 +3,9 @@
 bundle install
 bundle update
 
-git add Gemfile
-git add Gemfile.lock
-git commit -m 'run bundle install'
+# git add Gemfile
+# git add Gemfile.lock
+# git commit -m 'run bundle install'
 
-git push bitbucket master
-git push github master
+# git push bitbucket master
+# git push github master
