@@ -47,6 +47,9 @@ group :test, :development do
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'email_spec'
+
+  gem 'ZenTest'
+
 #  gem 'rspec-http', '~> 0.9'
 #  gem 'rest-assured'
 #  gem 'pry-stack_explorer'
