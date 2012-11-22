@@ -27,6 +27,7 @@ public/.DS_Store
 public/assets/
 test/stormsavvy/
 tmp/
+vendor/cache/
 
 app/pdfs/reports_header_methods.txt
 app/models/report.txt
