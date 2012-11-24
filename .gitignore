@@ -14,7 +14,10 @@
 .sass-cache/
 .gemrc
 app/assets/images/.DS_Store
+app/pdfs/*.txt
+app/models/*.txt
 coverage/
+config/config.yml
 db/development
 db/development.sqlite3
 db/test.sqlite3
@@ -24,12 +27,8 @@ doc/intro.md
 g++-4.2
 log/
 public/.DS_Store
+script/mailer/
+script/heroku/*.dump
 test/stormsavvy/
 tmp/
 vendor/cache/
-
-app/pdfs/reports_header_methods.txt
-app/models/report.txt
-
-script/mailer/
-script/heroku/*.dump
