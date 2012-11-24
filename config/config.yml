@@ -10,3 +10,5 @@ test:
 
 production:
   perform_authentication: false
+  STRIPE_API_KEY: sk_live_7GfB1PylLNMf8v26RITa95Iu
+  STRIPE_PUBLIC_KEY: pk_live_GBRP0mjjNUNrr8n2coIa0Z0f

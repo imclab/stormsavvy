@@ -22,7 +22,7 @@ gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
 
 gem 'pg'
 
-gem 'simplecov', :require => false, :group => :test
+
 
 group :development do
   gem 'letter_opener'
@@ -48,6 +48,7 @@ group :test, :development do
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'email_spec'
+  gem 'simplecov', :require => false
 
   gem 'ZenTest'
 
