@@ -1,8 +1,8 @@
 #!/bin/bash
 
-DEBUG_RESOLVER=true bundle install
+# DEBUG_RESOLVER=true bundle install
 bundle install
-# bundle update
+bundle update
 
 # git add Gemfile
 # git add Gemfile.lock
