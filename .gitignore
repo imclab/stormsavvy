@@ -27,6 +27,7 @@ doc/intro.md
 g++-4.2
 log/
 public/.DS_Store
+ruby/
 script/mailer/
 script/heroku/*.dump
 test/stormsavvy/
