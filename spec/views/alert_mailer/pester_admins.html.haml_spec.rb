@@ -6,7 +6,7 @@ describe "pages/thankyou" do
 
     it "shows the 'Thank You' page" do
       render
-      rendered.should =~ /jghslafkjgalkjsfhl/
+      rendered.should =~ /jkhlaksfhglqkjhf/
     end
 
   end
