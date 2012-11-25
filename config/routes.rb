@@ -41,14 +41,15 @@ Stormsavvy::Application.routes.draw do
   match '/faq',       :to => "pages#faq",            :as => :faq
   match '/privacy',   :to => "pages#privacy",        :as => :privacy
   match '/contact',   :to => "pages#contact",        :as => :contact
-  match '/plans-and-pricing',  :to => "pages#plans", :as => :plans
+  match '/plans-and-pricing', :to => "pages#plans",  :as => :plans
   match '/features',  :to => "pages#features",       :as => :features
   match '/team',      :to => "pages#team",           :as => :team
   match '/popemail',  :to => "pages#popemail",       :as => :popemail
   match '/sendemail', :to => "pages#sendemail",      :as => :sendemail
 
-  # Route for pdf demo.
+  # Demo pages
   match '/pdf',       :to => "reports#CEM2030",      :as => :pdf
+  match '/testem',    :to => "pages#testem",         :as => :testem
 
   root :to => "dashboard#index"
 

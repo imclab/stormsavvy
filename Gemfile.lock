@@ -16,6 +16,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     Ascii85 (1.0.2)
+    ZenTest (4.8.2)
     actionmailer (3.2.9)
       actionpack (= 3.2.9)
       mail (~> 2.4.4)
@@ -61,6 +62,8 @@ GEM
     arel (3.0.2)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.2.1.1)
+      sass (~> 3.2)
     bourbon (2.1.2)
       sass (>= 3.2)
       thor
@@ -75,7 +78,6 @@ GEM
     carmen (0.2.13)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
-    chunky_png (1.2.6)
     coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -84,13 +86,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
-    commonjs (0.2.6)
-    compass (0.12.2)
-      chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.1)
-    compass-rails (1.0.3)
-      compass (>= 0.12.2, < 0.14)
     cucumber (1.2.1)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -100,7 +95,6 @@ GEM
       capybara (>= 1.1.2)
       cucumber (>= 1.1.8)
       nokogiri (>= 1.5.0)
-    daemons (1.1.9)
     database_cleaner (0.9.1)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
@@ -112,7 +106,6 @@ GEM
       launchy (~> 2.1)
       mail (~> 2.2)
     erubis (2.7.0)
-    eventmachine (1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.1.0)
@@ -124,7 +117,6 @@ GEM
     ffi (1.1.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
-    fssm (0.2.9)
     gherkin (2.11.5)
       json (>= 1.4.6)
     haml (3.1.7)
@@ -140,12 +132,6 @@ GEM
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
-    iron_core (0.4.3)
-      rest (>= 2.0.2)
-    iron_worker_ng (0.13.0)
-      bundler (>= 1.2.0)
-      iron_core (>= 0.4.2)
-      rubyzip (>= 0.9.9)
     journey (1.0.4)
     jquery-rails (2.1.3)
       railties (>= 3.1.0, < 5.0)
@@ -156,13 +142,6 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.1.2)
       addressable (~> 2.3)
-    less (2.2.2)
-      commonjs (~> 0.2.6)
-    less-rails (2.2.6)
-      actionpack (>= 3.1)
-      less (~> 2.2.0)
-    less-rails-bootstrap (2.2.0)
-      less-rails (~> 2.2.0)
     letter_opener (1.0.0)
       launchy (>= 2.0.4)
     libv8 (3.3.10.4)
@@ -181,7 +160,6 @@ GEM
     mime-types (1.19)
     multi_json (1.3.7)
     nested_form (0.3.1)
-    net-http-persistent (2.8)
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
     pdf-inspector (1.0.2)
@@ -230,11 +208,6 @@ GEM
       json (~> 1.4)
     responders (0.9.3)
       railties (~> 3.1)
-    rest (2.1.0)
-      net-http-persistent
-      rest-client (>= 0.3.0)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -282,20 +255,12 @@ GEM
     sqlite3 (1.3.6)
     therubyracer (0.10.2)
       libv8 (~> 3.3.10)
-    thin (1.5.0)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
     thor (0.16.0)
     tilt (1.3.3)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
     ttfunk (1.0.3)
-    twitter-bootstrap-rails (2.1.6)
-      actionpack (>= 3.1)
-      execjs
-      railties (>= 3.1)
     typhoeus (0.4.2)
       ffi (~> 1.0)
       mime-types (~> 1.18)
@@ -312,13 +277,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ZenTest
   activeadmin
   awesome_print
+  bootstrap-sass (>= 2.1.0.1)
   builder
   capybara
   carmen
   coffee-rails (~> 3.2.1)
-  compass-rails
   cucumber
   cucumber-rails
   database_cleaner
@@ -327,10 +293,7 @@ DEPENDENCIES
   factory_girl_rails
   geocoder!
   haml-rails
-  iron_worker_ng
   jquery-rails
-  less-rails
-  less-rails-bootstrap
   letter_opener
   nested_form
   nokogiri
@@ -350,7 +313,5 @@ DEPENDENCIES
   spork-rails
   sqlite3
   therubyracer
-  thin
-  twitter-bootstrap-rails
   typhoeus
   uglifier (>= 1.0.3)

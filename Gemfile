@@ -4,26 +4,22 @@ gem 'rails'
 gem 'typhoeus'
 gem 'nokogiri'
 gem 'geocoder', :github => 'doolin/geocoder'
-gem 'carmen'
+gem 'devise'
+gem 'pg'
 
-gem 'iron_worker_ng'
+gem 'carmen'
 gem 'activeadmin'
 
 gem 'therubyracer'
 gem 'haml-rails'
-
 gem 'jquery-rails'
-gem 'devise'
+gem 'bootstrap-sass', ">= 2.1.0.1"
+
 gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
 gem 'pdf-reader'
 
 gem 'simple_form'
 gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
-
-gem 'pg'
-gem 'thin'
-
-gem 'simplecov', :require => false, :group => :test
 
 group :development do
   gem 'letter_opener'
@@ -49,18 +45,22 @@ group :test, :development do
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'email_spec'
+  gem 'simplecov', :require => false
+
+  gem 'ZenTest'
+end
+
+group :assets do
+  # gem 'compass-rails'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+  # gem 'twitter-bootstrap-rails'
+  # gem 'less-rails'
+end
+
 #  gem 'rspec-http', '~> 0.9'
 #  gem 'rest-assured'
 #  gem 'pry-stack_explorer'
 #  gem 'ruby-debug19', :require => 'ruby-debug'
-end
-
-group :assets do
-  gem 'compass-rails'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
-  gem 'less-rails'
-  gem 'less-rails-bootstrap'
-end
+#  gem 'iron_worker_ng'

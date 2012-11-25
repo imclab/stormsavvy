@@ -1,11 +1,19 @@
 #hero {
   background: #eee;
   padding: 20px 0;
-  margin-top: -20px;
+  margin-top: 50px;
   border-bottom: 1px solid #aaa;
 }
 
 #homeContent {
   border-top: 1px solid #fff;
   padding-top: 20px;
+}
+
+.loud {
+  color: grey;
+  font-weight: 200;
+  font-size: 20px;
+  margin-bottom: 5px;
+  line-height: 1;
 }

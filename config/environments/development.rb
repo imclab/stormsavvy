@@ -35,6 +35,8 @@ Stormsavvy::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  config.serve_static_assets = true
+
   # Testing with production mailer settings
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = {
@@ -60,5 +62,4 @@ Stormsavvy::Application.configure do
   # config.action_mailer.perform_deliveries = true
   # config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.default :charset => "utf-8"
-
 end
