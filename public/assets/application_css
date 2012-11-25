@@ -1,6 +1,6 @@
 /*
  *= require_self
+ *= require bootstrap_and_overrides
 
- *= require_bootstrap_and_overrides
  *= require_directory './site/.'
 */
