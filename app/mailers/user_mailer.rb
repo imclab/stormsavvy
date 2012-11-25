@@ -5,15 +5,6 @@ class UserMailer < ActionMailer::Base
   default :from => "alerts@stormsavvy.com"
   # default :from => "doolin@inventiumsystems.com"
 
-  def pester_admins(email)
-    @greeting = "Greetings"
-    mail(
-      :from     => "alerts@stormsavvy.com",
-      :to       => email,
-      :subject  => "Storm Savvy Is Working Great Today!"
-      ).deliver
-  end
-
   def mailout(to = nil)
     @greeting = "Greetings"
     @users = User.all

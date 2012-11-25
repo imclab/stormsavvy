@@ -2,6 +2,15 @@ class AlertMailer < ActionMailer::Base
 
   default :from => "alerts@stormsavvy.com"
 
+  def pester_admins(email)
+    @greeting = "Greetings"
+    mail(
+      :from     => "alerts@stormsavvy.com",
+      :to       => email,
+      :subject  => "Storm Savvy POP Alert"
+      ).deliver
+  end
+
   def pop_alert(user)
 
     @greeting = "Greetings,"

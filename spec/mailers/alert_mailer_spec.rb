@@ -14,17 +14,32 @@ describe AlertMailer do
       :password               => 'DarkAndStormy',
       :password_confirmation  => 'DarkAndStormy'
       )
+
     @project = FactoryGirl.create(
-      :project, 
-      :user => @user, 
+      :project,
+      :user => @user,
       :created_at => 1.day.ago
       )
     @site = FactoryGirl.create(
-      :site, 
-      :project => @project, 
-      :name => 'ec jungle gym', 
+      :site,
+      :project => @project,
+      :name => 'ec jungle gym',
       :zipcode => 94530
       )
+  end
+
+  describe "pester_admin" do
+
+    before :each do
+      @mailer = AlertMailer.pester_admins(@user.email).deliver
+    end
+
+    it "renders the headers" do
+      @mailer.subject.should eq("Storm Savvy POP Alert")
+      @mailer.to.should eq(["#{@user.email}"])
+      @mailer.from.should eq(["alerts@stormsavvy.com"])
+    end
+
   end
 
   describe "pop_alert" do
