@@ -28,7 +28,7 @@ namespace :scheduler do
   task :dailynotice => :environment do
     admins = [
       'david.doolin+stormsavvy@gmail.com',
-      'adam@adambarber.tv',
+#      'adam@adambarber.tv',
       'walter@stormsavvy.com',
       'kharma@gmail.com'
       ]
