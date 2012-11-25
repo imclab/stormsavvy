@@ -1,14 +1,10 @@
 require 'spec_helper'
 
-describe "pages/thankyou" do
+describe "user_mailer/pester_admins" do
 
-  describe "index page components" do
-
-    it "shows the 'Thank You' page" do
-      render
-      rendered.should =~ /jkhlaksfhglqkjhf/
-    end
-
+  it "greet the admin user" do
+    render
+    rendered.should =~ /pester admin email/
   end
 
 end
