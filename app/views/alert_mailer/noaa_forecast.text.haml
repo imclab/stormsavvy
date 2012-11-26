@@ -1,7 +1,7 @@
 Here is your NOAA forecast:
 
 %ul
-  - current_user.projects.each do |project|
+  - @user.projects.each do |project|
     - project.sites.each do |site|
       %li.cf
         - site.chance_of_rain

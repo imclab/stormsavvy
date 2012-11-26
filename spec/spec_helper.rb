@@ -10,11 +10,11 @@ require "pdf/inspector"
 require "email_spec"
 require 'capybara/rspec'
 
-
 RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
   config.include Devise::TestHelpers, :type => :controller
+  #config.extend ControllerMacros, :type => :controllers
 end
 
 Prawn.debug = true

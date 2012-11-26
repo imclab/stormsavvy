@@ -1,5 +1,8 @@
 require "spec_helper"
 
+include Warden::Test::Helpers
+Warden.test_mode!
+
 describe AlertMailer do
 
   before { ActionMailer::Base.deliveries = [] }
@@ -57,13 +60,13 @@ describe AlertMailer do
     end
 
     it "renders the headers" do
-      @mailer.subject.should eq("Storm Savvy POP Alert")
+      @mailer.subject.should =~ /Storm Savvy Daily/
       @mailer.to.should eq(["#{@user.email}"])
       @mailer.from.should eq(["alerts@stormsavvy.com"])
     end
 
     it "renders the body" do
-      @mailer.body.encoded.should match("Greetings from StormSavvy")
+      @mailer.body.encoded.should =~ /Future mailer/
     end
 
     it "delivers and receives mailer" do
@@ -75,8 +78,10 @@ describe AlertMailer do
   describe "noaa_forecast" do
 
     before(:each) do
-      @receipient = "walter@stormsavvy.com"
-      @mailer = UserMailer.noaa_forecast(@recipient).deliver
+      @u = FactoryGirl.create(:user, :email => "test@example.com")
+      p = @u.projects.create(:name => "foo", :description => "bar")
+      s = p.sites.build
+      @mailer = AlertMailer.noaa_forecast(@u.email).deliver
     end
 
     it "should send something via mailout" do
@@ -87,13 +92,6 @@ describe AlertMailer do
       lambda { @mailer }.should_not raise_error
     end
 
-    it "should have text in body" do
-      @mailer.body.should_not be_empty
-      # @mailer.body.should have_selector("ul.projects")
-      # @mailer.body.should have_selector("ul.sites")
-      # @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
-    end
   end
-
 
 end

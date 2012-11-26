@@ -15,7 +15,7 @@ describe "Reports" do
     )
     login_as(@user, :scope => :user)
     visit '/reports'
-	end
+  end
 
   describe "GET /reports", :type => :feature do
 

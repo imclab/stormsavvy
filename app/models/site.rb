@@ -39,8 +39,8 @@ class Site < ActiveRecord::Base
     nf = NOAAForecast.new(zipcode.to_i)
     nf.seven_day_weather
     #nf.forecast(@lat, @long)
-    precipitation_state(nf.noaa_forecast)
-    @max_rain = nf.noaa_forecast[0][0..5].max
+    precipitation_state(nf.seven_day_weather)
+    @max_rain = nf.seven_day_weather[0][0..5].max
     #binding.pry
   end
 
