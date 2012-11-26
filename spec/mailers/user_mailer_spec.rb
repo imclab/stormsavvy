@@ -76,27 +76,4 @@ describe UserMailer do
     end
   end
 
-  describe "noaa_forecast" do
-
-    before(:each) do
-      @receipient = "walter@stormsavvy.com"
-      @mailer = UserMailer.noaa_forecast(@recipient).deliver
-    end
-
-    it "should send something via mailout" do
-      ActionMailer::Base.deliveries.should_not be_empty
-    end
-
-    it "should render successfully" do
-      lambda { @mailer }.should_not raise_error
-    end
-
-    it "should have text in body" do
-      @mailer.body.should_not be_empty
-      # @mailer.body.should have_selector("ul.projects")
-      # @mailer.body.should have_selector("ul.sites")
-      # @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
-    end
-  end
-
 end
