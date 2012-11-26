@@ -2,7 +2,15 @@
 
 = "Here are your projects and forecasts:"
 
-- @user.projects.each do |p|
-  - p.sites.each do |s|
-    = "#{s.name}\n"
-    = "#{s.forecast}\n"
+%table
+  %tr.snapper
+    %th Date
+    %th POP
+  %tbody
+    - @user.projects.each do |p|
+      - p.sites.each do |s|
+        %tr
+          %td.sitename
+            = "#{s.name}"
+          %td.pop
+            = "#{s.forecast}"
