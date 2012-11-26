@@ -46,4 +46,4 @@ report = ReportsPdf.new
 report.testem_fields
 
 email = "walter@stormsavvy.com"
-UserMailer.pester_admins(email)
+AlertMailer.pester_admins(email).deliver
