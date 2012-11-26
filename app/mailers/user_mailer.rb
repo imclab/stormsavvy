@@ -14,7 +14,6 @@ class UserMailer < ActionMailer::Base
       ).deliver
   end
 
-
   def mailout(to = nil)
     @greeting = "Greetings"
     @users = User.all
