@@ -51,14 +51,14 @@ describe Project do
       @project = Project.new(@attr)
     end
 
-    context :user do 
+    context :user do
       it "should be associated with a user" do
         @project.should respond_to(:user)
       end
 
       it "should have the correct associated user" do
         @project.should == @project
-      end    
+      end
     end
 
     context :site do 
@@ -73,7 +73,7 @@ describe Project do
         # @site2 = Site.new(:name => "Test Site", :zipcode => 94610)
       end
 
-      it "should be associated with sites" do 
+      it "should be associated with sites" do
         @project.should respond_to(:sites)
       end
 
