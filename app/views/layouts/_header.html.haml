@@ -2,14 +2,14 @@
   %nav.navbar-inner
     .container
       .nav
-        =link_to "Storm Savvy", root_path
+        =link_to "Storm Savvy", root_path, :class => "brand"
       .cf.pull-right
         - if user_signed_in?
           =link_to "Projects", root_path
           =link_to "Settings", edit_user_registration_path
           =link_to "Sign out", destroy_user_session_path
         - else
-          .nav.dropdown              
+          .nav.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               Plans & Pricing
               %b.caret
