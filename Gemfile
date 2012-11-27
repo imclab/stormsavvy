@@ -44,12 +44,14 @@ group :test, :development do
 
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
-  gem 'email_spec'
   gem 'simplecov', :require => false
 
   gem 'ZenTest'
   gem 'autotest-growl'
   gem 'autotest-fsevent'
+
+  # Comment out when running bundle update
+  # gem 'email_spec'
 end
 
 group :assets do
