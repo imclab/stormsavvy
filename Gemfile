@@ -48,6 +48,8 @@ group :test, :development do
   gem 'simplecov', :require => false
 
   gem 'ZenTest'
+  gem 'autotest-growl'
+  gem 'autotest-fsevent'
 end
 
 group :assets do
