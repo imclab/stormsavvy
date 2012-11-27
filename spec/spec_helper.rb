@@ -23,8 +23,6 @@ require "pdf/inspector"
 require "email_spec"
 require 'capybara/rspec'
 
-
-
 RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
