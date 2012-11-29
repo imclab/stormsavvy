@@ -12,7 +12,6 @@
   %body{ template_id, template_class }
     = render :partial => "shared/flash_messages", :locals => {:flash => flash}
     = render 'layouts/header'
-
     = render :partial => "pages/hero" if is_public_home?
     .container
       - flash.each do |name, msg|
