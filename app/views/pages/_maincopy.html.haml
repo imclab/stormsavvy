@@ -1,19 +1,22 @@
 #maincopy
   .container
-    .row
-      .span12.pagination-centered
-        %h2
+    .row.pagination-centered
+      .span4
+        %h3
           = link_to "Storm Savvy Tracker", new_user_session_path
         %p
-        .loud
-          Track Your Project Real-Time
-        %h2.top-60
+          .loud
+            Track Your Project Real-Time
+      .span4
+        %h3
           = link_to "Storm Savvy POP", 'http://pop.stormsavvy.com'
         %p
-        .loud
-          Know Before It Rains
-        %h2.top-60
+          .loud
+            Know Before It Rains
+      .span4
+        %h3
           = link_to "Storm Savvy PDF", 'http://pdf.stormsavvy.com'
         %p
-        .loud
-          Focus On Your Project, Not Paperwork
+          .loud
+            Go Paperless
+
