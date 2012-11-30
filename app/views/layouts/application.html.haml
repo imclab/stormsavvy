@@ -11,7 +11,8 @@
 
   %body{ template_id, template_class }
     = render :partial => "shared/flash_messages", :locals => {:flash => flash}
-    / = render 'layouts/header'
+    - if user_signed_in?
+      = render 'layouts/header'
     = render :partial => "pages/hero" if is_public_home?
     .container
       - flash.each do |name, msg|
@@ -19,6 +20,6 @@
           %a.close{"data-dismiss" => "alert"} ×
           = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
       = yield
-  - if user_signed_in?
-    %footer
+    - if user_signed_in?
+      %footer
       = render 'layouts/footer'
