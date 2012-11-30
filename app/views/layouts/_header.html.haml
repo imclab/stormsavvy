@@ -1,9 +1,9 @@
 .navbar-fixed-top
   .nav.navbar-inner
     .container
-      %ul.nav.pull-right
+      =link_to "Storm Savvy", root_path, :class => "brand"
+      .nav.pull-right
         - if user_signed_in?
-          =link_to "Storm Savvy", root_path, :class => "brand"
           =link_to "Projects", root_path
           =link_to "Settings", edit_user_registration_path
           =link_to "Sign out", destroy_user_session_path
