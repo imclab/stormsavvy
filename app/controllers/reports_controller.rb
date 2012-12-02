@@ -1,7 +1,8 @@
 class ReportsController < ApplicationController
   require 'prawn'
 
-  STATIC_REPORTS = %w[CEM2035 CEM2057 CEM2052]
+  # Include CEM report methods below to show up in routes.
+  STATIC_REPORTS = %w[CEM2030 CEM2035 CEM2052 CEM2057 CEM4601]
 
   def index
     #@reports = Report.all
@@ -78,42 +79,23 @@ class ReportsController < ApplicationController
     end
   end
 
-  def CEM2030
-    # filename = "#{Rails.root}/app/assets/images/reports/testem_fields.pdf"
-    # @report = Report.new(params[:report])
-    # redirect_to @report
+  # def CEM2030
+  #   # filename = "#{Rails.root}/app/assets/images/reports/testem_fields.pdf"
+  #   # @report = Report.new(params[:report])
+  #   # redirect_to @report
 
-    # @report = Report.create
-    # pdf = FirstReport.new @report, view_context, background: "#{Rails.root}/app/assets/images/reports/CEM2030-2012_Page_01.pdf"
-    # send_data pdf.render, type: "application/pdf", disposition: "inline"
+  #   # @report = Report.create
+  #   # pdf = FirstReport.new @report, view_context, background: "#{Rails.root}/app/assets/images/reports/CEM2030-2012_Page_01.pdf"
+  #   # send_data pdf.render, type: "application/pdf", disposition: "inline"
 
 
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
-    filename = "#{Rails.root}/app/assets/images/reports/testem_again.pdf"
-    pdf = Prawn::Document.new(
-      :template => filename,
-      :page_size => "A4"
-    )
-    send_data pdf.render, type: "application/pdf", disposition: "inline"
-  end
-
-  def CEM2035
-    pdf = Prawn::Document.new
-    pdf.text "CEM2035"
-    send_data pdf.render, type: "application/pdf", disposition: "inline"
-  end
-
-  def CEM2057
-    pdf = Prawn::Document.new
-    @test = "test"
-    pdf.text @test
-    send_data pdf.render, type: "application/pdf", disposition: "inline"
-  end
-
-  def CEM2052
-    pdf = Prawn::Document.new
-    pdf.text "CEM2052"
-    send_data pdf.render, type: "application/pdf", disposition: "inline"
-  end
+  #   # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
+  #   filename = "#{Rails.root}/app/assets/pdfs/CEM2030_production.pdf"
+  #   pdf = Prawn::Document.new(
+  #     :template => filename,
+  #     :page_size => "A4"
+  #   )
+  #   send_data pdf.render, type: "application/pdf", disposition: "inline"
+  # end
 
 end

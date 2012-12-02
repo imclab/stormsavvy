@@ -17,6 +17,9 @@ Stormsavvy::Application.routes.draw do
   get "location/create"
   get "noaa/secret"
 
+  get "pdf/CEM2030"
+  get "pdf/CEM4601"
+
   resources :inspection_events,
     :weather_events,
     :reports,
@@ -49,7 +52,7 @@ Stormsavvy::Application.routes.draw do
   match '/consulting', :to => "pages#consulting",    :as => :consulting
 
   # Demo pages
-  match '/pdf',       :to => "reports#CEM2030",      :as => :pdf
+  match '/pdf',       :to => "pages#pdf",            :as => :pdf
   match '/testem',    :to => "pages#testem",         :as => :testem
 
   root :to => "dashboard#index"
