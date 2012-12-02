@@ -1,5 +1,3 @@
-#application.html.haml_spec.rb
-
 require 'spec_helper'
 
 describe "layouts/application.html.haml" do
