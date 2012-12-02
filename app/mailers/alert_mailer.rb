@@ -1,6 +1,6 @@
 class AlertMailer < ActionMailer::Base
 
-  default :from => "alerts@stormsavvy.com"
+  default :from => "sendgrid@stormsavvy.com"
 
 
   def noaa_forecast(to = nil)
@@ -9,7 +9,7 @@ class AlertMailer < ActionMailer::Base
       @user = user # `@user` is needed for the template
       if user.has_site?
         mail(
-          :from     => "alerts@stormsavvy.com",
+          :from     => "sendgrid@stormsavvy.com",
           :to       => user.email,
           :subject  => "NOAA Forecast Notification"
           ).deliver
@@ -26,7 +26,7 @@ class AlertMailer < ActionMailer::Base
       @user = user # `@user` is needed for the template
       if @user.has_site?
         mail(
-          :from     => "alerts@stormsavvy.com",
+          :from     => "sendgrid@stormsavvy.com",
           :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
           :subject  => "Storm Savvy POP Alert"
           ).deliver
@@ -42,7 +42,7 @@ class AlertMailer < ActionMailer::Base
       @user = user # `@user` is needed for the template
       if @user.has_site?
         mail(
-          :from     => "alerts@stormsavvy.com",
+          :from     => "sendgrid@stormsavvy.com",
           :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
           :subject  => "Storm Savvy Daily Weather Forecasts"
           ).deliver
