@@ -6,6 +6,8 @@ class UserMailer < ActionMailer::Base
   # default :from => "doolin@inventiumsystems.com"
 
   def pester_admins(email)
+    @numusers = User.count
+    @numprojects = Project.count
     @greeting = "Greetings"
     mail(
       :from     => "alerts@stormsavvy.com",
