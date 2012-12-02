@@ -4,6 +4,18 @@
   know that Storm Savvy is up and running.
 %p
   Here is a list of your projects:
-%td
+%table.projects
   %tr
-    @user.project
+    %th Projects
+  %tr
+    %td @user.projects
+
+%hr
+
+%table.forecast
+  %tr
+    %th Forecast
+  %tr
+    %td @user.forecast
+
+%hr
