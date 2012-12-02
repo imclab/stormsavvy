@@ -40,7 +40,7 @@ describe AlertMailer do
     it "renders the headers" do
       @mailer.subject.should eq("Storm Savvy POP Alert")
       @mailer.to.should eq(["#{@user.email}"])
-      @mailer.from.should eq(["alerts@stormsavvy.com"])
+      @mailer.from.should eq(["sendgrid@stormsavvy.com"])
     end
 
     it "renders the body" do
@@ -62,7 +62,7 @@ describe AlertMailer do
     it "renders the headers" do
       @mailer.subject.should =~ /Storm Savvy Daily/
       @mailer.to.should eq(["#{@user.email}"])
-      @mailer.from.should eq(["alerts@stormsavvy.com"])
+      @mailer.from.should eq(["sendgrid@stormsavvy.com"])
     end
 
     it "renders the body" do

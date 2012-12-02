@@ -39,7 +39,7 @@ class NOAAForecast
               :method        => :post,
               :headers       => {:Accept => "text/html"},
               :timeout       => 2000, # milliseconds
-              :cache_timeout => 60, # seconds
+              # :cache_timeout => 60, # seconds
               :params        => {:field1 => "a field"})
     hydra = Typhoeus::Hydra.new
     hydra.queue(request)

@@ -47,3 +47,6 @@ report.testem_fields
 
 email = "walter@stormsavvy.com"
 AlertMailer.pester_admins(email).deliver
+
+@weather = NOAAForecast.new(94605)
+@forecast = @weather.seven_day_weather
