@@ -27,9 +27,9 @@ namespace :scheduler do
   desc "Delivers pester_admins mailer"
   task :dailynotice => :environment do
     admins = [
-      'david.doolin+stormsavvy@gmail.com',
       'walter@stormsavvy.com',
-      'kharma@gmail.com'
+      # 'david.doolin+stormsavvy@gmail.com',
+      # 'kharma@gmail.com'
       ]
     admins.each do |address|
       UserMailer.pester_admins(address).deliver
