@@ -19,5 +19,4 @@ describe "user_mailer/pester_admins" do
     rendered.should have_selector 'th', :text => "Forecast"
   end
 
-
 end

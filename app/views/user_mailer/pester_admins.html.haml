@@ -1,28 +1,31 @@
-= @greeting
-%p
-  This the pester admin email, letting you
-  know that Storm Savvy is up and running.
-%p
-  Here is a list of your projects:
-%table.projects
-  %tr
-    %th Projects
-    %th Users
-    %th Sites
+%table{ :style => "width: 100%;" }
   %tr
     %td
-      = @numprojects
-    %td
-      = @numusers
-    %td
-      = @numsites
+      = render 'pester_intro_block'
 
-%hr
+      %p
+        Here is a list of your projects:
 
-%table.forecast
-  %tr
-    %th Forecast
-  %tr
-    %td @print_forecast
+      %table.projects
+        %tr
+          %th Projects
+          %th Users
+          %th Sites
+        %tr
+          %td
+            = @numprojects
+          %td
+            = @numusers
+          %td
+            = @numsites
 
-%hr
+      %hr
+
+      %table.forecast
+        %tr
+          %th Forecast
+        %tr
+          %td
+            = @print_forecast
+
+      %hr
