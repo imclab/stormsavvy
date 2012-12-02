@@ -17,6 +17,9 @@ Stormsavvy::Application.routes.draw do
   get "location/create"
   get "noaa/secret"
 
+  get "pdf/CEM2030"
+  get "pdf/CEM4601"
+
   resources :inspection_events,
     :weather_events,
     :reports,
