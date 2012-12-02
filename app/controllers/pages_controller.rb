@@ -39,4 +39,7 @@ class PagesController < ApplicationController
 
   def sendemail
   end
+
+  def consulting
+  end
 end

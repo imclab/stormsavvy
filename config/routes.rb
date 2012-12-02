@@ -46,6 +46,7 @@ Stormsavvy::Application.routes.draw do
   match '/team',      :to => "pages#team",           :as => :team
   match '/popemail',  :to => "pages#popemail",       :as => :popemail
   match '/sendemail', :to => "pages#sendemail",      :as => :sendemail
+  match '/consulting', :to => "pages#consulting",    :as => :consulting
 
   # Demo pages
   match '/pdf',       :to => "reports#CEM2030",      :as => :pdf
