@@ -1,0 +1,24 @@
+.hero
+  .container
+    .row
+      .span12
+        #welcome.hero-unit.pagination-centered
+          %h1 
+            Storm Savvy PDFs
+          %h3 
+            Forms On The Go
+          .loud 
+            Fill In Online, Print Anywhere.
+      .span11{:style => "float:right"}
+        .span7{:style => "float:left;"}
+          .hero-unit.span7.pagination-centered
+            .row
+              .pull-left
+                Caltrans Weekly Inspection Report Form, CEM 2030
+              .pull-right
+                = link_to 'Show', :class => "btn btn-primary"
+            .row
+              .pull-left
+                Caltrans Weekly Inspection Report Form, CEM 4601
+              .pull-right
+                = link_to 'Show', :class => "btn btn-primary"

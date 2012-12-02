@@ -78,18 +78,38 @@ class ReportsController < ApplicationController
     end
   end
 
+  # def CEM2030
+  #   # filename = "#{Rails.root}/app/assets/images/reports/testem_fields.pdf"
+  #   # @report = Report.new(params[:report])
+  #   # redirect_to @report
+
+  #   # @report = Report.create
+  #   # pdf = FirstReport.new @report, view_context, background: "#{Rails.root}/app/assets/images/reports/CEM2030-2012_Page_01.pdf"
+  #   # send_data pdf.render, type: "application/pdf", disposition: "inline"
+
+
+  #   # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
+  #   filename = "#{Rails.root}/app/assets/pdfs/CEM2030_production.pdf"
+  #   pdf = Prawn::Document.new(
+  #     :template => filename,
+  #     :page_size => "A4"
+  #   )
+  #   send_data pdf.render, type: "application/pdf", disposition: "inline"
+  # end
+
   def CEM2030
-    # filename = "#{Rails.root}/app/assets/images/reports/testem_fields.pdf"
-    # @report = Report.new(params[:report])
-    # redirect_to @report
+    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030_production.pdf"
+    filename = "#{Rails.root}/app/assets/pdfs/CEM2030_production.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
+    send_data pdf.render, type: "application/pdf", disposition: "inline"
+  end
 
-    # @report = Report.create
-    # pdf = FirstReport.new @report, view_context, background: "#{Rails.root}/app/assets/images/reports/CEM2030-2012_Page_01.pdf"
-    # send_data pdf.render, type: "application/pdf", disposition: "inline"
-
-
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
-    filename = "#{Rails.root}/app/assets/images/reports/testem_again.pdf"
+  def CEM4601
+    # filename = "#{Prawn::DATADIR}/images/reports/CEM4601_productionpdf"
+    filename = "#{Rails.root}/app/assets/pdfs/CEM4601_production.pdf"
     pdf = Prawn::Document.new(
       :template => filename,
       :page_size => "A4"

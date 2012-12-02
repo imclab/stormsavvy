@@ -49,7 +49,7 @@ Stormsavvy::Application.routes.draw do
   match '/consulting', :to => "pages#consulting",    :as => :consulting
 
   # Demo pages
-  match '/pdf',       :to => "reports#CEM2030",      :as => :pdf
+  match '/pdf',       :to => "pages#pdf",            :as => :pdf
   match '/testem',    :to => "pages#testem",         :as => :testem
 
   root :to => "dashboard#index"
