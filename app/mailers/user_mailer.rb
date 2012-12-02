@@ -12,7 +12,6 @@ class UserMailer < ActionMailer::Base
 
     @weather = NOAAForecast.new(94605)
     @forecast = @weather.seven_day_weather
-    @print_forecast = print @forecast
 
     @greeting = "Greetings"
     mail(
