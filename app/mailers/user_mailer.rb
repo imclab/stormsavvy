@@ -9,6 +9,11 @@ class UserMailer < ActionMailer::Base
     @numusers = User.count
     @numprojects = Project.count
     @numsites = Site.count
+
+    @weather = NOAAForecast.new(94605)
+    @forecast = @weather.seven_day_weather
+    @print_forecast = print @forecast
+
     @greeting = "Greetings"
     mail(
       :from     => "alerts@stormsavvy.com",
