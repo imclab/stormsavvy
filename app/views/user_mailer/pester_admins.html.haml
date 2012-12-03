@@ -21,6 +21,8 @@
 
       %hr
 
+      = render 'pester_forecast'
+
       %table.forecast
         %tr
           %th Forecast
@@ -28,13 +30,4 @@
           %td
             = @print_forecast
 
-%table.forecast
-  %tr
-    %th
-      Forecast
-  %tr
-    %td
-      = @forecast
-      / = @print_forecast
 
-      %hr
