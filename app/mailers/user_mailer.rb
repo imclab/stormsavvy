@@ -11,9 +11,12 @@ class UserMailer < ActionMailer::Base
     @numprojects = Project.count
     @numsites = Site.count
 
-    
     @weather = NOAAForecast.new(94605)
-    @forecast = @weather.seven_day_weather[0].to_s
+    @forecast_array = @weather.seven_day_weather[0]
+    @forecast_string = @forecast_array.join("  ")
+
+    @time_array = (1.month.ago.to_date..Date.today).map{ |date| date.strftime("%b %d") }
+    @time_string = @time_array.join("  ")
 
     @greeting = "Greetings"
     mail(
