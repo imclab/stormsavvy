@@ -13,10 +13,19 @@ class UserMailer < ActionMailer::Base
 
     @weather = NOAAForecast.new(94605)
     @forecast_array = @weather.seven_day_weather[0]
-    @forecast_string = @forecast_array.join("  ")
+    @forecast_string = @forecast_array.join("\n")
 
-    @time_array = (1.month.ago.to_date..Date.today).map{ |date| date.strftime("%b %d") }
-    @time_string = @time_array.join("  ")
+    # @time_month = Date.today.strftime("%B")
+    # @time_date = Date.today.strftime("%D")
+
+    # @time_array = (1.month.ago.to_date..Date.today).map{ |date| date.strftime("%b %d") }
+    # @date_now = Date.today
+    # @date_future = Date.today + 7
+
+    @date_now = Date.today
+    @date_future = Date.today + 7   
+    @time_array = (@date_now..@date_future).map{ |date| date.strftime("%b %d %H %M") }
+    @time_string = @time_array.join("\n")
 
     @greeting = "Greetings"
     mail(
