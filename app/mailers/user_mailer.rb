@@ -11,29 +11,15 @@ class UserMailer < ActionMailer::Base
     @numprojects = Project.count
     @numsites = Site.count
 
-    @weather = NOAAForecast.new(94605)
-    @forecast_array = @weather.seven_day_weather[0]
-    @forecast_string = @forecast_array.join("\n")
-
-    # @time_month = Date.today.strftime("%B")
-    # @time_date = Date.today.strftime("%D")
-
-    # @time_array = (1.month.ago.to_date..Date.today).map{ |date| date.strftime("%b %d") }
-    # @date_now = Date.today
-    # @date_future = Date.today + 7
-
-    @date_now = Date.today
-    @date_future = Date.today + 7   
-    @time_array = (@date_now..@date_future).map{ |date| date.strftime("%b %d %H %M") }
-    @time_string = @time_array.join("\n")
-
     @greeting = "Greetings"
+    @forecast1 = [{ :date => "Date.today", :weather => "90" }]
     mail(
       :from     => "alerts@stormsavvy.com",
       :to       => email,
       :subject  => "Storm Savvy POP Alert"
       ).deliver
   end
+
 
   def mailout(to = nil)
     @greeting = "Greetings"
