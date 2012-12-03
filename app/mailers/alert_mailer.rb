@@ -2,7 +2,6 @@ class AlertMailer < ActionMailer::Base
 
   default :from => "sendgrid@stormsavvy.com"
 
-
   def noaa_forecast(to = nil)
     @users = User.all
     @users.each do |user|

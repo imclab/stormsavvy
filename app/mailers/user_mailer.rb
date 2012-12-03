@@ -1,6 +1,7 @@
 class UserMailer < ActionMailer::Base
 
   # require './lib/weather/forecast_examiner.rb'
+  include UserMailerHelper
 
   default :from => "alerts@stormsavvy.com"
   # default :from => "doolin@inventiumsystems.com"
@@ -10,8 +11,9 @@ class UserMailer < ActionMailer::Base
     @numprojects = Project.count
     @numsites = Site.count
 
+    
     @weather = NOAAForecast.new(94605)
-    @forecast = @weather.seven_day_weather
+    @forecast = @weather.seven_day_weather[0].to_s
 
     @greeting = "Greetings"
     mail(
