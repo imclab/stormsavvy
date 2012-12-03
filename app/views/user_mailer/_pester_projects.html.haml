@@ -1,0 +1,22 @@
+%table{ :style => "width: 600px; background-color: #eee;", :align => "center" }
+  %tr
+    %td
+      %p
+        Here is a list of your projects:
+
+      %table.projects
+        %tr
+          %th Projects
+          %th Users
+          %th Sites
+        %tr
+          %td
+            = @numprojects
+          %td
+            = @numusers
+          %td
+            = @numsites
+
+      %hr
+
+

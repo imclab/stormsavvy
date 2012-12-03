@@ -2,32 +2,5 @@
   %tr
     %td
       = render 'pester_intro_block'
-
-      %p
-        Here is a list of your projects:
-
-      %table.projects
-        %tr
-          %th Projects
-          %th Users
-          %th Sites
-        %tr
-          %td
-            = @numprojects
-          %td
-            = @numusers
-          %td
-            = @numsites
-
-      %hr
-
+      = render 'pester_projects'
       = render 'pester_forecast'
-
-      %table.forecast
-        %tr
-          %th Forecast
-        %tr
-          %td
-            = @print_forecast
-
-
