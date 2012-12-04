@@ -36,5 +36,8 @@ describe "layouts/application.html.haml" do
       rendered.should_not have_selector "a.dskfjghsldfkjgh", :text => "Storm Savvy"
     end
 
+    it "sets olark plugin above footer" do
+
+    end
   end
 end
