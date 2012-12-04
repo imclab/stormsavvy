@@ -8,12 +8,10 @@ describe "layouts/application.html.haml" do
     stub_template "shared/_flash_messages.html.haml" => 'flash message template'
   end
 
-=begin
   it "renders the sidebar" do
     render
     rendered.should contain 'sidebar template'
   end
-=end
 
   context "using content_for(:title)" do
 
@@ -36,8 +34,5 @@ describe "layouts/application.html.haml" do
       rendered.should_not have_selector "a.dskfjghsldfkjgh", :text => "Storm Savvy"
     end
 
-    it "sets olark plugin above footer" do
-
-    end
   end
 end
