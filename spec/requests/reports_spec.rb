@@ -6,6 +6,7 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Reports" do
+
 	before :each do
 		@user = FactoryGirl.create(
       :user,
@@ -18,7 +19,6 @@ describe "Reports" do
   end
 
   describe "GET /reports", :type => :feature do
-
 
     it "should have correct content on homepage" do
       current_path.should == '/reports'
