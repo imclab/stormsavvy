@@ -28,3 +28,11 @@ describe "user_mailer/_pester_intro_block" do
     rendered.should have_content "Storm Sumo"
   end
 end
+
+describe "user_mailer/_pester_forecast" do
+
+  it "renders the forecast partial with data" do
+    render
+    rendered.should have_content "90"
+  end
+end
