@@ -7,12 +7,7 @@
             Date
           %th
             Forecast
-          - puts 'passing spec'
-          /- @forecast1.each do |f|
           %tr
-            %td
-              - puts 'PDD'
-              /= f[:date]
-            %td
-              - puts 'spec needs to pass'
-              /= f[:weather]
+            - @forecast1.each do |f|
+              %td= f[:date]
+              %td= f[:weather]

@@ -10,7 +10,7 @@ describe "layouts/application.html.haml" do
 
   it "renders the sidebar" do
     render
-    rendered.should contain 'sidebar template'
+    rendered.should contain_template 'sidebar template'
   end
 
   context "using content_for(:title)" do
