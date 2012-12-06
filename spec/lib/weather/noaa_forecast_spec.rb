@@ -4,6 +4,7 @@ require 'weather/noaa_forecast'
 describe NOAAForecast do
 
   before(:each) do
+    # Import from lib/weather.
     @fullcount = 29
     @nf = double(NOAAForecast)
     @nf.stub(:get_lat_long).with(94530).and_return([37.9202057, -122.2937428])

@@ -5,7 +5,6 @@ describe UserMailer do
   before { ActionMailer::Base.deliveries = [] }
 
   before(:each) do
-
     @user = FactoryGirl.create(:user)
     @project = FactoryGirl.create(:project)
     @site = FactoryGirl.create(:site)
@@ -29,12 +28,30 @@ describe UserMailer do
       :zipcode => 94530
       )
     @site2.save
+
+    # NOAA forecast stub copied from lib/weather spec.
+    @fullcount = 29
+    @nf = double(NOAAForecast)
+    @nf.stub(:get_lat_long).with(94530).and_return([37.9202057, -122.2937428])
+    @nf.stub(:ping_noaa).with([37.92, -122.29], 168, 6) do
+      IO.read("./spec/lib/weather/noaa_response.xml")
+    end
+    @nf.stub(:get_forecast).with(@nf.get_lat_long(94530)) do
+      response = @nf.ping_noaa([37.92, -122.29], 168, 6)
+      nf = NOAAForecast.new(94530)
+      nf.parse_weather_data(response)
+    end
+    @nf.stub(:seven_day_weather) do
+      latlong = @nf.get_lat_long(94530)
+      @nf.get_forecast(latlong)
+    end
   end
 
   describe "pester_admins" do
 
     before(:each) do
       @receipient = "walter@stormsavvy.com"
+
       @mailer = UserMailer.mailout(@recipient).deliver
     end
 
@@ -54,6 +71,7 @@ describe UserMailer do
     end
 
     it "renders user, project and site count" do
+      @numprojects.should_not be_nil
       @numprojects.should_not be_nil
       @numusers.should_not be_nil
       @numsites.should_not be_nil
