@@ -6,4 +6,8 @@ module UserMailerHelper
  #  end
  @pester_forecast = [{ :date => "Date.today", :weather => "90" }]
 
+  def fa
+    [{ :date => "dfsass", :weather => "8708907" }]
+  end
+
 end

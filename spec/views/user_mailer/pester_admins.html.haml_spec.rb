@@ -32,4 +32,9 @@ describe "user_mailer/_pester_forecast" do
     rendered.should have_selector 'table'
     rendered.should have_selector 'th', :text => "Forecast"
   end
+
+  it "renders the forecast partial with data" do
+    render
+    rendered.should have_content "90"
+  end
 end
