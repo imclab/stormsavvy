@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe "user_mailer/pester_admins" do
+
+  before(:all) do
+    @greeting = "Foobar"
+    @forecast1 = [{ :date => "today", :weather => "90" }]
+  end
+
   it "greet the admin user" do
     render
     rendered.should =~ /daily admin email/
@@ -23,10 +29,17 @@ describe "user_mailer/_pester_intro_block" do
 end
 
 describe "user_mailer/_pester_forecast" do
+
+  before(:all) do
+    #@greeting = "Foobar"
+    @forecast1 = [{ :date => "today", :weather => "90" }]
+  end
+
   it "renders the forecast partial" do
     render
     rendered.should have_content "Forecast"
   end
+
   it "contains a forecast table" do
     render
     rendered.should have_selector 'table'
