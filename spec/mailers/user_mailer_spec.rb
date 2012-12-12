@@ -51,8 +51,12 @@ describe UserMailer do
 
     before(:each) do
       @receipient = "walter@stormsavvy.com"
-
       @mailer = UserMailer.mailout(@recipient).deliver
+
+      @numusers = [@user]
+      @numprojects = [@project]
+      @numsites = [@site]
+
     end
 
     it "should send something via mailout" do
@@ -78,7 +82,7 @@ describe UserMailer do
     end
 
     it "renders forecast table" do
-      @forecast.should_not be_nil
+      @nf.should_not be_nil
     end
   end
 
