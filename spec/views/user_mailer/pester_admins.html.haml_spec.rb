@@ -33,6 +33,7 @@ describe "user_mailer/_pester_forecast" do
   before(:all) do
     #@greeting = "Foobar"
     @forecast1 = [{ :date => "today", :weather => "90" }]
+    @forecast2 = [{ :date => Date.today, :weather => "90" }]
   end
 
   it "renders the forecast partial" do
@@ -46,8 +47,10 @@ describe "user_mailer/_pester_forecast" do
     rendered.should have_selector 'th', :text => "Forecast"
   end
 
-  it "renders the forecast partial with data" do
+  it "renders date with data" do
+    @date = Date.today
     render
+    rendered.should have_content @date
     rendered.should have_content "90"
   end
 end
