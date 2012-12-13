@@ -31,9 +31,25 @@ end
 describe "user_mailer/_pester_forecast" do
 
   before(:all) do
-    #@greeting = "Foobar"
-    @forecast1 = [{ :date => "today", :weather => "90" }]
-    @forecast2 = [{ :date => Date.today, :weather => "90" }]
+    # @greeting = "Foobar"
+    # @date1 = Date.today
+    # @forecast1 = [{ :date => @date1, :weather => "90" }]
+    # @date2 = @date1 + 1.day
+    # @forecast1 = [{ :date => @date2, :weather => "85" }]
+    @forecast1 = [{ :date => Date.today, :weather => "90" },
+                  { :date => Date.today + 1.day, :weather => "85"},
+                  { :date => Date.today + 2.day, :weather => "80"},
+                  { :date => Date.today + 3.day, :weather => "75"},
+                  { :date => Date.today + 4.day, :weather => "70"},
+                  { :date => Date.today + 5.day, :weather => "65"},
+                  { :date => Date.today + 6.day, :weather => "60"}]
+    @date1 = Date.today
+    @date2 = Date.today + 1.day
+    @date3 = Date.today + 2.day
+    @date4 = Date.today + 3.day
+    @date5 = Date.today + 4.day
+    @date6 = Date.today + 5.day
+    @date7 = Date.today + 6.day
   end
 
   it "renders the forecast partial" do
@@ -48,9 +64,22 @@ describe "user_mailer/_pester_forecast" do
   end
 
   it "renders date with data" do
-    @date = Date.today
+    
     render
-    rendered.should have_content @date
+    rendered.should have_content @date1
+    rendered.should have_content @date2
+    rendered.should have_content @date3
+    rendered.should have_content @date4
+    rendered.should have_content @date5
+    rendered.should have_content @date6
+    rendered.should have_content @date7
+
     rendered.should have_content "90"
+    rendered.should have_content "85"
+    rendered.should have_content "80"
+    rendered.should have_content "75"
+    rendered.should have_content "70"
+    rendered.should have_content "65"
+    rendered.should have_content "60"
   end
 end
