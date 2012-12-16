@@ -15,7 +15,7 @@ describe "reports/show" do
     # sign_in @user
   end
 
-  it "renders edit / back / delete" do
+  xit "renders edit / back / delete" do
     render
     rendered.should =~ /Edit/
     rendered.should =~ /Delete/
