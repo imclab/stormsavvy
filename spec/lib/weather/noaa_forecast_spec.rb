@@ -42,6 +42,13 @@ describe NOAAForecast do
     forecast[0].size.should == @fullcount
   end
 
+  it "procures the 'validDate' from the NOAA response" do
+    response = @nf.ping_noaa([37.92, -122.29], 168, 6)
+    nf = NOAAForecast.new(94530,168,6)
+    dates = nf.get_valid_dates(response)
+    dates.size.should == 8
+  end
+
   it "does something with seven day weather" do
     forecast = @nf.seven_day_weather
     forecast[0].size.should == @fullcount

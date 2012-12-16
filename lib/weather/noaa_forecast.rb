@@ -47,6 +47,11 @@ class NOAAForecast
     return request.response.body
   end
 
+  def get_valid_dates(xmldoc)
+    doc   = Nokogiri::XML(xmldoc)
+    doc.xpath("//validDate").map { |n| n.content.to_i }
+  end
+
   def parse_weather_data(xmldoc)
     doc   = Nokogiri::XML(xmldoc)
     pop = doc.xpath("//pop").map { |n| n.content.to_i }
