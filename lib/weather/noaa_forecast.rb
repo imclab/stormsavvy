@@ -1,6 +1,8 @@
 require 'typhoeus'
 require 'nokogiri'
 require 'geocoder'
+require 'date'
+require 'time'
 
 class NOAAForecast
 
@@ -50,6 +52,12 @@ class NOAAForecast
   def get_valid_dates(xmldoc)
     doc   = Nokogiri::XML(xmldoc)
     doc.xpath("//validDate").map { |n| n.content.to_i }
+  end
+
+  def get_forecast_creation_time(xmldoc)
+    doc   = Nokogiri::XML(xmldoc)
+    datestring = doc.xpath("//forecastCreationTime").first.content
+    DateTime.parse(datestring, "%a %b %d %H:%M:%S %Y %Z")
   end
 
   def parse_weather_data(xmldoc)
