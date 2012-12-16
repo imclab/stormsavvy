@@ -1,5 +1,4 @@
 require 'spec_helper'
-
 require 'weather/forecast_examiner'
 
 describe ForecastExaminer do
