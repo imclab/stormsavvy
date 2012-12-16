@@ -11,7 +11,7 @@ FactoryGirl.define do
   	contractor_address_1 "525 Jacoby Street"
   	contractor_address_2 "N/A"
   	contractor_city " San Rafael"
-  	# contractor_state "CA"
+  	contractor_state "CA"
   	contractor_zipcode 94901
 
   	contract_number "04-264064"
