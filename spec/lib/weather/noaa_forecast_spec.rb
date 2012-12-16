@@ -49,6 +49,14 @@ describe NOAAForecast do
     dates.size.should == 8
   end
 
+  it "procures forecast creation time from the NOAA response" do
+    response = @nf.ping_noaa([37.92, -122.29], 168, 6)
+    nf = NOAAForecast.new(94530,168,6)
+    creation_time = nf.get_forecast_creation_time(response)
+    datehash = DateTime.parse("Sun Nov 18 23:02:24 2012 UTC", "%a %b %d %H:%M:%S %Y %Z")
+    creation_time.should == datehash
+  end
+
   it "does something with seven day weather" do
     forecast = @nf.seven_day_weather
     forecast[0].size.should == @fullcount

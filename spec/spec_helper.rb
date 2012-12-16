@@ -1,3 +1,4 @@
+=begin
 Spork.prefork do
   unless ENV['DRB']
     require 'simplecov'
@@ -12,8 +13,10 @@ Spork.each_run do
   end
 end
 
-require 'rubygems'
 require 'spork'
+=end
+
+require 'rubygems'
 
 # Prawn spec setup:
 require "devise"
