@@ -8,7 +8,9 @@ class UserMailer < ActionMailer::Base
     @numsites = Site.count
 
     @greeting = "Greetings"
-
+    @forecast2 = NOAAForecast.new(94605)
+    @forecast1 = @forecast2.get_forecast_array
+=begin
     @forecast1 = [{ :date => Date.today, :weather => "90" },
                   { :date => Date.today + 1.day, :weather => "85"},
                   { :date => Date.today + 2.day, :weather => "80"},
@@ -16,7 +18,7 @@ class UserMailer < ActionMailer::Base
                   { :date => Date.today + 4.day, :weather => "70"},
                   { :date => Date.today + 5.day, :weather => "65"},
                   { :date => Date.today + 6.day, :weather => "60"}]
-
+=end
     mail(
       :from     => "alerts@stormsavvy.com",
       :to       => email,

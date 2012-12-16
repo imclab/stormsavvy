@@ -7,9 +7,9 @@
             Date
           %th
             Forecast
-        - @forecast1.each do |f|
-          %tr
-            %td
-              = f[:date]
-            %td
-              = f[:weather]
+          - @forecast1.each do |f|
+            %tr
+              %td
+                = f[:date]
+              %td
+                = f[:weather]
