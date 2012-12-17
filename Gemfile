@@ -12,6 +12,7 @@ gem 'pg'
 gem 'carmen'
 gem 'activeadmin'
 gem 'rb-readline'
+gem 'travis'
 
 gem 'therubyracer'
 gem 'haml-rails'
