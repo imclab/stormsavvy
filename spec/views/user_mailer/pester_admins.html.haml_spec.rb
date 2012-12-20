@@ -31,11 +31,6 @@ end
 describe "user_mailer/_pester_forecast" do
 
   before(:all) do
-    # @greeting = "Foobar"
-    # @date1 = Date.today
-    # @forecast1 = [{ :date => @date1, :weather => "90" }]
-    # @date2 = @date1 + 1.day
-    # @forecast1 = [{ :date => @date2, :weather => "85" }]
     @forecast1 = [{ :date => Date.today, :weather => "90" },
                   { :date => Date.today + 1.day, :weather => "85"},
                   { :date => Date.today + 2.day, :weather => "80"},
@@ -64,7 +59,7 @@ describe "user_mailer/_pester_forecast" do
   end
 
   it "renders date with data" do
-    
+
     render
     rendered.should have_content @date1
     rendered.should have_content @date2
