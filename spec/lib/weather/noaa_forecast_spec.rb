@@ -57,11 +57,10 @@ describe NOAAForecast do
     creation_time.should == datehash
   end
 
-  it "prints get_forecast_array" do
+  it "procures forecast array" do
     response = @nf.ping_noaa([37.92, -122.29], 168, 6)
     nf = NOAAForecast.new(94530,168,6)
     datehash = nf.get_forecast_array
-    puts datehash
     datehash.should_not be_nil
   end
 
@@ -69,9 +68,11 @@ describe NOAAForecast do
     response = @nf.ping_noaa([37.92, -122.29], 168, 6)
     nf = NOAAForecast.new(94530,168,6)
     datehash = nf.get_forecast_array
+
     datehash.each do |f|
       print f
     end
+
     forecast = nf.seven_day_weather
     print forecast
   end
