@@ -86,25 +86,34 @@ describe NOAAForecast do
     nf = NOAAForecast.new(94530)
     response = nf.get_forecast_array
     forecast_array = [{ :date => Date.today, :weather => "1" },
-                       { :date => Date.today + 6.hours, :weather => "2"},
-                       { :date => Date.today + 12.hours, :weather => "3"},
-                       { :date => Date.today + 24.hours, :weather => "4"},
-                       { :date => Date.today + 30.hours, :weather => "5"},
-                       { :date => Date.today + 36.hours, :weather => "6"},
-                       { :date => Date.today + 42.hours, :weather => "7"}]
+                      { :date => Date.today + 6.hours, :weather => "2"},
+                      { :date => Date.today + 12.hours, :weather => "3"},
+                      { :date => Date.today + 24.hours, :weather => "4"},
+                      { :date => Date.today + 30.hours, :weather => "5"},
+                      { :date => Date.today + 36.hours, :weather => "6"},
+                      { :date => Date.today + 42.hours, :weather => "7"}]
     response.should == forecast_array
   end
   
-  it "replaces mock forecast with seven_day_forecast" do
+  it "replaces mock forecast with formatted seven_day_forecast" do
     response = @nf.ping_noaa([37.92, -122.29], 168, 6)
     nf = NOAAForecast.new(94530,168,6)
-    datehash = nf.get_forecast_array
 
+    datehash = nf.get_forecast_array[1]
     datehash.each do |f|
       print f
     end
+    
+    forecast = nf.seven_day_weather[0][1]
+    print forecast
 
-    forecast = nf.seven_day_weather
-    print forecast    
+    forecast_array = [{ :date => Date.today, 
+                        :weather => nf.seven_day_weather[0][1] }]
+    print forecast_array                        
+                        
+    forecast_array.should == [{ :date => Date.today, 
+                                :weather => nf.seven_day_weather[0][1] }]
+    
+    # puts forecast.join("\n")
   end
 end
