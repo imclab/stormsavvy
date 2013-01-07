@@ -101,11 +101,11 @@ describe NOAAForecast do
 
     datehash = nf.get_forecast_array[1]
     datehash.each do |f|
-      print f
+      # print f
     end
     
     forecast = nf.seven_day_weather[0][1]
-    print forecast
+    # print forecast
 
     forecast_array = [{ :date => Date.today, 
                         :weather => nf.seven_day_weather[0][1] }]
