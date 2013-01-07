@@ -71,10 +71,12 @@ describe NOAAForecast do
 
     datehash.each do |f|
       print f
+      puts "\n"
     end
 
     forecast = nf.seven_day_weather
     print forecast
+    puts "\n"
   end
 
   it "does something with seven day weather" do
@@ -85,16 +87,40 @@ describe NOAAForecast do
   it "returns mock forecast array" do
     nf = NOAAForecast.new(94530)
     response = nf.get_forecast_array
-    forecast_array = [{ :date => Date.today, :weather => "1" },
-                      { :date => Date.today + 6.hours, :weather => "2"},
-                      { :date => Date.today + 12.hours, :weather => "3"},
-                      { :date => Date.today + 24.hours, :weather => "4"},
-                      { :date => Date.today + 30.hours, :weather => "5"},
-                      { :date => Date.today + 36.hours, :weather => "6"},
-                      { :date => Date.today + 42.hours, :weather => "7"}]
+    forecast_array = [
+      { :date => Date.today, :weather => nf.seven_day_weather[0][0] },
+      { :date => Date.today + 6.hours, :weather => nf.seven_day_weather[0][1] },
+      { :date => Date.today + 12.hours, :weather => nf.seven_day_weather[0][2] },
+      { :date => Date.today + 18.hours, :weather => nf.seven_day_weather[0][3] },
+      { :date => Date.today + 24.hours, :weather => nf.seven_day_weather[0][4] },
+      { :date => Date.today + 30.hours, :weather => nf.seven_day_weather[0][5] },
+      { :date => Date.today + 36.hours, :weather => nf.seven_day_weather[0][6] },
+      { :date => Date.today + 42.hours, :weather => nf.seven_day_weather[0][7] },
+      { :date => Date.today + 48.hours, :weather => nf.seven_day_weather[0][8] },
+      { :date => Date.today + 54.hours, :weather => nf.seven_day_weather[0][9] },
+      { :date => Date.today + 60.hours, :weather => nf.seven_day_weather[0][10] },
+      { :date => Date.today + 66.hours, :weather => nf.seven_day_weather[0][11] },
+      { :date => Date.today + 72.hours, :weather => nf.seven_day_weather[0][12] },
+      { :date => Date.today + 78.hours, :weather => nf.seven_day_weather[0][13] },
+      { :date => Date.today + 84.hours, :weather => nf.seven_day_weather[0][14] },
+      { :date => Date.today + 90.hours, :weather => nf.seven_day_weather[0][15] },
+      { :date => Date.today + 96.hours, :weather => nf.seven_day_weather[0][16] },
+      { :date => Date.today + 102.hours, :weather => nf.seven_day_weather[0][17] },
+      { :date => Date.today + 108.hours, :weather => nf.seven_day_weather[0][18] },
+      { :date => Date.today + 114.hours, :weather => nf.seven_day_weather[0][19] },
+      { :date => Date.today + 120.hours, :weather => nf.seven_day_weather[0][20] },
+      { :date => Date.today + 126.hours, :weather => nf.seven_day_weather[0][21] },
+      { :date => Date.today + 132.hours, :weather => nf.seven_day_weather[0][22] },
+      { :date => Date.today + 138.hours, :weather => nf.seven_day_weather[0][23] },
+      { :date => Date.today + 142.hours, :weather => nf.seven_day_weather[0][24] },
+      { :date => Date.today + 148.hours, :weather => nf.seven_day_weather[0][25] },
+      { :date => Date.today + 154.hours, :weather => nf.seven_day_weather[0][26] },
+      { :date => Date.today + 160.hours, :weather => nf.seven_day_weather[0][27] },
+      { :date => Date.today + 166.hours, :weather => nf.seven_day_weather[0][28] }
+    ]
     response.should == forecast_array
   end
-  
+
   it "replaces mock forecast with formatted seven_day_forecast" do
     response = @nf.ping_noaa([37.92, -122.29], 168, 6)
     nf = NOAAForecast.new(94530,168,6)
@@ -103,17 +129,75 @@ describe NOAAForecast do
     datehash.each do |f|
       # print f
     end
-    
+
     forecast = nf.seven_day_weather[0][1]
     # print forecast
 
-    forecast_array = [{ :date => Date.today, 
-                        :weather => nf.seven_day_weather[0][1] }]
-    print forecast_array                        
-                        
-    forecast_array.should == [{ :date => Date.today, 
-                                :weather => nf.seven_day_weather[0][1] }]
-    
-    # puts forecast.join("\n")
+    forecast_array = [
+      { :date => Date.today, :weather => nf.seven_day_weather[0][0] },
+      { :date => Date.today + 6.hours, :weather => nf.seven_day_weather[0][1] },
+      { :date => Date.today + 12.hours, :weather => nf.seven_day_weather[0][2] },
+      { :date => Date.today + 18.hours, :weather => nf.seven_day_weather[0][3] },
+      { :date => Date.today + 24.hours, :weather => nf.seven_day_weather[0][4] },
+      { :date => Date.today + 30.hours, :weather => nf.seven_day_weather[0][5] },
+      { :date => Date.today + 36.hours, :weather => nf.seven_day_weather[0][6] },
+      { :date => Date.today + 42.hours, :weather => nf.seven_day_weather[0][7] },
+      { :date => Date.today + 48.hours, :weather => nf.seven_day_weather[0][8] },
+      { :date => Date.today + 54.hours, :weather => nf.seven_day_weather[0][9] },
+      { :date => Date.today + 60.hours, :weather => nf.seven_day_weather[0][10] },
+      { :date => Date.today + 66.hours, :weather => nf.seven_day_weather[0][11] },
+      { :date => Date.today + 72.hours, :weather => nf.seven_day_weather[0][12] },
+      { :date => Date.today + 78.hours, :weather => nf.seven_day_weather[0][13] },
+      { :date => Date.today + 84.hours, :weather => nf.seven_day_weather[0][14] },
+      { :date => Date.today + 90.hours, :weather => nf.seven_day_weather[0][15] },
+      { :date => Date.today + 96.hours, :weather => nf.seven_day_weather[0][16] },
+      { :date => Date.today + 102.hours, :weather => nf.seven_day_weather[0][17] },
+      { :date => Date.today + 108.hours, :weather => nf.seven_day_weather[0][18] },
+      { :date => Date.today + 114.hours, :weather => nf.seven_day_weather[0][19] },
+      { :date => Date.today + 120.hours, :weather => nf.seven_day_weather[0][20] },
+      { :date => Date.today + 126.hours, :weather => nf.seven_day_weather[0][21] },
+      { :date => Date.today + 132.hours, :weather => nf.seven_day_weather[0][22] },
+      { :date => Date.today + 138.hours, :weather => nf.seven_day_weather[0][23] },
+      { :date => Date.today + 142.hours, :weather => nf.seven_day_weather[0][24] },
+      { :date => Date.today + 148.hours, :weather => nf.seven_day_weather[0][25] },
+      { :date => Date.today + 154.hours, :weather => nf.seven_day_weather[0][26] },
+      { :date => Date.today + 160.hours, :weather => nf.seven_day_weather[0][27] },
+      { :date => Date.today + 166.hours, :weather => nf.seven_day_weather[0][28] }
+     ]
+
+    print forecast_array
+    puts "\n"
+
+    forecast_array.should == [
+      { :date => Date.today, :weather => nf.seven_day_weather[0][0] },
+      { :date => Date.today + 6.hours, :weather => nf.seven_day_weather[0][1] },
+      { :date => Date.today + 12.hours, :weather => nf.seven_day_weather[0][2] },
+      { :date => Date.today + 18.hours, :weather => nf.seven_day_weather[0][3] },
+      { :date => Date.today + 24.hours, :weather => nf.seven_day_weather[0][4] },
+      { :date => Date.today + 30.hours, :weather => nf.seven_day_weather[0][5] },
+      { :date => Date.today + 36.hours, :weather => nf.seven_day_weather[0][6] },
+      { :date => Date.today + 42.hours, :weather => nf.seven_day_weather[0][7] },
+      { :date => Date.today + 48.hours, :weather => nf.seven_day_weather[0][8] },
+      { :date => Date.today + 54.hours, :weather => nf.seven_day_weather[0][9] },
+      { :date => Date.today + 60.hours, :weather => nf.seven_day_weather[0][10] },
+      { :date => Date.today + 66.hours, :weather => nf.seven_day_weather[0][11] },
+      { :date => Date.today + 72.hours, :weather => nf.seven_day_weather[0][12] },
+      { :date => Date.today + 78.hours, :weather => nf.seven_day_weather[0][13] },
+      { :date => Date.today + 84.hours, :weather => nf.seven_day_weather[0][14] },
+      { :date => Date.today + 90.hours, :weather => nf.seven_day_weather[0][15] },
+      { :date => Date.today + 96.hours, :weather => nf.seven_day_weather[0][16] },
+      { :date => Date.today + 102.hours, :weather => nf.seven_day_weather[0][17] },
+      { :date => Date.today + 108.hours, :weather => nf.seven_day_weather[0][18] },
+      { :date => Date.today + 114.hours, :weather => nf.seven_day_weather[0][19] },
+      { :date => Date.today + 120.hours, :weather => nf.seven_day_weather[0][20] },
+      { :date => Date.today + 126.hours, :weather => nf.seven_day_weather[0][21] },
+      { :date => Date.today + 132.hours, :weather => nf.seven_day_weather[0][22] },
+      { :date => Date.today + 138.hours, :weather => nf.seven_day_weather[0][23] },
+      { :date => Date.today + 142.hours, :weather => nf.seven_day_weather[0][24] },
+      { :date => Date.today + 148.hours, :weather => nf.seven_day_weather[0][25] },
+      { :date => Date.today + 154.hours, :weather => nf.seven_day_weather[0][26] },
+      { :date => Date.today + 160.hours, :weather => nf.seven_day_weather[0][27] },
+      { :date => Date.today + 166.hours, :weather => nf.seven_day_weather[0][28] }
+    ]
   end
 end
