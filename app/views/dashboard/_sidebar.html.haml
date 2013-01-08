@@ -13,14 +13,14 @@
               %br
               %tr
               %td
-                = image_tag("/assets/sunny_weather.png")
+                /= image_tag("/assets/sunny_weather.png")
               %td
                 %i=link_to "#{site.name}: ", project_site_path(project, site)
-                = "5% chance of rain"
-                /= "#{site.max_rain}% chance of rain"
+                /= "5% chance of rain"
+                = "#{site.max_rain}% chance of rain"
   #current_action_items.widget.bottom-10
     .inner
-      %h5 
+      %h5
         Pending Reports
       %hr
       - unless @needs_attention_reports.empty?
@@ -28,59 +28,14 @@
           = link_to "Report for #{report.site.name}", edit_report_path(report)
       - else
         You have pending reports.
-      /%hr
-      / Mock link for mvp video.
-      /= link_to "9-30-12 CEM 2023 Weekly Training Report"
-      /%br
-      / Mock link for mvp video.
-      /= link_to "9-23-12 CEM 2023 Weekly Training Report"
-      /%br
-      / Mock link for mvp video.
-      /= link_to "9-30-12 CEM 2030 Weekly Inspection Report", new_report_path
-      /%br
-      / Mock link for mvp video.
-      /= link_to "9-23-12 CEM 2030 Weekly Inspection Report", new_report_path
-      /%br
-      / Mock link for mvp video.
-      /= link_to "9-30-12 CEM 2035 Corrective Action Report"
-      /%br
-      / Mock link for mvp video.
-      /= link_to "9-23-12 CEM 2035 Corrective Action Report"
-      /%br
       %br
   #current_daily_diary.widget.bottom-10
     .inner
       %h5
-        Report Forms 
+        Report Forms
       %hr
       = link_to "New Report", new_report_path
       %br
       = link_to "CEM 2030 Weekly Inspection Report", new_report_path
-      / Mock links for mvp video.
-      /= link_to "CEM 2023 Weekly Training"
-      /%br
-      / Mock links for mvp video.
-      /= link_to "CEM 2024 Training Attendance Log"
-      /%br
-      / Mock links for mvp video.
-      /= link_to "CEM 2034 BMP Status Report"
-      /%br
-      / Mock links for mvp video.
-      /= link_to "CEM 2035 Corrective Action Report"
-      /%br
-      / Mock links for mvp video.
-      /= link_to "CEM 2040 Weather Forecast Log"
-      /%br
-      / Mock links for mvp video.
-      /= link_to "CEM 2050 Sampling Record Report"
-      /%br
-      / Mock links for mvp video.
-      /= link_to "CEM 2051 Sampling Result Report"
-      /%br
-      / Mock links for mvp video.
-      /= link_to "CEM 2061 Notice of Discharge Report"
-      /%br
-      / Mock links for mvp video.
-      /= link_to "CEM 2070 Annual Certification"
   %br
   %br
