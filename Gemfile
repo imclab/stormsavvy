@@ -29,7 +29,6 @@ group :development do
   gem 'therubyracer', :platforms => :ruby, :require => 'v8'
   gem 'letter_opener'
 end
-end
 
 group :test, :development do
   gem 'builder'
