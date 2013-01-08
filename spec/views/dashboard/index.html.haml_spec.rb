@@ -32,7 +32,7 @@ describe "dashboard/index" do
       view.should render_template('dashboard/_sidebar')
     end
 
-    it "shows sidebar with correct links" do
+    it "shows sidebar with correct titles" do
       render
       rendered.should have_selector('div#dashboard-sidebar')
       rendered.should =~ /New Report/
