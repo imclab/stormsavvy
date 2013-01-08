@@ -26,9 +26,9 @@ describe "homepage" do
     visit '/pdf'
     current_path.should == '/pdf'
 
-    visit '/index'
-    click_link 'Storm Savvy POP'
+    # visit '/index'
+    # click_link 'Storm Savvy POP'
     # visit 'http://pop.stormsavvy.com/'
-    current_url.should == 'http://pop.stormsavvy.com/index'
+    # current_url.should == 'http://pop.stormsavvy.com/index'
   end
 end
