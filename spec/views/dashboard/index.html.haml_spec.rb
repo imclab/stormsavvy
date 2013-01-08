@@ -19,23 +19,25 @@ describe "dashboard/index" do
 
   describe "index page components" do
 
-    it "should show Active Projects to signed in user" do
+    it "shows active projects to signed in user" do
       render
       rendered.should have_selector('div#modules')
       view.should render_template('dashboard/_modules')
       rendered.should =~ /Active Projects/
     end
 
-    it "should show the Dashboard sidebar to signed in user" do
+    it "shows sidebar to signed in user" do
       render
       rendered.should have_selector('div#dashboard-sidebar')
       view.should render_template('dashboard/_sidebar')
     end
 
-    it "Dashboard contains new report link" do
+    it "shows sidebar with correct links" do
       render
       rendered.should have_selector('div#dashboard-sidebar')
       rendered.should =~ /New Report/
+      rendered.should =~ /Pending Reports/
+      rendered.should =~ /Report Forms/
     end
   end
 end
