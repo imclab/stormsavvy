@@ -7,7 +7,7 @@ gem 'typhoeus'
 gem 'nokogiri'
 gem 'geocoder', :github => 'doolin/geocoder'
 gem 'devise'
-# gem 'pg'
+gem 'pg'
 
 gem 'carmen'
 gem 'activeadmin'
