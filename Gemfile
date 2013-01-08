@@ -14,7 +14,7 @@ gem 'activeadmin'
 gem 'rb-readline'
 gem 'travis'
 
-gem 'therubyracer'
+# gem 'therubyracer'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass', ">= 2.1.0.1"
@@ -26,7 +26,9 @@ gem 'simple_form'
 gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
 
 group :development do
+  gem 'therubyracer', :platforms => :ruby, :require => 'v8'
   gem 'letter_opener'
+end
 end
 
 group :test, :development do
