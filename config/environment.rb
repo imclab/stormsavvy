@@ -1,6 +1,9 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
+# Silence Rails 2.3 plugin deprecation warning
+ActiveSupport::Deprecation.silenced = true
+
 # Initialize the rails application
 Stormsavvy::Application.initialize!
 
