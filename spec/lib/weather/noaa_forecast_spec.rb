@@ -85,7 +85,7 @@ describe NOAAForecast do
   end
 
   it "replaces mock forecast with formatted seven_day_forecast" do
-    response = @nf.ping_noaa([37.92, -122.29], 168, 6)
+    # response = @nf.ping_noaa([37.92, -122.29], 168, 6)
     nf = NOAAForecast.new(94530,168,6)
     nf.get_forecast_array.should == [
       { :date => Date.today, :weather => nf.seven_day_weather[0][0] },
