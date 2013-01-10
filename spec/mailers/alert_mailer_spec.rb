@@ -1,4 +1,5 @@
 require "spec_helper"
+require "date"
 
 include Warden::Test::Helpers
 Warden.test_mode!
@@ -21,6 +22,8 @@ describe AlertMailer do
     @project = FactoryGirl.create(
       :project,
       :user => @user,
+      :startdate => Date.today,
+      :finishdate => Date.today + 30.days,
       :created_at => 1.day.ago
       )
     @site = FactoryGirl.create(
@@ -78,10 +81,15 @@ describe AlertMailer do
   describe "noaa_forecast" do
 
     before(:each) do
-      @u = FactoryGirl.create(:user, :email => "test@example.com")
-      p = @u.projects.create(:name => "foo", :description => "bar")
-      s = p.sites.build
-      @mailer = AlertMailer.noaa_forecast(@u.email).deliver
+      @user = FactoryGirl.create(:user, :email => "test@example.com")
+      project = @user.projects.create(
+        :name => "foo",
+        :description => "bar",
+        :startdate => Date.today,
+        :finishdate => Date.today + 30.days
+      )
+      site = project.sites.build
+      @mailer = AlertMailer.noaa_forecast(@user.email).deliver
     end
 
     it "should send something via mailout" do
