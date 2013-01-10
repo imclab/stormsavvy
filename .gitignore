@@ -5,6 +5,8 @@
 /tmp
 
 *.rdebug
+*.rb~
+*.haml~
 .project
 .sass-cache
 .idea
@@ -13,6 +15,7 @@
 .rvmrc
 .sass-cache/
 .gemrc
+
 app/assets/images/.DS_Store
 app/pdfs/*.txt
 app/models/*.txt
