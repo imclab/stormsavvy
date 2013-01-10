@@ -13,9 +13,11 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :sites
 
   validates_presence_of :name,
-    :description,
-    :startdate,
-    :finishdate
+    :description
+
+    # Comment out until calendars are debugged
+    # :startdate,
+    # :finishdate
 
   before_save :check_dates
 
