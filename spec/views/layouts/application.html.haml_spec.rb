@@ -1,15 +1,14 @@
 require 'spec_helper'
 
 describe "layouts/application.html.haml" do
+
   before(:each) do
     @user = FactoryGirl.create(:user)
     sign_in @user
+    stub_template "shared/_google_analytics.html.haml" => 'google analytics header'
     stub_template "shared/_cta-bar.html.haml" => 'sidebar template'
     stub_template "shared/_flash_messages.html.haml" => 'flash message template'
-  end
-
-  it "renders the sidebar" do
-    # response.should render_template ''
+    stub_template "shared/_hero.html.haml" => 'hero copy template'
   end
 
   context "using content_for(:title)" do
@@ -30,7 +29,7 @@ describe "layouts/application.html.haml" do
     it "sets link and brand title" do
       rendered.should have_selector "a", :text => "#{brand_title}"
       rendered.should have_selector "a.brand", :text => "Storm Savvy"
-      rendered.should_not have_selector "a.dskfjghsldfkjgh", :text => "Storm Savvy"
+      rendered.should_not have_selector "a.random_text", :text => "Storm Savvy"
     end
 
   end
