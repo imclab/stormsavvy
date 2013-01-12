@@ -4,7 +4,12 @@ describe "alert_mailer/noaa_forecast.text.haml" do
 
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @project = @user.projects.build(:name => "foo", :description => "bar")
+    @project = @user.projects.build(
+      :name => "foo", 
+      :description => "bar",
+      :startdate => Date.today,
+      :finishdate => Date.today + 30.days
+    )
     @project.save
     sign_in @user
   end

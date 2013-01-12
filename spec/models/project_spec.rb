@@ -37,11 +37,11 @@ describe Project do
     end
     it "requires a starting date" do
       @project.startdate = ''
-      @project.should_not be_valid
+      @project.should be_valid
     end
     it "requires a finishing date" do
       @project.finishdate = ''
-      @project.should_not be_valid
+      @project.should be_valid
     end
   end
 
