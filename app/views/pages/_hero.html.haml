@@ -1,22 +1,32 @@
-#hero
+.hero-unit
   .container
     .row
-      .span12
-        #welcome.hero-unit.pagination-centered
-          %h1 
+      .span8
+        .pagination-centered
+          %h1
             Got SWPPP?
-          %h3 
-            Weather Alerts, Docs & Mobile Apps For Your Project
-          .loud 
-            Free To Use, Save Thousands On Custom Software
-          %p.top-20
-            = link_to 'Start Here', new_user_registration_path, :class => "btn btn-primary"
-            / %br
-            / %p.top-20
-            / %h4
-            /   =link_to "Sign Up"
-            /   or
-            /   =link_to "Learn More", "", :class => "btn btn-primary"
-            / .span5
-            /   %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/Ul9IzIaZ9c0", :width => "560"}
-            /   = image_tag "/assets/home/hero.png"
+          %h3
+            Free Alerts & Reports By Email
+          .loud
+            Sign Up Now For Free Access
+          /%p.top-40
+          /= link_to 'PDF Reports', pdf_path, :class => "btn btn-primary"
+
+      .span4
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          %div
+            = f.label :email
+            = f.email_field :email
+          %div
+            = f.label :password
+            = f.password_field :password
+          %div
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation
+          %div
+            = f.submit "Sign up", :class => "btn btn-primary"
+          %h5
+            Already a member?
+            = link_to 'Sign in', new_user_session_path
+        /= render "devise/shared/links"

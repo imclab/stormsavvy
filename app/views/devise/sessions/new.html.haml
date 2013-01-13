@@ -1,22 +1,21 @@
-.container
-  .row
-    .leaderboard.span10.pagination-centered
-      %h2 Sign in
-      = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-        .cf
-          = f.label :email
-          .input
-            = f.email_field :email
-        .cf
-          = f.label :password
-          .input
-            = f.password_field :password
-        - if devise_mapping.rememberable?
+.leaderboard
+  .container
+    .row
+      .leaderboard.span10
+        %h2 Sign in
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
           .cf
-            = f.check_box :remember_me
-            = f.label :remember_me
-        .actions
-          = f.submit "Sign in", :class => "btn"
-      = render "links"
-  %br
-  %br
+            = f.label :email
+            .input
+              = f.email_field :email
+          .cf
+            = f.label :password
+            .input
+              = f.password_field :password
+          - if devise_mapping.rememberable?
+            .cf
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .actions
+            = f.submit "Sign in", :class => "btn"
+        = render "links"
