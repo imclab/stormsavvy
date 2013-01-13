@@ -22,9 +22,10 @@ class Project < ActiveRecord::Base
   before_save :check_dates
 
   def check_dates
-    #return false if self.startdate > self.finishdate
-    if self.startdate > self.finishdate
-      raise ActiveRecord::RecordNotSaved, 'Starting date must precede finishing date'
-    end
+    # return false if self.startdate > self.finishdate
+    #
+    # if self.startdate > self.finishdate
+    #   raise ActiveRecord::RecordNotSaved, 'Starting date must precede finishing date'
+    # end
   end
 end
