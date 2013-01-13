@@ -11,11 +11,13 @@
       %p= msg
   %fieldset
     %legend Project Details
-    = f.input :name, :hint => "Name of this project"
-    = f.input :description
-    = f.input :startdate, :as => :string, :input_html => { :class => 'datePicker' }
-    = f.input :finishdate, :as => :string, :input_html => { :class => 'datePicker' }
-    = f.input :active
+    .span5
+      = f.input :name, :hint => "Name of this project"
+      = f.input :description
+    .span5
+      = f.input :startdate, :as => :string, :input_html => { :class => 'datePicker' }
+      = f.input :finishdate, :as => :string, :input_html => { :class => 'datePicker' }
+      = f.input :active
 
   %fieldset
     %legend
@@ -24,15 +26,18 @@
     .sitesWrapper
       = f.fields_for :sites do |site|
         .sitesInner
-          = site.link_to_remove "Remove this site"
-          = site.input :name
-          = site.input :description
-          = site.input :costcode
-          = site.input :address_1
-          = site.input :address_2
-          = site.input :city
-          = site.input :state, :as => :select, :collection => Carmen.states
-          = site.input :zipcode, :as => :string
+          .span5
+            = site.input :name
+            = site.input :description
+            = site.input :costcode
+          .span5
+            = site.input :address_1
+            = site.input :address_2
+            = site.input :city
+            = site.input :state, :as => :select, :collection => Carmen.states
+            = site.input :zipcode, :as => :string
+          .pull-right
+            = site.link_to_remove "Remove this site"
 
   .form-actions
     = link_to "Cancel", projects_path, :confirm => "Are you sure you want to cancel?"

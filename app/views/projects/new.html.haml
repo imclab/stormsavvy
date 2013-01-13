@@ -1,6 +1,5 @@
 .row
   -# flash = { :error => 'Error message defined in the view =(' }
-  %p Some text here.
   - flash.each do |name, msg|
     %h4 We got a flash message
     %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}

@@ -4,8 +4,8 @@ describe "projects/new" do
   before(:each) do
     assign(:project, stub_model(Project,
       :user_id => 1,
-      :name => "MyString",
-      :description => "MyText",
+      :name => "ec park and rec",
+      :description => "playground improvements",
       :active => false
     ).as_new_record)
   end
@@ -16,6 +16,8 @@ describe "projects/new" do
       assert_select "input#project_name", :name => "project[name]"
       assert_select "textarea#project_description", :name => "project[description]"
       assert_select "input#project_active", :name => "project[active]"
+      assert_select "input#project_startdate", :name => "project[startdate]"
+      assert_select "input#project_finishdate", :name => "project[finishdate]"
     end
   end
 
