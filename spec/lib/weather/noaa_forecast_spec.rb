@@ -83,6 +83,7 @@ describe NOAAForecast do
   end
 
   it "replaces mock forecast with formatted seven_day_forecast" do
+
     nf = NOAAForecast.new(94530,168,6)
     nf2 = nf.seven_day_weather
     print "1st element of seven_day_weather array is #{nf2[0]}", "\n"
@@ -91,6 +92,15 @@ describe NOAAForecast do
     pop = nf.pop
     print "First element of pop array is #{pop[0]}", "\n"
     print "Last element of pop array is #{pop[28]}", "\n"
+
+    pt = ProjectLocalTime::format(Date.today)
+
+    time = Array.new(28, pt)
+    time.each do |i|
+    end
+
+    print pt, "\n"
+    print time, "\n"
 
     nf.get_forecast_array.should == [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },

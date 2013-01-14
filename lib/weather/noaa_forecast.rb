@@ -37,7 +37,6 @@ class NOAAForecast
   end
 
   def get_forecast_array
-    # nf = NOAAForecast.new(94530,168,6)
     pop = self.pop
     [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
