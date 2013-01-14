@@ -94,13 +94,10 @@ describe NOAAForecast do
     print "Last element of pop array is #{pop[28]}", "\n"
 
     pt = ProjectLocalTime::format(Date.today)
-
     time = Array.new(28, pt)
-    time.each do |i|
+    time.each_with_index do |str, idx|
+      puts "#{str} and #{time[idx+1]}"
     end
-
-    print pt, "\n"
-    print time, "\n"
 
     nf.get_forecast_array.should == [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
