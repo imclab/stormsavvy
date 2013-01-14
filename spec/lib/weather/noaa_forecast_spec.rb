@@ -85,15 +85,18 @@ describe NOAAForecast do
   it "replaces mock forecast with formatted seven_day_forecast" do
     nf = NOAAForecast.new(94530,168,6)
     nf2 = nf.seven_day_weather
-    print nf2[0], "\n"
-    print nf2[1], "\n"
+    print "First element of seven_day_weather array is #{nf2[0]}", "\n"
+    # print nf2[1], "\n"
 
     pop = nf.pop
-    print pop
+    # print pop
+    print "First element of pop array is #{pop[0]}", "\n"
+    # print pop[0]
 
     nf.get_forecast_array.should == [
-      { :date => Date.today, :weather => nf.seven_day_weather[0][0] },
-      { :date => Date.today + 6.hours, :weather => nf.seven_day_weather[0][1] }
+      { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
+      { :date => ProjectLocalTime::format(Date.today), :weather => pop[1] },
+      { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => nf.seven_day_weather[0][1] }
 =begin
       { :date => Date.today + 6.hours, :weather => nf.seven_day_weather[0][1] },
       { :date => Date.today + 12.hours, :weather => nf.seven_day_weather[0][2] },

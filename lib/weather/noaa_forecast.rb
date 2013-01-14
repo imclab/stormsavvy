@@ -38,8 +38,10 @@ class NOAAForecast
 
   def get_forecast_array
     nf = NOAAForecast.new(94530,168,6)
+    pop = self.pop
     [
-      { :date => ProjectLocalTime::format(Date.today), :weather => nf.seven_day_weather[0][0] },
+      { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
+      { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => nf.seven_day_weather[0][1] }
 =begin
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => nf.seven_day_weather[0][1] },
