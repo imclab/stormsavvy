@@ -37,67 +37,11 @@ class NOAAForecast
   end
 
   def get_forecast_array
-    nf = NOAAForecast.new(94530,168,6)
+    # nf = NOAAForecast.new(94530,168,6)
     pop = self.pop
     [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
-      { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] },
-      { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => nf.seven_day_weather[0][1] }
-=begin
-      { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => nf.seven_day_weather[0][1] },
-      { :date => ProjectLocalTime::format(Date.today + 12.hours), :weather => nf.seven_day_weather[0][2] },
-      { :date => ProjectLocalTime::format(Date.today + 18.hours), :weather => nf.seven_day_weather[0][3] },
-      { :date => ProjectLocalTime::format(Date.today + 24.hours), :weather => nf.seven_day_weather[0][4] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][6] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][7] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][8] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 12.hours), :weather => nf.seven_day_weather[0][2] },
-      { :date => ProjectLocalTime::format(Date.today + 18.hours), :weather => nf.seven_day_weather[0][3] },
-      { :date => ProjectLocalTime::format(Date.today + 24.hours), :weather => nf.seven_day_weather[0][4] },
-      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => nf.seven_day_weather[0][5] },
-      { :date => ProjectLocalTime::format(Date.today + 36.hours), :weather => nf.seven_day_weather[0][6] },
-      { :date => ProjectLocalTime::format(Date.today + 42.hours), :weather => nf.seven_day_weather[0][7] },
-      { :date => ProjectLocalTime::format(Date.today + 48.hours), :weather => nf.seven_day_weather[0][8] },
-      { :date => ProjectLocalTime::format(Date.today + 54.hours), :weather => nf.seven_day_weather[0][9] },
-      { :date => ProjectLocalTime::format(Date.today + 60.hours), :weather => nf.seven_day_weather[0][10] },
-      { :date => ProjectLocalTime::format(Date.today + 66.hours), :weather => nf.seven_day_weather[0][11] },
-      { :date => ProjectLocalTime::format(Date.today + 72.hours), :weather => nf.seven_day_weather[0][12] },
-      { :date => ProjectLocalTime::format(Date.today + 78.hours), :weather => nf.seven_day_weather[0][13] },
-      { :date => ProjectLocalTime::format(Date.today + 84.hours), :weather => nf.seven_day_weather[0][14] },
-      { :date => ProjectLocalTime::format(Date.today + 90.hours), :weather => nf.seven_day_weather[0][15] },
-      { :date => ProjectLocalTime::format(Date.today + 96.hours), :weather => nf.seven_day_weather[0][16] },
-      { :date => ProjectLocalTime::format(Date.today + 102.hours), :weather => nf.seven_day_weather[0][17] },
-      { :date => ProjectLocalTime::format(Date.today + 108.hours), :weather => nf.seven_day_weather[0][18] },
-      { :date => ProjectLocalTime::format(Date.today + 114.hours), :weather => nf.seven_day_weather[0][19] },
-      { :date => ProjectLocalTime::format(Date.today + 120.hours), :weather => nf.seven_day_weather[0][20] },
-      { :date => ProjectLocalTime::format(Date.today + 126.hours), :weather => nf.seven_day_weather[0][21] },
-      { :date => ProjectLocalTime::format(Date.today + 132.hours), :weather => nf.seven_day_weather[0][22] },
-      { :date => ProjectLocalTime::format(Date.today + 138.hours), :weather => nf.seven_day_weather[0][23] },
-      { :date => ProjectLocalTime::format(Date.today + 142.hours), :weather => nf.seven_day_weather[0][24] },
-      { :date => ProjectLocalTime::format(Date.today + 148.hours), :weather => nf.seven_day_weather[0][25] },
-      { :date => ProjectLocalTime::format(Date.today + 154.hours), :weather => nf.seven_day_weather[0][26] },
-      { :date => ProjectLocalTime::format(Date.today + 160.hours), :weather => nf.seven_day_weather[0][27] },
-      { :date => ProjectLocalTime::format(Date.today + 166.hours), :weather => nf.seven_day_weather[0][28] }
-=end
+      { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] }
     ]
   end
 
