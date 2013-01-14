@@ -91,9 +91,10 @@ describe NOAAForecast do
     pop = nf.pop
     print pop
 
-=begin
     nf.get_forecast_array.should == [
       { :date => Date.today, :weather => nf.seven_day_weather[0][0] },
+      { :date => Date.today + 6.hours, :weather => nf.seven_day_weather[0][1] }
+=begin
       { :date => Date.today + 6.hours, :weather => nf.seven_day_weather[0][1] },
       { :date => Date.today + 12.hours, :weather => nf.seven_day_weather[0][2] },
       { :date => Date.today + 18.hours, :weather => nf.seven_day_weather[0][3] },
@@ -122,7 +123,7 @@ describe NOAAForecast do
       { :date => Date.today + 154.hours, :weather => nf.seven_day_weather[0][26] },
       { :date => Date.today + 160.hours, :weather => nf.seven_day_weather[0][27] },
       { :date => Date.today + 166.hours, :weather => nf.seven_day_weather[0][28] }
-    ]
 =end
+      ]
   end
 end
