@@ -14,7 +14,7 @@ module Stormsavvy
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
-    config.autoload_paths += %W(#{config.root}/lib/weather/*)
+    config.autoload_paths += %W(#{config.root}/lib/*)
     config.encoding = "utf-8"
     config.filter_parameters += [:password]
     config.assets.enabled = true
@@ -22,4 +22,3 @@ module Stormsavvy
     config.assets.initialize_on_precompile = false
   end
 end
-    
