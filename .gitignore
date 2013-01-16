@@ -1,12 +1,12 @@
 /.bundle
 /db/*.sqlite3
-
 /log/*.log
 /tmp
 
 *.rdebug
 *.rb~
 *.haml~
+
 .project
 .sass-cache
 .idea
@@ -15,6 +15,7 @@
 .rvmrc
 .sass-cache/
 .gemrc
+.travis.yml
 
 app/assets/images/.DS_Store
 app/pdfs/*.txt
@@ -27,7 +28,6 @@ db/test.sqlite3
 db/test.sqlite3-journal
 doc/erd/stormsavvy.mwb.bak
 doc/intro.md
-g++-4.2
 log/
 public/.DS_Store
 ruby/
@@ -36,3 +36,4 @@ script/heroku/*.dump
 test/stormsavvy/
 tmp/
 vendor/cache/
+g++-4.2
