@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rake'
-
 gem 'rails'
 gem 'typhoeus'
 gem 'nokogiri'
@@ -12,9 +11,7 @@ gem 'pg'
 gem 'carmen'
 gem 'activeadmin'
 gem 'rb-readline'
-gem 'travis'
 
-# gem 'therubyracer'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass', ">= 2.1.0.1"
@@ -31,11 +28,12 @@ group :development do
 end
 
 group :test, :development do
+  gem 'travis'
   gem 'builder'
+
   gem 'rspec-rails'
   gem 'rspec'
   gem 'factory_girl_rails'
-
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara'
@@ -60,12 +58,9 @@ group :test, :development do
 end
 
 group :assets do
-  # gem 'compass-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  # gem 'twitter-bootstrap-rails'
-  # gem 'less-rails'
 end
 
 #  gem 'rspec-http', '~> 0.9'
