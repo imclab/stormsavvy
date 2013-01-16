@@ -15,7 +15,6 @@
 .rvmrc
 .sass-cache/
 .gemrc
-.travis.yml
 
 app/assets/images/.DS_Store
 app/pdfs/*.txt
