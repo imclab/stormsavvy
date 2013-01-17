@@ -4,7 +4,23 @@ rvm:
 env:
   - DB=sqlite
   - DB=postgresql
+  global:
+    - secure: "qbwlMQs6vm5kuaEE9dFLn5x2E9coG4wcbAjTfBgiAn9AwQj5p+4HfXpA1Js0\nPb586rMBUsyTmMF6i2SGfbzynuzN3P2eA9fAKICmihmWvAa59fp/QLM7J9xY\nAKXmo0PdFE6A2CzBjv6lyU70KQykvSv25gSloAAgBXg+TVnSgWw="
+before_script:
+  - psql -c 'create database stormsavvy_test' -U postgres
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
-before_script:
-  - psql -c 'create database myapp_test' -U postgres
+  - RAILS_ENV=test bundle exec rspec spec
+after_script:
+  - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  - git remote add heroku git@heroku.com:stormsavvy.git
+  - echo "Host heroku.com" >> ~/.ssh/config
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+  - heroku keys:clear
+  - yes | heroku keys:add
+  - yes | git push heroku master
+notifications:
+  email:
+    - kharma@gmail.com
