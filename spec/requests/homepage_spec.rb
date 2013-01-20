@@ -10,36 +10,33 @@ describe "homepage" do
   before :each do
     @user = FactoryGirl.create(
       :user,
-      :email    => 'testem@spec.it',
+      :email    => 'testem@specit.com',
       :password => 'testem',
       :password_confirmation => 'testem'
       )
-    login_as(@user, :scope => :user)
+    # login_as(@user, :scope => :user)
   end
 
   it "renders sign-in page" do
     visit '/index'
-    click_link "Sign in"
+    page.should have_content 'Sign in'
+    click_link 'Sign in'
     current_path.should == '/users/sign_in'
   end
 
   it "signs user in with correct credentials" do
-    visit '/users/sign_in'
-    within("#session") do
-      fill_in 'Login', :with => 'user@example.com'
-      fill_in 'Password', :with => 'caplin'
-    end
-    click_link 'Sign in'
-    page.should have_content 'Success'
+    visit '/users/sign_in' 
+    fill_in 'Email', :with => 'testem@specit.com'
+    fill_in 'Password', :with => 'testem'
+    click_button 'Sign in'
+    page.should have_content 'Signed in successfully.'
   end
 
   it "signs in as another user" do
     visit '/users/sign_in'
-    within("#session") do
-      fill_in 'Login', :with => other_user.email
-      fill_in 'Password', :with => other_user.password
-    end
-    click_link 'Sign in'
+    fill_in 'Email', :with => 'barney@dinosaur.com'
+    fill_in 'Password', :with => 'foobarbaz'
+    click_button 'Sign in'
     page.should have_content 'Invalid email or password'
   end
 
