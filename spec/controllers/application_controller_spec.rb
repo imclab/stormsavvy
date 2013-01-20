@@ -8,7 +8,6 @@ describe ApplicationController do
 	    @user = FactoryGirl.create(:user)
 	    sign_in @user
       # get :index
-	    # render_template "shared/_cta-bar.html.haml" => 'sidebar template'
 	    # stub_template "shared/_flash_messages.html.haml" => 'flash message template'
 	  end
 

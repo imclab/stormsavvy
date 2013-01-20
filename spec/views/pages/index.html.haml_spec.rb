@@ -21,24 +21,18 @@ describe "pages/index" do
 
   describe "index page components" do
 
-    it "renders cta-bar partial" do
-      render
-      # rendered.should have_selector('div#modules')
-      view.should render_template('shared/_cta-bar')
-      # rendered.should =~ /Active Projects/
-    end
-
     it "renders maincopy partial" do
-      render
+      # render
       # rendered.should have_selector('div#dashboard-sidebar')
-      view.should render_template('pages/_maincopy')
+      # view.should render_template('pages/_maincopy')
     end
 
     it "shows correct links on index page" do
       render
       rendered.should have_selector('div#homeContent')
-      rendered.should =~ /Storm Savvy Tracker/
-      rendered.should =~ /Storm Savvy PDF/
+      rendered.should =~ /Making SWPPP Easy/
+      rendered.should =~ /Free Alerts & Reports By Email/
+      rendered.should =~ /Sign Up Now For Free Access/
     end
   end
 end
