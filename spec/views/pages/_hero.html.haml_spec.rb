@@ -19,27 +19,14 @@ describe "pages/index" do
   end
 =end
 
-  describe "index page components" do
-
-    it "renders cta-bar partial" do
-      render_template 'pages/_hero'
-      # rendered.should have_selector('div#modules')
-      # rendered.should have_selector('div#hero-unit')
-      # rendered.should =~ /Active Projects/
+  describe 'pages/index' do
+    before do
+      view.stub(:index).and_return(true)
     end
 
-    it "renders maincopy partial" do
-      # render
-      # rendered.should have_selector('div#dashboard-sidebar')
-      # view.should render_template('pages/_maincopy')
-    end
-
-    it "shows correct links on index page" do
-      render_template 'pages/_hero'
-      # rendered.should have_selector('div#homeContent')
-      rendered.should =~ /Making SWPPP Easy/
-      rendered.should =~ /Free Alerts & Reports By Email/
-      rendered.should =~ /Sign Up Now For Free Access/
+    it 'checks for admin access' do
+      render
+      rendered.should have_selector('div#homeContent')
     end
   end
 end
