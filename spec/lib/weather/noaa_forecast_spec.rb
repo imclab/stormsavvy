@@ -72,12 +72,12 @@ describe NOAAForecast do
     pop = nf.pop
     print "First element of pop array is #{pop[0]}", "\n"
     print "Last element of pop array is #{pop[28]}", "\n"
+    print pop.first, "\n"
+    print pop.last, "\n"
 
-    pt = ProjectLocalTime::format(Date.today)
-    time = Array.new(28, pt)
-    time.each_with_index do |str, idx|
-      puts "#{str} and #{time[idx+1]}"
-    end
+    print pop.reduce('') {|s, el|
+      s << "The key is #{el[0]} and the value is #{el[27]}.\n"
+    }
 
     nf.get_forecast_array.should == [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
