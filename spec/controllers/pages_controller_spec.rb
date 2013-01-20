@@ -7,6 +7,9 @@ describe PagesController do
     it "returns success" do
       get :index
       response.should be_success
+
+      render_template('pages/_hero')
+      response.should be_success
     end
   end
 
