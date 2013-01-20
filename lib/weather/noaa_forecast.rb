@@ -37,10 +37,11 @@ class NOAAForecast
   end
 
   def get_forecast_array
-    pop = self.pop
+    nf = NOAAForecast.new(94530,168,6)
+    pop = nf.seven_day_weather
     [
-      { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
-      { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] }
+      { :date => ProjectLocalTime::format(Date.today), :weather => pop[0][0] },
+      { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[0][1] }
     ]
   end
 
