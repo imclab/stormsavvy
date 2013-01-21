@@ -62,7 +62,7 @@ describe NOAAForecast do
     forecast[0].size.should == @fullcount
   end
 
-  it "sends seven_day_forecast into datehash" do
+  it "formats seven_day_forecast into datehash" do
 
     nf = NOAAForecast.new(94530,168,6)
     nf2 = nf.seven_day_weather
@@ -75,21 +75,26 @@ describe NOAAForecast do
     print pop.first, "\n"
     print pop.last, "\n"
 
-    pt2 = Array.new(28){ |i| (Date.today + 6.hours).to_s}
-    print "pt2 array = #{pt2}", "\n"
-=begin
-    pt2[0].each do |i|
-      time_now = Date.today
-      time_later = time_now + 6.hours
-      pt = ProjectLocalTime::format(time_later)
-      print "Time increment = #{pt[i]}"
-    end
-=end
-
     print "Pop hash before map: #{pop}", "\n"
     pop.each do |i|
       print "Storm POP = #{pop[i]}", "\n"
     end
+
+    pt = []
+    pop.each_with_index do |(i, p), index|
+      pt << { ProjectLocalTime::format(Date.today + (index*6).hours) => i }
+    end
+    print "pt array = #{pt}", "\n"
+
+=begin
+    pt.each do |i|
+      time_now = Date.today
+      time_later = time_now + 6.hours
+      pt = ProjectLocalTime::format(time_later)
+      print "Time increment = #{pt[i]}", "\n"
+      print pt[i], "\n"
+    end
+=end
 
     new_pop = {}
     print "Pop hash before map: #{new_pop}", "\n"
@@ -98,13 +103,5 @@ describe NOAAForecast do
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] }
       ]
-
-    # new_pop= Hash[pop.map{|k,str| [k,str] } ]
-
-=begin
-    print pop.reduce('') {|s, el|
-     s << "The key is #{el[0]} and the value is #{el[27]}.\n"
-    }
-=end
   end
 end
