@@ -79,6 +79,15 @@ describe NOAAForecast do
       s << "The key is #{el[0]} and the value is #{el[27]}.\n"
     }
 
+    print "Pop hash before map: #{pop}", "\n"
+
+    new_pop = pop.each do |key, value|
+      new_pop[key] = value
+    end
+
+    # new_pop= Hash[pop.map{|k,str| [k,str] } ]
+    print "Pop hash before map: #{new_pop}", "\n"
+
     nf.get_forecast_array.should == [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] }
