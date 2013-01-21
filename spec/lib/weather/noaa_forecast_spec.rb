@@ -75,9 +75,20 @@ describe NOAAForecast do
     print pop.first, "\n"
     print pop.last, "\n"
 
+    pt2 = Array.new(28){ |i| (Date.today + 6.hours).to_s}
+    print "pt2 array = #{pt2}", "\n"
+=begin
+    pt2[0].each do |i|
+      time_now = Date.today
+      time_later = time_now + 6.hours
+      pt = ProjectLocalTime::format(time_later)
+      print "Time increment = #{pt[i]}"
+    end
+=end
+
     print "Pop hash before map: #{pop}", "\n"
     pop.each do |i|
-      print "#{pop[i]}", "\n"
+      print "Storm POP = #{pop[i]}", "\n"
     end
 
     new_pop = {}
@@ -95,6 +106,5 @@ describe NOAAForecast do
      s << "The key is #{el[0]} and the value is #{el[27]}.\n"
     }
 =end
-
   end
 end
