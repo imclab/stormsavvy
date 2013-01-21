@@ -99,7 +99,5 @@ describe AlertMailer do
     it "should render successfully" do
       lambda { @mailer }.should_not raise_error
     end
-
   end
-
 end

@@ -62,46 +62,39 @@ describe NOAAForecast do
     forecast[0].size.should == @fullcount
   end
 
-  it "formats seven_day_forecast into datehash" do
-
+  it "returns get_forecast_array" do
     nf = NOAAForecast.new(94530,168,6)
     nf2 = nf.seven_day_weather
-    print "1st element of seven_day_weather array is #{nf2[0]}", "\n"
-    print "2nd element of seven_day_weather array is #{nf2[1]}", "\n"
-
     pop = nf.pop
-    print "First element of pop array is #{pop[0]}", "\n"
-    print "Last element of pop array is #{pop[28]}", "\n"
-    print pop.first, "\n"
-    print pop.last, "\n"
-
-    print "Pop hash before map: #{pop}", "\n"
     pop.each do |i|
       print "Storm POP = #{pop[i]}", "\n"
     end
-
-    pt = []
-    pop.each_with_index do |(i, p), index|
-      pt << { ProjectLocalTime::format(Date.today + (index*6).hours) => i }
-    end
-    print "pt array = #{pt}", "\n"
-
-=begin
-    pt.each do |i|
-      time_now = Date.today
-      time_later = time_now + 6.hours
-      pt = ProjectLocalTime::format(time_later)
-      print "Time increment = #{pt[i]}", "\n"
-      print pt[i], "\n"
-    end
-=end
-
-    new_pop = {}
-    print "Pop hash before map: #{new_pop}", "\n"
 
     nf.get_forecast_array.should == [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] }
       ]
+
+  end
+
+  it "returns get_time_array" do
+    nf = NOAAForecast.new(94530,168,6)
+    pop = nf.pop
+
+    print "Pop hash before map: #{pop}", "\n"
+
+=begin
+    pt = []
+    pop.each_with_index do |(i, p), index|
+      pt << { ProjectLocalTime::format(Date.today + (index*6).hours) => i }
+    end
+=end
+    pt = []
+    pop.each_with_index do |(i, p), index|
+      pt << { :date => ProjectLocalTime::format(Date.today + (index*6).hours), :weather => i.to_s }
+    end
+    print "pt array = #{pt}", "\n"
+
+    nf.get_time_array.should == pt
   end
 end

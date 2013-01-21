@@ -37,7 +37,16 @@ class NOAAForecast
   end
 
   def get_time_array
-    
+    nf = NOAAForecast.new(94530,168,6)
+    pt = []
+=begin
+    pop.each_with_index do |(i, p), index|
+      pt << { ProjectLocalTime::format(Date.today + (index*6).hours) => i } << { nf.seven_day_weather => p }
+    end
+=end
+    pop.each_with_index do |(i, p), index|
+      pt << { :date => ProjectLocalTime::format(Date.today + (index*6).hours), :weather => i  }
+    end
   end
 
   def get_forecast_array
