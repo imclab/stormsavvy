@@ -4,7 +4,7 @@ gem 'rake'
 gem 'rails'
 gem 'typhoeus'
 gem 'nokogiri'
-gem 'geocoder', :github => 'doolin/geocoder'
+gem 'geocoder', :git => "git://github.com/doolin/geocoder.git" # :github => 'doolin/geocoder'
 gem 'devise'
 gem 'pg'
 
@@ -54,7 +54,7 @@ group :test, :development do
   gem 'autotest-fsevent'
 
   # Comment out when running bundle update
-  gem 'email_spec'
+  # gem 'email_spec'
 end
 
 group :assets do
