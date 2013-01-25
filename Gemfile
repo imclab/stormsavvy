@@ -31,13 +31,13 @@ group :test, :development do
   gem 'travis'
   gem 'builder'
 
-  gem 'rspec-rails'
-  gem 'rspec'
+  gem 'rspec-rails', "2.12.0"
+  gem 'rspec', "2.12.0"
   gem 'factory_girl_rails'
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails',"1.3.0", :require => false
   gem 'database_cleaner'
   gem 'capybara'
-  gem 'cucumber'
+  gem 'cucumber', "1.2.1"
   gem 'sqlite3'
   gem 'spork-rails'
 

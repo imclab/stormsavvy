@@ -21,5 +21,4 @@ describe DashboardController do
       response.should redirect_to index_path
     end
   end
-
 end
