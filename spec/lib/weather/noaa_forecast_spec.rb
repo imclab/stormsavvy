@@ -66,6 +66,12 @@ describe NOAAForecast do
     nf = NOAAForecast.new(94530,168,6)
     nf2 = nf.seven_day_weather
     pop = nf.pop
+
+    print "Pop hash before map: #{pop}", "\n"
+    pop.each do |i|
+      print "Storm POP = #{pop[i]}", "\n"
+    end
+
     nf.get_forecast_array.should == [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] }
@@ -75,7 +81,6 @@ describe NOAAForecast do
 
   it "returns get_time_array" do
     nf = NOAAForecast.new(94530,168,6)
-    nf2 = nf.seven_day_weather
     pop = nf.pop
 
     pt = []
@@ -85,5 +90,15 @@ describe NOAAForecast do
     print "pt array = #{pt}", "\n"
 
     nf.get_time_array.should == pt
+
+=begin
+    pt = []
+    pop.each_with_index do |(i, p), index|
+      pt << { ProjectLocalTime::format(Date.today + (index*6).hours) => i }
+    end
+    print "pt array = #{pt}", "\n"
+
+    nf.get_time_array.should == pt
+=end
   end
 end
