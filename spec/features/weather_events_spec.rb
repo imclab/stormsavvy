@@ -5,7 +5,7 @@ describe "WeatherEvents" do
     it "works! (now write some real specs)" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       visit weather_events_path
-      response.should_not be_nil
+      last_response.should be_successful
       # response.status.should be(200)
     end
   end

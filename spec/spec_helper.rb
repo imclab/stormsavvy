@@ -1,15 +1,17 @@
 require 'rubygems'
-require "devise"
-require "prawn"
-require "pdf/reader"
-require "pdf/inspector"
-require "email_spec"
+require 'devise'
+require 'prawn'
+require 'pdf/reader'
+require 'pdf/inspector'
+require 'email_spec'
 require 'capybara/rspec'
+require 'rack/test'
 
 RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
   config.include Devise::TestHelpers, :type => :controller
+  config.include Rack::Test::Methods
   # config.extend ControllerMacros, :type => :controllers
 end
 
