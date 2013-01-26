@@ -9,7 +9,8 @@
       .nav-collapse.collapse
         %ul.nav
           %li.active
-            %a{:href => "./index.html"} Home
+            /%a{:href => "./index.html"} Home
+            = link_to "Home", '/index'
           %li
             %a{:href => "./getting-started.html"} Get started
           %li
