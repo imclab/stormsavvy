@@ -1,12 +1,24 @@
-.navbar-fixed-top
-  .nav.navbar-inner
-    .container.top-10
-      =link_to "Storm Savvy", root_path, :class => "brand"
-      .pull-right
-        - if user_signed_in?
-          =link_to "Projects", root_path
-          =link_to "Settings", edit_user_registration_path
-          =link_to "Sign out", destroy_user_session_path
-        - else
-          / =link_to "Sign in", new_user_session_path
-          / =link_to "Sign up", new_user_registration_path
+.navbar.navbar-inverse.navbar-fixed-top
+  .navbar-inner
+    .container
+      %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href => "./index.html"} Bootstrap
+      .nav-collapse.collapse
+        %ul.nav
+          %li.active
+            %a{:href => "./index.html"} Home
+          %li
+            %a{:href => "./getting-started.html"} Get started
+          %li
+            %a{:href => "./scaffolding.html"} Scaffolding
+          %li
+            %a{:href => "./base-css.html"} Base CSS
+          %li
+            %a{:href => "./components.html"} Components
+          %li
+            %a{:href => "./javascript.html"} JavaScript
+          %li
+            %a{:href => "./customize.html"} Customize
