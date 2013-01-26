@@ -22,8 +22,6 @@ describe "Reports" do
 
     it "should have correct content on homepage" do
       current_path.should == '/reports'
-      #page.should have_content('Storm Savvy')
-      click_link 'Storm Savvy'
       page.should have_selector('a', :text => 'Storm Savvy')
     end
 
