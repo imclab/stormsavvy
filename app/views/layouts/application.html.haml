@@ -8,7 +8,9 @@
     = render 'shared/google_analytics'
     %meta{:charset => "utf-8"}
     = csrf_meta_tag
+    / bootstrap responsive design
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %link{:href => "assets/css/bootstrap-responsive.css.scss", :rel => "stylesheet"}
 
   %body{ template_id, template_class }
     /= render :partial => "shared/flash_messages", :locals => {:flash => flash}
