@@ -11,15 +11,12 @@
           %li.active
             /%a{:href => "./index.html"} Home
             = link_to "Home", '/index'
-          %li
-            %a{:href => "./getting-started.html"} Get started
-          %li
-            %a{:href => "./scaffolding.html"} Scaffolding
-          %li
-            %a{:href => "./base-css.html"} Base CSS
-          %li
-            %a{:href => "./components.html"} Components
-          %li
-            %a{:href => "./javascript.html"} JavaScript
-          %li
-            %a{:href => "./customize.html"} Customize
+            - if user_signed_in?
+              %li=link_to "Projects", root_path
+              %li=link_to "Settings", edit_user_registration_path
+              %li=link_to "Sign out", destroy_user_session_path
+            - else
+              %li=link_to "Plans & Pricing", plans_path
+              %li=link_to "Feature Tour", features_path
+              %li=link_to "Sign in", new_user_session_path
+              %li#sign_up_link=link_to "Sign up", new_user_registration_path
