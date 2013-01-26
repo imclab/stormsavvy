@@ -17,14 +17,15 @@
     /- if user_signed_in?
     = render 'layouts/header'
 
-    .leaderboard
-      = render :partial => "pages/hero" if is_public_home?
-      .container
-        - flash.each do |name, msg|
-          %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-            %a.close{"data-dismiss" => "alert"} ×
-            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
-        = yield
+    .container-fluid
+      .leaderboard
+        = render :partial => "pages/hero" if is_public_home?
+        .container
+          - flash.each do |name, msg|
+            %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+              %a.close{"data-dismiss" => "alert"} ×
+              = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+          = yield
 
     - if user_signed_in?
       .footer
