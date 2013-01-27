@@ -1,5 +1,8 @@
 Stormsavvy::Application.routes.draw do
 
+  resources :inspection_events
+
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

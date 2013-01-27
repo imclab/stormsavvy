@@ -10,16 +10,19 @@
     = f.label :site_id
     = f.number_field :site_id
   .field
-    = f.label :type
-    = f.text_field :type
+    = f.label :inspection_type
+    = f.text_field :inspection_type
   .field
-    = f.label :description
-    = f.text_area :description
+    = f.label :inspection_description
+    = f.text_area :inspection_description
   .field
-    = f.label :date
-    = f.datetime_select :date
+    = f.label :inspection_date
+    = f.datetime_select :inspection_date
   .field
-    = f.label :submitted
-    = f.datetime_select :submitted
+    = f.label :submitted_by
+    = f.datetime_select :submitted_by
+  .field
+    = f.label :inspected_by
+    = f.datetime_select :inspected_by
   .actions
     = f.submit 'Save'
