@@ -46,15 +46,32 @@ describe "homepage" do
     current_path.should == root_path
   end
 
-  it "renders index page from header link" do visit '/index'
-    click_link "Storm Savvy"
-    current_path.should == '/index'
+  it "renders correct links and pages after login" do
+    login_as(@user, :scope => :user)
+    click_link "Inspections"
+    current_path.should == new_inspection_event_path
+
+    click_link "Settings"
+    current_path.should == edit_user_registration_path
+
+    click_link "Sign out"
+    current_path.should == destroy_user_session_path
   end
 
-  it "renders index page from header link" do
-    visit '/index'
-    click_link 'Storm Savvy POP'
-    visit 'http://pop.stormsavvy.com/'
-    current_url.should == 'http://pop.stormsavvy.com/index'
+  it "renders correct linkes and pages from home page" do
+    click_link "Privacy"
+    current_path.should == privacy_path
+
+    click_link "Terms"
+    current_path.should == terms_path 
+
+    click_link "Blog"
+    current_path.should == 'http://stormsavvy.me'
+
+    click_link "Sign up"
+    current_path.should == new_user_registration_path
+
+    click_link "Sign in"
+    current_path.should == new_user_session_path
   end
 end
