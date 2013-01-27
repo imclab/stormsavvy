@@ -24,6 +24,7 @@
       = f.text_field :inspected_by
     .actions
       = f.submit 'Save'
+      = link_to 'Back', inspection_events_path
   .span5
     .field
       = f.label :inspection_description
