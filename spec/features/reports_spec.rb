@@ -10,9 +10,9 @@ describe "Reports" do
 	before :each do
 		@user = FactoryGirl.create(
       :user,
-      :email    => 'integration@stormsavvy.com',
-      :password => 'automateyourspec!',
-      :password_confirmation => 'automateyourspec!'
+      :email    => 'testem@stormsavvy.com',
+      :password => 'specit!',
+      :password_confirmation => 'specit!'
     )
     login_as(@user, :scope => :user)
     visit '/reports'
@@ -20,7 +20,7 @@ describe "Reports" do
 
   describe "GET /reports", :type => :feature do
 
-    it "should have correct content on homepage" do
+    it "has correct content on homepage" do
       current_path.should == '/reports'
       #page.should have_content('Storm Savvy')
       click_link 'Storm Savvy'
@@ -29,7 +29,7 @@ describe "Reports" do
 
     it "should GET /reports" do
       @report = FactoryGirl.build(:report)
-      get reports_path(:report => @report.id)
+      visit reports_path(:report => @report.id)
       Warden.test_reset!
     end
 
