@@ -1,5 +1,8 @@
 Stormsavvy::Application.routes.draw do
 
+  resources :sampling_events
+
+
   resources :inspection_events
 
 
