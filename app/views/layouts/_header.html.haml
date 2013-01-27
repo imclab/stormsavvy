@@ -1,15 +1,11 @@
 .navbar.navbar-inverse.navbar-fixed-top
   .navbar-inner
     .container
-      %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.brand{:href => "/index"} Storm Savvy
       .nav-collapse.collapse
         %ul.nav
           %li.active
-            = link_to "Storm Savvy", root_path
+            %a.brand{:href => "/index"} Storm Savvy
+            /= link_to "Storm Savvy", root_path
             - if user_signed_in?
               %li=link_to "Projects", root_path
               %li=link_to "Settings", edit_user_registration_path
