@@ -20,11 +20,8 @@ describe "Reports" do
 
   describe "GET /reports", :type => :feature do
 
-    it "has correct content on homepage" do
+    it "visits reports path" do
       current_path.should == '/reports'
-      #page.should have_content('Storm Savvy')
-      click_link 'Storm Savvy'
-      page.should have_selector('a', :text => 'Storm Savvy')
     end
 
     it "should GET /reports" do

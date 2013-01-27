@@ -47,7 +47,11 @@ describe "homepage" do
   end
 
   it "renders correct links and pages after login" do
-    login_as(@user, :scope => :user)
+    visit '/users/sign_in' 
+    fill_in 'Email', :with => 'testem@specit.com'
+    fill_in 'Password', :with => 'testem'
+    click_button 'Sign in'
+
     click_link "Inspections"
     current_path.should == new_inspection_event_path
 
@@ -59,18 +63,23 @@ describe "homepage" do
   end
 
   it "renders correct linkes and pages from home page" do
+    visit '/index'
     click_link "Privacy"
     current_path.should == privacy_path
 
+    visit '/index'
     click_link "Terms"
     current_path.should == terms_path 
 
+    visit '/index'
     click_link "Blog"
     current_path.should == 'http://stormsavvy.me'
 
+    visit '/index'
     click_link "Sign up"
     current_path.should == new_user_registration_path
 
+    visit '/index'
     click_link "Sign in"
     current_path.should == new_user_session_path
   end
