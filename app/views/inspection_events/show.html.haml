@@ -1,23 +1,29 @@
 %p#notice= notice
 
-%p
-  %b Site:
-  = @inspection_event.site_id
-%p
-  %b Type:
-  = @inspection_event.type
-%p
-  %b Description:
-  = @inspection_event.description
-%p
-  %b Date:
-  = @inspection_event.date
-%p
-  %b Submitted:
-  = @inspection_event.submitted
+%fieldset
+  .span10
+    %p
+      %b Site ID:
+      = @inspection_event.site_id
+    %p
+      %b Inspection Type:
+      = @inspection_event.inspection_type
+    %p
+      %b Description:
+      = @inspection_event.inspection_description
+    %p
+      %b Date:
+      = @inspection_event.inspection_date
+    %p
+      %b Submitted By:
+      = @inspection_event.submitted_by
 
-= link_to 'Edit', edit_inspection_event_path(@inspection_event)
-\|
-= link_to 'Back', inspection_events_path
-\|
-= link_to 'Delete', inspection_event_path(@inspection_event), :method => :delete
+    %p
+      %b Inspected By:
+      = @inspection_event.inspected_by
+
+    = link_to 'Edit', edit_inspection_event_path(@inspection_event)
+    \|
+    = link_to 'Back', inspection_events_path
+    \|
+    = link_to 'Delete', inspection_event_path(@inspection_event), :method => :delete
