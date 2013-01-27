@@ -11,13 +11,6 @@ describe InspectionEvent do
 	  :inspection_date => "2013-01-26 23:13:55",
 	  :submitted_by => "wyu",
 	  :inspected_by => "wyu"
-=begin  		
-  	  :name => "Hwy 99",
-  	  :description => "Pothole Repair",
-  	  :startdate => DateTime.new(2010),
-  	  :finishdate => DateTime.new(2011),
-  	  :active => true
-=end
   	}
   end
   it "has correct project attributes" do
@@ -29,7 +22,7 @@ describe InspectionEvent do
 	@inspection_event.inspected_by.should == "wyu"
   end
   it "should create a new instance given valid attributes" do
-    inspection_event. = InspectionEvent.new(@attr)
+    @inspection_event = InspectionEvent.new(@attr)
     @inspection_event.save
     @inspection_event.should be_valid
   end
