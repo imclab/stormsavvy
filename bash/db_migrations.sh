@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/bash
 
 # rails g scaffold Project user_id:integer name:string description:text startdate:datetime finishdate:datetime active:boolean
 
@@ -6,4 +6,5 @@
 # rails g controller Dashboard index edit
 
 # rails g scaffold WeatherEvent site_id:integer eventdate:datetime duration:float rainfall:float inspected:boolean qualifying:boolean
-# rails g scaffold InspectionEvent site_id:integer type:string description:text date:datetime submitted:datetime 
+# rails g scaffold InspectionEvent site_id:integer inspection_type:string\
+#   description:text inspection_date:datetime submitted_by:datetime

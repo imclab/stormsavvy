@@ -9,8 +9,7 @@
       .nav-collapse.collapse
         %ul.nav
           %li.active
-            /= link_to "Storm Savvy", '/index'
-            = link_to "Home", root_path
+            = link_to "Storm Savvy", root_path
             - if user_signed_in?
               %li=link_to "Projects", root_path
               %li=link_to "Settings", edit_user_registration_path
