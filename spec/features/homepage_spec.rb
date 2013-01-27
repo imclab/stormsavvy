@@ -40,11 +40,10 @@ describe "homepage" do
     page.should have_content 'Invalid email or password'
   end
 
-=begin
-  it "renders pdf form page" do
+  it "renders home page" do
     visit '/index'
-    click_link "Storm Savvy PDF"
-    current_path.should == '/pdf'
+    click_link root_path
+    current_path.should == root_path
   end
 
   it "renders index page from header link" do visit '/index'
@@ -58,6 +57,4 @@ describe "homepage" do
     visit 'http://pop.stormsavvy.com/'
     current_url.should == 'http://pop.stormsavvy.com/index'
   end
-=end
-
 end

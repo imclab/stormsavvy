@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe "Dashboards" do
   describe "GET /dashboards" do
-    it "works! (now write some real specs)" do
-      # get dashboards_path
-      # response.status.should be(200)
+    it "visits dashboards_path" do
+      visit dashboards_path
+      current_path.should = dashboards_path
     end
   end
 end
