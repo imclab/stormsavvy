@@ -16,7 +16,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-
     @project = current_user.projects.find(params[:id])
     @sites = @project.sites
     @needs_attention_reports = Report.needs_attention
@@ -57,7 +56,7 @@ class ProjectsController < ApplicationController
       else
         #binding.pry
         #format.html { render action: "new", notice: 'Project was unsuccessfully created.' }
-        format.html { flash.now[:error] = "Flash now set from bad form"
+        format.html { flash.now[:error] = "Flash now sent from bad form"
                       render action: "new" }#, :flash => { :error => 'Please fix the problems shown.' } }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
