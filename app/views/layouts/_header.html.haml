@@ -9,6 +9,7 @@
               %li=link_to "Projects", root_path
               %li=link_to "Inspections", new_inspection_event_path
               %li=link_to "Sampling", new_sampling_event_path
+              %li=link_to "Reports", '/pdf'
               %li=link_to "Settings", edit_user_registration_path
               %li=link_to "Sign out", destroy_user_session_path
             - else

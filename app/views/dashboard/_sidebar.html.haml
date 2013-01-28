@@ -4,7 +4,7 @@
       %h5 Weather Report
       %hr
       %ul
-        - current_user.projects.each do |project|
+        -# current_user.projects.each do |project|
           - project.sites.each do |site|
             %li.cf
               - site.chance_of_rain # not sure why, but this needs to be called before site.rain_state in order for rain state to show up
@@ -13,6 +13,7 @@
               %br
               %tr
               %td
+                / # Dummy sunny weather icon
                 /= image_tag("/assets/sunny_weather.png")
               %td
                 %i=link_to "#{site.name}: ", project_site_path(project, site)
