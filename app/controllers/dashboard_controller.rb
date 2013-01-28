@@ -11,7 +11,6 @@ class DashboardController < ApplicationController
 
       @completed_reports = Report.completed
       @needs_attention_reports = Report.needs_attention
-
     end
   end
 
