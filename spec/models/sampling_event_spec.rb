@@ -86,4 +86,19 @@ describe SamplingEvent do
     sampling_event.save
     sampling_event.should be_valid
   end
+
+  describe "sampling_event associations" do
+
+    before(:each) do
+      @sampling_event = SamplingEvent.new(@attr)
+    end
+
+    context :site do
+      it "has an association with a site" do
+        @sampling_event.should respond_to(:site)
+      end
+      it "has the correct associated user" do
+        @sampling_event.should == @sampling_event
+      end
+    end
 end
