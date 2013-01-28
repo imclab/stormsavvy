@@ -6,10 +6,10 @@ describe "pages/pdf.html.haml" do
     stub_template "pages/pdf.html.haml" => 'pdf pages template'
   end
 
-  context "using content_for(:main_copy)" do
+  context "using content_for(:leaderboard)" do
 
-    let(:main_title) { "Storm Savvy PDFs" }
-    let(:main_tagline) { "Forms On The Go" }
+    let(:main_title) { "PDF Reports" }
+    let(:main_tagline) { "Instructions: Select From Forms Below" }
 
     before do
       view.content_for(:h1) { main_title }
@@ -17,10 +17,18 @@ describe "pages/pdf.html.haml" do
       render
     end
 
-    # it "sets <h1> and <h3>" do
-    #   rendered.should have_selector "main_copy", :text => "#{main_title}"
-    #   rendered.should have_selector "main_copy", :text => "#{main_tagline}"
-    # end
+    it "has correct links" do
+      # rendered.should have_link 'pdf_CEM2030_path'
+      # rendered.should have_link 'pdf_CEM2034_path'
+      # rendered.should have_link 'pdf_CEM2035_path'
+      # rendered.should have_link 'pdf_CEM2040_path'
+      # rendered.should have_link 'pdf_CEM2045_path'
+    end
+
+    it "sets <h1> and <h3>" do
+      # rendered.should have_selector "leaderboard", :text => "#{main_title}"
+      # rendered.should have_selector "leaderboard", :text => "#{main_tagline}"
+    end
 
     # it "sets main title and tagline" do
     #   rendered.should have_selector "hero"
