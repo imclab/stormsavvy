@@ -179,5 +179,4 @@ describe SamplingEventsController do
       response.should redirect_to(sampling_events_url)
     end
   end
-
 end
