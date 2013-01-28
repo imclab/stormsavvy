@@ -25,7 +25,7 @@ describe "Reports" do
     end
 
     it "visits each pdf report path" do
-      visit reports_CEM2030_path
+      visit '/reports/CEM2030'
       current_path.should == reports_CEM2030_path
 
       visit reports_CEM2034_path
