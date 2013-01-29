@@ -24,6 +24,10 @@ Stormsavvy::Application.routes.draw do
   get "noaa/secret"
 
   get "pdf/CEM2030"
+  get "pdf/CEM2034"
+  get "pdf/CEM2035"
+  get "pdf/CEM2040"
+  get "pdf/CEM2045"
   get "pdf/CEM4601"
 
   resources :inspection_events,

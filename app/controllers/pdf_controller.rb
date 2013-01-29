@@ -50,6 +50,16 @@ class PdfController < ApplicationController
     send_data pdf.render, type: "application/pdf", disposition: "inline"
   end
 
+  def CEM2045
+    # filename = "#{Prawn::DATADIR}/images/reports/CEM2045_production.pdf"
+    filename = "#{Rails.root}/app/assets/pdfs/CEM2045_production.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
+    send_data pdf.render, type: "application/pdf", disposition: "inline"
+  end
+
   def CEM2050
     # filename = "#{Prawn::DATADIR}/images/reports/CEM2050_production.pdf"
     filename = "#{Rails.root}/app/assets/pdfs/CEM2050_production.pdf"
