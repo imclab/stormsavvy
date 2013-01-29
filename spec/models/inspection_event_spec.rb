@@ -21,24 +21,24 @@ describe InspectionEvent do
 	@inspection_event.submitted_by.should == "wyu"
 	@inspection_event.inspected_by.should == "wyu"
   end
-  it "should create a new instance given valid attributes" do
+  it "creates a new instance given valid attributes" do
     @inspection_event = InspectionEvent.new(@attr)
     @inspection_event.save
     @inspection_event.should be_valid
   end
 
-  describe "project associations" do
+  describe "inspection_event associations" do
 
 	before(:each) do
 	  @inspection_event = InspectionEvent.new(@attr)
 	end
 
 	context :site do
-	  it "should be associated with a site" do
-	    @project.should respond_to(:site)
+	  it "has association with a site" do
+	    @inspection_event.should respond_to(:site)
 	  end
-	  it "should have the correct associated user" do
-	    @project.should == @project
+	  it "has correct associated site" do
+	    @inspection_event.should == @inspection_event
 	  end
 	end
   end

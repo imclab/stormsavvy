@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SamplingEvent do
   before :each do
-  	@sampling_event = FactoryGirl.create(:inspection_event)
+  	@sampling_event = FactoryGirl.create(:sampling_event)
   	@attr = {
       :site_id => 1,
       :sampling_type => "pH",
