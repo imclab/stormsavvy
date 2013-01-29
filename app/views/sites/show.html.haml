@@ -22,10 +22,10 @@
         %b Exposed area:
         = @site.exposed_area
       %p
-        %b Address:
+        %b Address 1:
         = @site.address_1
       %p
-        %b Address:
+        %b Address 2:
         = @site.address_2
       %p
         %b City:
@@ -43,4 +43,6 @@
       \|
       = link_to 'Delete', project_path(@site.project), :method => :delete
 
-    .span4= render 'sites/weather_report'
+    .span2
+    %br
+      = render 'sites/weather_report'
