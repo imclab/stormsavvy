@@ -1,5 +1,8 @@
 .container
   .row
-    %h1 New Sampling Event
-    = render 'form'
-    /= link_to 'Back', sampling_events_path
+    .panel
+      .inner
+        .headline.bottom-10.cf
+          %h2.pull-left New Sampling Event
+          %br
+        = render 'form'
