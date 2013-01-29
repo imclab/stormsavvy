@@ -6,7 +6,7 @@
           %li.active
             %a.brand{:href => root_path } Storm Savvy
             - if user_signed_in?
-              %li=link_to "Sites", 'index'
+              %li=link_to "Sites", index_path
               %li=link_to "Inspections", new_inspection_event_path
               %li=link_to "Sampling", new_sampling_event_path
               %li=link_to "Reports", '/pdf'
