@@ -1,10 +1,10 @@
+.container
+  .row
+    .span10
+      %h1 Edit Site
 
-.row
-  .span12
-    %h1 Editing site
+      = render 'form'
 
-    = render 'form'
-
-    = link_to 'Show', project_site_path(@project, @site)
-    \|
-    = link_to 'Back', projects_path
+      = link_to 'Show', project_site_path(@project, @site)
+      \|
+      = link_to 'Back', projects_path

@@ -1,27 +1,27 @@
+.container
+  .row
+    .span10
+      %p#notice= notice
 
-.row
-  .span12
-    %p#notice= notice
+      %p
+        %b Site:
+        = @weather_event.site_id
+      %p
+        %b Eventdate:
+        = @weather_event.eventdate
+      %p
+        %b Duration:
+        = @weather_event.duration
+      %p
+        %b Rainfall:
+        = @weather_event.rainfall
+      %p
+        %b Inspected:
+        = @weather_event.inspected
+      %p
+        %b Qualifying:
+        = @weather_event.qualifying
 
-    %p
-      %b Site:
-      = @weather_event.site_id
-    %p
-      %b Eventdate:
-      = @weather_event.eventdate
-    %p
-      %b Duration:
-      = @weather_event.duration
-    %p
-      %b Rainfall:
-      = @weather_event.rainfall
-    %p
-      %b Inspected:
-      = @weather_event.inspected
-    %p
-      %b Qualifying:
-      = @weather_event.qualifying
-
-    = link_to 'Edit', edit_weather_event_path(@weather_event)
-    \|
-    = link_to 'Back', weather_events_path
+      = link_to 'Edit', edit_weather_event_path(@weather_event)
+      \|
+      = link_to 'Back', weather_events_path

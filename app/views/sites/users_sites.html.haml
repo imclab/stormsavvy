@@ -1,19 +1,18 @@
+.container
+  .row
+    .span10
+      .row
+        .span8
+          .panel
+            .inner
+              %h1 Active Sites
+              %hr
+              %ul
+                - @projects.each do |project|
+                  %li
+                    = link_to project.name, project_path(project), :class => "project_name_link"
+                    %ul.project_sites_list.is_hidden
+                      - project.sites.each do |site|
+                        %li= link_to site.name, project_site_path(project, site)
 
-.row
-  .span12
-    .row
-      .span8
-        .panel
-          .inner
-            %h1 Active Sites
-            %hr
-            %ul
-              - @projects.each do |project|
-                %li
-                  = link_to project.name, project_path(project), :class => "project_name_link"
-                  %ul.project_sites_list.is_hidden
-                    - project.sites.each do |site|
-                      %li= link_to site.name, project_site_path(project, site)
-
-      .span4= render 'dashboard/sidebar'
-
+        .span4= render 'dashboard/sidebar'

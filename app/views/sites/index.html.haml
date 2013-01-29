@@ -1,11 +1,11 @@
-
-.row
-  .span12
-    .row
-      .span12
-        .panel
-          .inner
-            %h1 All Sites
-            %hr
-            = render 'sites/sites'
-            = link_to 'New Site', new_project_site_path(@project)
+.container
+  .row
+    .span10
+      .row
+        .span10
+          .panel
+            .inner
+              %h1 All Sites
+              %hr
+              = render 'sites/sites'
+              = link_to 'New Site', new_project_site_path(@project)
