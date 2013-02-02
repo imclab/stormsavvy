@@ -3,8 +3,7 @@ namespace :scheduler do
   desc "Delivers pop_alert mailer"
   task :stormpopnotice => :environment do
     test_users = [
-      'walter@stormsavvy.com',
-      'kharma@gmail.com'
+      'walter@stormsavvy.com'
       ]
     # if user.sites.precipitation_state(forecast) == :imminent then
     test_users.each do |address|
@@ -16,8 +15,7 @@ namespace :scheduler do
   desc "Delivers noaa_alert mailer"
   task :noaaalert => :environment do
   	test_users = [
-      'walter@stormsavvy.com',
-      'kharma@gmail.com'
+      'walter@stormsavvy.com'
       ]
     test_users.each do |address|
   	  AlertMailer.noaa_alert(address).deliver
@@ -28,6 +26,7 @@ namespace :scheduler do
   task :dailynotice => :environment do
     admins = [
       'walter@stormsavvy.com',
+      'wing.wingyu@gmail.com',
       'david.doolin+stormsavvy@gmail.com',
       ]
     admins.each do |address|
@@ -35,11 +34,10 @@ namespace :scheduler do
     end
   end
 
-  desc "Delivers project and site names"
+  desc "Delivers mailout mailer"
   task :mailout => :environment do
   	test_users = [
-      'walter@stormsavvy.com',
-      'kharma@gmail.com'
+      'walter@stormsavvy.com'
       ]
     test_users.each do |address|
       UserMailer.mailout

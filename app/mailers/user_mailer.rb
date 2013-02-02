@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
     mail(
       :from     => "alerts@stormsavvy.com",
       :to       => email,
-      :subject  => "Storm Savvy POP Alert"
+      :subject  => "Storm Savvy Daily Admin Email"
       ).deliver
   end
 
@@ -25,13 +25,14 @@ class UserMailer < ActionMailer::Base
     @users = User.all
 
     @users.each do |user|
-      @user = user # `@user` is needed for the template
+      @user = user # needed for the template below
+      @projects = @user.projects
 
       if @user.has_site?
         mail(
           :from     => "alerts@stormsavvy.com",
           :to       => @user.email,
-          :subject  => "Storm Savvy Daily Admin Email"
+          :subject  => "Storm Savvy Weekly Project Status Update"
           ).deliver
       end
     end

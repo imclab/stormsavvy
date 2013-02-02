@@ -1,13 +1,13 @@
-%h2 Your project alerts
-%hr
-%ul.projects
-  = "Alerts for your projects:"
-
-/ TODO: Make sure site info can render in partial.
-/ - @projects.each do |project|
-/   %li
-/     = project.name
-/     %ul.sites
-/       - project.sites.each do |site| 
-/         %li.chance-of-rain
-/           = "#{site.name} => chance of rain = #{site.chance_of_rain}%"
+%table{ :style => "width: 600px; background-color: #eee;", :align => "center" }
+  %tr
+    %td
+      %h1
+        Daily Site POP Alert
+      %p
+        = @greeting
+      %p
+        Here are the daily POP alerts for your sites:
+      %p
+        = render 'mailout_forecast', :projects => @projects
+      %p
+        = @salutation
