@@ -22,6 +22,8 @@ gem 'pdf-reader'
 gem 'simple_form'
 gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
 
+gem 'newrelic_rpm'
+
 group :development do
   gem 'therubyracer', :platforms => :ruby, :require => 'v8'
   gem 'letter_opener'
@@ -62,9 +64,3 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
-
-#  gem 'rspec-http', '~> 0.9'
-#  gem 'rest-assured'
-#  gem 'pry-stack_explorer'
-#  gem 'ruby-debug19', :require => 'ruby-debug'
-#  gem 'iron_worker_ng'

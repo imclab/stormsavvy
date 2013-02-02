@@ -6,6 +6,8 @@ class UserMailer < ActionMailer::Base
     @numusers = User.count
     @numprojects = Project.count
     @numsites = Site.count
+    @numinspections = InspectionEvent.count
+    @numreports = Report.count
 
     @greeting = "Greetings"
     @forecast2 = NOAAForecast.new(94605)
@@ -34,5 +36,4 @@ class UserMailer < ActionMailer::Base
       end
     end
   end
-
 end

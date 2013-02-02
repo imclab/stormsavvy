@@ -29,7 +29,6 @@ namespace :scheduler do
     admins = [
       'walter@stormsavvy.com',
       'david.doolin+stormsavvy@gmail.com',
-      # 'kharma@gmail.com'
       ]
     admins.each do |address|
       UserMailer.pester_admins(address).deliver

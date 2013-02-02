@@ -9,6 +9,6 @@ describe "user_mailer/pester_admins" do
 
   it "greet the admin user" do
     render
-    rendered.should =~ /daily admin email/
+    rendered.should =~ /Daily Admin Email/
   end
 end

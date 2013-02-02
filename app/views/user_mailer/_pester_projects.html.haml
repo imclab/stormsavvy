@@ -7,8 +7,15 @@
       %table.projects
         %tr
           %th Projects
+        %tr
+          %th = @numprojects
+          
+        %tr
+          %th Projects
           %th Users
           %th Sites
+          %th Inspections
+          %th Reports
         %tr
           %td
             = @numprojects
@@ -16,4 +23,8 @@
             = @numusers
           %td
             = @numsites
+          %td
+            = @numinspections
+          %td
+            = @numreports
       %hr
