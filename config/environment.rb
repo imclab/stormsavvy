@@ -30,3 +30,6 @@ Stormsavvy::Application.initialize!
 #   config.token      = ENV['IRONIO_TOKEN']
 #   config.project_id = ENV['IRONIO_ID']
 # end
+
+STDOUT.puts "RPM detected environment: #{NewRelic::LocalEnvironment.new},
+  RAILS_ENV: #{RAILS_ENV}"
