@@ -31,9 +31,20 @@ class UserMailer < ActionMailer::Base
         mail(
           :from     => "alerts@stormsavvy.com",
           :to       => @user.email,
-          :subject  => "Storm Savvy Project Status Notification"
+          :subject  => "Storm Savvy Daily Admin Email"
           ).deliver
       end
     end
+  end
+
+  def thankyou(email)
+    @greeting = "Greetings"
+    @salutation = "The Storm Savvy Team"
+
+    mail(
+      :from     => "alerts@stormsavvy.com",
+      :to       => email,
+      :subject  => "Storm Savvy Sign-up Confirmation"
+      ).deliver
   end
 end

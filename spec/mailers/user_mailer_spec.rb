@@ -110,4 +110,25 @@ describe UserMailer do
     end
   end
 
+  describe "thank you mailer" do
+
+    # TODO: Debug project factory table
+    before(:each) do
+      @receipient = "walter@stormsavvy.com"
+      @mailer = UserMailer.thankyou(@recipient).deliver
+    end
+
+    it "should send something via mailout" do
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
+
+    it "should render successfully" do
+      lambda { @mailer }.should_not raise_error
+    end
+
+    it "should have text in body" do
+      @mailer.body.should_not be_empty
+    end
+  end
+
 end
