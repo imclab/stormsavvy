@@ -28,11 +28,18 @@ class UserMailer < ActionMailer::Base
       @user = user # needed for the template below
       @projects = @user.projects
 
-      # @project = @user.project
-      # @zipcode = @project.sites.zipcode
+      @projects.each do |project|
+        @project = project
+        @sites = @project.sites
 
-      @forecast2 = NOAAForecast.new(94530)
-      @forecast1 = @forecast2.get_forecast_array
+        @sites.each do |site|
+          @site = site
+          @zipcode = @site.zipcode
+
+          @forecast2 = NOAAForecast.new(@zipcode)
+          @forecast1 = @forecast2.get_forecast_array
+        end
+      end
 
       if @user.has_site?
         mail(
