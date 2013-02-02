@@ -21,7 +21,7 @@ describe "user_mailer/pester_admins" do
     # @forecast1 = [{ :date => "today", :weather => "90" }]
   end
 
-  it "greet the admin user" do
+  it "greets the admin user" do
     render
     rendered.should =~ /Daily Admin Email/
   end
