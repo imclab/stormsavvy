@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "user_mailer/pester_admins" do
 
   before(:all) do
-    @greeting = "Foobar"
+    @greeting = "Greetings"
     @forecast1 = [{ :date => "today", :weather => "90" }]
   end
 
