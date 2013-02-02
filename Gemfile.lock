@@ -179,6 +179,7 @@ GEM
     net-http-persistent (2.8)
     net-http-pipeline (1.0.1)
     netrc (0.7.7)
+    newrelic_rpm (3.5.6.46)
     nokogiri (1.5.6)
     orm_adapter (0.4.0)
     pdf-inspector (1.0.2)
@@ -334,6 +335,7 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   nested_form
+  newrelic_rpm
   nokogiri
   pdf-inspector
   pdf-reader
