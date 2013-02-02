@@ -107,6 +107,14 @@ describe UserMailer do
       @mailer.body.should have_selector("ul.sites")
       @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
     end
+
+    it "returns zipcodes" do
+      @site1.zipcode.should == 94530
+    end
+
+    it "renders forecast table" do
+      @nf.should_not be_nil
+    end
   end
 
   describe "thank you mailer" do

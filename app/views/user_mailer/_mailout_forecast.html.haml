@@ -1,11 +1,21 @@
-%h2 
-  Daily Project POP Alerts
+%table
+  %tr
+    %th
+      Date
+    %th
+      Forecast
+    - @forecast1.each do |f|
+      %tr
+        %td
+          = f[:date]
+        %td
+          = f[:weather]
+%table
   %ul.projects
     - @projects.each do |project|
       %li
         = project.name
-        %ul.sites
-          - project.sites.each do |site| 
-            %li.chance-of-rain
-              = "#{site.name}: POP = #{90}%"
-              /= "#{site.name} => chance of rain = #{site.chance_of_rain}%"
+      %ul.sites
+        - project.sites.each do |site| 
+          %li.chance-of-rain
+            = "#{site.name}: POP = #{90}%"

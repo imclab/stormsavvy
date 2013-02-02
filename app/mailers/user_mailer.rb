@@ -28,6 +28,12 @@ class UserMailer < ActionMailer::Base
       @user = user # needed for the template below
       @projects = @user.projects
 
+      # @project = @user.project
+      # @zipcode = @project.sites.zipcode
+
+      @forecast2 = NOAAForecast.new(94530)
+      @forecast1 = @forecast2.get_forecast_array
+
       if @user.has_site?
         mail(
           :from     => "alerts@stormsavvy.com",
