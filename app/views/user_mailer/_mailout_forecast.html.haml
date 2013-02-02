@@ -1,0 +1,11 @@
+%h2 
+  Daily Project POP Alerts
+  %ul.projects
+    - @projects.each do |project|
+      %li
+        = project.name
+        %ul.sites
+          - project.sites.each do |site| 
+            %li.chance-of-rain
+              = "#{site.name}: POP = #{90}%"
+              /= "#{site.name} => chance of rain = #{site.chance_of_rain}%"
