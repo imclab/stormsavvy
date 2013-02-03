@@ -5,6 +5,7 @@ class AlertMailer < ActionMailer::Base
   def northbay_forecast(email)
     @greeting = "Greetings"
     @salutation = "The Storm Savvy Team"
+    @support = "Questions? Email us at info@stormsavvy.com!"
 
     @location1 = "San Rafael, CA 94901"
     @nf1 = NOAAForecast.new(94901)
@@ -61,6 +62,7 @@ class AlertMailer < ActionMailer::Base
   def pop_alert(user)
     @greeting = "Greetings,"
     @salutation = "The Storm Savvy Team"
+    @support = "Questions? Email us at info@stormsavvy.com!"
 
     @users = User.all
     # if @forecast == :imminent then
