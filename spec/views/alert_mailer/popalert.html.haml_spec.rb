@@ -7,5 +7,4 @@ describe "alert_mailer/northbay_forecast.html.haml" do
     render
     rendered.should =~ /Greetings/
   end
-
 end
