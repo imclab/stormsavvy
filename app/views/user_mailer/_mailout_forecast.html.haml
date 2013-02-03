@@ -1,15 +1,22 @@
 %table
   %tr
-    %th
-      Date
-    %th
-      Forecast
-    - @forecast1.each do |f|
+    - @projects.each do |project|
+      = "Project: #{project.name}"
       %tr
-        %td
-          = f[:date]
-        %td
-          = f[:weather]
+        - project.sites.each do |site|
+          %br
+            = "Site: #{site.name}"
+          %tr
+            %th
+              Date
+            %th
+              Forecast
+            - @forecast1.each do |f|
+              %tr
+                %td
+                  = f[:date]
+                %td
+                  = f[:weather]
 %table
   %ul.projects
     - @projects.each do |project|
