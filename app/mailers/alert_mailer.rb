@@ -73,7 +73,10 @@ class AlertMailer < ActionMailer::Base
   end
 
   def noaa_alert(user)
-    @greeting = "Greetings,"
+    @greeting = "Greetings"
+    @salutation = "The Storm Savvy Team"
+    @support = "Questions? Email us at info@stormsavvy.com!"
+
     @users = User.all
     @users.each do |user|
       @user = user # `@user` is needed for the template
