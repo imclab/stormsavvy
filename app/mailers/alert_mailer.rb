@@ -2,6 +2,33 @@ class AlertMailer < ActionMailer::Base
 
   default :from => "sendgrid@stormsavvy.com"
 
+  def pop_alert(email)
+    @greeting = "Greetings"
+    @salutation = "The Storm Savvy Team"
+
+    @location1 = "San Rafael, CA 94901"
+    @nf1 = NOAAForecast.new(94901)
+    @nf2 = @nf1.forecast_by_zipcode(94901)
+
+    @location2 = "Novato, CA 94949"
+    @nf3 = NOAAForecast.new(94949)
+    @nf4 = @nf3.forecast_by_zipcode(94949)
+
+    @location3 = "Petaluma, CA 94954"
+    @nf5 = NOAAForecast.new(94954)
+    @nf6 = @nf5.forecast_by_zipcode(94954)
+
+    @location4 = "Rohnert Park, CA 94928"
+    @nf7 = NOAAForecast.new(94928)
+    @nf8 = @nf7.forecast_by_zipcode(94928)
+
+    mail(
+      :from     => "sendgrid@stormsavvy.com",
+      :to       => email,
+      :subject  => "Storm Savvy Daily POP Alert: North Bay"
+      ).deliver
+  end
+
   def noaa_forecast(to = nil)
     @users = User.all
     @users.each do |user|
@@ -16,6 +43,21 @@ class AlertMailer < ActionMailer::Base
     end
   end
 
+  def noaa_alert(user)
+    @greeting = "Greetings,"
+    @users = User.all
+    @users.each do |user|
+      @user = user # `@user` is needed for the template
+      if @user.has_site?
+        mail(
+          :from     => "sendgrid@stormsavvy.com",
+          :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
+          :subject  => "Storm Savvy Daily Weather Forecasts"
+          ).deliver
+      end
+    end
+  end
+=begin
   def pop_alert(user)
 
     @greeting = "Greetings,"
@@ -32,20 +74,5 @@ class AlertMailer < ActionMailer::Base
       end
     end
   end
-
-  def noaa_alert(user)
-
-    @greeting = "Greetings,"
-    @users = User.all
-    @users.each do |user|
-      @user = user # `@user` is needed for the template
-      if @user.has_site?
-        mail(
-          :from     => "sendgrid@stormsavvy.com",
-          :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
-          :subject  => "Storm Savvy Daily Weather Forecasts"
-          ).deliver
-      end
-    end
-  end
+=end
 end
