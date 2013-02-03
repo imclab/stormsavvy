@@ -4,12 +4,13 @@ namespace :scheduler do
   task :northbay_forecast => :environment do
     test_users = [
       'walter@stormsavvy.com',
-      'wing.wingyu@gmail.com'
+      'wing.wingyu@gmail.com',
+      'JonathanM@ghilottibros.com',
+      'KjellD@ghilottibros.com'
       ]
     test_users.each do |address|
       AlertMailer.northbay_forecast(address).deliver
     end
-    # end
   end
 
   desc "Delivers eastbay_forecast mailer"
