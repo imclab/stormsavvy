@@ -76,7 +76,22 @@ describe NOAAForecast do
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] }
       ]
+  end
 
+  it "returns forecast_by_zipcode" do
+    nf = NOAAForecast.new(91006,168,6)
+    nf2 = nf.seven_day_weather
+    pop = nf.pop
+
+    print "Pop hash before map: #{pop}", "\n"
+    pop.each do |i|
+      print "Storm POP = #{pop[i]}", "\n"
+    end
+
+    nf.forecast_by_zipcode(91006).should == [
+      { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
+      { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] }
+      ]
   end
 
   it "returns get_time_array" do
