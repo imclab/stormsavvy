@@ -60,8 +60,10 @@ class AlertMailer < ActionMailer::Base
 
   def pop_alert(user)
     @greeting = "Greetings,"
+    @salutation = "The Storm Savvy Team"
 
     @users = User.all
+    # if @forecast == :imminent then
     @users.each do |user|
       @user = user # `@user` is needed for the template
       if @user.has_site?
