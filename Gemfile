@@ -23,6 +23,7 @@ gem 'simple_form'
 gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
 
 gem 'newrelic_rpm'
+gem 'unicorn'
 
 group :development do
   gem 'therubyracer', :platforms => :ruby, :require => 'v8'
