@@ -18,7 +18,6 @@ describe AlertMailer do
       :password               => 'DarkAndStormy',
       :password_confirmation  => 'DarkAndStormy'
       )
-
     @project = FactoryGirl.create(
       :project,
       :user => @user,
@@ -37,17 +36,17 @@ describe AlertMailer do
   describe "pop_alert" do
 
     before :each do
-      @mailer = AlertMailer.pop_alert(@user).deliver
+      @mailer = AlertMailer.pop_alert(@user.email).deliver
     end
 
     it "renders the headers" do
-      @mailer.subject.should eq("Storm Savvy POP Alert")
+      @mailer.subject.should eq("Storm Savvy POP Notice: North Bay")
       @mailer.to.should eq(["#{@user.email}"])
       @mailer.from.should eq(["sendgrid@stormsavvy.com"])
     end
 
     it "renders the body" do
-      @mailer.body.encoded.should match("Greetings from StormSavvy")
+      @mailer.body.encoded.should match("Greetings")
     end
 
     it "delivers and receives mailer" do

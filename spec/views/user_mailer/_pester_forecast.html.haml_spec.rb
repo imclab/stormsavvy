@@ -21,12 +21,14 @@ describe "user_mailer/_pester_forecast" do
 
   it "renders the forecast partial" do
     render
+    rendered.should have_content "Date"
     rendered.should have_content "Forecast"
   end
 
   it "contains a forecast table" do
     render
     rendered.should have_selector 'table'
+    rendered.should have_selector 'th', :text => "Date"
     rendered.should have_selector 'th', :text => "Forecast"
   end
 
