@@ -33,14 +33,36 @@ describe AlertMailer do
       )
   end
 
-  describe "pop_alert" do
+  describe "northbay_forecast" do
 
     before :each do
-      @mailer = AlertMailer.pop_alert(@user.email).deliver
+      @mailer = AlertMailer.northbay_forecast(@user.email).deliver
     end
 
     it "renders the headers" do
-      @mailer.subject.should eq("Storm Savvy POP Notice: North Bay")
+      @mailer.subject.should eq("Storm Savvy POP Forecast: North Bay")
+      @mailer.to.should eq(["#{@user.email}"])
+      @mailer.from.should eq(["sendgrid@stormsavvy.com"])
+    end
+
+    it "renders the body" do
+      @mailer.body.encoded.should match("Greetings")
+    end
+
+    it "delivers and receives mailer" do
+      # AlertMailer.northbay_forecast(@user)
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
+  end
+
+  describe "eastbay_forecast" do
+
+    before :each do
+      @mailer = AlertMailer.eastbay_forecast(@user.email).deliver
+    end
+
+    it "renders the headers" do
+      @mailer.subject.should eq("Storm Savvy Daily Forecast: East Bay")
       @mailer.to.should eq(["#{@user.email}"])
       @mailer.from.should eq(["sendgrid@stormsavvy.com"])
     end

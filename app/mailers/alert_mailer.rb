@@ -2,7 +2,7 @@ class AlertMailer < ActionMailer::Base
 
   default :from => "sendgrid@stormsavvy.com"
 
-  def pop_alert(email)
+  def northbay_forecast(email)
     @greeting = "Greetings"
     @salutation = "The Storm Savvy Team"
 
@@ -25,7 +25,7 @@ class AlertMailer < ActionMailer::Base
     mail(
       :from     => "sendgrid@stormsavvy.com",
       :to       => email,
-      :subject  => "Storm Savvy Daily POP Alert: North Bay"
+      :subject  => "Storm Savvy Daily Forecast: North Bay"
       ).deliver
   end
 
@@ -57,12 +57,11 @@ class AlertMailer < ActionMailer::Base
       end
     end
   end
-=begin
+
   def pop_alert(user)
-
     @greeting = "Greetings,"
-    @users = User.all
 
+    @users = User.all
     @users.each do |user|
       @user = user # `@user` is needed for the template
       if @user.has_site?
@@ -74,5 +73,4 @@ class AlertMailer < ActionMailer::Base
       end
     end
   end
-=end
 end
