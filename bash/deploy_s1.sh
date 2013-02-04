@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Bash staging deployment script.
-
 git push git@heroku.com:stormsavvy.git master
-heroku logs --app stormsavvy
+heroku restart worker.1 -a stormsavvy
+heroku restart -a stormsavvy
+heroku logs -a stormsavvy
+heroku open -a stormsavvy

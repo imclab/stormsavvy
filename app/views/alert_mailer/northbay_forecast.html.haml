@@ -1,0 +1,24 @@
+%table{ :style => "width: 600px; background-color: #eee;", :align => "center" }
+  %tr
+    %td
+      %h1
+        Daily Weather Forecast
+      %p
+        = @greeting
+      %p
+        Listed below are the daily weather forecasts for the North Bay:
+      %li
+        = @location1
+      %li
+        = @location2
+      %li
+        = @location3
+      %li
+        = @location4
+      %p
+        = @support
+      %p
+        = @salutation
+      %hr
+      %p
+        = render 'northbay_forecast_table'

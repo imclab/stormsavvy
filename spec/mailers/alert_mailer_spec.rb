@@ -18,7 +18,6 @@ describe AlertMailer do
       :password               => 'DarkAndStormy',
       :password_confirmation  => 'DarkAndStormy'
       )
-
     @project = FactoryGirl.create(
       :project,
       :user => @user,
@@ -34,24 +33,46 @@ describe AlertMailer do
       )
   end
 
-  describe "pop_alert" do
+  describe "northbay_forecast" do
 
     before :each do
-      @mailer = AlertMailer.pop_alert(@user).deliver
+      @mailer = AlertMailer.northbay_forecast(@user.email).deliver
     end
 
     it "renders the headers" do
-      @mailer.subject.should eq("Storm Savvy POP Alert")
+      @mailer.subject.should eq("Storm Savvy Daily Forecast: North Bay")
       @mailer.to.should eq(["#{@user.email}"])
       @mailer.from.should eq(["sendgrid@stormsavvy.com"])
     end
 
     it "renders the body" do
-      @mailer.body.encoded.should match("Greetings from StormSavvy")
+      @mailer.body.encoded.should match("Greetings")
     end
 
     it "delivers and receives mailer" do
-      # AlertMailer.pop_alert(@user)
+      # AlertMailer.northbay_forecast(@user)
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
+  end
+
+  describe "eastbay_forecast" do
+
+    before :each do
+      @mailer = AlertMailer.eastbay_forecast(@user.email).deliver
+    end
+
+    it "renders the headers" do
+      @mailer.subject.should eq("Storm Savvy Daily Forecast: East Bay")
+      @mailer.to.should eq(["#{@user.email}"])
+      @mailer.from.should eq(["sendgrid@stormsavvy.com"])
+    end
+
+    it "renders the body" do
+      @mailer.body.encoded.should match("Greetings")
+    end
+
+    it "delivers and receives mailer" do
+      # AlertMailer.eastbay_forecast(@user)
       ActionMailer::Base.deliveries.should_not be_empty
     end
   end
@@ -69,7 +90,8 @@ describe AlertMailer do
     end
 
     it "renders the body" do
-      @mailer.body.encoded.should =~ /Future mailer/
+      # @mailer.body.encoded.should match("Greetings")
+      # @mailer.body.encoded.should =~ /daily weather forecast/
     end
 
     it "delivers and receives mailer" do

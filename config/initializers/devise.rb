@@ -8,6 +8,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
+  config.mailer = "ActionMailer::UserMailer"
 
   # Comment out 'config.apply_schema' based on deprecation warning.
   # Automatically apply schema changes in tableless databases
@@ -161,7 +162,7 @@ Devise.setup do |config|
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  # config.reset_password_keys = [ :email ]
+  config.reset_password_keys = [ :email ]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to

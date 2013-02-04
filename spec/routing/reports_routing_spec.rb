@@ -38,7 +38,7 @@ describe ReportsController do
     it "routes to #show" do
       { :get => reports_path(@report.to_param) }
       .should route_to(:action => "index", :controller => "reports", :format => @report.to_param)
-    end    
+    end
 
     # it "routes to #show" do
     #   { :get => reports_path(@report.to_param) }

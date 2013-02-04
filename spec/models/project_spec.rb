@@ -13,13 +13,12 @@ describe Project do
   	}
   end
 
-  it "should have project attributes" do
+  it "has correct project attributes" do
     @project.name.should == "Hwy 101 Corridor"
     @project.startdate.should == DateTime.new
   	@project.finishdate.should == DateTime.new
   	@project.active.should == false
   end
-
   it "should create a new instance given valid attributes" do
     project = Project.new(@attr)
     project.save
@@ -55,14 +54,12 @@ describe Project do
       it "should be associated with a user" do
         @project.should respond_to(:user)
       end
-
       it "should have the correct associated user" do
         @project.should == @project
       end
     end
 
     context :site do 
-
       before(:each) do
         @project = FactoryGirl.create(:project)
         @site = FactoryGirl.create(:site)
@@ -76,7 +73,6 @@ describe Project do
       it "should be associated with sites" do
         @project.should respond_to(:sites)
       end
-
       it "should be able to add 1 site" do
         lambda{
           FactoryGirl.create(
@@ -85,20 +81,17 @@ describe Project do
           )
         }.should change(@project.sites, :count).by(1)
       end
-
       it "should not able to add invalid sites" do
         lambda{
           @project.sites << Site.new
         }.should change(@project.sites, :count).by(0)
       end
-
       it "should be able to add multiple sites" do
         lambda{
           @project.sites << @site2
           @site2.save
         }.should change(@project.sites, :count).by(1)
       end
-
       it "should be able to delete an added site" do
         precount = @project.sites.count
         @project.sites << @site2
@@ -110,17 +103,14 @@ describe Project do
   end
 
   describe "date format validations" do
-
     it "start date should be less than finish date" do
       @project = Project.new(@attr)
       @project.startdate.should < @project.finishdate
     end
-
     it "start date should not be greater than finish date" do
       @project = Project.new(@attr)
       @project.startdate.should_not > @project.finishdate
     end
-
     it "finish date should raise error" do
       # @project = Project.new(@attr)
       # @project.finishdate=(DateTime.new(1999))

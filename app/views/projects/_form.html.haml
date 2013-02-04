@@ -7,8 +7,9 @@
     %h4 We got a flash in the form
     %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
       %a.close{"data-dismiss" => "alert"} ×
-      -#= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+      = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
       %p= msg
+
   %fieldset
     %legend Project Details
     .span5
@@ -40,6 +41,8 @@
             = site.link_to_remove "Remove this site"
 
   .form-actions
+    = link_to 'Back', projects_path
+    |
     = link_to "Cancel", projects_path, :confirm => "Are you sure you want to cancel?"
     |
     = f.submit

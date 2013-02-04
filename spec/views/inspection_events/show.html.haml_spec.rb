@@ -4,19 +4,19 @@ describe "inspection_events/show" do
   before(:each) do
     @inspection_event = assign(:inspection_event, stub_model(InspectionEvent,
       :site_id => 1,
-      :type => "Type",
-      :description => "MyText"
+      :inspection_type => "weekly",
+      :inspection_description => "ec jungle gym inspection",
+      :inspection_date => "2013-01-26 23:13:55",
+      :submitted_by => "wyu",
+      :inspected_by => "wyu"
     ))
   end
 
   it "renders attributes in <p>" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/1/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Type/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/MyText/)
+    rendered.should match(/weekly/)
+    rendered.should match(/ec jungle gym inspection/)
   end
 
   it "renders edit / back / delete links" do

@@ -20,6 +20,42 @@ describe NOAAForecast do
       latlong = @nf.get_lat_long(94530)
       @nf.get_forecast(latlong)
     end
+
+    # Setup for forecast_array
+    nf = NOAAForecast.new(94530,168,6)
+    nf2 = nf.seven_day_weather
+    pop = nf.pop
+    @forecast_array = [
+      { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
+      { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] },
+      { :date => ProjectLocalTime::format(Date.today + 12.hours), :weather => pop[2] },
+      { :date => ProjectLocalTime::format(Date.today + 18.hours), :weather => pop[3] },
+      { :date => ProjectLocalTime::format(Date.today + 24.hours), :weather => pop[4] },
+      { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => pop[5] },
+      { :date => ProjectLocalTime::format(Date.today + 36.hours), :weather => pop[6] },
+      { :date => ProjectLocalTime::format(Date.today + 42.hours), :weather => pop[7] },
+      { :date => ProjectLocalTime::format(Date.today + 48.hours), :weather => pop[8] },
+      { :date => ProjectLocalTime::format(Date.today + 54.hours), :weather => pop[9] },
+      { :date => ProjectLocalTime::format(Date.today + 60.hours), :weather => pop[10] },
+      { :date => ProjectLocalTime::format(Date.today + 66.hours), :weather => pop[11] },
+      { :date => ProjectLocalTime::format(Date.today + 72.hours), :weather => pop[12] },
+      { :date => ProjectLocalTime::format(Date.today + 78.hours), :weather => pop[13] },
+      { :date => ProjectLocalTime::format(Date.today + 84.hours), :weather => pop[14] },
+      { :date => ProjectLocalTime::format(Date.today + 90.hours), :weather => pop[15] },
+      { :date => ProjectLocalTime::format(Date.today + 96.hours), :weather => pop[16] },
+      { :date => ProjectLocalTime::format(Date.today + 102.hours), :weather => pop[17] },
+      { :date => ProjectLocalTime::format(Date.today + 108.hours), :weather => pop[18] },
+      { :date => ProjectLocalTime::format(Date.today + 114.hours), :weather => pop[19] },
+      { :date => ProjectLocalTime::format(Date.today + 120.hours), :weather => pop[20] },
+      { :date => ProjectLocalTime::format(Date.today + 126.hours), :weather => pop[21] },
+      { :date => ProjectLocalTime::format(Date.today + 132.hours), :weather => pop[22] },
+      { :date => ProjectLocalTime::format(Date.today + 138.hours), :weather => pop[23] },
+      { :date => ProjectLocalTime::format(Date.today + 144.hours), :weather => pop[24] },
+      { :date => ProjectLocalTime::format(Date.today + 150.hours), :weather => pop[25] },
+      { :date => ProjectLocalTime::format(Date.today + 156.hours), :weather => pop[26] },
+      { :date => ProjectLocalTime::format(Date.today + 162.hours), :weather => pop[27] },
+      { :date => ProjectLocalTime::format(Date.today + 168.hours), :weather => pop[28] }
+      ]
   end
 
   it "should instantiate class with valid zipcode" do
@@ -72,26 +108,34 @@ describe NOAAForecast do
       print "Storm POP = #{pop[i]}", "\n"
     end
 
-    nf.get_forecast_array.should == [
-      { :date => ProjectLocalTime::format(Date.today), :weather => pop[0] },
-      { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1] }
-      ]
+    nf.get_forecast_array.should == @forecast_array
+  end
 
+  it "returns forecast_by_zipcode" do
+    nf = NOAAForecast.new(94530,168,6)
+    nf2 = nf.seven_day_weather
+    pop = nf.pop
+
+    print "Pop hash before map: #{pop}", "\n"
+    pop.each do |i|
+      print "Storm POP = #{pop[i]}", "\n"
+    end
+
+    nf.get_forecast_array.should == @forecast_array
   end
 
   it "returns get_time_array" do
     nf = NOAAForecast.new(94530,168,6)
     pop = nf.pop
 
+=begin
     pt = []
     pop.each_with_index do |(i, p), index|
       pt << { :date => ProjectLocalTime::format(Date.today + (index*6).hours), :weather => i.to_s }
     end
     print "pt array = #{pt}", "\n"
-
     nf.get_time_array.should == pt
 
-=begin
     pt = []
     pop.each_with_index do |(i, p), index|
       pt << { ProjectLocalTime::format(Date.today + (index*6).hours) => i }

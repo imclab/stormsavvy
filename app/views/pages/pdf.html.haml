@@ -1,24 +1,27 @@
-.hero
-  .container
-    .row
-      .span12
-        #welcome.hero-unit.pagination-centered
-          %h1 
-            Storm Savvy PDFs
-          %h3 
-            Forms On The Go
-          .loud 
-            Fill In Online, Print Anywhere.
-      .span11{:style => "float:right"}
-        .span7{:style => "float:left;"}
-          .hero-unit.span7.pagination-centered
-            .row
-              .pull-left
-                Caltrans Weekly Inspection Report Form, CEM 2030
-              .pull-right
-                = link_to 'Show', pdf_CEM2030_path, :class => "btn btn-primary"
-            .row
-              .pull-left
-                Caltrans Weekly Inspection Report Form, CEM 4601
-              .pull-right
-                = link_to 'Show', pdf_CEM4601_path, :class => "btn btn-primary"
+.container
+  .row
+    .panel
+      .inner
+        .headline.bottom-10.cf
+          %h2.pull-left PDF Reports
+          %br
+        %h3
+          Instructions: Select From Forms Below
+        %h4
+          = link_to 'Show', pdf_CEM2030_path, :class => "btn btn-primary"
+          Weekly Inspection Report, CEM 2030
+        %h4
+          = link_to 'Show', pdf_CEM2034_path, :class => "btn btn-primary"
+          Corrective Action Report, CEM 2034
+        %h4
+          = link_to 'Show', pdf_CEM2035_path, :class => "btn btn-primary"
+          BMP Status Report, CEM 2035
+        %h4
+          = link_to 'Show', pdf_CEM2040_path, :class => "btn btn-primary"
+          Weather Forecast Report, CEM 2040
+        %h4
+          = link_to 'Show', pdf_CEM2045_path, :class => "btn btn-primary"
+          REAP Report, CEM 2045
+        %h4
+          = link_to 'Show', pdf_CEM4601_path, :class => "btn btn-primary"
+          Daily Report, CEM 4601

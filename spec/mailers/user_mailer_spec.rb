@@ -88,7 +88,6 @@ describe UserMailer do
 
   describe "mailout mailer" do
 
-    # TODO: Debug project factory table
     before(:each) do
       @receipient = "walter@stormsavvy.com"
       @mailer = UserMailer.mailout(@recipient).deliver
@@ -104,9 +103,38 @@ describe UserMailer do
 
     it "should have text in body" do
       @mailer.body.should_not be_empty
-      # @mailer.body.should have_selector("ul.projects")
-      # @mailer.body.should have_selector("ul.sites")
+      @mailer.body.should have_selector("ul.projects")
+      @mailer.body.should have_selector("ul.sites")
       # @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
+    end
+
+    it "returns zipcodes" do
+      @site1.zipcode.should == 94530
+    end
+
+    it "renders forecast table" do
+      @nf.should_not be_nil
+    end
+  end
+
+  describe "thank you mailer" do
+
+    # TODO: Debug project factory table
+    before(:each) do
+      @receipient = "walter@stormsavvy.com"
+      @mailer = UserMailer.thankyou(@recipient).deliver
+    end
+
+    it "should send something via mailout" do
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
+
+    it "should render successfully" do
+      lambda { @mailer }.should_not raise_error
+    end
+
+    it "should have text in body" do
+      @mailer.body.should_not be_empty
     end
   end
 

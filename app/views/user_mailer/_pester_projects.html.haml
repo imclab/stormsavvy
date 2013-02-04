@@ -2,13 +2,15 @@
   %tr
     %td
       %p
-        Here is a list of your projects:
+        Here are the current stats of the application:
 
       %table.projects
         %tr
           %th Projects
           %th Users
           %th Sites
+          %th Inspections
+          %th Reports
         %tr
           %td
             = @numprojects
@@ -16,4 +18,8 @@
             = @numusers
           %td
             = @numsites
+          %td
+            = @numinspections
+          %td
+            = @numreports
       %hr

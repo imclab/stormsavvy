@@ -30,6 +30,5 @@ describe "layouts/application.html.haml" do
       rendered.should have_selector "a.brand", :text => "Storm Savvy"
       rendered.should_not have_selector "a.random_text", :text => "Storm Savvy"
     end
-
   end
 end

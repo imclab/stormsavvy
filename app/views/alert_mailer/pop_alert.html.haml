@@ -1,16 +1,13 @@
-= "#{greeting} #{@user.email},\n"
-
-= "Here are your projects and forecasts:"
-
-%table
-  %tr.snapper
-    %th Date
-    %th POP
-  %tbody
-    - @user.projects.each do |p|
-      - p.sites.each do |s|
-        %tr
-          %td.sitename
-            = "#{s.name}"
-          %td.pop
-            = "#{s.forecast}"
+%table{ :style => "width: 600px; background-color: #eee;", :align => "center" }
+  %tr
+    %td
+      %h1
+        NOAA POP Alert
+      %p
+        = @greeting
+      %p
+        Please be advised that there is a forecast rain event in your area.
+      %p
+        = @support
+      %p
+        = @salutation

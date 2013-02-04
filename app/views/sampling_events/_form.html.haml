@@ -1,0 +1,47 @@
+= simple_form_for(@sampling_event) do |f|
+  = f.error_notification
+
+  .span5
+    .form-inputs
+      = f.input :site_id
+      = f.input :sampling_type
+      = f.input :sampling_description
+      = f.input :submitted_by
+      = f.input :sampled_by
+    .field
+      = f.label :sampling_date
+      = f.date_select :sampling_date
+    .actions
+      = f.submit 'Save'
+      = link_to 'Back', sampling_events_path      
+  .span5
+    = f.input :sample_id_1
+    = f.input :sample_location_1
+    = f.input :sample_time_1
+    = f.input :analysis_type_1
+    = f.input :analysis_result_1
+    = f.input :analysis_average_1
+    = f.input :sample_id_2
+    = f.input :sample_location_2
+    = f.input :sample_time_2
+    = f.input :analysis_type_2
+    = f.input :analysis_result_2
+    = f.input :analysis_average_2
+    = f.input :sample_id_3
+    = f.input :sample_location_3
+    = f.input :sample_time_3
+    = f.input :analysis_type_3
+    = f.input :analysis_result_3
+    = f.input :analysis_average_3
+    = f.input :sample_id_4
+    = f.input :sample_location_4
+    = f.input :sample_time_4
+    = f.input :analysis_type_4
+    = f.input :analysis_result_4
+    = f.input :analysis_average_4
+    = f.input :sample_id_5
+    = f.input :sample_location_5
+    = f.input :sample_time_5
+    = f.input :analysis_type_5
+    = f.input :analysis_result_5
+    = f.input :analysis_average_5

@@ -3,34 +3,7 @@ require 'spec_helper'
 describe "user_mailer/pester_admins" do
 
   before(:all) do
-    @greeting = "Foobar"
-    @forecast1 = [{ :date => "today", :weather => "90" }]
-  end
-
-  it "greet the admin user" do
-    render
-    rendered.should =~ /daily admin email/
-  end
-end
-
-describe "user_mailer/_pester_projects" do
-  it "contains a projects table" do
-    render
-    rendered.should have_selector 'table'
-    rendered.should have_selector 'th', :text => "Projects"
-  end
-end
-
-describe "user_mailer/_pester_intro_block" do
-  it "renders the intro partial" do
-    render
-    rendered.should have_content "Storm Sumo"
-  end
-end
-
-describe "user_mailer/_pester_forecast" do
-
-  before(:all) do
+    @greeting = "Greetings"
     @forecast1 = [{ :date => Date.today, :weather => "90" },
                   { :date => Date.today + 1.day, :weather => "85"},
                   { :date => Date.today + 2.day, :weather => "80"},
@@ -45,36 +18,11 @@ describe "user_mailer/_pester_forecast" do
     @date5 = Date.today + 4.day
     @date6 = Date.today + 5.day
     @date7 = Date.today + 6.day
+    # @forecast1 = [{ :date => "today", :weather => "90" }]
   end
 
-  it "renders the forecast partial" do
+  it "greets the admin user" do
     render
-    rendered.should have_content "Forecast"
-  end
-
-  it "contains a forecast table" do
-    render
-    rendered.should have_selector 'table'
-    rendered.should have_selector 'th', :text => "Forecast"
-  end
-
-  it "renders date with data" do
-
-    render
-    rendered.should have_content @date1
-    rendered.should have_content @date2
-    rendered.should have_content @date3
-    rendered.should have_content @date4
-    rendered.should have_content @date5
-    rendered.should have_content @date6
-    rendered.should have_content @date7
-
-    rendered.should have_content "90"
-    rendered.should have_content "85"
-    rendered.should have_content "80"
-    rendered.should have_content "75"
-    rendered.should have_content "70"
-    rendered.should have_content "65"
-    rendered.should have_content "60"
+    rendered.should =~ /Daily Admin Email/
   end
 end

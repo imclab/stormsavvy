@@ -15,7 +15,7 @@ describe "reports/edit" do
       assert_select "input#report_site_information_name" 
     end
   end
-
+=begin
   it "renders fieldset for weather conditions" do
     render
     assert_select "form", :method => 'post' do
@@ -75,7 +75,6 @@ describe "reports/edit" do
       end
     end
   end
-
 
   it "renders the edit report form" do
     render
@@ -182,4 +181,5 @@ describe "reports/edit" do
            :name => "report[gauge_reading_post_storm]"  
     end
   end
+=end
 end

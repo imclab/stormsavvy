@@ -20,8 +20,8 @@ describe "homepage" do
   it "renders sign-in page" do
     visit '/index'
     page.should have_content 'Sign in'
-    click_link 'Sign in'
-    current_path.should == '/users/sign_in'
+    # click_link 'Sign in'
+    # current_path.should == '/users/sign_in'
   end
 
   it "signs user in with correct credentials" do
@@ -40,24 +40,47 @@ describe "homepage" do
     page.should have_content 'Invalid email or password'
   end
 
-=begin
-  it "renders pdf form page" do
+  it "renders home page" do
+    # visit '/index'
+    # current_path.should == root_path
+  end
+
+  it "renders correct links and pages after login" do
+    visit '/users/sign_in' 
+    fill_in 'Email', :with => 'testem@specit.com'
+    fill_in 'Password', :with => 'testem'
+    click_button 'Sign in'
+
+    # click_link "Inspections"
+    # visit new_inspection_event_path
+    # current_path.should == new_inspection_event_path
+
+    click_link "Settings"
+    current_path.should == edit_user_registration_path
+
+    # click_link "Sign out"
+    # current_path.should == destroy_user_session_path
+  end
+
+  it "renders correct links and pages from home page" do
     visit '/index'
-    click_link "Storm Savvy PDF"
-    current_path.should == '/pdf'
-  end
+    click_link "Privacy"
+    current_path.should == privacy_path
 
-  it "renders index page from header link" do visit '/index'
-    click_link "Storm Savvy"
-    current_path.should == '/index'
-  end
-
-  it "renders index page from header link" do
     visit '/index'
-    click_link 'Storm Savvy POP'
-    visit 'http://pop.stormsavvy.com/'
-    current_url.should == 'http://pop.stormsavvy.com/index'
-  end
-=end
+    click_link "Terms"
+    current_path.should == terms_path
 
+    # visit '/index'
+    # click_link "Blog"
+    # current_path.should == 'http://stormsavvy.me'
+
+    visit '/index'
+    click_link "Sign up"
+    current_path.should == new_user_registration_path
+
+    # visit '/index'
+    # click_link "Sign in"
+    # current_path.should == new_user_session_path
+  end
 end

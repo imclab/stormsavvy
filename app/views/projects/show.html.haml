@@ -1,34 +1,34 @@
+.container
+  .row
+    .span8#project-attributes
+      - if notice
+        %p#notice.alert.alert-success= notice
+      %h2 Project page
+      %p
+        %b Name:
+        = @project.name
+      %p
+        %b Description:
+        = @project.description
+      %p
+        %b Startdate:
+        = @project.startdate
+      %p
+        %b Finishdate:
+        = @project.finishdate
+      %p
+        %b Active:
+        = @project.active
 
-.row
-  .span8#project-attributes
-    - if notice
-      %p#notice.alert.alert-success= notice
-    %h2 Project page
-    %p
-      %b Name:
-      = @project.name
-    %p
-      %b Description:
-      = @project.description
-    %p
-      %b Startdate:
-      = @project.startdate
-    %p
-      %b Finishdate:
-      = @project.finishdate
-    %p
-      %b Active:
-      = @project.active
+      %p
+        %b Sites
+        - @project.sites.each do |site|
+          = link_to site.name, project_site_path(@project, site)
 
-    %p
-      %b Sites
-      - @project.sites.each do |site|
-        = link_to site.name, project_site_path(@project, site)
+      = link_to 'Edit', edit_project_path(@project)
+      \|
+      = link_to 'Back', projects_path
+      \|
+      = link_to 'Delete', project_path(@project), :method => :delete
 
-    = link_to 'Edit', edit_project_path(@project)
-    \|
-    = link_to 'Back', projects_path
-    \|
-    = link_to 'Delete', project_path(@project), :method => :delete
-
-  .span4#project-sidebar= render 'projects/sidebar'
+    .span4#project-sidebar= render 'projects/sidebar'
