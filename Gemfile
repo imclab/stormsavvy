@@ -57,7 +57,7 @@ group :test, :development do
   gem 'autotest-fsevent'
 
   # Comment out when running bundle update
-  gem 'email_spec'
+  gem 'email_spec', "1.4.0"
 end
 
 group :assets do
