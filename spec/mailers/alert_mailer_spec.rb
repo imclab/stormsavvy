@@ -77,6 +77,28 @@ describe AlertMailer do
     end
   end
 
+  describe "southbay_forecast" do
+
+    before :each do
+      @mailer = AlertMailer.southbay_forecast(@user.email).deliver
+    end
+
+    it "renders the headers" do
+      @mailer.subject.should eq("Storm Savvy Daily Forecast: South Bay")
+      @mailer.to.should eq(["#{@user.email}"])
+      @mailer.from.should eq(["sendgrid@stormsavvy.com"])
+    end
+
+    it "renders the body" do
+      @mailer.body.encoded.should match("Greetings")
+    end
+
+    it "delivers and receives mailer" do
+      # AlertMailer.eastbay_forecast(@user)
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
+  end
+
   describe "noaa_alert" do
 
     before :each do

@@ -58,6 +58,34 @@ class AlertMailer < ActionMailer::Base
       ).deliver
   end
 
+  def southbay_forecast(email)
+    @greeting = "Greetings"
+    @salutation = "The Storm Savvy Team"
+    @support = "Questions? Email us at info@stormsavvy.com!"
+
+    @location1 = "Fremont, CA 94538"
+    @nf1 = NOAAForecast.new(94538)
+    @nf2 = @nf1.forecast_by_zipcode(94538)
+
+    @location2 = "Sunnyvale, CA 94087"
+    @nf3 = NOAAForecast.new(94087)
+    @nf4 = @nf3.forecast_by_zipcode(94087)
+
+    @location3 = "San Jose, CA 95113"
+    @nf5 = NOAAForecast.new(95113)
+    @nf6 = @nf5.forecast_by_zipcode(95113)
+
+    @location4 = "Palo Alto, CA 94305"
+    @nf7 = NOAAForecast.new(94305)
+    @nf8 = @nf7.forecast_by_zipcode(94305)
+
+    mail(
+      :from     => "sendgrid@stormsavvy.com",
+      :to       => email,
+      :subject  => "Storm Savvy Daily Forecast: South Bay"
+      ).deliver
+  end
+
   def noaa_forecast(to = nil)
     @users = User.all
     @users.each do |user|
