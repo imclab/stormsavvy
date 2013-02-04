@@ -33,7 +33,6 @@ describe "user_mailer/_pester_forecast" do
   end
 
   it "renders date with data" do
-
     render
     rendered.should have_content @date1
     rendered.should have_content @date2
