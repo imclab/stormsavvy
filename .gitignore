@@ -19,6 +19,7 @@
 app/assets/images/.DS_Store
 app/pdfs/*.txt
 app/models/*.txt
+bash/heroku_vars.sh
 coverage/
 config/config.yml
 db/development
