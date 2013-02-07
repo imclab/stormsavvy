@@ -149,7 +149,6 @@ GEM
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
-    jemalloc (0.1.8)
     journey (1.0.4)
     jquery-rails (2.2.0)
       railties (>= 3.0, < 5.0)
@@ -339,7 +338,6 @@ DEPENDENCIES
   factory_girl_rails
   geocoder!
   haml-rails
-  jemalloc
   jquery-rails
   letter_opener
   nested_form
