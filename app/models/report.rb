@@ -81,6 +81,9 @@ class Report < ActiveRecord::Base
   # s3 uploads via paperclip
   :attachment
 
+  # s3 uploads via paperclip
+  has_attached_file :attachment, :url => "http://stormsavvy.s3-website-us-east-1.amazonaws.com"
+
 private
 
   def change_report_status
