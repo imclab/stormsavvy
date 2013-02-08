@@ -25,6 +25,8 @@
     = f.submit 'Upload Attachment'
     |
     = link_to 'Cancel', reports_path, class: 'button'
+    |
+    = link_to "Download", report.file.url 
 
   .form-actions
     / = link_to "Cancel", reports_path, :confirm => "Are you sure you want to cancel?"
