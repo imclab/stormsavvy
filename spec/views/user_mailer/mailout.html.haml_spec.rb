@@ -18,11 +18,38 @@ describe "user_mailer/mailout" do
     @date5 = Date.today + 4.day
     @date6 = Date.today + 5.day
     @date7 = Date.today + 6.day
+
+    @user = FactoryGirl.create(:user)
+    @project1 = FactoryGirl.create(
+      :project,
+      :user => @user,
+      :created_at => 1.day.ago
+      )
+    @project2 = FactoryGirl.create(
+      :project,
+      :user => @user,
+      :created_at => 1.hour.ago
+      )
+    @projects = [@project1, @project2]
+
+    @site1 = FactoryGirl.create(
+      :site,
+      :project => @project1,
+      :name => 'ec jungle gym',
+      :zipcode => 94530
+      )
+    @site2 = FactoryGirl.create(
+      :site,
+      :project => @project2,
+      :name => 'ec playground slide',
+      :zipcode => 94530
+      )
+    @sites = [@site1, @site2]
   end
 
   it "renders mailout mailer" do
     render
-    rendered.should have_selector 'h2', :text => "Daily Project POP Alerts"
+    rendered.should have_selector 'h1', :text => 'Daily Site POP Alert'
     rendered.should =~ /Daily Site POP Alert/
   end
 end

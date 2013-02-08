@@ -1,8 +1,25 @@
 require 'spec_helper'
 
-describe "user_mailer/_pester_forecast" do
+describe "user_mailer/_mailout_forecast" do
 
   before(:each) do
+    @greeting = "Greetings"
+    @forecast1 = [{ :date => Date.today, :weather => "90" },
+                  { :date => Date.today + 1.day, :weather => "85"},
+                  { :date => Date.today + 2.day, :weather => "80"},
+                  { :date => Date.today + 3.day, :weather => "75"},
+                  { :date => Date.today + 4.day, :weather => "70"},
+                  { :date => Date.today + 5.day, :weather => "65"},
+                  { :date => Date.today + 6.day, :weather => "60"}]
+    @date1 = Date.today
+    @date2 = Date.today + 1.day
+    @date3 = Date.today + 2.day
+    @date4 = Date.today + 3.day
+    @date5 = Date.today + 4.day
+    @date6 = Date.today + 5.day
+    @date7 = Date.today + 6.day
+
+
     @user = FactoryGirl.create(:user)
     @project1 = FactoryGirl.create(
       :project,
@@ -33,14 +50,18 @@ describe "user_mailer/_pester_forecast" do
 
   it "renders the forecast partial" do
     render
-    rendered.should have_content "Site"
-    rendered.should have_content "POP ="
+    rendered.should =~ /Project:/
+    rendered.should =~ /Site:/
+    rendered.should =~ /POP =/
+    # rendered.should have_content "Project:"
+    # rendered.should have_content "Site:"
+    # rendered.should have_content "POP ="
   end
 
   it "contains a forecast table" do
     render
     rendered.should have_selector 'table'
-    rendered.should have_selector 'tr', :text => "Site"
-    rendered.should have_selector 'tr', :text => "POP ="
+    rendered.should have_selector 'th', :text => "Date"
+    rendered.should have_selector 'th', :text => "Forecast"
   end
 end
