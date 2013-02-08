@@ -2,6 +2,9 @@ development:
   perform_authentication: true
   STORMSAVVY_GMAIL_USERNAME: alerts@stormsavvy.com
   STORMSAVVY_GMAIL_PASSWORD: DarkAndStormy
+  AWS_ACCESS_KEY_ID: AKIAI2XLVAVUZ6BBZ3ZA
+  AWS_BUCKET: stormsavvy
+  AWS_SECRET_ACCESS_KEY: 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
 
 test:
   perform_authentication: true
