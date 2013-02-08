@@ -44,8 +44,12 @@ Stormsavvy::Application.configure do
     }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default :charset => "utf-8"
 
-=begin
   # Loads yaml password configuration file in development
   APP_CONFIG = YAML.load_file(File.join(Rails.root, 'config', 'config.yml'))[Rails.env]
   config.action_mailer.smtp_settings = {
@@ -57,20 +61,14 @@ Stormsavvy::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
-=end
-
-  config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.default :charset => "utf-8"
 
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV['AWS_BUCKET'],
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      :bucket => APP_CONFIG['AWS_BUCKET'],
+      :access_key_id => APP_CONFIG['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => APP_CONFIG['AWS_SECRET_ACCESS_KEY']
       }
   }
+
 end
