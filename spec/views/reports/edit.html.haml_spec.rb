@@ -9,13 +9,15 @@ describe "reports/edit" do
     @report = FactoryGirl.create(:report)
   end
 
+  
+=begin
   it "renders the edit report form" do
     render
     assert_select "form", :method => 'post' do 
       assert_select "input#report_site_information_name" 
     end
   end
-=begin
+
   it "renders fieldset for weather conditions" do
     render
     assert_select "form", :method => 'post' do
