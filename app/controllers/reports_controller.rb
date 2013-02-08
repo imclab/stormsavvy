@@ -6,6 +6,7 @@ class ReportsController < ApplicationController
 
   def index
     @reports = Report.all
+    
     @completed_reports = Report.completed
     @needs_attention_reports = Report.needs_attention
   end
