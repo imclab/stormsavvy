@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
   STATIC_REPORTS = %w[CEM2030 CEM2034 CEM2035 CEM2040 CEM2045 CEM2050 CEM2051 CEM2052 CEM4601]
 
   def index
-    #@reports = Report.all
+    @reports = Report.all
     @completed_reports = Report.completed
     @needs_attention_reports = Report.needs_attention
   end
@@ -24,6 +24,11 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @report }
+    end
   end
 
   def create
