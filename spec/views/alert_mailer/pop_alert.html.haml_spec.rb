@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "alert_mailer/northbay_forecast.html.haml" do
+describe "alert_mailer/pop_alert.html.haml" do
 
   it "renders POP alert" do
     # @user = FactoryGirl.build(:user)

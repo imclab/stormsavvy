@@ -61,18 +61,19 @@ describe "Reports" do
       Warden.test_reset!
     end
 
-		it "should view and create new report" do
-			visit '/reports/new'
+		it "shows upload page" do
+			visit new_report_path
       page.body.should_not be_nil
-			page.body.should have_selector('h2', :text => 'New Report')
+			page.body.should have_selector('h2', :text => 'Report Upload')
     end
 
-		it "saves the new report" do
-			visit '/reports/new'
+		it "returns to reports path if cancelled" do
+			visit new_report_path
       page.body.should_not be_nil
-      click_button 'Save Report'
-			page.body.should have_selector('h2', :text => 'View Report')
-      current_path.should == report_path(1)
+      click_button 'Upload Attachment'
+      current_path.should == reports_path
+			# page.body.should have_selector('h2', :text => 'View Report')
+      # current_path.should == report_path(1)
     end
   end
 end
