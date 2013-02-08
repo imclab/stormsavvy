@@ -25,6 +25,9 @@ gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
 gem 'newrelic_rpm'
 gem 'unicorn'
 
+gem 'paperclip'
+gem 'aws-sdk'
+
 group :development do
   gem 'therubyracer', :platforms => :ruby, :require => 'v8'
   gem 'letter_opener'
