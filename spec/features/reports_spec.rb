@@ -70,7 +70,7 @@ describe "Reports" do
 		it "returns to reports path if cancelled" do
 			visit new_report_path
       page.body.should_not be_nil
-      click_button 'Upload Attachment'
+      click_link 'Cancel'
       current_path.should == reports_path
 			# page.body.should have_selector('h2', :text => 'View Report')
       # current_path.should == report_path(1)
