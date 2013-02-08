@@ -75,8 +75,11 @@ class Report < ActiveRecord::Base
   :time_elapsed_post_storm,
   # x_hours_minutes
 
-  :gauge_reading_post_storm
+  :gauge_reading_post_storm,
   # x_inches
+
+  # s3 uploads via paperclip
+  :attachment
 
 private
 
