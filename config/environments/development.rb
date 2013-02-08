@@ -45,6 +45,7 @@ Stormsavvy::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
+=begin
   # Loads yaml password configuration file in development
   APP_CONFIG = YAML.load_file(File.join(Rails.root, 'config', 'config.yml'))[Rails.env]
   config.action_mailer.smtp_settings = {
