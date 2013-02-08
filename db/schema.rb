@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130127071354) do
-=======
-ActiveRecord::Schema.define(:version => 20130127233407) do
->>>>>>> HEAD@{4}
+ActiveRecord::Schema.define(:version => 20130208020331) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -181,6 +177,10 @@ ActiveRecord::Schema.define(:version => 20130127233407) do
     t.decimal  "storm_information_expected_precipitation_amount"
     t.decimal  "storm_information_precipitation_amount_from_last_form"
     t.string   "project_identifier_number"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   create_table "sampling_events", :force => true do |t|
