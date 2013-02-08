@@ -1,4 +1,10 @@
 .container
   .row
     .span10
-      = render "form"
+      .h2
+        Reports Needing Attention:
+        = Report.needs_attention.count
+      %p
+      .h2
+        Completed Reports:
+        = Report.completed.count
