@@ -1,15 +1,8 @@
 Stormsavvy::Application.routes.draw do
 
-  resources :sampling_events
-
-
-  resources :inspection_events
-
-
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
-
   devise_for :users
 
   get "alert_pages/sender"
@@ -30,7 +23,8 @@ Stormsavvy::Application.routes.draw do
   get "pdf/CEM2045"
   get "pdf/CEM4601"
 
-  resources :inspection_events,
+  resources :sampling_events,
+    :inspection_events,
     :weather_events,
     :reports,
     :locations
