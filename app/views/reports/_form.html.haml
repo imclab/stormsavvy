@@ -1,26 +1,15 @@
-= simple_nested_form_for @report do |f|
-  -if @report.errors.any?
+= form_for(@report) do |f|
+  - if @report.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+      %h2
+        = pluralize(@report.errors.count, "error")
+        prohibited this friend from being saved:
       %ul
-        - @project.errors.full_messages.each do |msg|
+        - @report.errors.full_messages.each do |msg|
           %li= msg
-
-  .control-group
-    = f.label :type
-    .controls
-      = f.text_field :type, :disabled => true
-
-  .control-group
-    =f.label :site_id
-    .controls
-      = f.text_field :site_id
-
-  .form-actions
-    = link_to "Cancel", reports_path, :confirm => "Are you sure you want to cancel?"
-    |
-    = f.submit
-    / |
-    / = link_to "Download PDF", report_path(@report, :pdf)
-    / |
-    / = link_to 'Delete', report_path(@report), :method => :delete
+  .field
+    = f.label :attachment
+    = f.file_field :attachment
+  .actions
+    = f.submit 'Upload Attachment'
+    = link_to 'Cancel', reports_path, class: 'button'
