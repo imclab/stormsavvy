@@ -8,8 +8,10 @@ describe "reports/index" do
     ])
   end
 
-  it "renders a list of reports" do
+  it "renders index page correctly" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
+    rendered.should =~ /Report Status/
+    rendered.should =~ /Reports Needing Attention/
+    rendered.should =~ /Completed Reports/
   end
 end
