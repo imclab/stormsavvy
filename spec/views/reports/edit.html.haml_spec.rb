@@ -2,14 +2,23 @@ require 'spec_helper'
 
 describe "reports/edit" do
 
-  # Comment back in and unmark two spec below 
-  # when ready to fix factory spec.
-
   before(:each) do
-    @report = FactoryGirl.create(:report)
+    assign(:reports, [
+      stub_model(Report),
+      stub_model(Report)
+    ])
+    @report = FactoryGirl.create(:report, :id => 1)
+  end
+  
+  it "renders edit page correctly" do
+    visit '/reports/1/edit'
+    page.should_not be_nil
+    
+    render
+    rendered.should =~ /Type/
+    rendered.should =~ /Site/
   end
 
-  
 =begin
   it "renders the edit report form" do
     render
