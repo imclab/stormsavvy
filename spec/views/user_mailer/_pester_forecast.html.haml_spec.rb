@@ -25,6 +25,7 @@ describe "user_mailer/_pester_forecast" do
     render
     rendered.should have_content "Date"
     rendered.should have_content "Forecast"
+    rendered.should have_content "Rainfall"
   end
 
   it "contains a forecast table" do
@@ -32,6 +33,7 @@ describe "user_mailer/_pester_forecast" do
     rendered.should have_selector 'table'
     rendered.should have_selector 'th', :text => "Date"
     rendered.should have_selector 'th', :text => "Forecast"
+    rendered.should have_selector 'th', :text => "Rainfall"
   end
 
   it "renders date with data" do
