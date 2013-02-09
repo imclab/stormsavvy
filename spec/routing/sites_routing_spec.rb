@@ -3,8 +3,7 @@ require "spec_helper"
 describe SitesController do
 
   describe "routing" do
-
-
+    
     before(:each) do
       attrs = {
         :name => 'Project',
