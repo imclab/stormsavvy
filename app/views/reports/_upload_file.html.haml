@@ -1,0 +1,20 @@
+= form_for(@report) do |f|
+  - if @report.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@report.errors.count, "error")
+        prohibited this friend from being saved:
+      %ul
+        - @report.errors.full_messages.each do |msg|
+          %li= msg
+
+  %h3
+    Instructions: Select Report For Upload Below
+  %br
+  .field
+    = f.label :attachment
+    = f.file_field :attachment, class: 'button'
+  %br
+  .actions
+    = f.submit 'Upload Attachment', class: 'button'
+    = link_to 'Cancel', reports_path
