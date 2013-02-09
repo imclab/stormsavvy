@@ -1,20 +1,38 @@
-= form_for(@report) do |f|
-  - if @report.errors.any?
+= simple_nested_form_for @report do |f|
+  -if @report.errors.any?
     #error_explanation
-      %h2
-        = pluralize(@report.errors.count, "error")
-        prohibited this friend from being saved:
+      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
       %ul
-        - @report.errors.full_messages.each do |msg|
+        - @project.errors.full_messages.each do |msg|
           %li= msg
 
-  %h3
-    Instructions: Select Report For Upload Below
-  %br
-  .field
-    /= f.label :attachment
-    = f.file_field :attachment, class: 'button'
-  %br
-  .actions
-    = f.submit 'Upload Attachment', class: 'button'
-    = link_to 'Cancel', reports_path
+  .control-group
+    = f.label :type
+    .controls
+      = f.text_field :type
+
+  .control-group
+    =f.label :site_id
+    .controls
+      = f.text_field :site_id
+
+  .control-group
+    = f.label :attachment
+    .controls
+      = f.file_field :attachment
+  
+  .control-group
+    / = f.submit 'Upload Attachment'
+    / |
+    / = link_to 'Cancel', reports_path, :confirm => "Are you sure you want to cancel?"
+    / |
+    / = link_to "Download", report.file.url 
+
+  .form-actions
+    / = link_to "Cancel", reports_path, :confirm => "Are you sure you want to cancel?"
+    / |
+    / = f.submit
+    / |
+    / = link_to "Download PDF", report_path(@report, :pdf)
+    / |
+    / = link_to 'Delete', report_path(@report), :method => :delete
