@@ -76,6 +76,7 @@ describe "alert_mailer/northbay_forecast" do
     render 'alert_mailer/northbay_forecast_table'
     rendered.should have_content "Date"
     rendered.should have_content "Forecast"
+    rendered.should have_content "Rainfall"
   end
 
   it "contains a forecast table" do
@@ -83,6 +84,7 @@ describe "alert_mailer/northbay_forecast" do
     rendered.should have_selector 'table'
     rendered.should have_selector 'th', :text => "Date"
     rendered.should have_selector 'th', :text => "Forecast"
+    rendered.should have_selector 'th', :text => "Rainfall"
   end
 
   it "renders date with data" do
@@ -102,5 +104,13 @@ describe "alert_mailer/northbay_forecast" do
     rendered.should have_content "70"
     rendered.should have_content "65"
     rendered.should have_content "60"
+
+    rendered.should have_content "0"
+    rendered.should have_content "1"
+    rendered.should have_content "2"
+    rendered.should have_content "3"
+    rendered.should have_content "4"
+    rendered.should have_content "5"
+    rendered.should have_content "6"
   end
 end
