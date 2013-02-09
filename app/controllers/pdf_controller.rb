@@ -1,15 +1,4 @@
 class PdfController < ApplicationController
-=begin
-	def CEM2030
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030_production.pdf"
-    filename = "#{Rails.root}/app/assets/pdfs/CEM2030_production.pdf"
-    pdf = Prawn::Document.new(
-      :template => filename,
-      :page_size => "A4"
-    )
-    send_data pdf.render, type: "application/pdf", disposition: "inline"
-  end
-=end
   def CEM2030
     # filename = "#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.pdf"
     filename = "#{Rails.root}/app/assets/pdfs/CEM2030_production_v1.pdf"
@@ -100,6 +89,16 @@ class PdfController < ApplicationController
     send_data pdf.render, type: "application/pdf", disposition: "inline"
   end
 =begin
+  def CEM2030
+    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030_production.pdf"
+    filename = "#{Rails.root}/app/assets/pdfs/CEM2030_production.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
+    send_data pdf.render, type: "application/pdf", disposition: "inline"
+  end
+
   def CEM2052
     pdf = Prawn::Document.new
     pdf.text "CEM2052"
