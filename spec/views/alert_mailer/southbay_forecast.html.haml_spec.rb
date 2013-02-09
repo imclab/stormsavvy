@@ -3,14 +3,7 @@ require 'spec_helper'
 describe "alert_mailer/southbay_forecast" do
 
   before(:all) do
-    @nf2= [{ :date => Date.today, :weather => "90" },
-           { :date => Date.today + 1.day, :weather => "85"},
-           { :date => Date.today + 2.day, :weather => "80"},
-           { :date => Date.today + 3.day, :weather => "75"},
-           { :date => Date.today + 4.day, :weather => "70"},
-           { :date => Date.today + 5.day, :weather => "65"},
-           { :date => Date.today + 6.day, :weather => "60"}]
-    @date1 = Date.today
+    @date1 = Date.today + 0.day
     @date2 = Date.today + 1.day
     @date3 = Date.today + 2.day
     @date4 = Date.today + 3.day
@@ -18,50 +11,45 @@ describe "alert_mailer/southbay_forecast" do
     @date6 = Date.today + 5.day
     @date7 = Date.today + 6.day
 
-    @nf4= [{ :date => Date.today, :weather => "90" },
-           { :date => Date.today + 1.day, :weather => "85"},
-           { :date => Date.today + 2.day, :weather => "80"},
-           { :date => Date.today + 3.day, :weather => "75"},
-           { :date => Date.today + 4.day, :weather => "70"},
-           { :date => Date.today + 5.day, :weather => "65"},
-           { :date => Date.today + 6.day, :weather => "60"}]
-    @date1 = Date.today
-    @date2 = Date.today + 1.day
-    @date3 = Date.today + 2.day
-    @date4 = Date.today + 3.day
-    @date5 = Date.today + 4.day
-    @date6 = Date.today + 5.day
-    @date7 = Date.today + 6.day
+    @nf2= [
+      { :date => Date.today + 0.day, :weather => "90", :rainfall => "0" },
+      { :date => Date.today + 1.day, :weather => "85", :rainfall => "1" },
+      { :date => Date.today + 2.day, :weather => "80", :rainfall => "2" },
+      { :date => Date.today + 3.day, :weather => "75", :rainfall => "3" },
+      { :date => Date.today + 4.day, :weather => "70", :rainfall => "4" },
+      { :date => Date.today + 5.day, :weather => "65", :rainfall => "5" },
+      { :date => Date.today + 6.day, :weather => "60", :rainfall => "6" }
+    ]
 
-    @nf6= [{ :date => Date.today, :weather => "90" },
-           { :date => Date.today + 1.day, :weather => "85"},
-           { :date => Date.today + 2.day, :weather => "80"},
-           { :date => Date.today + 3.day, :weather => "75"},
-           { :date => Date.today + 4.day, :weather => "70"},
-           { :date => Date.today + 5.day, :weather => "65"},
-           { :date => Date.today + 6.day, :weather => "60"}]
-    @date1 = Date.today
-    @date2 = Date.today + 1.day
-    @date3 = Date.today + 2.day
-    @date4 = Date.today + 3.day
-    @date5 = Date.today + 4.day
-    @date6 = Date.today + 5.day
-    @date7 = Date.today + 6.day
+    @nf4= [
+      { :date => Date.today + 0.day, :weather => "90", :rainfall => "0" },
+      { :date => Date.today + 1.day, :weather => "85", :rainfall => "1" },
+      { :date => Date.today + 2.day, :weather => "80", :rainfall => "2" },
+      { :date => Date.today + 3.day, :weather => "75", :rainfall => "3" },
+      { :date => Date.today + 4.day, :weather => "70", :rainfall => "4" },
+      { :date => Date.today + 5.day, :weather => "65", :rainfall => "5" },
+      { :date => Date.today + 6.day, :weather => "60", :rainfall => "6" }
+    ]
 
-    @nf8= [{ :date => Date.today, :weather => "90" },
-           { :date => Date.today + 1.day, :weather => "85"},
-           { :date => Date.today + 2.day, :weather => "80"},
-           { :date => Date.today + 3.day, :weather => "75"},
-           { :date => Date.today + 4.day, :weather => "70"},
-           { :date => Date.today + 5.day, :weather => "65"},
-           { :date => Date.today + 6.day, :weather => "60"}]
-    @date1 = Date.today
-    @date2 = Date.today + 1.day
-    @date3 = Date.today + 2.day
-    @date4 = Date.today + 3.day
-    @date5 = Date.today + 4.day
-    @date6 = Date.today + 5.day
-    @date7 = Date.today + 6.day
+    @nf6= [
+      { :date => Date.today + 0.day, :weather => "90", :rainfall => "0" },
+      { :date => Date.today + 1.day, :weather => "85", :rainfall => "1" },
+      { :date => Date.today + 2.day, :weather => "80", :rainfall => "2" },
+      { :date => Date.today + 3.day, :weather => "75", :rainfall => "3" },
+      { :date => Date.today + 4.day, :weather => "70", :rainfall => "4" },
+      { :date => Date.today + 5.day, :weather => "65", :rainfall => "5" },
+      { :date => Date.today + 6.day, :weather => "60", :rainfall => "6" }
+    ]
+
+    @nf8= [
+      { :date => Date.today + 0.day, :weather => "90", :rainfall => "0" },
+      { :date => Date.today + 1.day, :weather => "85", :rainfall => "1" },
+      { :date => Date.today + 2.day, :weather => "80", :rainfall => "2" },
+      { :date => Date.today + 3.day, :weather => "75", :rainfall => "3" },
+      { :date => Date.today + 4.day, :weather => "70", :rainfall => "4" },
+      { :date => Date.today + 5.day, :weather => "65", :rainfall => "5" },
+      { :date => Date.today + 6.day, :weather => "60", :rainfall => "6" }
+    ]
   end
 
   it "renders the forecast partial" do
@@ -94,5 +82,13 @@ describe "alert_mailer/southbay_forecast" do
     rendered.should have_content "70"
     rendered.should have_content "65"
     rendered.should have_content "60"
+
+    rendered.should have_content "0"
+    rendered.should have_content "1"
+    rendered.should have_content "2"
+    rendered.should have_content "3"
+    rendered.should have_content "4"
+    rendered.should have_content "5"
+    rendered.should have_content "6"
   end
 end
