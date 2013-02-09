@@ -21,6 +21,9 @@ Stormsavvy::Application.routes.draw do
   get "pdf/CEM2035"
   get "pdf/CEM2040"
   get "pdf/CEM2045"
+  get "pdf/CEM2050"
+  get "pdf/CEM2051"
+  get "pdf/CEM2052"
   get "pdf/CEM4601"
 
   resources :sampling_events,
