@@ -3,14 +3,16 @@ require 'spec_helper'
 describe "user_mailer/_pester_forecast" do
 
   before(:all) do
-    @forecast1 = [{ :date => Date.today, :weather => "90" },
-                  { :date => Date.today + 1.day, :weather => "85"},
-                  { :date => Date.today + 2.day, :weather => "80"},
-                  { :date => Date.today + 3.day, :weather => "75"},
-                  { :date => Date.today + 4.day, :weather => "70"},
-                  { :date => Date.today + 5.day, :weather => "65"},
-                  { :date => Date.today + 6.day, :weather => "60"}]
-    @date1 = Date.today
+    @forecast1 = [
+      { :date => Date.today + 0.day, :weather => "90", :rain => "0" },
+      { :date => Date.today + 1.day, :weather => "85", :rain => "1" },
+      { :date => Date.today + 2.day, :weather => "80", :rain => "2" },
+      { :date => Date.today + 3.day, :weather => "75", :rain => "3" },
+      { :date => Date.today + 4.day, :weather => "70", :rain => "4" },
+      { :date => Date.today + 5.day, :weather => "65", :rain => "5" },
+      { :date => Date.today + 6.day, :weather => "60", :rain => "6" }
+    ]
+    @date1 = Date.today + 0.day
     @date2 = Date.today + 1.day
     @date3 = Date.today + 2.day
     @date4 = Date.today + 3.day
