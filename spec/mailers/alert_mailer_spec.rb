@@ -94,7 +94,7 @@ describe AlertMailer do
     end
 
     it "delivers and receives mailer" do
-      # AlertMailer.eastbay_forecast(@user)
+      # AlertMailer.southbay_forecast(@user)
       ActionMailer::Base.deliveries.should_not be_empty
     end
   end
