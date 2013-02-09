@@ -27,8 +27,13 @@ class NOAAForecast
 
   def get_lat_long(zipcode)
     results = Geocoder.search(zipcode)
+    @lat = results[0].data["geometry"]["location"]["lat"]
+    @lng = results[0].data["geometry"]["location"]["lng"]
+    lat_long = [] << @lat << @lng
+    return lat_long
+
     # TODO: Factor out this ugly thing into a Google result getter.
-    return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
+    # return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
   end
 
   def get_forecast(latlong)
