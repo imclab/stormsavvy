@@ -12,12 +12,12 @@ describe PdfController do
     response.code.should eq("200")
     get :CEM2045
     response.code.should eq("200")
-    get :CEM2050
-    response.code.should eq("200")
-    get :CEM2051
-    response.code.should eq("200")
-    get :CEM2052
-    response.code.should eq("200")
+    # get :CEM2050
+    # response.code.should eq("200")
+    # get :CEM2051
+    # response.code.should eq("200")
+    # get :CEM2052
+    # response.code.should eq("200")
     get :CEM4601
     response.code.should eq("200")
   end
