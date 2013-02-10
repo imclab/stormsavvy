@@ -25,6 +25,7 @@ describe "#text_rendering_mode" do
     contents = PDF::Inspector::Text.analyze(@pdf.render)
     # contents.text_rendering_mode.should.be.empty
   end
+
   it "should restore character spacing to 0" do
     create_pdf
     @pdf.text_rendering_mode(:stroke) do
