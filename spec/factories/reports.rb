@@ -51,4 +51,8 @@ FactoryGirl.define do
   	time_elapsed_post_storm "N/A"
   	gauge_reading_post_storm "N/A"
   end
+
+  factory :attachment do
+    item File.new("#{Rails.root}/app/assets/pdfs/CEM2030_production_v1.pdf") 
+  end
 end
