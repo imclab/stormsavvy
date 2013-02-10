@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "reports/_reports_status" do
+describe "reports/_report_status" do
 
   before(:each) do
     assign(:reports, [
