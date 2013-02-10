@@ -6,6 +6,7 @@ require 'pdf/inspector'
 # require File.join(File.expand_path(File.dirname(__FILE__)), "spec_helper")
 
 describe "#text_rendering_mode" do
+
   it "should draw the text rendering mode to the document" do
     create_pdf
     @pdf.text_rendering_mode(:stroke) do
