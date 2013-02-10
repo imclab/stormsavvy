@@ -34,6 +34,7 @@ describe "#text_rendering_mode" do
     contents = PDF::Inspector::Text.analyze(@pdf.render)
     contents.text_rendering_mode.should == [1,0]
   end
+
   it "should function as an accessor when no parameter given" do
     create_pdf
     @pdf.text_rendering_mode(:fill_stroke) do
@@ -42,6 +43,7 @@ describe "#text_rendering_mode" do
     end
     @pdf.text_rendering_mode.should == :fill
   end
+  
   it "should raise an exception when passed an invalid mode" do
     create_pdf
     # lambda { @pdf.text_rendering_mode(-1) }.should.raise(ArgumentError)
