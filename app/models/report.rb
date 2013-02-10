@@ -83,6 +83,7 @@ class Report < ActiveRecord::Base
 
   # s3 uploads via paperclip
   has_attached_file :attachment, :url => "http://stormsavvy.s3-website-us-east-1.amazonaws.com"
+  # validates_attachment :attachment, presence: true, size: { less_than: 10.megabytes }
 
 private
 
