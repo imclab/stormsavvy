@@ -64,6 +64,10 @@ describe NOAAForecast do
     nf.class.should == NOAAForecast
   end
 
+  it "should instantiate class with rspec mock" do
+    @nf.class.should == Rspec-2::Mocks::Mock
+  end
+
   it "returns latitude and longitude for a given zipcode" do
     latlong = @nf.get_lat_long 94530
     latlong.size.should == 2
