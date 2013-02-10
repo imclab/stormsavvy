@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe "reports/show" do
   before(:each) do
+    assign(:reports, [
+      stub_model(Report),
+      stub_model(Report)
+    ])
+
     # @project = assign(:project, stub_model(Project,
     #   :user_id => 1,
     #   :name => "Name",
