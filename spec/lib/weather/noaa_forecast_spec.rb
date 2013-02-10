@@ -65,7 +65,19 @@ describe NOAAForecast do
   end
 
   it "should instantiate class with rspec mock" do
-    @nf.class.should == Rspec-2::Mocks::Mock
+    @nf.class.should == Rspec::Mocks::Mock
+  end
+
+  it "reponds to nf mock and stub objects" do
+    # @nf3 = double(NOAAForecast)
+    # @nf4 = NOAAForecast.new(94605)
+    # @nf3.should_receive(:get_lat_long).with(@nf4)
+    results = ([37.9202057, -122.2937428])
+    nf3 = @nf.stub!(:get_lat_long).with(94530).and_return(results)
+    nf3.should_receive(:get_lat_long).with(94530).and_return(results)
+
+    # @nf3.stub!(:get_lat_long).with(94530).and_return([37.9202057, -122.2937428])
+    # @nf3.should_receive(:get_lat_long).and_return([37.9202057, -122.2937428])
   end
 
   it "returns latitude and longitude for a given zipcode" do
