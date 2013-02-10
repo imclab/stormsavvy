@@ -10,8 +10,9 @@ describe "reports/index" do
 
   it "renders index page correctly" do
     render
-    rendered.should =~ /Report Status/
-    rendered.should =~ /Reports Needing Attention/
-    rendered.should =~ /Completed Reports/
+    rendered.should =~ /ID/
+    rendered.should =~ /Type/
+    rendered.should =~ /Date/
+    rendered.should =~ /URL/
   end
 end
