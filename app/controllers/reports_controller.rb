@@ -79,7 +79,7 @@ class ReportsController < ApplicationController
     @report.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to reports_path }
       format.json { head :no_content }
     end
   end
