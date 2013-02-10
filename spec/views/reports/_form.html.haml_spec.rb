@@ -1,10 +1,18 @@
 require 'spec_helper'
 
-describe "reports/_form.html.haml" do
+describe "reports/_form" do
 
-  it "renders form partial found on new report view" do
+  before(:each) do
+    assign(:reports, [
+      stub_model(Report),
+      stub_model(Report)
+    ])
+  end
+
+  it "renders form partial correctly" do
     visit new_report_path
     page.should_not be_nil
+
     # render
     # rendered.should =~ /Upload Attachment/
     # rendered.should =~ /Cancel/
