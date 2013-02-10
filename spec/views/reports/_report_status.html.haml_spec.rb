@@ -9,13 +9,12 @@ describe "reports/_report_status" do
     ])
   end
 
-  it "renders form partial found on index page" do
-    visit reports_path
-    page.should_not be_nil
-
+  it "renders report status partial correctly" do
+    # visit reports_path
+    # page.should_not be_nil
     render
-    rendered.should =~ /Upload Attachment/
-    rendered.should =~ /Cancel/
-    rendered.should have_selector 'table'
+    rendered.should =~ /Report Status/
+    rendered.should =~ /Reports Needing Attention/
+    rendered.should =~ /Completed Reports/
   end
 end
