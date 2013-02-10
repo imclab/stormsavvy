@@ -1,0 +1,28 @@
+%table.table.table-condensed
+  %tr
+    = link_to 'New Report', new_report_path, :class => 'btn'
+%table.table.table-condensed
+  %tr
+    %th ID
+    %th Type
+    %th Date
+    %th URL
+    %th 
+    %th 
+    %th
+    %th
+    %th
+
+  - @reports.each do |report|
+    %tr
+      %td= report.id
+      %td= report.type
+      %td= report.created_at
+      %td= report.attachment.url
+      %td 
+      %td 
+      %td= link_to 'Show', report_path(report)
+      %td= link_to 'Edit', edit_report_path(report)
+      %td= link_to 'Destroy', report_path(report), :confirm => 'Are you sure?', :method => :delete
+
+%br
