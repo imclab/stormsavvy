@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "user_mailer/mailout" do
+describe "user_mailer/staging_mailer" do
 
   before(:all) do
     @greeting = "Greetings"
-    
+
     @user = FactoryGirl.create(:user)
     @project1 = FactoryGirl.create(
       :project,
