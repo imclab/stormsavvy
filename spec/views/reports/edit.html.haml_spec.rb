@@ -9,11 +9,11 @@ describe "reports/edit" do
     ])
     @report = FactoryGirl.create(:report, :id => 1)
   end
-  
+
   it "renders edit page correctly" do
-    visit '/reports/1/edit'
-    page.should_not be_nil
-    
+    # visit '/reports/1/edit'
+    # page.should_not be_nil
+
     render
     rendered.should =~ /Type/
     rendered.should =~ /Site/
