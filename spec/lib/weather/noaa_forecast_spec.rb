@@ -69,12 +69,15 @@ describe NOAAForecast do
   end
 
   it "reponds to nf mock and stub objects" do
+    results = ([37.9202057, -122.2937428])
+    nf3 = @nf3.stub(:get_lat_long).with(94530).and_return(results)
+    nf3.should_receive(:get_lat_long).with(94530).and_return(results)
+
     # @nf3 = double(NOAAForecast)
     # @nf4 = NOAAForecast.new(94605)
     # @nf3.should_receive(:get_lat_long).with(@nf4)
-    results = ([37.9202057, -122.2937428])
-    nf3 = @nf.stub!(:get_lat_long).with(94530).and_return(results)
-    nf3.should_receive(:get_lat_long).with(94530).and_return(results)
+
+    # nf3.get_lat_long.should == results
 
     # @nf3.stub!(:get_lat_long).with(94530).and_return([37.9202057, -122.2937428])
     # @nf3.should_receive(:get_lat_long).and_return([37.9202057, -122.2937428])
