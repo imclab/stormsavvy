@@ -66,6 +66,7 @@ describe Report do
 
   before do
     Report.any_instance.stub(:save_attached_files).and_return(true) 
+    Report.any_instance.stub(:destroy_attached_files).and_return(true) 
     @attachment = FactoryGirl.create :report
   end
   describe "#your_method" do
