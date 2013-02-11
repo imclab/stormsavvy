@@ -20,6 +20,24 @@ class UserMailer < ActionMailer::Base
       ).deliver
   end
 
+  def staging_mailer(email)
+    @numusers = User.count
+    @numprojects = Project.count
+    @numsites = Site.count
+    @numinspections = InspectionEvent.count
+    @numreports = Report.count
+
+    @greeting = "Greetings"
+    @forecast2 = NOAAForecast.new(94605)
+    @forecast1 = @forecast2.get_forecast_array
+
+    mail(
+      :from     => "alerts@stormsavvy.com",
+      :to       => email,
+      :subject  => "Storm Savvy Staging App Email"
+      ).deliver
+  end
+
   def mailout(to = nil)
     @greeting = "Greetings"
     @users = User.all
