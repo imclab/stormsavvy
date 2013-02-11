@@ -64,7 +64,7 @@ describe "Reports" do
 		it "shows upload page" do
 			visit new_report_path
       page.body.should_not be_nil
-			page.body.should have_selector('h2', :text => 'Report Upload')
+      page.should ~ /Instructions: Select Report For Upload Below/
     end
 
 		it "returns to reports path if cancelled" do
