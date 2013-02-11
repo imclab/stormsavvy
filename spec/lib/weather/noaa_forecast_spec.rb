@@ -129,19 +129,18 @@ describe NOAAForecast do
     nf = NOAAForecast.new(94530,168,6)
     nf2 = nf.seven_day_weather
     pop = nf.pop
-
+=begin
     print "Pop hash before map: #{pop}", "\n"
     pop.each do |i|
       print "Storm POP = #{pop[i]}", "\n"
     end
-
+=end
     nf.get_forecast_array.should == @forecast_array
   end
 
   it "returns get_time_array" do
     nf = NOAAForecast.new(94530,168,6)
     pop = nf.pop
-
 =begin
     pt = []
     pop.each_with_index do |(i, p), index|
