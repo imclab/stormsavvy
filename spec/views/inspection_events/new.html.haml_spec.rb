@@ -25,4 +25,9 @@ describe "inspection_events/new" do
       assert_select "input#inspection_event_inspected_by", :name => "inspection_event[inspected_by]"
     end
   end
+
+  it "renders form partial correctly" do
+    render
+    rendered.should =~ /New Inspection Event/
+  end
 end
