@@ -6,7 +6,8 @@ namespace :scheduler do
       'walter@stormsavvy.com',
       'wing.wingyu@gmail.com',
       'JonathanM@ghilottibros.com',
-      'KjellD@ghilottibros.com'
+      'KjellD@ghilottibros.com',
+      'walter_yu@dot.ca.gov'
       ]
     test_users.each do |address|
       AlertMailer.northbay_forecast(address).deliver
@@ -66,6 +67,16 @@ namespace :scheduler do
       ]
     admins.each do |address|
       UserMailer.pester_admins(address).deliver
+    end
+  end
+
+  desc "Delivers staging_mailer mailer"
+  task :staging_mailer => :environment do
+    admins = [
+      'walter@stormsavvy.com'
+      ]
+    admins.each do |address|
+      UserMailer.staging_mailer(address).deliver
     end
   end
 
