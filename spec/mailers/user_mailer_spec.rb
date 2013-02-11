@@ -86,6 +86,40 @@ describe UserMailer do
     end
   end
 
+  describe "staging_mailer" do
+
+    before(:each) do
+      @receipient = "walter@stormsavvy.com"
+      @mailer = UserMailer.staging_mailer(@recipient).deliver
+
+      @numusers = [@user]
+      @numprojects = [@project]
+      @numsites = [@site]
+    end
+
+    it "sends out via staging_mailer" do
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
+
+    it "renders successfully" do
+      lambda { @mailer }.should_not raise_error
+    end
+
+    it "does not have empty text body" do
+      @mailer.body.should_not be_nil
+      # @mailer.body.should have_selector("ul.projects")
+      # @mailer.body.should have_selector("ul.sites")
+      # @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
+    end
+
+    it "renders user, project and site count" do
+      @numprojects.should_not be_nil
+      @numprojects.should_not be_nil
+      @numusers.should_not be_nil
+      @numsites.should_not be_nil
+    end
+  end
+
   describe "mailout mailer" do
 
     before(:each) do
