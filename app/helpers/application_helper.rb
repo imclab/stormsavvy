@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def title
-    "StormSavvy"
+    "Storm Savvy"
   end
 
   def template_id
