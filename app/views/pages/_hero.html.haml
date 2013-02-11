@@ -2,31 +2,11 @@
   .container
     .row
       .span8
-        .pagination-centered
-          %h1
-            Making SWPPP Easy
-          %h3
-            Free Email Alerts & Reports
-          .loud
-            Sign Up Now For Free Access
-          /%p.top-40
-          /= link_to 'PDF Reports', pdf_path, :class => "btn btn-primary"
+        %br
+        %br
+        %br
+          .pagination-centered
+            = render 'maincopy'
 
       .span4
-        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-          = devise_error_messages!
-          %div
-            = f.label :email
-            = f.email_field :email
-          %div
-            = f.label :password
-            = f.password_field :password
-          %div
-            = f.label :password_confirmation
-            = f.password_field :password_confirmation
-          %div
-            = f.submit "Sign up", :class => "btn btn-primary"
-          %h5
-            Already a member?
-            = link_to 'Sign in', new_user_session_path
-        /= render "devise/shared/links"
+        = render 'devise_signin'
