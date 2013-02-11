@@ -146,7 +146,7 @@ describe ReportsController do
     it "redirects to the reports list" do
       report = Report.create! valid_attributes
       delete :destroy, :id => report #{:id => report.to_param}, valid_session
-      response.should redirect_to(projects_url)
+      response.should redirect_to(reports_url)
     end
   end
 
