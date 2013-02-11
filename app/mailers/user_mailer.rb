@@ -29,6 +29,8 @@ class UserMailer < ActionMailer::Base
     @numreports = Report.count
 
     @greeting = "Greetings"
+    @salutation = "The Storm Savvy Team"
+    
     @forecast2 = NOAAForecast.new(94605)
     @forecast1 = @forecast2.get_forecast_array
 
