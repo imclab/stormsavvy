@@ -79,4 +79,9 @@ describe "sampling_events/new" do
       assert_select "input#sampling_event_analysis_average_5", :name => "sampling_event[analysis_average_5]"
     end
   end
+
+  it "renders form partial correctly" do
+    render
+    rendered.should =~ /New Sampling Event/
+  end
 end
