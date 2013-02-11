@@ -33,7 +33,7 @@ describe "user_mailer/staging_mailer" do
     @sites = [@site1, @site2]
   end
 
-  it "renders mailout mailer" do
+  it "renders stagingi_mailer" do
     render
     rendered.should have_selector 'h1', :text => 'Storm Savvy Staging App Email'
     rendered.should =~ /Storm Savvy Staging App Email/
