@@ -22,7 +22,7 @@ describe "layouts/application.html.haml" do
 
     it "sets <title>" do
       rendered.should have_selector "title", :text => "#{page_title}"
-      rendered.should have_selector "title", :text => "StormSavvy"
+      rendered.should have_selector "title", :text => "Storm Savvy"
     end
 
     it "sets link and brand title" do
