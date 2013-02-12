@@ -2,11 +2,11 @@
 
 # Bash script for Heroku postgres backups
 
-cd ~/src/stormsavvy/script/heroku
+# cd ~/src/stormsavvy/script/heroku
 
-heroku pgbackups:capture --app stormsavvy
-heroku pgbackups:capture --expire --app stormsavvy
-heroku pgbackups --app stormsavvy
-heroku pg:info
+heroku pgbackups:capture --expire -a stormsavvy
+heroku pgbackups:capture -a stormsavvy
+heroku pgbackups -a stormsavvy
+heroku pg:info -a stormsavvy
 
 # curl -o latest.dump `heroku pgbackups:url --app stormsavvy`
