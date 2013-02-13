@@ -70,5 +70,4 @@ Stormsavvy::Application.configure do
       :secret_access_key => APP_CONFIG['AWS_SECRET_ACCESS_KEY']
       }
   }
-
 end
