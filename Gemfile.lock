@@ -242,6 +242,7 @@ GEM
     rb-readline (0.4.2)
     rdoc (3.12)
       json (~> 1.4)
+    redis (3.0.2)
     ref (1.0.2)
     responders (0.9.3)
       railties (~> 3.1)
@@ -367,6 +368,7 @@ DEPENDENCIES
   rails
   rake
   rb-readline
+  redis
   rspec (= 2.12.0)
   rspec-rails (= 2.12.0)
   sass-rails (~> 3.2.3)
