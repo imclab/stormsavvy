@@ -43,6 +43,12 @@ class NOAAForecast
     $redis.set(zipcode.to_s + '_long', lat_long[1])
   end
 
+  def return_lat_long(zipcode)
+    lat_long = []
+    [] << {$redis.get(zipcode.to_s + '_lat')} << {$redis.get(zipcode.to_s + '_long')}
+    return lat_long
+  end
+
   def get_forecast(latlong)
     response = ping_noaa(latlong, @duration, @interval)
     return parse_weather_data(response)
