@@ -49,16 +49,20 @@ class NOAAForecast
   end
 
   def set_lat_long(zipcode)
-    $redis.set(zipcode.to_s + '_lat', lat_long[0])
-    $redis.set(zipcode.to_s + '_long', lat_long[1])
+    response = get_lat_long(zipcode)
+    $redis.set(zipcode.to_s + '_lat', response[0])
+    $redis.set(zipcode.to_s + '_long', response[1])
   end
 
   def return_lat_long(zipcode)
-    lat_long = {
-      :zipcode_lat => $redis.get(zipcode.to_s + '_lat'),
-      :zipcode_long => $redis.get(zipcode.to_s + '_long')
-    }
-    return lat_long 
+    # lat_long = {
+    #   :zipcode_lat => $redis.get(zipcode.to_s + '_lat'),
+    #   :zipcode_long => $redis.get(zipcode.to_s + '_long')
+    # }
+    response = set_lat_long(zipcode)
+    lat = response[:zipcode_lat.to_s]
+    long = response[:zipcode_long.to_s]
+    return [lat, long]
   end
 
   def get_forecast(latlong)
