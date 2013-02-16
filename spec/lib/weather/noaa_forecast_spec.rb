@@ -35,10 +35,10 @@ describe NOAAForecast do
       $redis.set(@zipcode.to_s + '_lat', lat_long[0])
       $redis.set(@zipcode.to_s + '_long', lat_long[1])
       lat_long = {
-      :zipcode_lat => $redis.get(zipcode.to_s + '_lat'),
-      :zipcode_long => $redis.get(zipcode.to_s + '_long')
+      :zipcode_lat => $redis.get(@zipcode.to_s + '_lat'),
+      :zipcode_long => $redis.get(@zipcode.to_s + '_long')
       }
-      return lat_long 
+      # return lat_long 
     end
 
     # setup for forecast_array
@@ -125,9 +125,9 @@ describe NOAAForecast do
 
   it "returns get_forecast_array" do
     nf = NOAAForecast.new(@zipcode,168,6)
+    nf.get_forecast_array.should == @forecast_array
     # nf2 = @nf.seven_day_weather
     # pop = nf2.pop
-    nf.get_forecast_array.should == @forecast_array
 =begin
     print "Pop hash before map: #{pop}", "\n"
     pop.each do |i|
@@ -140,13 +140,13 @@ describe NOAAForecast do
     nf = NOAAForecast.new(@zipcode,168,6)
     nf2 = nf.seven_day_weather
     pop = nf.pop
+    nf.get_forecast_array.should == @forecast_array
 =begin
     print "Pop hash before map: #{pop}", "\n"
     pop.each do |i|
       print "Storm POP = #{pop[i]}", "\n"
     end
 =end
-    nf.get_forecast_array.should == @forecast_array
   end
 
   it "returns get_time_array" do
