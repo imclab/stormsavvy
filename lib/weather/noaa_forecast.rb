@@ -4,6 +4,7 @@ require 'geocoder'
 require 'date'
 require 'time'
 require 'project_local_time'
+require 'redis'
 
 class NOAAForecast
 
@@ -35,6 +36,11 @@ class NOAAForecast
     lat_long = [] << @lat << @lng
     return lat_long
 =end
+  end
+
+  def set_lat_long(zipcode)
+    $redis.set(zipcode.to_s + '_lat', lat_long[0])
+    $redis.set(zipcode.to_s + '_long', lat_long[1])
   end
 
   def get_forecast(latlong)
@@ -160,5 +166,4 @@ class NOAAForecast
     noaa_forecast =  [] << @pop << @qpf
     return noaa_forecast
   end
-
 end
