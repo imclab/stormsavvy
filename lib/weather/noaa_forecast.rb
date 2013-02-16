@@ -45,9 +45,11 @@ class NOAAForecast
   end
 
   def return_lat_long(zipcode)
-    lat_long = []
-    [] << {$redis.get(zipcode.to_s + '_lat')} << {$redis.get(zipcode.to_s + '_long')}
-    return lat_long
+    lat_long = {
+      :zipcode_lat => $redis.get(zipcode.to_s + '_lat'),
+      :zipcode_long => $redis.get(zipcode.to_s + '_long')
+    }
+    return lat_long 
   end
 
   def get_forecast(latlong)
