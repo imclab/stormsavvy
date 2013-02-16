@@ -5,7 +5,7 @@ require 'redis'
 describe NOAAForecast do
 
   before(:each) do
-    # Import from lib/weather.
+    # import from lib/weather
     @fullcount = 29
     @zipcode = 94530
     @nf = double(NOAAForecast)

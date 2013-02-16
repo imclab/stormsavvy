@@ -20,10 +20,20 @@ class NOAAForecast
   end
 
   def seven_day_weather
-    latlong = get_lat_long(@zipcode)
     @duration = 168
     @interval = 6
+
+    if return_lat_long(@zipcode) == nil
+      latlong = get_lat_long(@zipcode)
+    else
+      latlong = return_lat_long(@zipcode)
+    end
+
     return get_forecast(latlong)
+
+    # previous call using get_lat_long only
+    # latlong = get_lat_long(@zipcode)
+    # return get_forecast(latlong)
   end
 
   def get_lat_long(zipcode)
