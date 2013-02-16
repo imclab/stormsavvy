@@ -23,14 +23,25 @@ describe NOAAForecast do
       @nf.get_forecast(latlong)
     end
 
+    # setup redis to store and return zipcode
     lat_long = @nf.get_lat_long(@zipcode)
     @nf.stub(:set_lat_long) do
       @nf.get_lat_long(@zipcode)
       $redis.set(@zipcode.to_s + '_lat', lat_long[0])
       $redis.set(@zipcode.to_s + '_long', lat_long[1])
     end
+    @nf.stub(:return_lat_long) do
+      @nf.get_lat_long(@zipcode)
+      $redis.set(@zipcode.to_s + '_lat', lat_long[0])
+      $redis.set(@zipcode.to_s + '_long', lat_long[1])
+      lat_long = {
+      :zipcode_lat => $redis.get(zipcode.to_s + '_lat'),
+      :zipcode_long => $redis.get(zipcode.to_s + '_long')
+      }
+      return lat_long 
+    end
 
-    # Setup for forecast_array
+    # setup for forecast_array
     nf = NOAAForecast.new(@zipcode,168,6)
     nf2 = nf.seven_day_weather
     pop = nf.pop
