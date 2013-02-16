@@ -5,25 +5,24 @@ require 'redis'
 describe NOAAForecast do
 
   before(:each) do
-    # import from lib/weather
     @fullcount = 29
     @zipcode = 94530
+    @zipcode2 = 94605
     @nf = double(NOAAForecast)
-    @nf.stub(:get_lat_long).with(@zipcode).and_return([37.9202057, -122.2937428])
-    @nf.stub(:ping_noaa).with([37.92, -122.29], 168, 6) do
-      IO.read("./spec/lib/weather/noaa_response.xml")
-    end
-    @nf.stub(:get_forecast).with(@nf.get_lat_long(94530)) do
-      response = @nf.ping_noaa([37.92, -122.29], 168, 6)
-      nf = NOAAForecast.new(94530)
-      nf.parse_weather_data(response)
-    end
-    @nf.stub(:seven_day_weather) do
-      latlong = @nf.get_lat_long(@zipcode)
-      @nf.get_forecast(latlong)
-    end
 
     # setup redis to store and return zipcode
+
+    @nf.stub(:get_lat_long).with(@zipcode).and_return([37.9202057, -122.2937428])
+
+    # creates recursive loop where no stubs are defined by hard value
+    # @nf.stub(:get_lat_long) do
+    #   if @nf.return_lat_long(@zipcode) == nil
+    #     @nf.get_lat_long(@zipcode)
+    #   else
+    #     @nf.return_lat_long(@zipcode)
+    #   end
+    # end
+
     lat_long = @nf.get_lat_long(@zipcode)
     @nf.stub(:set_lat_long) do
       @nf.get_lat_long(@zipcode)
@@ -39,6 +38,20 @@ describe NOAAForecast do
       :zipcode_long => $redis.get(@zipcode.to_s + '_long')
       }
       # return lat_long 
+    end
+
+    # import from lib/weather
+    @nf.stub(:ping_noaa).with([37.92, -122.29], 168, 6) do
+      IO.read("./spec/lib/weather/noaa_response.xml")
+    end
+    @nf.stub(:get_forecast).with(@nf.get_lat_long(@zipcode)) do
+      response = @nf.ping_noaa([37.92, -122.29], 168, 6)
+      nf = NOAAForecast.new(94530)
+      nf.parse_weather_data(response)
+    end
+    @nf.stub(:seven_day_weather) do
+      latlong = @nf.get_lat_long(@zipcode)
+      @nf.get_forecast(latlong)
     end
 
     # setup for forecast_array
@@ -191,5 +204,10 @@ describe NOAAForecast do
 
   it "calls return_lat_long before get_lat_long" do
     @nf.seven_day_weather.should == @nf.seven_day_weather
+  end
+
+  it "stores zipcode with each get_lat_long call" do
+    nf = NOAAForecast.new(@zipcode2,168,6)
+    nf.get_lat_long(@zipcode2).should == @nf.return_lat_long(@zipcode2)
   end
 end
