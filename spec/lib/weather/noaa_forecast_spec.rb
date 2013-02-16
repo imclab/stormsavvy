@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'weather/noaa_forecast'
+require 'redis'
 
 describe NOAAForecast do
 
@@ -64,17 +65,8 @@ describe NOAAForecast do
     nf.class.should == NOAAForecast
   end
 
-  it "should instantiate class with rspec mock" do
-    @nf.class.should == Rspec::Mocks::Mock
-  end
-
-  it "reponds to nf mock and stub objects" do
-    results = ([37.9202057, -122.2937428])
-    nf3 = @nf3.stub(:get_lat_long).with(94530).and_return(results)
-    # nf3.should_receive(:get_lat_long).with(94530).and_return(results)
-
-    # @nf3.stub!(:get_lat_long).with(94530).and_return([37.9202057, -122.2937428])
-    # @nf3.should_receive(:get_lat_long).and_return([37.9202057, -122.2937428])
+  it "returns nf stub values" do
+    @nf.get_lat_long(94530).should == [37.9202057, -122.2937428]
   end
 
   it "returns latitude and longitude for a given zipcode" do
@@ -158,4 +150,20 @@ describe NOAAForecast do
     nf.get_time_array.should == pt
 =end
   end
+
+  it "creates redis object" do
+    $redis.class.should == Redis
+  end
+
+  it "stores lat long values using redis sets" do
+    zipcode = 94530
+    lat_long = @nf.get_lat_long(zipcode)
+    $redis.set(zipcode.to_s + '_lat', lat_long[0])
+    $redis.set(zipcode.to_s + '_long', lat_long[1])
+    $redis.get(zipcode.to_s + '_lat').should == lat_long[0].to_s
+    $redis.get(zipcode.to_s + '_long').should == lat_long[1].to_s
+    print $redis.get(zipcode.to_s + '_lat')
+    print $redis.get(zipcode.to_s + '_long')
+  end
+
 end
