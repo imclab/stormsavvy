@@ -197,13 +197,30 @@ describe NOAAForecast do
   end
 
   it "calls return_lat_long method successfully" do
-    lat_long = @nf.get_lat_long(@zipcode)
-    @nf.set_lat_long(@zipcode)
-    @nf.return_lat_long(@zipcode).should == lat_long
-  end
 
-  it "calls return_lat_long before get_lat_long" do
-    @nf.seven_day_weather.should == @nf.seven_day_weather
+    # @nf.set_lat_long(@zipcode)
+    # lat_long = @nf.return_lat_long(@zipcode)
+    # print lat_long
+
+    # @nf.set_lat_long(@zipcode)
+    # lat = $redis.get(@zipcode.to_s + '_lat')
+    # long = $redis.get(@zipcode.to_s + '_long')
+    # print [lat, long]
+
+    @nf.get_lat_long(@zipcode).should == @nf.return_lat_long(@zipcode)
+
+    # lat_long = {
+    #   :zipcode_lat => $redis.get(@zipcode.to_s + '_lat'),
+    #   :zipcode_long => $redis.get(@zipcode.to_s + '_long')
+    # }
+    # print lat_long.values
+
+    # lat_long = @nf.get_lat_long(@zipcode)
+    # results = [
+    #   lat_long[0], lat_long[1]
+    # ]
+    # @nf.set_lat_long(@zipcode)
+    # @nf.return_lat_long(@zipcode).should == results
   end
 
   it "stores zipcode with each get_lat_long call" do
