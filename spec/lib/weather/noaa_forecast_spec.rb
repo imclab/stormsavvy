@@ -156,16 +156,9 @@ describe NOAAForecast do
     pt = []
     pop.each_with_index do |(i, p), index|
       pt << { :date => ProjectLocalTime::format(Date.today + (index*6).hours), :weather => i.to_s }
-    end
-    print "pt array = #{pt}", "\n"
-    nf.get_time_array.should == pt
-
-    pt = []
-    pop.each_with_index do |(i, p), index|
       pt << { ProjectLocalTime::format(Date.today + (index*6).hours) => i }
     end
     print "pt array = #{pt}", "\n"
-
     nf.get_time_array.should == pt
 =end
   end
@@ -181,13 +174,9 @@ describe NOAAForecast do
     $redis.set(zipcode.to_s + '_long', lat_long[1])
     $redis.get(zipcode.to_s + '_lat').should == lat_long[0].to_s
     $redis.get(zipcode.to_s + '_long').should == lat_long[1].to_s
-    # print $redis.get(zipcode.to_s + '_lat')
-    # print $redis.get(zipcode.to_s + '_long')
   end
 
   it "calls set_lat_long method successfully" do
-    # nf = NOAAForecast.new(94530)
-    # nf.set_lat_long(@zipcode)
     lat_long = @nf.get_lat_long(@zipcode)
     @nf.set_lat_long(@zipcode)
     $redis.get(@zipcode.to_s + '_lat').should == lat_long[0].to_s
@@ -195,14 +184,12 @@ describe NOAAForecast do
   end
 
   it "calls return_lat_long method successfully" do
-    # lat_long = [
-    #   $redis.get(@zipcode.to_s + '_lat'), 
-    #   $redis.get(@zipcode.to_s + '_long')
-    # ]
-    # print lat_long
-
     lat_long = @nf.get_lat_long(@zipcode)
     @nf.set_lat_long(@zipcode)
     @nf.return_lat_long(@zipcode).should == lat_long
+  end
+
+  it "calls return_lat_long before get_lat_long" do
+    @nf.seven_day_weather.should == @nf.seven_day_weather
   end
 end
