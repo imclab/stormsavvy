@@ -38,7 +38,6 @@ class NOAAForecast
 
   def get_lat_long(zipcode)
     results = Geocoder.search(zipcode)
-    # TODO: Factor out this ugly thing into a Google result getter.
     return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
 =begin
     # Comment back once all spec run locally
