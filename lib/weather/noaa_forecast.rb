@@ -31,6 +31,7 @@ class NOAAForecast
     # TODO: Factor out this ugly thing into a Google result getter.
     return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
 =begin
+    # Comment back once all spec run locally
     @lat = results[0].data["geometry"]["location"]["lat"]
     @lng = results[0].data["geometry"]["location"]["lng"]
     lat_long = [] << @lat << @lng
