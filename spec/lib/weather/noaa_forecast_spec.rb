@@ -174,7 +174,7 @@ describe NOAAForecast do
     # print $redis.get(zipcode.to_s + '_long')
   end
 
-  it "sets zipcode using set_lat_long method" do
+  it "sets lat_long using set_lat_long method" do
     # nf = NOAAForecast.new(94530)
     # nf.set_lat_long(@zipcode)
     lat_long = @nf.get_lat_long(@zipcode)
@@ -183,8 +183,17 @@ describe NOAAForecast do
     $redis.get(@zipcode.to_s + '_long').should == lat_long[1].to_s
   end
 
-  it "gets lat long" do
-    lat_long = nf.get_lat_long(zipcode)
-  end
+  it "returns lat_long using return_lat_long method" do
+    lat_long = [
+      $redis.get(@zipcode.to_s + '_lat'), 
+      $redis.get(@zipcode.to_s + '_long')
+    ]
+    print lat_long
 
+    lat_long = @nf.get_lat_long(@zipcode)
+    @nf.set_lat_long(@zipcode).should == [
+      lat_long[0].to_s,
+      lat_long[1].to_s
+    ]
+  end
 end
