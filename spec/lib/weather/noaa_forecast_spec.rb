@@ -164,13 +164,15 @@ describe NOAAForecast do
       pt << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
     end
     
-    nf.get_time_array.should == pt
-
-    # pop.each_with_index do |(i, p), index|
-    #   pt << { :date => ProjectLocalTime::format(Date.today + (index*6).hours), :weather => i.to_s }
-    #   pt << { ProjectLocalTime::format(Date.today + (index*6).hours) => i }
+    # qpf = nf.qpf
+    # pt2 = []
+    # qpf.each do |i|
+    #   pt2 << { :rainfall => i.to_s }
     # end
-    # print "pt array = #{pt}", "\n"
+    # pt3 = pt.zip(pt2)
+    # puts pt3
+
+    nf.get_time_array.should == pt
   end
 
   it "creates redis object" do
