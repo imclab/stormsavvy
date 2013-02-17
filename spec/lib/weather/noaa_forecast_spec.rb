@@ -51,7 +51,6 @@ describe NOAAForecast do
     nf2 = nf.seven_day_weather
     pop = nf.pop
     qpf = nf.qpf # forecast rainfall returns null here
-
     @forecast_array = [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0], :rainfall => qpf[0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1], :rainfall => qpf[1] },
@@ -157,17 +156,21 @@ describe NOAAForecast do
   end
 
   it "returns get_time_array" do
-    nf = NOAAForecast.new(@zipcode,168,6)
+    nf = NOAAForecast.new(94530,168,6)
+    nf.get_forecast([@lat, @long])
     pop = nf.pop
-=begin
     pt = []
-    pop.each_with_index do |(i, p), index|
-      pt << { :date => ProjectLocalTime::format(Date.today + (index*6).hours), :weather => i.to_s }
-      pt << { ProjectLocalTime::format(Date.today + (index*6).hours) => i }
+    pop.each do |i|
+      pt << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
     end
-    print "pt array = #{pt}", "\n"
+    
     nf.get_time_array.should == pt
-=end
+
+    # pop.each_with_index do |(i, p), index|
+    #   pt << { :date => ProjectLocalTime::format(Date.today + (index*6).hours), :weather => i.to_s }
+    #   pt << { ProjectLocalTime::format(Date.today + (index*6).hours) => i }
+    # end
+    # print "pt array = #{pt}", "\n"
   end
 
   it "creates redis object" do
