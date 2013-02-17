@@ -30,13 +30,19 @@ describe NOAAForecast do
       $redis.set(@zipcode.to_s + '_long', lat_long[1])
     end
     @nf.stub(:return_lat_long) do
-      @nf.get_lat_long(@zipcode)
-      $redis.set(@zipcode.to_s + '_lat', lat_long[0])
-      $redis.set(@zipcode.to_s + '_long', lat_long[1])
-      lat_long = {
-      :zipcode_lat => $redis.get(@zipcode.to_s + '_lat'),
-      :zipcode_long => $redis.get(@zipcode.to_s + '_long')
-      }
+      set_lat_long(zipcode)
+      lat = $redis.get(zipcode.to_s + '_lat')
+      long = $redis.get(zipcode.to_s + '_long')
+      lat_long = [lat.to_f, long.to_f]
+      return lat_long
+
+      # @nf.get_lat_long(@zipcode)
+      # $redis.set(@zipcode.to_s + '_lat', lat_long[0])
+      # $redis.set(@zipcode.to_s + '_long', lat_long[1])
+      # lat_long = {
+      # :zipcode_lat => $redis.get(@zipcode.to_s + '_lat'),
+      # :zipcode_long => $redis.get(@zipcode.to_s + '_long')
+      # }
       # return lat_long 
     end
 
@@ -203,11 +209,14 @@ describe NOAAForecast do
     # print lat_long
 
     # @nf.set_lat_long(@zipcode)
-    # lat = $redis.get(@zipcode.to_s + '_lat')
-    # long = $redis.get(@zipcode.to_s + '_long')
-    # print [lat, long]
+    lat = $redis.get(@zipcode.to_s + '_lat')
+    long = $redis.get(@zipcode.to_s + '_long')
+    print lat.to_f
+    print long.to_f
 
-    @nf.get_lat_long(@zipcode).should == @nf.return_lat_long(@zipcode)
+    # nf = NOAAForecast.new(@zipcode,168,6)
+    # print nf.return_lat_long(@zipcode)
+    # print nf.get_lat_long(@zipcode)
 
     # lat_long = {
     #   :zipcode_lat => $redis.get(@zipcode.to_s + '_lat'),
@@ -223,8 +232,11 @@ describe NOAAForecast do
     # @nf.return_lat_long(@zipcode).should == results
   end
 
-  it "stores zipcode with each get_lat_long call" do
-    nf = NOAAForecast.new(@zipcode2,168,6)
-    nf.get_lat_long(@zipcode2).should == @nf.return_lat_long(@zipcode2)
+  it "sets and gets lat long" do
+    @nf.set_lat_long(@zipcode)
+    lat = $redis.get(@zipcode.to_s + '_lat')
+    long = $redis.get(@zipcode.to_s + '_long')
+    lat_long = [lat.to_f, long.to_f]
+    @nf.get_lat_long(@zipcode).should == lat_long
   end
 end
