@@ -42,6 +42,10 @@ describe NOAAForecast do
       @nf.get_forecast(latlong)
     end
 
+    @nf.stub(:pop) do
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
+    end
+
     # setup for forecast_array
     nf = NOAAForecast.new(@zipcode,168,6)
     nf2 = nf.seven_day_weather
@@ -144,12 +148,12 @@ describe NOAAForecast do
     nf2 = nf.seven_day_weather
     pop = nf.pop
     nf.get_forecast_array.should == @forecast_array
-=begin
+
     print "Pop hash before map: #{pop}", "\n"
     pop.each do |i|
       print "Storm POP = #{pop[i]}", "\n"
     end
-=end
+
   end
 
   it "returns get_time_array" do
