@@ -164,23 +164,23 @@ describe NOAAForecast do
     it "returns pop table hash" do
       nf = NOAAForecast.new(94530,168,6)
       nf.seven_day_weather
-      pt2 = nf.get_pt_hash
-      # nf.get_forecast([@lat, @long])
+
+      # collect pop elements
       pop = nf.pop
       pt = []
       pop.each do |i|
         pt << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
       end
-      pt2.should == pt
-      puts pt
+      nf.get_pt_hash.should == pt
+      # puts pt
 
-      # qpf = nf.qpf
-      # pt2 = []
-      # qpf.each do |i|
-      #   pt2 << { :rainfall => i.to_s }
-      # end
-      # pt3 = pt.zip(pt2)
-      # puts pt3
+      # collect rainfall elements
+      qpf = nf.qpf
+      pt2 = []
+      qpf.each do |i|
+        pt2 << Hash[pt].merge(:rainfall => i.to_s)
+      end
+      puts pt2
     end
   end
 
