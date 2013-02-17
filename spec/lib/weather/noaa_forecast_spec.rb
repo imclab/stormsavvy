@@ -48,7 +48,7 @@ describe NOAAForecast do
 
     # setup for forecast_array
     nf = NOAAForecast.new(@zipcode,168,6)
-    nf2 = nf.seven_day_weather
+    nf.seven_day_weather
     pop = nf.pop
     qpf = nf.qpf # forecast rainfall returns null here
     @forecast_array = [
@@ -89,6 +89,14 @@ describe NOAAForecast do
     nf.class.should == NOAAForecast
   end
 
+  it "returns lat/long for given zipcode" do
+    latlong = [@lat, @long]
+    latlong.size.should == 2
+    tol = 0.0001
+    latlong[0].should be_within(tol).of(37.9202057)
+    latlong[1].should be_within(tol).of(-122.2937428)
+  end
+
   describe "#get_lat_long" do
     it "returns get_lat_long stub values" do
       @nf.get_lat_long(@zipcode).should == [37.9202057, -122.2937428]
@@ -103,86 +111,74 @@ describe NOAAForecast do
     end
   end
 
-  it "returns lat/long for given zipcode" do
-    latlong = [@lat, @long]
-    latlong.size.should == 2
-    tol = 0.0001
-    latlong[0].should be_within(tol).of(37.9202057)
-    latlong[1].should be_within(tol).of(-122.2937428)
-  end
-
-  it "parses weather data from noaa for one week" do
-    response = @nf.ping_noaa([@lat, @long], 168, 6)
-    nf = NOAAForecast.new(@zipcode,168,6)
-    forecast = nf.parse_weather_data(response)
-    forecast[0].size.should == @fullcount
-  end
-
-  it "procures the 'validDate' from the NOAA response" do
-    response = @nf.ping_noaa([@lat, @long], 168, 6)
-    nf = NOAAForecast.new(@zipcode,168,6)
-    dates = nf.get_valid_dates(response)
-    dates.size.should == 8
-  end
-
-  it "procures forecast creation time from the NOAA response" do
-    response = @nf.ping_noaa([@lat, @long], 168, 6)
-    nf = NOAAForecast.new(@zipcode,168,6)
-    creation_time = nf.get_forecast_creation_time(response)
-    datehash = DateTime.parse("Sun Nov 18 23:02:24 2012 UTC", "%a %b %d %H:%M:%S %Y %Z")
-    creation_time.should == datehash
-  end
-
-  it "returns array from seven_day_weather" do
-    forecast = @nf.seven_day_weather
-    forecast[0].size.should == @fullcount
-  end
-
-  it "returns get_forecast_array" do
-    nf = NOAAForecast.new(@zipcode,168,6)
-    nf.get_forecast_array.should == @forecast_array
-
-    # nf2 = @nf.seven_day_weather
-    # pop = nf2.pop
-=begin
-    print "Pop hash before map: #{pop}", "\n"
-    pop.each do |i|
-      print "Storm POP = #{pop[i]}", "\n"
+  describe "#parse_weather_data" do
+    it "parses weather data from noaa for one week" do
+      response = @nf.ping_noaa([@lat, @long], 168, 6)
+      nf = NOAAForecast.new(@zipcode,168,6)
+      forecast = nf.parse_weather_data(response)
+      forecast[0].size.should == @fullcount
     end
-=end
   end
 
-  it "returns forecast_by_zipcode" do
-    nf = NOAAForecast.new(@zipcode,168,6)
-    nf2 = nf.seven_day_weather
-    pop = nf.pop
-    nf.get_forecast_array.should == @forecast_array
-
-    print "Pop hash before map: #{pop}", "\n"
-    pop.each do |i|
-      print "Storm POP = #{pop[i]}", "\n"
+  describe "#get_valid_dates" do
+    it "procures the 'validDate' from the NOAA response" do
+      response = @nf.ping_noaa([@lat, @long], 168, 6)
+      nf = NOAAForecast.new(@zipcode,168,6)
+      dates = nf.get_valid_dates(response)
+      dates.size.should == 8
     end
-
   end
 
-  it "returns get_time_array" do
-    nf = NOAAForecast.new(94530,168,6)
-    nf.get_forecast([@lat, @long])
-    pop = nf.pop
-    pt = []
-    pop.each do |i|
-      pt << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
+  describe "#get_forecast_creation_time" do
+    it "procures forecast creation time from the NOAA response" do
+      response = @nf.ping_noaa([@lat, @long], 168, 6)
+      nf = NOAAForecast.new(@zipcode,168,6)
+      creation_time = nf.get_forecast_creation_time(response)
+      datehash = DateTime.parse("Sun Nov 18 23:02:24 2012 UTC", "%a %b %d %H:%M:%S %Y %Z")
+      creation_time.should == datehash
     end
-    
-    # qpf = nf.qpf
-    # pt2 = []
-    # qpf.each do |i|
-    #   pt2 << { :rainfall => i.to_s }
-    # end
-    # pt3 = pt.zip(pt2)
-    # puts pt3
+  end
 
-    nf.get_time_array.should == pt
+  describe "seven_day_weather" do
+    it "returns array from seven_day_weather" do
+      forecast = @nf.seven_day_weather
+      forecast[0].size.should == @fullcount
+    end
+  end
+
+  describe "get_forecast_array" do
+    it "returns forecast_by_zipcode" do
+      nf = NOAAForecast.new(@zipcode,168,6)
+      nf.seven_day_weather
+      pop = nf.pop
+      nf.get_forecast_array.should == @forecast_array
+
+      # print "Pop hash before map: #{pop}", "\n"
+      # pop.each do |i|
+      #   print "Storm POP = #{pop[i]}", "\n"
+      # end
+    end
+  end
+
+  describe "get_time_array" do
+    it "returns get_time_array" do
+      nf = NOAAForecast.new(94530,168,6)
+      nf.get_forecast([@lat, @long])
+      pop = nf.pop
+      pt = []
+      pop.each do |i|
+        pt << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
+      end
+      nf.get_time_array.should == pt
+
+      # qpf = nf.qpf
+      # pt2 = []
+      # qpf.each do |i|
+      #   pt2 << { :rainfall => i.to_s }
+      # end
+      # pt3 = pt.zip(pt2)
+      # puts pt3
+    end
   end
 
   it "creates redis object" do
@@ -198,18 +194,22 @@ describe NOAAForecast do
     $redis.get(zipcode.to_s + '_long').should == lat_long[1].to_s
   end
 
-  it "calls set_lat_long method successfully" do
-    lat_long = [@lat, @long]
-    @nf.set_lat_long(@zipcode)
-    $redis.get(@zipcode.to_s + '_lat').should == lat_long[0].to_s
-    $redis.get(@zipcode.to_s + '_long').should == lat_long[1].to_s
+  describe "#set_lat_long" do
+    it "calls set_lat_long method successfully" do
+      lat_long = [@lat, @long]
+      @nf.set_lat_long(@zipcode)
+      $redis.get(@zipcode.to_s + '_lat').should == lat_long[0].to_s
+      $redis.get(@zipcode.to_s + '_long').should == lat_long[1].to_s
+    end
   end
 
-  it "calls return_lat_long method successfully" do
-    lat = $redis.get(@zipcode.to_s + '_lat')
-    long = $redis.get(@zipcode.to_s + '_long')
-    results = [lat,long]
-    @nf.set_lat_long(@zipcode)
-    @nf.return_lat_long(@zipcode).should == results
+  describe "#return_lat_long" do
+    it "calls return_lat_long method successfully" do
+      lat = $redis.get(@zipcode.to_s + '_lat')
+      long = $redis.get(@zipcode.to_s + '_long')
+      results = [lat,long]
+      @nf.set_lat_long(@zipcode)
+      @nf.return_lat_long(@zipcode).should == results
+    end
   end
 end
