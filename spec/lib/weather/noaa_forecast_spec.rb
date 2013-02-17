@@ -8,31 +8,32 @@ describe NOAAForecast do
     @fullcount = 29
     @zipcode = 94530
     @zipcode2 = 94605
+    @lat = 37.9202057
+    @long = -122.2937428
     @nf = double(NOAAForecast)
 
     # setup redis to store and return zipcode
-    @nf.stub(:get_lat_long).with(@zipcode).and_return([37.9202057, -122.2937428])
+    @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
     lat_long = @nf.get_lat_long(@zipcode)
 
     @nf.stub(:set_lat_long) do
-      @nf.get_lat_long(@zipcode)
-      $redis.set(@zipcode.to_s + '_lat', lat_long[0])
-      $redis.set(@zipcode.to_s + '_long', lat_long[1])
+      $redis.set(@zipcode.to_s + '_lat', @lat)
+      $redis.set(@zipcode.to_s + '_long', @long)
     end
+
     @nf.stub(:return_lat_long) do
       @nf.set_lat_long(@zipcode)
       lat = $redis.get(@zipcode.to_s + '_lat')
       long = $redis.get(@zipcode.to_s + '_long')
       lat_long = [lat, long]
-      # return lat_long
     end
 
     # import from lib/weather
-    @nf.stub(:ping_noaa).with([37.92, -122.29], 168, 6) do
+    @nf.stub(:ping_noaa).with([@lat, @long], 168, 6) do
       IO.read("./spec/lib/weather/noaa_response.xml")
     end
     @nf.stub(:get_forecast).with(@nf.get_lat_long(@zipcode)) do
-      response = @nf.ping_noaa([37.92, -122.29], 168, 6)
+      response = @nf.ping_noaa([@lat, @long], 168, 6)
       nf = NOAAForecast.new(94530)
       nf.parse_weather_data(response)
     end
@@ -97,21 +98,21 @@ describe NOAAForecast do
   end
 
   it "parses weather data from noaa for one week" do
-    response = @nf.ping_noaa([37.92, -122.29], 168, 6)
+    response = @nf.ping_noaa([@lat, @long], 168, 6)
     nf = NOAAForecast.new(@zipcode,168,6)
     forecast = nf.parse_weather_data(response)
     forecast[0].size.should == @fullcount
   end
 
   it "procures the 'validDate' from the NOAA response" do
-    response = @nf.ping_noaa([37.92, -122.29], 168, 6)
+    response = @nf.ping_noaa([@lat, @long], 168, 6)
     nf = NOAAForecast.new(@zipcode,168,6)
     dates = nf.get_valid_dates(response)
     dates.size.should == 8
   end
 
   it "procures forecast creation time from the NOAA response" do
-    response = @nf.ping_noaa([37.92, -122.29], 168, 6)
+    response = @nf.ping_noaa([@lat, @long], 168, 6)
     nf = NOAAForecast.new(@zipcode,168,6)
     creation_time = nf.get_forecast_creation_time(response)
     datehash = DateTime.parse("Sun Nov 18 23:02:24 2012 UTC", "%a %b %d %H:%M:%S %Y %Z")
