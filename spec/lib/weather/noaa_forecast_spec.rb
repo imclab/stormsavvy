@@ -84,7 +84,7 @@ describe NOAAForecast do
       ]
   end
 
-  it "should instantiate class with valid zipcode" do
+  it "instantiates class with valid zipcode" do
     nf = NOAAForecast.new(@zipcode)
     nf.class.should == NOAAForecast
   end
@@ -139,14 +139,14 @@ describe NOAAForecast do
     end
   end
 
-  describe "seven_day_weather" do
+  describe "#seven_day_weather" do
     it "returns array from seven_day_weather" do
       forecast = @nf.seven_day_weather
       forecast[0].size.should == @fullcount
     end
   end
 
-  describe "get_forecast_array" do
+  describe "#get_forecast_array" do
     it "returns forecast_by_zipcode" do
       nf = NOAAForecast.new(@zipcode,168,6)
       nf.seven_day_weather
@@ -160,16 +160,19 @@ describe NOAAForecast do
     end
   end
 
-  describe "get_time_array" do
-    it "returns get_time_array" do
+  describe "#get_pt_hash" do
+    it "returns pop table hash" do
       nf = NOAAForecast.new(94530,168,6)
-      nf.get_forecast([@lat, @long])
+      nf.seven_day_weather
+      pt2 = nf.get_pt_hash
+      # nf.get_forecast([@lat, @long])
       pop = nf.pop
       pt = []
       pop.each do |i|
         pt << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
       end
-      nf.get_time_array.should == pt
+      pt2.should == pt
+      puts pt
 
       # qpf = nf.qpf
       # pt2 = []

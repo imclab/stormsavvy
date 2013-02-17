@@ -61,7 +61,7 @@ class NOAAForecast
     return parse_weather_data(response)
   end
 
-  def get_time_array
+  def get_pt_hash
     nf = NOAAForecast.new(94530,168,6)
     nf.seven_day_weather
     pop = nf.pop
