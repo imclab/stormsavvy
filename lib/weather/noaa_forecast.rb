@@ -25,12 +25,13 @@ class NOAAForecast
 
     if return_lat_long(@zipcode) == nil
       latlong = get_lat_long(@zipcode)
+      set_lat_long(@zipcode)
     else
       latlong = return_lat_long(@zipcode)
     end
 
     return get_forecast(latlong)
-
+    
     # previous call using get_lat_long only
     # latlong = get_lat_long(@zipcode)
     # return get_forecast(latlong)
@@ -55,7 +56,6 @@ class NOAAForecast
   end
 
   def return_lat_long(zipcode)
-    set_lat_long(zipcode)
     lat = $redis.get(zipcode.to_s + '_lat')
     long = $redis.get(zipcode.to_s + '_long')
     lat_long = [lat.to_f, long.to_f]

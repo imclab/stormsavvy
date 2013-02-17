@@ -11,17 +11,7 @@ describe NOAAForecast do
     @nf = double(NOAAForecast)
 
     # setup redis to store and return zipcode
-
     @nf.stub(:get_lat_long).with(@zipcode).and_return([37.9202057, -122.2937428])
-
-    # creates recursive loop where no stubs are defined by hard value
-    # @nf.stub(:get_lat_long) do
-    #   if @nf.return_lat_long(@zipcode) == nil
-    #     @nf.get_lat_long(@zipcode)
-    #   else
-    #     @nf.return_lat_long(@zipcode)
-    #   end
-    # end
 
     lat_long = @nf.get_lat_long(@zipcode)
     @nf.stub(:set_lat_long) do
