@@ -31,22 +31,17 @@ class NOAAForecast
     end
 
     return get_forecast(latlong)
-
-    # original method call
-    # latlong = get_lat_long(@zipcode)
-    # return get_forecast(latlong)
   end
 
   def get_lat_long(zipcode)
     results = Geocoder.search(zipcode)
-    return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
-=begin
-    # Comment back once all spec run locally
     @lat = results[0].data["geometry"]["location"]["lat"]
     @lng = results[0].data["geometry"]["location"]["lng"]
     lat_long = [] << @lat << @lng
     return lat_long
-=end
+
+    # original array assignment
+    # return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
   end
 
   def set_lat_long(zipcode)
