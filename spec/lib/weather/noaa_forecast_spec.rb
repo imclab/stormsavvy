@@ -36,6 +36,15 @@ describe NOAAForecast do
       # return lat_long 
     end
 
+    # creates recursive loop where no stubs are defined by hard value
+    # @nf.stub(:get_lat_long) do
+    #   if @nf.return_lat_long(@zipcode) == nil
+    #     @nf.get_lat_long(@zipcode)
+    #   else
+    #     @nf.return_lat_long(@zipcode)
+    #   end
+    # end
+
     # import from lib/weather
     @nf.stub(:ping_noaa).with([37.92, -122.29], 168, 6) do
       IO.read("./spec/lib/weather/noaa_response.xml")
