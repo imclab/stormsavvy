@@ -10,12 +10,11 @@ describe NOAAForecast do
     @zipcode2 = 94605
     @lat = 37.9202057
     @long = -122.2937428
+    lat_long = [@lat, @long]
     @nf = double(NOAAForecast)
 
-    # setup redis to store and return zipcode
     @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
-    lat_long = @nf.get_lat_long(@zipcode)
-
+    
     @nf.stub(:set_lat_long) do
       $redis.set(@zipcode.to_s + '_lat', @lat)
       $redis.set(@zipcode.to_s + '_long', @long)
@@ -28,17 +27,18 @@ describe NOAAForecast do
       lat_long = [lat, long]
     end
 
-    # import from lib/weather
     @nf.stub(:ping_noaa).with([@lat, @long], 168, 6) do
       IO.read("./spec/lib/weather/noaa_response.xml")
     end
-    @nf.stub(:get_forecast).with(@nf.get_lat_long(@zipcode)) do
+
+    @nf.stub(:get_forecast).with([@lat, @long]) do
       response = @nf.ping_noaa([@lat, @long], 168, 6)
       nf = NOAAForecast.new(94530)
       nf.parse_weather_data(response)
     end
+
     @nf.stub(:seven_day_weather) do
-      latlong = @nf.get_lat_long(@zipcode)
+      latlong = [@lat, @long]
       @nf.get_forecast(latlong)
     end
 
@@ -46,7 +46,8 @@ describe NOAAForecast do
     nf = NOAAForecast.new(@zipcode,168,6)
     nf2 = nf.seven_day_weather
     pop = nf.pop
-    qpf = nf.qpf
+    qpf = nf.qpf # forecast rainfall returns null here
+
     @forecast_array = [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0], :rainfall => qpf[0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1], :rainfall => qpf[1] },
