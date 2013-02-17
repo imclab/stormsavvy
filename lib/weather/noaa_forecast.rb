@@ -50,7 +50,6 @@ class NOAAForecast
   end
 
   def set_lat_long(zipcode)
-    # response = get_lat_long(zipcode)
     $redis.set(zipcode.to_s + '_lat', response[0])
     $redis.set(zipcode.to_s + '_long', response[1])
   end
@@ -60,7 +59,6 @@ class NOAAForecast
     long = $redis.get(zipcode.to_s + '_long')
     lat_long = [lat.to_f, long.to_f]
     return lat_long
-    # lat_long = [] << @lat.to_f << @long.to_f
   end
 
   def get_forecast(latlong)
