@@ -89,8 +89,18 @@ describe NOAAForecast do
     nf.class.should == NOAAForecast
   end
 
-  it "returns get_lat_long stub values" do
-    @nf.get_lat_long(@zipcode).should == [37.9202057, -122.2937428]
+  describe "#get_lat_long" do
+    it "returns get_lat_long stub values" do
+      @nf.get_lat_long(@zipcode).should == [37.9202057, -122.2937428]
+    end
+
+    it "calls get_lat_long method successfully" do
+      @nf.set_lat_long(@zipcode)
+      lat = $redis.get(@zipcode.to_s + '_lat')
+      long = $redis.get(@zipcode.to_s + '_long')
+      lat_long = [lat.to_f, long.to_f]
+      @nf.get_lat_long(@zipcode).should == lat_long
+    end
   end
 
   it "returns lat/long for given zipcode" do
@@ -186,14 +196,6 @@ describe NOAAForecast do
     $redis.set(zipcode.to_s + '_long', lat_long[1])
     $redis.get(zipcode.to_s + '_lat').should == lat_long[0].to_s
     $redis.get(zipcode.to_s + '_long').should == lat_long[1].to_s
-  end
-
-  it "calls get_lat_long method successfully" do
-    @nf.set_lat_long(@zipcode)
-    lat = $redis.get(@zipcode.to_s + '_lat')
-    long = $redis.get(@zipcode.to_s + '_long')
-    lat_long = [lat.to_f, long.to_f]
-    @nf.get_lat_long(@zipcode).should == lat_long
   end
 
   it "calls set_lat_long method successfully" do
