@@ -12,38 +12,20 @@ describe NOAAForecast do
 
     # setup redis to store and return zipcode
     @nf.stub(:get_lat_long).with(@zipcode).and_return([37.9202057, -122.2937428])
-
     lat_long = @nf.get_lat_long(@zipcode)
+
     @nf.stub(:set_lat_long) do
       @nf.get_lat_long(@zipcode)
       $redis.set(@zipcode.to_s + '_lat', lat_long[0])
       $redis.set(@zipcode.to_s + '_long', lat_long[1])
     end
     @nf.stub(:return_lat_long) do
-      set_lat_long(zipcode)
-      lat = $redis.get(zipcode.to_s + '_lat')
-      long = $redis.get(zipcode.to_s + '_long')
-      lat_long = [lat.to_f, long.to_f]
-      return lat_long
-
-      # @nf.get_lat_long(@zipcode)
-      # $redis.set(@zipcode.to_s + '_lat', lat_long[0])
-      # $redis.set(@zipcode.to_s + '_long', lat_long[1])
-      # lat_long = {
-      # :zipcode_lat => $redis.get(@zipcode.to_s + '_lat'),
-      # :zipcode_long => $redis.get(@zipcode.to_s + '_long')
-      # }
-      # return lat_long 
+      @nf.set_lat_long(@zipcode)
+      lat = $redis.get(@zipcode.to_s + '_lat')
+      long = $redis.get(@zipcode.to_s + '_long')
+      lat_long = [lat, long]
+      # return lat_long
     end
-
-    # creates recursive loop where no stubs are defined by hard value
-    # @nf.stub(:get_lat_long) do
-    #   if @nf.return_lat_long(@zipcode) == nil
-    #     @nf.get_lat_long(@zipcode)
-    #   else
-    #     @nf.return_lat_long(@zipcode)
-    #   end
-    # end
 
     # import from lib/weather
     @nf.stub(:ping_noaa).with([37.92, -122.29], 168, 6) do
@@ -202,33 +184,14 @@ describe NOAAForecast do
   end
 
   it "calls return_lat_long method successfully" do
-
-    # @nf.set_lat_long(@zipcode)
-    # lat_long = @nf.return_lat_long(@zipcode)
-    # print lat_long
-
-    # @nf.set_lat_long(@zipcode)
     lat = $redis.get(@zipcode.to_s + '_lat')
     long = $redis.get(@zipcode.to_s + '_long')
     print lat.to_f
     print long.to_f
+    results = [lat,long]
 
-    # nf = NOAAForecast.new(@zipcode,168,6)
-    # print nf.return_lat_long(@zipcode)
-    # print nf.get_lat_long(@zipcode)
-
-    # lat_long = {
-    #   :zipcode_lat => $redis.get(@zipcode.to_s + '_lat'),
-    #   :zipcode_long => $redis.get(@zipcode.to_s + '_long')
-    # }
-    # print lat_long.values
-
-    # lat_long = @nf.get_lat_long(@zipcode)
-    # results = [
-    #   lat_long[0], lat_long[1]
-    # ]
-    # @nf.set_lat_long(@zipcode)
-    # @nf.return_lat_long(@zipcode).should == results
+    @nf.set_lat_long(@zipcode)
+    @nf.return_lat_long(@zipcode).should == results
   end
 
   it "sets and gets lat long" do
