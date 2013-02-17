@@ -31,16 +31,22 @@ describe UserMailer do
 
     # NOAA forecast stub copied from lib/weather spec.
     @fullcount = 29
+    @lat = 37.9202057
+    @long = -122.2937428
     @nf = double(NOAAForecast)
-    @nf.stub(:get_lat_long).with(94530).and_return([37.9202057, -122.2937428])
-    @nf.stub(:ping_noaa).with([37.92, -122.29], 168, 6) do
+
+    @nf.stub(:get_lat_long).with(94530).and_return([@lat, @long])
+
+    @nf.stub(:ping_noaa).with([@lat, @long], 168, 6) do
       IO.read("./spec/lib/weather/noaa_response.xml")
     end
+
     @nf.stub(:get_forecast).with(@nf.get_lat_long(94530)) do
-      response = @nf.ping_noaa([37.92, -122.29], 168, 6)
+      response = @nf.ping_noaa([@lat, @long], 168, 6)
       nf = NOAAForecast.new(94530)
       nf.parse_weather_data(response)
     end
+
     @nf.stub(:seven_day_weather) do
       latlong = @nf.get_lat_long(94530)
       @nf.get_forecast(latlong)
@@ -56,7 +62,6 @@ describe UserMailer do
       @numusers = [@user]
       @numprojects = [@project]
       @numsites = [@site]
-
     end
 
     it "should send something via mailout" do
@@ -170,6 +175,6 @@ describe UserMailer do
     it "should have text in body" do
       @mailer.body.should_not be_empty
     end
-  end
 
+  end
 end
