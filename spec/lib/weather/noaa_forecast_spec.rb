@@ -155,7 +155,6 @@ describe NOAAForecast do
 
   describe "#get_time_array" do
     it "returns time array" do
-      @nf2.seven_day_weather
       time_array = []
 
       for t in 0..27
@@ -163,6 +162,7 @@ describe NOAAForecast do
       end
 
       @nf2.get_time_array.should == time_array
+      @time_array = time_array
     end
   end
 
