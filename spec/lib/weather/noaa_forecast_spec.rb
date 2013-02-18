@@ -43,6 +43,7 @@ describe NOAAForecast do
     end
 
     @nf.stub(:pop) do
+      # refactor as array, not string
       IO.read("./spec/lib/weather/pop_stub_data.txt")
     end
 
@@ -155,18 +156,26 @@ describe NOAAForecast do
     end
   end
 
-  describe "#get_pt_hash" do
-    it "returns pop table hash" do
+  describe "#get_time_array" do
+    it "returns time array" do
       nf = NOAAForecast.new(94530,168,6)
       nf.seven_day_weather
 
       # collect time elements
       time_array = []
-      for t in 1..28
+      for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
         # new_pop_array << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
       end
       # puts time_array
+      nf.get_time_array.should == time_array
+    end
+  end
+
+  describe "#get_pop_array" do
+    it "returns pop table hash" do
+      nf = NOAAForecast.new(94530,168,6)
+      nf.seven_day_weather
 
       # collect pop elements
       pop_array = nf.pop
@@ -196,7 +205,10 @@ describe NOAAForecast do
       for k in 0..27
         time_pop_qpf_hash << Hash[time_pop_hash[k]].update(Hash[new_qpf_array[k]])
       end
-      nf.get_pt_hash.should == time_pop_qpf_hash
+
+      # puts time_pop_qpf_hash
+      # puts nf.get_forecast_array
+      # nf.get_forecast_array.should == time_pop_qpf_hash
     end
   end
 
