@@ -7,12 +7,15 @@ describe NOAAForecast do
   before(:each) do
     @fullcount = 29
     @zipcode = 94530
-    @zipcode2 = 94605
     @lat = 37.9202057
     @long = -122.2937428
     lat_long = [@lat, @long]
     @nf = double(NOAAForecast)
+
     @nf2 = NOAAForecast.new(@zipcode,168,6)
+    @nf2.seven_day_weather
+    @pop, pop = @nf2.pop
+    @qpf, qpf = @nf2.qpf # forecast rainfall returns null here
 
     @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
 
@@ -47,10 +50,10 @@ describe NOAAForecast do
       IO.read("./spec/lib/weather/pop_stub_data.txt")
     end
 
-    # setup for forecast_array
-    @nf2.seven_day_weather
-    pop = @nf2.pop
-    qpf = @nf2.qpf # forecast rainfall returns null here
+    @nf.stub(:get_time_array) do
+
+    end
+
     @forecast_array = [
       { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1], :rainfall => qpf[1] },
