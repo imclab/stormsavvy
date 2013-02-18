@@ -186,12 +186,21 @@ describe NOAAForecast do
       end
       puts new_qpf_array
 
-      time_hash = Hash[time_array]
-      pop_hash = Hash[new_pop_array]
-      qpf_hash = Hash[new_pdf_array]
+      time_hash_loop = Hash[time_array]
+      pop_hash_loop = Hash[new_pop_array]
+      qpf_hash_loop = Hash[new_qpf_array]
 
-      time_pop_hash = time_hash.update(pop_hash)
+      time_pop_hash = []
+      for h in 0..27
+        time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
+      end
       puts time_pop_hash
+
+      time_pop_qpf_hash = []
+      for k in 0..27
+        time_pop_qpf_hash << Hash[time_pop_hash[h]].update(Hash[new_qpf_array[h]])
+      end
+      puts time_pop_qpf_hash
       # pt3 = Hash[pt.zip(pt2)]
     end
   end
