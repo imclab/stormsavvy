@@ -43,7 +43,7 @@ describe NOAAForecast do
     end
 
     @nf.stub(:pop) do
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
+      IO.read("./spec/lib/weather/pop_stub_data.txt")
     end
 
     # setup for forecast_array
