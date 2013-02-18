@@ -61,6 +61,15 @@ class NOAAForecast
     return parse_weather_data(response)
   end
 
+  def get_time_array
+    nf = NOAAForecast.new(94530,168,6)
+    time_array = []
+    for t in 0..27
+      time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
+    end
+    return time_array
+  end
+
   def get_pt_hash
     nf = NOAAForecast.new(94530,168,6)
     nf.seven_day_weather
