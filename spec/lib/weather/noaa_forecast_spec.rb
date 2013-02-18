@@ -162,11 +162,11 @@ describe NOAAForecast do
 
       # collect time elements
       time_array = []
-      for t in 0..27
+      for t in 1..28
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
         # new_pop_array << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
       end
-      puts time_array
+      # puts time_array
 
       # collect pop elements
       pop_array = nf.pop
@@ -175,8 +175,7 @@ describe NOAAForecast do
         new_pop_array << { :weather => i.to_s }
         # new_pop_array << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
       end
-      puts new_pop_array
-      # nf.get_pt_hash.should == pt
+      # puts new_pop_array
 
       # collect rainfall elements
       qpf_array = nf.qpf
@@ -184,24 +183,20 @@ describe NOAAForecast do
       qpf_array.each do |i|
         new_qpf_array << { :rainfall => i.to_s }
       end
-      puts new_qpf_array
-
-      time_hash_loop = Hash[time_array]
-      pop_hash_loop = Hash[new_pop_array]
-      qpf_hash_loop = Hash[new_qpf_array]
+      # puts new_qpf_array
 
       time_pop_hash = []
       for h in 0..27
         time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
       end
-      puts time_pop_hash
+      # puts time_pop_hash
+      # puts nf.get_pt_hash
 
       time_pop_qpf_hash = []
       for k in 0..27
-        time_pop_qpf_hash << Hash[time_pop_hash[h]].update(Hash[new_qpf_array[h]])
+        time_pop_qpf_hash << Hash[time_pop_hash[k]].update(Hash[new_qpf_array[k]])
       end
-      puts time_pop_qpf_hash
-      # pt3 = Hash[pt.zip(pt2)]
+      nf.get_pt_hash.should == time_pop_qpf_hash
     end
   end
 
