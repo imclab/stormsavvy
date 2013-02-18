@@ -186,9 +186,13 @@ describe NOAAForecast do
       end
       puts new_qpf_array
 
+      time_hash = Hash[time_array]
+      pop_hash = Hash[new_pop_array]
+      qpf_hash = Hash[new_pdf_array]
 
+      time_pop_hash = time_hash.update(pop_hash)
+      puts time_pop_hash
       # pt3 = Hash[pt.zip(pt2)]
-      puts pt3
     end
   end
 
