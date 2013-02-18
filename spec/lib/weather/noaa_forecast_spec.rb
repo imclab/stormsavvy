@@ -12,6 +12,7 @@ describe NOAAForecast do
     @long = -122.2937428
     lat_long = [@lat, @long]
     @nf = double(NOAAForecast)
+    @nf2 = NOAAForecast.new(@zipcode,168,6)
 
     @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
 
@@ -33,8 +34,7 @@ describe NOAAForecast do
 
     @nf.stub(:get_forecast).with([@lat, @long]) do
       response = @nf.ping_noaa([@lat, @long], 168, 6)
-      nf = NOAAForecast.new(94530)
-      nf.parse_weather_data(response)
+      @nf2.parse_weather_data(response)
     end
 
     @nf.stub(:seven_day_weather) do
@@ -48,12 +48,11 @@ describe NOAAForecast do
     end
 
     # setup for forecast_array
-    nf = NOAAForecast.new(@zipcode,168,6)
-    nf.seven_day_weather
-    pop = nf.pop
-    qpf = nf.qpf # forecast rainfall returns null here
+    @nf2.seven_day_weather
+    pop = @nf2.pop
+    qpf = @nf2.qpf # forecast rainfall returns null here
     @forecast_array = [
-      { :date => ProjectLocalTime::format(Date.today), :weather => pop[0], :rainfall => qpf[0] },
+      { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1], :rainfall => qpf[1] },
       { :date => ProjectLocalTime::format(Date.today + 12.hours), :weather => pop[2], :rainfall => qpf[2] },
       { :date => ProjectLocalTime::format(Date.today + 18.hours), :weather => pop[3], :rainfall => qpf[3] },
@@ -86,8 +85,7 @@ describe NOAAForecast do
   end
 
   it "instantiates class with valid zipcode" do
-    nf = NOAAForecast.new(@zipcode)
-    nf.class.should == NOAAForecast
+    @nf2.class.should == NOAAForecast
   end
 
   it "returns lat/long for given zipcode" do
@@ -115,8 +113,7 @@ describe NOAAForecast do
   describe "#parse_weather_data" do
     it "parses weather data from noaa for one week" do
       response = @nf.ping_noaa([@lat, @long], 168, 6)
-      nf = NOAAForecast.new(@zipcode,168,6)
-      forecast = nf.parse_weather_data(response)
+      forecast = @nf2.parse_weather_data(response)
       forecast[0].size.should == @fullcount
     end
   end
@@ -124,8 +121,7 @@ describe NOAAForecast do
   describe "#get_valid_dates" do
     it "procures the 'validDate' from the NOAA response" do
       response = @nf.ping_noaa([@lat, @long], 168, 6)
-      nf = NOAAForecast.new(@zipcode,168,6)
-      dates = nf.get_valid_dates(response)
+      dates = @nf2.get_valid_dates(response)
       dates.size.should == 8
     end
   end
@@ -133,8 +129,7 @@ describe NOAAForecast do
   describe "#get_forecast_creation_time" do
     it "procures forecast creation time from the NOAA response" do
       response = @nf.ping_noaa([@lat, @long], 168, 6)
-      nf = NOAAForecast.new(@zipcode,168,6)
-      creation_time = nf.get_forecast_creation_time(response)
+      creation_time = @nf2.get_forecast_creation_time(response)
       datehash = DateTime.parse("Sun Nov 18 23:02:24 2012 UTC", "%a %b %d %H:%M:%S %Y %Z")
       creation_time.should == datehash
     end
@@ -149,45 +144,43 @@ describe NOAAForecast do
 
   describe "#get_forecast_array" do
     it "returns forecast_by_zipcode" do
-      nf = NOAAForecast.new(@zipcode,168,6)
-      nf.seven_day_weather
-      pop = nf.pop
-      nf.get_forecast_array.should == @forecast_array
+      @nf2.seven_day_weather
+      pop = @nf2.pop
+      @nf2.get_forecast_array.should == @forecast_array
     end
   end
 
   describe "#get_time_array" do
     it "returns time array" do
-      nf = NOAAForecast.new(94530,168,6)
-      nf.seven_day_weather
-
-      # collect time elements
+      @nf2.seven_day_weather
       time_array = []
+
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
-        # new_pop_array << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
       end
-      # puts time_array
-      nf.get_time_array.should == time_array
+
+      @nf2.get_time_array.should == time_array
     end
   end
 
   describe "#get_pop_array" do
-    it "returns pop table hash" do
-      nf = NOAAForecast.new(94530,168,6)
-      nf.seven_day_weather
-
-      # collect pop elements
-      pop_array = nf.pop
+    it "returns pop array" do
+      @nf2.seven_day_weather
+      pop_array = @nf2.pop
       new_pop_array = []
+
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
         # new_pop_array << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
       end
       # puts new_pop_array
+    end
+  end
 
+  describe "#get_qpf_array" do
+    it "returns qpf array" do
       # collect rainfall elements
-      qpf_array = nf.qpf
+      qpf_array = @nf2.qpf
       new_qpf_array = []
       qpf_array.each do |i|
         new_qpf_array << { :rainfall => i.to_s }
