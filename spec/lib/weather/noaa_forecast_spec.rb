@@ -14,7 +14,7 @@ describe NOAAForecast do
     @nf = double(NOAAForecast)
 
     @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
-    
+
     @nf.stub(:set_lat_long) do
       $redis.set(@zipcode.to_s + '_lat', @lat)
       $redis.set(@zipcode.to_s + '_long', @long)
