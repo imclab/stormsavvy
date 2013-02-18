@@ -102,7 +102,7 @@ describe NOAAForecast do
       @nf.get_lat_long(@zipcode).should == [37.9202057, -122.2937428]
     end
 
-    it "calls get_lat_long method successfully" do
+    it "sets and gets lat/long with redis" do
       @nf.set_lat_long(@zipcode)
       lat = $redis.get(@zipcode.to_s + '_lat')
       long = $redis.get(@zipcode.to_s + '_long')
@@ -152,11 +152,6 @@ describe NOAAForecast do
       nf.seven_day_weather
       pop = nf.pop
       nf.get_forecast_array.should == @forecast_array
-
-      # print "Pop hash before map: #{pop}", "\n"
-      # pop.each do |i|
-      #   print "Storm POP = #{pop[i]}", "\n"
-      # end
     end
   end
 
@@ -165,22 +160,35 @@ describe NOAAForecast do
       nf = NOAAForecast.new(94530,168,6)
       nf.seven_day_weather
 
-      # collect pop elements
-      pop = nf.pop
-      pt = []
-      pop.each do |i|
-        pt << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
+      # collect time elements
+      time_array = []
+      for t in 0..27
+        time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
+        # new_pop_array << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
       end
-      nf.get_pt_hash.should == pt
-      # puts pt
+      puts time_array
+
+      # collect pop elements
+      pop_array = nf.pop
+      new_pop_array = []
+      pop_array.each do |i|
+        new_pop_array << { :weather => i.to_s }
+        # new_pop_array << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
+      end
+      puts new_pop_array
+      # nf.get_pt_hash.should == pt
 
       # collect rainfall elements
-      qpf = nf.qpf
-      pt2 = []
-      qpf.each do |i|
-        pt2 << Hash[pt].merge(:rainfall => i.to_s)
+      qpf_array = nf.qpf
+      new_qpf_array = []
+      qpf_array.each do |i|
+        new_qpf_array << { :rainfall => i.to_s }
       end
-      puts pt2
+      puts new_qpf_array
+
+
+      # pt3 = Hash[pt.zip(pt2)]
+      puts pt3
     end
   end
 
