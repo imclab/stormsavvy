@@ -101,13 +101,26 @@ class NOAAForecast
     nf = NOAAForecast.new(94530,168,6)
     time_array = nf.get_time_array
     new_pop_array = nf.get_pop_array
+
     time_pop_hash = []
-    
-    for h in 0..27
-      time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
+    for i in 0..27
+      time_pop_hash << Hash[time_array[i]].update(Hash[new_pop_array[i]])
     end
 
     return time_pop_hash
+  end
+
+  def get_pop_table_hash
+    nf = NOAAForecast.new(94530,168,6)
+    time_pop_hash = nf.get_time_pop_hash
+    new_qpf_array = nf.get_qpf_array
+
+    pop_table_hash = []
+    for i in 0..27
+      pop_table_hash << Hash[time_pop_hash[i]].update(Hash[new_qpf_array[i]])
+    end
+
+    return pop_table_hash
   end
 
   def get_pt_hash

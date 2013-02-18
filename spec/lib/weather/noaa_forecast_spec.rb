@@ -14,8 +14,11 @@ describe NOAAForecast do
 
     @nf2 = NOAAForecast.new(@zipcode,168,6)
     @nf2.seven_day_weather
-    @pop, pop = @nf2.pop
-    @qpf, qpf = @nf2.qpf # forecast rainfall returns null here
+    @pop = @nf2.pop
+    @qpf = @nf2.qpf # forecast rainfall returns null here
+
+    pop = @nf2.pop
+    qpf = @nf2.qpf # forecast rainfall returns null here
 
     @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
 
@@ -50,8 +53,30 @@ describe NOAAForecast do
       IO.read("./spec/lib/weather/pop_stub_data.txt")
     end
 
-    @nf.stub(:get_time_array) do
+    @nf2.stub(:get_time_array) do
+      time_array = []
 
+      for t in 0..27
+        time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
+      end
+    end
+
+    @nf2.stub(:get_pop_array) do
+      pop_array = @pop
+      new_pop_array = []
+
+      pop_array.each do |i|
+        new_pop_array << { :weather => i.to_s }
+      end
+    end
+
+    @nf2.stub(:get_qpf_array) do
+      qpf_array = @qpf
+      new_qpf_array = []
+
+      qpf_array.each do |i|
+        new_qpf_array << { :rainfall => i.to_s }
+      end
     end
 
     @forecast_array = [
@@ -162,7 +187,6 @@ describe NOAAForecast do
       end
 
       @nf2.get_time_array.should == time_array
-      @time_array = time_array
     end
   end
 
