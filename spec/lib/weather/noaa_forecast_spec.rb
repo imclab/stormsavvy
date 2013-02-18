@@ -198,11 +198,9 @@ describe NOAAForecast do
 
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
-        # new_pop_array << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
       end
       
       @nf2.get_pop_array.should == new_pop_array
-      @new_pop_array = new_pop_array
     end
   end
 
@@ -210,6 +208,7 @@ describe NOAAForecast do
     it "returns qpf array" do
       @nf2.seven_day_weather
       qpf_array = @nf2.qpf
+
       new_qpf_array = []
 
       qpf_array.each do |i|
@@ -217,30 +216,48 @@ describe NOAAForecast do
       end
 
       @nf2.get_qpf_array.should == new_qpf_array
-      @new_qpf_array = new_qpf_array
     end
   end
   
   describe "#time_pop_hash" do
     it "returns time pop hash" do
-      time_pop_hash = []
-
-      for h in 0..27
-        time_pop_hash << Hash[@time_array[h]].update(Hash[@new_pop_array[h]])
+      time_array = []
+      for t in 0..27
+        time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      nf.get_time_pop.should == time_pop_hash
+      @nf2.seven_day_weather
+      pop_array = @nf2.pop
+      new_pop_array = []
+      pop_array.each do |i|
+        new_pop_array << { :weather => i.to_s }
+      end
+
+      time_pop_hash = []
+      for h in 0..27
+        time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
+      end
+
+      @nf2.get_time_pop_hash.should == time_pop_hash
     end
   end
 
   describe "#time_pop_qpf_hash" do
     it "returns time pop qpf hash" do
-      time_pop_qpf_hash = []
-
-      for k in 0..27
-        time_pop_qpf_hash << Hash[time_pop_hash[k]].update(Hash[new_qpf_array[k]])
+      @nf2.seven_day_weather
+      qpf_array = @nf2.qpf
+      new_qpf_array = []
+      qpf_array.each do |i|
+        new_qpf_array << { :rainfall => i.to_s }
       end
 
+      time_pop_hash = @nf2.get_time_pop_hash
+      pop_table_hash = []
+      for k in 0..27
+        pop_table_hash << Hash[time_pop_hash[k]].update(Hash[new_qpf_array[k]])
+      end
+
+      @nf2.get_pop_table_hash.should == pop_table_hash
     end
   end
 
