@@ -1,6 +1,6 @@
 class AlertMailer < ActionMailer::Base
 
-  default :from => "sendgrid@stormsavvy.com"
+  default :from => "alerts@stormsavvy.com"
 
   def northbay_forecast(email)
     @greeting = "Greetings"
@@ -24,7 +24,7 @@ class AlertMailer < ActionMailer::Base
     @nf8 = @nf7.forecast_by_zipcode(94928)
 
     mail(
-      :from     => "sendgrid@stormsavvy.com",
+      :from     => "alerts@stormsavvy.com",
       :to       => email,
       :subject  => "Storm Savvy Daily Forecast: North Bay"
       ).deliver
@@ -52,7 +52,7 @@ class AlertMailer < ActionMailer::Base
     @nf8 = @nf7.forecast_by_zipcode(94566)
 
     mail(
-      :from     => "sendgrid@stormsavvy.com",
+      :from     => "alerts@stormsavvy.com",
       :to       => email,
       :subject  => "Storm Savvy Daily Forecast: East Bay"
       ).deliver
@@ -80,7 +80,7 @@ class AlertMailer < ActionMailer::Base
     @nf8 = @nf7.forecast_by_zipcode(94305)
 
     mail(
-      :from     => "sendgrid@stormsavvy.com",
+      :from     => "alerts@stormsavvy.com",
       :to       => email,
       :subject  => "Storm Savvy Daily Forecast: South Bay"
       ).deliver
@@ -92,7 +92,7 @@ class AlertMailer < ActionMailer::Base
       @user = user # `@user` is needed for the template
       if user.has_site?
         mail(
-          :from     => "sendgrid@stormsavvy.com",
+          :from     => "alerts@stormsavvy.com",
           :to       => user.email,
           :subject  => "NOAA Forecast Notification"
           ).deliver
@@ -110,7 +110,7 @@ class AlertMailer < ActionMailer::Base
       @user = user # `@user` is needed for the template
       if @user.has_site?
         mail(
-          :from     => "sendgrid@stormsavvy.com",
+          :from     => "alerts@stormsavvy.com",
           :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
           :subject  => "Storm Savvy Daily Weather Forecasts"
           ).deliver
@@ -129,7 +129,7 @@ class AlertMailer < ActionMailer::Base
       @user = user # `@user` is needed for the template
       if @user.has_site?
         mail(
-          :from     => "sendgrid@stormsavvy.com",
+          :from     => "alerts@stormsavvy.com",
           :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
           :subject  => "Storm Savvy POP Alert"
           ).deliver
