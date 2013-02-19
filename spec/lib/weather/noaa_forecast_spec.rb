@@ -48,36 +48,32 @@ describe NOAAForecast do
       @nf.get_forecast(latlong)
     end
 
-    @nf.stub(:pop) do
-      # refactor as array, not string
-      IO.read("./spec/lib/weather/pop_stub_data.txt")
-    end
+    # @nf.stub(:pop) do
+    #   IO.read("./spec/lib/weather/pop_stub_data.txt")
+    # end
 
     @nf2.stub(:get_time_array) do
       time_array = []
-
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
     end
 
-    @nf2.stub(:get_pop_array) do
-      pop_array = @pop
-      new_pop_array = []
+    # @nf2.stub(:get_pop_array) do
+    #   pop_array = @pop
+    #   new_pop_array = []
+    #   pop_array.each do |i|
+    #     new_pop_array << { :weather => pop_array[i].to_s }
+    #   end
+    # end
 
-      pop_array.each do |i|
-        new_pop_array << { :weather => i.to_s }
-      end
-    end
-
-    @nf2.stub(:get_qpf_array) do
-      qpf_array = @qpf
-      new_qpf_array = []
-
-      qpf_array.each do |i|
-        new_qpf_array << { :rainfall => i.to_s }
-      end
-    end
+    # @nf2.stub(:get_qpf_array) do
+    #   qpf_array = @qpf
+    #   new_qpf_array = []
+    #   qpf_array.each do |i|
+    #     new_qpf_array << { :rainfall => qpf_array[i].to_s }
+    #   end
+    # end
 
     @forecast_array = [
       { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
@@ -199,8 +195,6 @@ describe NOAAForecast do
         new_pop_array << { :weather => i.to_s }
       end
       
-      # puts new_pop_array
-      # puts @nf2.get_pop_array
       @nf2.get_pop_array.should == new_pop_array
     end
   end
@@ -215,9 +209,6 @@ describe NOAAForecast do
         new_qpf_array << { :rainfall => i.to_s }
       end
 
-      # puts qpf_array
-      # puts new_qpf_array
-      # puts @nf2.get_qpf_array
       @nf2.get_qpf_array.should == new_qpf_array
     end
   end
