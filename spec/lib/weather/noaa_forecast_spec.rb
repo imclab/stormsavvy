@@ -15,10 +15,10 @@ describe NOAAForecast do
     @nf2 = NOAAForecast.new(@zipcode,168,6)
     @nf2.seven_day_weather
     @pop = @nf2.pop
-    @qpf = @nf2.qpf # forecast rainfall returns null here
+    @qpf = @nf2.qpf
 
     pop = @nf2.pop
-    qpf = @nf2.qpf # forecast rainfall returns null here
+    qpf = @nf2.qpf
 
     @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
 
@@ -48,16 +48,24 @@ describe NOAAForecast do
       @nf.get_forecast(latlong)
     end
 
-    # @nf.stub(:pop) do
-    #   IO.read("./spec/lib/weather/pop_stub_data.txt")
-    # end
-
     @nf2.stub(:get_time_array) do
       time_array = []
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
     end
+
+    @nf2.stub(:pop) do
+      pop = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
+    end
+
+    @nf2.stub(:qpf) do
+      pop = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
+    end
+
+    # @nf.stub(:pop) do
+    #   IO.read("./spec/lib/weather/pop_stub_data.txt")
+    # end
 
     # @nf2.stub(:get_pop_array) do
     #   pop_array = @pop
@@ -174,6 +182,20 @@ describe NOAAForecast do
     end
   end
 
+  describe "#get_pop" do
+    it "returns pop results" do
+      pop = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
+      @nf2.pop.should == pop
+    end
+  end
+
+  describe "#get_qpf" do
+    it "returns qpf results" do
+      qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
+      @nf2.qpf.should == qpf
+    end
+  end
+
   describe "#get_time_array" do
     it "returns time array" do
       time_array = []
@@ -236,8 +258,8 @@ describe NOAAForecast do
     end
   end
 
-  describe "#time_pop_qpf_hash" do
-    it "returns time pop qpf hash" do
+  describe "#pop_table_hash" do
+    it "returns pop_table hash" do
       @nf2.seven_day_weather
       qpf_array = @nf2.qpf
       new_qpf_array = []
