@@ -70,4 +70,7 @@ Stormsavvy::Application.configure do
       :secret_access_key => APP_CONFIG['AWS_SECRET_ACCESS_KEY']
       }
   }
+
+  # redis setup
+  ENV["REDISTOGO_URL"] = 'redis://username:password@my.host:6789'
 end
