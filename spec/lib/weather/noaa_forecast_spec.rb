@@ -181,7 +181,6 @@ describe NOAAForecast do
   describe "#get_time_array" do
     it "returns time array" do
       time_array = []
-
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
@@ -194,12 +193,14 @@ describe NOAAForecast do
     it "returns pop array" do
       @nf2.seven_day_weather
       pop_array = @nf2.pop
-      new_pop_array = []
 
+      new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
       end
       
+      # puts new_pop_array
+      # puts @nf2.get_pop_array
       @nf2.get_pop_array.should == new_pop_array
     end
   end
@@ -210,11 +211,13 @@ describe NOAAForecast do
       qpf_array = @nf2.qpf
 
       new_qpf_array = []
-
       qpf_array.each do |i|
         new_qpf_array << { :rainfall => i.to_s }
       end
 
+      # puts qpf_array
+      # puts new_qpf_array
+      # puts @nf2.get_qpf_array
       @nf2.get_qpf_array.should == new_qpf_array
     end
   end
