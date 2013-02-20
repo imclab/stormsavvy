@@ -7,7 +7,7 @@ gem 'nokogiri'
 gem 'geocoder', :git => "git://github.com/doolin/geocoder.git" # :github => 'doolin/geocoder'
 gem 'devise'
 gem 'pg'
-# gem 'redis'
+gem 'redis'
 
 gem 'carmen'
 gem 'activeadmin'
