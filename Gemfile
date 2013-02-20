@@ -7,7 +7,7 @@ gem 'nokogiri'
 gem 'geocoder', :git => "git://github.com/doolin/geocoder.git" # :github => 'doolin/geocoder'
 gem 'devise'
 gem 'pg'
-gem 'redis'
+# gem 'redis'
 
 gem 'carmen'
 gem 'activeadmin'
@@ -23,7 +23,7 @@ gem 'pdf-reader'
 gem 'simple_form'
 gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
 
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 gem 'unicorn'
 
 gem 'paperclip'
@@ -35,7 +35,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'travis'
+#   gem 'travis'
   gem 'builder'
 
   gem 'rspec-rails', "2.12.0"
@@ -48,17 +48,17 @@ group :test, :development do
   gem 'sqlite3'
   gem 'spork-rails'
 
-  gem 'pry'
-  gem 'pry-remote'
-  gem 'pry-nav'
+#   gem 'pry'
+#   gem 'pry-remote'
+#   gem 'pry-nav'
 
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'simplecov', :require => false
 
-  gem 'ZenTest'
-  gem 'autotest-growl'
-  gem 'autotest-fsevent'
+#   gem 'ZenTest'
+#   gem 'autotest-growl'
+#   gem 'autotest-fsevent'
 
   # Comment out when running bundle update
   gem 'email_spec', "1.4.0"
