@@ -72,5 +72,5 @@ Stormsavvy::Application.configure do
   }
 
   # redis setup
-  ENV["REDISTOGO_URL"] = 'redis://username:password@my.host:6789'
+  ENV["REDISTOGO_URL"] = 'redis://username:password@my.host:6379'
 end

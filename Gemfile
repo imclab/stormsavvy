@@ -25,6 +25,7 @@ gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
 
 # gem 'newrelic_rpm'
 gem 'unicorn'
+gem 'sentry-raven'
 
 gem 'paperclip'
 gem 'aws-sdk'
