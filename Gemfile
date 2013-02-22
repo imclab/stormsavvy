@@ -23,10 +23,7 @@ gem 'pdf-reader'
 gem 'simple_form'
 gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
 
-# gem 'newrelic_rpm'
 gem 'unicorn'
-gem 'sentry-raven'
-
 gem 'paperclip'
 gem 'aws-sdk'
 
@@ -36,7 +33,6 @@ group :development do
 end
 
 group :test, :development do
-#   gem 'travis'
   gem 'builder'
 
   gem 'rspec-rails', "2.12.0"
@@ -49,24 +45,30 @@ group :test, :development do
   gem 'sqlite3'
   gem 'spork-rails'
 
-#   gem 'pry'
-#   gem 'pry-remote'
-#   gem 'pry-nav'
+  # Comment out when running bundle update
+  # gem 'email_spec', "1.4.0"
 
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'simplecov', :require => false
 
+#   gem 'pry'
+#   gem 'pry-remote'
+#   gem 'pry-nav'
+
+#   gem 'travis'
 #   gem 'ZenTest'
 #   gem 'autotest-growl'
 #   gem 'autotest-fsevent'
-
-  # Comment out when running bundle update
-  gem 'email_spec', "1.4.0"
 end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :production do
+  # gem 'newrelic_rpm'
+  gem 'sentry-raven'
 end
