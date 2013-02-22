@@ -1,4 +1,5 @@
 require 'redis'
+require 'uri'
 
 REDISTOGO_URL = "redis://localhost:6379/"
 uri = URI.parse(REDISTOGO_URL)
