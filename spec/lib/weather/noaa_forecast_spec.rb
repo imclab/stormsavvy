@@ -11,7 +11,6 @@ describe NOAAForecast do
     @long = -122.2937428
     lat_long = [@lat, @long]
     @nf = double(NOAAForecast)
-
     @nf2 = NOAAForecast.new(@zipcode,168,6)
     @nf2.seven_day_weather
     @pop = @nf2.pop
