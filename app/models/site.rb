@@ -20,7 +20,9 @@ class Site < ActiveRecord::Base
   has_many :site_pop
   accepts_nested_attributes_for :project
 
-  geocoded_by :address, :latitude => :lat, :longitude => :long
+  geocoded_by :address, 
+    :latitude => :lat, 
+    :longitude => :long
   after_validation :geocode
 
   validates_presence_of :name,
