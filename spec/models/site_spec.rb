@@ -2,11 +2,29 @@ require 'spec_helper'
 
 describe Site do
 
-  describe "validations" do
+  before(:each) do
+    @lat = 37.81164190000001
+    @long = -122.255463
+    @latlong = [@lat, @long]
 
-    before(:each) do
-      @site = FactoryGirl.create(:site)
+    @site = FactoryGirl.create(:site)
+    @site2 = Site.create!(
+      :name    => 'Oakland Adams Point',
+      :address_1  => '111 Sesame Street',
+      :address_2  => 'Suite 181',
+      :city    => 'Oakland',
+      :state      => 'CA',
+      :zipcode => 94610
+      )
+    @site2.stub(:lat) do
+      lat = @lat
     end
+    @site2.stub(:long) do
+      long = @long
+    end
+  end
+
+  describe "validations" do
 
     it "should have a name" do
       @site.name = ''
@@ -77,17 +95,35 @@ describe Site do
 
   describe "geocoding feature" do 
     it "should geocode oakland" do
-      s = Site.create!(:name    => "Oakland Adams Point",
-                       :city    => "Oakland",
-                       :zipcode => 94610)
-      s.lat.round.should == 38
-      s.long.round.should == -122
+      # s = Site.create!(:name    => "Oakland Adams Point",
+      #                  :city    => "Oakland",
+      #                  :zipcode => 94610)
+      @site2.lat.round.should == 38
+      @site2.long.round.should == -122
     end
   end
 
   describe "#address" do
     it 'returns site address' do
-      puts @site.address
+      # site = Site.new(:address_1  => '111 Sesame Street',
+      #                 :address_2  => 'Suite 181',
+      #                 :city       => 'Gotham City',
+      #                 :state      => 'NY',
+      #                 :zipcode    => '90001')
+      # site.address.should == '111 Sesame Street Suite 181 Gotham City NY 90001'
+      puts @site2.address
     end
   end
+
+  describe "#address" do
+    it 'returns site address' do
+      site = Site.new(:address_1  => '111 Sesame Street',
+                      :address_2  => 'Suite 181',
+                      :city       => 'Gotham City',
+                      :state      => 'NY',
+                      :zipcode    => '90001')
+      site.address.should == '111 Sesame Street Suite 181 Gotham City NY 90001'
+    end
+  end
+
 end
