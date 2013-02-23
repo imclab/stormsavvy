@@ -124,5 +124,27 @@ describe Site do
       @site.precipitation_state(forecast).should == :imminent
     end
 
+    it 'sets rain state to warning' do
+      forecast = [@data[8], @data[9]]
+      @site.precipitation_state(forecast).should == :warning
+    end
+
+    it 'sets rain state to watch' do
+      forecast = [@data[2], @data[3]]
+      @site.precipitation_state(forecast).should == :watch
+    end
+
+    it 'sets rain state to clear' do
+      forecast = [@data[0], @data[1]]
+      @site.precipitation_state(forecast).should == :clear
+    end
+  end
+
+  describe '#forecast' do
+    it 'returns forecast' do
+      latlong = [@lat, @long]
+      forecast = @nf.get_forecast(latlong)
+      @site.forecast.should == forecast
+    end
   end
 end
