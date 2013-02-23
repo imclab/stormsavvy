@@ -54,7 +54,6 @@ describe Site do
     it "should have a project attribute" do
       @site.should respond_to(:project)
     end
-
   end
 
   describe "attributes" do
@@ -63,66 +62,35 @@ describe Site do
       @site = FactoryGirl.create(:site)
     end
 
-    it "should have name" do
+    it 'has correct attributes' do
       @site.name.should == "Oakland Adams Point"
-    end
-
-    it "should have description" do
       @site.description.should == "North of Lake Merritt"
-    end
-
-    it "should have costcode" do
       @site.costcode.should == "450AZC"
-    end
-
-    it "should have size" do
       @site.size.should == "20 acres"
-    end
-
-    it "should have exposed_area" do
       @site.exposed_area.should == "10 acres"
-    end
-
-    it "should have zipcode" do
       @site.zipcode.should == 94610
-    end
-
-    it "should belong to project" do
       @site.should respond_to(:project)
     end
   end
 
-  describe "geocoding feature" do 
-    it "should geocode oakland" do
-      # s = Site.create!(:name    => "Oakland Adams Point",
-      #                  :city    => "Oakland",
-      #                  :zipcode => 94610)
+  describe 'lat/long stub values' do 
+    it "returns correct stub for oakland latlong" do
       @site.lat.round.should == 38
       @site.long.round.should == -122
     end
   end
 
-  describe "#address" do
+  describe '#address' do
     it 'returns site address' do
-      # site = Site.new(:address_1  => '111 Sesame Street',
-      #                 :address_2  => 'Suite 181',
-      #                 :city       => 'Gotham City',
-      #                 :state      => 'NY',
-      #                 :zipcode    => '90001')
-      # site.address.should == '111 Sesame Street Suite 181 Gotham City NY 90001'
       puts @site.address
+      @site.address.should == @address
     end
   end
 
-  # describe "#address" do
-  #   it 'returns site address' do
-  #     site = Site.new(:address_1  => '111 Sesame Street',
-  #                     :address_2  => 'Suite 181',
-  #                     :city       => 'Gotham City',
-  #                     :state      => 'NY',
-  #                     :zipcode    => '90001')
-  #     site.address.should == '111 Sesame Street Suite 181 Gotham City NY 90001'
-  #   end
-  # end
+  describe '#forecast' do
+    it 'returns site address' do
+      
+    end
+  end
 
 end
