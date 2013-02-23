@@ -8,18 +8,19 @@ describe Site do
     @latlong = [@lat, @long]
 
     @site = FactoryGirl.create(:site)
-    @site2 = Site.create!(
-      :name    => 'Oakland Adams Point',
-      :address_1  => '111 Sesame Street',
-      :address_2  => 'Suite 181',
-      :city    => 'Oakland',
-      :state      => 'CA',
-      :zipcode => 94610
-      )
-    @site2.stub(:lat) do
+
+    # @site2 = Site.create!(
+    #   :name    => 'Oakland Adams Point',
+    #   :address_1  => '111 Sesame Street',
+    #   :address_2  => 'Suite 181',
+    #   :city    => 'Oakland',
+    #   :state      => 'CA',
+    #   :zipcode => 94610
+    #   )
+    @site.stub(:lat) do
       lat = @lat
     end
-    @site2.stub(:long) do
+    @site.stub(:long) do
       long = @long
     end
   end
@@ -98,8 +99,8 @@ describe Site do
       # s = Site.create!(:name    => "Oakland Adams Point",
       #                  :city    => "Oakland",
       #                  :zipcode => 94610)
-      @site2.lat.round.should == 38
-      @site2.long.round.should == -122
+      @site.lat.round.should == 38
+      @site.long.round.should == -122
     end
   end
 
