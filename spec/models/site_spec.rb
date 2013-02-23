@@ -112,19 +112,19 @@ describe Site do
       #                 :state      => 'NY',
       #                 :zipcode    => '90001')
       # site.address.should == '111 Sesame Street Suite 181 Gotham City NY 90001'
-      puts @site2.address
+      puts @site.address
     end
   end
 
-  describe "#address" do
-    it 'returns site address' do
-      site = Site.new(:address_1  => '111 Sesame Street',
-                      :address_2  => 'Suite 181',
-                      :city       => 'Gotham City',
-                      :state      => 'NY',
-                      :zipcode    => '90001')
-      site.address.should == '111 Sesame Street Suite 181 Gotham City NY 90001'
-    end
-  end
+  # describe "#address" do
+  #   it 'returns site address' do
+  #     site = Site.new(:address_1  => '111 Sesame Street',
+  #                     :address_2  => 'Suite 181',
+  #                     :city       => 'Gotham City',
+  #                     :state      => 'NY',
+  #                     :zipcode    => '90001')
+  #     site.address.should == '111 Sesame Street Suite 181 Gotham City NY 90001'
+  #   end
+  # end
 
 end
