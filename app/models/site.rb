@@ -49,11 +49,12 @@ class Site < ActiveRecord::Base
     nf = NOAAForecast.new(zipcode.to_i)
     nf.seven_day_weather
     #nf.forecast(@lat, @long)
-    #precipitation_state(nf.noaa_forecast)
+    
     precipitation_state(nf.seven_day_weather)
-    #@forecast = nf.noaa_forecast
     @forecast = nf.seven_day_weather
-    #binding.pry
+
+    #precipitation_state(nf.noaa_forecast)
+    #@forecast = nf.noaa_forecast
   end
 
   def precipitation_state(forecast)
