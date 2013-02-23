@@ -1,54 +1,52 @@
 require 'spec_helper'
+require 'weather/noaa_forecast'
 
 describe Site do
 
   before(:each) do
     @lat = 37.81164190000001
     @long = -122.255463
+    @zipcode = 94610
+    @zipcode2 = ''
     @latlong = [@lat, @long]
+    @address = '111 Adams Street Suite 181 Oakland CA 94610'
 
     @site = FactoryGirl.create(:site)
-
-    # @site2 = Site.create!(
-    #   :name    => 'Oakland Adams Point',
-    #   :address_1  => '111 Sesame Street',
-    #   :address_2  => 'Suite 181',
-    #   :city    => 'Oakland',
-    #   :state      => 'CA',
-    #   :zipcode => 94610
-    #   )
     @site.stub(:lat) do
       lat = @lat
     end
     @site.stub(:long) do
       long = @long
     end
+    @site.stub(:zipcode) do
+      zipcode = @zipcode
+    end
   end
 
   describe "validations" do
-
     it "should have a name" do
       @site.name = ''
       @site.should_not be_valid
     end
 
     it "should have a zipcode" do
-      @site.zipcode = ''
+      @site.zipcode = @zipcode2
       @site.should_not be_valid
     end
   end
 
   describe "associations" do
-
     before(:each) do
       @project = FactoryGirl.create(:project)
       @site = FactoryGirl.create(:site)
     end
 
    it "should create a new instance given valid attributes" do
-      @project.sites.create!(:name    => "Oakland Adams Point",
-                             :city    => "Oakland",
-                             :zipcode => 94610)
+      @project.sites.create!(
+        :name    => "Oakland Adams Point",
+        :city    => "Oakland",
+        :zipcode => 94610
+        )
       @project.sites.first.should be_valid
     end
 
