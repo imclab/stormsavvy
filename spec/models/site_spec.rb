@@ -1,8 +1,16 @@
 require 'spec_helper'
-require 'weather/noaa_forecast'
+require 'weather/forecast_examiner'
 require 'redis'
 
 describe Site do
+
+  before(:all) do
+    @data = []
+    CSV.foreach(Rails.root.to_s + '/spec/lib/weather/ss_fc_fixture.csv') do |row|
+      @data << row
+    end
+    @data.delete_if { |r| r == [] }
+  end
 
   before(:each) do
     @lat = 37.81164190000001
@@ -96,8 +104,9 @@ describe Site do
   end
 
   describe '#precipitation_state' do
-    it 'sets rain state' do
-      
+    it 'sets rain state to imminent' do
+      forecast = [@data[6], @data[7]]
+      @site.precipitation_state(forecast).should == :imminent
     end
 
   end
