@@ -31,13 +31,28 @@ describe Site do
       zipcode = @zipcode
     end
 
-    @fe = double(ForecastExaminer)
-    # @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
+    lat_long = [@lat, @long]
+    @nf = double(NOAAForecast)
+    @nf2 = NOAAForecast.new(@zipcode,168,6)
+    @nf2.seven_day_weather
+    @nf.stub(:ping_noaa).with([@lat, @long], 168, 6) do
+      IO.read("./spec/lib/weather/noaa_response.xml")
+    end
 
-    # @nf.stub(:set_lat_long) do
-    #   $redis.set(@zipcode.to_s + '_lat', @lat)
-    #   $redis.set(@zipcode.to_s + '_long', @long)
-    # end
+    @nf.stub(:get_forecast).with([@lat, @long]) do
+      response = @nf.ping_noaa([@lat, @long], 168, 6)
+      @nf2.parse_weather_data(response)
+    end
+
+    @nf.stub(:seven_day_weather) do
+      latlong = [@lat, @long]
+      @nf.get_forecast(latlong)
+    end
+
+    @site.stub(:forecast) do
+      latlong = [@lat, @long]
+      @nf.get_forecast(latlong)
+    end
   end
 
   describe "validations" do
