@@ -112,11 +112,10 @@ describe Site do
     end
   end
 
-  describe '#forecast' do
+  describe '#precipitation_state' do
     it 'returns site address' do
-      
+      # spec out forecast_examiner first
     end
 
   end
-
 end
