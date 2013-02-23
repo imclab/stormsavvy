@@ -17,15 +17,16 @@ describe ForecastExaminer do
       :name => 'ec jungle gym',
       :zipcode => '94530'
       })
+    @fe = double(ForecastExaminer)
   end
 
   it "should be a valid class" do
-    @fe = ForecastExaminer.new(@site, [@data[0],@data[1]])
+    forecast = [@data[0],@data[1]]
+    @fe = ForecastExaminer.new(@site, forecast)
     @fe.class.should == ForecastExaminer
   end
 
   describe "report generating events" do
-
     it "should check for rain warning" do
       lambda do
         forecast = [@data[8], @data[9]]
@@ -43,7 +44,6 @@ describe ForecastExaminer do
         @fe.rain.should == :imminent
       end.should change(Report, :count).by(1)
     end
-
   end
 
   it "should check for rain watch" do
@@ -59,5 +59,4 @@ describe ForecastExaminer do
     @fe.find_rain_chance(50, 27)
     @fe.rain.should == :clear
   end
-
 end
