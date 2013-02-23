@@ -84,5 +84,10 @@ describe Site do
       s.long.round.should == -122
     end
   end
-  
+
+  describe "#address" do
+    it 'returns site address' do
+      puts @site.address
+    end
+  end
 end
