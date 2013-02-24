@@ -18,5 +18,4 @@ describe "alert_mailer/noaa_forecast" do
     render
     rendered.should =~ /Here is your NOAA forecast:/
   end
-
 end
