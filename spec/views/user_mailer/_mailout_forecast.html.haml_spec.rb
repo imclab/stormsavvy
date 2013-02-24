@@ -3,7 +3,10 @@ require 'spec_helper'
 describe "user_mailer/_mailout_forecast" do
 
   before(:each) do
+    @receipient = "walter@stormsavvy.com"
+    @mailer = UserMailer.mailout(@recipient).deliver
     @greeting = "Greetings"
+    
     @forecast1 = [{ :date => Date.today, :weather => "90" },
                   { :date => Date.today + 1.day, :weather => "85"},
                   { :date => Date.today + 2.day, :weather => "80"},
