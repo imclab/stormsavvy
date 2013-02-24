@@ -1,11 +1,26 @@
 require 'spec_helper'
 
 describe Project do
+  describe 'saving before validation' do
+    before :each do
+      @attr = {
+        :name => "Hwy 99",
+        :description => "Pothole Repair",
+        :startdate => DateTime.new(2010),
+        :finishdate => DateTime.new(2011),
+        :active => true
+      }
+    end
+
+    it "creates new instance given valid attributes" do
+      project = Project.new(@attr)
+      project.save
+      project.should be_valid
+    end
+  end
 
   before :each do
-  	@project = FactoryGirl.create(:project)
-    @site = FactoryGirl.create(:site)
-    @site2 = FactoryGirl.create(:site)
+  	@project = FactoryGirl.create(:project_with_sites)
   	@attr = {
   	  :name => "Hwy 99",
   	  :description => "Pothole Repair",
@@ -13,6 +28,32 @@ describe Project do
   	  :finishdate => DateTime.new(2011),
   	  :active => true
   	}
+    
+    @project1 = FactoryGirl.create(
+      :project,
+      :user => @user,
+      :created_at => 1.day.ago
+      )
+    @project2 = FactoryGirl.create(
+      :project,
+      :user => @user,
+      :created_at => 1.hour.ago
+      )
+    @projects = [@project1, @project2]
+
+    @site1 = FactoryGirl.create(
+      :site,
+      :project => @project1,
+      :name => 'ec jungle gym',
+      :zipcode => 94530
+      )
+    @site2 = FactoryGirl.create(
+      :site,
+      :project => @project2,
+      :name => 'ec playground slide',
+      :zipcode => 94530
+      )
+    @sites = [@site1, @site2]
   end
 
   it "has correct project attributes" do
