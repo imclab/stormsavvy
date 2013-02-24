@@ -6,5 +6,12 @@ FactoryGirl.define do
     startdate    DateTime.new(2011)
     finishdate   DateTime.new(2012)
     active       false
+
+    factory :project_with_site do
+      after_create do |site|
+        create(:site, project: project)
+      end
+    end
+    
   end
 end
