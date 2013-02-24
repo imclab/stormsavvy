@@ -82,8 +82,8 @@ class NOAAForecast
     return time_array
   end
 
-  def get_pop_array
-    pop_array = get_pop(94530)
+  def get_pop_array(zipcode)
+    pop_array = get_pop(zipcode)
     # nf = NOAAForecast.new(94530,168,6)
     # nf.seven_day_weather
     # pop_array = nf.pop
@@ -95,9 +95,9 @@ class NOAAForecast
     return new_pop_array
   end
 
-  def get_qpf_array
-    qpf_array = get_qpf(94530)
-    nf = NOAAForecast.new(94530,168,6)
+  def get_qpf_array(zipcode)
+    qpf_array = get_qpf(zipcode)
+    # nf = NOAAForecast.new(94530,168,6)
     # nf.seven_day_weather
     # qpf_array = nf.qpf
     new_qpf_array = []
@@ -108,10 +108,10 @@ class NOAAForecast
     return new_qpf_array
   end
 
-  def get_time_pop_hash
-    nf = NOAAForecast.new(94530,168,6)
+  def get_time_pop_hash(zipcode)
+    nf = NOAAForecast.new(zipcode)
     time_array = nf.get_time_array
-    new_pop_array = nf.get_pop_array
+    new_pop_array = nf.get_pop_array(zipcode)
 
     time_pop_hash = []
     for i in 0..27
@@ -121,10 +121,10 @@ class NOAAForecast
     return time_pop_hash
   end
 
-  def get_pop_table_hash
-    nf = NOAAForecast.new(94530,168,6)
-    time_pop_hash = nf.get_time_pop_hash
-    new_qpf_array = nf.get_qpf_array
+  def get_pop_table_hash(zipcode)
+    nf = NOAAForecast.new(zipcode)
+    time_pop_hash = nf.get_time_pop_hash(zipcode)
+    new_qpf_array = nf.get_qpf_array(zipcode)
 
     pop_table_hash = []
     for i in 0..27
