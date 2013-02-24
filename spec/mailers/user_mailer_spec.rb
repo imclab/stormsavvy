@@ -7,29 +7,29 @@ describe UserMailer do
   before(:each) do
     @user = FactoryGirl.create(:user)
     @project = FactoryGirl.create(:project)
+    @project1 = FactoryGirl.create(:project_with_sites)
     @site = FactoryGirl.create(:site)
 
-    @project1 = @user.projects.new(
-      :name => 'ec park and rec',
-      :description => 'playground improvements',
-      :startdate => DateTime.new(2011),
-      :finishdate => DateTime.new(2012)
-      )
-    @project1.save
+    # @project1 = @user.projects.new(
+    #   :name => 'ec park and rec',
+    #   :description => 'playground improvements',
+    #   :startdate => DateTime.new(2011),
+    #   :finishdate => DateTime.new(2012)
+    #   )
+    # @project1.save
 
-    @site1 = @project1.sites.new(
-      :name => 'ec jungle gym',
-      :zipcode => 94530
-      )
-    @site1.save
+    # @site1 = @project1.sites.new(
+    #   :name => 'ec jungle gym',
+    #   :zipcode => 94530
+    #   )
+    # @site1.save
 
-    @site2 = @project1.sites.new(
-      :name => 'ec playground',
-      :zipcode => 94530
-      )
-    @site2.save
+    # @site2 = @project1.sites.new(
+    #   :name => 'ec playground',
+    #   :zipcode => 94530
+    #   )
+    # @site2.save
 
-    # NOAA forecast stub copied from lib/weather spec.
     @fullcount = 29
     @lat = 37.9202057
     @long = -122.2937428
@@ -60,7 +60,7 @@ describe UserMailer do
       @mailer = UserMailer.mailout(@recipient).deliver
 
       @numusers = [@user]
-      @numprojects = [@project]
+      @numprojects = [@project, @project1]
       @numsites = [@site]
     end
 
@@ -98,7 +98,7 @@ describe UserMailer do
       @mailer = UserMailer.staging_mailer(@recipient).deliver
 
       @numusers = [@user]
-      @numprojects = [@project]
+      @numprojects = [@project, @project1]
       @numsites = [@site]
     end
 
@@ -148,7 +148,15 @@ describe UserMailer do
     end
 
     it "returns zipcodes" do
-      @site1.zipcode.should == 94530
+      # project = FactoryGirl.create(:project_with_sites)
+      
+      zipcodes = []
+      @project1.sites.each do |site|
+        zipcodes << site.get_zipcode
+      end
+
+      @project1.get_site_zipcodes.should == zipcodes
+      # @site1.zipcode.should == 94530
     end
 
     it "renders forecast table" do
