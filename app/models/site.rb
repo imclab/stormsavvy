@@ -67,4 +67,7 @@ class Site < ActiveRecord::Base
     @rain_state = fe.rain
   end
 
+  def get_zipcode
+    return self.zipcode.to_s
+  end
 end
