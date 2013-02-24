@@ -99,15 +99,10 @@ describe Project do
     end
 
     context :site do 
-      before(:each) do
-        @project = FactoryGirl.create(:project)
-        @site = FactoryGirl.create(:site)
-        @site2 = FactoryGirl.create(:site)
-      end
-
       it "should be associated with sites" do
         @project.should respond_to(:sites)
       end
+
       it "should be able to add 1 site" do
         lambda{
           FactoryGirl.create(
@@ -125,16 +120,16 @@ describe Project do
 
       it "should be able to add multiple sites" do
         lambda{
-          @project.sites << @site2
-          @site2.save
+          @project.sites << @site1
+          @site1.save
         }.should change(@project.sites, :count).by(1)
       end
 
       it "should be able to delete an added site" do
         precount = @project.sites.count
-        @project.sites << @site2
-        @site2.save
-        @site2.delete
+        @project.sites << @site1
+        @site1.save
+        @site1.delete
         @project.sites.count.should == precount
       end
     end
@@ -142,13 +137,14 @@ describe Project do
 
   describe "date format validations" do
     it "start date should be less than finish date" do
-      @project = FactoryGirl.create(:project)
+      # @project = FactoryGirl.create(:project)
       @project.startdate.should < @project.finishdate
     end
+
     it "start date should not be greater than finish date" do
-      @project = FactoryGirl.create(:project)
       @project.startdate.should_not > @project.finishdate
     end
+
     it "finish date should raise error" do
       # @project = Project.new(@attr)
       # @project.finishdate=(DateTime.new(1999))
