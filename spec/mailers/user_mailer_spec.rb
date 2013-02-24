@@ -147,16 +147,14 @@ describe UserMailer do
       @mailer.body.should_not be_empty
       @mailer.body.should have_selector("ul.projects")
       @mailer.body.should have_selector("ul.sites")
-      # @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
     end
 
     it "returns zipcodes" do      
       zipcodes = []
-      @project.sites.each do |site|
+      @project1.sites.each do |site|
         zipcodes << site.get_zipcode
       end
-
-      @project.get_site_zipcodes.should == zipcodes
+      @project1.get_site_zipcodes.should == zipcodes
     end
 
     it "renders forecast table" do
@@ -164,7 +162,7 @@ describe UserMailer do
     end
   end
 
-  describe "thank you mailer" do
+  describe '#thankyou' do
     before(:each) do
       @receipient = "walter@stormsavvy.com"
       @mailer = UserMailer.thankyou(@recipient).deliver
