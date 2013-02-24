@@ -216,7 +216,7 @@ describe NOAAForecast do
         new_pop_array << { :weather => i.to_s }
       end
       
-      @nf2.get_pop_array.should == new_pop_array
+      @nf2.get_pop_array(@zipcode).should == new_pop_array
     end
   end
 
@@ -230,7 +230,7 @@ describe NOAAForecast do
         new_qpf_array << { :rainfall => i.to_s }
       end
 
-      @nf2.get_qpf_array.should == new_qpf_array
+      @nf2.get_qpf_array(@zipcode).should == new_qpf_array
     end
   end
   
@@ -253,7 +253,7 @@ describe NOAAForecast do
         time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
       end
 
-      @nf2.get_time_pop_hash.should == time_pop_hash
+      @nf2.get_time_pop_hash(@zipcode).should == time_pop_hash
     end
   end
 
@@ -266,16 +266,13 @@ describe NOAAForecast do
         new_qpf_array << { :rainfall => i.to_s }
       end
 
-      time_pop_hash = @nf2.get_time_pop_hash
+      time_pop_hash = @nf2.get_time_pop_hash(@zipcode)
       pop_table_hash = []
       for k in 0..27
         pop_table_hash << Hash[time_pop_hash[k]].update(Hash[new_qpf_array[k]])
       end
 
-      @nf2.get_pop_table_hash.should == pop_table_hash
-
-      print @nf2.get_pop_table_hash
-      print pop_table_hash
+      @nf2.get_pop_table_hash(@zipcode).should == pop_table_hash
     end
   end
 
