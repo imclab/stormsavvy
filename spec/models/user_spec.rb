@@ -9,12 +9,13 @@ describe User do
       :user => @user,
       :created_at => 1.day.ago
       )
-    @project2 = FactoryGirl.create(
-      :project,
-      :user => @user,
-      :created_at => 1.hour.ago
-      )
-    @projects = [@project1, @project2]
+    @projects = [@project1]
+    # @project2 = FactoryGirl.create(
+    #   :project,
+    #   :user => @user,
+    #   :created_at => 1.hour.ago
+    #   )
+    # @projects = [@project1, @project2]
 
     @site1 = FactoryGirl.create(
       :site,
@@ -22,13 +23,14 @@ describe User do
       :name => 'ec jungle gym',
       :zipcode => 94530
       )
-    @site2 = FactoryGirl.create(
-      :site,
-      :project => @project2,
-      :name => 'ec playground slide',
-      :zipcode => 94530
-      )
-    @sites = [@site1, @site2]
+    @sites = [@site1]
+    # @site2 = FactoryGirl.create(
+    #   :site,
+    #   :project => @project2,
+    #   :name => 'ec playground slide',
+    #   :zipcode => 94530
+    #   )
+    # @sites = [@site1, @site2]
   end
 
   it "should create a valid user" do
