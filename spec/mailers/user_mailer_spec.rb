@@ -126,16 +126,13 @@ describe UserMailer do
       # @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
     end
 
-    it "returns zipcodes" do
-      # project = FactoryGirl.create(:project_with_sites)
-      
+    it "returns zipcodes" do      
       zipcodes = []
-      @project1.sites.each do |site|
+      @project.sites.each do |site|
         zipcodes << site.get_zipcode
       end
 
-      @project1.get_site_zipcodes.should == zipcodes
-      # @site1.zipcode.should == 94530
+      @project.get_site_zipcodes.should == zipcodes
     end
 
     it "renders forecast table" do
