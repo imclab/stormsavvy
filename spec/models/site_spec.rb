@@ -146,6 +146,18 @@ describe Site do
       forecast = @nf.get_forecast(latlong)
       @site.forecast.should == forecast
     end
+
+    site = Site.create!(
+      :name          => 'Oakland Adams Point',
+      :address_1     => '111 Adams Street',
+      :address_2     => 'Suite 181',
+      :city          => 'Oakland',
+      :state         => 'CA',
+      :zipcode       => 94610,
+      :description   => 'North of Lake Merritt'
+      )
+    forecast = site.forecast
+    print forecast
   end
 
   describe '#get_zipcode' do
