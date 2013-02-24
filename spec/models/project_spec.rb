@@ -32,14 +32,17 @@ describe Project do
       @project.name = ''
       @project.should_not be_valid
     end
+
     it "should require a description" do
       @project.description = ''
-      @project.should_not be_valid
+      @project.should_not be_valid  
     end
+
     it "requires a starting date" do
       @project.startdate = ''
       @project.should be_valid
     end
+
     it "requires a finishing date" do
       @project.finishdate = ''
       @project.should be_valid
@@ -49,13 +52,14 @@ describe Project do
   describe "project associations" do
 
     before(:each) do
-      @project = Project.new(@attr)
+      @project = FactoryGirl.create(:project)
     end
 
     context :user do
       it "should be associated with a user" do
         @project.should respond_to(:user)
       end
+
       it "should have the correct associated user" do
         @project.should == @project
       end
@@ -66,10 +70,6 @@ describe Project do
         @project = FactoryGirl.create(:project)
         @site = FactoryGirl.create(:site)
         @site2 = FactoryGirl.create(:site)
-        # @site = @project.sites.new
-        # @site.save
-        # @site = FactoryGirl.create(:site)
-        # @site2 = Site.new(:name => "Test Site", :zipcode => 94610)
       end
 
       it "should be associated with sites" do
