@@ -63,4 +63,14 @@ class User < ActiveRecord::Base
     @name = self.firstname
     AlertMailer.pop_alert(self).deliver
   end
+
+  def get_site_zipcodes
+    zipcodes = []
+
+    self.projects.each do |project|
+      zipcodes << project.get_site_zipcodes
+    end
+
+    return zipcodes
+  end
 end
