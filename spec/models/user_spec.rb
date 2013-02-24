@@ -85,15 +85,15 @@ describe User do
 
   describe '#get_user_zipcodes' do
     it 'returns array of user site zipcodes' do
-      sites = [@site1, @site2]
+      # sites = [@site1, @site2]
 
       zipcodes = []
-      sites.each do |site|
-        zipcodes << site.get_zipcode
-      end
 
-      puts @user.get_site_zipcodes.count
-      puts zipcodes.count
+      @projects.each do |project|
+        project.sites.each do |site|
+          zipcodes << site.zipcode
+        end
+      end
 
       @user.get_site_zipcodes.should == zipcodes
     end
