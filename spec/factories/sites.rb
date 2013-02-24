@@ -11,5 +11,7 @@ FactoryGirl.define do
     costcode      '450AZC'
     size          '20 acres'
     exposed_area  '10 acres'
+
+    project
   end
 end
