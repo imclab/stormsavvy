@@ -68,8 +68,14 @@ class User < ActiveRecord::Base
     zipcodes = []
 
     self.projects.each do |project|
-      zipcodes << project.get_site_zipcodes
+      self.sites.each do |site|
+        zipcodes << site.zipcode
+      end
     end
+
+    # self.projects.each do |project|
+    #   zipcodes << project.get_site_zipcodes
+    # end
 
     return zipcodes
   end

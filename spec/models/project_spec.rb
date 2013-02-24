@@ -159,10 +159,7 @@ describe Project do
       zipcodes = []
       @project.sites.each do |site|
         zipcodes << site.zipcode
-        # zipcodes << site.get_zipcode
       end
-
-      puts zipcodes
 
       @project.get_site_zipcodes.should == zipcodes
     end
