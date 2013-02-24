@@ -12,6 +12,6 @@ FactoryGirl.define do
     size          '20 acres'
     exposed_area  '10 acres'
 
-    project
+    # project
   end
 end
