@@ -273,6 +273,9 @@ describe NOAAForecast do
       end
 
       @nf2.get_pop_table_hash.should == pop_table_hash
+
+      print @nf2.get_pop_table_hash
+      print pop_table_hash
     end
   end
 
