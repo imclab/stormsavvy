@@ -39,7 +39,7 @@ describe UserMailer do
       @mailer = UserMailer.mailout(@recipient).deliver
 
       @numusers = [@user]
-      @numprojects = [@project, @project1]
+      @numprojects = [@project]
       @numsites = [@site]
     end
 
@@ -77,7 +77,7 @@ describe UserMailer do
       @mailer = UserMailer.staging_mailer(@recipient).deliver
 
       @numusers = [@user]
-      @numprojects = [@project, @project1]
+      @numprojects = [@project]
       @numsites = [@site]
     end
 
