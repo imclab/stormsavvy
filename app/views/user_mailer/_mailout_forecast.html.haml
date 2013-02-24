@@ -1,28 +1,19 @@
 %table
-  %ul.projects
-    - @projects.each do |project|
-      %li
-        = project.name
-      %ul.sites
-        - project.sites.each do |site| 
-          %li.chance-of-rain
-            = "#{site.name}: POP = #{90}%"
-%table
   %tr
     - @projects.each do |project|
       = "Project: #{project.name}"
-      %tr
-        - project.sites.each do |site|
-          %br
-            = "Site: #{site.name}"
+
+      - project.sites.each do |site|
+        %br
+          = "Site: #{site.name}"
+
+        %th
+          Date
+        %th
+          Forecast
+        - @forecast.each do |f|
           %tr
-            %th
-              Date
-            %th
-              Forecast
-            - @forecast1.each do |f|
-              %tr
-                %td
-                  = f[:date]
-                %td
-                  = f[:weather]
+            %td
+              = f[:date]
+            %td
+              = f[:weather]
