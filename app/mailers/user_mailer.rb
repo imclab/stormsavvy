@@ -56,9 +56,13 @@ class UserMailer < ActionMailer::Base
         @sites.each do |site|
           @site = site
           zipcode = @site.zipcode
-
           nf = NOAAForecast.new(zipcode)
           @forecast = nf.get_forecast_array
+
+          # @forecast = site.forecast
+
+          # forecasts = []
+          # forecasts << @forecast
         end
       end
 
