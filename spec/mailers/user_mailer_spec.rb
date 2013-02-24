@@ -62,7 +62,7 @@ describe UserMailer do
     end
   end
 
-  describe "pester_admins" do
+  describe '#pester_admins' do
 
     before(:each) do
       @receipient = "walter@stormsavvy.com"
@@ -83,9 +83,6 @@ describe UserMailer do
 
     it "should not have empty text body" do
       @mailer.body.should_not be_nil
-      # @mailer.body.should have_selector("ul.projects")
-      # @mailer.body.should have_selector("ul.sites")
-      # @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
     end
 
     it "renders user, project and site count" do
@@ -100,7 +97,7 @@ describe UserMailer do
     end
   end
 
-  describe "staging_mailer" do
+  describe '#staging_mailer' do
 
     before(:each) do
       @receipient = "walter@stormsavvy.com"
@@ -121,9 +118,6 @@ describe UserMailer do
 
     it "does not have empty text body" do
       @mailer.body.should_not be_nil
-      # @mailer.body.should have_selector("ul.projects")
-      # @mailer.body.should have_selector("ul.sites")
-      # @mailer.body.should have_selector('.chance-of-rain', :text => 'chance of rain')
     end
 
     it "renders user, project and site count" do
@@ -134,7 +128,7 @@ describe UserMailer do
     end
   end
 
-  describe "mailout mailer" do
+  describe '#mailout' do
 
     before(:each) do
       @receipient = "walter@stormsavvy.com"
