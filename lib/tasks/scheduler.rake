@@ -72,7 +72,7 @@ namespace :scheduler do
 
   desc "Delivers staging_mailer mailer"
   task :staging_mailer => :environment do
-    if Time.now.friday? # weekly scheduler: http://goo.gl/Bj6zL
+    if Time.now.sunday? # weekly scheduler: http://goo.gl/Bj6zL
       admins = [
         'walter@stormsavvy.com'
         ]
