@@ -72,11 +72,13 @@ namespace :scheduler do
 
   desc "Delivers staging_mailer mailer"
   task :staging_mailer => :environment do
-    admins = [
-      'walter@stormsavvy.com'
-      ]
-    admins.each do |address|
-      UserMailer.staging_mailer(address)
+    if Time.now.friday? # weekly scheduler: http://goo.gl/Bj6zL
+      admins = [
+        'walter@stormsavvy.com'
+        ]
+      admins.each do |address|
+        UserMailer.staging_mailer(address)
+      end
     end
   end
 
