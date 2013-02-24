@@ -10,7 +10,7 @@ namespace :scheduler do
       'walter_yu@dot.ca.gov'
       ]
     test_users.each do |address|
-      AlertMailer.northbay_forecast(address).deliver
+      AlertMailer.northbay_forecast(address)
     end
   end
 
@@ -21,7 +21,7 @@ namespace :scheduler do
       'wing.wingyu@gmail.com'
       ]
     test_users.each do |address|
-      AlertMailer.eastbay_forecast(address).deliver
+      AlertMailer.eastbay_forecast(address)
     end
   end
 
@@ -32,7 +32,7 @@ namespace :scheduler do
       'wing.wingyu@gmail.com'
       ]
     test_users.each do |address|
-      AlertMailer.southbay_forecast(address).deliver
+      AlertMailer.southbay_forecast(address)
     end
   end
 
@@ -43,7 +43,7 @@ namespace :scheduler do
       'wing.wingyu@gmail.com'
       ]
     test_users.each do |address|
-      AlertMailer.pop_alert(address).deliver
+      AlertMailer.pop_alert(address)
     end
   end
 
@@ -54,7 +54,7 @@ namespace :scheduler do
       ]
     # if user.sites.precipitation_state(forecast) == :imminent then
     test_users.each do |address|
-  	  AlertMailer.noaa_alert(address).deliver
+  	  AlertMailer.noaa_alert(address)
   	end
   end
 
@@ -66,7 +66,7 @@ namespace :scheduler do
       'david.doolin+stormsavvy@gmail.com',
       ]
     admins.each do |address|
-      UserMailer.pester_admins(address).deliver
+      UserMailer.pester_admins(address)
     end
   end
 
@@ -76,7 +76,7 @@ namespace :scheduler do
       'walter@stormsavvy.com'
       ]
     admins.each do |address|
-      UserMailer.staging_mailer(address).deliver
+      UserMailer.staging_mailer(address)
     end
   end
 
@@ -96,7 +96,7 @@ namespace :scheduler do
       'walter@stormsavvy.com'
       ]
     test_users.each do |address|
-      UserMailer.thankyou(address).deliver
+      UserMailer.thankyou(address)
     end
   end
 end
