@@ -48,12 +48,12 @@ describe User do
     end
 
     it "has projects in correct order" do
-      @user.projects.should == [@project1, @project2]
+      @user.projects.should == @projects
     end
 
     it "destroys associated sites" do
       @user.destroy
-      [@project1, @project2].each do |p|
+      @projects.each do |p|
         Project.find_by_id(p.id).should be_nil
       end
     end
