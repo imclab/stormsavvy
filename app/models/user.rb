@@ -73,10 +73,6 @@ class User < ActiveRecord::Base
       end
     end
 
-    # self.projects.each do |project|
-    #   zipcodes << project.get_site_zipcodes
-    # end
-
     return zipcodes
   end
 end

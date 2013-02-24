@@ -59,8 +59,6 @@ describe User do
     end
 
     it "enforces unique email" do
-      # m1 = Factory(:user)
-      # m2 = Factory.build(:user, :email => m1.email).should_not be_valid
       @user2 = FactoryGirl.build(
         :user,
         :email => @user.email
