@@ -67,6 +67,6 @@ describe "user_mailer/_mailout_forecast" do
   end
 
   it 'renders forecast data' do
-    @mailer = UserMailer.mailout(@recipient)
+    puts @mailer
   end
 end
