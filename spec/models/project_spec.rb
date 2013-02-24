@@ -15,11 +15,13 @@ describe Project do
 
   it "has correct project attributes" do
     @project.name.should == "Hwy 101 Corridor"
-    @project.startdate.should == DateTime.new
-  	@project.finishdate.should == DateTime.new
+    @project.startdate.should == DateTime.new(2011)
+  	@project.finishdate.should == DateTime.new(2012)
   	@project.active.should == false
+
   end
-  it "should create a new instance given valid attributes" do
+
+  it "creates new instance given valid attributes" do
     project = Project.new(@attr)
     project.save
     project.should be_valid
