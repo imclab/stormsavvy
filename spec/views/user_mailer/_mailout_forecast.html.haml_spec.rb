@@ -4,10 +4,10 @@ describe "user_mailer/_mailout_forecast" do
 
   before(:each) do
     @receipient = "walter@stormsavvy.com"
-    @mailer = UserMailer.mailout(@recipient).deliver
+    @mailer = UserMailer.mailout
     @greeting = "Greetings"
-    
-    @forecast1 = [{ :date => Date.today, :weather => "90" },
+
+    @forecast = [{ :date => Date.today, :weather => "90" },
                   { :date => Date.today + 1.day, :weather => "85"},
                   { :date => Date.today + 2.day, :weather => "80"},
                   { :date => Date.today + 3.day, :weather => "75"},
@@ -55,7 +55,8 @@ describe "user_mailer/_mailout_forecast" do
     render
     rendered.should =~ /Project:/
     rendered.should =~ /Site:/
-    rendered.should =~ /POP =/
+    rendered.should =~ /Date/
+    rendered.should =~ /Forecast/
   end
 
   it "contains a forecast table" do
