@@ -53,9 +53,6 @@ describe "user_mailer/_mailout_forecast" do
     rendered.should =~ /Project:/
     rendered.should =~ /Site:/
     rendered.should =~ /POP =/
-    # rendered.should have_content "Project:"
-    # rendered.should have_content "Site:"
-    # rendered.should have_content "POP ="
   end
 
   it "contains a forecast table" do
