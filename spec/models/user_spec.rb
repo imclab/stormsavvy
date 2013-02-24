@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   before(:each) do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:user_with_projects)
     @project1 = FactoryGirl.create(
       :project,
       :user => @user,
@@ -39,24 +39,24 @@ describe User do
     @user.should be_valid
   end
 
-  describe "site associations" do
+  describe "project associations" do
 
     it "should respond to projects" do
       @user.should respond_to(:projects)
     end
 
-    it "should have the right projects in the right order" do
+    it "has projects in correct order" do
       @user.projects.should == [@project1, @project2]
     end
 
-    it "should destroy associated sites" do
+    it "destroys associated sites" do
       @user.destroy
       [@project1, @project2].each do |p|
         Project.find_by_id(p.id).should be_nil
       end
     end
 
-    it "should enforce unique email" do
+    it "enforces unique email" do
       # m1 = Factory(:user)
       # m2 = Factory.build(:user, :email => m1.email).should_not be_valid
       @user2 = FactoryGirl.build(
@@ -67,7 +67,6 @@ describe User do
   end
 
   context :has_site? do
-
     it "should respond and reply appropriately if user has_site?" do
       @user.should respond_to(:has_site?)
       assert_equal @user.has_site?, true

@@ -141,8 +141,6 @@ describe UserMailer do
   end
 
   describe "thank you mailer" do
-
-    # TODO: Debug project factory table
     before(:each) do
       @receipient = "walter@stormsavvy.com"
       @mailer = UserMailer.thankyou(@recipient).deliver
@@ -159,6 +157,5 @@ describe UserMailer do
     it "should have text in body" do
       @mailer.body.should_not be_empty
     end
-
   end
 end
