@@ -126,4 +126,20 @@ describe Project do
       # }.to raise_error(ActiveRecord::RecordNotSaved)
     end
   end
+
+  describe '#get_site_zipcodes' do
+    it 'returns array of site zipcodes' do
+      @site1 = FactoryGirl.create(:site)
+      @site2 = FactoryGirl.create(:site)
+      puts @site1.zipcode
+      puts @site2.zipcode
+
+      puts @project.sites.count
+
+      @project.sites.each do |site|
+        puts site.name
+      end
+      # puts @project.get_site_zipcodes
+    end
+  end
 end
