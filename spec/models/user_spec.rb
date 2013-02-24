@@ -81,4 +81,25 @@ describe User do
     end
   end
 
+  describe '#get_user_zipcodes' do
+    it 'returns array of user site zipcodes' do
+      # user = FactoryGirl.create(
+      #   :user_with_projects,
+      #   :email => 'barney@bear.com'
+      #   )
+
+      sites = [@site1, @site2]
+      # user.projects.each do |project|
+      #   sites << FactoryGirl.create(:project_with_sites)
+      # end
+
+      zipcodes = []
+      sites.each do |site|
+        zipcodes << site.get_zipcode
+      end
+      puts zipcodes
+
+      @user.get_site_zipcodes.should == zipcodes
+    end
+  end
 end
