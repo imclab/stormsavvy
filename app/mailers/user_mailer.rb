@@ -55,11 +55,22 @@ class UserMailer < ActionMailer::Base
 
         @sites.each do |site|
           @site = site
-          @zipcode = @site.zipcode
+          # @zipcode = @site.zipcode
 
-          @forecast2 = NOAAForecast.new(94530)
-          @forecast1 = @forecast2.get_forecast_array
+          # @forecast2 = NOAAForecast.new(94530)
+          # @forecast1 = @forecast2.get_forecast_array
         end
+      end
+
+      zipcodes = []
+      zipcodes << user.get_site_zipcodes
+      zipcodes.each do |zipcode|
+        
+        @forecast2 = NOAAForecast.new(zipcode)
+        @forecast1 = @forecast2.get_forecast_array
+
+        # forecast = NOAAForecast.new(zipcode)
+        # @forecast1 = forecast.seven_day_weather
       end
 
       if @user.has_site?
