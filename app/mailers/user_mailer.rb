@@ -31,8 +31,8 @@ class UserMailer < ActionMailer::Base
     @greeting = "Greetings"
     @salutation = "The Storm Savvy Team"
     
-    @forecast2 = NOAAForecast.new(94605)
-    @forecast1 = @forecast2.get_forecast_array
+    nf = NOAAForecast.new(94605)
+    @forecast1 = nf.get_forecast_array
 
     mail(
       :from     => "alerts@stormsavvy.com",
