@@ -28,4 +28,14 @@ class Project < ActiveRecord::Base
     #   raise ActiveRecord::RecordNotSaved, 'Starting date must precede finishing date'
     # end
   end
+
+  def get_site_zipcodes
+    zipcodes = []
+    self.sites.each do |site|
+      # zipcodes << site.get_zipcode
+      zipcodes << site.zipcode
+    end
+
+    return zipcodes
+  end
 end
