@@ -129,16 +129,26 @@ describe Project do
 
   describe '#get_site_zipcodes' do
     it 'returns array of site zipcodes' do
-      @site1 = FactoryGirl.create(:site)
-      @site2 = FactoryGirl.create(:site)
-      puts @site1.zipcode
-      puts @site2.zipcode
-
-      puts @project.sites.count
-
-      @project.sites.each do |site|
-        puts site.name
+      project = FactoryGirl.create(:project_with_sites)
+      project.sites.each do |site|
+        puts site.get_zipcode
       end
+
+      # puts FactoryGirl.create(:project).sites.count
+      # puts FactoryGirl.create(:project_with_sites).sites.count
+      # puts FactoryGirl.create(:project_with_sites).sites.zipcode
+
+      # @site1 = FactoryGirl.create(:site)
+      # @site2 = FactoryGirl.create(:site)
+      # puts @site1.zipcode
+      # puts @site2.zipcode
+
+      # puts project.sites.count
+
+      # @project.sites.each do |site|
+      #   puts site.name
+      # end
+
       # puts @project.get_site_zipcodes
     end
   end
