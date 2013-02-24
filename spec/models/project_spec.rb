@@ -156,14 +156,15 @@ describe Project do
 
   describe '#get_site_zipcodes' do
     it 'returns array of site zipcodes' do
-      project = FactoryGirl.create(:project_with_sites)
-      
       zipcodes = []
-      project.sites.each do |site|
-        zipcodes << site.get_zipcode
+      @project.sites.each do |site|
+        zipcodes << site.zipcode
+        # zipcodes << site.get_zipcode
       end
 
-      project.get_site_zipcodes.should == zipcodes
+      puts zipcodes
+
+      @project.get_site_zipcodes.should == zipcodes
     end
   end
 end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   before(:each) do
-    @user = FactoryGirl.create(:user_with_projects)
+    @user = FactoryGirl.create(:user)
     @project1 = FactoryGirl.create(
       :project,
       :user => @user,
