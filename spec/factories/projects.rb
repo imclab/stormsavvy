@@ -9,7 +9,7 @@ FactoryGirl.define do
 
     factory :project_with_sites do
       ignore do
-        sites_count 5
+        sites_count 1
       end
 
       after(:create) do | project, evaluator|
