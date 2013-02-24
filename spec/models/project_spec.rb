@@ -4,6 +4,8 @@ describe Project do
 
   before :each do
   	@project = FactoryGirl.create(:project)
+    @site = FactoryGirl.create(:site)
+    @site2 = FactoryGirl.create(:site)
   	@attr = {
   	  :name => "Hwy 99",
   	  :description => "Pothole Repair",
