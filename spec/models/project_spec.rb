@@ -64,12 +64,6 @@ describe Project do
 
   end
 
-  it "creates new instance given valid attributes" do
-    project = Project.new(@attr)
-    project.save
-    project.should be_valid
-  end
-
   describe "validations" do
     it "should require a name" do
       @project.name = ''
