@@ -6,29 +6,8 @@ describe UserMailer do
 
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @project = FactoryGirl.create(:project)
-    @project1 = FactoryGirl.create(:project_with_sites)
+    @project = FactoryGirl.create(:project_with_sites)
     @site = FactoryGirl.create(:site)
-
-    # @project1 = @user.projects.new(
-    #   :name => 'ec park and rec',
-    #   :description => 'playground improvements',
-    #   :startdate => DateTime.new(2011),
-    #   :finishdate => DateTime.new(2012)
-    #   )
-    # @project1.save
-
-    # @site1 = @project1.sites.new(
-    #   :name => 'ec jungle gym',
-    #   :zipcode => 94530
-    #   )
-    # @site1.save
-
-    # @site2 = @project1.sites.new(
-    #   :name => 'ec playground',
-    #   :zipcode => 94530
-    #   )
-    # @site2.save
 
     @fullcount = 29
     @lat = 37.9202057
