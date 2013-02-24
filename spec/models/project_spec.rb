@@ -88,10 +88,6 @@ describe Project do
 
   describe "project associations" do
 
-    before(:each) do
-      @project = FactoryGirl.create(:project)
-    end
-
     context :user do
       it "should be associated with a user" do
         @project.should respond_to(:user)
