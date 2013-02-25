@@ -12,7 +12,7 @@ describe NOAAForecast do
     lat_long = [@lat, @long]
     @nf = double(NOAAForecast)
     @nf2 = NOAAForecast.new(@zipcode,168,6)
-    @nf2.seven_day_weather
+    @nf2.seven_day_weather(@zipcode)
     @pop = @nf2.pop
     @qpf = @nf2.qpf
 
@@ -168,20 +168,20 @@ describe NOAAForecast do
 
   describe "#seven_day_weather" do
     it "returns array from seven_day_weather" do
-      forecast = @nf.seven_day_weather
+      forecast = @nf.seven_day_weather(@zipcode)
       forecast[0].size.should == @fullcount
     end
 
     it 'returns correct forecast' do
       nf = NOAAForecast.new(94530)
-      forecast = nf.seven_day_weather
+      forecast = nf.seven_day_weather(@zipcode)
       print forecast
     end
   end
 
   describe "#get_forecast_array" do
     it "returns forecast_by_zipcode" do
-      @nf2.seven_day_weather
+      @nf2.seven_day_weather(@zipcode)
       pop = @nf2.pop
       @nf2.get_forecast_array(@zipcode).should == @forecast_array
     end
@@ -214,7 +214,7 @@ describe NOAAForecast do
 
   describe "#get_pop_array" do
     it "returns pop array" do
-      @nf2.seven_day_weather
+      @nf2.seven_day_weather(@zipcode)
       pop_array = @nf2.pop
 
       new_pop_array = []
@@ -228,7 +228,7 @@ describe NOAAForecast do
 
   describe "#get_qpf_array" do
     it "returns qpf array" do
-      @nf2.seven_day_weather
+      @nf2.seven_day_weather(@zipcode)
       qpf_array = @nf2.qpf
 
       new_qpf_array = []
@@ -247,7 +247,7 @@ describe NOAAForecast do
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      @nf2.seven_day_weather
+      @nf2.seven_day_weather(@zipcode)
       pop_array = @nf2.pop
       new_pop_array = []
       pop_array.each do |i|
@@ -265,7 +265,7 @@ describe NOAAForecast do
 
   describe "#pop_table_hash" do
     it "returns pop_table hash" do
-      @nf2.seven_day_weather
+      @nf2.seven_day_weather(@zipcode)
       qpf_array = @nf2.qpf
       new_qpf_array = []
       qpf_array.each do |i|

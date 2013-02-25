@@ -69,13 +69,13 @@ class NOAAForecast
 
   def get_pop(zipcode)
     nf = NOAAForecast.new(zipcode,168,6)
-    nf.seven_day_weather
+    nf.seven_day_weather(zipcode)
     pop = nf.pop
   end
 
   def get_qpf(zipcode)
     nf = NOAAForecast.new(zipcode,168,6)
-    nf.seven_day_weather
+    nf.seven_day_weather(zipcode)
     qpf = nf.qpf
   end
 
@@ -142,7 +142,7 @@ class NOAAForecast
 
   # def get_pt_hash
   #   nf = NOAAForecast.new(94530,168,6)
-  #   nf.seven_day_weather
+  #   nf.seven_day_weather(zipcode)
   #   pop = nf.pop
   #   pt = []
   #   pop.each do |i|
@@ -153,7 +153,7 @@ class NOAAForecast
 
   def get_forecast_array(zipcode)
     nf = NOAAForecast.new(zipcode,168,6)
-    pop = nf.seven_day_weather
+    pop = nf.seven_day_weather(zipcode)
     [
       { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0][0], :rainfall => pop[1][0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[0][1], :rainfall => pop[1][1] },
@@ -189,7 +189,7 @@ class NOAAForecast
 
   def forecast_by_zipcode(zipcode)
     nf = NOAAForecast.new(zipcode,168,6)
-    pop = nf.seven_day_weather
+    pop = nf.seven_day_weather(zipcode)
     [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0][0], :rainfall => pop[1][0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[0][1], :rainfall => pop[1][1] },
