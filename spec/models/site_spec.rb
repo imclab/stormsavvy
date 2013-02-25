@@ -47,6 +47,10 @@ describe Site do
     @nf.stub(:seven_day_weather) do
       latlong = [@lat, @long]
       @nf.get_forecast(latlong)
+      # forecast = [
+      #   [0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 7, 7, 7, 7, 8], 
+      #   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      # ]
     end
 
     @site.stub(:forecast) do
