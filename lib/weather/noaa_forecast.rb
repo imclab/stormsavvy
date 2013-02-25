@@ -30,7 +30,8 @@ class NOAAForecast
       latlong = return_lat_long(@zipcode)
     end
 
-    return get_forecast(latlong)
+    return latlong
+    # return get_forecast(latlong)
   end
 
   def get_lat_long(zipcode)
