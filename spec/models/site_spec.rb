@@ -143,6 +143,15 @@ describe Site do
     end
   end
 
+  describe '#chance_of_rain' do
+    it 'returns chance of rain' do
+      max_rain = @site.chance_of_rain
+      max_rain.should be_between(0,100)
+      max_rain.should >= 0
+      max_rain.should <= 100
+    end
+  end
+
   describe '#forecast' do
     it 'returns forecast' do
       latlong = [@lat, @long]
