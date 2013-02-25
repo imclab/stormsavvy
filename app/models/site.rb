@@ -67,10 +67,10 @@ class Site < ActiveRecord::Base
 
     # zipcode = 90210 unless self.zipcode.present?
     # nf = NOAAForecast.new(zipcode.to_i)
-    # nf.seven_day_weather
+    # forecast = nf.seven_day_weather(zipcode.to_i)
     # nf.forecast(@lat, @long)
-    # precipitation_state(nf.seven_day_weather)
-    # @forecast = nf.seven_day_weather
+    # precipitation_state(forecast)
+    # @forecast = nf.seven_day_weather(zipcode.to_i)
     # precipitation_state(nf.noaa_forecast)
     # @forecast = nf.noaa_forecast
   end
