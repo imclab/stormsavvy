@@ -10,8 +10,9 @@ class UserMailer < ActionMailer::Base
     @numreports = Report.count
 
     @greeting = "Greetings"
-    @forecast2 = NOAAForecast.new(94605)
-    @forecast1 = @forecast2.get_forecast_array
+    zipcode = 94530
+    nf = NOAAForecast.new(zipcode)
+    @forecast1 = nf.get_forecast_array(zipcode)
     @salutation = "The Storm Savvy Team"
 
     mail(
@@ -31,8 +32,9 @@ class UserMailer < ActionMailer::Base
     @greeting = "Greetings"
     @salutation = "The Storm Savvy Team"
     
-    nf = NOAAForecast.new(94605)
-    @forecast1 = nf.get_forecast_array
+    zipcode = 94605
+    nf = NOAAForecast.new(zipcode)
+    @forecast1 = nf.get_forecast_array(zipcode)
 
     mail(
       :from     => "alerts@stormsavvy.com",
