@@ -81,7 +81,7 @@ describe Site do
       @project.sites.first.should be_valid
     end
 
-    # TTD for handling belongs_to
+    # TDD for handling belongs_to
     it "should have a project attribute" do
       @site.should respond_to(:project)
     end
