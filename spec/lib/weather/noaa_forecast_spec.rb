@@ -171,13 +171,19 @@ describe NOAAForecast do
       forecast = @nf.seven_day_weather
       forecast[0].size.should == @fullcount
     end
+
+    it 'returns correct forecast' do
+      nf = NOAAForecast.new(94530)
+      forecast = nf.seven_day_weather
+      print forecast
+    end
   end
 
   describe "#get_forecast_array" do
     it "returns forecast_by_zipcode" do
       @nf2.seven_day_weather
       pop = @nf2.pop
-      @nf2.get_forecast_array.should == @forecast_array
+      @nf2.get_forecast_array(@zipcode).should == @forecast_array
     end
   end
 
