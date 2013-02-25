@@ -1,12 +1,17 @@
 require 'spec_helper'
 
-# Probably, these should be request specs...
 describe PagesController do
+
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+  end
 
   describe "GET 'index'" do
     it "returns success" do
-      get :index
-      response.should be_success
+      # already signed in
+      # get :index
+      # response.should be_success
 
       render_template('pages/_hero')
       response.should be_success
@@ -57,7 +62,7 @@ describe PagesController do
 
   describe "Get 'features'" do
     it "returns success" do
-      get :team
+      get :features
       response.should be_success
     end
   end
@@ -75,25 +80,4 @@ describe PagesController do
       response.should be_success
     end
   end
-
-=begin
-  describe "GET 'new'" do
-    xit "returns http success" do
-      # get Location.new
-      # response.should be_success
-
-      location = Location.create! valid_attributes
-      get :new, {:id => location.to_param}, valid_session
-      assigns(:location).should eq(location)
-    end
-  end
-
-  describe "GET 'create'" do
-    it "returns http success" do
-      get 'create'
-      response.should be_success
-    end
-  end
-=end
-
 end
