@@ -59,7 +59,7 @@ class UserMailer < ActionMailer::Base
           @site = site
           zipcode = @site.zipcode
           nf = NOAAForecast.new(zipcode)
-          @forecast = nf.get_forecast_array
+          @forecast = nf.forecast_by_zipcode(zipcode)
 
           # @forecast = site.forecast
 

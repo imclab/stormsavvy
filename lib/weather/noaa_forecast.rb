@@ -25,12 +25,22 @@ class NOAAForecast
 
     if return_lat_long(@zipcode) == nil
       latlong = get_lat_long(@zipcode)
-      set_lat_long(@zipcode)
+      return latlong
     else
-      latlong = return_lat_long(@zipcode)
+      latlong = get_lat_long(@zipcode)
+      return get_forecast(latlong)
     end
 
-    return latlong
+    set_lat_long(@zipcode)
+
+    # if return_lat_long(@zipcode) == nil
+    #   latlong = get_lat_long(@zipcode)
+    #   set_lat_long(@zipcode)
+    # else
+    #   latlong = return_lat_long(@zipcode)
+    # end
+
+    # latlong = get_lat_long(zipcode)
     # return get_forecast(latlong)
   end
 
@@ -46,8 +56,10 @@ class NOAAForecast
   end
 
   def set_lat_long(zipcode)
-    $redis.set(zipcode.to_s + '_lat', response[0])
-    $redis.set(zipcode.to_s + '_long', response[1])
+    $redis.set(zipcode.to_s + '_lat')
+    $redis.set(zipcode.to_s + '_long')
+    # $redis.set(zipcode.to_s + '_lat', response[0])
+    # $redis.set(zipcode.to_s + '_long', response[1])
   end
 
   def return_lat_long(zipcode)
