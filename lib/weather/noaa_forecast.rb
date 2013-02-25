@@ -24,17 +24,17 @@ class NOAAForecast
     @interval = 6
 
     # comment back in when redis works
-    # if return_lat_long(@zipcode) == nil
-    #   latlong = get_lat_long(@zipcode)
-    #   return latlong
-    # else
-    #   latlong = get_lat_long(@zipcode)
-    #   return get_forecast(latlong)
-    # end
-    # set_lat_long(@zipcode)
+    if return_lat_long(@zipcode) == nil
+      latlong = get_lat_long(@zipcode)
+      return latlong
+    else
+      latlong = get_lat_long(@zipcode)
+      return get_forecast(latlong)
+    end
+    set_lat_long(@zipcode)
 
-    latlong = get_lat_long(@zipcode)
-    return get_forecast(latlong)
+    # latlong = get_lat_long(@zipcode)
+    # return get_forecast(latlong)
   end
 
   def get_lat_long(zipcode)
@@ -188,8 +188,8 @@ class NOAAForecast
   end
 
   def forecast_by_zipcode(zipcode)
-    nf = NOAAForecast.new(zipcode,168,6)
-    pop = nf.seven_day_weather(zipcode)
+    @nf2 = NOAAForecast.new(zipcode,168,6)
+    pop = @nf2.seven_day_weather(zipcode)
     [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0][0], :rainfall => pop[1][0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[0][1], :rainfall => pop[1][1] },
