@@ -82,10 +82,6 @@ describe "homepage" do
     visit '/index'
     click_link "Sign up"
     current_path.should == new_user_registration_path
-
-    visit '/index'
-    click_link "Sign in"
-    current_path.should == new_user_session_path
 =end
   end
 end
