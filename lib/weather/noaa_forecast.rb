@@ -24,17 +24,17 @@ class NOAAForecast
     @interval = 6
 
     # comment back in when redis works
-    if return_lat_long(@zipcode) == nil
-      latlong = get_lat_long(@zipcode)
-      return latlong
-    else
-      latlong = get_lat_long(@zipcode)
-      return get_forecast(latlong)
-    end
-    set_lat_long(@zipcode)
+    # if return_lat_long(@zipcode) == nil
+    #   latlong = get_lat_long(@zipcode)
+    #   return latlong
+    # else
+    #   latlong = get_lat_long(@zipcode)
+    #   return get_forecast(latlong)
+    # end
+    # set_lat_long(@zipcode)
 
-    # latlong = get_lat_long(@zipcode)
-    # return get_forecast(latlong)
+    latlong = get_lat_long(@zipcode)
+    return get_forecast(latlong)
   end
 
   def get_lat_long(zipcode)
