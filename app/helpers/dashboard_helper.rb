@@ -1,6 +1,6 @@
 module DashboardHelper
 
-=begin
+
 require 'weather/noaa_forecast'
 require 'weather/forecast_examiner'
 
