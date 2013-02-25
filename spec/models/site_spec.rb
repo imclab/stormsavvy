@@ -117,7 +117,6 @@ describe Site do
 
   describe '#address' do
     it 'returns site address' do
-      puts @site.address
       @site.address.should == @address
     end
   end
