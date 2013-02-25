@@ -37,24 +37,42 @@ class Site < ActiveRecord::Base
 
   def chance_of_rain
     #zipcode = 90210 unless self.zipcode.present?
-    nf = NOAAForecast.new(zipcode.to_i)
-    nf.seven_day_weather
     #nf.forecast(@lat, @long)
-    precipitation_state(nf.seven_day_weather)
-    @max_rain = nf.seven_day_weather[0][0..5].max
+
+    nf = NOAAForecast.new(zipcode.to_i)
+    forecast = nf.seven_day_weather(zipcode.to_i)
+    precipitation_state(forecast)
+    @max_rain = forecast[0][0..5].max
+    return @max_rain.to_i
+
+    # zipcode = 90210 unless self.zipcode.present?
+    # nf = NOAAForecast.new(zipcode.to_i)
+    # nf.seven_day_weather
+    # nf.forecast(@lat, @long)
+    # precipitation_state(nf.seven_day_weather)
+    # @max_rain = nf.seven_day_weather[0][0..5].max
   end
 
   def forecast
     #zipcode = 90210 unless self.zipcode.present?
-    nf = NOAAForecast.new(zipcode.to_i)
-    nf.seven_day_weather
     #nf.forecast(@lat, @long)
-    
-    precipitation_state(nf.seven_day_weather)
-    @forecast = nf.seven_day_weather
+
+    nf = NOAAForecast.new(zipcode.to_i)
+    forecast = nf.seven_day_weather(zipcode.to_i)
+    precipitation_state(forecast)
+    @forecast = forecast
 
     #precipitation_state(nf.noaa_forecast)
     #@forecast = nf.noaa_forecast
+
+    # zipcode = 90210 unless self.zipcode.present?
+    # nf = NOAAForecast.new(zipcode.to_i)
+    # nf.seven_day_weather
+    # nf.forecast(@lat, @long)
+    # precipitation_state(nf.seven_day_weather)
+    # @forecast = nf.seven_day_weather
+    # precipitation_state(nf.noaa_forecast)
+    # @forecast = nf.noaa_forecast
   end
 
   def precipitation_state(forecast)
