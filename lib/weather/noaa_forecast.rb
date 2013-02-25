@@ -19,7 +19,7 @@ class NOAAForecast
     @interval = interval
   end
 
-  def seven_day_weather
+  def seven_day_weather(zipcode)
     @duration = 168
     @interval = 6
 
@@ -33,7 +33,7 @@ class NOAAForecast
     # end
     # set_lat_long(@zipcode)
 
-    latlong = get_lat_long(zipcode)
+    latlong = get_lat_long(@zipcode)
     return get_forecast(latlong)
   end
 
