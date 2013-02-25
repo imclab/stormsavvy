@@ -44,7 +44,7 @@ describe Site do
       @nf2.parse_weather_data(response)
     end
 
-    @nf.stub(:seven_day_weather) do
+    @nf.stub(:seven_day_weather).with(@zipcode) do
       latlong = [@lat, @long]
       @nf.get_forecast(latlong)
       # forecast = [
