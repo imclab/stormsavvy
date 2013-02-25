@@ -23,6 +23,7 @@ describe "Projects" do
     it "correct content on homepage" do
       current_path.should == new_project_path
       page.should have_content('New Project')
+      
       # page.body.should_not be_nil
       # click_link 'Storm Savvy'
       # page.should have_selector('a', :text => 'Storm Savvy')
