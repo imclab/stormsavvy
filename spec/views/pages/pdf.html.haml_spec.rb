@@ -1,10 +1,6 @@
 require 'spec_helper'
 
-describe "pages/pdf.html.haml" do
-
-  before(:each) do
-    stub_template "pages/pdf.html.haml" => 'pdf pages template'
-  end
+describe "pages/pdf" do
 
   context "using content_for(:leaderboard)" do
 
