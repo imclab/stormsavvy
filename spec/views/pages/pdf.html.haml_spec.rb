@@ -10,10 +10,20 @@ describe "pages/pdf" do
     before do
       view.content_for(:h1) { main_title }
       view.content_for(:h3) { main_tagline }
+
+      view.stub(:pdf).and_return(true)
       render
     end
 
-    it "has correct links" do
+    it "has correct link text" do
+      render
+      rendered.should =~ /CEM 2030/
+      rendered.should =~ /CEM 2034/
+      rendered.should =~ /CEM 2035/
+      rendered.should =~ /CEM 2040/
+      rendered.should =~ /CEM 2045/
+      rendered.should =~ /CEM 4601/
+      
       # rendered.should have_link 'pdf_CEM2030_path'
       # rendered.should have_link 'pdf_CEM2034_path'
       # rendered.should have_link 'pdf_CEM2035_path'
@@ -22,8 +32,8 @@ describe "pages/pdf" do
     end
 
     it "sets <h1> and <h3>" do
-      # rendered.should have_selector "leaderboard", :text => "#{main_title}"
-      # rendered.should have_selector "leaderboard", :text => "#{main_tagline}"
+      rendered.should have_selector "leaderboard", :text => "#{main_title}"
+      rendered.should have_selector "leaderboard", :text => "#{main_tagline}"
     end
 
     # it "sets main title and tagline" do
