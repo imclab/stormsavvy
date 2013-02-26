@@ -88,7 +88,6 @@ describe SamplingEvent do
   end
 
   describe "sampling_event associations" do
-
     before(:each) do
       @sampling_event = SamplingEvent.new(@attr)
     end
