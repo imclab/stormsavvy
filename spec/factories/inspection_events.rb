@@ -9,4 +9,8 @@ FactoryGirl.define do
     submitted_by "wyu"
     inspected_by "wyu"
   end
+
+  factory :attachment do
+    item File.new("#{Rails.root}/app/assets/pdfs/CEM2030_production_v1.pdf") 
+  end
 end
