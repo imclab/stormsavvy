@@ -77,11 +77,9 @@ class Report < ActiveRecord::Base
 
   :gauge_reading_post_storm,
   # x_inches
+  
+  :attachment # s3 uploads via paperclip
 
-  # s3 uploads via paperclip
-  :attachment
-
-  # s3 uploads via paperclip
   has_attached_file :attachment,
     :url => "http://stormsavvy.s3-website-us-east-1.amazonaws.com",
     :storage => :s3,
