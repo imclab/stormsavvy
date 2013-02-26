@@ -64,14 +64,16 @@ describe Report do
     end
   end
 
-  before do
-    Report.any_instance.stub(:save_attached_files).and_return(true) 
-    Report.any_instance.stub(:destroy_attached_files).and_return(true) 
-    @attachment = FactoryGirl.create :report
-  end
-  describe "#your_method" do
-    it "returns correct url" do
-      @attachment.attachment.url.should_not be_nil
+  describe 'file attachments' do
+    before do
+      Report.any_instance.stub(:save_attached_files).and_return(true) 
+      Report.any_instance.stub(:destroy_attached_files).and_return(true) 
+      @attachment = FactoryGirl.create :report
+    end
+    describe "#attachment" do
+      it "returns correct url" do
+        @attachment.attachment.url.should_not be_nil
+      end
     end
   end
 end

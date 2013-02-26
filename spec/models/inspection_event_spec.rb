@@ -28,18 +28,30 @@ describe InspectionEvent do
   end
 
   describe "inspection_event associations" do
+  	before(:each) do
+  	  @inspection_event = InspectionEvent.new(@attr)
+  	end
 
-	before(:each) do
-	  @inspection_event = InspectionEvent.new(@attr)
-	end
+  	context :site do
+  	  it "has association with a site" do
+  	    @inspection_event.should respond_to(:site)
+  	  end
+  	  it "has correct associated site" do
+  	    @inspection_event.should == @inspection_event
+  	  end
+  	end  
+  end
 
-	context :site do
-	  it "has association with a site" do
-	    @inspection_event.should respond_to(:site)
-	  end
-	  it "has correct associated site" do
-	    @inspection_event.should == @inspection_event
-	  end
-	end
+  describe 'file attachments' do
+    before do
+      InspectionEvent.any_instance.stub(:save_attached_files).and_return(true) 
+      InspectionEvent.any_instance.stub(:destroy_attached_files).and_return(true) 
+      @attachment = FactoryGirl.create :inspection_event
+    end
+    describe "#attachment" do
+      it "returns correct url" do
+        @attachment.attachment.url.should_not be_nil
+      end
+    end
   end
 end
