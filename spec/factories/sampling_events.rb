@@ -40,7 +40,7 @@ FactoryGirl.define do
     analysis_average_5 "7.01"
   end
 
-  factory :attachment do
+  factory :sampling_event_attachment do
     item File.new("#{Rails.root}/app/assets/pdfs/CEM2030_production_v1.pdf") 
   end
 end

@@ -8,7 +8,7 @@ FactoryGirl.define do
     inspected_by "wyu"
   end
 
-  factory :attachment do
+  factory :inspection_event_attachment do
     item File.new("#{Rails.root}/app/assets/pdfs/CEM2030_production_v1.pdf") 
   end
 end
