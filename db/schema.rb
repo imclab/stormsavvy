@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130208020331) do
+ActiveRecord::Schema.define(:version => 20130226004433) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -55,17 +55,17 @@ ActiveRecord::Schema.define(:version => 20130208020331) do
 
   create_table "inspection_events", :force => true do |t|
     t.integer  "site_id"
-    t.string   "type"
-    t.text     "description"
-    t.datetime "date"
-    t.datetime "submitted"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
     t.string   "inspection_type"
     t.text     "inspection_description"
     t.datetime "inspection_date"
     t.string   "submitted_by"
     t.string   "inspected_by"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   create_table "locations", :force => true do |t|
@@ -224,8 +224,12 @@ ActiveRecord::Schema.define(:version => 20130208020331) do
     t.string   "analysis_type_5"
     t.string   "analysis_result_5"
     t.string   "analysis_average_5"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   create_table "site_pops", :force => true do |t|
