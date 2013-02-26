@@ -100,6 +100,7 @@ describe SamplingEvent do
         @sampling_event.should == @sampling_event
       end
     end
+  end
 
   describe 'file attachments' do
     before do
