@@ -100,5 +100,17 @@ describe SamplingEvent do
         @sampling_event.should == @sampling_event
       end
     end
+
+  describe 'file attachments' do
+    before do
+      SamplingEvent.any_instance.stub(:save_attached_files).and_return(true) 
+      SamplingEvent.any_instance.stub(:destroy_attached_files).and_return(true) 
+      @attachment = FactoryGirl.create :sampling_event
+    end
+    describe "#attachment" do
+      it "returns correct url" do
+        @attachment.attachment.url.should_not be_nil
+      end
+    end
   end
 end
