@@ -107,8 +107,9 @@ describe "sampling_events/index" do
   it "renders form partial correctly" do
     render
     rendered.should =~ /Sampling Type/
-    rendered.should =~ /Sampling Description/
+    # rendered.should =~ /Sampling Description/
     rendered.should =~ /Submitted By/
     rendered.should =~ /Sampled By/
+    rendered.should =~ /Attachment URL/
   end
 end
