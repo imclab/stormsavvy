@@ -31,4 +31,13 @@ describe "layouts/application.html.haml" do
       rendered.should_not have_selector "a.random_text", :text => "Storm Savvy"
     end
   end
+
+  describe 'navbar' do
+    it 'has correct links' do
+      render
+      rendered.should match(/Inspections/)
+      rendered.should match(/Sampling/)
+      rendered.should match(/Forms/)
+    end
+  end
 end
