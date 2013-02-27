@@ -57,11 +57,8 @@ Stormsavvy::Application.routes.draw do
   match '/popemail',  :to => "pages#popemail",       :as => :popemail
   match '/sendemail', :to => "pages#sendemail",      :as => :sendemail
   match '/consulting', :to => "pages#consulting",    :as => :consulting
-
-  # Demo pages
   match '/pdf',       :to => "pages#pdf",            :as => :pdf
   match '/testem',    :to => "pages#testem",         :as => :testem
 
   root :to => "dashboard#index"
-
 end
