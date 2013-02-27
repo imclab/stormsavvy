@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'sampling_events/attachments' do
+describe 'sampling_events/_attachments' do
 
   before(:each) do
     assign(:sampling_events, [
