@@ -43,7 +43,7 @@ describe "sampling_events/edit" do
     assert_select "form", :action => sampling_events_path(@sampling_event), :method => "post" do
       assert_select "input#sampling_event_site_id", :name => "sampling_event[site_id]"
       assert_select "input#sampling_event_sampling_type", :name => "sampling_event[sampling_type]"
-      assert_select "textarea#sampling_event_sampling_description", :name => "sampling_event[sampling_description]"
+      # assert_select "textarea#sampling_event_sampling_description", :name => "sampling_event[sampling_description]"
       assert_select "input#sampling_event_submitted_by", :name => "sampling_event[submitted_by]"
       assert_select "input#sampling_event_sampled_by", :name => "sampling_event[sampled_by]"
       assert_select "input#sampling_event_sample_id_1", :name => "sampling_event[sample_id_1]"
