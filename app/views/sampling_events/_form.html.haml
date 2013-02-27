@@ -1,7 +1,7 @@
 = simple_form_for(@sampling_event) do |f|
   = f.error_notification
 
-  .span5
+  .span4
     .form-inputs
       = f.input :site_id
       = f.input :sampling_type
@@ -14,7 +14,7 @@
     .actions
       = f.submit 'Save'
       = link_to 'Back', sampling_events_path      
-  .span4
+  .span3
     = f.input :sample_id_1
     = f.input :sample_location_1
     = f.input :sample_time_1
@@ -33,6 +33,7 @@
     = f.input :analysis_type_3
     = f.input :analysis_result_3
     = f.input :analysis_average_3
+  .span3
     = f.input :sample_id_4
     = f.input :sample_location_4
     = f.input :sample_time_4
