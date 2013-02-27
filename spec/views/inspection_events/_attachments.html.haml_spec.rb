@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'inspection_events/attachments' do
+describe 'inspection_events/_attachments' do
 
   before(:each) do
     assign(:inspection_events, [
