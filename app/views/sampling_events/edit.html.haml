@@ -1,7 +1,11 @@
-%h1 Editing Sampling Events
-
-= render 'form'
-
-= link_to 'Show', @sampling_event
-\|
-= link_to 'Back', sampling_events_path
+.container
+  .row
+    .span12
+      .panel
+        .inner
+          .headline.bottom-10.cf
+            %h2 Editing Sampling Events
+            = render 'form'
+            / = link_to 'Show', @sampling_event
+            / \|
+            / = link_to 'Back', sampling_events_path
