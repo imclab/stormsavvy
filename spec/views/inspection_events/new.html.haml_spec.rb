@@ -30,4 +30,21 @@ describe "inspection_events/new" do
     render
     rendered.should =~ /New Inspection Event/
   end
+
+  describe 'file attachment partial' do
+    before(:each) do
+      assign(:inspection_events, [
+        stub_model(InspectionEvent),
+        stub_model(InspectionEvent)
+      ])
+      @inspection_event = FactoryGirl.create(:inspection_event, :id => 1)
+    end
+    
+    it "renders partial correctly" do    
+      render
+      rendered.should_not be_nil
+      rendered.should =~ /Instructions:/
+      rendered.should =~ /Cancel/
+    end
+  end
 end
