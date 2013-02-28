@@ -67,17 +67,17 @@ describe NOAAForecast do
     # end
 
     @nf2.stub(:get_pop_array) do
-      pop_array = @pop
+      # pop_array = @pop
       new_pop_array = []
-      pop_array.each do |i|
+      @pop.each do |i|
         new_pop_array << { :weather => pop_array[i].to_s }
       end
     end
 
     @nf2.stub(:get_qpf_array) do
-      qpf_array = @qpf
+      # qpf_array = @qpf
       new_qpf_array = []
-      qpf_array.each do |i|
+      @qpf.each do |i|
         new_qpf_array << { :rainfall => qpf_array[i].to_s }
       end
     end
