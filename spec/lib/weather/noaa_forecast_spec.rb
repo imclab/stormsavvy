@@ -66,7 +66,7 @@ describe NOAAForecast do
     #   IO.read("./spec/lib/weather/pop_stub_data.txt")
     # end
 
-    @nf.stub(:get_pop_array).with(@zipcode) do
+    @nf2.stub(:get_pop_array).with(@zipcode) do
       pop_array = @pop
       new_pop_array = []
       pop_array.each do |i|
@@ -74,7 +74,7 @@ describe NOAAForecast do
       end
     end
 
-    @nf.stub(:get_qpf_array).with(@zipcode) do
+    @nf2.stub(:get_qpf_array).with(@zipcode) do
       qpf_array = @qpf
       new_qpf_array = []
       qpf_array.each do |i|
@@ -93,7 +93,7 @@ describe NOAAForecast do
       end
     end
 
-    @nf.stub(:get_pop_table_hash).with(@zipcode) do
+    @nf2.stub(:get_pop_table_hash).with(@zipcode) do
       time_pop_hash = @nf.get_time_pop_hash
       new_qpf_array = @qpf
 
