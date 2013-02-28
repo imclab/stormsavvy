@@ -297,7 +297,7 @@ describe NOAAForecast do
 
       puts time_pop_hash
       puts new_qpf_array
-      
+
       for k in 0..27
         pop_table_hash << Hash[time_pop_hash[k]].update(Hash[new_qpf_array[k]])
       end
