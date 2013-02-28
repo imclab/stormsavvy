@@ -268,9 +268,9 @@ describe NOAAForecast do
       end
 
       @nf2.seven_day_weather(@zipcode)
-      pop_array = @nf2.pop
+      # pop_array = @nf2.pop
       new_pop_array = []
-      pop_array.each do |i|
+      @pop.each do |i|
         new_pop_array << { :weather => i.to_s }
       end
 
