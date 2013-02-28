@@ -82,9 +82,9 @@ describe NOAAForecast do
       end
     end
 
-    @nf2.stub(:get_time_pop_hash) do
-      nf = NOAAForecast.new(zipcode)
-      time_array = nf.get_time_array
+    @nf.stub(:get_time_pop_hash).with(@zipcode) do
+      # nf = NOAAForecast.new(zipcode)
+      time_array = @nf.get_time_array
       new_pop_array = nf.get_pop_array(zipcode)
 
       time_pop_hash = []
