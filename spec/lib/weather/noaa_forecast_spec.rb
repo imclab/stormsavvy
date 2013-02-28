@@ -67,25 +67,25 @@ describe NOAAForecast do
     # end
 
     @nf.stub(:get_pop_array).with(@zipcode) do
-      # pop_array = @pop
+      pop_array = @pop
       new_pop_array = []
-      @pop.each do |i|
+      pop_array.each do |i|
         new_pop_array << { :weather => pop_array[i].to_s }
       end
     end
 
     @nf.stub(:get_qpf_array).with(@zipcode) do
-      # qpf_array = @qpf
+      qpf_array = @qpf
       new_qpf_array = []
-      @qpf.each do |i|
+      qpf_array.each do |i|
         new_qpf_array << { :rainfall => qpf_array[i].to_s }
       end
     end
 
-    @nf.stub(:get_time_pop_hash).with(@zipcode) do
+    @nf2.stub(:get_time_pop_hash).with(@zipcode) do
       # nf = NOAAForecast.new(zipcode)
-      time_array = @nf.get_time_array
-      new_pop_array = nf.get_pop_array(zipcode)
+      time_array = @nf2.get_time_array
+      new_pop_array = @nf2.get_pop_array(@zipcode)
 
       time_pop_hash = []
       for i in 0..27
