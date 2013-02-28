@@ -74,7 +74,7 @@ describe NOAAForecast do
       end
     end
 
-    @nf2.stub(:get_qpf_array).with(@zipcode) do
+    @nf.stub(:get_qpf_array).with(@zipcode) do
       # qpf_array = @qpf
       new_qpf_array = []
       @qpf.each do |i|
