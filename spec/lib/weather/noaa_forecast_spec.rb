@@ -66,21 +66,21 @@ describe NOAAForecast do
     #   IO.read("./spec/lib/weather/pop_stub_data.txt")
     # end
 
-    # @nf2.stub(:get_pop_array) do
-    #   pop_array = @pop
-    #   new_pop_array = []
-    #   pop_array.each do |i|
-    #     new_pop_array << { :weather => pop_array[i].to_s }
-    #   end
-    # end
+    @nf2.stub(:get_pop_array) do
+      pop_array = @pop
+      new_pop_array = []
+      pop_array.each do |i|
+        new_pop_array << { :weather => pop_array[i].to_s }
+      end
+    end
 
-    # @nf2.stub(:get_qpf_array) do
-    #   qpf_array = @qpf
-    #   new_qpf_array = []
-    #   qpf_array.each do |i|
-    #     new_qpf_array << { :rainfall => qpf_array[i].to_s }
-    #   end
-    # end
+    @nf2.stub(:get_qpf_array) do
+      qpf_array = @qpf
+      new_qpf_array = []
+      qpf_array.each do |i|
+        new_qpf_array << { :rainfall => qpf_array[i].to_s }
+      end
+    end
 
     @forecast_array = [
       { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
