@@ -93,6 +93,16 @@ describe NOAAForecast do
       end
     end
 
+    @nf.stub(:get_pop_table_hash).with(@zipcode) do
+      time_pop_hash = @nf.get_time_pop_hash
+      new_qpf_array = @qpf
+
+      pop_table_hash = []
+      for i in 0..27
+        pop_table_hash << Hash[time_pop_hash[i]].update(Hash[new_qpf_array[i]])
+      end
+    end
+
     @forecast_array = [
       { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1], :rainfall => qpf[1] },
