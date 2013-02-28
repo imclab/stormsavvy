@@ -265,10 +265,10 @@ describe NOAAForecast do
 
   describe "#pop_table_hash" do
     it "returns pop_table hash" do
-      @nf2.seven_day_weather(@zipcode)
-      qpf_array = @nf2.qpf
+      # @nf2.seven_day_weather(@zipcode)
+      # qpf_array = @nf2.qpf
       new_qpf_array = []
-      qpf_array.each do |i|
+      @qpf.each do |i|
         new_qpf_array << { :rainfall => i.to_s }
       end
 
