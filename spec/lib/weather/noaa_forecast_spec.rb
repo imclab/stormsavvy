@@ -47,7 +47,7 @@ describe NOAAForecast do
       @nf.get_forecast(latlong)
     end
 
-    @nf2.stub(:get_time_array) do
+    @nf.stub(:get_time_array) do
       time_array = []
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
