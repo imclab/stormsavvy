@@ -196,7 +196,6 @@ describe NOAAForecast do
     it 'returns correct forecast' do
       nf = NOAAForecast.new(94530)
       forecast = nf.seven_day_weather(@zipcode)
-      print forecast
     end
   end
 
