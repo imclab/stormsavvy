@@ -4,15 +4,20 @@ describe "pages/pdf" do
 
   context "using content_for(:leaderboard)" do
 
-    let(:main_title) { "PDF Reports" }
-    let(:main_tagline) { "Instructions: Select From Forms Below" }
+    # let(:main_title) { "PDF Reports" }
+    # let(:main_tagline) { "Instructions: Select From Forms Below" }
 
     before do
-      view.content_for(:h1) { main_title }
-      view.content_for(:h3) { main_tagline }
+      # view.content_for(:h1) { main_title }
+      # view.content_for(:h4) { main_tagline }
 
       view.stub(:pdf).and_return(true)
       render
+    end
+
+    it "has instruction text" do
+      render
+      rendered.should =~ /Please use the Chrome/
     end
 
     it "has correct link text" do
