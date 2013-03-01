@@ -15,29 +15,41 @@ describe "dashboard/index" do
     #@s1 = @p1.sites.create(site_attributes)
     #@s2 = @p2.sites.create(site_attributes)
     sign_in @user
+    render
   end
 
   describe "index page components" do
 
     it "shows active projects to signed in user" do
-      render
+      # render
       rendered.should have_selector('div#modules')
       view.should render_template('dashboard/_modules')
       rendered.should =~ /Active Projects/
     end
 
     it "shows sidebar to signed in user" do
-      render
+      # render
       rendered.should have_selector('div#dashboard-sidebar')
       view.should render_template('dashboard/_sidebar')
     end
 
     it "shows sidebar with correct titles" do
-      render
+      # render
       rendered.should have_selector('div#dashboard-sidebar')
       rendered.should =~ /New Report/
       rendered.should =~ /Pending Reports/
       rendered.should =~ /Report Forms/
+    end
+
+    it "shows correct report links" do
+      # render
+      rendered.should have_selector('div#dashboard-sidebar')
+      rendered.should =~ /CEM 2030 Weekly Inspection Report/
+      rendered.should =~ /CEM 2034 Corrective Action Report/
+      rendered.should =~ /CEM 2035 BMP Status Report/
+      rendered.should =~ /CEM 2040 Weather Forecast Report/
+      rendered.should =~ /CEM 2045 REAP Report/
+      rendered.should =~ /CEM 4601 Daily Report/
     end
   end
 end
