@@ -25,6 +25,8 @@ describe "dashboard/index" do
       rendered.should have_selector('div#modules')
       view.should render_template('dashboard/_modules')
       rendered.should =~ /Active Projects/
+      rendered.should =~ /# of Sites:/
+      rendered.should =~ /Last Updated:/
     end
 
     it "shows sidebar to signed in user" do
