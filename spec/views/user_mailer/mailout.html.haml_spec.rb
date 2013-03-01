@@ -47,7 +47,7 @@ describe "user_mailer/mailout" do
     @sites = [@site1, @site2]
   end
 
-  it "renders mailout mailer" do
+  xit "renders mailout mailer" do
     render
     rendered.should have_selector 'h1', :text => 'Daily Site POP Alert'
     rendered.should =~ /Daily Site POP Alert/
