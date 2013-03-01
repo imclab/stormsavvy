@@ -38,7 +38,6 @@ describe "dashboard/index" do
     it "shows sidebar with correct titles" do
       # render
       rendered.should have_selector('div#dashboard-sidebar')
-      rendered.should =~ /New Report/
       rendered.should =~ /Pending Reports/
       rendered.should =~ /Report Forms/
     end
