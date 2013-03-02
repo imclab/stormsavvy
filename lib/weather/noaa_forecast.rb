@@ -16,6 +16,8 @@ class NOAAForecast
 
   attr_reader :pop, :qpf
 
+  DEFAULT_FALLBACK = ->(error) {raise}
+
   def initialize(zipcode, duration = 168, interval = 6)
     @zipcode  = zipcode
     @duration = duration
