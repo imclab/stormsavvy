@@ -21,16 +21,19 @@ describe Site do
     @address = '111 Adams Street Suite 181 Oakland CA 94610'
 
     @site = FactoryGirl.create(:site)
+
     @report = FactoryGirl.create(
       :report,
       :site => @site
       )
     @reports = [@report]
+
     @inspection_event = FactoryGirl.create(
       :inspection_event,
       :site => @site
       )
     @inspection_events = [@inspection_event]
+
     @sampling_event = FactoryGirl.create(
       :sampling_event,
       :site => @site
