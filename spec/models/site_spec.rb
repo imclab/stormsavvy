@@ -54,6 +54,7 @@ describe Site do
     @nf = double(NOAAForecast)
     @nf2 = NOAAForecast.new(@zipcode,168,6)
     @nf2.seven_day_weather(@zipcode)
+
     @nf.stub(:ping_noaa).with([@lat, @long], 168, 6) do
       IO.read("./spec/lib/weather/noaa_response.xml")
     end
