@@ -82,13 +82,13 @@ describe Site do
     end
   end
 
-  describe "associations" do
+  describe "project associations" do
     before(:each) do
       @project = FactoryGirl.create(:project)
       @site = FactoryGirl.create(:site)
     end
 
-   it "should create a new instance given valid attributes" do
+   it "creates new instance of given valid attributes" do
       @project.sites.create!(
         :name    => "Oakland Adams Point",
         :city    => "Oakland",
