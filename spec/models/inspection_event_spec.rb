@@ -13,14 +13,16 @@ describe InspectionEvent do
 	  :inspected_by => "wyu"
   	}
   end
+
   it "has correct project attributes" do
-	@inspection_event.site_id.should == 1
-	@inspection_event.inspection_type.should == "weekly"
-	@inspection_event.inspection_description.should == "ec jungle gym inspection"
-	@inspection_event.inspection_date.should == "2013-01-26 23:13:55"
-	@inspection_event.submitted_by.should == "wyu"
-	@inspection_event.inspected_by.should == "wyu"
+  	@inspection_event.site_id.should == 1
+  	@inspection_event.inspection_type.should == "weekly"
+  	@inspection_event.inspection_description.should == "ec jungle gym inspection"
+  	@inspection_event.inspection_date.should == "2013-01-26 23:13:55"
+  	@inspection_event.submitted_by.should == "wyu"
+  	@inspection_event.inspected_by.should == "wyu"
   end
+
   it "creates a new instance given valid attributes" do
     @inspection_event = InspectionEvent.new(@attr)
     @inspection_event.save
