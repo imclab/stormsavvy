@@ -20,6 +20,7 @@ describe NOAAForecast do
     qpf = @nf2.qpf
 
     @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
+    @nf.stub(:get_lat_long).with("99999999999999999999").and_return([])
 
     @nf.stub(:set_lat_long) do
       $redis.set(@zipcode.to_s + '_lat', @lat)
