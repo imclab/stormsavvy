@@ -300,9 +300,6 @@ describe NOAAForecast do
       time_pop_hash = @nf2.get_time_pop_hash(@zipcode)
       pop_table_hash = []
 
-      puts time_pop_hash
-      puts new_qpf_array
-
       for k in 0..27
         pop_table_hash << Hash[time_pop_hash[k]].update(Hash[new_qpf_array[k]])
       end
