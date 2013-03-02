@@ -20,3 +20,25 @@
           = link_to "Report for #{report.site.name}", edit_report_path(report)
       - else
         You have no pending reports.
+  #current_daily_diary.widget.bottom-10
+    .inner
+      %h5
+        Report Forms
+      %hr
+      Please use the Chrome  
+      = link_to 'browser', 'http://www.google.com/intl/en/chrome/browser/'
+      to save data in forms below:
+      %br
+      %br
+      = link_to 'CEM 2030 Weekly Inspection Report', pdf_CEM2030_path
+      %br
+      = link_to 'CEM 2034 Corrective Action Report', pdf_CEM2034_path
+      %br
+      = link_to 'CEM 2035 BMP Status Report', pdf_CEM2035_path
+      %br
+      = link_to 'CEM 2040 Weather Forecast Report', pdf_CEM2040_path
+      %br
+      = link_to 'CEM 2045 REAP Report', pdf_CEM2045_path
+      %br
+      = link_to 'CEM 4601 Daily Report', pdf_CEM4601_path
+
