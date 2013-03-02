@@ -112,14 +112,48 @@ describe Site do
       @site.should respond_to(:reports)
     end
 
-    it "has projects in correct order" do
+    it 'has projects in correct order' do
       @site.reports.should == @reports
     end
 
-    it "destroys associated sites" do
+    it 'destroys associated sites' do
       @site.destroy
       @reports.each do |report|
         Report.find_by_id(report.id).should be_nil
+      end
+    end
+  end
+
+  describe 'inspection_event associations' do
+    it 'responds to inspection_events' do
+      @site.should respond_to(:inspection_events)
+    end
+
+    it 'has inspection events in correct order' do
+      @site.inspection_events.should == @inspection_events
+    end
+
+    it 'destroys associated inspection events' do
+      @site.destroy
+      @inspection_events.each do |inspection_event|
+        InspectionEvent.find_by_id(inspection_event.id).should be_nil
+      end
+    end
+  end
+
+  describe 'sampling_event associations' do
+    it 'responds to sampling_events' do
+      @site.should respond_to(:sampling_events)
+    end
+
+    it 'has sampling events in correct order' do
+      @site.sampling_events.should == @sampling_events
+    end
+
+    it 'destroys associated sampling events' do
+      @site.destroy
+      @sampling_events.each do |sampling_event|
+        SamplingEvent.find_by_id(sampling_event.id).should be_nil
       end
     end
   end
