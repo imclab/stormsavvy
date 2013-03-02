@@ -81,6 +81,7 @@ describe SamplingEvent do
     @sampling_event.analysis_result_5.should == "7.20"
     @sampling_event.analysis_average_5.should == "7.01"
   end
+
   it "creates new instance given valid attributes" do
     sampling_event = SamplingEvent.new(@attr)
     sampling_event.save
@@ -96,6 +97,7 @@ describe SamplingEvent do
       it "has an association with a site" do
         @sampling_event.should respond_to(:site)
       end
+
       it "has the correct associated user" do
         @sampling_event.should == @sampling_event
       end
@@ -108,6 +110,7 @@ describe SamplingEvent do
       SamplingEvent.any_instance.stub(:destroy_attached_files).and_return(true) 
       @attachment = FactoryGirl.create :sampling_event
     end
+    
     describe "#attachment" do
       it "returns correct url" do
         @attachment.attachment.url.should_not be_nil
