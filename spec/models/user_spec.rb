@@ -38,7 +38,7 @@ describe User do
       :email =>     'foo@bar.com',
       :password =>  'foobarbaz'
       )
-    @user.should be_valid
+    user.should be_valid
   end
 
   describe "project associations" do
