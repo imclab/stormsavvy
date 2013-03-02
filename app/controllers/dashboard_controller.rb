@@ -6,6 +6,7 @@ class DashboardController < ApplicationController
     if current_user
       @projects = current_user.projects.all
       @sites = Site.all
+
       @weather_events = WeatherEvent.all
       @inspection_events = InspectionEvent.all
 
