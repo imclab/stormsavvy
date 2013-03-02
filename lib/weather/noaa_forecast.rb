@@ -43,7 +43,19 @@ class NOAAForecast
   end
 
   def get_lat_long(zipcode)
+    fallback ||= DEFAULT_FALLBACK
     results = Geocoder.search(zipcode)
+
+    # fallback handler: http://goo.gl/nPOgL
+    rescue => error
+      fallback.call(error)
+
+    # test fallback for benign value & error
+    self.get_lat_long("99999999999999999999") {"N/A"}
+    self.get_lat_long("99999999999999999999") do |error|
+      raise ApiError, error.message
+    end
+
     @lat = results[0].data["geometry"]["location"]["lat"]
     @lng = results[0].data["geometry"]["location"]["lng"]
     lat_long = [] << @lat << @lng
