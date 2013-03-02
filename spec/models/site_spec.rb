@@ -103,6 +103,23 @@ describe Site do
     end
   end
 
+  describe 'report associations' do
+    it 'responds to reports' do
+      @site.should respond_to(:reports)
+    end
+
+    it "has projects in correct order" do
+      @site.reports.should == @reports
+    end
+
+    it "destroys associated sites" do
+      @site.destroy
+      @reports.each do |report|
+        Report.find_by_id(report.id).should be_nil
+      end
+    end
+  end
+
   describe "attributes" do
 
     before :each do
