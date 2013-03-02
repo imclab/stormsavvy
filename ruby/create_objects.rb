@@ -1,5 +1,4 @@
-# Run inside console for testing nested attributes and mailers.
-
+# generates objects in console
 user.delete
 project.delete
 site.delete
