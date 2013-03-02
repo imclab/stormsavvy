@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = current_user.projects.find(params[:id])
+    @projects = current_user.projects.all
+    
     @sites = @project.sites
     @needs_attention_reports = Report.needs_attention
 
