@@ -161,6 +161,10 @@ describe NOAAForecast do
       lat_long = [lat.to_f, long.to_f]
       @nf.get_lat_long(@zipcode).should == lat_long
     end
+
+    it 'handles exceptions with benign value' do
+      @nf.get_lat_long("99999999999999999999").should == []
+    end
   end
 
   describe "#parse_weather_data" do
