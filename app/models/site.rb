@@ -17,6 +17,8 @@ class Site < ActiveRecord::Base
 
   belongs_to :project
   has_many :reports, :dependent => :destroy
+  has_many :inspection_events, :dependent => :destroy
+  has_many :sampling_events, :dependent => :destroy
   has_many :site_pop
   accepts_nested_attributes_for :project
 
