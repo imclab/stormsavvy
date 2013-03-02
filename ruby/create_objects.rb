@@ -31,15 +31,15 @@ sites = user.sites
 puts sites
 
 user.sites.each do |s|
-  @site = pp s.name
-  pp @site
+  site = pp s.name
+  pp site
 end
 
 we = WeatherEvent.new
 we.save
 
 project = Project.new
-sites = @project.sites.build
+sites = project.sites.build
 
 report = ReportsPdf.new
 report.testem_fields
