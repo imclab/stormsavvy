@@ -6,6 +6,9 @@ require 'time'
 require 'project_local_time'
 require 'redis'
 
+class ApiError < StandardError
+end
+
 class NOAAForecast
 
   include Typhoeus
