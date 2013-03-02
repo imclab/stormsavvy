@@ -44,14 +44,14 @@ describe Site do
       @nf2.parse_weather_data(response)
     end
 
-    @nf.stub(:seven_day_weather).with(@zipcode) do
-      latlong = [@lat, @long]
-      @nf.get_forecast(latlong)
-      # forecast = [
-      #   [0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 7, 7, 7, 7, 8], 
-      #   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      # ]
-    end
+    # @nf.stub(:seven_day_weather).with(@zipcode) do
+    #   latlong = [@lat, @long]
+    #   @nf.get_forecast(latlong)
+    #   forecast = [
+    #     [0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 7, 7, 7, 7, 8], 
+    #     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    #   ]
+    # end
 
     @site.stub(:forecast) do
       latlong = [@lat, @long]
