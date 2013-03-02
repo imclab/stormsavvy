@@ -3,7 +3,7 @@
     .span8#project-attributes
       - if notice
         %p#notice.alert.alert-success= notice
-      %h2 Project page
+      %h2 Project Page
       %p
         %b Name:
         = @project.name
@@ -11,15 +11,14 @@
         %b Description:
         = @project.description
       %p
-        %b Startdate:
+        %b Start Date:
         = @project.startdate
       %p
-        %b Finishdate:
+        %b Finish Date:
         = @project.finishdate
       %p
         %b Active:
         = @project.active
-
       %p
         %b Sites
         - @project.sites.each do |site|
