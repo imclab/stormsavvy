@@ -41,7 +41,6 @@ class SamplingEvent < ActiveRecord::Base
     :sampling_type,
     :site_id,
     :submitted_by,
-
     :attachment # s3 uploads via paperclip
 
     has_attached_file :attachment,
