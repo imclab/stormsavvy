@@ -169,7 +169,6 @@ describe Site do
       :description   => 'North of Lake Merritt'
       )
     forecast = site.forecast
-    print forecast
   end
 
   describe '#get_zipcode' do
