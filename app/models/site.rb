@@ -16,7 +16,7 @@ class Site < ActiveRecord::Base
     :project_attributes
 
   belongs_to :project
-  has_many :reports
+  has_many :reports, :dependent => :destroy
   has_many :site_pop
   accepts_nested_attributes_for :project
 
