@@ -1,7 +1,12 @@
 require 'rubygems'
+require 'devise'
+require 'prawn'
+require 'pdf/reader'
+require 'pdf/inspector'
+require 'email_spec'
+require 'capybara/rspec'
+require 'rack/test'
 require 'spork'
-#uncomment the following line to use spork with the debugger
-#require 'spork/ext/ruby-debug'
 
 Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However,
