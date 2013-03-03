@@ -20,14 +20,6 @@ Spork.each_run do
 
 end
 
-RSpec.configure do |config|
-  config.include(EmailSpec::Helpers)
-  config.include(EmailSpec::Matchers)
-  config.include Devise::TestHelpers, :type => :controller
-  config.include Rack::Test::Methods
-  # config.extend ControllerMacros, :type => :controllers
-end
-
 Prawn.debug = true
 
 def create_pdf(klass=Prawn::Document)
