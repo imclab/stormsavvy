@@ -72,12 +72,6 @@ RSpec.configure do |config|
   end
 end
 
-=begin
-RSpec.configure do |config|
-  config.include(EmailSpec::Helpers)
-  config.include(EmailSpec::Matchers)
-end
-=end
 module ::RSpec::Core
   class ExampleGroup
     include Capybara::DSL
