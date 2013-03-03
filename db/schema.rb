@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303064048) do
+ActiveRecord::Schema.define(:version => 20130303184906) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -53,15 +53,44 @@ ActiveRecord::Schema.define(:version => 20130303064048) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "inspection_event_workflows", :force => true do |t|
+    t.integer  "hours_before_rain"
+    t.boolean  "reap"
+    t.boolean  "cem2023"
+    t.boolean  "cem2024"
+    t.boolean  "cem2034"
+    t.boolean  "cem2035"
+    t.boolean  "cem2040"
+    t.boolean  "pre_storm_inspection"
+    t.boolean  "during_storm_inspection"
+    t.boolean  "post_storm_inspection"
+    t.boolean  "report_sent"
+    t.boolean  "report_received"
+    t.boolean  "ph_sample"
+    t.boolean  "turbidity"
+    t.boolean  "notice_of_discharge"
+    t.boolean  "quarterly_inspction"
+    t.integer  "chance_of_rain"
+    t.float    "amount_of_rain"
+    t.float    "forecast_rain"
+    t.boolean  "inspection_event"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
   create_table "inspection_events", :force => true do |t|
     t.integer  "site_id"
+    t.string   "type"
+    t.text     "description"
+    t.datetime "date"
+    t.datetime "submitted"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "inspection_type"
     t.text     "inspection_description"
     t.datetime "inspection_date"
     t.string   "submitted_by"
     t.string   "inspected_by"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
