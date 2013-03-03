@@ -23,7 +23,7 @@ describe InspectionEventWorkflow do
     @iew.check_inspection_event.should_not =~ /Prepare inspection event/
   end
 
-  it "should check to see if rain is imminent" do
+  xit "should check to see if rain is imminent" do
     @iew.hours_before_rain = 23
     @iew.chance_of_rain = 55
     @iew.reap = false
