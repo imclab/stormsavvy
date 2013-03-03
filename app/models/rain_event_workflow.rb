@@ -35,8 +35,7 @@ class RainEventWorkflow < ActiveRecord::Base
     end
   end
 
-  # Will need to have some logic here for updating 
-  # rain status
+  # Needs logic for updating rain status
   def has_rained?
     amount_of_rain > 0.5
   end
