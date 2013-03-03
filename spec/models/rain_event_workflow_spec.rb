@@ -47,7 +47,7 @@ describe RainEventWorkflow do
       if @rew.rain_imminent?
         @rew.start_rain_event_workflow
       end
-    end.should change(Report, :count).by(4) # why 4?
+    end.should change(Report, :count).by(4) # double-count?
   end
 
   it "should check to see whether it has rained" do
