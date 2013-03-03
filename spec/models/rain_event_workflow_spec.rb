@@ -25,7 +25,7 @@ describe RainEventWorkflow do
   end
 
   it "should check on CEM2030 status 24 hours before rain" do
-    @rew.hours_before_rain = 48
+    @rew.hours_before_rain = 24
     @rew.chance_of_rain = 55
     @rew.cem2030 = false
     # @rew.reap = false
@@ -33,7 +33,7 @@ describe RainEventWorkflow do
   end
 
   it "should check on CEM2030 status 24 hours before rain" do
-    @rew.hours_before_rain = 48
+    @rew.hours_before_rain = 24
     @rew.chance_of_rain = 55
     @rew.cem2030 = true
     @rew.check_cem2030.should_not =~ /CEM2030 prepared/
