@@ -27,6 +27,12 @@ class RainEventWorkflow < ActiveRecord::Base
       "CEM2030 prepared"
       Report.create(:type => 'CEM2030')
     end
+
+    check_cem2045
+    if cem2045?
+      "CEM2045 prepared"
+      Report.create(:type => 'CEM2045')
+    end
   end
 
   # Will need to have some logic here for updating 
