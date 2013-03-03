@@ -7,9 +7,9 @@ class SamplingEventWorkflow < ActiveRecord::Base
   # Does this have to be done before every rain
   # Check for project type, i.e., construction
 
-  def initialize(site)
-    @site = site
-  end
+  # def initialize(site)
+  #   @site = site
+  # end
 
   def sampling_imminent?
     if chance_of_rain > 50 && forecast_rain > 0.5 && hours_before_rain < 24
