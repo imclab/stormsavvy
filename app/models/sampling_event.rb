@@ -51,8 +51,8 @@ class SamplingEvent < ActiveRecord::Base
 
 private
 
-  def change_inspection_event_Status
+  def change_inspection_event_status
     self.status = "completed"
   end
-    
+
 end
