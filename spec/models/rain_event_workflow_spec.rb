@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RainEventWorkflow do
-  
+
   before(:each) do
     @rew = FactoryGirl.create(:rain_event_workflow)
   end
@@ -29,7 +29,7 @@ describe RainEventWorkflow do
     @rew.chance_of_rain = 55
     @rew.cem2030 = false
     # @rew.reap = false
-    @rew.check_cem2030.should =~ /CEM2030 prepared/    
+    @rew.check_cem2030.should =~ /CEM2030 prepared/
   end
 
   it "should check on CEM2030 status 24 hours before rain" do
@@ -38,7 +38,7 @@ describe RainEventWorkflow do
     @rew.cem2030 = true
     @rew.check_cem2030.should_not =~ /CEM2030 prepared/
   end
-  
+
   it "should check to see if rain is imminent" do
     @rew.hours_before_rain = 23
     @rew.chance_of_rain = 55
