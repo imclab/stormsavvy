@@ -50,13 +50,13 @@ class InspectionEventWorkflow < ActiveRecord::Base
       "CEM2024 prepared"
       Report.create(:type => 'CEM2024')
     end
-
+=begin
     check_cem2030
     if cem2030?
       "CEM2030 prepared"
       Report.create(:type => 'CEM2030')
     end
-
+=end
     check_cem2034
     if cem2034?
       "CEM2034 prepared"
