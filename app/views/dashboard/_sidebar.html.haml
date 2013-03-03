@@ -4,8 +4,8 @@
       %h5 Weather Report
       %hr
       %ul
-        - unless @projects.empty?
-          - @projects.each do |project|
+        - unless current_user.projects.empty?
+          - current_user.projects.each do |project|
             - project.sites.each do |site|
               %li.cf
                 - site.chance_of_rain # needs to be called before site.rain_state in order for rain state to show up
