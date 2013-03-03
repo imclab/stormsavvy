@@ -9,9 +9,9 @@ class RainEventWorkflow < ActiveRecord::Base
   # Does this have to be done before every rain
   # Check for project type, i.e., construction
 
-  def initialize(site)
-    @site = site
-  end
+  # def initialize(site)
+  #   @site = site
+  # end
 
   def rain_imminent?
     # chance_of_rain > 50 && hours_before_rain < 24
