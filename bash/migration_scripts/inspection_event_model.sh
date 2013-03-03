@@ -15,6 +15,7 @@ rails g model InspectionEventWorkflow \
   ph_sample:boolean \
   turbidity:boolean \
   notice_of_discharge:boolean \
+  quarterly_inspction:boolean \
   chance_of_rain:integer \
   amount_of_rain:float \
   forecast_rain:float \
