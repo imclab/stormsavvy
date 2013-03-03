@@ -101,4 +101,9 @@ namespace :scheduler do
       UserMailer.thankyou(address)
     end
   end
+
+  desc "Checks inspection event workflow"
+  task :inspection_event_workflow => :environment do
+    InspectionEventWorkflow.inspection_needed?
+  end
 end
