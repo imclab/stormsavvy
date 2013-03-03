@@ -14,7 +14,7 @@ class SamplingEventWorkflow < ActiveRecord::Base
   def sampling_imminent?
     if chance_of_rain > 50 && forecast_rain > 0.5 && hours_before_rain < 24
       start_sampling_event_workflow
-    end       
+    end
   end
 
   def start_sampling_event_workflow
@@ -57,7 +57,7 @@ class SamplingEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2052
     self.cem2052 = true #unless reap_borked?
-    "CEM2052 prepared"    
+    "CEM2052 prepared"
   end
 
   def check_sampling_event
@@ -66,6 +66,6 @@ class SamplingEventWorkflow < ActiveRecord::Base
 
   def prepare_sampling_event
     self.sampling_event = true #unless reap_borked?
-    "Sampling Event prepared"    
+    "Sampling Event prepared"
   end
 end
