@@ -2,25 +2,23 @@
 # What is completion condition for workflow.
 class RainEventWorkflow < ActiveRecord::Base
 
-  #attr_accessible :site
+  attr_accessible :site
 
   # We'll make this send a message to the user in the future.
   # CEM2045
   # Does this have to be done before every rain
   # Check for project type, i.e., construction
-=begin
+
   def initialize(site)
     @site = site
   end
-=end
 
   def rain_imminent?
-    chance_of_rain > 50 && hours_before_rain < 24
-=begin
+    # chance_of_rain > 50 && hours_before_rain < 24
+
     if chance_of_rain > 50 && hours_before_rain < 24
       start_rain_event_workflow
     end
-=end
   end
 
   def start_rain_event_workflow
@@ -43,30 +41,35 @@ class RainEventWorkflow < ActiveRecord::Base
     prepare_cem2030 unless self.cem2030?
   end
 
-
   def prepare_cem2030
     self.cem2030 = true #unless reap_borked?
     "CEM2030 prepared"
   end
 
-
-
   def check_reap
     prepare_reap unless self.reap?
   end
+
   def prepare_reap
     self.reap = true #unless reap_borked?
     "REAP prepared"
   end
 
-
+  def check_cem2051
+    prepare_cem2051 unless self.cem2051?
+  end
 
   def prepare_cem2051
-    
+    self.cem2051 = true #unless reap_borked?
+    "CEM2051 prepared"
+  end
+
+  def check_cem2052
+    prepare_cem2052 unless self.cem2052?
   end
 
   def prepare_cem2052
-    
+    self.cem2052 = true #unless reap_borked?
+    "CEM2052 prepared"    
   end
 end
-
