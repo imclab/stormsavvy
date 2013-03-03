@@ -29,6 +29,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
   def inspection_needed?
     if Time.now.sunday?
       start_inspection_event_workflow
+      print 'Inspection event workflow started.'
+    else
+      print 'No inspection event work flow needed.'
     end
   end
 
