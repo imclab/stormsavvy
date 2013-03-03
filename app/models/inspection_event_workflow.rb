@@ -121,6 +121,15 @@ class InspectionEventWorkflow < ActiveRecord::Base
     "CEM2034 prepared"
   end
 
+  def check_cem2035
+    prepare_cem2035 unless self.cem2035?
+  end
+
+  def prepare_cem2035
+    self.cem2035 = true
+    "CEM2035 prepared"
+  end
+
   def check_cem2040
     prepare_cem2040 unless self.cem2040?
   end
