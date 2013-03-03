@@ -39,13 +39,20 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+module ::RSpec::Core
+  class ExampleGroup
+    include Capybara::DSL
+    include Capybara::RSpecMatchers
+  end
+end
+
 RSpec.configure do |config|
 
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
 
   config.include Devise::TestHelpers, :type => :controller
-  config.include Rack::Test::Methods
+  # config.include Rack::Test::Methods
   # config.extend ControllerMacros, :type => :controllers
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
