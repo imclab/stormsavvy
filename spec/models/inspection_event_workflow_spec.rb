@@ -23,14 +23,16 @@ describe InspectionEventWorkflow do
     @iew.check_inspection_event.should_not =~ /Prepare inspection event/
   end
 
-  xit "should check to see if rain is imminent" do
-    @iew.hours_before_rain = 23
-    @iew.chance_of_rain = 55
-    @iew.reap = false
+  it "should check to see if inspection is needed" do
+    # @iew.hours_before_rain = 23
+    # @iew.chance_of_rain = 55
+    # @iew.reap = false
+    # @iew.reap = false
+
     lambda do
       if @iew.inspection_needed?
         @iew.start_inspection_event_workflow
       end
-    end.should change(Report, :count).by(4) # double-count?
+    end.should change(Report, :count).by(10) # double-count?
   end
 end
