@@ -37,6 +37,11 @@ class SamplingEventWorkflow < ActiveRecord::Base
     end
   end
 
+  # Needs logic for updating rain status
+  def has_rained?
+    amount_of_rain > 0.5
+  end
+
   def check_cem2051
     prepare_cem2051 unless self.cem2051?
   end
