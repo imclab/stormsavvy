@@ -85,14 +85,12 @@ RSpec.configure do |config|
   end
 end
 
+=begin
 RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
-  config.include Devise::TestHelpers, :type => :controller
-  config.include Rack::Test::Methods
-  # config.extend ControllerMacros, :type => :controllers
 end
-
+=end
 module ::RSpec::Core
   class ExampleGroup
     include Capybara::DSL
