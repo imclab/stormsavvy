@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303051044) do
+ActiveRecord::Schema.define(:version => 20130303064048) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -192,8 +192,19 @@ ActiveRecord::Schema.define(:version => 20130303051044) do
   end
 
   create_table "sampling_event_workflows", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "hours_before_rain"
+    t.boolean  "cem2051"
+    t.boolean  "cem2052"
+    t.boolean  "ph_sample"
+    t.boolean  "turbidity"
+    t.boolean  "report_sent"
+    t.boolean  "report_received"
+    t.integer  "chance_of_rain"
+    t.float    "amount_of_rain"
+    t.float    "forecast_rain"
+    t.boolean  "sampling_event"
   end
 
   create_table "sampling_events", :force => true do |t|
