@@ -78,10 +78,3 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
-
-module ::RSpec::Core
-  class ExampleGroup
-    include Capybara::DSL
-    include Capybara::RSpecMatchers
-  end
-end
