@@ -28,9 +28,9 @@ class RainEventWorkflow < ActiveRecord::Base
       Report.create(:type => 'CEM2030')
     end
 
-    check_cem2045
-    if cem2045?
-      "CEM2045 prepared"
+    check_reap
+    if reap?
+      "REAP prepared"
       Report.create(:type => 'CEM2045')
     end
   end
