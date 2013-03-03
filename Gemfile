@@ -46,7 +46,7 @@ group :test, :development do
   gem 'spork-rails'
 
   # Comment out when running bundle update
-  gem 'email_spec', "1.4.0"
+  # gem 'email_spec', "1.4.0"
 
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
