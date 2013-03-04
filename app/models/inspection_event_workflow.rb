@@ -38,59 +38,94 @@ class InspectionEventWorkflow < ActiveRecord::Base
   def start_inspection_event_workflow
     check_inspection_event
     if inspection_event?
+      User.all.each do
+        InspectionEvent.create
+      end
+
       puts "Inspection Event prepared"
-      InspectionEvent.create
     end
 
     check_cem2023
     if cem2023?
+=begin
+      # do not spam users yet
+      User.all.each do
+        Report.create(
+          :type => 'CEM2023',
+          :status => "needs attention"
+          )
+      end
+=end
       puts "CEM2023 prepared"
-      Report.create(
-        :type => 'CEM2023',
-        :status => "needs attention"
-        )
     end
 
     check_cem2024
     if cem2024?
+=begin
+      # do not spam users yet
+      User.all.each do
+        Report.create(
+          :type => 'CEM2024',
+          :status => "needs attention"
+          )
+      end
+=end
       puts "CEM2024 prepared"
-      Report.create(
-        :type => 'CEM2024',
-        :status => "needs attention"
-        )
     end
 =begin
+    # debug no method error
     check_cem2030
     if cem2030?
-      "CEM2030 prepared"
-      Report.create(:type => 'CEM2030')
+      User.all.each do
+        Report.create(
+          :type => 'CEM2030',
+          :status => "needs attention"
+        )
+      end
+
+      puts "CEM2030 prepared"
     end
 =end
     check_cem2034
     if cem2034?
+=begin
+      # do not spam users yet
+      User.all.each do
+        Report.create(
+          :type => 'CEM2034',
+          :status => "needs attention"
+        )
+      end
+=end
       puts "CEM2034 prepared"
-      Report.create(
-        :type => 'CEM2034',
-        :status => "needs attention"
-      )
     end
 
     check_cem2035
     if cem2035?
+=begin
+      # do not spam users yet
+      User.all.each do
+        Report.create(
+          :type => 'CEM2035',
+          :status => "needs attention"
+          )
+      end
+=end
       puts "CEM2035 prepared"
-      Report.create(
-        :type => 'CEM2035',
-        :status => "needs attention"
-        )
     end
 
     check_cem2040
     if cem2040?
+=begin
+      # do not spam users yet
+      User.all.each do
+        Report.create(
+          :type => 'CEM2040',
+          :status => "needs attention"
+          )
+      end
+=end
       puts "CEM2040 prepared"
-      Report.create(
-        :type => 'CEM2040',
-        :status => "needs attention"
-        )
     end
   end
 
