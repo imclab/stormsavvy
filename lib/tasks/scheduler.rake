@@ -104,6 +104,7 @@ namespace :scheduler do
 
   desc "Checks inspection event workflow"
   task :inspection_event_workflow => :environment do
-    InspectionEventWorkflow.inspection_needed?
+    iew = InspectionEventWorkflow.new
+    iew.inspection_needed?
   end
 end
