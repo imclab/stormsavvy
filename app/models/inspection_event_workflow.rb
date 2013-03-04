@@ -29,34 +29,34 @@ class InspectionEventWorkflow < ActiveRecord::Base
   def inspection_needed?
     if Time.now.sunday?
       start_inspection_event_workflow
-      print 'Inspection event workflow started.'
+      puts 'Inspection event workflow started.'
     else
-      print 'No inspection event work flow needed.'
+      puts'No inspection event work flow needed.'
     end
   end
 
   def start_inspection_event_workflow
     check_inspection_event
     if inspection_event?
-      print "Inspection Event prepared"
+      puts "Inspection Event prepared"
       InspectionEvent.create
     end
 
     check_cem2023
     if cem2023?
-      print "CEM2023 prepared"
+      puts "CEM2023 prepared"
       Report.create(
         :type => 'CEM2023',
-        :needs_attention => true
+        :status => "needs attention"
         )
     end
 
     check_cem2024
     if cem2024?
-      print "CEM2024 prepared"
+      puts "CEM2024 prepared"
       Report.create(
         :type => 'CEM2024',
-        :needs_attention => true
+        :status => "needs attention"
         )
     end
 =begin
@@ -68,28 +68,28 @@ class InspectionEventWorkflow < ActiveRecord::Base
 =end
     check_cem2034
     if cem2034?
-      print "CEM2034 prepared"
+      puts "CEM2034 prepared"
       Report.create(
         :type => 'CEM2034',
-        :needs_attention => true
+        :status => "needs attention"
       )
     end
 
     check_cem2035
     if cem2035?
-      print "CEM2035 prepared"
+      puts "CEM2035 prepared"
       Report.create(
         :type => 'CEM2035',
-        :needs_attention => true
+        :status => "needs attention"
         )
     end
 
     check_cem2040
     if cem2040?
-      print "CEM2040 prepared"
+      puts "CEM2040 prepared"
       Report.create(
         :type => 'CEM2040',
-        :needs_attention => true
+        :status => "needs attention"
         )
     end
   end
@@ -156,5 +156,4 @@ class InspectionEventWorkflow < ActiveRecord::Base
     self.cem2040 = true
     "CEM2040 prepared"
   end
-
 end
