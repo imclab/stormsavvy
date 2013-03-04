@@ -17,6 +17,9 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass', ">= 2.1.0.1"
 
+# use for asset:precompile error on active_admin: http://goo.gl/OKVai
+gem 'coffee-script-source', '~> 1.4.0'
+
 gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
 gem 'pdf-reader'
 
@@ -45,7 +48,7 @@ group :test, :development do
   gem 'sqlite3'
   gem 'spork-rails'
 
-  # Comment out when running bundle update
+  # comment out when running bundle update
   gem 'email_spec', "1.4.0"
 
   gem 'awesome_print'
