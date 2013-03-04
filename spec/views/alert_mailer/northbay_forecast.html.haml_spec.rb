@@ -85,12 +85,12 @@ describe "alert_mailer/northbay_forecast" do
     rendered.should have_content "65"
     rendered.should have_content "60"
 
-    rendered.should have_content "0"
-    rendered.should have_content "1"
-    rendered.should have_content "2"
-    rendered.should have_content "3"
-    rendered.should have_content "4"
-    rendered.should have_content "5"
-    rendered.should have_content "6"
+    # rendered.should have_content "0"
+    # rendered.should have_content "1"
+    # rendered.should have_content "2"
+    # rendered.should have_content "3"
+    # rendered.should have_content "4"
+    # rendered.should have_content "5"
+    # rendered.should have_content "6"
   end
 end
