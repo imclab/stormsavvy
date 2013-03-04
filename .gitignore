@@ -30,6 +30,7 @@ db/test.sqlite3-journal
 doc/erd/stormsavvy.mwb.bak
 doc/intro.md
 log/
+public/assets
 public/.DS_Store
 ruby/
 script/mailer/
