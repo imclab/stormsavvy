@@ -38,24 +38,23 @@ class InspectionEventWorkflow < ActiveRecord::Base
   def start_inspection_event_workflow
     check_inspection_event
     if inspection_event?
+=begin
       User.all.each do
         InspectionEvent.create
       end
-
+=end
       puts "Inspection Event prepared"
     end
 
     check_cem2023
     if cem2023?
-=begin
       # do not spam users yet
       User.all.each do
         Report.create(
-          :type => 'CEM2023',
+          :type => "cem2023",
           :status => "needs attention"
           )
       end
-=end
       puts "CEM2023 prepared"
     end
 
