@@ -157,7 +157,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
   end
 
   def check_cem2030
-    prepare_cem2030 unless self.cem2030?
+    # cem2030 throws no method error...
+    # prepare_cem2030 unless self.cem2030?
   end
 
   def prepare_cem2030
