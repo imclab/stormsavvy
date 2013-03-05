@@ -29,7 +29,7 @@ describe InspectionEventWorkflow do
         if @iew.inspection_needed?
           @iew.start_inspection_event_workflow
         end
-      end.should change(Report, :count).by(5) # double-count?
+      end.should change(Report, :count).by(0) # double-count?
     end
   end
 
