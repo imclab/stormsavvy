@@ -48,14 +48,17 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
     check_cem2023
     if cem2023?
-      # do not spam users yet
       User.all.each do
-        InspectionEvent.create(
+      InspectionEvent.create
+=begin
+      # throws type column db error
+      Report.create(
           :type => "cem2023",
           :status => "needs attention"
           )
-      end
       puts "CEM2023 prepared"
+=end
+      end
     end
 
     check_cem2024
