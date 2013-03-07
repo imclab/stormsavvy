@@ -20,14 +20,23 @@
   #current_action_items.widget.bottom-10
     .inner
       %h5
+        Pending Inspections
+      %hr
+        - unless @inspection_events.empty?
+          - @inspection_events.each do |inspection_event|
+            = link_to "Inspection for #{inspection_event.site.name}", edit_inspection_event_path(inspection_event)
+        - else
+          You have no pending inspections.
+  #current_action_items.widget.bottom-10
+    .inner
+      %h5
         Pending Reports
       %hr
         - unless @needs_attention_reports.empty?
           - @needs_attention_reports.each do |report|
             = link_to "Report for #{report.site.name}", edit_report_path(report)
         - else
-          You have pending reports.
-      %br
+          You have no pending reports.
   #current_daily_diary.widget.bottom-10
     .inner
       %h5
