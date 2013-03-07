@@ -50,7 +50,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
     if cem2023?
       # do not spam users yet
       User.all.each do
-        Report.create(
+        InspectionEvent.create(
           :type => "cem2023",
           :status => "needs attention"
           )
