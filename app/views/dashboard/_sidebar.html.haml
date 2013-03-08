@@ -22,9 +22,10 @@
       %h5
         Pending Inspections
       %hr
-        - unless InspectionEvent.all.empty?
-          - InspectionEvent.all.each do |inspection_event|
+        - unless @inspection_events.empty?
+          - @inspection_events.each do |inspection_event|
             = link_to "Inspection for #{inspection_event.inspection_date}", edit_inspection_event_path(inspection_event)
+            %br
         - else
           You have no pending inspections.
   #current_action_items.widget.bottom-10
