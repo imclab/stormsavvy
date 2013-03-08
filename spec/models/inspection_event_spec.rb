@@ -45,7 +45,7 @@ describe InspectionEvent do
   	  it "has correct associated site" do
   	    @inspection_event.should == @inspection_event
   	  end
-  	end      
+  	end
   end
 
   describe 'file attachments' do
