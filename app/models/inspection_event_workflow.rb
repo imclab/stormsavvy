@@ -50,9 +50,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
     if cem2023?
       User.all.each do
         # tag event with type 2030 for dashboard
-        InspectionEvent.create(
-          :type => "cem2030"
-        )
+        ie = InspectionEvent.needs_attention.build
+        ie.save
 =begin
       # throws type column db error
       Report.create(
