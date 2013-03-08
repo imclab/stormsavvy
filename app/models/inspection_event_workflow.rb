@@ -99,8 +99,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
           :status => "needs attention"
         )
       end
-=end
       puts "CEM2034 prepared"
+=end
     end
 
     check_cem2035
@@ -113,8 +113,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
           :status => "needs attention"
           )
       end
-=end
       puts "CEM2035 prepared"
+=end
     end
 
     check_cem2040
@@ -127,8 +127,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
           :status => "needs attention"
           )
       end
-=end
       puts "CEM2040 prepared"
+=end
     end
   end
 
