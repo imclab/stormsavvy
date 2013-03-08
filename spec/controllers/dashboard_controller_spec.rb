@@ -51,4 +51,13 @@ describe DashboardController do
       response.should redirect_to index_path
     end
   end
+
+  describe "pig pen variables" do
+    it 'returns requested objects' do
+      @projects.should == @user.projects.all
+      @sites.should == @user.sites.all # nested attribute
+      # @weather_events.should == @site.weather_events.all
+      @inspection_events.should == @site.inspection_events.all
+    end
+  end
 end
