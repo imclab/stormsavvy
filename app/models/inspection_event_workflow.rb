@@ -27,7 +27,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
     :turbidity
 
   def inspection_needed?
-    if Time.now.monday?
+    if Time.now.thursday?
       start_inspection_event_workflow
       puts 'Inspection event workflow started.'
     else
