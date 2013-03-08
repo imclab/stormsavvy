@@ -27,6 +27,9 @@ describe InspectionEvent do
     @inspection_event = InspectionEvent.new(@attr)
     @inspection_event.save
     @inspection_event.should be_valid
+
+    ie = InspectionEvent.needs_attention.build
+    ie.should be_valid
   end
 
   describe "inspection_event associations" do
