@@ -16,7 +16,7 @@ class NOAAForecast
 
   attr_reader :pop, :qpf
 
-  DEFAULT_FALLBACK = ->(error) {raise}
+  # DEFAULT_FALLBACK = ->(error) {raise}
 
   def initialize(zipcode, duration = 168, interval = 6)
     @zipcode  = zipcode
@@ -38,15 +38,16 @@ class NOAAForecast
     # end
     # set_lat_long(@zipcode)
 
-    latlong = get_lat_long(@zipcode)
+    latlong = get_lat_long(zipcode)
     return get_forecast(latlong)
   end
 
   def get_lat_long(zipcode)
-    fallback ||= DEFAULT_FALLBACK
     results = Geocoder.search(zipcode)
-
+=begin
     # fallback handler: http://goo.gl/nPOgL
+    fallback ||= DEFAULT_FALLBACK
+
     rescue => error
       fallback.call(error)
 
@@ -55,7 +56,7 @@ class NOAAForecast
     self.get_lat_long("99999999999999999999") do |error|
       raise ApiError, error.message
     end
-
+=end
     @lat = results[0].data["geometry"]["location"]["lat"]
     @lng = results[0].data["geometry"]["location"]["lng"]
     lat_long = [] << @lat << @lng
