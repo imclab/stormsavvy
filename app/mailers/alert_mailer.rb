@@ -45,19 +45,23 @@ class AlertMailer < ActionMailer::Base
 
     @location1 = "Oakland, CA 94621"
     @nf1 = NOAAForecast.new(94621)
-    @nf2 = @nf1.forecast_by_zipcode(94621)
+    @nf2 = @nf1.get_pop_table_hash(94621)
+    # @nf2 = @nf1.forecast_by_zipcode(94621)
 
     @location2 = "Berkeley, CA 94709"
     @nf3 = NOAAForecast.new(94709)
-    @nf4 = @nf3.forecast_by_zipcode(94709)
+    @nf4 = @nf3.get_pop_table_hash(94709)
+    # @nf4 = @nf3.forecast_by_zipcode(94709)
 
     @location3 = "Walnut Creek, CA 94596"
     @nf5 = NOAAForecast.new(94596)
-    @nf6 = @nf5.forecast_by_zipcode(94596)
+    @nf6 = @nf5.get_pop_table_hash(94596)
+    # @nf6 = @nf5.forecast_by_zipcode(94596)
 
     @location4 = "Pleasanton, CA 94566"
     @nf7 = NOAAForecast.new(94566)
-    @nf8 = @nf7.forecast_by_zipcode(94566)
+    @nf8 = @nf7.get_pop_table_hash(94566)
+    # @nf8 = @nf7.forecast_by_zipcode(94566)
 
     mail(
       :from     => "alerts@stormsavvy.com",
