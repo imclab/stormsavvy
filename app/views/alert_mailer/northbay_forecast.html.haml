@@ -6,7 +6,10 @@
       %p
         = @greeting
       %p
-        Listed below are the daily weather forecasts for the North Bay:
+        Listed below are the daily weather forecasts for the North Bay.
+      %p
+        = @noaa_info
+        %a{:href=>"http://w1.weather.gov/xml/current_obs/", :title=>"weather.gov"}
       %li
         = @location1
       %li
