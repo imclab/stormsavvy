@@ -54,7 +54,11 @@ describe AlertMailer do
     end
 
     it "renders the body" do
-      @mailer.body.encoded.should match("Greetings")
+      @mailer.body.encoded.should =~ /Greetings/
+      @mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
+      @mailer.body.encoded.should =~ /Forecast is based on NOAA data feed/
+      @mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
+      @mailer.body.encoded.should =~ /The Storm Savvy Team/
     end
 
     it "delivers and receives mailer" do
