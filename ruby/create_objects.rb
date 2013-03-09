@@ -47,12 +47,10 @@ report.testem_fields
 email = "walter@stormsavvy.com"
 AlertMailer.pester_admins(email).deliver
 
-nf = NOAAForecast.new(94605)
-forecast = nf.seven_day_weather
+zipcode = 94901
+nf = NOAAForecast.new(zipcode)
+forecast = nf.seven_day_weather(zipcode)
 
 time = Time.new
 values = time.to_a
 p values
-
-nf = NOAAForecast.new(94605)
-nf.get_lat_long("99999999999999999999")
