@@ -9,8 +9,6 @@ describe AlertMailer do
   before { ActionMailer::Base.deliveries = [] }
 
   before(:each) do
-    # TODO: Debug user factory table
-    # @user = FactoryGirl.create(:user)
     @user = User.create(
       :firstname              => 'Walter',
       :lastname               => 'Yu',
