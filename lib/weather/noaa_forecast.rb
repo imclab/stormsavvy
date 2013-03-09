@@ -206,8 +206,8 @@ class NOAAForecast
   end
 
   def forecast_by_zipcode(zipcode)
-    @nf2 = NOAAForecast.new(zipcode,168,6)
-    pop = @nf2.seven_day_weather(zipcode)
+    nf = NOAAForecast.new(zipcode,168,6)
+    pop = nf.seven_day_weather(zipcode)
     [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0][0], :rainfall => pop[1][0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[0][1], :rainfall => pop[1][1] },
