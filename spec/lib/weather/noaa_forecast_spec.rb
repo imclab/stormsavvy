@@ -22,62 +22,70 @@ describe NOAAForecast do
     @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
     @nf.stub(:get_lat_long).with("99999999999999999999").and_return([])
 
-    @nf.stub(:set_lat_long) do
+    @nf.stub(:set_lat_long) {
       $redis.set(@zipcode.to_s + '_lat', @lat)
       $redis.set(@zipcode.to_s + '_long', @long)
-    end
+    }
 
-    @nf.stub(:return_lat_long) do
+    @nf.stub(:return_lat_long) {
       @nf.set_lat_long(@zipcode)
       lat = $redis.get(@zipcode.to_s + '_lat')
       long = $redis.get(@zipcode.to_s + '_long')
       lat_long = [lat, long]
-    end
+    }
 
-    @nf.stub(:ping_noaa).with([@lat, @long], 168, 6) do
+    @nf.stub(:ping_noaa).with([@lat, @long], 168, 6) {
       IO.read("./spec/lib/weather/noaa_response.xml")
-    end
+    }
 
-    @nf.stub(:get_forecast).with([@lat, @long]) do
+    @nf.stub(:get_forecast).with([@lat, @long]) {
       response = @nf.ping_noaa([@lat, @long], 168, 6)
       @nf2.parse_weather_data(response)
-    end
+    }
 
-    @nf2.stub(:seven_day_weather).with(@zipcode) do
+    @nf2.stub(:seven_day_weather).with(@zipcode) {
       latlong = [@lat, @long]
       @nf.get_forecast(latlong)
-    end
+    }
 
-    @nf.stub(:get_time_array) do
+    @nf.stub(:get_time_array) {
       time_array = []
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
-    end
+    }
 
     @nf2.stub(:pop) {
       pop= [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0]
+      # may need to revert back later
       # pop = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
     }
 
-    @nf2.stub(:qpf) do
+    @nf2.stub(:qpf) {
       qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      # may need to revert back later
       # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
-    end
+    }
 
     # @nf.stub(:pop) do
     #   IO.read("./spec/lib/weather/pop_stub_data.txt")
     # end
 
     @nf2.stub(:get_pop_array).with(@zipcode) {
+
 =begin
-      # array not being returned in #get_pop_array spec correctly
+      # array not being returned correctly
       pop_array = @pop
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => pop_array[i].to_s }
       end
+
+      # debug collect method later
+      # pop_array.collect {|i| new_pop_array << { :weather => pop_array[i].to_s } }
 =end
+
+      # refactor into proper loop
       new_pop_array = [
         {:weather=>"0"},
         {:weather=>"0"},
