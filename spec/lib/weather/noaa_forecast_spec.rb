@@ -648,7 +648,7 @@ describe NOAAForecast do
 
       time_pop_hash = []
 
-      @nf2.get_pop_table_hash(@zipcode).should == pop_table_hash
+      @nf3.get_pop_table_hash(@zipcode).should == pop_table_hash
     end
   end
 
