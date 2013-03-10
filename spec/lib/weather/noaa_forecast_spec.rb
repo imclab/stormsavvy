@@ -478,11 +478,6 @@ describe NOAAForecast do
 
   describe "#pop_table_hash" do
     it "returns pop_table hash" do
-      qpf_array = @nf2.qpf
-      new_qpf_array = []
-      qpf_array.each do |i|
-        new_qpf_array << { :rainfall => i.to_s }
-      end
 
       pop_array = @nf2.pop
       new_pop_array = []
@@ -490,19 +485,97 @@ describe NOAAForecast do
         new_pop_array << { :weather => i.to_s }
       end
 
-      time_pop_hash = []
+      qpf_array = @nf2.qpf
+      new_qpf_array = []
+      qpf_array.each do |i|
+        new_qpf_array << { :rainfall => i.to_s }
+      end
+
+      time_array = []
+      for t in 0..27
+        time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
+      end
+
 =begin
+      # array not being returned correctly
       for h in 0..27
         time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
       end
-=end
-      # time_pop_hash = @nf2.get_time_pop_hash(@zipcode)
-      pop_table_hash = []
 
+      time_pop_hash = @nf2.get_time_pop_hash(@zipcode)
+
+      pop_table_hash = []
       for k in 0..27
         pop_table_hash << Hash[time_pop_hash[k]].update(Hash[new_qpf_array[k]])
       end
-      @nf.get_pop_table_hash(@zipcode).should == pop_table_hash
+=end
+
+      # refactor into proper loop
+      time_pop_hash = [
+        time_array[0].update(new_pop_array[0]),
+        time_array[1].update(new_pop_array[1]),
+        time_array[2].update(new_pop_array[2]),
+        time_array[3].update(new_pop_array[3]),
+        time_array[4].update(new_pop_array[4]),
+        time_array[5].update(new_pop_array[5]),
+        time_array[6].update(new_pop_array[6]),
+        time_array[7].update(new_pop_array[7]),
+        time_array[8].update(new_pop_array[8]),
+        time_array[9].update(new_pop_array[9]),
+        time_array[10].update(new_pop_array[10]),
+        time_array[11].update(new_pop_array[11]),
+        time_array[12].update(new_pop_array[12]),
+        time_array[13].update(new_pop_array[13]),
+        time_array[14].update(new_pop_array[14]),
+        time_array[15].update(new_pop_array[15]),
+        time_array[16].update(new_pop_array[16]),
+        time_array[17].update(new_pop_array[17]),
+        time_array[18].update(new_pop_array[18]),
+        time_array[19].update(new_pop_array[19]),
+        time_array[20].update(new_pop_array[20]),
+        time_array[21].update(new_pop_array[21]),
+        time_array[22].update(new_pop_array[22]),
+        time_array[23].update(new_pop_array[23]),
+        time_array[24].update(new_pop_array[24]),
+        time_array[25].update(new_pop_array[25]),
+        time_array[26].update(new_pop_array[26]),
+        time_array[27].update(new_pop_array[27])
+      ]
+
+      # refactor into proper loop
+      pop_table_hash = [
+        time_pop_hash[1].update(new_qpf_array[1]),
+        time_pop_hash[2].update(new_qpf_array[2]),
+        time_pop_hash[3].update(new_qpf_array[3]),
+        time_pop_hash[4].update(new_qpf_array[4]),
+        time_pop_hash[5].update(new_qpf_array[5]),
+        time_pop_hash[6].update(new_qpf_array[6]),
+        time_pop_hash[7].update(new_qpf_array[7]),
+        time_pop_hash[8].update(new_qpf_array[8]),
+        time_pop_hash[9].update(new_qpf_array[9]),
+        time_pop_hash[10].update(new_qpf_array[10]),
+        time_pop_hash[11].update(new_qpf_array[11]),
+        time_pop_hash[12].update(new_qpf_array[12]),
+        time_pop_hash[13].update(new_qpf_array[13]),
+        time_pop_hash[14].update(new_qpf_array[14]),
+        time_pop_hash[15].update(new_qpf_array[15]),
+        time_pop_hash[16].update(new_qpf_array[16]),
+        time_pop_hash[17].update(new_qpf_array[17]),
+        time_pop_hash[18].update(new_qpf_array[18]),
+        time_pop_hash[19].update(new_qpf_array[19]),
+        time_pop_hash[20].update(new_qpf_array[20]),
+        time_pop_hash[21].update(new_qpf_array[21]),
+        time_pop_hash[22].update(new_qpf_array[22]),
+        time_pop_hash[23].update(new_qpf_array[23]),
+        time_pop_hash[24].update(new_qpf_array[24]),
+        time_pop_hash[25].update(new_qpf_array[25]),
+        time_pop_hash[26].update(new_qpf_array[26]),
+        time_pop_hash[27].update(new_qpf_array[27])
+      ]
+
+      time_pop_hash = []
+
+      @nf2.get_pop_table_hash(@zipcode).should == pop_table_hash
     end
   end
 
