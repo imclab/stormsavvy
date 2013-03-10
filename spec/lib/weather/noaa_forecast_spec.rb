@@ -386,6 +386,7 @@ describe NOAAForecast do
         new_pop_array << { :weather => pop_array[i].to_s }
       end
 
+      # leave here for debugging
       # puts @nf2.get_pop_array(@zipcode)
       # puts new_pop_array
 
@@ -403,6 +404,7 @@ describe NOAAForecast do
         new_qpf_array << { :rainfall => i.to_s }
       end
 
+      # leave here for debugging
       # puts @nf2.get_qpf_array(@zipcode)
       # puts new_qpf_array
 
