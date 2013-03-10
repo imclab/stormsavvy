@@ -65,7 +65,7 @@ describe AlertMailer do
     end
   end
 
-  describe "eastbay_forecast" do
+  describe "#eastbay_forecast" do
 
     before :each do
       @mailer = AlertMailer.eastbay_forecast(@user.email).deliver
@@ -78,7 +78,11 @@ describe AlertMailer do
     end
 
     it "renders the body" do
-      @mailer.body.encoded.should match("Greetings")
+      @mailer.body.encoded.should =~ /Greetings/
+      @mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
+      @mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
+      @mailer.body.encoded.should =~ /The Storm Savvy Team/
+      # @mailer.body.encoded.should match("Greetings")
     end
 
     it "delivers and receives mailer" do
@@ -87,7 +91,7 @@ describe AlertMailer do
     end
   end
 
-  describe "southbay_forecast" do
+  describe "#southbay_forecast" do
 
     before :each do
       @mailer = AlertMailer.southbay_forecast(@user.email).deliver
@@ -100,7 +104,11 @@ describe AlertMailer do
     end
 
     it "renders the body" do
-      @mailer.body.encoded.should match("Greetings")
+      @mailer.body.encoded.should =~ /Greetings/
+      @mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
+      @mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
+      @mailer.body.encoded.should =~ /The Storm Savvy Team/
+      # @mailer.body.encoded.should match("Greetings")
     end
 
     it "delivers and receives mailer" do
