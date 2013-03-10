@@ -120,7 +120,7 @@ describe NOAAForecast do
       ]
     }
 
-    @nf2.stub(:get_qpf_array).with(@zipcode) do
+    @nf2.stub(:get_qpf_array).with(@zipcode) {
 
 =begin
       # array not being returned correctly
