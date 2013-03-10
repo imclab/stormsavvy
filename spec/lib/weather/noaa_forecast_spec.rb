@@ -199,7 +199,7 @@ describe NOAAForecast do
 
   describe "#seven_day_weather" do
     it "returns array from seven_day_weather" do
-      forecast = @nf.seven_day_weather(@zipcode)
+      forecast = @nf2.seven_day_weather(@zipcode)
       forecast[0].size.should == @fullcount
     end
 
