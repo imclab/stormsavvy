@@ -166,9 +166,9 @@ describe NOAAForecast do
         {:rainfall=>"0"},
         {:rainfall=>"0"}
       ]
-    end
+    }
 
-    @nf2.stub(:get_time_pop_hash).with(@zipcode) do
+    @nf2.stub(:get_time_pop_hash).with(@zipcode) {
 
       time_array = []
       for t in 0..27
