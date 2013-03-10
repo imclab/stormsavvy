@@ -115,12 +115,13 @@ describe NOAAForecast do
     }
 
     @nf2.stub(:get_qpf_array).with(@zipcode) do
+=begin
       qpf_array = @qpf
       new_qpf_array = []
       qpf_array.each do |i|
         new_qpf_array << { :rainfall => qpf_array[i].to_s }
       end
-
+=end
       new_qpf_array = [
         {:rainfall=>"0"},
         {:rainfall=>"0"},
