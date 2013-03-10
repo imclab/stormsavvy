@@ -373,6 +373,9 @@ describe NOAAForecast do
         time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
       end
 
+      puts @nf2.get_time_pop_hash(@zipcode)
+      puts time_pop_hash
+
       @nf2.get_time_pop_hash(@zipcode).should == time_pop_hash
     end
   end
