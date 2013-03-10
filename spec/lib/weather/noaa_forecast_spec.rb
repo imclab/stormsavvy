@@ -167,6 +167,23 @@ describe NOAAForecast do
       for i in 0..27
         time_pop_hash << Hash[time_array[i]].update(Hash[new_pop_array[i]])
       end
+=end
+      time_array = []
+      for t in 0..27
+        time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
+      end
+
+      @nf2.seven_day_weather(@zipcode)
+      pop_array = @nf2.pop
+      new_pop_array = []
+      pop_array.each do |i|
+        new_pop_array << { :weather => i.to_s }
+      end
+
+      time_pop_hash = []
+      for h in 0..27
+        time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
+      end
     end
 
     @nf2.stub(:get_pop_table_hash).with(@zipcode) do
