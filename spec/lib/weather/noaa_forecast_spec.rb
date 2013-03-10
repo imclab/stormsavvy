@@ -243,7 +243,7 @@ describe NOAAForecast do
   end
 
   describe "#get_pop_array" do
-    xit "returns pop array" do
+    it "returns pop array" do
       @nf2.seven_day_weather(@zipcode)
       pop_array = @nf2.pop
 
