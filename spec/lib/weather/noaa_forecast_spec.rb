@@ -221,17 +221,19 @@ describe NOAAForecast do
         time_array[26].update(new_pop_array[26]),
         time_array[27].update(new_pop_array[27])
       ]
-    end
+    }
 
-    @nf2.stub(:get_pop_table_hash).with(@zipcode) do
-      time_pop_hash = @nf.get_time_pop_hash
+=begin
+    @nf2.stub(:get_pop_table_hash).with(@zipcode) {
+      time_pop_hash = @nf2.get_time_pop_hash
       new_qpf_array = @qpf
 
       pop_table_hash = []
       for i in 0..27
         pop_table_hash << Hash[time_pop_hash[i]].update(Hash[new_qpf_array[i]])
       end
-    end
+    }
+=end
 
     @forecast_array = [
       { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
