@@ -228,6 +228,7 @@ describe NOAAForecast do
       time_pop_hash = @nf2.get_time_pop_hash
       new_qpf_array = @qpf
 
+      # array not being returned correctly
       pop_table_hash = []
       for i in 0..27
         pop_table_hash << Hash[time_pop_hash[i]].update(Hash[new_qpf_array[i]])
@@ -429,6 +430,7 @@ describe NOAAForecast do
         new_pop_array << { :weather => i.to_s }
       end
 =begin
+      # array not being returned correctly
       time_pop_hash = []
       for h in 0..27
         time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
@@ -465,6 +467,7 @@ describe NOAAForecast do
         time_array[26].update(new_pop_array[26]),
         time_array[27].update(new_pop_array[27])
       ]
+
       # puts time_array
       # puts new_pop_array
       # puts time_array[0].update(new_pop_array[0])
@@ -504,6 +507,7 @@ describe NOAAForecast do
 
       time_pop_hash = @nf2.get_time_pop_hash(@zipcode)
 
+      # array not being returned correctly
       pop_table_hash = []
       for k in 0..27
         pop_table_hash << Hash[time_pop_hash[k]].update(Hash[new_qpf_array[k]])
