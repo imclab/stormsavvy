@@ -120,6 +120,41 @@ describe NOAAForecast do
       qpf_array.each do |i|
         new_qpf_array << { :rainfall => qpf_array[i].to_s }
       end
+
+      new_qpf_array = [
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"},
+        {:rainfall=>"0"}
+      ]
+
+      # debug collect method later
+      # qpf_array.collect {|i| new_qpf_array << { :rainfall => qpf_array[i].to_s } }
     end
 
     @nf2.stub(:get_time_pop_hash).with(@zipcode) do
