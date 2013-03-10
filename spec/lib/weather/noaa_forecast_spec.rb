@@ -475,14 +475,25 @@ describe NOAAForecast do
 
   describe "#pop_table_hash" do
     it "returns pop_table hash" do
-      # @nf2.seven_day_weather(@zipcode)
       qpf_array = @nf2.qpf
       new_qpf_array = []
       qpf_array.each do |i|
         new_qpf_array << { :rainfall => i.to_s }
       end
 
-      time_pop_hash = @nf2.get_time_pop_hash(@zipcode)
+      pop_array = @nf2.pop
+      new_pop_array = []
+      pop_array.each do |i|
+        new_pop_array << { :weather => i.to_s }
+      end
+
+      time_pop_hash = []
+=begin
+      for h in 0..27
+        time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
+      end
+=end
+      # time_pop_hash = @nf2.get_time_pop_hash(@zipcode)
       pop_table_hash = []
 
       for k in 0..27
