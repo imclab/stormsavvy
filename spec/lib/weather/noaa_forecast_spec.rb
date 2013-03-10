@@ -251,7 +251,7 @@ describe NOAAForecast do
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
       end
-      
+
       @nf2.get_pop_array(@zipcode).should == new_pop_array
     end
   end
@@ -308,7 +308,6 @@ describe NOAAForecast do
       for k in 0..27
         pop_table_hash << Hash[time_pop_hash[k]].update(Hash[new_qpf_array[k]])
       end
-
       @nf.get_pop_table_hash(@zipcode).should == pop_table_hash
     end
   end
