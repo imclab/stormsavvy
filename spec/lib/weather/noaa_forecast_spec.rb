@@ -347,21 +347,24 @@ describe NOAAForecast do
         new_qpf_array << { :rainfall => i.to_s }
       end
 
+      # puts @nf2.get_qpf_array(@zipcode)
+      # puts new_qpf_array
+
       @nf2.get_qpf_array(@zipcode).should == new_qpf_array
     end
   end
-  
+
   describe "#time_pop_hash" do
-    xit "returns time pop hash" do
+    it "returns time pop hash" do
       time_array = []
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
       @nf2.seven_day_weather(@zipcode)
-      # pop_array = @nf2.pop
+      pop_array = @nf2.pop
       new_pop_array = []
-      @pop.each do |i|
+      pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
       end
 
