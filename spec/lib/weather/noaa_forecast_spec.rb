@@ -159,7 +159,7 @@ describe NOAAForecast do
     end
 
     @nf2.stub(:get_time_pop_hash).with(@zipcode) do
-      # nf = NOAAForecast.new(zipcode)
+=begin
       time_array = @nf2.get_time_array
       new_pop_array = @nf2.get_pop_array(@zipcode)
 
