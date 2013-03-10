@@ -165,21 +165,10 @@ describe NOAAForecast do
         {:rainfall=>"0"},
         {:rainfall=>"0"}
       ]
-
-      # debug collect method later
-      # qpf_array.collect {|i| new_qpf_array << { :rainfall => qpf_array[i].to_s } }
     end
 
     @nf2.stub(:get_time_pop_hash).with(@zipcode) do
-=begin
-      time_array = @nf2.get_time_array
-      new_pop_array = @nf2.get_pop_array(@zipcode)
 
-      time_pop_hash = []
-      for i in 0..27
-        time_pop_hash << Hash[time_array[i]].update(Hash[new_pop_array[i]])
-      end
-=end
       time_array = []
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
