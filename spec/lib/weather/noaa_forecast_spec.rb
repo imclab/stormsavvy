@@ -16,7 +16,8 @@ describe NOAAForecast do
     # @nf2.seven_day_weather(@zipcode)
 
     pop= [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0]
-    qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    qpf = [99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]
+    # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     @pop = @nf2.pop
     @qpf = @nf2.qpf
@@ -67,8 +68,9 @@ describe NOAAForecast do
     }
 
     @nf2.stub(:qpf) {
-      qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      qpf = [99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]
       # may need to revert back later
+      # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
     }
 
@@ -136,35 +138,35 @@ describe NOAAForecast do
 
       # refactor into proper loop
       new_qpf_array = [
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"},
-        {:rainfall=>"0"}
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"},
+        {:rainfall=>"99"}
       ]
     }
 
