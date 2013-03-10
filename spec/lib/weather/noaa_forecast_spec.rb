@@ -301,6 +301,7 @@ describe NOAAForecast do
         { :date => ProjectLocalTime::format(Date.today + 168.hours), :weather => pop[28], :rainfall => qpf[28] }
         ]
     }
+  end # need this here for before :each block!
 
   it "instantiates class with valid zipcode" do
     @nf2.class.should == NOAAForecast
