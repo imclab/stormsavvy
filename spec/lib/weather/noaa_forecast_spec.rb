@@ -55,25 +55,64 @@ describe NOAAForecast do
       end
     end
 
-    @nf2.stub(:pop) do
-      pop = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
-    end
+    @nf2.stub(:pop) {
+      pop= [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0]
+      # pop = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
+    }
 
     @nf2.stub(:qpf) do
-      pop = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
+      qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
     end
 
     # @nf.stub(:pop) do
     #   IO.read("./spec/lib/weather/pop_stub_data.txt")
     # end
 
-    @nf2.stub(:get_pop_array).with(@zipcode) do
+    @nf2.stub(:get_pop_array).with(@zipcode) {
+=begin
+      # array not being returned in #get_pop_array spec correctly
       pop_array = @pop
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => pop_array[i].to_s }
       end
-    end
+=end
+      new_pop_array = [
+        {:weather=>"0"},
+        {:weather=>"0"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"5"},
+        {:weather=>"0"},
+        {:weather=>"0"},
+        {:weather=>"0"},
+        {:weather=>"0"},
+        {:weather=>"0"}
+      ]
+
+      # debug collect method later
+      # pop_array.collect {|i| new_pop_array << { :weather => pop_array[i].to_s } }
+    }
 
     @nf2.stub(:get_qpf_array).with(@zipcode) do
       qpf_array = @qpf
