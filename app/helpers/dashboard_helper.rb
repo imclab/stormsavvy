@@ -1,8 +1,7 @@
-module DashboardHelper
-
-
 require 'weather/noaa_forecast'
 require 'weather/forecast_examiner'
+
+module DashboardHelper
 
   attr_reader :rain_state, :max_rain
 
