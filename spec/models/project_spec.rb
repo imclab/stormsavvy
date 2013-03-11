@@ -28,7 +28,7 @@ describe Project do
   	  :finishdate => DateTime.new(2011),
   	  :active => true
   	}
-    
+
     @project1 = FactoryGirl.create(
       :project,
       :user => @user,
