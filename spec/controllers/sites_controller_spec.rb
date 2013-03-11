@@ -43,9 +43,16 @@ describe SitesController do
   end
 
   describe "GET show" do
+    before(:each) do
+      @project = @user.projects.create! project_attributes
+    end
+
     it "assigns the requested site as @site" do
       sign_in @user
-      @project = @user.projects.create! project_attributes
+
+      # moved to before block above
+      # @project = @user.projects.create! project_attributes
+
       site = @project.sites.create! valid_attributes
       # site = Site.create! valid_attributes
       get :show, {:id => site.to_param, :project_id => @project.id}, valid_session
