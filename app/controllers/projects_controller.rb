@@ -20,6 +20,11 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects.all
 
     @sites = @project.sites
+
+    @weather_events = WeatherEvent.all
+    @inspection_events = InspectionEvent.all
+
+    @completed_reports = Report.completed
     @needs_attention_reports = Report.needs_attention
 
     respond_to do |format|
