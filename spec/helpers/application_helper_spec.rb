@@ -39,6 +39,22 @@ describe ApplicationHelper do
     end
   end
 
+  describe '#projects' do
+    xit 'returns instance variable' do
+      projects = @user.projects.all
+      assign(:projects, projects)
+      helper.projects.should == @user.projects.all
+    end
+  end
+
+  describe '#sites' do
+    xit 'returns instance variable' do
+      sites = @user.sites.all
+      assign(:sites, sites)
+      helper.sites.should == @user.sites.all
+    end
+  end
+
   describe '#weather_events' do
     it 'returns the instance variable' do
       weather_events = WeatherEvent.all
