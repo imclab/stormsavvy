@@ -51,6 +51,14 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def projects
+    @projects = current_user.projects.all
+  end
+
+  def sites
+    @sites = current_user.sites.all
+  end
+
   def weather_events
     @weather_events = WeatherEvent.all
   end
