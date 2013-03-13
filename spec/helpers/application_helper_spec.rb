@@ -38,4 +38,36 @@ describe ApplicationHelper do
       devise_mapping.should == @devise_mapping
     end
   end
+
+  describe '#weather_events' do
+    it 'returns the instance variable' do
+      weather_events = WeatherEvent.all
+      assign(:weather_event, weather_events)
+      helper.weather_events.should == WeatherEvent.all
+    end
+  end
+
+  describe '#inspection_events' do
+    it 'returns the instance variable' do
+      inspection_events = InspectionEvent.all
+      assign(:inspection_event, inspection_events)
+      helper.inspection_events.should == InspectionEvent.all
+    end
+  end
+
+  describe '#completed_reports' do
+    it 'returns the instance variable' do
+      completed_reports = Report.completed
+      assign(:completed_reports, completed_reports)
+      helper.completed_reports.should == Report.completed
+    end
+  end
+
+  describe '#needs_attention_reports' do
+    it 'returns the instance variable' do
+      needs_attention_reports = Report.needs_attention
+      assign(:needs_attention, needs_attention_reports)
+      helper.needs_attention_reports.should == Report.needs_attention
+    end
+  end
 end
