@@ -50,4 +50,20 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def weather_events
+    @weather_events = WeatherEvent.all
+  end
+
+  def inspection_events
+    @inspection_events = InspectionEvent.all
+  end
+
+  def completed_reports
+    @completed_reports = Report.completed
+  end
+
+  def needs_attention_reports
+    @needs_attention_reports = Report.needs_attention
+  end
 end
