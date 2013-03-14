@@ -20,6 +20,11 @@ describe "dashboard/_sidebar" do
 
   describe "index page components" do
 
+    it 'loads instance variables' do
+      @projects.should be_valid
+      @sites.should be_valid
+    end
+
     it "shows sidebar to signed in user" do
       # render
       rendered.should have_selector('div#dashboard-sidebar')
