@@ -54,8 +54,14 @@ describe DashboardController do
 
   describe "pig pen variables" do
     it 'returns requested objects' do
+      sign_in @user
+
       @projects.should == @user.projects.all
+      @user.projects.empty?.should be_false
+
       @sites.should == @user.sites.all # nested attribute
+      @user.sites.empty?.should be_false
+
       # @weather_events.should == @site.weather_events.all
       @inspection_events.should == @site.inspection_events.all
     end
