@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "dashboard/sidebar" do
+describe "dashboard/_sidebar" do
 
   def site_attributes
     { :name => 'Foo bar', :zipcode => '94530' }
