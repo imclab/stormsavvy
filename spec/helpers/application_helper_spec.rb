@@ -92,7 +92,7 @@ describe ApplicationHelper do
   end
 
   describe '#completed_reports' do
-    xit 'returns the instance variable' do
+    it 'returns the instance variable' do
       completed_reports = Report.completed
       assign(:completed_reports, completed_reports)
       helper.completed_reports.should == Report.completed
@@ -100,7 +100,7 @@ describe ApplicationHelper do
   end
 
   describe '#needs_attention_reports' do
-    xit 'returns the instance variable' do
+    it 'returns the instance variable' do
       needs_attention_reports = Report.needs_attention
       assign(:needs_attention, needs_attention_reports)
       helper.needs_attention_reports.should == Report.needs_attention
