@@ -59,7 +59,7 @@ describe ApplicationHelper do
   describe '#projects' do
     it 'returns instance variable' do
       puts @projects
-      puts @user.projects
+      puts @user.projects.class
 
       projects = @user.projects.all
       assign(:projects, projects)
