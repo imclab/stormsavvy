@@ -2,6 +2,23 @@ require 'spec_helper'
 
 describe ApplicationHelper do
 
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    @project = FactoryGirl.create(
+      :project,
+      :user => @user,
+      :created_at => 1.day.ago
+      )
+    @projects = [@project]
+
+    @site = FactoryGirl.create(
+      :site,
+      :project => @project,
+      :name => 'ec jungle gym',
+      :zipcode => 94530
+      )
+  end
+
   describe '#twitterized_type' do
     it "responds to twitterized_type" do
       helper.should respond_to :twitterized_type
