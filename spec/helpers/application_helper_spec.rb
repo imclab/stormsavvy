@@ -58,6 +58,9 @@ describe ApplicationHelper do
 
   describe '#projects' do
     it 'returns instance variable' do
+      puts @projects
+      puts @user.projects
+
       projects = @user.projects.all
       assign(:projects, projects)
       helper.projects.should == @user.projects.all
