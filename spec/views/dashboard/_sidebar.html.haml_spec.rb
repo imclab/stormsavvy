@@ -19,7 +19,7 @@ describe "dashboard/_sidebar" do
   end
 
   describe "index page components" do
-
+=begin
     it 'loads instance variables' do
       @projects.should be_valid
       @sites.should be_valid
@@ -49,5 +49,6 @@ describe "dashboard/_sidebar" do
       rendered.should =~ /CEM 2045 REAP Report/
       rendered.should =~ /CEM 4601 Daily Report/
     end
+=end
   end
 end
