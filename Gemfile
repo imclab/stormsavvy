@@ -4,7 +4,7 @@ gem 'rake'
 gem 'rails'
 gem 'typhoeus'
 gem 'nokogiri'
-gem 'geocoder', :git => "git://github.com/doolin/geocoder.git" # :github => 'doolin/geocoder'
+gem 'geocoder'# , :git => "git://github.com/doolin/geocoder.git" # :github => 'doolin/geocoder'
 gem 'devise'
 gem 'pg'
 gem 'redis'
@@ -50,7 +50,6 @@ group :test, :development do
 
   # comment out when running bundle update
   gem 'email_spec'
-  # gem 'email_spec', :git => "git://github.com/WalterYu/email-spec.git"
 
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
