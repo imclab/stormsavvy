@@ -8,12 +8,6 @@ GIT
       ruby-rc4
       ttfunk (~> 1.0.3)
 
-GIT
-  remote: git://github.com/doolin/geocoder.git
-  revision: 660f4934b87e5e663f368a1092ab16b31f97caa3
-  specs:
-    geocoder (1.1.4)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -128,6 +122,7 @@ GEM
     ffi (1.4.0)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    geocoder (1.1.6)
     gherkin (2.11.6)
       json (>= 1.7.6)
     haml (4.0.0)
@@ -318,7 +313,7 @@ DEPENDENCIES
   devise
   email_spec
   factory_girl_rails
-  geocoder!
+  geocoder
   haml-rails
   jquery-rails
   letter_opener

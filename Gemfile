@@ -49,7 +49,7 @@ group :test, :development do
   gem 'spork-rails'
 
   # comment out when running bundle update
-  gem 'email_spec'
+  # gem 'email_spec'
 
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
