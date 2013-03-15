@@ -49,7 +49,7 @@ group :test, :development do
   gem 'spork-rails'
 
   # comment out when running bundle update
-  # gem 'email_spec', "1.4.0"
+  gem 'email_spec'
   # gem 'email_spec', :git => "git://github.com/WalterYu/email-spec.git"
 
   gem 'awesome_print'
