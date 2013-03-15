@@ -4,7 +4,8 @@ gem 'rake'
 gem 'rails'
 gem 'typhoeus'
 gem 'nokogiri'
-gem 'geocoder'# , :git => "git://github.com/doolin/geocoder.git" # :github => 'doolin/geocoder'
+# gem 'geocoder', :git => "git://github.com/doolin/geocoder.git"
+gem 'geocoder' , :git => "git://github.com/alexreisner/geocoder"
 gem 'devise'
 gem 'pg'
 gem 'redis'
