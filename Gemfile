@@ -50,7 +50,7 @@ group :test, :development do
 
   # comment out when running bundle update
   # gem 'email_spec', "1.4.0"
-  gem 'email_spec', :git => "git://github.com/WalterYu/email-spec.git"
+  # gem 'email_spec', :git => "git://github.com/WalterYu/email-spec.git"
 
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
