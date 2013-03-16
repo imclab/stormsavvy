@@ -24,14 +24,16 @@ class RainEventWorkflow < ActiveRecord::Base
   def start_rain_event_workflow
     check_cem2030
     if cem2030?
-      "CEM2030 prepared"
-      Report.create(:type => 'CEM2030')
+      puts "CEM2030 prepared"
+      # throws type column error in active_admin
+      # Report.create(:type => 'CEM2030')
     end
 
     check_reap
     if reap?
-      "REAP prepared"
-      Report.create(:type => 'CEM2045')
+      puts "REAP prepared"
+      # throws type column error in active_admin
+      # Report.create(:type => 'CEM2045')
     end
   end
 
