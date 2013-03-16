@@ -27,7 +27,7 @@ describe SamplingEventWorkflow do
     @sew.hours_before_rain = 24
     @sew.chance_of_rain = 55
     @sew.cem2052 = false
-    @sew.check_cem2052.should =~ /CEM2052 prepared/    
+    @sew.check_cem2052.should =~ /CEM2052 prepared/
   end
 
   it "should check on CEM2052 status 24 hours before rain" do
