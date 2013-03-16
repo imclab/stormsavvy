@@ -4,12 +4,12 @@ require 'time'
 class InspectionEventWorkflow < ActiveRecord::Base
 
   attr_accessible :amount_of_rain,
-    :cem2023,
-    :cem2024,
-    :cem2030,
-    :cem2034,
-    :cem2035,
-    :cem2040,
+    # :cem2023,
+    # :cem2024,
+    # :cem2030,
+    # :cem2034,
+    # :cem2035,
+    # :cem2040,
     :chance_of_rain,
     :during_storm_inspection,
     :forecast_rain,
