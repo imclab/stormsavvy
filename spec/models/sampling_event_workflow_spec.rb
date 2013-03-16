@@ -36,7 +36,7 @@ describe SamplingEventWorkflow do
     @sew.cem2052 = true
     @sew.check_cem2052.should_not =~ /CEM2052 prepared/
   end
-  
+
   it "should check to see if sampling is imminent" do
     @sew.hours_before_rain = 23
     @sew.chance_of_rain = 55
