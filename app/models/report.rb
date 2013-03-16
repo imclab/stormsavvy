@@ -7,7 +7,7 @@ class Report < ActiveRecord::Base
 
   attr_accessible :needs_attention,
     :completed,
-    :type,
+    # :type,
     :site_information_name,
     :site_address_1,
     :site_address_2,

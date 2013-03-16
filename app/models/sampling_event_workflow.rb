@@ -20,20 +20,22 @@ class SamplingEventWorkflow < ActiveRecord::Base
   def start_sampling_event_workflow
     check_sampling_event
     if sampling_event?
-      "Sampling Event prepared"
+      puts "Sampling Event prepared"
       SamplingEvent.create
     end
 
     check_cem2051
     if cem2051?
-      "CEM2051 prepared"
-      Report.create(:type => 'CEM2051')
+      puts "CEM2051 prepared"
+      # throws type column error in active_admin
+      # Report.create(:type => 'CEM2051')
     end
 
     check_cem2052
     if cem2052?
-      "CEM2052 prepared"
-      Report.create(:type => 'CEM2052')
+      puts "CEM2052 prepared"
+      # throws type column error in active_admin
+      # Report.create(:type => 'CEM2052')
     end
   end
 
