@@ -50,7 +50,7 @@ class RainEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2030
     self.cem2030 = true #unless reap_borked?
-    "CEM2030 prepared"
+    puts "CEM2030 prepared"
   end
 
   def check_reap
@@ -59,6 +59,6 @@ class RainEventWorkflow < ActiveRecord::Base
 
   def prepare_reap
     self.reap = true #unless reap_borked?
-    "REAP prepared"
+    puts "REAP prepared"
   end
 end
