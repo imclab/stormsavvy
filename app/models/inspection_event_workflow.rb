@@ -38,6 +38,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
   def start_inspection_event_workflow
     check_inspection_event
     check_cem2023
+    if cem2023?
+      "CEM2023 prepared"
+    end
 
     check_cem2024
     if cem2024?
