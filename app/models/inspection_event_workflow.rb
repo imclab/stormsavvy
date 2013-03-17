@@ -167,6 +167,14 @@ class InspectionEventWorkflow < ActiveRecord::Base
   end
 
   def prepare_cem2040
+    InspectionEvent.create(
+      :inspection_date => Date.today
+    )
+
+    # place into user loop later
+    # User.all.each do
+    # end
+
     self.cem2040 = true
     "CEM2040 prepared"
   end
