@@ -1,2 +1,3 @@
 #!/bin/bash
-rails g migration AddStatusToSamplingEvent status:boolean
+rails g migration AddCompletedToSamplingEvent completed:boolean
+# rails g migration AddStatusToSamplingEvent status:string
