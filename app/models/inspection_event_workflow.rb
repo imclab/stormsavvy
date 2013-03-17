@@ -127,8 +127,15 @@ class InspectionEventWorkflow < ActiveRecord::Base
   end
 
   def prepare_inspection_event
+    InspectionEvent.create
     self.inspection_event = true
-    "Inspection event prepared"
+
+    if inspection_event?
+      User.all.each do
+        # InspectionEvent.create
+        # "Inspection event created"
+      end
+    end
   end
 
   def check_cem2023
