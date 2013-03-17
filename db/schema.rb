@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317214752) do
+ActiveRecord::Schema.define(:version => 20130317224049) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20130317214752) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.string   "status"
+    t.boolean  "completed"
   end
 
   create_table "locations", :force => true do |t|
@@ -277,6 +278,7 @@ ActiveRecord::Schema.define(:version => 20130317214752) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.boolean  "status"
+    t.boolean  "completed"
   end
 
   create_table "site_pops", :force => true do |t|
