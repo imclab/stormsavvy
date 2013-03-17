@@ -47,7 +47,7 @@ describe InspectionEventWorkflow do
         if @iew.check_cem2024
           @iew.prepare_cem2024
         end
-      end.should change(Report, :count).by(0) # change count later
+      end.should change(InspectionEventWorkflow, :count).by(1) # change count later
     end
   end
 
@@ -57,7 +57,7 @@ describe InspectionEventWorkflow do
         if @iew.check_cem2030
           @iew.prepare_cem2030
         end
-      end.should change(Report, :count).by(0) # change count later
+      end.should change(InspectionEventWorkflow, :count).by(1) # change count later
     end
   end
 
@@ -67,7 +67,7 @@ describe InspectionEventWorkflow do
         if @iew.check_cem2034
           @iew.prepare_cem2034
         end
-      end.should change(Report, :count).by(0) # change count later
+      end.should change(InspectionEventWorkflow, :count).by(1) # change count later
     end
   end
 
@@ -77,7 +77,7 @@ describe InspectionEventWorkflow do
         if @iew.check_cem2035
           @iew.prepare_cem2035
         end
-      end.should change(Report, :count).by(0) # change count later
+      end.should change(InspectionEventWorkflow, :count).by(1) # change count later
     end
   end
 
@@ -87,7 +87,7 @@ describe InspectionEventWorkflow do
         if @iew.check_cem2040
           @iew.prepare_cem2040
         end
-      end.should change(Report, :count).by(0) # change count later
+      end.should change(InspectionEventWorkflow, :count).by(1) # change count later
     end
   end
 
