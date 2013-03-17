@@ -68,6 +68,11 @@ class InspectionEventWorkflow < ActiveRecord::Base
     InspectionEvent.create(
       :inspection_date => Date.today
     )
+
+    # place into user loop later
+    # User.all.each do
+    # end
+
     self.inspection_event = true
 
     if inspection_event?
@@ -83,6 +88,25 @@ class InspectionEventWorkflow < ActiveRecord::Base
   end
 
   def prepare_cem2023
+    InspectionEvent.create(
+      :inspection_date => Date.today
+    )
+
+    # place into user loop later
+    # User.all.each do
+    # end
+
+    self.cem2023 = true
+
+    if cem2023?
+      User.all.each do
+        # named scopes railscast: http://goo.gl/bPgj
+        # ie = InspectionEvent.needs_attention.build
+        # ie.save
+        "CEM2023 prepared"
+      end
+    end
+
     self.cem2023 = true
     "CEM2023 prepared"
   end
