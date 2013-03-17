@@ -46,7 +46,7 @@ describe SamplingEventWorkflow do
       if @sew.sampling_imminent?
         @sew.start_sampling_event_workflow
       end
-    end.should change(SamplingEvent, :count).by(2) # double-count?
+    end.should change(SamplingEvent, :count).by(1) # double-count?
   end
 
   it "should check to see whether it has rained" do
