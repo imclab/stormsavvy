@@ -51,9 +51,14 @@ class SamplingEventWorkflow < ActiveRecord::Base
   end
 
   def prepare_cem2051
-    SamplingEvent.create(
+    se = SamplingEvent.needs_attention.build(
       :sampling_date => Date.today
     )
+    se.save
+    # SamplingEvent.create(
+    #   :sampling_date => Date.today,
+    #   :status => "needs_attention"
+    # )
 
     self.cem2051 = true
     "CEM2051 prepared"
