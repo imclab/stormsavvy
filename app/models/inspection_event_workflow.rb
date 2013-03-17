@@ -76,6 +76,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
 =end
       "CEM2024 prepared"
     end
+
 =begin
     # debug no method error
     check_cem2030
@@ -86,7 +87,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
           :status => "needs attention"
         )
       end
-      puts "CEM2030 prepared"
+      "CEM2030 prepared"
     end
 =end
     check_cem2034
@@ -99,7 +100,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
           :status => "needs attention"
         )
       end
-      puts "CEM2034 prepared"
+      "CEM2034 prepared"
 =end
     end
 
@@ -113,7 +114,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
           :status => "needs attention"
           )
       end
-      puts "CEM2035 prepared"
+      "CEM2035 prepared"
 =end
     end
 
@@ -127,7 +128,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
           :status => "needs attention"
           )
       end
-      puts "CEM2040 prepared"
+      "CEM2040 prepared"
 =end
     end
   end
