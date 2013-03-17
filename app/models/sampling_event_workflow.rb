@@ -13,9 +13,6 @@ class SamplingEventWorkflow < ActiveRecord::Base
     :forecast_rain,
     :sampling_event
 
-  # Send message to dashboard when sampling_imminent? == true
-  # CEM2051, CEM 2052
-
   # need this for current_user and sites but throws error
   # def initialize(site)
   #   @site = site
