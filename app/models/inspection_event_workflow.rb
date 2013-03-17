@@ -127,7 +127,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
   end
 
   def prepare_inspection_event
-    InspectionEvent.create
+    InspectionEvent.create(
+      :inspection_date => Date.today
+    )
     self.inspection_event = true
 
     if inspection_event?
