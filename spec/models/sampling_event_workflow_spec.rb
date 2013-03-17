@@ -26,10 +26,10 @@ describe SamplingEventWorkflow do
       @sew.check_cem2051
     }.to change(SamplingEvent, :count).by(1)
 
-    se = SamplingEvent.create(
-      :status => "needs_attention"
-    )
-    puts se.needs_attention
+    # se = SamplingEvent.create(
+    #   :completed => false
+    # )
+    # puts se.completed
 
     # SamplingEvent.needs_attention.all.should == 1
 
