@@ -45,12 +45,12 @@ describe SitesController do
 
   describe "GET show" do
     it "assigns the requested site as @site" do
-
-      # moved to before block above
       @project = @user.projects.create! project_attributes
-
       site = @project.sites.create! valid_attributes
+
+      # not valid for nested attributes
       # site = Site.create! valid_attributes
+
       get :show, {:id => site.to_param, :project_id => @project.id}#, valid_session
       assigns(:site).should eq(site)
     end
@@ -65,7 +65,6 @@ describe SitesController do
 
   describe "GET edit" do
     it "assigns the requested site as @site" do
-      # sign_in @user
       @project = @user.projects.create! project_attributes
       site = @project.sites.create! valid_attributes
       get :edit, {:id => site.to_param, :project_id => @project.id}
