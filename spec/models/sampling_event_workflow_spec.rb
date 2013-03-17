@@ -2,6 +2,15 @@ require 'spec_helper'
 
 describe SamplingEventWorkflow do
   before(:each) do
+    @user = FactoryGirl.create(:user)
+    @project = FactoryGirl.create(
+      :project,
+      :user => @user
+    )
+    @site = FactoryGirl.create(
+      :site,
+      :project => @project
+    )
     @sew = FactoryGirl.create(:sampling_event_workflow)
   end
 
