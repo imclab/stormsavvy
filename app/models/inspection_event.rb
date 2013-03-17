@@ -1,7 +1,11 @@
 class InspectionEvent < ActiveRecord::Base
 
-  scope :needs_attention, where(status: "needs_attention")
-  scope :completed, where(status: "completed")
+  # no status attribute for named scope
+  # scope :needs_attention, where(status: "needs_attention")
+  # scope :completed, where(status: "completed")
+
+  scope :needs_attention, where(:inspection_type => "needs_attention")
+  scope :completed, where(:inspection_type => "completed")
 
   belongs_to :site
 
