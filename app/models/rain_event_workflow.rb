@@ -24,14 +24,14 @@ class RainEventWorkflow < ActiveRecord::Base
   def start_rain_event_workflow
     check_cem2030
     if cem2030?
-      puts "CEM2030 prepared"
+      "CEM2030 prepared"
       # throws type column error in active_admin
-      # Report.create(:type => 'CEM2030')
+      # Report.create
     end
 
     check_reap
     if reap?
-      puts "REAP prepared"
+      "REAP prepared"
       # throws type column error in active_admin
       # Report.create(:type => 'CEM2045')
     end
@@ -50,7 +50,7 @@ class RainEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2030
     self.cem2030 = true #unless reap_borked?
-    puts "CEM2030 prepared"
+    "CEM2030 prepared"
   end
 
   def check_reap
@@ -59,6 +59,6 @@ class RainEventWorkflow < ActiveRecord::Base
 
   def prepare_reap
     self.reap = true #unless reap_borked?
-    puts "REAP prepared"
+    "REAP prepared"
   end
 end
