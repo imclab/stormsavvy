@@ -4,8 +4,10 @@ class DashboardController < ApplicationController
   def index
     redirect_to index_path unless user_signed_in?
     if current_user
-      @projects = current_user.projects.all
-      @sites = current_user.sites.all
+
+      # throws no method error on projects
+      # @projects = current_user.projects.all
+      # @sites = current_user.sites.all
 
       @weather_events = WeatherEvent.all
       @inspection_events = InspectionEvent.needs_attention.all

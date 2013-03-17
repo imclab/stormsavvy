@@ -20,7 +20,11 @@ class SitesController < ApplicationController
   def show
     @site = Site.find(params[:id])
 
-    @projects = current_user.projects.all
+    @project = Project.find(params[:project_id])
+
+    # throws no method error on projects
+    # @projects = current_user.projects.all
+
     @completed_reports = @site.reports.completed
     @needs_attention_reports = @site.reports.needs_attention
 
