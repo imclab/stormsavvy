@@ -1,12 +1,22 @@
 class SamplingEventWorkflow < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :site
+  attr_accessible :site,
+    :cem2051,
+    :cem2052,
+    :hours_before_rain,
+    :ph_sample,
+    :turbidity,
+    :report_sent,
+    :report_received,
+    :chance_of_rain,
+    :amount_of_rain,
+    :forecast_rain,
+    :sampling_event
 
   # Send message to dashboard when sampling_imminent? == true
   # CEM2051, CEM 2052
-  # Does this have to be done before every rain
-  # Check for project type, i.e., construction
 
+  # need this for current_user and sites but throws error
   # def initialize(site)
   #   @site = site
   # end
