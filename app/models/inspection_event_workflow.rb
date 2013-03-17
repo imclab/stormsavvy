@@ -43,7 +43,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
         InspectionEvent.create
       end
 =end
-      puts "Inspection Event prepared"
+      "Inspection Event prepared"
     end
 
     check_cem2023
@@ -74,7 +74,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
           )
       end
 =end
-      puts "CEM2024 prepared"
+      "CEM2024 prepared"
     end
 =begin
     # debug no method error
