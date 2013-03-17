@@ -77,6 +77,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
     # end
 
     self.inspection_event = true
+    "Inspection event prepared"
 
     if inspection_event?
       User.all.each do
