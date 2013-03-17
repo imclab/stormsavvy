@@ -58,7 +58,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
           :type => "cem2023",
           :status => "needs attention"
           )
-      puts "CEM2023 prepared"
+      "CEM2023 prepared"
 =end
       end
     end
