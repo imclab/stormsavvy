@@ -41,54 +41,48 @@ describe InspectionEventWorkflow do
     end
   end
 
-  describe '#check_cem2024' do
-    it 'creates new CEM2024 if none exists' do
-      lambda do
-        if @iew.check_cem2024
-          @iew.prepare_cem2024
-        end
-      end.should change(InspectionEventWorkflow, :count).by(1) # change count later
+  describe '#check_cem2023' do
+    it 'creates new CEM2023 if none exists' do
+      expect {
+        @iew.cem2023 = false
+        @iew.prepare_cem2023
+      }.to change(InspectionEvent, :count).by(1)
     end
   end
 
-  describe '#check_cem2030' do
-    it 'creates new CEM2030 if none exists' do
-      lambda do
-        if @iew.check_cem2030
-          @iew.prepare_cem2030
-        end
-      end.should change(InspectionEventWorkflow, :count).by(1) # change count later
+  describe '#check_cem2024' do
+    it 'creates new CEM2024 if none exists' do
+      expect {
+        @iew.cem2024 = false
+        @iew.prepare_cem2024
+      }.to change(InspectionEvent, :count).by(1)
     end
   end
 
   describe '#check_cem2034' do
     it 'creates new CEM2034 if none exists' do
-      lambda do
-        if @iew.check_cem2034
-          @iew.prepare_cem2034
-        end
-      end.should change(InspectionEventWorkflow, :count).by(1) # change count later
+      expect {
+        @iew.cem2034 = false
+        @iew.prepare_cem2034
+      }.to change(InspectionEvent, :count).by(1)
     end
   end
 
   describe '#check_cem2035' do
     it 'creates new CEM2035 if none exists' do
-      lambda do
-        if @iew.check_cem2035
-          @iew.prepare_cem2035
-        end
-      end.should change(InspectionEventWorkflow, :count).by(1) # change count later
+      expect {
+        @iew.cem2035 = false
+        @iew.prepare_cem2035
+      }.to change(InspectionEvent, :count).by(1)
     end
   end
 
   describe '#check_cem2040' do
     it 'creates new CEM2040 if none exists' do
-      lambda do
-        if @iew.check_cem2040
-          @iew.prepare_cem2040
-        end
-      end.should change(InspectionEventWorkflow, :count).by(1) # change count later
+      expect {
+        @iew.cem2040 = false
+        @iew.prepare_cem2040
+      }.to change(InspectionEvent, :count).by(1)
     end
   end
-
 end
