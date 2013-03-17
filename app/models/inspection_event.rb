@@ -16,6 +16,7 @@ class InspectionEvent < ActiveRecord::Base
     :site_id,
     :submitted_by,
     :status,
+    :completed,
     :attachment # s3 uploads via paperclip
 
   has_attached_file :attachment,
