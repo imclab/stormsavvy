@@ -26,6 +26,13 @@ describe SamplingEventWorkflow do
       @sew.check_cem2051
     }.to change(SamplingEvent, :count).by(1)
 
+    se = SamplingEvent.create(
+      :status => "needs_attention"
+    )
+    puts se.needs_attention
+
+    # SamplingEvent.needs_attention.all.should == 1
+
     # @sew.check_cem2051.should =~ /CEM2051 prepared/
   end
 
