@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20130317214752) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.string   "status"
   end
 
   create_table "locations", :force => true do |t|
