@@ -2,6 +2,15 @@ require 'spec_helper'
 
 describe InspectionEventWorkflow do
   before(:each) do
+    @user = FactoryGirl.create(:user)
+    @project = FactoryGirl.create(
+      :project,
+      :user => @user
+    )
+    @site = FactoryGirl.create(
+      :site,
+      :project => @project
+    )
     @iew = FactoryGirl.create(:inspection_event_workflow)
   end
 
