@@ -116,18 +116,16 @@ class InspectionEventWorkflow < ActiveRecord::Base
   end
 
   def prepare_cem2024
+    InspectionEvent.create(
+      :inspection_date => Date.today
+    )
+
+    # place into user loop later
+    # User.all.each do
+    # end
+
     self.cem2024 = true
     "CEM2024 prepared"
-  end
-
-  def check_cem2030
-    # cem2030 throws no method error...
-    # prepare_cem2030 unless self.cem2030?
-  end
-
-  def prepare_cem2030
-    self.cem2030 = true
-    "CEM2030 prepared"
   end
 
   def check_cem2034
