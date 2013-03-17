@@ -1,2 +1,3 @@
 #!/bin/bash
-rails g migration AddStatusToInspectionEvent status:string
+rails g migration AddCompletedToInspectionEvent completed:boolean
+# rails g migration AddStatusToInspectionEvent status:string
