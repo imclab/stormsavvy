@@ -54,7 +54,11 @@ class SamplingEventWorkflow < ActiveRecord::Base
   end
 
   def prepare_cem2051
-    self.cem2051 = true #unless reap_borked?
+    SamplingEvent.create(
+      :sampling_date => Date.today
+    )
+
+    self.cem2051 = true
     "CEM2051 prepared"
   end
 
@@ -63,7 +67,11 @@ class SamplingEventWorkflow < ActiveRecord::Base
   end
 
   def prepare_cem2052
-    self.cem2052 = true #unless reap_borked?
+    SamplingEvent.create(
+      :sampling_date => Date.today
+    )
+
+    self.cem2052 = true
     "CEM2052 prepared"
   end
 
@@ -72,7 +80,11 @@ class SamplingEventWorkflow < ActiveRecord::Base
   end
 
   def prepare_sampling_event
-    self.sampling_event = true #unless reap_borked?
+    SamplingEvent.create(
+      :sampling_date => Date.today
+    )
+
+    self.sampling_event = true
     "Sampling Event prepared"
   end
 end
