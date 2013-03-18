@@ -53,6 +53,8 @@ describe InspectionEventWorkflow do
         @iew.cem2023 = false
         @iew.prepare_cem2023
       }.to change(InspectionEvent.where(:completed => false), :count).by(1)
+
+      @iew.cem2023.should == true
     end
   end
 
@@ -62,6 +64,8 @@ describe InspectionEventWorkflow do
         @iew.cem2024 = false
         @iew.prepare_cem2024
       }.to change(InspectionEvent.where(:completed => false), :count).by(1)
+
+      @iew.cem2024.should == true
     end
   end
 
@@ -71,6 +75,8 @@ describe InspectionEventWorkflow do
         @iew.cem2034 = false
         @iew.prepare_cem2034
       }.to change(InspectionEvent.where(:completed => false), :count).by(1)
+
+      @iew.cem2034.should == true
     end
   end
 
@@ -80,6 +86,8 @@ describe InspectionEventWorkflow do
         @iew.cem2035 = false
         @iew.prepare_cem2035
       }.to change(InspectionEvent.where(:completed => false), :count).by(1)
+
+      @iew.cem2035.should == true
     end
   end
 
@@ -88,7 +96,9 @@ describe InspectionEventWorkflow do
       expect {
         @iew.cem2040 = false
         @iew.prepare_cem2040
-      }.to change(InspectionEvent, :count).by(1)
+      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
+
+      @iew.cem2040.should == true
     end
   end
 end
