@@ -75,7 +75,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_inspection_event
     InspectionEvent.create(
-      :inspection_date => Date.today
+      :inspection_date => Date.today,
+      :completed => false
     )
 
     # place into user loop later
@@ -99,7 +100,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2023
     InspectionEvent.create(
-      :inspection_date => Date.today
+      :inspection_date => Date.today,
+      :completed => false
     )
 
     # place into user loop later
@@ -127,7 +129,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2024
     InspectionEvent.create(
-      :inspection_date => Date.today
+      :inspection_date => Date.today,
+      :completed => false
     )
 
     # place into user loop later
@@ -144,7 +147,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2034
     InspectionEvent.create(
-      :inspection_date => Date.today
+      :inspection_date => Date.today,
+      :completed => false
     )
 
     # place into user loop later
@@ -161,7 +165,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2035
     InspectionEvent.create(
-      :inspection_date => Date.today
+      :inspection_date => Date.today,
+      :completed => false
     )
 
     # place into user loop later
@@ -178,7 +183,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2040
     InspectionEvent.create(
-      :inspection_date => Date.today
+      :inspection_date => Date.today,
+      :completed => false
     )
 
     # place into user loop later
