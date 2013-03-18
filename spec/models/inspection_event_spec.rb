@@ -21,15 +21,24 @@ describe InspectionEvent do
   	@inspection_event.inspection_date.should == "2013-01-26 23:13:55"
   	@inspection_event.submitted_by.should == "wyu"
   	@inspection_event.inspected_by.should == "wyu"
+  	@inspection_event.completed.should == false
   end
 
   it "creates a new instance given valid attributes" do
     @inspection_event = InspectionEvent.new(@attr)
     @inspection_event.save
     @inspection_event.should be_valid
+  end
 
-    ie = InspectionEvent.needs_attention.build
-    ie.should be_valid
+  describe "nested scope attributes" do
+    it 'has valid needs_attention attribute' do
+      ie = InspectionEvent.needs_attention.build
+      ie.should be_valid
+    end
+
+    it 'has valid completed attribute' do
+      ie = FactoryGirl.create(:inspection_event)
+    end
   end
 
   describe "inspection_event associations" do

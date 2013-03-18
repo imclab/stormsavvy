@@ -25,7 +25,7 @@ describe InspectionEventWorkflow do
         @iew.chance_of_rain = 55
         @iew.pre_storm_inspection = false
         @iew.check_inspection_event
-      }.to change(InspectionEvent, :count).by(1)
+      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
     end
 
     it "checks on pre-storm inspection status 24 hours before rain" do
@@ -34,7 +34,7 @@ describe InspectionEventWorkflow do
         @iew.chance_of_rain = 55
         @iew.pre_storm_inspection = true
         @iew.check_inspection_event
-      }.to change(InspectionEvent, :count).by(1)
+      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
     end
   end
 
@@ -52,7 +52,7 @@ describe InspectionEventWorkflow do
       expect {
         @iew.cem2023 = false
         @iew.prepare_cem2023
-      }.to change(InspectionEvent, :count).by(1)
+      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
     end
   end
 
@@ -61,7 +61,7 @@ describe InspectionEventWorkflow do
       expect {
         @iew.cem2024 = false
         @iew.prepare_cem2024
-      }.to change(InspectionEvent, :count).by(1)
+      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
     end
   end
 
@@ -70,7 +70,7 @@ describe InspectionEventWorkflow do
       expect {
         @iew.cem2034 = false
         @iew.prepare_cem2034
-      }.to change(InspectionEvent, :count).by(1)
+      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
     end
   end
 
@@ -79,7 +79,7 @@ describe InspectionEventWorkflow do
       expect {
         @iew.cem2035 = false
         @iew.prepare_cem2035
-      }.to change(InspectionEvent, :count).by(1)
+      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
     end
   end
 
