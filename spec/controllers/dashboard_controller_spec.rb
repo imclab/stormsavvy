@@ -63,16 +63,12 @@ describe DashboardController do
       @user.sites.empty?.should be_false
 
       # @weather_events.should == @site.weather_events.all
-      @inspection_events.should == @site.inspection_events.all
     end
   end
 
   describe "inspection event variables" do
     it "returns inspection events that need attention" do
-      lambda do
-        ie = InspectionEvent.needs_attention.build
-        ie.save
-      end.should change(InspectionEvent.needs_attention, :count).by(1)
+      @inspection_events.should == @site.inspection_events.where(:completed => false)
     end
   end
 end
