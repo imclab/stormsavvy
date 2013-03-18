@@ -43,6 +43,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def start_inspection_event_workflow
     check_inspection_event
+
     check_cem2023
     if cem2023?
       "CEM2023 prepared"
@@ -76,6 +77,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
   def prepare_inspection_event
     InspectionEvent.create(
       :inspection_date => Date.today,
+      :inspection_type => "CEM2030",
       :completed => false
     )
 
@@ -101,7 +103,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
   def prepare_cem2023
     InspectionEvent.create(
       :inspection_date => Date.today,
-      :completed => false
+      :inspection_type => "CEM2023",
+      :completed => false,
+      :cem2023 => true
     )
 
     # place into user loop later
@@ -130,7 +134,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
   def prepare_cem2024
     InspectionEvent.create(
       :inspection_date => Date.today,
-      :completed => false
+      :inspection_type => "CEM2024",
+      :completed => false,
+      :cem2024 => true
     )
 
     # place into user loop later
@@ -148,7 +154,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
   def prepare_cem2034
     InspectionEvent.create(
       :inspection_date => Date.today,
-      :completed => false
+      :inspection_type => "CEM2034",
+      :completed => false,
+      :cem2034 => true
     )
 
     # place into user loop later
@@ -166,7 +174,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
   def prepare_cem2035
     InspectionEvent.create(
       :inspection_date => Date.today,
-      :completed => false
+      :inspection_type => "CEM2035",
+      :completed => false,
+      :cem2035 => true
     )
 
     # place into user loop later
@@ -184,7 +194,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
   def prepare_cem2040
     InspectionEvent.create(
       :inspection_date => Date.today,
-      :completed => false
+      :inspection_type => "CEM2040",
+      :completed => false,
+      :cem2040 => true
     )
 
     # place into user loop later
