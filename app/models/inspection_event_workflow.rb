@@ -104,8 +104,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
     InspectionEvent.create(
       :inspection_date => Date.today,
       :inspection_type => "CEM2023",
-      :completed => false,
-      :cem2023 => true
+      :completed => false
+      # throws mass-assignment error
+      # :cem2023 => true
     )
 
     # place into user loop later
@@ -135,8 +136,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
     InspectionEvent.create(
       :inspection_date => Date.today,
       :inspection_type => "CEM2024",
-      :completed => false,
-      :cem2024 => true
+      :completed => false
+      # throws mass-assignment error
+      # :cem2024 => true
     )
 
     # place into user loop later
@@ -155,8 +157,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
     InspectionEvent.create(
       :inspection_date => Date.today,
       :inspection_type => "CEM2034",
-      :completed => false,
-      :cem2034 => true
+      :completed => false
+      # throws mass-assignment error
+      # :cem2034 => true
     )
 
     # place into user loop later
@@ -175,8 +178,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
     InspectionEvent.create(
       :inspection_date => Date.today,
       :inspection_type => "CEM2035",
-      :completed => false,
-      :cem2035 => true
+      :completed => false
+      # throws mass-assignment error
+      # :cem2035 => true
     )
 
     # place into user loop later
@@ -195,8 +199,9 @@ class InspectionEventWorkflow < ActiveRecord::Base
     InspectionEvent.create(
       :inspection_date => Date.today,
       :inspection_type => "CEM2040",
-      :completed => false,
-      :cem2040 => true
+      :completed => false
+      # throws mass-assignment error
+      # :cem2040 => true
     )
 
     # place into user loop later
