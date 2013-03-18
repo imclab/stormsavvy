@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
 
       @weather_events = WeatherEvent.all
 
-      @inspection_events = InspectionEvent.all
+      @inspection_events = InspectionEvent.where(:completed => false)
       # @inspection_events = InspectionEvent.needs_attention.all
 
       @completed_reports = Report.completed
