@@ -51,7 +51,7 @@ class SamplingEventWorkflow < ActiveRecord::Base
   end
 
   def prepare_cem2051
-    SamplingEvent.needs_attention.build(
+    SamplingEvent.create(
       :sampling_date => Date.today,
       :completed => false
     )
