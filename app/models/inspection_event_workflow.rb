@@ -104,7 +104,7 @@ class InspectionEventWorkflow < ActiveRecord::Base
     InspectionEvent.create(
       :inspection_date => Date.today,
       :inspection_type => "CEM2023",
-      :completed => false
+      :completed => false,
       # throws mass-assignment error
       # :cem2023 => true
     )
