@@ -4,12 +4,12 @@ class DashboardController < ApplicationController
   def index
     redirect_to index_path unless user_signed_in?
     if current_user
+      # Throws no method error on projects
+      @projects = Project.all
+      @sites = Site.all
 
-      # throws no method error on projects
-      # @projects = current_user.projects.all
-      # @sites = current_user.sites.all
-
-      @weather_events = WeatherEvent.all
+      # Comment back in along with spec
+      # @weather_events = WeatherEvent.all
 
       @inspection_events = InspectionEvent.where(:completed => false)
       # @inspection_events = InspectionEvent.needs_attention.all
