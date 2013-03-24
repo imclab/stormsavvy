@@ -334,6 +334,10 @@ describe NOAAForecast do
       @nf.get_lat_long(@zipcode).should == lat_long
     end
 
+    it 'validates Rails.cache.fetch' do
+      Rails.cache.fetch("geocoder lat/long", expires_in: 24.hours).should be_valid
+    end
+
     it 'handles exceptions with benign value' do
       @nf.get_lat_long("99999999999999999999").should == []
     end
