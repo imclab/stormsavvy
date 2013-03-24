@@ -93,6 +93,7 @@ class NOAAForecast
 
     # original array assignment
     # return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
+=end
   end
 
   def set_lat_long(zipcode)
