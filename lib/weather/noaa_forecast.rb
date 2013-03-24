@@ -78,9 +78,9 @@ class NOAAForecast
 
     lat_long = [] << @lat << @lng
 
-    puts "spec reached here, @lat = #{@lat}"
-    puts "spec reached here, @lng = #{@lng}"
-    puts "spec reached here, lat_long = #{lat_long}"
+    puts "spec reached get_lat_long method, @lat = #{@lat}"
+    puts "spec reached get_lat_long method, @lng = #{@lng}"
+    puts "spec reached get_lat_long method, lat_long = #{lat_long}"
 
     return lat_long
 =begin
