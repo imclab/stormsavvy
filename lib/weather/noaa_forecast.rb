@@ -62,39 +62,20 @@ class NOAAForecast
       end
     end
 
-=begin
-    @lng = Rails.cache.fetch('lng', expires_in: 24.hours) do
-      unless @lng == nil
-        begin
-          results = Geocoder.search(zipcode)
-          @lng = results[0].data["geometry"]["location"]["lng"]
-          puts "spec reached here, @lng = #{@lng}"
-        rescue Exception => e
-          logger.info "Exception occurred fetching Geocoder longitude: #{e.to_s}"
-          nil
-        end
-      end
-    end
-=end
+    puts "NOAAForecast.get_lat_long(zipcode): lat_long = [#{@lat}, #{@lng}]"
+    # puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
 
-    lat_long = [] << @lat << @lng
-
-    puts "spec reached get_lat_long method, @lat = #{@lat}"
-    puts "spec reached get_lat_long method, @lng = #{@lng}"
-    puts "spec reached get_lat_long method, lat_long = #{lat_long}"
-
-    return lat_long
-=begin
-    results = Geocoder.search(zipcode)
-
-    @lat = results[0].data["geometry"]["location"]["lat"]
-    @lng = results[0].data["geometry"]["location"]["lng"]
     lat_long = [] << @lat << @lng
     return lat_long
 
-    # original array assignment
+    # Original geocoder call
+    # results = Geocoder.search(zipcode)
+    # @lat = results[0].data["geometry"]["location"]["lat"]
+    # @lng = results[0].data["geometry"]["location"]["lng"]
+    # lat_long = [] << @lat << @lng
+    # return lat_long
+
     # return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
-=end
   end
 
   def set_lat_long(zipcode)
