@@ -326,20 +326,26 @@ describe NOAAForecast do
       @nf.get_lat_long(@zipcode).should == [37.9202057, -122.2937428]
     end
 
+    it 'handles exceptions with benign value' do
+      @nf.get_lat_long("99999999999999999999").should == []
+    end
+
     it "sets and gets lat/long with redis" do
       @nf.set_lat_long(@zipcode)
       lat = $redis.get(@zipcode.to_s + '_lat')
       long = $redis.get(@zipcode.to_s + '_long')
-      lat_long = [lat.to_f, long.to_f]
       @nf.get_lat_long(@zipcode).should == lat_long
+      lat_long = [lat.to_f, long.to_f]
     end
 
-    it 'validates Rails.cache.fetch' do
-      Rails.cache.fetch("geocoder lat/long", expires_in: 24.hours).should be_valid
-    end
-
-    it 'handles exceptions with benign value' do
-      @nf.get_lat_long("99999999999999999999").should == []
+    it 'validates caching on class object' do
+      Rails.cache.clear
+      Rails.cache.fetch('lat') {@lat}
+      Rails.cache.fetch('lat').should == @lat
+      Rails.cache.fetch('lng') {@long}
+      Rails.cache.fetch('lng').should == @long
+      nf = NOAAForecast.new(@zipcode)
+      nf.get_lat_long(@zipcode).should == [@lat, @long]
     end
   end
 
