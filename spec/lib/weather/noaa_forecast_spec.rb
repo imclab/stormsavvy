@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'weather/noaa_forecast'
 require 'redis'
+require 'time'
 
 describe NOAAForecast do
 
@@ -325,6 +326,10 @@ describe NOAAForecast do
       @nf.get_lat_long(@zipcode).should == [37.9202057, -122.2937428]
     end
 
+    it 'handles exceptions with benign value' do
+      @nf.get_lat_long("99999999999999999999").should == []
+    end
+
     it "sets and gets lat/long with redis" do
       @nf.set_lat_long(@zipcode)
       lat = $redis.get(@zipcode.to_s + '_lat')
@@ -333,8 +338,23 @@ describe NOAAForecast do
       @nf.get_lat_long(@zipcode).should == lat_long
     end
 
-    it 'handles exceptions with benign value' do
-      @nf.get_lat_long("99999999999999999999").should == []
+    it 'validates rails api caching on class object' do
+      zipcode = 94901
+      results = Geocoder.search(zipcode)
+      @lat = results[0].data["geometry"]["location"]["lat"]
+      @lng = results[0].data["geometry"]["location"]["lng"]
+      lat_long = [] << @lat << @lng
+
+      Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
+      # puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
+
+      Rails.cache.clear
+      Rails.cache.fetch(zipcode.to_s + '_lat') {@lat}
+      Rails.cache.fetch(zipcode.to_s + '_lat').should == @lat
+      Rails.cache.fetch(zipcode.to_s + '_lng') {@lng}
+      Rails.cache.fetch(zipcode.to_s + '_lng').should == @lng
+      nf = NOAAForecast.new(zipcode)
+      nf.get_lat_long(zipcode).should == [@lat, @lng]
     end
   end
 
@@ -371,7 +391,7 @@ describe NOAAForecast do
 
     it 'returns correct forecast' do
       nf = NOAAForecast.new(94530)
-      forecast = nf.seven_day_weather(@zipcode)
+      nf.seven_day_weather(@zipcode)
     end
   end
 
@@ -548,7 +568,7 @@ describe NOAAForecast do
   end
 
   describe "#pop_table_hash" do
-    # tooth and nail to the last failing spec, mock, stub and object...
+    # throws error when merging hashes
     xit "returns pop_table hash" do
 
       pop_array = @nf2.pop

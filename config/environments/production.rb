@@ -4,6 +4,9 @@ Stormsavvy::Application.configure do
   # Code is not reloaded between requests
   config.cache_classes = true
 
+  # Path to Geocoder caching file path
+  config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
+
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true

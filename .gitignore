@@ -27,6 +27,7 @@ db/development
 db/development.sqlite3
 db/test.sqlite3
 db/test.sqlite3-journal
+db/production.sqlite3
 doc/erd/stormsavvy.mwb.bak
 doc/intro.md
 log/
