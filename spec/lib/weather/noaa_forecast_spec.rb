@@ -334,18 +334,23 @@ describe NOAAForecast do
       @nf.set_lat_long(@zipcode)
       lat = $redis.get(@zipcode.to_s + '_lat')
       long = $redis.get(@zipcode.to_s + '_long')
-      @nf.get_lat_long(@zipcode).should == lat_long
       lat_long = [lat.to_f, long.to_f]
+      @nf.get_lat_long(@zipcode).should == lat_long
     end
 
-    it 'validates caching on class object' do
+    it 'validates rails api caching on class object' do
+      zipcode = 94901
+      results = Geocoder.search(zipcode)
+      @lat = results[0].data["geometry"]["location"]["lat"]
+      @lng = results[0].data["geometry"]["location"]["lng"]
+
       Rails.cache.clear
-      Rails.cache.fetch('lat') {@lat}
-      Rails.cache.fetch('lat').should == @lat
-      Rails.cache.fetch('lng') {@long}
-      Rails.cache.fetch('lng').should == @long
-      nf = NOAAForecast.new(@zipcode)
-      nf.get_lat_long(@zipcode).should == [@lat, @long]
+      Rails.cache.fetch(zipcode.to_s + '_lat') {@lat}
+      Rails.cache.fetch(zipcode.to_s + '_lat').should == @lat
+      Rails.cache.fetch(zipcode.to_s + '_lng') {@lng}
+      Rails.cache.fetch(zipcode.to_s + '_lng').should == @lng
+      nf = NOAAForecast.new(zipcode)
+      nf.get_lat_long(zipcode).should == [@lat, @lng]
     end
   end
 
