@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'weather/noaa_forecast'
 require 'redis'
+require 'time'
 
 describe NOAAForecast do
 
