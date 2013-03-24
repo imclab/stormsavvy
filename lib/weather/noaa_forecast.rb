@@ -43,17 +43,18 @@ class NOAAForecast
   end
 
   def get_lat_long(zipcode)
-    # Rails.cache.clear
-
-    lat_long = Rails.cache.fetch('lat_long', expires_in: 24.hours) do
+    puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
+    lat_long ||= Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) do
       unless lat_long == [nil, nil]
         begin
           results = Geocoder.search(zipcode)
           @lat = results[0].data["geometry"]["location"]["lat"]
           @lng = results[0].data["geometry"]["location"]["lng"]
           lat_long = [] << @lat << @lng
-          puts "spec reached here, lat_long = #{lat_long}"
-          # puts "spec reached here, @lat = #{@lat}"
+          puts "Geocoder API call: lat_long = #{lat_long}"
+
+          Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
+
         rescue Exception => e
           logger.info "Exception occurred fetching Geocoder latitude: #{e.to_s}"
           nil
