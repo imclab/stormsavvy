@@ -43,20 +43,49 @@ class NOAAForecast
   end
 
   def get_lat_long(zipcode)
-    results = Geocoder.search(zipcode)
+    # Rails.cache.clear
+
+    lat_long = Rails.cache.fetch('lat_long', expires_in: 24.hours) do
+      unless lat_long == [nil, nil]
+        begin
+          results = Geocoder.search(zipcode)
+          @lat = results[0].data["geometry"]["location"]["lat"]
+          @lng = results[0].data["geometry"]["location"]["lng"]
+          lat_long = [] << @lat << @lng
+          puts "spec reached here, lat_long = #{lat_long}"
+          # puts "spec reached here, @lat = #{@lat}"
+        rescue Exception => e
+          logger.info "Exception occurred fetching Geocoder latitude: #{e.to_s}"
+          nil
+        end
+      end
+    end
+
 =begin
-    # fallback handler: http://goo.gl/nPOgL
-    fallback ||= DEFAULT_FALLBACK
-
-    rescue => error
-      fallback.call(error)
-
-    # test fallback for benign value & error
-    self.get_lat_long("99999999999999999999") {"N/A"}
-    self.get_lat_long("99999999999999999999") do |error|
-      raise ApiError, error.message
+    @lng = Rails.cache.fetch('lng', expires_in: 24.hours) do
+      unless @lng == nil
+        begin
+          results = Geocoder.search(zipcode)
+          @lng = results[0].data["geometry"]["location"]["lng"]
+          puts "spec reached here, @lng = #{@lng}"
+        rescue Exception => e
+          logger.info "Exception occurred fetching Geocoder longitude: #{e.to_s}"
+          nil
+        end
+      end
     end
 =end
+
+    lat_long = [] << @lat << @lng
+
+    puts "spec reached here, @lat = #{@lat}"
+    puts "spec reached here, @lng = #{@lng}"
+    puts "spec reached here, lat_long = #{lat_long}"
+
+    return lat_long
+=begin
+    results = Geocoder.search(zipcode)
+
     @lat = results[0].data["geometry"]["location"]["lat"]
     @lng = results[0].data["geometry"]["location"]["lng"]
     lat_long = [] << @lat << @lng
