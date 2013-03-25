@@ -1,5 +1,5 @@
 .cf
-  - unless @projects.empty?
+  - unless @projects.blank?
     - @projects.each do |project|
       .project.closed{ :class=>"#{cycle('even','odd')}" }
         .cf.headline
