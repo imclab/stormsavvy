@@ -13,7 +13,7 @@
                 .span
                   %i=link_to "#{site.name}: ", project_site_path(project, site)
                   = "#{site.max_rain}% chance of rain"
-        -# else
+        - else
           Looks like you have no active projects.
           %br
           Start one by clicking 'new project'.
