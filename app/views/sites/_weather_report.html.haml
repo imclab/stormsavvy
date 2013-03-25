@@ -10,7 +10,7 @@
     .inner
       %h5 Pending Reports
       %hr
-      - unless @needs_attention_reports.empty?
+      - unless @needs_attention_reports.blank?
         - @needs_attention_reports.each do |report|
           = link_to "Report for #{report.site.name}", edit_report_path(report)
       - else
