@@ -56,7 +56,8 @@ class NOAAForecast
           Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
 
         rescue Exception => e
-          logger.info "Exception occurred fetching Geocoder latitude: #{e.to_s}"
+          # throws error on logger exception method
+          # logger.info "Exception occurred fetching Geocoder latitude: #{e.to_s}"
           nil
         end
       end
