@@ -57,10 +57,10 @@ describe DashboardController do
       sign_in @user
 
       @projects.should == @user.projects.all
-      @user.projects.empty?.should be_false
+      @user.projects.blank?.should be_false
 
       @sites.should == @user.sites.all # nested attribute
-      @user.sites.empty?.should be_false
+      @user.sites.blank?.should be_false
 
       # @weather_events.should == @site.weather_events.all
     end
