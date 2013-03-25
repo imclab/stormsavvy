@@ -16,16 +16,16 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @project = current_user.projects.find(params[:id])
-    @projects = current_user.projects.all
+    @project = Project.find(params[:id])
 
+    # dashboard controller variables
     @sites = @project.sites
-
     @weather_events = WeatherEvent.all
     @inspection_events = InspectionEvent.all
-
     @completed_reports = Report.completed
     @needs_attention_reports = Report.needs_attention
+    # @project = current_user.projects.find(params[:id])
+    # @projects = current_user.projects.all
 
     respond_to do |format|
       format.html # show.html.erb
