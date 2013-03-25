@@ -4,7 +4,7 @@
       %h5 Weather Report
       %hr
       %ul
-        -# unless current_user.projects.blank?
+        - unless current_user.projects.blank?
           - current_user.projects.each do |project|
             - project.sites.each do |site|
               %li.cf
