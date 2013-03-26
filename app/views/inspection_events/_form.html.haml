@@ -8,6 +8,9 @@
 
   .span4
     .field
+      = f.label :completed
+      = f.check_box :completed
+    .field
       = f.label :site_id
       = f.number_field :site_id
     .field
