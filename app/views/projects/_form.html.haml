@@ -13,19 +13,17 @@
   %fieldset
     %legend Project Details
     .span5
-      = f.input :name, :hint => "Name of this project"
-      = f.input :description
-    .span4
+      = f.input :name#, :hint => "Name of this project"
       = f.input :startdate, :as => :string, :input_html => { :class => 'datePicker' }
       = f.input :finishdate, :as => :string, :input_html => { :class => 'datePicker' }
       = f.input :active
+    .span4
+      = f.input :description
 
   %fieldset
     %legend
       Project Sites
     = f.link_to_add "Add new site", :sites
-    |
-    = f.link_to_remove "Remove this site"
     .sitesWrapper
       = f.fields_for :sites do |site|
         .sitesInner
