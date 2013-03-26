@@ -38,7 +38,7 @@
             = site.input :state, :as => :select, :collection => Carmen.states
             = site.input :zipcode, :as => :string
           .pull-right
-            /= site.link_to_remove "Remove this site"
+            = site.link_to_remove "Remove this site"
 
   .form-actions
     = f.submit
