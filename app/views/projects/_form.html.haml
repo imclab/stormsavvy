@@ -33,18 +33,18 @@
             = site.input :name
             = site.input :description
             = site.input :costcode
-          .span5
+          .span4
             = site.input :address_1
             = site.input :address_2
             = site.input :city
             = site.input :state, :as => :select, :collection => Carmen.states
             = site.input :zipcode, :as => :string
           .pull-right
-            = site.link_to_remove "Remove this site"
+            /= site.link_to_remove "Remove this site"
 
   .form-actions
+    = f.submit
+    |
     = link_to 'Back', projects_path
     |
-    = link_to "Cancel", projects_path, :confirm => "Are you sure you want to cancel?"
-    |
-    = f.submit
+    = link_to "Cancel", projects_path, :confirm => "OK to cancel?"
