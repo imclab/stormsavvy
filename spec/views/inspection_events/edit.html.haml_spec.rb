@@ -21,12 +21,13 @@ describe "inspection_events/edit" do
       assert_select "textarea#inspection_event_inspection_description", :name => "inspection_event[inspection_description]"
       assert_select "input#inspection_event_submitted_by", :name => "inspection_event[submitted_by]"
       assert_select "input#inspection_event_inspected_by", :name => "inspection_event[inspected_by]"
+      assert_select "input#inspection_event_completed", :name => "inspection_event[completed]"
     end
   end
 
   it "renders form partial correctly" do
     render
-    rendered.should =~ /Show/
+    rendered.should =~ /Save/
     rendered.should =~ /Back/
   end
 end
