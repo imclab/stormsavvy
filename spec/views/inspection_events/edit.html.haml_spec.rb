@@ -8,7 +8,8 @@ describe "inspection_events/edit" do
       :inspection_description => "ec jungle gym inspection",
       :inspection_date => "2013-01-26 23:13:55",
       :submitted_by => "wyu",
-      :inspected_by => "wyu"
+      :inspected_by => "wyu",
+      :completed => false
     ))
   end
 
