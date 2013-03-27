@@ -37,5 +37,5 @@ describe "inspection_events/index" do
     rendered.should =~ /Submitted By/
     rendered.should =~ /Inspected By/
     rendered.should =~ /Attachment URL/
-  end  
+  end
 end
