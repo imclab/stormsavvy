@@ -24,7 +24,10 @@
       %hr
         - unless @inspection_events.blank?
           - @inspection_events.each do |inspection_event|
-            = link_to "#{inspection_event.inspection_type} for #{inspection_event.inspection_date}", edit_inspection_event_path(inspection_event)
+            - if inspection_event.completed == false
+              = link_to "#{inspection_event.inspection_type} for #{inspection_event.inspection_date}", edit_inspection_event_path(inspection_event)
+            - else
+              You have no pending inspections.
             %br
         - else
           You have no pending inspections.

@@ -6,14 +6,25 @@ describe "dashboard/index" do
     { :name => 'Foo bar', :zipcode => '94530' }
   end
 
+  def ie_attributes
+    {
+      :site_id => 1,
+      :inspection_type => "CEM 2030",
+      :submitted_by => "wyu",
+      :inspected_by => "wyu",
+      :completed => false
+    }
+  end
+
   before(:each) do
     @user = FactoryGirl.create(:user)
     @p1 = FactoryGirl.create(:project)
     @p2 = FactoryGirl.create(:project)
     @projects = [@p1, @p2]
     @needs_attention_reports = Report.needs_attention
-    #@s1 = @p1.sites.create(site_attributes)
-    #@s2 = @p2.sites.create(site_attributes)
+    @s1 = @p1.sites.create(site_attributes)
+    @s2 = @p2.sites.create(site_attributes)
+    @ie = @s1.inspection_events.create(ie_attributes)
     sign_in @user
     render
   end
@@ -52,6 +63,10 @@ describe "dashboard/index" do
       rendered.should =~ /CEM 2040 Weather Forecast Report/
       rendered.should =~ /CEM 2045 REAP Report/
       rendered.should =~ /CEM 4601 Daily Report/
+    end
+
+    it "does not show completed inspection events" do
+      rendered.should_not =~ /CEM 2030 for 2013-03-28 00:00:00 UTC/
     end
   end
 end

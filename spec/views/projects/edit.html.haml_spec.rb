@@ -18,9 +18,7 @@ describe "projects/edit" do
   it "renders the edit project form" do
     render
     assert_select "form", :action => projects_path(@project), :method => "post" do
-      assert_select "input_html#project_name", :name => "project[name]"
-      assert_select "input_html#project_start_date", :name => "project[start_date]"
-      assert_select "input#project_finish_date", :name => "project[finish_date]"
+      assert_select "input#project_name", :name => "project[name]"
       assert_select "input#project_active", :name => "project[active]"
       assert_select "textarea#project_description", :name => "project[description]"
     end
