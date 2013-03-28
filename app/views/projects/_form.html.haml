@@ -13,17 +13,10 @@
   %fieldset
     %legend Project Details
     .span5
-      = f.input :name#, :hint => "Name of this project"
-      = f.input :startdate, :as => :string, :input_html => { :class => 'datePicker' }
-      = f.input :finishdate, :as => :string, :input_html => { :class => 'datePicker' }
+      = f.input :name
+      = f.input :startdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
+      = f.input :finishdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
       = f.input :active
-      / Move fields into this format so that date_select works
-      /.field
-      /= f.label :startdate
-      /= f.date_select :startdate
-      /.field
-      /= f.label :finishdate
-      /= f.date_select :finishdate
     .span4
       = f.input :description
 
