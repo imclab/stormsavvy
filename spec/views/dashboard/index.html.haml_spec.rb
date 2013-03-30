@@ -15,7 +15,7 @@ describe "dashboard/index" do
       :inspection_type => "CEM 2030",
       :submitted_by => "wyu",
       :inspected_by => "wyu",
-      :completed => false
+      :completed => true
     }
   end
 
