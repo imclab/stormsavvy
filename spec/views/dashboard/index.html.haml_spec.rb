@@ -43,13 +43,11 @@ describe "dashboard/index" do
     end
 
     it "shows sidebar to signed in user" do
-      # render
       rendered.should have_selector('div#dashboard-sidebar')
       view.should render_template('dashboard/_sidebar')
     end
 
     it "shows sidebar with correct titles" do
-      # render
       rendered.should have_selector('div#dashboard-sidebar')
       rendered.should =~ /Pending Reports/
       rendered.should =~ /Pending Inspections/
@@ -57,7 +55,6 @@ describe "dashboard/index" do
     end
 
     it "shows correct report links" do
-      # render
       rendered.should have_selector('div#dashboard-sidebar')
       rendered.should =~ /CEM 2030 Weekly Inspection Report/
       rendered.should =~ /CEM 2034 Corrective Action Report/
