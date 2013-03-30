@@ -35,7 +35,6 @@ describe "dashboard/index" do
   describe "index page components" do
 
     it "shows active projects to signed in user" do
-      # render
       rendered.should have_selector('div#modules')
       view.should render_template('dashboard/_modules')
       rendered.should =~ /Active Projects/
