@@ -22,7 +22,7 @@
       %td= inspection_event.inspection_date
       %td= inspection_event.submitted_by
       %td= inspection_event.inspected_by
-      %td= inspection_event.attachment.url
+      %td= link_to "#{inspection_event.attachment.url}", inspection_event.attachment.url
       %td= link_to 'Show', inspection_event
       %td= link_to 'Edit', edit_inspection_event_path(inspection_event)
       %td= link_to 'Destroy', inspection_event, :confirm => 'Are you sure?', :method => :delete
