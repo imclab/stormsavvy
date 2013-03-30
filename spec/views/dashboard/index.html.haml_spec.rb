@@ -3,7 +3,10 @@ require 'spec_helper'
 describe "dashboard/index" do
 
   def site_attributes
-    { :name => 'Foo bar', :zipcode => '94530' }
+    {
+      :name => 'Foo bar',
+      :zipcode => '94530'
+    }
   end
 
   def ie_attributes
