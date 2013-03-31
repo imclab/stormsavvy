@@ -47,10 +47,10 @@ describe "inspection_events/new" do
         stub_model(InspectionEvent)
       ])
       @inspection_event = FactoryGirl.create(:inspection_event, :id => 1)
+      render
     end
 
     it "renders partial correctly" do
-      render
       rendered.should_not be_nil
       rendered.should =~ /Instructions: Attach File & Complete Description Below/
       rendered.should =~ /Cancel/
