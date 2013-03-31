@@ -37,4 +37,8 @@ describe "inspection_events/index" do
     rendered.should =~ /Inspected By/
     rendered.should =~ /Attachment URL/
   end
+
+  it "renders only uploaded attachments" do
+    rendered.should =~ /No attachment uploaded./
+  end
 end
