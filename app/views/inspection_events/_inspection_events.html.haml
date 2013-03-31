@@ -23,8 +23,8 @@
       %td= inspection_event.submitted_by
       %td= inspection_event.inspected_by
 
-      - if inspection_event.attachment.url =~ /\/attachments\/original\/missing.png/
-        No attachment uploaded.
+      - if inspection_event.attachment.url =~ /missing.png/
+        %td= link_to 'Upload Attachment', edit_inspection_event_path(inspection_event)
       - else
         %td= link_to "#{inspection_event.attachment.url}", inspection_event.attachment.url
 
