@@ -31,7 +31,34 @@ describe "inspection_events/edit" do
 
   it "renders form partial correctly" do
     render
+    rendered.should =~ /Edit Inspection Event/
+    rendered.should =~ /Completed/
+    rendered.should =~ /Site/
+    rendered.should =~ /Inspection type/
+    rendered.should =~ /Inspection date/
+    rendered.should =~ /Submitted by/
+    rendered.should =~ /Inspected by/
+    rendered.should =~ /Inspection description/
     rendered.should =~ /Save/
     rendered.should =~ /Back/
+    rendered.should =~ /Save/
+    rendered.should =~ /Back/
+  end
+
+  describe 'file attachment partial' do
+    before(:each) do
+      assign(:inspection_events, [
+        stub_model(InspectionEvent),
+        stub_model(InspectionEvent)
+      ])
+      @inspection_event = FactoryGirl.create(:inspection_event, :id => 1)
+      render
+    end
+
+    it "renders partial correctly" do
+      rendered.should_not be_nil
+      rendered.should =~ /Instructions: Attach File & Complete Description Below/
+      rendered.should =~ /Cancel/
+    end
   end
 end
