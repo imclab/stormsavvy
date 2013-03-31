@@ -40,8 +40,8 @@ describe "inspection_events/new" do
       ])
       @inspection_event = FactoryGirl.create(:inspection_event, :id => 1)
     end
-    
-    it "renders partial correctly" do    
+
+    it "renders partial correctly" do
       render
       rendered.should_not be_nil
       rendered.should =~ /Instructions:/
