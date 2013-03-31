@@ -65,8 +65,8 @@ describe UserMailer do
   describe '#pester_admins' do
 
     before(:each) do
-      @receipient = "walter@stormsavvy.com"
-      @mailer = UserMailer.mailout(@recipient).deliver
+      email = "walter@stormsavvy.com"
+      @mailer = UserMailer.mailout(email).deliver
 
       @numusers = [@user]
       @numprojects = [@project]

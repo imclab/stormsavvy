@@ -31,7 +31,7 @@ class UserMailer < ActionMailer::Base
 
     @greeting = "Greetings"
     @salutation = "The Storm Savvy Team"
-    
+
     zipcode = 94605
     nf = NOAAForecast.new(zipcode)
     @forecast1 = nf.get_forecast_array(zipcode)
