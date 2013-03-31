@@ -92,7 +92,7 @@ describe UserMailer do
       @numsites.should_not be_nil
     end
 
-    it "renders forecast table" do
+    it "returns nf stub value" do
       @nf.should_not be_nil
     end
   end
