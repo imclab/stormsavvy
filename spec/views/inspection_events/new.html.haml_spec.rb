@@ -22,12 +22,22 @@ describe "inspection_events/new" do
       # assert_select "input#inspection_event_inspection_date", :name => "inspection_event[inspection_date]"
       assert_select "input#inspection_event_submitted_by", :name => "inspection_event[submitted_by]"
       assert_select "input#inspection_event_inspected_by", :name => "inspection_event[inspected_by]"
+      assert_select "input#inspection_event_attachment", :name => "inspection_event[attachment]", :class => "button"
     end
   end
 
   it "renders form partial correctly" do
-    render
     rendered.should =~ /New Inspection Event/
+    rendered.should =~ /Instructions: Attach File & Complete Description Below/
+    rendered.should =~ /Completed/
+    rendered.should =~ /Site/
+    rendered.should =~ /Inspection type/
+    rendered.should =~ /Inspection date/
+    rendered.should =~ /Submitted by/
+    rendered.should =~ /Inspected by/
+    rendered.should =~ /Inspection description/
+    rendered.should =~ /Save/
+    rendered.should =~ /Back/
   end
 
   describe 'file attachment partial' do
