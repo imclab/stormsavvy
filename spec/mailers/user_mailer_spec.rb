@@ -157,15 +157,15 @@ describe UserMailer do
       @project1.get_site_zipcodes.should == zipcodes
     end
 
-    it "renders forecast table" do
+    it "returns nf stub value" do
       @nf.should_not be_nil
     end
   end
 
   describe '#thankyou' do
     before(:each) do
-      @receipient = "walter@stormsavvy.com"
-      @mailer = UserMailer.thankyou(@recipient).deliver
+      email = "walter@stormsavvy.com"
+      @mailer = UserMailer.thankyou(email).deliver
     end
 
     it "should send something via mailout" do
