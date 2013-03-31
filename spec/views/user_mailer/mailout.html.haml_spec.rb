@@ -47,9 +47,24 @@ describe "user_mailer/mailout" do
     @sites = [@site1, @site2]
   end
 
-  xit "renders mailout mailer" do
+  it "renders mailout mailer" do
     render
     rendered.should have_selector 'h1', :text => 'Daily Site POP Alert'
     rendered.should =~ /Daily Site POP Alert/
+  end
+
+  it "renders the forecast partial" do
+    render 'user_mailer/mailout_forecast'
+    rendered.should have_content "Date"
+    rendered.should have_content "Forecast"
+    # rendered.should have_content "Rainfall"
+  end
+
+  it "contains a forecast table" do
+    render 'user_mailer/mailout_forecast'
+    rendered.should have_selector 'table'
+    rendered.should have_selector 'th', :text => "Date"
+    rendered.should have_selector 'th', :text => "Forecast"
+    # rendered.should have_selector 'th', :text => "Rainfall"
   end
 end
