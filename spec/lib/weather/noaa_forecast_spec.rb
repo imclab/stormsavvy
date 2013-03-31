@@ -270,7 +270,7 @@ describe NOAAForecast do
     }
 
     @nf2.stub(:get_forecast_array).with(@zipcode) {
-      forecast_array = [
+      [
         { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
         { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1], :rainfall => qpf[1] },
         { :date => ProjectLocalTime::format(Date.today + 12.hours), :weather => pop[2], :rainfall => qpf[2] },
