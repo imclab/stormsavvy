@@ -43,7 +43,6 @@ class NOAAForecast
   end
 
   def get_lat_long(zipcode)
-    # puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
     lat_long ||= Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) do
       unless lat_long == [nil, nil]
         begin
