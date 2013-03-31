@@ -30,16 +30,7 @@ describe AlertMailer do
       :zipcode => 94530
       )
   end
-=begin
-  describe "mailer variables" do
-    it 'sets class variables' do
-      mailer = AlertMailer.new
-      mailer.greeting.should == "Greetings"
-      # @salutation.should == "The Storm Savvy Team"
-      # @support.should == "Questions? Email us at info@stormsavvy.com!"
-    end
-  end
-=end
+
   describe "#northbay_forecast" do
     before :each do
       @mailer = AlertMailer.northbay_forecast(@user.email).deliver
