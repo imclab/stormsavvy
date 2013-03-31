@@ -238,7 +238,7 @@ describe NOAAForecast do
         pop_table_hash << Hash[time_pop_hash[i]].update(Hash[new_qpf_array[i]])
       end
 =end 
-      pop_table_hash = [
+      [
         time_pop_hash[1].update(new_qpf_array[1]),
         time_pop_hash[2].update(new_qpf_array[2]),
         time_pop_hash[3].update(new_qpf_array[3]),
