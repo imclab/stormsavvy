@@ -3,7 +3,10 @@ require 'spec_helper'
 describe "dashboard/index" do
 
   def site_attributes
-    { :name => 'Foo bar', :zipcode => '94530' }
+    {
+      :name => 'Foo bar',
+      :zipcode => '94530'
+    }
   end
 
   def ie_attributes
@@ -12,7 +15,7 @@ describe "dashboard/index" do
       :inspection_type => "CEM 2030",
       :submitted_by => "wyu",
       :inspected_by => "wyu",
-      :completed => false
+      :completed => true
     }
   end
 
@@ -32,7 +35,6 @@ describe "dashboard/index" do
   describe "index page components" do
 
     it "shows active projects to signed in user" do
-      # render
       rendered.should have_selector('div#modules')
       view.should render_template('dashboard/_modules')
       rendered.should =~ /Active Projects/
@@ -41,13 +43,11 @@ describe "dashboard/index" do
     end
 
     it "shows sidebar to signed in user" do
-      # render
       rendered.should have_selector('div#dashboard-sidebar')
       view.should render_template('dashboard/_sidebar')
     end
 
     it "shows sidebar with correct titles" do
-      # render
       rendered.should have_selector('div#dashboard-sidebar')
       rendered.should =~ /Pending Reports/
       rendered.should =~ /Pending Inspections/
@@ -55,7 +55,6 @@ describe "dashboard/index" do
     end
 
     it "shows correct report links" do
-      # render
       rendered.should have_selector('div#dashboard-sidebar')
       rendered.should =~ /CEM 2030 Weekly Inspection Report/
       rendered.should =~ /CEM 2034 Corrective Action Report/
@@ -67,6 +66,7 @@ describe "dashboard/index" do
 
     it "does not show completed inspection events" do
       rendered.should_not =~ /CEM 2030 for 2013-03-28 00:00:00 UTC/
+      rendered.should =~ /You have no pending inspections./
     end
   end
 end

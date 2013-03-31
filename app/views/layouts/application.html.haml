@@ -18,14 +18,17 @@
     = render 'layouts/header'
 
     .container-fluid
-      .leaderboard
-        = render :partial => "pages/hero" if is_public_home?
-        .container-fluid
-          - flash.each do |name, msg|
-            %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-              %a.close{"data-dismiss" => "alert"} ×
-              = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
-          = yield
+      %br
+      /.leaderboard
+      = render :partial => "pages/hero" if is_public_home?
+      .container-fluid
+        - flash.each do |name, msg|
+          %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+            %a.close{"data-dismiss" => "alert"} ×
+            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+        %br
+        %br
+        = yield
 
     - if user_signed_in?
       .footer

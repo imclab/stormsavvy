@@ -20,22 +20,25 @@ describe "inspection_events/index" do
         :inspected_by => "wyu"
       )
     ])
+    render
   end
 
   it "renders a list of inspection_events" do
-    render
     assert_select "tr>td", :text => 1.to_s, :count => 2
     assert_select "tr>td", :text => "weekly", :count => 2
     # assert_select "tr>td", :text => "ec jungle gym inspection", :count => 2
   end
 
   it "renders form partial correctly" do
-    render
     rendered.should =~ /Site ID/
     rendered.should =~ /Inspection Type/
     rendered.should =~ /Inspection Date/
     rendered.should =~ /Submitted By/
     rendered.should =~ /Inspected By/
     rendered.should =~ /Attachment URL/
+  end
+
+  it "renders only uploaded attachments" do
+    rendered.should =~ /Upload Attachment/
   end
 end
