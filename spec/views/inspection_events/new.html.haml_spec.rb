@@ -10,11 +10,10 @@ describe "inspection_events/new" do
       :submitted_by => "wyu",
       :inspected_by => "wyu"
       ).as_new_record)
+    render
   end
 
   it "renders new inspection_event form" do
-    render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => inspection_events_path, :method => "post" do
       assert_select "input#inspection_event_site_id", :name => "inspection_event[site_id]"
       assert_select "input#inspection_event_inspection_type", :name => "inspection_event[inspection_type]"
