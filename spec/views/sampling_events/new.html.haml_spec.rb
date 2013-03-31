@@ -77,6 +77,8 @@ describe "sampling_events/new" do
       assert_select "input#sampling_event_analysis_type_5", :name => "sampling_event[analysis_type_5]"
       assert_select "input#sampling_event_analysis_result_5", :name => "sampling_event[analysis_result_5]"
       assert_select "input#sampling_event_analysis_average_5", :name => "sampling_event[analysis_average_5]"
+
+      assert_select "input#sampling_event_attachment", :name => "sampling_event[attachment]", :class => "button"
     end
   end
 
