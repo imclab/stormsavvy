@@ -53,7 +53,6 @@ describe "inspection_events/new" do
       render
       rendered.should_not be_nil
       rendered.should =~ /Instructions: Attach File & Complete Description Below/
-      rendered.should =~ /Instructions:/
       rendered.should =~ /Cancel/
     end
   end
