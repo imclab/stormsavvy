@@ -358,6 +358,20 @@ describe NOAAForecast do
     end
   end
 
+  describe "Rails.cache.fetch" do
+    it 'caches geocoder results with rails.cache.fetch' do
+      zipcode = 94901
+      Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { @lat_long }
+      # puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
+
+      Rails.cache.clear
+      Rails.cache.fetch(zipcode.to_s + '_lat') {@lat}
+      Rails.cache.fetch(zipcode.to_s + '_lat').should == @lat
+      Rails.cache.fetch(zipcode.to_s + '_lng') {@long}
+      Rails.cache.fetch(zipcode.to_s + '_lng').should == @long
+    end
+  end
+
   describe "#parse_weather_data" do
     it "parses weather data from noaa for one week" do
       response = @nf.ping_noaa([@lat, @long], 168, 6)
