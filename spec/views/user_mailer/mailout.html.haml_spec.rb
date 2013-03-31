@@ -4,14 +4,14 @@ describe "user_mailer/mailout" do
 
 	before(:all) do
     @greeting = "Greetings"
-    @forecast1 = [{ :date => Date.today, :weather => "90" },
+    @forecast1 = [{ :date => Date.today + 0.day, :weather => "90" },
                   { :date => Date.today + 1.day, :weather => "85"},
                   { :date => Date.today + 2.day, :weather => "80"},
                   { :date => Date.today + 3.day, :weather => "75"},
                   { :date => Date.today + 4.day, :weather => "70"},
                   { :date => Date.today + 5.day, :weather => "65"},
                   { :date => Date.today + 6.day, :weather => "60"}]
-    @date1 = Date.today
+    @date1 = Date.today + 0.day
     @date2 = Date.today + 1.day
     @date3 = Date.today + 2.day
     @date4 = Date.today + 3.day
@@ -66,5 +66,32 @@ describe "user_mailer/mailout" do
     rendered.should have_selector 'th', :text => "Date"
     rendered.should have_selector 'th', :text => "Forecast"
     # rendered.should have_selector 'th', :text => "Rainfall"
+  end
+
+  it "renders date with data" do
+    render 'user_mailer/mailout_forecast'
+    rendered.should have_content ProjectLocalTime::format(@date1)
+    rendered.should have_content ProjectLocalTime::format(@date2)
+    rendered.should have_content ProjectLocalTime::format(@date3)
+    rendered.should have_content ProjectLocalTime::format(@date4)
+    rendered.should have_content ProjectLocalTime::format(@date5)
+    rendered.should have_content ProjectLocalTime::format(@date6)
+    rendered.should have_content ProjectLocalTime::format(@date7)
+
+    # rendered.should have_content "90"
+    # rendered.should have_content "85"
+    # rendered.should have_content "80"
+    # rendered.should have_content "75"
+    # rendered.should have_content "70"
+    # rendered.should have_content "65"
+    # rendered.should have_content "60"
+
+    # rendered.should have_content "0"
+    # rendered.should have_content "1"
+    # rendered.should have_content "2"
+    # rendered.should have_content "3"
+    # rendered.should have_content "4"
+    # rendered.should have_content "5"
+    # rendered.should have_content "6"
   end
 end
