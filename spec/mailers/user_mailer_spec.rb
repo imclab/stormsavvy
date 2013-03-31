@@ -100,8 +100,8 @@ describe UserMailer do
   describe '#staging_mailer' do
 
     before(:each) do
-      @receipient = "walter@stormsavvy.com"
-      @mailer = UserMailer.staging_mailer(@recipient).deliver
+      email = "walter@stormsavvy.com"
+      @mailer = UserMailer.staging_mailer(email).deliver
 
       @numusers = [@user]
       @numprojects = [@project]
