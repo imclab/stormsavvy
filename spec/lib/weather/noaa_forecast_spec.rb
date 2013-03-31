@@ -360,7 +360,7 @@ describe NOAAForecast do
 
   describe "Rails.cache.fetch" do
     it 'caches geocoder results with rails.cache.fetch' do
-      zipcode = 94901
+      zipcode = 94530
       Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { @lat_long }
       puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
 
