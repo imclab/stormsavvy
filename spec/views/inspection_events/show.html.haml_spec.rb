@@ -32,7 +32,6 @@ describe "inspection_events/show" do
   end
 
   it "renders edit / back / delete links" do
-    render
     rendered.should match(/Edit/)
     rendered.should match(/Back/)
     rendered.should match(/Delete/)
