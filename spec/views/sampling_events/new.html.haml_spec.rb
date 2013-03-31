@@ -95,11 +95,11 @@ describe "sampling_events/new" do
       ])
       @sampling_event = FactoryGirl.create(:inspection_event, :id => 1)
     end
-      
-    it "renders partial correctly" do    
+
+    it "renders partial correctly" do
       render
       rendered.should_not be_nil
-      rendered.should =~ /Instructions:/
+      rendered.should =~ /Instructions: Attach File & Complete Description Below/
       rendered.should =~ /Cancel/
     end
   end
