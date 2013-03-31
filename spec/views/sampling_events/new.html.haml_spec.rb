@@ -85,6 +85,44 @@ describe "sampling_events/new" do
   it "renders form partial correctly" do
     render
     rendered.should =~ /New Sampling Event/
+    rendered.should =~ /Site/
+    rendered.should =~ /Sampling type/
+    rendered.should =~ /Sampling description/
+    rendered.should =~ /Submitted by/
+    rendered.should =~ /Sampled by/
+    rendered.should =~ /Sampling date/
+    rendered.should =~ /Sample id 1/
+    rendered.should =~ /Sample location 1/
+    rendered.should =~ /Sample time 1/
+    rendered.should =~ /Analysis type 1/
+    rendered.should =~ /Analysis result 1/
+    rendered.should =~ /Analysis average 1/
+    rendered.should =~ /Sample id 2/
+    rendered.should =~ /Sample location 2/
+    rendered.should =~ /Sample time 2/
+    rendered.should =~ /Analysis type 2/
+    rendered.should =~ /Analysis result 2/
+    rendered.should =~ /Analysis average 2/
+    rendered.should =~ /Sample id 3/
+    rendered.should =~ /Sample location 3/
+    rendered.should =~ /Sample time 3/
+    rendered.should =~ /Analysis type 3/
+    rendered.should =~ /Analysis result 3/
+    rendered.should =~ /Analysis average 3/
+    rendered.should =~ /Sample id 4/
+    rendered.should =~ /Sample location 4/
+    rendered.should =~ /Sample time 4/
+    rendered.should =~ /Analysis type 4/
+    rendered.should =~ /Analysis result 4/
+    rendered.should =~ /Analysis average 4/
+    rendered.should =~ /Sample id 5/
+    rendered.should =~ /Sample location 5/
+    rendered.should =~ /Sample time 5/
+    rendered.should =~ /Analysis type 5/
+    rendered.should =~ /Analysis result 5/
+    rendered.should =~ /Analysis average 5/
+    rendered.should =~ /Save/
+    rendered.should =~ /Back/
   end
 
   describe 'sampling_events/attachments' do
