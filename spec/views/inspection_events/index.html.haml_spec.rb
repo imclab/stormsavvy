@@ -24,8 +24,8 @@ describe "inspection_events/index" do
   end
 
   it "renders a list of inspection_events" do
-    assert_select "tr>td", :text => 1.to_s, :count => 4
-    assert_select "tr>td", :text => "weekly", :count => 4
+    assert_select "tr>td", :text => 1.to_s, :count => 2
+    assert_select "tr>td", :text => "weekly", :count => 2
     # assert_select "tr>td", :text => "ec jungle gym inspection", :count => 2
   end
 
