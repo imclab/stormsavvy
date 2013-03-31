@@ -39,6 +39,6 @@ describe "inspection_events/index" do
   end
 
   it "renders only uploaded attachments" do
-    rendered.should =~ /No attachment uploaded./
+    rendered.should =~ /Upload Attachment/
   end
 end
