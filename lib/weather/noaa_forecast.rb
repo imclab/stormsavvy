@@ -62,7 +62,7 @@ class NOAAForecast
       end
     end
 
-    puts "NOAAForecast.get_lat_long(zipcode): lat_long = [#{@lat}, #{@lng}]"
+    # puts "NOAAForecast.get_lat_long(zipcode): lat_long = [#{@lat}, #{@lng}]"
     # puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
 
     lat_long = [] << @lat << @lng
