@@ -149,7 +149,7 @@ describe UserMailer do
       # @mailer.body.should have_selector("ul.sites")
     end
 
-    it "returns zipcodes" do      
+    it "returns zipcodes" do
       zipcodes = []
       @project1.sites.each do |site|
         zipcodes << site.get_zipcode
