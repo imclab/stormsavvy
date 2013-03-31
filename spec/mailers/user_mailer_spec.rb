@@ -131,8 +131,8 @@ describe UserMailer do
   describe '#mailout' do
 
     before(:each) do
-      @receipient = "walter@stormsavvy.com"
-      @mailer = UserMailer.mailout(@recipient).deliver
+      email = "walter@stormsavvy.com"
+      @mailer = UserMailer.mailout(email).deliver
     end
 
     it "should send something via mailout" do
