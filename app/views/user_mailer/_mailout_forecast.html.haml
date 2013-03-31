@@ -6,11 +6,17 @@
       - project.sites.each do |site|
         %br
           = "Site: #{site.name}"
+        %br
+          = "Zipcode: #{site.zipcode}"
 
         %th
           Date
         %th
           Forecast
+
+        - zipcode = site.zipcode
+        - nf = NOAAForecast.new(zipcode)
+        - @forecast = nf.forecast_by_zipcode(zipcode)
         - @forecast.each do |f|
           %tr
             %td

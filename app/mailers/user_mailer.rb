@@ -62,7 +62,6 @@ class UserMailer < ActionMailer::Base
           @forecast = nf.forecast_by_zipcode(zipcode)
 
           # @forecast = site.forecast
-
           # forecasts = []
           # forecasts << @forecast
         end
