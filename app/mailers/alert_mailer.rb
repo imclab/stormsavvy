@@ -1,14 +1,7 @@
 class AlertMailer < ActionMailer::Base
 
   default :from => "alerts@stormsavvy.com"
-=begin
-  # TODO: setup instance variables
-  def initialize
-    @greeting = "Greetings"
-    @salutation = "The Storm Savvy Team"
-    @support = "Questions? Email us at info@stormsavvy.com!"
-  end
-=end
+
   def northbay_forecast(email)
     @greeting = "Greetings"
     @salutation = "The Storm Savvy Team"
