@@ -101,13 +101,9 @@ describe UserMailer do
     before(:each) do
       email = "walter@stormsavvy.com"
       @mailer = UserMailer.staging_mailer(email).deliver
-
-      @numusers = [@user]
-      @numprojects = [@project]
-      @numsites = [@site]
     end
 
-    it "sends out via staging_mailer" do
+    it "delivers mail successfully" do
       ActionMailer::Base.deliveries.should_not be_empty
     end
 
