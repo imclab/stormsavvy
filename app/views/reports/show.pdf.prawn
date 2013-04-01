@@ -17,38 +17,6 @@ pdf = Prawn::Document.new(:background => "#{Prawn::DATADIR}/images/CEM2030-2012_
 # pdf.text_box "#{@report.wdid_number}", :size => 10, :at => [0,400]
 # pdf.text_box "#{@report.status}", :size => 10, :at => [0,800]
 
-# Throwing error on report fields
-
-# pdf.text_box @report.submitted_by_contractor
-# pdf.text_box @report.submitted_by_date
-
-pdf.text_box @report.wpc_manager
-pdf.text_box @report.wpc_phone
-pdf.text_box @report.wpc_emergency_phone
-
-# pdf.text_box @report.inspector_name
-# pdf.text_box @report.inspection_date
-
-# pdf.text_box @report.weather_condition
-# pdf.text_box @report.precipitation_condition 
-# pdf.text_box @report.wind_condition
-# pdf.text_box @report.construction_phase
-# pdf.text_box @report.total_area
-# pdf.text_box @report.total_DSA 
-# pdf.text_box @report.current_DSA
-# pdf.text_box @report.inactive_DSA
-# pdf.text_box @report.inspection_type
-
-# pdf.text_box @report.time_elapsed_last_storm
-# pdf.text_box @report.precipitation_received
-# pdf.text_box @report.time_storm_expected
-# pdf.text_box @report.expected_precipitation_amount
-
-# pdf.text_box @report.time_elapsed_during_storm 
-# pdf.text_box @report.gauge_reading_during_storm
-# pdf.text_box @report.time_elapsed_post_storm 
-# pdf.text_box @report.gauge_reading_post_storm
-
 # Coordinate markers
 
 pdf.fill_color "ffff00"
