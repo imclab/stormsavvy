@@ -13,7 +13,7 @@ describe UserMailer do
       :user => @user,
       :created_at => 1.day.ago
       )
-    @projects = [@project]
+    @projects = [ @project ]
 
     @site = FactoryGirl.create(
       :site,
@@ -21,7 +21,23 @@ describe UserMailer do
       :name => 'ec jungle gym',
       :zipcode => 94530
       )
-    @sites = [@site]
+    @sites = [ @site ]
+
+    @report1 = FactoryGirl.create(
+      :report,
+      :site => @site,
+      :status => 'needs_attention'
+    )
+    @report2 = FactoryGirl.create(
+      :report,
+      :site => @site,
+      :status => 'needs_attention'
+    )
+    @reports = [ @report1, @report2 ]
+
+    @numusers = [@user]
+    @numprojects = [@project]
+    @numsites = [@site]
 
     # @project = FactoryGirl.create(:project_with_sites)
     # @site = FactoryGirl.create(:site)
