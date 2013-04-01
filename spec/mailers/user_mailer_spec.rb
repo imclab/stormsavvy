@@ -201,5 +201,10 @@ describe UserMailer do
     it "has text in body" do
       @mailer.body.should_not be_empty
     end
+
+    it 'has correct greeting and salutation' do
+      @greeting.should == 'Greetings'
+      @salutation.should == 'The Storm Savvy Team'
+    end
   end
 end
