@@ -110,8 +110,7 @@ describe UserMailer do
   describe '#staging_mailer' do
 
     before(:each) do
-      email = "walter@stormsavvy.com"
-      @mailer = UserMailer.staging_mailer(email).deliver
+      @mailer = UserMailer.staging_mailer(@email).deliver
     end
 
     it "delivers mail successfully" do
