@@ -79,8 +79,7 @@ describe UserMailer do
   describe '#pester_admins' do
 
     before(:each) do
-      email = "walter@stormsavvy.com"
-      @mailer = UserMailer.pester_admins(email).deliver
+      @mailer = UserMailer.pester_admins(@email).deliver
     end
 
     it "delivers mail successfully" do
