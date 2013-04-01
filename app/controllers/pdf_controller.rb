@@ -89,7 +89,7 @@ class PdfController < ApplicationController
     )
     send_data pdf.render, type: "application/pdf", disposition: "inline"
   end
-=begin
+
   def CEM2030
     # filename = "#{Prawn::DATADIR}/images/reports/CEM2030_production.pdf"
     filename = "#{Rails.root}/app/assets/pdfs/CEM2030_production.pdf"
@@ -112,5 +112,5 @@ class PdfController < ApplicationController
     pdf.text @test
     send_data pdf.render, type: "application/pdf", disposition: "inline"
   end
-=end
+
 end
