@@ -52,11 +52,11 @@ module ApplicationHelper
   end
 
   def projects
-    @projects = current_user.projects.all
+    @projects = Project.all
   end
 
   def sites
-    @sites = current_user.sites.all
+    @sites = Site.all
   end
 
   def weather_events
