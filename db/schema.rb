@@ -80,13 +80,17 @@ ActiveRecord::Schema.define(:version => 20130317224049) do
 
   create_table "inspection_events", :force => true do |t|
     t.integer  "site_id"
+    t.string   "type"
+    t.text     "description"
+    t.datetime "date"
+    t.datetime "submitted"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "inspection_type"
     t.text     "inspection_description"
     t.datetime "inspection_date"
     t.string   "submitted_by"
     t.string   "inspected_by"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
