@@ -52,7 +52,7 @@ describe "user_mailer/mailout" do
     render
     rendered.should have_selector 'h1', :text => 'Daily Site POP Alert'
     rendered.should =~ /Daily Site POP Alert/
-    rendered.should =~ /Here are you pending reports:/
+    rendered.should =~ /Here are your pending reports:/
   end
 
   it "renders the forecast partial" do
