@@ -43,10 +43,10 @@ class UserMailer < ActionMailer::Base
       ).deliver
   end
 
-  def mailout(email)
-  # def mailout(to = nil)
+  def mailout(to = nil)
     @greeting = "Greetings"
     @users = User.all
+    @salutation = "The Storm Savvy Team"
 
     @users.each do |user|
       @user = user # needed for the template below
@@ -62,17 +62,14 @@ class UserMailer < ActionMailer::Base
           nf = NOAAForecast.new(zipcode)
           @forecast = nf.forecast_by_zipcode(zipcode)
 
-          # @forecast = site.forecast
-          # forecasts = []
-          # forecasts << @forecast
+          @reports = Report.where(:status => "needs_attention")
         end
       end
 
       if @user.has_site?
         mail(
           :from     => "alerts@stormsavvy.com",
-          :to       => email,
-          # :to       => @user.email,
+          :to       => @user.email,
           :subject  => "Storm Savvy Weekly Project Status Update"
           ).deliver
       end

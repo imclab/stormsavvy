@@ -6,6 +6,7 @@ class DashboardController < ApplicationController
     if current_user
       @projects = current_user.projects.all
       @sites = current_user.sites.all
+      @reports = Report.where(:status => "needs_attention")
 
       @inspection_events = []
       current_user.sites.each do |site|
@@ -20,9 +21,6 @@ class DashboardController < ApplicationController
 
       # @inspection_events = InspectionEvent.where(:completed => false)
       # @inspection_events = InspectionEvent.needs_attention.all
-
-      @completed_reports = Report.completed
-      @needs_attention_reports = Report.needs_attention
 
       # @completed_reports = Report.completed
       # @needs_attention_reports = Report.needs_attention

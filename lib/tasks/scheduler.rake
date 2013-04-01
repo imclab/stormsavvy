@@ -88,7 +88,7 @@ namespace :scheduler do
       'walter@stormsavvy.com'
       ]
     users.each do |address|
-      UserMailer.mailout(address)
+      UserMailer.mailout
     end
   end
 
