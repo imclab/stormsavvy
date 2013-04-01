@@ -58,22 +58,18 @@ describe ApplicationHelper do
 
   describe '#projects' do
     # throws authentication error, test from controller instead
-    xit 'returns instance variable' do
-      puts @projects
-      puts @user.projects.class
-
-      projects = @user.projects.all
+    it 'returns instance variable' do
+      projects = Project.all
       assign(:projects, projects)
-      helper.projects.should == @user.projects.all
+      helper.projects.should == Project.all
     end
   end
 
   describe '#sites' do
-    # throws authentication error, test from controller instead
-    xit 'returns instance variable' do
-      sites = @user.sites.all
+    it 'returns instance variable' do
+      sites = Site.all
       assign(:sites, sites)
-      helper.sites.should == @user.sites.all
+      helper.sites.should == Site.all
     end
   end
 
