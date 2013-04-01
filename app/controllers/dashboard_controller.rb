@@ -22,9 +22,6 @@ class DashboardController < ApplicationController
       # @inspection_events = InspectionEvent.where(:completed => false)
       # @inspection_events = InspectionEvent.needs_attention.all
 
-      @completed_reports = Report.completed
-      @needs_attention_reports = Report.needs_attention
-
       # @completed_reports = Report.completed
       # @needs_attention_reports = Report.needs_attention
 
