@@ -34,9 +34,19 @@ describe UserMailer do
       :site => @site,
       :status => 'needs_attention'
     )
-    @reports = [ @report1, @report2 ]
+    @numreports = [ @report1, @report2 ]
 
-    @numusers = [@user]
+    @ie1 = FactoryGirl.create(
+      :inspection_event,
+      :completed => false
+    )
+    @ie2 = FactoryGirl.create(
+      :inspection_event,
+      :completed => true
+    )
+    @numinspections = [ @ie1, @ie2 ]
+
+    @numusers = [ @user ]
     @numprojects = [@project]
     @numsites = [@site]
 
