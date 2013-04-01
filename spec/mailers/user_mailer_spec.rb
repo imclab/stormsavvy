@@ -7,6 +7,9 @@ describe UserMailer do
   before(:each) do
     @user = FactoryGirl.create(:user)
     @email = 'walter@stormsavvy.com'
+    @greeting = 'Greetings'
+    @salutation = 'The Storm Savvy Team'
+
     @users = [@user]
 
     @project = FactoryGirl.create(
