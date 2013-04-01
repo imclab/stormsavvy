@@ -130,15 +130,15 @@ describe UserMailer do
       @mailer = UserMailer.mailout(email).deliver
     end
 
-    it "should send something via mailout" do
+    it "delivers mail successfully" do
       ActionMailer::Base.deliveries.should_not be_empty
     end
 
-    it "should render successfully" do
+    it "renders successfully" do
       lambda { @mailer }.should_not raise_error
     end
 
-    it "should have text in body" do
+    it "has text in body" do
       @mailer.body.should_not be_empty
       # @mailer.body.should have_selector("ul.projects")
       # @mailer.body.should have_selector("ul.sites")
