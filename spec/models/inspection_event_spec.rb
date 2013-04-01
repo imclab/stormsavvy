@@ -38,6 +38,7 @@ describe InspectionEvent do
 
     it 'has valid completed attribute' do
       ie = FactoryGirl.create(:inspection_event)
+      ie.should be_valid
     end
   end
 
