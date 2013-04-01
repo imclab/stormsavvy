@@ -83,7 +83,7 @@ describe DashboardController do
       @inspection_events.should == @site.inspection_events.where(:completed => false)
     end
 
-    it "does not return inspection event if empty" do
+    it "does not return inspection event if empty to current user" do
       inspection_events = []
       @user.sites.each do |site|
         site.inspection_events.each do |ie|
@@ -99,7 +99,7 @@ describe DashboardController do
       inspection_events.should == @site.inspection_events.completed
     end
 
-    it "does return inspection event if present" do
+    it "returns inspection event if present to current user" do
       ie1 = InspectionEvent.create(:completed => true)
       ie2 = InspectionEvent.create(:completed => true)
 
@@ -108,6 +108,18 @@ describe DashboardController do
 
       ie = [] << ie1 << ie2
       ie.should == [ie1, ie2]
+    end
+
+    it "returns needs_attention reports to current user" do
+      Report.create(:status => "needs_attention")
+      needs_attention = Report.where(:status => "needs_attention")
+      needs_attention.blank?.should == false
+    end
+
+    it "returns completed reports to current user" do
+      Report.create(:status => "completed")
+      completed = Report.where(:status => "completed")
+      completed.blank?.should == false
     end
   end
 end
