@@ -69,28 +69,28 @@ pdf.text_box(marker9, options9)
 pdf.text_box(marker10, options10)
 
 # Prawn::Document.generate("#{Rails.root}/app/views/reports/#{@report.id}.pdf") do
-# 
+
 # 	pdf.fill_color "FF0000"
-# 
+
 #   pdf.text "My report caption", :size => 18, :align => :right
-#   
+
 #   pdf.move_down font.height * 2
-#   
+
 #   pdf.text "Here is my text explaining this report. " * 20,
 #     :size => 12, :align => :left, :leading => 2
-#   
+
 #   pdf.move_down font.height
-#   
+
 #   pdf.text "I'm using a soft background. " * 40,
 #     :size => 12, :align => :left, :leading => 2
-# 	
+	
 # end
 
 # Start new page in view per prawn manual instruction
-# 
+
 # pdf.start_new_page
-# 
+
 # page2 = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_02.png"
-# 
+
 # pdf.image page2 
 # pdf.text "This is pdf with background image ready to fill in"
