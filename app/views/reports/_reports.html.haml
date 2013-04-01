@@ -4,7 +4,6 @@
 %table.table.table-condensed
   %tr
     %th ID
-    %th Type
     %th Date
     %th URL
     %th
@@ -16,7 +15,6 @@
   - @reports.each do |report|
     %tr
       %td= report.id
-      %td= report.type
       %td= report.created_at
       %td= report.attachment.url
       %td
