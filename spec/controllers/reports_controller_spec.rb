@@ -49,7 +49,6 @@ describe ReportsController do
   describe "POST create" do
 
     before :each do
-      # Pull out create method call into before block
       post :create, {:report => valid_attributes}, valid_session
     end
 
@@ -61,19 +60,16 @@ describe ReportsController do
       end
 
       it "assigns newly created report as @report" do
-        post :create, {:report => valid_attributes}, valid_session
         assigns(:report).should be_a(Report)
         assigns(:report).should be_persisted
       end
 
       it "redirects to the created inspection_event" do
-        post :create, {:report => valid_attributes}, valid_session
         response.should redirect_to(Report.last)
       end
     end
 
     describe "with invalid params" do
-      # Comment out next 3 spec until report attributes are flushed out.
       it "assigns a newly created but unsaved report as @report'" do
         # Trigger the behavior that occurs when invalid params are submitted
         Report.any_instance.stub(:save).and_return(false)
@@ -135,7 +131,6 @@ describe ReportsController do
   end
 
   describe "DELETE destroy" do
-  	# Comment out spec until report attributes are flushed out.
     it "destroys the requested report" do
       report = Report.create! valid_attributes
       expect {
@@ -149,5 +144,4 @@ describe ReportsController do
       response.should redirect_to(reports_url)
     end
   end
-
 end
