@@ -69,31 +69,4 @@ describe "user_mailer/mailout" do
     rendered.should have_selector 'th', :text => "Forecast"
     # rendered.should have_selector 'th', :text => "Rainfall"
   end
-
-  it "renders date with data" do
-    render 'user_mailer/mailout_forecast'
-    rendered.should have_content ProjectLocalTime::format(@date1)
-    rendered.should have_content ProjectLocalTime::format(@date2)
-    rendered.should have_content ProjectLocalTime::format(@date3)
-    rendered.should have_content ProjectLocalTime::format(@date4)
-    rendered.should have_content ProjectLocalTime::format(@date5)
-    rendered.should have_content ProjectLocalTime::format(@date6)
-    rendered.should have_content ProjectLocalTime::format(@date7)
-
-    # rendered.should have_content "90"
-    # rendered.should have_content "85"
-    # rendered.should have_content "80"
-    # rendered.should have_content "75"
-    # rendered.should have_content "70"
-    # rendered.should have_content "65"
-    # rendered.should have_content "60"
-
-    # rendered.should have_content "0"
-    # rendered.should have_content "1"
-    # rendered.should have_content "2"
-    # rendered.should have_content "3"
-    # rendered.should have_content "4"
-    # rendered.should have_content "5"
-    # rendered.should have_content "6"
-  end
 end
