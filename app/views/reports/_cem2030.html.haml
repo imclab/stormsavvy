@@ -6,109 +6,12 @@
     .span4
       %fieldset#site_information
         %legend Site Information
-        = f.input :site_information_name, :input_html => { :value => @report.site_information_name }
-        = f.input :site_address_1, :input_html => { :value => @report.site_address_1 }
-        = f.input :site_address_2, :input_html => { :value => @report.site_address_2 }
-        = f.input :site_city, :input_html => { :value => @report.site_city }
-        = f.input :site_state, :input_html => { :value => @report.site_state }
-        = f.input :site_zipcode, :input_html => { :value => @report.site_zipcode }
-    .span4
-      %fieldset#company_information
-        %legend Company Information
-        /= f.input :contractor_name, :input_html => { :value => @report.contractor_name }
-        /= f.input :contractor_address_1, :input_html => { :value => @report.contractor_address_1 }
-        /= f.input :contractor_address_2, :input_html => { :value => @report.contractor_address_2 }
-        /= f.input :contractor_city, :input_html => { :value => @report.contractor_city }
-        /= f.input :contractor_state, :input_html => { :value => @report.contractor_state }
-        /= f.input :contractor_zipcode, :as => :string, :input_html => { :value => @report.contractor_zipcode }
-    .span4
-      %fieldset#contract_information
-        %legend Contract Information
-        /= f.input :contract_number, :input_html => { :value => @report.contract_number }
-        /= f.input :project_identifier_number, :input_html => { :value => @report.project_identifier_number }
-        /= f.input :wdid_number, :input_html => { :value => @report.wdid_number }
-        /= f.input :status, :input_html => { :value => @report.status }            
-  .row
-    .span4
-      %fieldset#submittal_information
-        %legend Submittal Information
-        /= f.input :submitted_by_contractor, :input_html => { :value => @report.submitted_by_contractor }
-        /= f.input :submitted_by_date, :input_html => { :value => @report.submitted_by_date }            
-    .span4
-      %fieldset#wpc_information
-        %legend WPC Information
-        /= f.input :wpc_manager, :input_html => { :value => @report.wpc_manager }
-        /= f.input :wpc_phone, :input_html => { :value => @report.wpc_phone }
-        /= f.input :wpc_emergency_phone, :input_html => { :value => @report.wpc_emergency_phone }            
-    .span4
-      %fieldset#inspector_name
-        %legend Inspector Name
-        /= f.input :inspector_name, :input_html => { :value => @report.inspector_name }
-        /= f.input :inspection_date, :input_html => { :value => @report.inspection_date }            
-  .row
-    .span4
-      %fieldset#weather_conditions
-        %legend Weather Conditions
-        /= f.collection_radio_buttons :weather_condition, [[:clear, 'Clear'] ,[:partly_cloudy, 'Partly Cloudy'], [:cloudy, 'Cloudy']], :first, :last
-    .span4
-      %fieldset#wind_conditions
-        %legend Wind Conditions
-        /= f.collection_radio_buttons :wind_condition, [[:none, 'None'] ,[:lessthan5, 'Less than 5 mph'], [:greaterthan5, 'Greater than 5 mph']], :first, :last
-
-    .span4
-      %fieldset#precipitation_conditions
-        %legend Precipitation Conditions
-        /= f.collection_radio_buttons :precipitation_condition, [[:none, 'None'], [:misty, 'Misty'], [:light_rain, 'Light Rain'], [:rain, 'Rain'], [:heavy_rain, 'Heavy Rain'], [:hail, 'Hail'], [:snow, 'Snow']], :first, :last
-
-  .row
-    .span4
-      %fieldset#construction_phase
-        %legend Construction Phase
-        /= f.collection_radio_buttons :construction_phase, [[:highway_construction, 'Highway Construction'], [:plant_establishment, 'Plant Establishment'], [:work_suspension, 'Suspension of Work']], :first, :last
-    .span4
-      %fieldset#inspection_type
-        %legend Inspection Type
-        /= f.collection_radio_buttons :inspection_type, [[:weekly, 'Weekly'], [:quarterly, 'Quarterly / Non-Stormwater'], [:pre_storm, 'Pre-Storm'], [:during_storm, 'During Storm Event'], [:post_storm, 'Post-Storm']], :first, :last
-    .span4
-      %fieldset#site_area
-        %legend Site Area
-        /= f.input :total_area, :input_html => { :value => @report.total_area }
-        /= f.input :total_DSA, :input_html => { :value => @report.total_DSA }
-        /= f.input :current_DSA, :input_html => { :value => @report.current_DSA }
-        /= f.input :inactive_DSA, :input_html => { :value => @report.inactive_DSA }
-  .row
-    .span4
-      %fieldset#storm_information
-        %legend Storm Information / Weekly
-        /= f.input :time_elapsed_last_storm, :input_html => { :value => @report.time_elapsed_last_storm }
-        /= f.input :precipitation_received, :input_html => { :value => @report.precipitation_received }
-    .span4
-      %fieldset#storm_information
-        %legend Storm Information / Pre-Storm
-        /= f.input :time_storm_expected, :input_html => { :value => @report.time_storm_expected }
-        /= f.input :expected_precipitation_amount, :input_html => { :value => @report.expected_precipitation_amount }
-    .span4
-      %fieldset#storm_information
-        %legend Storm Information / During Rain Event    
-        /= f.input :time_elapsed_during_storm, :input_html => { :value => @report.time_elapsed_during_storm }        
-        /= f.input :gauge_reading_during_storm, :input_html => { :value => @report.gauge_reading_during_storm }
-    .span4
-      %fieldset#storm_information
-        %legend Storm Information / Post-Storm
-        /= f.input :time_elapsed_post_storm, :input_html => { :value => @report.time_elapsed_post_storm }
-        /= f.input :gauge_reading_post_storm, :input_html => { :value => @report.gauge_reading_post_storm }
-
-  // Indent 6 spaces
-  %h4 Page 2
-  %br
-
-  .row
-    .span4
-      %fieldset#preserve_vegetation
-      %legend Preserve Vegetation
-      /= f.input :existing_vegetation_location1, :input_html => { :value => @report.existing_vegetation_location1}
-      /= f.input :existing_vegetation_location2, :input_html => { :value => @report.existing_vegetation_location2}
-      /= f.input :existing_vegetation_location3, :input_html => { :value => @report.existing_vegetation_location3}
+        /= f.input :site_information_name, :input_html => { :value => @report.site_information_name }
+        /= f.input :site_address_1, :input_html => { :value => @report.site_address_1 }
+        /= f.input :site_address_2, :input_html => { :value => @report.site_address_2 }
+        /= f.input :site_city, :input_html => { :value => @report.site_city }
+        /= f.input :site_state, :input_html => { :value => @report.site_state }
+        /= f.input :site_zipcode, :input_html => { :value => @report.site_zipcode }
 
   .actions
     = f.submit "Save Report", :class => "btn btn-primary"
