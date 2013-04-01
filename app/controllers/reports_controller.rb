@@ -2,7 +2,7 @@ class ReportsController < ApplicationController
   require 'prawn'
 
   # Include CEM report methods below to show up in routes.
-  STATIC_REPORTS = %w[CEM2030 CEM2034 CEM2035 CEM2040 CEM2045 CEM2050 CEM2051 CEM2052 CEM4601]
+  STATIC_REPORTS = %w[CEM2023 CEM2030 CEM2034 CEM2035 CEM2040 CEM2045 CEM2050 CEM2051 CEM2052 CEM4601]
 
   def index
     @reports = Report.all
