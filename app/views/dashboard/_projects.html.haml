@@ -1,0 +1,24 @@
+.cf
+  - unless @projects.blank?
+    - @projects.each do |project|
+      .project.closed{ :class=>"#{cycle('even','odd')}" }
+        .cf.headline
+          %h3.pull-left=project.name
+          .small.more_details.pull-right
+            %i{ :class => "icon icon-plus" }
+            %i{ :class => "icon icon-minus is_hidden" }
+
+        / debug is_hidden attribute
+        /.more_details_box.is_hidden
+        .more_details_box
+          %ul
+            %li
+              %strong # of Sites:
+              = project.sites.count
+            %li
+              %strong Last Updated:
+              = project.updated_at
+
+          = link_to "View Project", project, :class => "view_project_link"
+  - else
+    Looks like you have no active projects, try starting one by clicking 'new project'.
