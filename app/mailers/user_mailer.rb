@@ -71,7 +71,8 @@ class UserMailer < ActionMailer::Base
       if @user.has_site?
         mail(
           :from     => "alerts@stormsavvy.com",
-          :to       => @user.email,
+          :to       => email,
+          # :to       => @user.email,
           :subject  => "Storm Savvy Weekly Project Status Update"
           ).deliver
       end
