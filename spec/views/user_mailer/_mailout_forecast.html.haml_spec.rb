@@ -68,8 +68,4 @@ describe "user_mailer/_mailout_forecast" do
     rendered.should have_selector 'th', :text => "Date"
     rendered.should have_selector 'th', :text => "Forecast"
   end
-
-  it 'renders forecast data' do
-    puts @mailer
-  end
 end
