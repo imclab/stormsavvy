@@ -69,11 +69,4 @@ describe PagesController do
       response.should be_success
     end
   end
-
-  describe "Get 'POP email'" do
-    it "returns success" do
-      get :popemail
-      response.should be_success
-    end
-  end
 end
