@@ -18,8 +18,8 @@
 
           - zipcode = site.zipcode
           - nf = NOAAForecast.new(zipcode)
-          - forecast = nf.forecast_by_zipcode(zipcode)
-          - forecast.each do |f|
+          - @forecast = nf.forecast_by_zipcode(zipcode)
+          - @forecast.each do |f|
             %tr
               %td
                 = f[:date]
