@@ -69,12 +69,33 @@ describe DashboardController do
   describe "inspection event variables" do
     it "returns inspection events that need attention" do
       @inspection_events.should == @site.inspection_events.where(:completed => false)
+    end
 
-      inspection_events = @user.sites.each do |site|
+    it "does not return inspection event if empty" do
+      inspection_events = []
+      @user.sites.each do |site|
         site.inspection_events.each do |ie|
-          puts ie.completed
+          if ie.completed.blank?
+            puts 'no inspection events'
+          else
+            inspection_events[] << ie.completed
+            puts ie.completed
+          end
         end
       end
+
+      inspection_events.should == @site.inspection_events.completed
+    end
+
+    it "does return inspection event if present" do
+      ie1 = InspectionEvent.create(:completed => true)
+      ie2 = InspectionEvent.create(:completed => true)
+
+      inspection_events = InspectionEvent.completed
+      inspection_events.blank?.should == false
+
+      ie = [] << ie1 << ie2
+      ie.should == [ie1, ie2]
     end
   end
 end
