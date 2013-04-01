@@ -1,19 +1,14 @@
-# 1. Render pdf in view - not controller
-# 2. Document.new recognizes background image pass while Document.generate does not
-# 3. Text_box method position text into place by coordinate
-# 4. Contractor information comes from Report.site class, not sites
-
 pdf = Prawn::Document.new(:background => "#{Prawn::DATADIR}/images/CEM2030-2012_Page_01.png") 
 
 # page1 = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
 # pdf.image page1
 
-pdf.fill_color "FF0000"
-pdf.text_box "#{@report.site_information_name}", :size => 10, :at => [20,670]
-pdf.text_box "#{@report.site_address_1}", :size => 10, :at => [20,660]
-pdf.text_box "#{@report.site_address_2}", :size => 10, :at => [20,650]
-pdf.text_box "#{@report.site_city}, #{@report.site_state}", :size => 10, :at => [20,630]
-pdf.text_box "#{@report.site_zipcode}", :size => 10, :at => [20,620]
+# pdf.fill_color "FF0000"
+# pdf.text_box "#{@report.site_information_name}", :size => 10, :at => [20,670]
+# pdf.text_box "#{@report.site_address_1}", :size => 10, :at => [20,660]
+# pdf.text_box "#{@report.site_address_2}", :size => 10, :at => [20,650]
+# pdf.text_box "#{@report.site_city}, #{@report.site_state}", :size => 10, :at => [20,630]
+# pdf.text_box "#{@report.site_zipcode}", :size => 10, :at => [20,620]
 
 # pdf.move_down 90
 
