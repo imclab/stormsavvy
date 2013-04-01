@@ -19,7 +19,7 @@ describe "user_mailer/mailout" do
     @date5 = Date.today + 4.day
     @date6 = Date.today + 5.day
     @date7 = Date.today + 6.day
-
+=end
     @user = FactoryGirl.create(:user)
     @project1 = FactoryGirl.create(
       :project,
