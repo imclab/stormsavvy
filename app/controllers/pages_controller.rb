@@ -22,30 +22,4 @@ class PagesController < ApplicationController
 
   def privacy
   end
-
-  # def faq
-  # end
-
-  # def contact
-  # end
-
-  # def plans
-  # end
-
-  # def features
-  # end
-
-  # def team
-  # end
-
-  # def popemail
-  #   TODO: Alert mailer necessary here?
-  #   AlertMailer.pop_alert(user).deliver
-  # end
-
-  # def sendemail
-  # end
-
-  # def consulting
-  # end
 end
