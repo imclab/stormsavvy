@@ -54,8 +54,8 @@ marker10 = ["400\n"].join
 options10 = {:size => 12, :width => 30, :at => [-20, 400]}
 
 # Boundary border
-# pdf.stroke_color('FF0000')
-# pdf.stroke_bounds
+pdf.stroke_color('FF0000')
+pdf.stroke_bounds
 
 pdf.text_box(marker1, options1) 
 pdf.text_box(marker2, options2)
