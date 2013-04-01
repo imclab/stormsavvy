@@ -1,12 +1,11 @@
 %table
   %tr
     - @projects.each do |project|
-      = "Project: #{project.name}"
+      = "Project: #{project.name} >> "
 
       - project.sites.each do |site|
         %br
-          = "Site: #{site.name}"
-        %br
+          = "Site: #{site.name} >> "
           = "Zipcode: #{site.zipcode}"
 
         %th
