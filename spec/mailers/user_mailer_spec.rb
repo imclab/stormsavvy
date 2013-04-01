@@ -97,7 +97,12 @@ describe UserMailer do
       @mailer.body.should_not be_nil
     end
 
-    it "renders user, project and site count" do
+    it 'has correct greeting and salutation' do
+      @greeting.should == 'Greetings'
+      @salutation.should == 'The Storm Savvy Team'
+    end
+
+    it "renders correct count" do
       @numprojects.should_not be_nil
       @numusers.should_not be_nil
       @numsites.should_not be_nil
