@@ -6,8 +6,15 @@
       %p
         = @greeting
       %p
-        Here are the daily POP alerts for your sites:
+        Here are your pending reports:
       %p
-        = render 'mailout_forecast', :projects => @projects
+        - unless @reports.blank?
+          - @reports.each do |report|
+            %li= "Report for #{report.created_at}"
+        - else
+          No pending reports.
       %p
         = @salutation
+      %hr
+      %p
+        = render 'mailout_forecast', :projects => @projects
