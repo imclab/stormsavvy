@@ -9,10 +9,6 @@ describe PagesController do
 
   describe "GET 'index'" do
     it "returns success" do
-      # already signed in
-      # get :index
-      # response.should be_success
-
       render_template('pages/_hero')
       response.should be_success
     end
