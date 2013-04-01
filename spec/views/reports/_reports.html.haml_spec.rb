@@ -9,12 +9,11 @@ describe "reports/_reports" do
     ])
     @report = FactoryGirl.create(:report, :id => 1)
   end
-  
-  it "renders cem2030 partial correctly" do    
+
+  it "renders cem2030 partial correctly" do
     render
     rendered.should_not be_nil
     rendered.should =~ /ID/
-    rendered.should =~ /Type/
     rendered.should =~ /Date/
     rendered.should =~ /URL/
   end
