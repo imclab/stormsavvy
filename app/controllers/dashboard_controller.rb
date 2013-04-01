@@ -6,12 +6,8 @@ class DashboardController < ApplicationController
     if current_user
       @projects = current_user.projects.all
       @sites = current_user.sites.all
-=begin
-      inspection_events = @sites.each do |site|
-        site.inspection_events.where(:completed => false)
-      end
-      @inspection_events = inspection_events
-=end
+
+
       @inspection_events = InspectionEvent.where(:completed => false)
       # @inspection_events = InspectionEvent.needs_attention.all
 
