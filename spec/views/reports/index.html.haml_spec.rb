@@ -11,7 +11,6 @@ describe "reports/index" do
   it "renders index page correctly" do
     render
     rendered.should =~ /ID/
-    rendered.should =~ /Type/
     rendered.should =~ /Date/
     rendered.should =~ /URL/
   end
