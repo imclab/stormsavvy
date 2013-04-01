@@ -136,8 +136,7 @@ describe UserMailer do
   describe '#mailout' do
 
     before(:each) do
-      email = "walter@stormsavvy.com"
-      @mailer = UserMailer.mailout(email).deliver
+      @mailer = UserMailer.mailout(@email).deliver
     end
 
     it "delivers mail successfully" do
@@ -169,8 +168,7 @@ describe UserMailer do
 
   describe '#thankyou' do
     before(:each) do
-      email = "walter@stormsavvy.com"
-      @mailer = UserMailer.thankyou(email).deliver
+      @mailer = UserMailer.thankyou(@email).deliver
     end
 
     it "delivers mail successfully" do
