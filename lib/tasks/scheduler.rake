@@ -84,11 +84,11 @@ namespace :scheduler do
 
   desc "Delivers mailout mailer"
   task :mailout => :environment do
-  	test_users = [
+  	users = [
       'walter@stormsavvy.com'
       ]
-    test_users.each do |address|
-      UserMailer.mailout
+    users.each do |address|
+      UserMailer.mailout(address)
     end
   end
 
