@@ -22,7 +22,7 @@ site = project.sites.new(
   )
 site.save
 site2 = project.sites.new(
-  :name => 'ec playground', 
+  :name => 'ec playground',
   :zipcode => 94530
   )
 site2.save
