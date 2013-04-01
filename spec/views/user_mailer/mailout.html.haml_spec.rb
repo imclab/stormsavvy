@@ -4,6 +4,7 @@ describe "user_mailer/mailout" do
 
 	before(:all) do
     @greeting = "Greetings"
+=begin
     @forecast1 = [{ :date => Date.today + 0.day, :weather => "90" },
                   { :date => Date.today + 1.day, :weather => "85"},
                   { :date => Date.today + 2.day, :weather => "80"},
