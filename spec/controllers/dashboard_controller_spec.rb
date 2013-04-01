@@ -34,6 +34,18 @@ describe DashboardController do
     )
     @inspection_events = [@inspection_event]
 
+    @report1 = FactoryGirl.create(
+      :report,
+      :site => @site,
+      :status => "completed"
+    )
+    @report2 = FactoryGirl.create(
+      :report,
+      :site => @site,
+      :status => "needs_attention"
+    )
+    @reports = [@report1, @report2]
+
     sign_in @user
   end
 
