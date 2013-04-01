@@ -57,6 +57,7 @@ describe "user_mailer/_mailout_forecast" do
     render
     rendered.should =~ /Project:/
     rendered.should =~ /Site:/
+    rendered.should =~ /Zipcode:/
     rendered.should =~ /Date/
     rendered.should =~ /Forecast/
   end
