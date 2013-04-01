@@ -69,22 +69,18 @@ describe UserMailer do
 
     before(:each) do
       email = "walter@stormsavvy.com"
-      @mailer = UserMailer.mailout(email).deliver
-
-      @numusers = [@user]
-      @numprojects = [@project]
-      @numsites = [@site]
+      @mailer = UserMailer.pester_admins(email).deliver
     end
 
-    it "should send something via mailout" do
+    it "delivers mail successfully" do
       ActionMailer::Base.deliveries.should_not be_empty
     end
 
-    it "should render successfully" do
+    it "renders successfully" do
       lambda { @mailer }.should_not raise_error
     end
 
-    it "should not have empty text body" do
+    it "does not have empty text body" do
       @mailer.body.should_not be_nil
     end
 
