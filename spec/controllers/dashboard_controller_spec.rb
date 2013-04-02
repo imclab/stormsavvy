@@ -103,13 +103,13 @@ describe DashboardController do
 
       # @weather_events.should == @site.weather_events.all
     end
-  end
 
-  describe "inspection event variables" do
     it "returns inspection events that need attention" do
       @inspection_events.should == @site.inspection_events.where(:completed => false)
     end
+  end
 
+  describe "dashboard variable states" do
     it "does not return inspection event if empty to current user" do
       inspection_events = []
       @user.sites.each do |site|
