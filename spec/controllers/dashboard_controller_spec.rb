@@ -91,7 +91,7 @@ describe DashboardController do
     end
   end
 
-  describe "pig pen variables" do
+  describe "dashboard variables" do
     it 'returns requested objects' do
       sign_in @user
 
