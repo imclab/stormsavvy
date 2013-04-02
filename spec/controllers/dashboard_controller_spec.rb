@@ -11,13 +11,18 @@ describe DashboardController do
       :user,
       :email => 'info@stormsavvy.com'
     )
+    @users = [ @user ]
 
     @project = FactoryGirl.create(
       :project,
-      :user => @user,
-      :created_at => 1.day.ago
+      :user => @user
     )
-    @projects = [@project]
+    @project2 = FactoryGirl.create(
+      :project,
+      :user => @user2
+    )
+    @projects = [ @project ]
+    @projects2 = [ @project2 ]
 
     @site = FactoryGirl.create(
       :site,
