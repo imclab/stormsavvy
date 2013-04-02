@@ -1,14 +1,13 @@
 = simple_nested_form_for @project, :html => { :class => 'form-horizontal' } do |f|
-  - if f.error_notification
+  -# if f.error_notification
     .alert.alert-error.fade.in
-      %a.close{"data-dismiss" => "alert", :href => "#"} ×
+      /%a.close{"data-dismiss" => "alert", :href => "#"} ×
       = f.error_notification
   - flash.each do |name, msg|
-    %h4 Flash message!
+    %h4 Error!
     %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-      %a.close{"data-dismiss" => "alert"} ×
+      /%a.close{"data-dismiss" => "alert"} ×
       = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
-      %p= msg
 
   %fieldset
     %legend Project Details
