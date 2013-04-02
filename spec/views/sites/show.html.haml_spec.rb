@@ -18,6 +18,11 @@ describe "sites/show" do
     rendered.should match(/Costcode/)
     rendered.should match(/Size/)
     rendered.should match(/Exposed Area/)
+    rendered.should match(/Address 1/)
+    rendered.should match(/Address 2/)
+    rendered.should match(/City/)
+    rendered.should match(/State/)
+    rendered.should match(/Zipcode/)
   end
 
   it "has Edit / Back / Delete" do
