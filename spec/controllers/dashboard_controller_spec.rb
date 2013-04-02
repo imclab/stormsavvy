@@ -149,4 +149,34 @@ describe DashboardController do
       completed.blank?.should == false
     end
   end
+
+  describe "current_user scope" do
+    it "returns correct projects to each user" do
+      @user.projects.all.should == @projects
+      @user.projects.all.should_not == @projects2
+      @user2.projects.all.should == @projects2
+      @user2.projects.all.should_not == @projects
+    end
+
+    it "returns correct sites to each user" do
+      @user.sites.all.should == @sites
+      @user.sites.all.should_not == @sites2
+      @user2.sites.all.should == @sites2
+      @user2.sites.all.should_not == @sites
+    end
+
+    it "returns correct inspection_events to each user" do
+      @site.inspection_events.all.should == @inspection_events
+      @site.inspection_events.all.should_not == @inspection_events2
+      @site2.inspection_events.all.should == @inspection_events2
+      @site2.inspection_events.all.should_not == @inspection_events
+    end
+
+    it "returns correct reports to each user" do
+      @site.reports.all.should == @reports
+      @site.reports.all.should_not == @reports2
+      @site2.reports.all.should == @reports2
+      @site2.reports.all.should_not == @reports
+    end
+  end
 end
