@@ -39,8 +39,8 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @sites = @project.sites.build
     respond_to do |format|
-      format.html { render html: @project, :notice => 'show me the money',
-                    :flash => { :error => 'Error here' } }
+      format.html { render html: @project, :notice => 'See details below.',
+                    :flash => { :error => 'Error!' } }
       format.json { render json: @project }
     end
   end
