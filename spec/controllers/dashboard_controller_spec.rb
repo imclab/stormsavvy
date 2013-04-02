@@ -30,7 +30,14 @@ describe DashboardController do
       :name => 'ec jungle gym',
       :zipcode => 94530
     )
-    @sites = [@site]
+    @site2 = FactoryGirl.create(
+      :site,
+      :project => @project2,
+      :name => 'berkeley high',
+      :zipcode => 94709
+    )
+    @sites = [ @site ]
+    @sites2 = [ @site2 ]
 
 =begin
     # comment back in when model is ready
