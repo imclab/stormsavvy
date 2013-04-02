@@ -52,21 +52,28 @@ describe DashboardController do
       :inspection_event,
       :site => @site
     )
-    @inspection_events = [@inspection_event]
+    @inspection_event2 = FactoryGirl.create(
+      :inspection_event,
+      :site => @site2
+    )
+    @inspection_events = [ @inspection_event ]
+    @inspection_events2 = [ @inspection_event2 ]
 
-    @report1 = FactoryGirl.create(
+    @report = FactoryGirl.create(
       :report,
       :site => @site,
       :status => "completed"
     )
     @report2 = FactoryGirl.create(
       :report,
-      :site => @site,
+      :site => @site2,
       :status => "needs_attention"
     )
-    @reports = [@report1, @report2]
+    @reports = [ @report ]
+    @reports2 = [ @report2 ]
 
     sign_in @user
+    sign_in @user2
   end
 
   describe "GET 'index' for signed in user" do
