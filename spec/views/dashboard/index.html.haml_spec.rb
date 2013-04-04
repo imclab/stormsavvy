@@ -24,7 +24,7 @@ describe "dashboard/index" do
     @p1 = FactoryGirl.create(:project)
     @p2 = FactoryGirl.create(:project)
     @projects = [@p1, @p2]
-    @needs_attention_reports = Report.needs_attention
+    # @needs_attention_reports = Report.needs_attention
     @s1 = @p1.sites.create(site_attributes)
     @s2 = @p2.sites.create(site_attributes)
     @ie = @s1.inspection_events.create(ie_attributes)
