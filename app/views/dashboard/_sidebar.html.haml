@@ -3,7 +3,6 @@
     .inner
       %h5 Weather Report
       %hr
-      %ul
         - unless @projects.blank?
           - @projects.each do |project|
             - project.sites.each do |site|
