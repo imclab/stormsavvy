@@ -20,8 +20,9 @@
       %br
       /.leaderboard
       = render :partial => "pages/hero" if is_public_home?
-      .container-fluid
+      .container
         .row
+          %br
           %br
             - flash.each do |name, msg|
               %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
