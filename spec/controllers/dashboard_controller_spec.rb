@@ -39,15 +39,6 @@ describe DashboardController do
     @current_sites = [ @current_site ]
     @other_sites = [ @other_site ]
 
-=begin
-    # comment back in when model is ready
-    @weather_event = FactoryGirl.create(
-      :weather_event,
-      :site => @site
-    )
-    @weather_events = [@weather_event]
-=end
-
     @current_ie = FactoryGirl.create(
       :inspection_event,
       :site => @current_site
