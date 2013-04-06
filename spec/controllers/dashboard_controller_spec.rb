@@ -74,8 +74,8 @@ describe DashboardController do
     @pending_reports = [ @pending_report ]
     @all_reports = [ @completed_report, @pending_report ]
 
-    sign_in @user
-    sign_in @user2
+    sign_in @current_user
+    sign_in @other_user
   end
 
   describe "GET 'index' for signed in user" do
@@ -87,7 +87,7 @@ describe DashboardController do
 
   describe "GET 'index' for non-signed in user" do
     it "returns http success" do
-      sign_out @user
+      sign_out @current_user
       get :index
       response.should redirect_to index_path
     end
