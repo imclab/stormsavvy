@@ -121,7 +121,7 @@ describe DashboardController do
   describe "dashboard variable states" do
     it "does not return inspection event if empty to current user" do
       inspection_events = []
-      @user.sites.each do |site|
+      @current_user.sites.each do |site|
         site.inspection_events.each do |ie|
           if ie.completed.blank?
             puts 'no inspection events'
