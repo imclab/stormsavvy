@@ -59,18 +59,18 @@ describe DashboardController do
     @inspection_events = [ @inspection_event ]
     @inspection_events2 = [ @inspection_event2 ]
 
-    @report = FactoryGirl.create(
+    @completed_report = FactoryGirl.create(
       :report,
       :site => @site,
       :status => "completed"
     )
-    @report2 = FactoryGirl.create(
+    @pending_report = FactoryGirl.create(
       :report,
       :site => @site2,
       :status => "needs_attention"
     )
-    @reports = [ @report ]
-    @reports2 = [ @report2 ]
+    @completed_reports = [ @completed_report ]
+    @pending_reports = [ @pending_report ]
 
     sign_in @user
     sign_in @user2
