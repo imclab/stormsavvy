@@ -48,8 +48,8 @@ describe DashboardController do
       :site => @other_site
     )
     @current_ie = [ @current_ie ]
-    @pending_ie = [ @pending_ie ]
-    @all_ie = [ @current_ie, @pending_ie ]
+    @other_ie = [ @other_ie ]
+    @all_ie = [ @current_ie, @other_ie ]
 
     @completed_report = FactoryGirl.create(
       :report,
