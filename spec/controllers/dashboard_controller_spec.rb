@@ -132,7 +132,7 @@ describe DashboardController do
         end
       end
 
-      inspection_events.should == @site.inspection_events.completed
+      inspection_events.should == @current_site.inspection_events.completed
     end
 
     it "returns inspection event if present to current user" do
