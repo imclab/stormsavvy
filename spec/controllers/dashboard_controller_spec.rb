@@ -48,16 +48,17 @@ describe DashboardController do
     @weather_events = [@weather_event]
 =end
 
-    @inspection_event = FactoryGirl.create(
+    @current_ie = FactoryGirl.create(
       :inspection_event,
-      :site => @site
+      :site => @current_site
     )
-    @inspection_event2 = FactoryGirl.create(
+    @other_ie = FactoryGirl.create(
       :inspection_event,
-      :site => @site2
+      :site => @other_site
     )
-    @inspection_events = [ @inspection_event ]
-    @inspection_events2 = [ @inspection_event2 ]
+    @current_ie = [ @current_ie ]
+    @pending_ie = [ @pending_ie ]
+    @all_ie = [ @current_ie, @pending_ie ]
 
     @completed_report = FactoryGirl.create(
       :report,
