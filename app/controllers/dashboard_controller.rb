@@ -29,4 +29,27 @@ class DashboardController < ApplicationController
       # @weather_events = WeatherEvent.all
     end
   end
+
+  def get_reports
+    @reports = []
+
+    current_user.reports.each do |r|
+      @reports[] << r
+    end
+    return @reports
+  end
+
+  def pending_reports
+    get_reports
+    pending_reports = []
+
+    @reports.each do |r|
+      if r.status == "needs_attention"
+        pending_reports[] << r
+      else
+        'No pending reports.'
+      end
+    end
+  end
+
 end
