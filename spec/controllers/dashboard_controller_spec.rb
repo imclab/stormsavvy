@@ -3,41 +3,41 @@ require 'spec_helper'
 describe DashboardController do
 
   before(:each) do
-    @user = FactoryGirl.build(
+    @current_user = FactoryGirl.build(
       :user,
       :email => 'name@stormsavvy.com'
     )
-    @user2 = FactoryGirl.build(
+    @other_user = FactoryGirl.build(
       :user,
       :email => 'info@stormsavvy.com'
     )
-    @users = [ @user ]
+    @all_users = [ @current_user, @other_user ]
 
-    @project = FactoryGirl.create(
+    @current_project = FactoryGirl.create(
       :project,
-      :user => @user
+      :user => @current_user
     )
-    @project2 = FactoryGirl.create(
+    @other_project = FactoryGirl.create(
       :project,
-      :user => @user2
+      :user => @other_user
     )
-    @projects = [ @project ]
-    @projects2 = [ @project2 ]
+    @current_projects = [ @current_project ]
+    @other_projects = [ @other_project ]
 
-    @site = FactoryGirl.create(
+    @current_site = FactoryGirl.create(
       :site,
-      :project => @project,
+      :project => @current_project,
       :name => 'ec jungle gym',
       :zipcode => 94530
     )
-    @site2 = FactoryGirl.create(
+    @other_site = FactoryGirl.create(
       :site,
-      :project => @project2,
+      :project => @other_project,
       :name => 'berkeley high',
       :zipcode => 94709
     )
-    @sites = [ @site ]
-    @sites2 = [ @site2 ]
+    @current_sites = [ @current_site ]
+    @other_sites = [ @other_site ]
 
 =begin
     # comment back in when model is ready
