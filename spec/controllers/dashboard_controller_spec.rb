@@ -95,19 +95,19 @@ describe DashboardController do
 
   describe "dashboard variables" do
     it 'returns requested objects' do
-      sign_in @user
+      sign_in @current_user
 
-      @projects.should == @user.projects.all
-      @user.projects.blank?.should be_false
+      @current_projects.should == @current_user.projects.all
+      @current_user.projects.blank?.should be_false
 
-      @sites.should == @user.sites.all # nested attribute
-      @user.sites.blank?.should be_false
+      @current_sites.should == @current_user.sites.all # nested attribute
+      @current_user.sites.blank?.should be_false
 
       # @weather_events.should == @site.weather_events.all
     end
 
     it "returns inspection events that need attention" do
-      @inspection_events.should == @site.inspection_events.where(:completed => false)
+      @current_ie.should == @current_site.inspection_events.where(:completed => false)
     end
   end
 
