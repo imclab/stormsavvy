@@ -53,17 +53,26 @@ describe DashboardController do
 
     @completed_report = FactoryGirl.create(
       :report,
-      :site => @site,
+      :site => @current_site,
       :status => "completed"
     )
     @pending_report = FactoryGirl.create(
       :report,
-      :site => @site2,
+      :site => @other_site,
       :status => "needs_attention"
     )
     @completed_reports = [ @completed_report ]
     @pending_reports = [ @pending_report ]
     @all_reports = [ @completed_report, @pending_report ]
+
+=begin
+    # comment back in when model is ready
+    @weather_event = FactoryGirl.create(
+      :weather_event,
+      :site => @site
+    )
+    @weather_events = [@weather_event]
+=end
 
     sign_in @current_user
     sign_in @other_user
