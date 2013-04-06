@@ -161,7 +161,7 @@ describe DashboardController do
 
   describe "#get_reports" do
     it "returns all reports to current user" do
-      sign_in @user
+      sign_in @current_user
       controller.stub!(:get_reports).and_return(@all_reports)
       @all_reports.should include(@pending_report)
       @all_reports.should include(@completed_report)
@@ -171,7 +171,7 @@ describe DashboardController do
 
   describe "#pending_reports" do
     it "returns pending reports to current user" do
-      sign_in @user
+      sign_in @current_user
       controller.stub!(:get_reports).and_return(@pending_reports)
       @pending_reports.should include(@pending_report)
       @pending_reports.should_not include(@completed_report)
