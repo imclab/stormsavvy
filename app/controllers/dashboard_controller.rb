@@ -1,6 +1,5 @@
 class DashboardController < ApplicationController
 
-  # the pig pen
   def index
     redirect_to index_path unless user_signed_in?
     if current_user
