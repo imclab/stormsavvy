@@ -94,7 +94,7 @@ describe DashboardController do
   end
 
   describe "dashboard variables" do
-    it 'returns requested objects' do
+    it 'returns current projects and sites' do
       sign_in @current_user
 
       @current_projects.should == @current_user.projects.all
