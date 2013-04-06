@@ -180,31 +180,31 @@ describe DashboardController do
 
   describe "current_user scope" do
     it "returns correct projects to each user" do
-      @user.projects.all.should == @projects
-      @user.projects.all.should_not == @projects2
-      @user2.projects.all.should == @projects2
-      @user2.projects.all.should_not == @projects
+      @current_user.projects.all.should == @current_projects
+      @current_user.projects.all.should_not == @other_projects
+      @other_user.projects.all.should == @other_projects
+      @other_user.projects.all.should_not == @current_projects
     end
 
     it "returns correct sites to each user" do
-      @user.sites.all.should == @sites
-      @user.sites.all.should_not == @sites2
-      @user2.sites.all.should == @sites2
-      @user2.sites.all.should_not == @sites
+      @current_user.sites.all.should == @current_sites
+      @current_user.sites.all.should_not == @other_sites
+      @other_user.sites.all.should == @other_sites
+      @other_user.sites.all.should_not == @current_sites
     end
 
     it "returns correct inspection_events to each user" do
-      @site.inspection_events.all.should == @inspection_events
-      @site.inspection_events.all.should_not == @inspection_events2
-      @site2.inspection_events.all.should == @inspection_events2
-      @site2.inspection_events.all.should_not == @inspection_events
+      @current_site.inspection_events.all.should == @current_ie
+      @current_site.inspection_events.all.should_not == @other_ie
+      @other_site.inspection_events.all.should == @other_ie
+      @other_site.inspection_events.all.should_not == @current_ie
     end
 
     it "returns correct reports to each user" do
-      @site.reports.all.should == @reports
-      @site.reports.all.should_not == @reports2
-      @site2.reports.all.should == @reports2
-      @site2.reports.all.should_not == @reports
+      @current_site.reports.all.should == @current_reports
+      @current_site.reports.all.should_not == @other_reports
+      @other_site.reports.all.should == @other_reports
+      @other_site.reports.all.should_not == @current_reports
     end
   end
 end
