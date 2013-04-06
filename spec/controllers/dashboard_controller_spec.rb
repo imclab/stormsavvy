@@ -71,6 +71,7 @@ describe DashboardController do
     )
     @completed_reports = [ @completed_report ]
     @pending_reports = [ @pending_report ]
+    @all_reports = [ @completed_report, @pending_report ]
 
     sign_in @user
     sign_in @user2
