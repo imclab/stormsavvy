@@ -9,8 +9,8 @@ class DashboardController < ApplicationController
       @reports = Report.where(:status => "needs_attention")
 
       @inspection_events = []
-      current_user.sites.each do |site|
-        site.inspection_events.each do |ie|
+      current_user.sites.each do |s|
+        s.inspection_events.each do |ie|
           if ie.completed.blank?
             'No inspection events.'
           else
