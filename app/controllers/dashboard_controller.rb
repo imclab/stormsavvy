@@ -6,6 +6,7 @@ class DashboardController < ApplicationController
     if current_user
       @projects = current_user.projects.all
       @sites = current_user.sites.all
+
       @reports = Report.where(:status => "needs_attention")
 
       @inspection_events = []

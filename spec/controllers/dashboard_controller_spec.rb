@@ -109,6 +109,13 @@ describe DashboardController do
     end
   end
 
+  describe "error handling" do
+    let(:site_error) { Site.create(:max_rain => nil) }
+    it 'renders error message if rain state = nil' do
+      rendered.should =~ /An error occurred or connection not available./
+    end
+  end
+
   describe "dashboard variable states" do
     it "does not return inspection event if empty to current user" do
       inspection_events = []
