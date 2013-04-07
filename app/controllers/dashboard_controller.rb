@@ -16,7 +16,7 @@ class DashboardController < ApplicationController
           if ie.completed.blank?
             'No inspection events.'
           else
-            @inspection_events[] << ie.completed
+            @inspection_events << ie.completed
           end
         end
       end
