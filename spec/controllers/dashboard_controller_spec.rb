@@ -235,4 +235,23 @@ describe DashboardController do
       # @other_site.reports.all.should_not == @current_reports
     end
   end
+=end
+
+  describe "dashboard views" do
+    render_views
+    before do
+      def controller.index
+        render :partial => "projects"
+      end
+    end
+
+    describe "index" do
+      it "renders the projects template" do
+        get :index
+        response.should =~ /Active Projects/
+        response.should have_link('New Project')
+      end
+    end
+  end
+
 end
