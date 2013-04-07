@@ -69,6 +69,8 @@ describe "dashboard/index" do
     sign_in @current_user
     sign_in @other_user
     render
+  end
+
 =begin
     @current_project = {
       :name => 'eb park and rec',
