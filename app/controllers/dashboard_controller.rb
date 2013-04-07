@@ -25,22 +25,24 @@ class DashboardController < ApplicationController
 
   def get_projects
     @projects = []
-    current_user.projects.each do |p|
-      @projects[] << p
-    end
+    projects = current_user.projects.all
 
-    if @projects.blank?
+    if projects.blank?
       'No active projects, start one by clicking \'new project\'.'
     else
-      return @projects
+      projects.each do |p|
+        @projects << p
+      end
     end
+
+    return @projects
   end
 
   def get_sites
     get_projects
     @sites = []
     @projects.each do |s|
-      @sites[] << s
+      @sites << s
     end
 
     return @sites
