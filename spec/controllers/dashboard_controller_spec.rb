@@ -190,17 +190,46 @@ describe DashboardController do
       @other_user.sites.all.should == @other_sites
       @other_user.sites.all.should_not == @current_sites
     end
+  end
+
+  describe "#get_ie" do
+    it "returns all reports to current user" do
+      sign_in @current_user
+      controller.stub!(:get_ie).and_return(@all_ie_array)
+      @all_ie_array.should include(@current_ie)
+      @all_ie_array.should include(@other_ie)
+      @all_ie_array.should_not be_nil
+    end
 
     it "returns correct inspection_events to each user" do
-      @current_site.inspection_events.all.should == @current_ie
-      @current_site.inspection_events.all.should_not == @other_ie
-      @other_site.inspection_events.all.should == @other_ie
-      @other_site.inspection_events.all.should_not == @current_ie
+      @current_site.inspection_events.all.should == @current_ie_array
+      @current_site.inspection_events.all.should_not == @other_ie_array
+      @other_site.inspection_events.all.should == @other_ie_array
+      @other_site.inspection_events.all.should_not == @current_ie_array
+    end
+  end
+
+  describe "#get_reports" do
+    it "returns all reports to current user" do
+      sign_in @current_user
+      controller.stub!(:get_reports).and_return(@all_reports)
+      @all_reports.should include(@pending_report)
+      @all_reports.should include(@completed_report)
+      @all_reports.should_not be_nil
+    end
+  end
+
+  describe "#pending_reports" do
+    it "returns pending reports to current user" do
+      sign_in @current_user
+      controller.stub!(:pending_reports).and_return(@pending_reports)
+      @pending_reports.should include(@pending_report)
+      @pending_reports.should_not include(@completed_report)
     end
 
     it "returns correct reports to each user" do
-      @current_site.reports.all.should == @current_reports
-      @current_site.reports.all.should_not == @other_reports
+      # @current_site.reports.all.should == @pending_reports
+      # @current_site.reports.all.should_not == @completed_reports
       # @other_site.reports.all.should == @other_reports
       # @other_site.reports.all.should_not == @current_reports
     end
