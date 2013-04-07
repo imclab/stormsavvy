@@ -106,8 +106,9 @@ describe "dashboard/index" do
     end
 
     it "shows sidebar with correct titles" do
-      rendered.should =~ /Pending Reports/
+      rendered.should =~ /Weather Report/
       rendered.should =~ /Pending Inspections/
+      rendered.should =~ /Pending Reports/
       rendered.should =~ /Report Forms/
     end
 
