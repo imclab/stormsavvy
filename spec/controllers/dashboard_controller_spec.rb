@@ -39,6 +39,7 @@ describe DashboardController do
     )
     @current_sites = [ @current_site ]
     @other_sites = [ @other_site ]
+    @all_sites = [ @current_site, @other_site ]
 
     @current_ie = FactoryGirl.create(
       :inspection_event,
