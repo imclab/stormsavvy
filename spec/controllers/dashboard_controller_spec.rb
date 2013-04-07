@@ -5,7 +5,6 @@ describe DashboardController do
   before(:each) do
 
 =begin
-    # comment back in when model is ready
     @weather_event = FactoryGirl.create(
       :weather_event,
       :site => @site
