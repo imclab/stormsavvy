@@ -95,6 +95,7 @@ describe DashboardController do
     end
   end
 
+=begin
   describe "dashboard variables: users, projects and sites" do
     it 'returns current projects and sites' do
       sign_in @current_user
