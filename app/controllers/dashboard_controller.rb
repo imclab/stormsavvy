@@ -53,7 +53,7 @@ class DashboardController < ApplicationController
     @completed_ie = []
     @sites.each do |s|
       s.inspection_events.each do |ie|
-        @completed_ie[] << ie.completed
+        @completed_ie << ie.completed
       end
     end
 
