@@ -23,6 +23,7 @@ describe DashboardController do
     )
     @current_projects = [ @current_project ]
     @other_projects = [ @other_project ]
+    @all_projects = [ @current_project, @other_project ]
 
     @current_site = FactoryGirl.create(
       :site,
