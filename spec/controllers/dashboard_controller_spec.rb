@@ -95,32 +95,22 @@ describe DashboardController do
     end
   end
 
-  describe "dashboard variables" do
+  describe "dashboard variables: users, projects and sites" do
     it 'returns current projects and sites' do
       sign_in @current_user
-
       @current_projects.should == @current_user.projects.all
       @current_user.projects.blank?.should be_false
-
       @current_sites.should == @current_user.sites.all # nested attribute
       @current_user.sites.blank?.should be_false
-
       # @weather_events.should == @site.weather_events.all
     end
 
-    it "returns inspection events that need attention" do
-      @current_ie.should == @current_site.inspection_events.where(:completed => false)
+    it "returns pending inspection events" do
+      @current_ie_array.should == @current_site.inspection_events.where(:completed => false)
     end
   end
 
-  describe "error handling" do
-    let(:site_error) { Site.create(:max_rain => nil) }
-    it 'renders error message if rain state = nil' do
-      # rendered.should =~ /An error occurred or connection not available./
-    end
-  end
-
-  describe "dashboard variable states" do
+  describe "dashboard variables: events and reports" do
     it "does not return inspection event if empty to current user" do
       inspection_events = []
       @current_user.sites.each do |site|
