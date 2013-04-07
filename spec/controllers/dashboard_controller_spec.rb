@@ -49,9 +49,9 @@ describe DashboardController do
       :inspection_event,
       :site => @other_site
     )
-    @current_ie = [ @current_ie ]
-    @other_ie = [ @other_ie ]
-    @all_ie = [ @current_ie, @other_ie ]
+    @current_ie_array = [ @current_ie ]
+    @other_ie_array = [ @other_ie ]
+    @all_ie_array = [ @current_ie, @other_ie ]
 
     @completed_report = FactoryGirl.create(
       :report,
