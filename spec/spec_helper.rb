@@ -48,6 +48,8 @@ RSpec.configure do |config|
   config.include(EmailSpec::Matchers)
 
   config.include Devise::TestHelpers, :type => :controller
+  config.include Devise::TestHelpers, :type => :view
+
   # config.include Rack::Test::Methods
   # config.extend ControllerMacros, :type => :controllers
 
