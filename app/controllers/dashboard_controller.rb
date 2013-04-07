@@ -52,6 +52,8 @@ class DashboardController < ApplicationController
       end
     end
 
+    if @completed_ie.blank?
+      'No pending inspections'
     return @completed_ie
   end
 
