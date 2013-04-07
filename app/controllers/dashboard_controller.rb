@@ -79,7 +79,7 @@ class DashboardController < ApplicationController
 
     @all_reports.each do |r|
       if r.status == "needs_attention"
-        @pending_reports[] << r
+        @pending_reports << r
       else
         'No pending reports.'
       end
