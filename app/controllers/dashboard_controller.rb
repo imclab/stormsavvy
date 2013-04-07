@@ -34,17 +34,21 @@ class DashboardController < ApplicationController
   end
 
   def get_sites
+    get_projects
     @sites = []
-    get_projects.each do |s|
+    @projects.each do |s|
       @sites[] << s
     end
+
+    return @sites
   end
 
   def get_ie
+    get_sites
     @completed_ie = []
-    get_sites.each do |s|
+    @sites.each do |s|
       s.inspection_events.each do |ie|
-        inspection_events[] << ie.completed
+        @completed_ie[] << ie.completed
       end
     end
 
