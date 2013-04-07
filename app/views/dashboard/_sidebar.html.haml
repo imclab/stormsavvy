@@ -20,9 +20,9 @@
         Pending Inspections
       %hr
         - unless @inspection_events.blank?
-          - self.get_ie.each do |inspection_event|
-            - if inspection_event.completed == false
-              = link_to "#{inspection_event.inspection_type} for #{inspection_event.inspection_date}", edit_inspection_event_path(inspection_event)
+          - self.get_ie.each do |ie|
+            - if ie.completed == false
+              = link_to "#{ie.inspection_type} for #{ie.inspection_date}", edit_inspection_event_path(ie)
             - else
               No pending inspections.
             %br
