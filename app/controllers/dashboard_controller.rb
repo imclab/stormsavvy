@@ -54,7 +54,9 @@ class DashboardController < ApplicationController
 
     if @completed_ie.blank?
       'No pending inspections'
-    return @completed_ie
+    else
+      return @completed_ie
+    end
   end
 
   def get_reports
