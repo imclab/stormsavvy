@@ -3,73 +3,6 @@ require 'spec_helper'
 describe "dashboard/index" do
 
   before(:each) do
-    @current_user = FactoryGirl.build(
-      :user,
-      :email => 'name@stormsavvy.com'
-    )
-    @other_user = FactoryGirl.build(
-      :user,
-      :email => 'info@stormsavvy.com'
-    )
-    @all_users = [ @current_user, @other_user ]
-
-    @current_project = FactoryGirl.create(
-      :project,
-      :user => @current_user
-    )
-    @other_project = FactoryGirl.create(
-      :project,
-      :user => @other_user
-    )
-    @current_projects = [ @current_project ]
-    @other_projects = [ @other_project ]
-    @all_project = [ @current_project, @pending_project ]
-
-    @current_site = FactoryGirl.create(
-      :site,
-      :project => @current_project,
-      :name => 'ec jungle gym',
-      :zipcode => 94530
-    )
-    @other_site = FactoryGirl.create(
-      :site,
-      :project => @other_project,
-      :name => 'berkeley high',
-      :zipcode => 94709
-    )
-    @current_sites = [ @current_site ]
-    @other_sites = [ @other_site ]
-    @all_sites = [ @current_site, @pending_site ]
-
-    @current_ie = FactoryGirl.create(
-      :inspection_event,
-      :site => @current_site
-    )
-    @other_ie = FactoryGirl.create(
-      :inspection_event,
-      :site => @other_site
-    )
-    @current_ie = [ @current_ie ]
-    @pending_ie = [ @pending_ie ]
-    @all_ie = [ @current_ie, @pending_ie ]
-
-    @completed_report = FactoryGirl.create(
-      :report,
-      :site => @current_site,
-      :status => "completed"
-    )
-    @pending_report = FactoryGirl.create(
-      :report,
-      :site => @other_site,
-      :status => "needs_attention"
-    )
-    @completed_reports = [ @completed_report ]
-    @pending_reports = [ @pending_report ]
-    @all_reports = [ @completed_report, @pending_report ]
-    sign_in @current_user
-    sign_in @other_user
-    render
-  end
 
 =begin
     @current_project = {
@@ -143,6 +76,74 @@ describe "dashboard/index" do
     @other_report = @other_site.inspection_events.create(@pending_report)
     @all_reports = [ @current_report, @other_report ]
 =end
+
+    @current_user = FactoryGirl.build(
+      :user,
+      :email => 'name@stormsavvy.com'
+    )
+    @other_user = FactoryGirl.build(
+      :user,
+      :email => 'info@stormsavvy.com'
+    )
+    @all_users = [ @current_user, @other_user ]
+
+    @current_project = FactoryGirl.create(
+      :project,
+      :user => @current_user
+    )
+    @other_project = FactoryGirl.create(
+      :project,
+      :user => @other_user
+    )
+    @current_projects = [ @current_project ]
+    @other_projects = [ @other_project ]
+    @all_project = [ @current_project, @pending_project ]
+
+    @current_site = FactoryGirl.create(
+      :site,
+      :project => @current_project,
+      :name => 'ec jungle gym',
+      :zipcode => 94530
+    )
+    @other_site = FactoryGirl.create(
+      :site,
+      :project => @other_project,
+      :name => 'berkeley high',
+      :zipcode => 94709
+    )
+    @current_sites = [ @current_site ]
+    @other_sites = [ @other_site ]
+    @all_sites = [ @current_site, @pending_site ]
+
+    @current_ie = FactoryGirl.create(
+      :inspection_event,
+      :site => @current_site
+    )
+    @other_ie = FactoryGirl.create(
+      :inspection_event,
+      :site => @other_site
+    )
+    @current_ie = [ @current_ie ]
+    @pending_ie = [ @pending_ie ]
+    @all_ie = [ @current_ie, @pending_ie ]
+
+    @completed_report = FactoryGirl.create(
+      :report,
+      :site => @current_site,
+      :status => "completed"
+    )
+    @pending_report = FactoryGirl.create(
+      :report,
+      :site => @other_site,
+      :status => "needs_attention"
+    )
+    @completed_reports = [ @completed_report ]
+    @pending_reports = [ @pending_report ]
+    @all_reports = [ @completed_report, @pending_report ]
+    sign_in @current_user
+    sign_in @other_user
+    render
+  end
 
   describe "index page components" do
 

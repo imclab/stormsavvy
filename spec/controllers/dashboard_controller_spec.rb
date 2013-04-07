@@ -3,6 +3,16 @@ require 'spec_helper'
 describe DashboardController do
 
   before(:each) do
+
+=begin
+    # comment back in when model is ready
+    @weather_event = FactoryGirl.create(
+      :weather_event,
+      :site => @site
+    )
+    @weather_events = [@weather_event]
+=end
+
     @current_user = FactoryGirl.build(
       :user,
       :email => 'name@stormsavvy.com'
@@ -70,15 +80,6 @@ describe DashboardController do
     sign_in @current_user
     sign_in @other_user
   end
-
-=begin
-    # comment back in when model is ready
-    @weather_event = FactoryGirl.create(
-      :weather_event,
-      :site => @site
-    )
-    @weather_events = [@weather_event]
-=end
 
   describe "GET 'index' for signed in user" do
     it "returns http success" do
