@@ -151,31 +151,37 @@ describe DashboardController do
     end
   end
 
-  describe "#get_reports" do
-    it "returns all reports to current user" do
-      sign_in @current_user
-      controller.stub!(:get_reports).and_return(@all_reports)
-      @all_reports.should include(@pending_report)
-      @all_reports.should include(@completed_report)
-      @all_reports.should_not be_nil
+  describe "error handling" do
+    let(:site_error) { Site.create(:max_rain => nil) }
+    it 'renders error message if rain state = nil' do
+      # rendered.should =~ /An error occurred or connection not available./
     end
   end
 
-  describe "#pending_reports" do
-    it "returns pending reports to current user" do
+  describe "#get_projects" do
+    it "returns all projects to current user" do
       sign_in @current_user
-      controller.stub!(:get_reports).and_return(@pending_reports)
-      @pending_reports.should include(@pending_report)
-      @pending_reports.should_not include(@completed_report)
+      controller.stub!(:get_projects).and_return(@all_projects)
+      @all_projects.should include(@current_project)
+      @all_projects.should include(@other_project)
+      @all_projects.should_not be_nil
     end
-  end
 
-  describe "current_user scope" do
     it "returns correct projects to each user" do
       @current_user.projects.all.should == @current_projects
       @current_user.projects.all.should_not == @other_projects
       @other_user.projects.all.should == @other_projects
       @other_user.projects.all.should_not == @current_projects
+    end
+  end
+
+  describe "#get_sites" do
+    it "returns all sites to current user" do
+      sign_in @current_user
+      controller.stub!(:get_sites).and_return(@all_sites)
+      @all_sites.should include(@current_site)
+      @all_sites.should include(@other_site)
+      @all_sites.should_not be_nil
     end
 
     it "returns correct sites to each user" do
