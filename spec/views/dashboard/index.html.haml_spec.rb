@@ -4,11 +4,11 @@ describe "dashboard/index" do
 
   before(:each) do
 
-    @current_user = FactoryGirl.create(
+    @current_user = FactoryGirl.build(
       :user,
       :email => 'name@stormsavvy.com'
     )
-    @other_user = FactoryGirl.create(
+    @other_user = FactoryGirl.build(
       :user,
       :email => 'info@stormsavvy.com'
     )
