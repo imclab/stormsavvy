@@ -81,15 +81,6 @@ describe DashboardController do
     sign_in @other_user
   end
 
-=begin
-    # comment back in when model is ready
-    @weather_event = FactoryGirl.create(
-      :weather_event,
-      :site => @site
-    )
-    @weather_events = [@weather_event]
-=end
-
   describe "GET 'index' for signed in user" do
     it "returns http success" do
       get :index
