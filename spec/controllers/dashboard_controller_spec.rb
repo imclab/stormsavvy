@@ -80,10 +80,6 @@ describe DashboardController do
     @weather_events = [@weather_event]
 =end
 
-    sign_in @current_user
-    sign_in @other_user
-  end
-
   describe "GET 'index' for signed in user" do
     it "returns http success" do
       get :index
