@@ -50,9 +50,9 @@ describe "dashboard/index" do
       :inspection_event,
       :site => @other_site
     )
-    @current_ie = [ @current_ie ]
-    @pending_ie = [ @pending_ie ]
-    @all_ie = [ @current_ie, @pending_ie ]
+    @current_ie_array = [ @current_ie ]
+    @pending_ie_array = [ @pending_ie ]
+    @all_ie_array = [ @current_ie, @pending_ie ]
 
     @completed_report = FactoryGirl.create(
       :report,
