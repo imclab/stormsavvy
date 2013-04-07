@@ -68,8 +68,11 @@ describe "dashboard/index" do
     @pending_reports = [ @pending_report ]
     @all_reports = [ @completed_report, @pending_report ]
 
+    controller.stub(:current_user) { @current_user }
+
     sign_in @current_user
     sign_in @other_user
+
     render
   end
 
