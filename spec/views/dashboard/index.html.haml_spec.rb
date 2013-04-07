@@ -75,22 +75,36 @@ describe "dashboard/index" do
 
   describe "index page components" do
 
-    it "renders dashboard template to current user" do
-      rendered.should have_selector('div#modules')
+    it "renders index partial and div tags" do
+      view.should render_template('dashboard/index')
       view.should render_template('dashboard/_modules')
+      rendered.should have_selector('div#modules')
+    end
+
+    it "renders module partial and div tags" do
+      view.should render_template('dashboard/index')
+      view.should render_template('dashboard/_modules')
+      rendered.should have_selector('div#modules')
+    end
+
+    it "renders projects partial and div tags" do
       view.should render_template('dashboard/_projects')
+      # rendered.should have_selector('div#projects')
+
       rendered.should =~ /Active Projects/
       # rendered.should =~ /# of Sites:/
       # rendered.should =~ /Last Updated:/
     end
 
-    it "shows sidebar to signed in user" do
-      rendered.should have_selector('div#dashboard-sidebar')
+    it "renders sidebar partial and div tags" do
       view.should render_template('dashboard/_sidebar')
+      rendered.should have_selector('div#dashboard-sidebar')
+      rendered.should have_selector('div#current_weather')
+      rendered.should have_selector('div#current_action_items')
+      rendered.should have_selector('div#current_daily_diary')
     end
 
     it "shows sidebar with correct titles" do
-      rendered.should have_selector('div#dashboard-sidebar')
       rendered.should =~ /Pending Reports/
       rendered.should =~ /Pending Inspections/
       rendered.should =~ /Report Forms/
