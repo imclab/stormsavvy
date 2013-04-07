@@ -143,7 +143,6 @@ describe "dashboard/index" do
     @other_report = @other_site.inspection_events.create(@pending_report)
     @all_reports = [ @current_report, @other_report ]
 =end
-  end
 
   describe "index page components" do
 
