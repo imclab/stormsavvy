@@ -4,32 +4,30 @@
       %h5 Weather Report
       %hr
         - unless @projects.blank?
-          - @projects.each do |project|
+          - self.get_projects.each do |project|
             - project.sites.each do |site|
-              %li.cf
+              .cf
                 - site.chance_of_rain # needs to be called before site.rain_state in order for rain state to show up
                 %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
                 .span
                   %i=link_to "#{site.name}: ", project_site_path(project, site)
                   = "#{site.max_rain}% chance of rain"
         - else
-          Looks like you have no active projects.
-          %br
-          Start one by clicking 'new project'.
+          No active projects, start one by clicking 'new project'.
   #current_action_items.widget.bottom-10
     .inner
       %h5
         Pending Inspections
       %hr
         - unless @inspection_events.blank?
-          - @inspection_events.each do |inspection_event|
+          - self.get_ie.each do |inspection_event|
             - if inspection_event.completed == false
               = link_to "#{inspection_event.inspection_type} for #{inspection_event.inspection_date}", edit_inspection_event_path(inspection_event)
             - else
-              You have no pending inspections.
+              No pending inspections.
             %br
         - else
-          You have no pending inspections.
+          No pending inspections.
   #current_action_items.widget.bottom-10
     .inner
       %h5
