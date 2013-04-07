@@ -3,7 +3,8 @@
     - @projects.each do |project|
       .project.closed{ :class=>"#{cycle('even','odd')}" }
         .cf.headline
-          %h3.pull-left=project.name
+          %h3.pull-left
+            =project.name
           .small.more_details.pull-right
             %i{ :class => "icon icon-plus" }
             %i{ :class => "icon icon-minus is_hidden" }
