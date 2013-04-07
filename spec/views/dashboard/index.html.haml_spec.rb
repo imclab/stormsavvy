@@ -178,7 +178,7 @@ describe "dashboard/index" do
 
     it "does not show completed inspection events" do
       rendered.should_not =~ /CEM 2030 for 2013-03-28 00:00:00 UTC/
-      rendered.should =~ /You have no pending inspections./
+      rendered.should =~ /No pending inspections./
     end
   end
 end
