@@ -78,26 +78,27 @@ describe "dashboard/index" do
     it "renders index partial and div tags" do
       view.should render_template('dashboard/index')
       view.should render_template('dashboard/_modules')
-      rendered.should have_selector('div#modules')
+      view.should render_template('dashboard/_sidebar')
     end
 
     it "renders module partial and div tags" do
-      view.should render_template('dashboard/index')
       view.should render_template('dashboard/_modules')
       rendered.should have_selector('div#modules')
     end
 
-    it "renders projects partial and div tags" do
-      view.should render_template('dashboard/_projects')
-      # rendered.should have_selector('div#projects')
-
+    it "renders modules with correct text and links" do
       rendered.should =~ /Active Projects/
-      # rendered.should =~ /# of Sites:/
-      # rendered.should =~ /Last Updated:/
+      rendered.should have_link('New Project')
+    end
+
+    it "renders projects partial and div tags" do
+      view.stub(:projects)
+      view.should render_template('dashboard/_projects')
+      rendered.should have_text('# of Sites:')
+      rendered.should have_text('Last Updated:')
     end
 
     it "renders sidebar partial and div tags" do
-      view.should render_template('dashboard/_sidebar')
       rendered.should have_selector('div#dashboard-sidebar')
       rendered.should have_selector('div#current_weather')
       rendered.should have_selector('div#current_action_items')
