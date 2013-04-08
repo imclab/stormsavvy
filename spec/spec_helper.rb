@@ -8,6 +8,9 @@ require 'capybara/rspec'
 require 'rack/test'
 require 'spork'
 
+include Warden::Test::Helpers
+Warden.test_mode!
+
 Spork.prefork do
 end
 
