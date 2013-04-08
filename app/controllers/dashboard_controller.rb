@@ -56,24 +56,25 @@ class DashboardController < ApplicationController
 
   def get_ie
     get_sites
-    @completed_ie = []
+    @pending_ie = []
     @sites.each do |s|
       s.inspection_events.each do |ie|
-        @completed_ie << ie.completed
+        if ie.completed == false
+          @pending_ie << ie.completed
+        else
+          'No pending inspections'
+        end
       end
     end
 
-    if @completed_ie.blank?
-      'No pending inspections'
-    else
-      return @completed_ie
-    end
+    return @pending_ie
   end
 
   def get_reports
-    @reports = []
-    get_sites.each do |r|
-      @reports << r
+    get_sites
+    @all_reports = []
+    @sites.each do |r|
+      @all_reports << r
     end
 
     return @all_reports
