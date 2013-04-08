@@ -56,4 +56,5 @@ Stormsavvy::Application.routes.draw do
   match '/pdf',       :to => "pages#pdf",            :as => :pdf
 
   root :to => "dashboard#index"
+
 end
