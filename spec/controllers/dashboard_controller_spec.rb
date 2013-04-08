@@ -248,7 +248,7 @@ describe DashboardController do
 
     xit "renders the projects template" do
       get :index
-      rendered.should =~ /Active Projects/
+      response.should =~ /Active Projects/
       response.should have_link('New Project')
     end
   end
