@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 include ApplicationHelper
-
 include Warden::Test::Helpers
 Warden.test_mode!
 
