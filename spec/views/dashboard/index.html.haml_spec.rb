@@ -116,10 +116,5 @@ describe "dashboard/index" do
       rendered.should =~ /CEM 2045 REAP Report/
       rendered.should =~ /CEM 4601 Daily Report/
     end
-
-    it "does not show completed inspection events" do
-      rendered.should_not =~ /CEM 2030 for 2013-03-28 00:00:00 UTC/
-      rendered.should =~ /No pending inspections./
-    end
   end
 end
