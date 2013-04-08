@@ -93,13 +93,6 @@ describe "dashboard/index" do
       rendered.should have_link('New Project')
     end
 
-    it "renders projects partial and div tags" do
-      view.stub(:projects)
-      view.should render_template('dashboard/_projects')
-      rendered.should have_text('# of Sites:')
-      rendered.should have_text('Last Updated:')
-    end
-
     it "renders sidebar partial and div tags" do
       rendered.should have_selector('div#dashboard-sidebar')
       rendered.should have_selector('div#current_weather')
