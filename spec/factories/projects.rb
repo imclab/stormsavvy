@@ -7,8 +7,6 @@ FactoryGirl.define do
     finishdate   DateTime.new(2012)
     active       false
 
-    # user
-
     factory :project_with_sites do
       ignore do
         sites_count 1
