@@ -95,4 +95,12 @@ describe "Dashboards" do
       page.should have_link('View Project')
     end
   end
+
+  describe "dashboard/sidebar" do
+    # complete after dashboard helper method is in place
+    xit "does shows pending inspection events" do
+      page.should have_text('CEM 2030 for 2013-03-28 00:00:00 UTC')
+      page.should_not have_text('No pending inspections.')
+    end
+  end
 end
