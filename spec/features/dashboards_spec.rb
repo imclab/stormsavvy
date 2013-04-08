@@ -83,9 +83,10 @@ describe "Dashboards" do
     visit dashboard_index_path
   end
 
-  describe "GET /dashboards" do
+  describe "dashboard/projects" do
     it "visits dashboards_path" do
       current_path.should == dashboard_index_path
+      page.should_not be_nil
     end
 
     it "renders projects partial and div tags" do
