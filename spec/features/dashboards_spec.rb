@@ -80,12 +80,14 @@ describe "Dashboards" do
     @pending_reports = [ @pending_report ]
     @all_reports = [ @completed_report, @pending_report ]
 
-    visit dashboard_index_path
+    visit '/'
+    # visit dashboard_index_path
   end
 
   describe "dashboard/projects" do
-    it "visits dashboards_path" do
-      current_path.should == dashboard_index_path
+    it "visits homepage" do
+      current_path.should == '/'
+      # current_path.should == dashboard_index_path
       page.should_not be_nil
     end
 
