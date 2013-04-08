@@ -7,10 +7,14 @@ class DashboardController < ApplicationController
       get_projects
       # @projects = current_user.projects.all
 
-      @sites = current_user.sites.all
+      get_sites
+      # @sites = current_user.sites.all
+
       @reports = Report.where(:status => "needs_attention")
 
+      get_ie
       @inspection_events = []
+=begin
       current_user.sites.each do |s|
         s.inspection_events.each do |ie|
           if ie.completed.blank?
