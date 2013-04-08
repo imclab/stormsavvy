@@ -236,10 +236,10 @@ describe DashboardController do
   end
 
   describe "index view" do
-    render_views
 
     before do
-      controller.stub!(:get_projects).and_return(@all_projects)
+      request.env['warden'].stub :authenticate! => @current_user
+      controller.stub :current_user => @current_user
 
       def controller.index
         render :partial => 'projects'
