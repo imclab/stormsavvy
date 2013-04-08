@@ -97,10 +97,10 @@ describe "Dashboards" do
   end
 
   describe "dashboard/sidebar" do
-    # complete after dashboard helper method is in place
-    xit "does shows pending inspection events" do
+    it "does shows pending inspection events" do
       page.should have_text('CEM 2030 for 2013-03-28 00:00:00 UTC')
       page.should_not have_text('No pending inspections.')
+      puts @current_site.name
     end
   end
 end
