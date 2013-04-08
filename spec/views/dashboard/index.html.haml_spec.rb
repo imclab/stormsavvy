@@ -3,11 +3,13 @@ require 'spec_helper'
 describe "dashboard/index" do
 
   before(:each) do
-
     @current_user = FactoryGirl.build(
       :user,
       :email => 'name@stormsavvy.com'
     )
+    controller.stub!(:current_user).and_return(@current_user)
+    view.stub!(:current_user).and_return(@current_user)
+
     @other_user = FactoryGirl.build(
       :user,
       :email => 'info@stormsavvy.com'
