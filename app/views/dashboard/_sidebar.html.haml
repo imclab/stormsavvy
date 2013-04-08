@@ -4,7 +4,7 @@
       %h5 Weather Report
       %hr
         - unless @projects.blank?
-          - self.get_projects.each do |project|
+          - @projects.each do |project|
             - project.sites.each do |site|
               .cf
                 - site.chance_of_rain # needs to be called before site.rain_state in order for rain state to show up

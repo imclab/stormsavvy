@@ -3,7 +3,10 @@ class DashboardController < ApplicationController
   def index
     redirect_to index_path unless user_signed_in?
     if current_user
-      @projects = current_user.projects.all
+
+      get_projects
+      # @projects = current_user.projects.all
+
       @sites = current_user.sites.all
       @reports = Report.where(:status => "needs_attention")
 
@@ -13,7 +16,7 @@ class DashboardController < ApplicationController
           if ie.completed.blank?
             'No inspection events.'
           else
-            @inspection_events[] << ie.completed
+            @inspection_events << ie.completed
           end
         end
       end
@@ -22,22 +25,24 @@ class DashboardController < ApplicationController
 
   def get_projects
     @projects = []
-    current_user.projects.each do |p|
-      @projects[] << p
-    end
+    projects = current_user.projects.all
 
-    if @projects.blank?
+    if projects.blank?
       'No active projects, start one by clicking \'new project\'.'
     else
-      return @projects
+      projects.each do |p|
+        @projects << p
+      end
     end
+
+    return @projects
   end
 
   def get_sites
     get_projects
     @sites = []
     @projects.each do |s|
-      @sites[] << s
+      @sites << s
     end
 
     return @sites
@@ -48,7 +53,7 @@ class DashboardController < ApplicationController
     @completed_ie = []
     @sites.each do |s|
       s.inspection_events.each do |ie|
-        @completed_ie[] << ie.completed
+        @completed_ie << ie.completed
       end
     end
 
@@ -62,7 +67,7 @@ class DashboardController < ApplicationController
   def get_reports
     @reports = []
     get_sites.each do |r|
-      @reports[] << r
+      @reports << r
     end
 
     return @all_reports
@@ -74,7 +79,7 @@ class DashboardController < ApplicationController
 
     @all_reports.each do |r|
       if r.status == "needs_attention"
-        @pending_reports[] << r
+        @pending_reports << r
       else
         'No pending reports.'
       end

@@ -95,7 +95,6 @@ describe DashboardController do
     end
   end
 
-=begin
   describe "dashboard variables: users, projects and sites" do
     it 'returns current projects and sites' do
       sign_in @current_user
@@ -235,22 +234,22 @@ describe DashboardController do
       # @other_site.reports.all.should_not == @current_reports
     end
   end
-=end
 
-  describe "dashboard views" do
+  describe "index view" do
     render_views
+
     before do
+      controller.stub!(:get_projects).and_return(@all_projects)
+
       def controller.index
-        render :partial => "projects"
+        render :partial => 'projects'
       end
     end
 
-    describe "index" do
-      it "renders the projects template" do
-        get :index
-        response.should =~ /Active Projects/
-        response.should have_link('New Project')
-      end
+    xit "renders the projects template" do
+      get :index
+      rendered.should =~ /Active Projects/
+      response.should have_link('New Project')
     end
   end
 
