@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :inspection_event do
-    site_id 1
+    # site_id 1
     inspection_type "weekly"
     inspection_description "ec jungle gym inspection"
     inspection_date "2013-01-26 23:13:55"
