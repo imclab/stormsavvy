@@ -96,17 +96,29 @@ describe "Dashboards" do
   end
 
   describe "dashboard/sidebar" do
-    xit "shows weather report" do
-      click_link 'Inspections'
-      click_button 'New Inspection Event'
-      click_button 'Save'
+    it "creates new inspection event" do
       visit '/'
-      page.should have_text('CEM')
+      click_link 'Inspections'
+      page.should have_text('Site ID')
+      page.should have_text('Inspection Type')
+      page.should have_text('Inspection Date')
+      page.should have_text('Inspected By')
+      page.should have_text('Submitted By')
+      page.should have_text('Attachment')
+      page.should have_text('')
+
+      click_link 'New Inspection Event'
+      click_button 'Save'
+      page.should have_text('Inspection event was successfully created.')
     end
 
-    xit "shows pending inspection events" do
-      page.should have_text('CEM 2030 for 2013-03-28 00:00:00 UTC')
-      page.should_not have_text('No pending inspections.')
+    xit "shows new inspection event" do
+      visit '/'
+      page.should have_text('CEM 2030 for')
+      page.should have_text('UTC')
+      puts @current_site.id
+      # page.should have_text('CEM 2030 for 2013-03-28 00:00:00 UTC')
+      # page.should_not have_text('No pending inspections.')
     end
   end
 end
