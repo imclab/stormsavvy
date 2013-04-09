@@ -98,10 +98,13 @@ describe "Dashboards" do
   end
 
   describe "dashboard/sidebar" do
-    it "does shows pending inspection events" do
+    it "shows weather report" do
+      page.should have_text('chance of rain')
+    end
+
+    it "shows pending inspection events" do
       page.should have_text('CEM 2030 for 2013-03-28 00:00:00 UTC')
       page.should_not have_text('No pending inspections.')
-      puts @current_site.name
     end
   end
 end
