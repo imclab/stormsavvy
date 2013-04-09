@@ -116,13 +116,11 @@ describe "Dashboards" do
       click_link 'New Inspection Event'
       click_button 'Save'
       page.should have_text('Inspection event was successfully created.')
-    end
 
-    xit "shows new inspection event" do
       visit '/'
       page.should have_text('CEM 2030 for')
       page.should have_text('UTC')
-      puts @current_site.id
+      # print @current_site.id
       # page.should have_text('CEM 2030 for 2013-03-28 00:00:00 UTC')
       # page.should_not have_text('No pending inspections.')
     end
