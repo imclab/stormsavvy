@@ -87,7 +87,6 @@ describe "Dashboards" do
   describe "dashboard/projects" do
     it "visits homepage" do
       current_path.should == '/'
-      # current_path.should == dashboard_index_path
       page.should_not be_nil
     end
 
