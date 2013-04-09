@@ -79,12 +79,18 @@ describe "Dashboards" do
     @completed_reports = [ @completed_report ]
     @pending_reports = [ @pending_report ]
     @all_reports = [ @completed_report, @pending_report ]
+
+    visit '/'
   end
 
   describe "dashboard/projects" do
-    it "visits homepage" do
-      visit '/'
+    it "renders dashboard" do
       current_path.should == '/'
+      page.should have_text('Storm Savvy')
+      page.should have_text('Inspections')
+      page.should have_text('Sampling')
+      page.should have_text('Settings')
+      page.should have_text('Sign out')
       page.should_not be_nil
     end
 
@@ -92,12 +98,12 @@ describe "Dashboards" do
       page.should have_text('# of Sites:')
       page.should have_text('Last Updated:')
       page.should have_link('View Project')
+      page.should_not be_nil
     end
   end
 
   describe "dashboard/sidebar" do
     it "creates new inspection event" do
-      visit '/'
       click_link 'Inspections'
       page.should have_text('Site ID')
       page.should have_text('Inspection Type')
