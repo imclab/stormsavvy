@@ -79,12 +79,11 @@ describe "Dashboards" do
     @completed_reports = [ @completed_report ]
     @pending_reports = [ @pending_report ]
     @all_reports = [ @completed_report, @pending_report ]
-
-    visit '/'
   end
 
   describe "dashboard/projects" do
     it "visits homepage" do
+      visit '/'
       current_path.should == '/'
       page.should_not be_nil
     end
