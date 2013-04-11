@@ -1,12 +1,7 @@
 class InspectionEvent < ActiveRecord::Base
 
-  # no status attribute for named scope
-  # scope :needs_attention, where(status: "needs_attention")
-  # scope :completed, where(status: "completed")
-
   scope :needs_attention, where(:completed => false)
   scope :completed, where(:completed => true)
-
   # scope :needs_attention, where(:status => "needs_attention")
   # scope :completed, where(:status => "completed")
 
