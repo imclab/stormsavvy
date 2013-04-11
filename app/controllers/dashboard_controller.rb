@@ -62,7 +62,7 @@ class DashboardController < ApplicationController
     @sites.each do |s|
       s.inspection_events.each do |ie|
         if ie.completed == false
-          @pending_ie << ie.completed
+          @pending_ie << ie
         else
           'No pending inspections'
         end
