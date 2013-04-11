@@ -19,11 +19,11 @@ class Site < ActiveRecord::Base
   has_many :reports, :dependent => :destroy
   has_many :inspection_events, :dependent => :destroy
   has_many :sampling_events, :dependent => :destroy
-  has_many :site_pop
+  has_many :site_pop, :dependent => :destroy
   accepts_nested_attributes_for :project
 
-  geocoded_by :address, 
-    :latitude => :lat, 
+  geocoded_by :address,
+    :latitude => :lat,
     :longitude => :long
   after_validation :geocode
 
