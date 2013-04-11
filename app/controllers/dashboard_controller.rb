@@ -63,13 +63,15 @@ class DashboardController < ApplicationController
       s.inspection_events.each do |ie|
         if ie.completed == false
           @pending_ie << ie
-        else
-          'No pending inspections'
         end
       end
     end
 
-    return @pending_ie
+    unless @pending_ie.blank?
+      return @pending_ie
+    else
+      'No pending inspections'
+    end
   end
 
   def get_reports
