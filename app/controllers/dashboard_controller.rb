@@ -91,11 +91,13 @@ class DashboardController < ApplicationController
     @all_reports.each do |r|
       if r.status == 'needs_attention'
         @pending_reports << r
-      else
-        'No pending reports.'
       end
     end
 
-    return @pending_reports
+    unless @pending_reports.blank?
+      return @pending_reports
+    else
+      'No pending reports.'
+    end
   end
 end
