@@ -133,7 +133,8 @@ describe "Dashboards" do
       page.should have_text('')
 
       click_link 'New Report'
-      click_button 'Save'
+      page.should have_text('Upload Attachment')
+      # click_link 'Upload Attachment'
       page.should have_text('Report was successfully created.')
 
       visit '/'
