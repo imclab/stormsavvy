@@ -252,5 +252,4 @@ describe DashboardController do
       response.should have_link('New Project')
     end
   end
-
 end
