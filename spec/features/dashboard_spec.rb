@@ -122,6 +122,22 @@ describe "Dashboards" do
 
       visit '/'
       page.should have_text('UTC')
+      page.should have_text('weekly for 2013-04-01 00:00:00 UTC')
+      page.should_not have_text('No pending inspections.')
+    end
+  end
+
+  describe "dashboard/sidebar" do
+    it "creates new report" do
+      visit '/reports'
+      page.should have_text('')
+
+      click_link 'New Report'
+      click_button 'Save'
+      page.should have_text('Report was successfully created.')
+
+      visit '/'
+      page.should have_text('UTC')
       page.should_not have_text('No pending inspections.')
       page.should have_text('weekly for 2013-04-01 00:00:00 UTC')
     end
