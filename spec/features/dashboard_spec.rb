@@ -16,7 +16,7 @@ describe "Dashboards" do
       :user,
       :email => 'info@stormsavvy.com'
     )
-    # login_as(@other_user, :scope => :user)
+    login_as(@other_user, :scope => :user)
 
     @all_users = [ @current_user, @other_user ]
 
