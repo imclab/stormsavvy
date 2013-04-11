@@ -3,7 +3,7 @@ FactoryGirl.define do
     site_id 1
     inspection_type "weekly"
     inspection_description "ec jungle gym inspection"
-    inspection_date "2013-01-26 23:13:55"
+    inspection_date "2013-04-01 00:00:00"
     submitted_by "wyu"
     inspected_by "wyu"
     completed false
