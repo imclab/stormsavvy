@@ -115,7 +115,6 @@ describe "Dashboards" do
       page.should have_text('Inspected By')
       page.should have_text('Submitted By')
       page.should have_text('Attachment')
-      page.should have_text('')
 
       click_link 'New Inspection Event'
       click_button 'Save'
