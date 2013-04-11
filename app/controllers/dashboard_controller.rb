@@ -47,8 +47,10 @@ class DashboardController < ApplicationController
   def get_sites
     get_projects
     @sites = []
-    @projects.each do |s|
-      @sites << s
+    @projects.each do |p|
+      p.sites.each do |s|
+        @sites << s
+      end
     end
 
     return @sites
