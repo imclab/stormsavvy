@@ -32,7 +32,7 @@ describe InspectionEvent do
     it 'has valid completed attribute' do
       ie = FactoryGirl.create(:inspection_event)
       @site.inspection_events.should_not be_nil
-      puts @site.inspection_events.all
+      # puts @site.inspection_events.all
     end
   end
 
