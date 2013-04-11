@@ -56,12 +56,14 @@ describe "Dashboards" do
 
     @current_ie = FactoryGirl.create(
       :inspection_event,
-      :site => @current_site,
+      :site_id => 1,
+      # :site => @current_site,
       :completed => false
     )
     @other_ie = FactoryGirl.create(
       :inspection_event,
-      :site => @other_site,
+      :site_id => 2,
+      # :site => @other_site,
       :completed => false
     )
     @current_ie_array = [ @current_ie ]
