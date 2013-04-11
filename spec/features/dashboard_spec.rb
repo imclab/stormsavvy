@@ -122,11 +122,9 @@ describe "Dashboards" do
       page.should have_text('Inspection event was successfully created.')
 
       visit '/'
-      page.should have_text('CEM 2030 for')
       page.should have_text('UTC')
-      # print @current_site.id
-      # page.should have_text('CEM 2030 for 2013-03-28 00:00:00 UTC')
-      # page.should_not have_text('No pending inspections.')
+      page.should_not have_text('No pending inspections.')
+      page.should have_text('weekly for 2013-04-01 00:00:00 UTC')
     end
   end
 end
