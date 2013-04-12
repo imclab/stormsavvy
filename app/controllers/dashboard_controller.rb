@@ -78,8 +78,10 @@ class DashboardController < ApplicationController
   def get_reports
     get_sites
     @all_reports = []
-    @sites.each do |r|
-      @all_reports << r
+    @sites.each do |s|
+      s.reports.each do |r|
+        @all_reports << r
+      end
     end
 
     return @all_reports
