@@ -18,16 +18,6 @@
       %hr
         - @pending_ie.each do |ie|
           = link_to "Inspection for #{ie.site.name} on #{ie.inspection_date}", edit_inspection_event_path(ie)
-          /- link_to ie.inspection_type, edit_inspection_event_path
-        -# unless @pending_ie.blank?
-          - @pending_ie.each do |ie|
-            - if ie.completed == false
-              = link_to "#{ie.inspection_type} for #{ie.inspection_date}", edit_inspection_event_path(ie)
-            - else
-              No pending inspections.
-            %br
-        -# else
-          No pending inspections.
   #current_action_items.widget.bottom-10
     .inner
       %h5
