@@ -36,11 +36,8 @@
       %h5
         Pending Reports
       %hr
-        - unless @pending_reports.blank?
-          - @pending_reports.each do |report|
-            = link_to "Report for #{report.site.name}", edit_report_path(report)
-        - else
-          No pending reports.
+        - @pending_reports.each do |report|
+          = link_to "Report for #{report.site.name}", edit_report_path(report)
   #current_daily_diary.widget.bottom-10
     .inner
       = render 'dashboard/report_links'
