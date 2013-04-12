@@ -3,17 +3,14 @@
     .inner
       %h5 Weather Report
       %hr
-        - unless @projects.blank?
-          - @projects.each do |project|
-            - project.sites.each do |site|
-              .cf
-                - site.chance_of_rain # needs to be called before site.rain_state in order for rain state to show up
-                %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
-                .span
-                  %i=link_to "#{site.name}: ", project_site_path(project, site)
-                  = "#{site.max_rain}% chance of rain"
-        - else
-          No active projects, start one by clicking 'new project'.
+        - @projects.each do |project|
+          - project.sites.each do |site|
+            .cf
+              - site.chance_of_rain # needs to be called before site.rain_state in order for rain state to show up
+              %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
+              .span
+                %i=link_to "#{site.name}: ", project_site_path(project, site)
+                = "#{site.max_rain}% chance of rain"
   #current_action_items.widget.bottom-10
     .inner
       %h5
