@@ -10,10 +10,11 @@ class DashboardController < ApplicationController
       get_sites
       # @sites = current_user.sites.all
 
-      @reports = Report.where(:status => "needs_attention")
+      pending_reports
+      # @reports = Report.where(:status => "needs_attention")
 
       get_ie
-      @inspection_events = []
+      # @inspection_events = []
 =begin
       current_user.sites.each do |s|
         s.inspection_events.each do |ie|
