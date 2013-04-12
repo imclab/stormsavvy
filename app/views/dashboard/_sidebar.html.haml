@@ -36,8 +36,8 @@
       %h5
         Pending Reports
       %hr
-        - unless @all_reports.blank?
-          - @needs_attention_reports.each do |report|
+        - unless @pending_reports.blank?
+          - @pending_reports.each do |report|
             = link_to "Report for #{report.site.name}", edit_report_path(report)
         - else
           No pending reports.
