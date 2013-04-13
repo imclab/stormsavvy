@@ -21,8 +21,6 @@ describe "inspection_events/new" do
       assert_select "input#inspection_event_submitted_by", :name => "inspection_event[submitted_by]"
       assert_select "input#inspection_event_inspected_by", :name => "inspection_event[inspected_by]"
       assert_select "input#inspection_event_attachment", :name => "inspection_event[attachment]", :class => "button"
-
-      # need proper field method for datetime
       # assert_select "input#inspection_event_inspection_date", :name => "inspection_event[inspection_date]"
     end
   end
