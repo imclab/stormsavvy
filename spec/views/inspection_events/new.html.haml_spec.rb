@@ -38,6 +38,16 @@ describe "inspection_events/new" do
     rendered.should =~ /Back/
   end
 
+  it 'renders correct css classes' do
+    renders.should have_class('siteWrapper')
+    renders.should have_class('siteInner')
+  end
+
+  it 'renders nested site fields' do
+    rendered.should have_text('Name')
+    rendered.should have_text('Description')
+  end
+
   describe 'file attachment partial' do
     before(:each) do
       assign(:inspection_events, [
