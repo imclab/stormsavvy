@@ -68,19 +68,9 @@ describe User do
     end
   end
 
-  describe '#get_user_zipcodes' do
-    it 'returns array of user site zipcodes' do
-      # sites = [@site1, @site2]
-
-      zipcodes = []
-
-      @projects.each do |project|
-        project.sites.each do |site|
-          zipcodes << site.zipcode
-        end
-      end
-
-      @user.get_site_zipcodes.should == zipcodes
+  describe '#get_sites' do
+    it 'returns site names' do
+      @user.get_sites.should == [ 'Hwy 101 Corridor' ]
     end
   end
 end
