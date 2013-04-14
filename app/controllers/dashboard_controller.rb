@@ -52,13 +52,6 @@ class DashboardController < ApplicationController
     end
 
     return @pending_ie
-=begin
-    unless @pending_ie.blank?
-      return @pending_ie
-    else
-      'No pending inspections'
-    end
-=end
   end
 
   def get_reports
