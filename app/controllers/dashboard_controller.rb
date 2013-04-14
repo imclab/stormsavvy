@@ -3,9 +3,8 @@ class DashboardController < ApplicationController
   def index
     redirect_to index_path unless user_signed_in?
     if current_user
-
-      # get_projects
-      @projects = current_user.projects.all
+      get_projects
+      # @projects = current_user.projects.all
 
       get_sites
       # @sites = current_user.sites.all
