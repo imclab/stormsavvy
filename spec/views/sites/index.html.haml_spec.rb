@@ -21,7 +21,12 @@ describe "sites/index" do
       )
     ])
     @user = FactoryGirl.create(:user)
-    @project = @user.projects.create!({:name => 'fff', :description => "vvv", :startdate => 5.days.ago, :finishdate => 1.day.ago})
+    @project = @user.projects.create!({
+      :name => 'eb park and rec',
+      :description => "playground improvements",
+      :startdate => 5.days.ago,
+      :finishdate => 1.day.ago
+    })
   end
 
   it "renders a list of sites" do
