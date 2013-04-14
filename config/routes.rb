@@ -37,7 +37,9 @@ Stormsavvy::Application.routes.draw do
   match '/projects', :to => "dashboard#index", :via => :get
 
   resources :projects do
-    resources :sites
+    resources :sites do
+      resources :inspection_events
+    end
   end
 
   ReportsController::STATIC_REPORTS.each do |name|
