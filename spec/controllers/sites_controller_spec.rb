@@ -74,8 +74,8 @@ describe SitesController do
 
   describe "GET edit" do
     it "assigns the requested site as @site" do
-      @project = @user.projects.create! project_attributes
-      site = @project.sites.create! valid_attributes
+      @project = @user.projects.create!(project_attributes)
+      site = @project.sites.create!(valid_attributes)
       get :edit, {:id => site.to_param, :project_id => @project.id}
       assigns(:site).should eq(site)
     end
@@ -84,7 +84,7 @@ describe SitesController do
   describe "POST create" do
 
     before(:each) do
-      @project = @user.projects.create! project_attributes
+      @project = @user.projects.create!(project_attributes)
     end
 
     describe "with valid params" do
@@ -214,5 +214,4 @@ describe SitesController do
       response.should redirect_to(sites_url)
     end
   end
-
 end
