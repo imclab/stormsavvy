@@ -47,23 +47,3 @@
           %p
             %b Zipcode:
             = @site.zipcode
-
-        %fieldset
-          %legend
-            Site Inspection Events
-            /= f.link_to_add "Add New inspection Event", :inspection_events
-          .sitesWrapper
-            = f.fields_for :sites do |site|
-              .sitesInner
-                .span5
-                  = site.input :name
-                  = site.input :description
-                  = site.input :costcode
-                .span4
-                  = site.input :address_1
-                  = site.input :address_2
-                  = site.input :city
-                  = site.input :state, :as => :select, :collection => Carmen.states
-                  = site.input :zipcode, :as => :string
-                .pull-right
-                  = site.link_to_remove "Remove this site"
