@@ -31,6 +31,13 @@ class DashboardController < ApplicationController
     end
 
     return @projects
+=begin
+    unless @projects.blank?
+      return @projects
+    else
+      'No active projects, start one by clicking \'new project\'.'
+    end
+=end
   end
 
   def get_sites
