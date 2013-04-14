@@ -5,16 +5,6 @@
       %ul
         - @inspection_event.errors.full_messages.each do |msg|
           %li= msg
-  %legend Site
-  .sitesWrapper
-    = f.fields_for :sites do |site|
-      .sitesInner
-        .span4
-          .field
-            = site.label :name
-            = site.text_field :name
-            = site.label :description
-            = site.text_field :description
 
   %legend Inspection Event
   .span4
