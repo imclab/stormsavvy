@@ -49,12 +49,12 @@ describe "sites/show" do
     end
   end
 
-  it 'renders correct css classes' do
+  xit 'renders correct css classes' do
     renders.should have_class('siteWrapper')
     renders.should have_class('siteInner')
   end
 
-  it 'renders nested site fields' do
+  xit 'renders nested site fields' do
     rendered.should have_text('Name')
     rendered.should have_text('Description')
   end
