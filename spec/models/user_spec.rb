@@ -46,7 +46,7 @@ describe User do
     end
 
     it "enforces unique email" do
-      @user2 = FactoryGirl.build(
+      @invalid_user = FactoryGirl.build(
         :user,
         :email => @user.email
         ).should_not be_valid
