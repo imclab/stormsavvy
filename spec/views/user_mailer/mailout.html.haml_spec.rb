@@ -50,7 +50,7 @@ describe "user_mailer/mailout" do
     # rendered.should have_content "Rainfall"
   end
 
-  it "contains a forecast table" do
+  it "renders the forecast table" do
     render 'user_mailer/mailout_forecast'
     rendered.should have_selector 'table'
     rendered.should have_selector 'th', :text => "Date"
