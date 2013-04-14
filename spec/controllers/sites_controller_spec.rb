@@ -23,21 +23,33 @@ describe SitesController do
   end
 
   before(:each) do
-    @user = FactoryGirl.create(:user)
-    @project = FactoryGirl.create(:project)
+    @user = FactoryGirl.create(
+      :user,
+      :id => 1
+    )
+    @project = FactoryGirl.create(
+      :project,
+      :id => 1,
+      :user_id => 1
+    )
+    @site = FactoryGirl.create(
+      :site,
+      :project_id => 1,
+      :name => 'ec jungle gym'
+    )
     sign_in @user
   end
 
   describe "GET index" do
 
     it "has a 200 status code" do
-      site = @project.sites.create! valid_attributes
+      site = @project.sites.create!(valid_attributes)
       get :edit, {:id => site.to_param, :project_id => @project.id}
       response.code.should eq("200")
     end
 
     it "assigns all sites as @sites" do
-      site = @project.sites.create! valid_attributes
+      site = @project.sites.create!(valid_attributes)
       get :index, {:id => site.to_param, :project_id => @project.id}
       assigns(:sites).should eq([site])
     end
