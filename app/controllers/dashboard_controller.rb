@@ -21,22 +21,11 @@ class DashboardController < ApplicationController
     @projects = []
     projects = current_user.projects.all
 
-    if projects.blank?
-      'No active projects'
-    else
-      projects.each do |p|
-        @projects << p
-      end
+    projects.each do |p|
+      @projects << p
     end
 
     return @projects
-=begin
-    unless @projects.blank?
-      return @projects
-    else
-      'No active projects, start one by clicking \'new project\'.'
-    end
-=end
   end
 
   def get_sites
