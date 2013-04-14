@@ -39,6 +39,10 @@ describe "user_mailer/mailout" do
     rendered.should =~ /Here are your pending reports:/
   end
 
+  it "renders the dashboard partial" do
+    render 'dashboard/sidebar'
+  end
+
   it "renders the forecast partial" do
     render 'user_mailer/mailout_forecast'
     rendered.should have_content "Date"
