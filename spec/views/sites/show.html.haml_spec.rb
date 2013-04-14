@@ -32,7 +32,7 @@ describe "sites/show" do
     rendered.should match(/Delete/)
   end
 
-  it "renders nested sites fields" do
+  xit "renders nested sites fields" do
     assert_select "form", :action => inspection_events_path, :method => "post" do
       assert_select(
         "input#inspection_event_sites_name",
