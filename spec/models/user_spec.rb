@@ -13,7 +13,7 @@ describe User do
 
     @site = FactoryGirl.create(
       :site,
-      :project => @project1,
+      :project => @project,
       :name => 'ec jungle gym',
       :zipcode => 94530
       )
@@ -70,7 +70,7 @@ describe User do
 
   describe '#get_sites' do
     it 'returns site names' do
-      @user.get_sites.should == [ 'Hwy 101 Corridor' ]
+      @user.get_sites.should == [ 'ec jungle gym' ]
     end
   end
 end
