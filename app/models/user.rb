@@ -75,4 +75,20 @@ class User < ActiveRecord::Base
 
     return zipcodes
   end
+
+  def get_sites
+    @site_names = []
+
+    self.projects.each do |p|
+      p.sites.each do |s|
+        @site_names << s.name.to_s
+      end
+    end
+
+    unless @site_names.blank?
+      return @site_names
+    else
+      'no current sites'
+    end
+  end
 end
