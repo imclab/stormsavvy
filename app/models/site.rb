@@ -21,7 +21,6 @@ class Site < ActiveRecord::Base
   has_many :sampling_events, :dependent => :destroy
   has_many :site_pop, :dependent => :destroy
   accepts_nested_attributes_for :project
-  accepts_nested_attributes_for :inspection_event
 
   geocoded_by :address,
     :latitude => :lat,
