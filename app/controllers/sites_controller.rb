@@ -11,20 +11,11 @@ class SitesController < ApplicationController
     end
   end
 
-  def users_sites
-    @projects = current_user.projects
-  end
-
   # GET /sites/1
   # GET /sites/1.json
   def show
     @site = Site.find(params[:id])
-
     @project = Project.find(params[:project_id])
-
-    # throws no method error on projects
-    # @projects = current_user.projects.all
-
     @completed_reports = @site.reports.completed
     @needs_attention_reports = @site.reports.needs_attention
 
