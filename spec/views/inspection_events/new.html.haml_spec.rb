@@ -38,33 +38,6 @@ describe "inspection_events/new" do
     rendered.should =~ /Back/
   end
 
-  it "renders nested sites fields" do
-    assert_select "form", :action => inspection_events_path, :method => "post" do
-      assert_select(
-        "input#inspection_event_sites_name",
-        :name => "inspection_event[sites][name]",
-        :size => 30,
-        :type =>'text'
-      )
-      assert_select(
-        "input#inspection_event_sites_description",
-        :name => "inspection_event[sites][description]",
-        :size => 30,
-        :type =>'text'
-      )
-    end
-  end
-
-  it 'renders correct css classes' do
-    renders.should have_class('siteWrapper')
-    renders.should have_class('siteInner')
-  end
-
-  it 'renders nested site fields' do
-    rendered.should have_text('Name')
-    rendered.should have_text('Description')
-  end
-
   describe 'file attachment partial' do
     before(:each) do
       assign(:inspection_events, [
