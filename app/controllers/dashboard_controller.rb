@@ -76,10 +76,6 @@ class DashboardController < ApplicationController
       end
     end
 
-    unless @pending_reports.blank?
-      return @pending_reports
-    else
-      'No pending reports.'
-    end
+    return @pending_reports
   end
 end
