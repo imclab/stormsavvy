@@ -71,6 +71,7 @@ describe User do
   describe '#get_sites' do
     it 'returns site names' do
       @user.get_sites.should == [ 'ec jungle gym' ]
+      SITES.should == [ 'ec jungle gym' ]
     end
   end
 end
