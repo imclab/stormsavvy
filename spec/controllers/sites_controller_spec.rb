@@ -11,8 +11,8 @@ describe SitesController do
 
   def project_attributes
     {
-      :name => 'v',
-      :description => 'b',
+      :name => 'eb park and rec',
+      :description => 'playground improvements',
       :startdate => 5.days.ago,
       :finishdate => 1.day.ago
     }
