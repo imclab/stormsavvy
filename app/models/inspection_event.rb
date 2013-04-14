@@ -6,6 +6,7 @@ class InspectionEvent < ActiveRecord::Base
   # scope :completed, where(:status => "completed")
 
   belongs_to :site
+  accepts_nested_attributes_for :site
 
   attr_accessible :inspected_by,
     :inspection_date,
