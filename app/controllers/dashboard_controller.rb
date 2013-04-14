@@ -23,7 +23,7 @@ class DashboardController < ApplicationController
     projects = current_user.projects.all
 
     if projects.blank?
-      'No active projects, start one by clicking \'new project\'.'
+      'No active projects'
     else
       projects.each do |p|
         @projects << p
