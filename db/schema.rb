@@ -140,11 +140,13 @@ ActiveRecord::Schema.define(:version => 20130401174609) do
   end
 
   create_table "reports", :force => true do |t|
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                                                                      :null => false
+    t.datetime "updated_at",                                                                      :null => false
     t.integer  "site_id"
     t.string   "project_id"
+    t.decimal  "site_information_acres_current_phase_inactive_disturbed_soil_area"
     t.string   "inspection_type"
+    t.decimal  "storm_information_percipitation_amount_from_storm_recorded_from_site_rain_gauge"
     t.string   "status"
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
