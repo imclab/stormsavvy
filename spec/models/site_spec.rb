@@ -20,7 +20,10 @@ describe Site do
     @latlong = [@lat, @long]
     @address = '111 Adams Street Suite 181 Oakland CA 94610'
 
-    @site = FactoryGirl.create(:site)
+    @site = FactoryGirl.create(
+      :site,
+      :name => 'ec jungle gym'
+    )
 
     @report = FactoryGirl.create(
       :report,
