@@ -17,8 +17,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-    @projects = current_user.projects.all
-
+    # @projects = current_user.projects.all
     # dashboard controller variables
     # @sites = @project.sites
     # @weather_events = WeatherEvent.all
