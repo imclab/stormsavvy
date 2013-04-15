@@ -10,23 +10,23 @@ describe "homepage" do
   before :each do
     @user = FactoryGirl.create(
       :user,
-      :email    => 'testem@specit.com',
+      :email    => 'testem@stormsavvy.com',
       :password => 'testem',
       :password_confirmation => 'testem'
-      )
-    # login_as(@user, :scope => :user)
+    )
   end
 
   it "renders sign-in page" do
     visit '/index'
-    page.should have_content 'Sign in'
-    # click_link 'Sign in'
-    # current_path.should == '/users/sign_in'
+    page.should have_text('Sign in')
+    page.should have_text('Making SWPPP Easy')
+    page.should have_text('Free Email Alerts & Reports')
+    page.should have_text('Sign Up Now For Free Access')
   end
 
   it "signs user in with correct credentials" do
     visit '/users/sign_in' 
-    fill_in 'Email', :with => 'testem@specit.com'
+    fill_in 'Email', :with => 'testem@stormsavvy.com'
     fill_in 'Password', :with => 'testem'
     click_button 'Sign in'
     page.should have_content 'Signed in successfully.'
