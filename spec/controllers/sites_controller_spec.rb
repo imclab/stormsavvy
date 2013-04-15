@@ -25,16 +25,15 @@ describe SitesController do
   before(:each) do
     @user = FactoryGirl.create(
       :user,
-      :id => 1
     )
     @project = FactoryGirl.create(
       :project,
-      :id => 1,
-      :user_id => 1
+      :user => @user,
+      :name => 'eb park and rec'
     )
     @site = FactoryGirl.create(
       :site,
-      :project_id => 1,
+      :project => @project,
       :name => 'ec jungle gym'
     )
     sign_in @user
