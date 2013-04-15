@@ -34,7 +34,7 @@ describe "homepage" do
 
   it "signs in as another user" do
     visit '/users/sign_in'
-    fill_in 'Email', :with => 'barney@dinosaur.com'
+    fill_in 'Email', :with => 'barney@stormsavvy.com'
     fill_in 'Password', :with => 'foobarbaz'
     click_button 'Sign in'
     page.should have_content 'Invalid email or password'
