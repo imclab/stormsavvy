@@ -28,11 +28,6 @@ describe "projects/show" do
     render.should have_selector('div#project-attributes')
   end
 
-  it "renders the project sidebar" do
-    render
-    render.should have_selector('div#project-sidebar')
-  end
-
   it "renders flash message" do
     flash[:notice] = "This is a flash message"
     render 
