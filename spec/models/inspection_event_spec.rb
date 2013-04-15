@@ -11,7 +11,7 @@ describe InspectionEvent do
   	@inspection_event.site_id.should == 1
   	@inspection_event.inspection_type.should == "weekly"
   	@inspection_event.inspection_description.should == "ec jungle gym inspection"
-  	@inspection_event.inspection_date.should == "2013-01-26 23:13:55"
+  	@inspection_event.inspection_date.should == "Mon, 01 Apr 2013 00:00:00 UTC +00:00"
   	@inspection_event.submitted_by.should == "wyu"
   	@inspection_event.inspected_by.should == "wyu"
   	@inspection_event.completed.should == false
