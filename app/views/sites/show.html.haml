@@ -2,6 +2,7 @@
   Site information
 %p#notice
   = notice
+  = button_to 'Delete This Site', project_path(@site.project), :method => :delete
 
   .container
     .row
