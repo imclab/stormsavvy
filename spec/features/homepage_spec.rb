@@ -69,14 +69,5 @@ describe "homepage" do
     visit '/index'
     click_link "Sign in"
     current_path.should == new_user_session_path
-=begin
-    visit '/index'
-    click_link "Blog"
-    current_path.should == 'http://stormsavvy.me'
-
-    visit '/index'
-    click_link "Sign up"
-    current_path.should == new_user_registration_path
-=end
   end
 end
