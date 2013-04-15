@@ -40,11 +40,6 @@ describe "homepage" do
     page.should have_content 'Invalid email or password'
   end
 
-  it "renders home page" do
-    # visit '/index'
-    # current_path.should == root_path
-  end
-
   it "renders correct links and pages after login" do
     visit '/users/sign_in' 
     fill_in 'Email', :with => 'testem@specit.com'
