@@ -8,6 +8,9 @@ class PagesController < ApplicationController
     end
   end
 
+  def contact
+  end
+
   def pdf
   end
 
