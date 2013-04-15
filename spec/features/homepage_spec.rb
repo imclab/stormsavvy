@@ -42,19 +42,19 @@ describe "homepage" do
 
   it "renders correct links and pages after login" do
     visit '/users/sign_in' 
-    fill_in 'Email', :with => 'testem@specit.com'
+    fill_in 'Email', :with => 'testem@stormsavvy.com'
     fill_in 'Password', :with => 'testem'
     click_button 'Sign in'
 
-    # click_link "Inspections"
-    # visit new_inspection_event_path
-    # current_path.should == new_inspection_event_path
+    click_link "Inspections"
+    visit new_inspection_event_path
+    current_path.should == new_inspection_event_path
 
     click_link "Settings"
     current_path.should == edit_user_registration_path
 
-    # click_link "Sign out"
-    # current_path.should == destroy_user_session_path
+    click_link "Sign out"
+    current_path.should == '/index'
   end
 
   it "renders correct links and pages from home page" do
