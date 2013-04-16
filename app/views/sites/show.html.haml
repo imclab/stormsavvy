@@ -1,5 +1,5 @@
 %h2
-  Site information
+  Site Information
 %p#notice
   = notice
   = button_to 'Delete This Site', project_path(@site.project), :method => :delete
@@ -10,6 +10,9 @@
         %p
           %b Project:
           = link_to @site.project.name, project_path(@site.project)
+        %p
+          %b Site ID:
+          = @site.id
         %p
           %b Site Name:
           = @site.name
