@@ -10,10 +10,14 @@ describe "sites/show" do
     ))
     @project = FactoryGirl.create(:project)
     @site.project_id = @project.id
+
+    render
   end
 
-  it "renders attributes in <p>" do
-    render
+  it "renders site attributes" do
+    rendered.should match(/Project/)
+    rendered.should match(/Site ID/)
+    rendered.should match(/Site Name/)
     rendered.should match(/Description/)
     rendered.should match(/Costcode/)
     rendered.should match(/Size/)
