@@ -30,7 +30,6 @@ describe "sites/show" do
   end
 
   it "has edit, back and delete links" do
-    render
     rendered.should match(/Edit/)
     rendered.should match(/Back/)
     rendered.should match(/Delete/)
