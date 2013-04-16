@@ -25,11 +25,15 @@ describe "sites/show" do
     rendered.should match(/Zipcode/)
   end
 
-  it "has Edit / Back / Delete" do
+  it "has edit, back and delete links" do
     render
     rendered.should match(/Edit/)
     rendered.should match(/Back/)
     rendered.should match(/Delete/)
+
+    rendered.should have_link('Edit')
+    rendered.should have_link('Back')
+    rendered.should have_button('Delete This Site')
   end
 
   xit "renders nested sites fields" do
