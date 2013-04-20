@@ -3,8 +3,8 @@
     .span8#project-attributes
       - if notice
         %p#notice.alert.alert-success= notice
-      = button_to 'Delete This Project', project_path(@project), :method => :delete
       %h2 Project Page
+      = button_to 'Delete This Project', project_path(@project), :method => :delete
       %p
         %b Name:
         = @project.name

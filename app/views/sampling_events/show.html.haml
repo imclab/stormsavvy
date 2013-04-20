@@ -1,117 +1,121 @@
 %p#notice= notice
 
 %p
-  %b Site:
-  = @sampling_event.site_id
-%p
-  %b Sampling type:
-  = @sampling_event.sampling_type
-%p
-  %b Sampling description:
-  = @sampling_event.sampling_description
-%p
-  %b Sampling date:
-  = @sampling_event.sampling_date
-%p
-  %b Submitted by:
-  = @sampling_event.submitted_by
-%p
-  %b Attachment URL:
-  = @sampling_event.attachment.url
-%p
-  %b Sampled by:
-  = @sampling_event.sampled_by
-%p
-  %b Sample id 1:
-  = @sampling_event.sample_id_1
-%p
-  %b Sample location 1:
-  = @sampling_event.sample_location_1
-%p
-  %b Sample time 1:
-  = @sampling_event.sample_time_1
-%p
-  %b Analysis type 1:
-  = @sampling_event.analysis_type_1
-%p
-  %b Analysis result 1:
-  = @sampling_event.analysis_result_1
-%p
-  %b Analysis average 1:
-  = @sampling_event.analysis_average_1
-%p
-  %b Sample id 2:
-  = @sampling_event.sample_id_2
-%p
-  %b Sample location 2:
-  = @sampling_event.sample_location_2
-%p
-  %b Sample time 2:
-  = @sampling_event.sample_time_2
-%p
-  %b Analysis type 2:
-  = @sampling_event.analysis_type_2
-%p
-  %b Analysis result 2:
-  = @sampling_event.analysis_result_2
-%p
-  %b Analysis average 2:
-  = @sampling_event.analysis_average_2
-%p
-  %b Sample id 3:
-  = @sampling_event.sample_id_3
-%p
-  %b Sample location 3:
-  = @sampling_event.sample_location_3
-%p
-  %b Sample time 3:
-  = @sampling_event.sample_time_3
-%p
-  %b Analysis type 3:
-  = @sampling_event.analysis_type_3
-%p
-  %b Analysis result 3:
-  = @sampling_event.analysis_result_3
-%p
-  %b Analysis average 3:
-  = @sampling_event.analysis_average_3
-%p
-  %b Sample id 4:
-  = @sampling_event.sample_id_4
-%p
-  %b Sample location 4:
-  = @sampling_event.sample_location_4
-%p
-  %b Sample time 4:
-  = @sampling_event.sample_time_4
-%p
-  %b Analysis type 4:
-  = @sampling_event.analysis_type_4
-%p
-  %b Analysis result 4:
-  = @sampling_event.analysis_result_4
-%p
-  %b Analysis average 4:
-  = @sampling_event.analysis_average_4
-%p
-  %b Sample id 5:
-  = @sampling_event.sample_id_5
-%p
-  %b Sample location 5:
-  = @sampling_event.sample_location_5
-%p
-  %b Sample time 5:
-  = @sampling_event.sample_time_5
-%p
-  %b Analysis type 5:
-  = @sampling_event.analysis_type_5
-%p
-  %b Analysis result 5:
-  = @sampling_event.analysis_result_5
-%p
-  %b Analysis average 5:
-  = @sampling_event.analysis_average_5
+  %h2 Sampling Event
+.span5
+  %p
+    %b Site ID:
+    = @sampling_event.site_id
+  %p
+    %b Sampling type:
+    = @sampling_event.sampling_type
+  %p
+    %b Sampling description:
+    = @sampling_event.sampling_description
+  %p
+    %b Sampling date:
+    = @sampling_event.sampling_date
+  %p
+    %b Submitted by:
+    = @sampling_event.submitted_by
+  %p
+    %b Attachment URL:
+    = @sampling_event.attachment.url
+  %p
+    %b Sampled by:
+    = @sampling_event.sampled_by
+  %p
+    %b Sample id 1:
+    = @sampling_event.sample_id_1
+  %p
+    %b Sample location 1:
+    = @sampling_event.sample_location_1
+  %p
+    %b Sample time 1:
+    = @sampling_event.sample_time_1
+  %p
+    %b Analysis type 1:
+    = @sampling_event.analysis_type_1
+  %p
+    %b Analysis result 1:
+    = @sampling_event.analysis_result_1
+  %p
+    %b Analysis average 1:
+    = @sampling_event.analysis_average_1
+  %p
+    %b Sample id 2:
+    = @sampling_event.sample_id_2
+  %p
+    %b Sample location 2:
+    = @sampling_event.sample_location_2
+  %p
+    %b Sample time 2:
+    = @sampling_event.sample_time_2
+  %p
+    %b Analysis type 2:
+    = @sampling_event.analysis_type_2
+  %p
+    %b Analysis result 2:
+    = @sampling_event.analysis_result_2
+  %p
+    %b Analysis average 2:
+    = @sampling_event.analysis_average_2
 
-= link_to 'Edit', edit_sampling_event_path(@sampling_event)
-\|
-= link_to 'Back', sampling_events_path
+  = link_to 'Edit', edit_sampling_event_path(@sampling_event)
+  \|
+  = link_to 'Back', sampling_events_path
+.span5
+  %p
+    %b Sample id 3:
+    = @sampling_event.sample_id_3
+  %p
+    %b Sample location 3:
+    = @sampling_event.sample_location_3
+  %p
+    %b Sample time 3:
+    = @sampling_event.sample_time_3
+  %p
+    %b Analysis type 3:
+    = @sampling_event.analysis_type_3
+  %p
+    %b Analysis result 3:
+    = @sampling_event.analysis_result_3
+  %p
+    %b Analysis average 3:
+    = @sampling_event.analysis_average_3
+  %p
+    %b Sample id 4:
+    = @sampling_event.sample_id_4
+  %p
+    %b Sample location 4:
+    = @sampling_event.sample_location_4
+  %p
+    %b Sample time 4:
+    = @sampling_event.sample_time_4
+  %p
+    %b Analysis type 4:
+    = @sampling_event.analysis_type_4
+  %p
+    %b Analysis result 4:
+    = @sampling_event.analysis_result_4
+  %p
+    %b Analysis average 4:
+    = @sampling_event.analysis_average_4
+  %p
+    %b Sample id 5:
+    = @sampling_event.sample_id_5
+  %p
+    %b Sample location 5:
+    = @sampling_event.sample_location_5
+  %p
+    %b Sample time 5:
+    = @sampling_event.sample_time_5
+  %p
+    %b Analysis type 5:
+    = @sampling_event.analysis_type_5
+  %p
+    %b Analysis result 5:
+    = @sampling_event.analysis_result_5
+  %p
+    %b Analysis average 5:
+    = @sampling_event.analysis_average_5
