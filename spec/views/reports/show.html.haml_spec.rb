@@ -23,7 +23,7 @@ describe "reports/show" do
   it "renders edit / back / delete" do
     render
     rendered.should =~ /Edit/
-    rendered.should =~ /Delete/
+    rendered.should =~ /Delete This Report/
     rendered.should =~ /Download PDF/
     rendered.should =~ /View Report/
   end
