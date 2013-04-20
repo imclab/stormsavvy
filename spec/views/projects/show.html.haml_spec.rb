@@ -29,7 +29,7 @@ describe "projects/show" do
 
   it "renders flash message" do
     flash[:notice] = "This is a flash message"
-    render 
+    render
     rendered.should =~ /This is a flash message/
   end
 
@@ -37,6 +37,6 @@ describe "projects/show" do
     render
     rendered.should match(/Edit/)
     rendered.should match(/Back/)
-    rendered.should match(/Delete/)
+    rendered.should match(/Delete This Project/)
   end
 end
