@@ -13,14 +13,6 @@
               = f.input :password
               = f.input :password_confirmation
               = f.input :current_password, :html => "(we need your current password to confirm your changes)"
-            %fieldset
-              %legend Company Information
-              = f.input :contractor_name
-              = f.input :contractor_address_1
-              = f.input :contractor_address_2
-              = f.input :contractor_city
-              = f.input :contractor_state
-              = f.input :contractor_zipcode
             .actions
               = f.submit "Update", :class => "btn"
 
