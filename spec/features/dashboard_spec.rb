@@ -22,12 +22,14 @@ describe "Dashboard" do
 
     @current_project = FactoryGirl.create(
       :project,
+      :id => 1,
       :user => @current_user,
       :name => 'eb park and rec',
       :description => 'playground improvements'
     )
     @other_project = FactoryGirl.create(
       :project,
+      :id => 2,
       :user => @other_user,
       :name => 'eb park and rec',
       :description => 'playground improvements'
