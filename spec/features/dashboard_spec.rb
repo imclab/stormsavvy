@@ -81,11 +81,14 @@ describe "Dashboard" do
     @completed_reports = [ @completed_report ]
     @pending_reports = [ @pending_report ]
     @all_reports = [ @completed_report, @pending_report ]
-
-    visit '/'
   end
 
   describe "dashboard/projects" do
+    before(:each) do
+      login_as(@current_user, :scope => :user)
+      visit '/'
+    end
+
     it "renders dashboard" do
       current_path.should == '/'
       page.should have_text('Storm Savvy')
