@@ -16,7 +16,6 @@ describe "Dashboard" do
       :id => 2,
       :email => 'info@stormsavvy.com'
     )
-
     current_project = FactoryGirl.create(
       :project,
       :id => 1,
@@ -31,7 +30,6 @@ describe "Dashboard" do
       :name => 'berkeley usd',
       :description => 'playground improvements'
     )
-
     current_completed_site = FactoryGirl.create(
       :site,
       :id => 1,
@@ -60,7 +58,6 @@ describe "Dashboard" do
       :name => 'peoples park',
       :zipcode => 94709
     )
-
     current_completed_ie = FactoryGirl.create(
       :inspection_event,
       :id => 1,
@@ -89,7 +86,6 @@ describe "Dashboard" do
       :completed => false,
       :inspection_type => 'CEM2031'
     )
-
     current_completed_report = FactoryGirl.create(
       :report,
       :id => 1,
