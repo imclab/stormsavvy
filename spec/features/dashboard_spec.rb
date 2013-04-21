@@ -212,12 +212,14 @@ describe "Dashboard" do
       it 'shows correct pending reports to user' do
         login_as(@current_user, :scope => :user)
         visit '/'
-        page.should have_text('ec jungle gym')
+        page.should have_text('Report for ec slide')
+        page.should_not have_text('Report for ec jungle gym')
         page.should_not have_text('No active projects')
 
         login_as(@other_user, :scope => :user)
         visit '/'
-        page.should have_text('berkeley high')
+        page.should have_text('Report for peoples park')
+        page.should_not have_text('Report for berkeley high')
         page.should_not have_text('No active projects')
       end
     end
