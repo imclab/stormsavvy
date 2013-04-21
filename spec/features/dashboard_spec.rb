@@ -123,55 +123,67 @@ describe "Dashboard" do
   end
 
   describe "dashboard/sidebar" do
-    before(:each) do
-      login_as(@current_user, :scope => :user)
-      visit '/'
-      click_link 'Inspections'
+    describe 'weather forecast' do
+      it 'shows correct site to user' do
+        login_as(@current_user, :scope => :user)
+        visit '/'
+        page.should have_text('ec jungle gym')
+        page.should_not have_text('No active projects')
+
+        login_as(@other_user, :scope => :user)
+        visit '/'
+        page.should have_text('berkeley high')
+        page.should_not have_text('No active projects')
+      end
     end
 
-    it 'displays inspection event title heading' do
-      page.should have_text('Site ID')
-      page.should have_text('Inspection Type')
-      page.should have_text('Inspection Date')
-      page.should have_text('Inspected By')
-      page.should have_text('Submitted By')
-      page.should have_text('Attachment')
+    describe 'upcoming inspections' do
+      before(:each) do
+        login_as(@current_user, :scope => :user)
+        visit '/'
+        click_link 'Inspections'
+      end
+
+      it 'displays inspection event title heading' do
+        page.should have_text('Site ID')
+        page.should have_text('Inspection Type')
+        page.should have_text('Inspection Date')
+        page.should have_text('Inspected By')
+        page.should have_text('Submitted By')
+        page.should have_text('Attachment')
+      end
+
+      it 'creates new inspection event' do
+        click_link 'New Inspection Event'
+        click_button 'Save'
+        page.should have_text('Inspection event was successfully created.')
+      end
+
+      it 'shows correct inspection event to user' do
+        login_as(@current_user, :scope => :user)
+        visit '/'
+        page.should have_text('CEM2030 for ec jungle gym on 2013-04-01 00:00:00 UTC')
+        page.should_not have_text('No pending inspections.')
+
+        login_as(@other_user, :scope => :user)
+        visit '/'
+        page.should have_text('CEM2031 for berkeley high on 2013-04-01 00:00:00 UTC')
+        page.should_not have_text('No pending inspections.')
+      end
     end
 
-    it 'shows correct site to user' do
-      login_as(@current_user, :scope => :user)
-      visit '/'
-      page.should have_text('ec jungle gym')
-      page.should_not have_text('No active projects')
+    describe 'pending reports' do
+      it 'shows correct pending reports to user' do
+        login_as(@current_user, :scope => :user)
+        visit '/'
+        page.should have_text('ec jungle gym')
+        page.should_not have_text('No active projects')
 
-      login_as(@other_user, :scope => :user)
-      visit '/'
-      page.should have_text('berkeley high')
-      page.should_not have_text('No active projects')
-    end
-
-    it 'creates new inspection event' do
-      click_link 'New Inspection Event'
-      click_button 'Save'
-      page.should have_text('Inspection event was successfully created.')
-    end
-
-    it 'shows correct inspection event to user' do
-      login_as(@current_user, :scope => :user)
-      visit '/'
-      page.should have_text('CEM2030 for ec jungle gym on 2013-04-01 00:00:00 UTC')
-      page.should_not have_text('No pending inspections.')
-
-      login_as(@other_user, :scope => :user)
-      visit '/'
-      page.should have_text('CEM2031 for berkeley high on 2013-04-01 00:00:00 UTC')
-      page.should_not have_text('No pending inspections.')
-    end
-
-    it "displays new report" do
-      visit '/'
-      page.should have_text('Report for berkeley high')
-      page.should_not have_text('No pending reports.')
+        login_as(@other_user, :scope => :user)
+        visit '/'
+        page.should have_text('berkeley high')
+        page.should_not have_text('No active projects')
+      end
     end
   end
 end
