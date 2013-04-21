@@ -8,31 +8,29 @@ describe "Dashboard" do
   before(:each) do
     @current_user = FactoryGirl.build(
       :user,
+      :id => 1,
       :email => 'name@stormsavvy.com'
     )
     @other_user = FactoryGirl.build(
       :user,
+      :id => 2,
       :email => 'info@stormsavvy.com'
     )
-    @all_users = [ @current_user, @other_user ]
 
     @current_project = FactoryGirl.create(
       :project,
       :id => 1,
-      :user => @current_user,
+      :user_id => 1,
       :name => 'eb park and rec',
       :description => 'playground improvements'
     )
     @other_project = FactoryGirl.create(
       :project,
       :id => 2,
-      :user => @other_user,
+      :user_id => 2,
       :name => 'berkeley usd',
       :description => 'playground improvements'
     )
-    @current_projects = [ @current_project ]
-    @other_projects = [ @other_project ]
-    @all_project = [ @current_project, @pending_project ]
 
     @current_site = FactoryGirl.create(
       :site,
