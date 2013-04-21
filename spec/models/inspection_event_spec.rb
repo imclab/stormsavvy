@@ -41,22 +41,21 @@ describe InspectionEvent do
     it 'has valid completed attribute' do
       ie = FactoryGirl.create(:inspection_event)
       @site.inspection_events.should_not be_nil
-      # puts @site.inspection_events.all
     end
   end
 
   describe "inspection_event associations" do
   	before(:each) do
-  	  @inspection_event = InspectionEvent.new(@attr)
+  	  @ie = InspectionEvent.new(@attr)
   	end
 
   	context :site do
   	  it "has association with a site" do
-  	    @inspection_event.should respond_to(:site)
+  	    @ie.should respond_to(:site)
   	  end
 
   	  it "has correct associated site" do
-  	    @inspection_event.should == @inspection_event
+  	    @ie.should == @ie
   	  end
   	end
   end
