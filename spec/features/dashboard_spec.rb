@@ -124,7 +124,7 @@ describe "Dashboard" do
 
       visit '/'
       page.should have_text('UTC')
-      page.should have_text('Inspection for berkeley high on 2013-04-01 00:00:00 UTC')
+      page.should have_text('CEM2031 for berkeley high on 2013-04-01 00:00:00 UTC')
       page.should_not have_text('No pending inspections.')
     end
 
