@@ -16,7 +16,8 @@
       = f.number_field :site_id
     .field
       = f.label :inspection_type
-      = f.text_field :inspection_type
+      /= f.text_field :inspection_type
+      = f.select :inspection_type, InspectionEvent::TYPES
     .field
       = f.label :inspection_date
       = f.date_select :inspection_date
