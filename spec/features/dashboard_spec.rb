@@ -27,7 +27,7 @@ describe "Dashboard" do
       :project,
       :id => 2,
       :user => @other_user,
-      :name => 'eb park and rec',
+      :name => 'berkeley usd',
       :description => 'playground improvements'
     )
     @current_projects = [ @current_project ]
