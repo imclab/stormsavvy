@@ -29,7 +29,6 @@ describe InspectionEvent do
     @ie = InspectionEvent.new(@attr)
     @ie.save
     @ie.should be_valid
-
   end
 
   describe "nested scope attributes" do
