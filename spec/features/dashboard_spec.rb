@@ -105,24 +105,66 @@ describe "Dashboard" do
       page.should have_link('View Project')
       page.should_not be_nil
     end
+
+    it 'shows correct project and site to user' do
+      login_as(@current_user, :scope => :user)
+      visit '/'
+      page.should have_text('eb park and rec')
+      page.should have_text('# of Sites: 1')
+      page.should have_text('ec jungle gym')
+      page.should_not have_text('No active projects')
+
+      login_as(@other_user, :scope => :user)
+      visit '/'
+      page.should have_text('berkeley usd')
+      page.should have_text('# of Sites: 1')
+      page.should have_text('berkeley high')
+      page.should_not have_text('No active projects')
+    end
   end
 
   describe "dashboard/sidebar" do
-    it "creates new inspection event" do
+    before(:each) do
+      login_as(@current_user, :scope => :user)
+      visit '/'
       click_link 'Inspections'
+    end
+
+    it 'displays inspection event title heading' do
       page.should have_text('Site ID')
       page.should have_text('Inspection Type')
       page.should have_text('Inspection Date')
       page.should have_text('Inspected By')
       page.should have_text('Submitted By')
       page.should have_text('Attachment')
+    end
 
+    it 'shows correct site to user' do
+      login_as(@current_user, :scope => :user)
+      visit '/'
+      page.should have_text('ec jungle gym')
+      page.should_not have_text('No active projects')
+
+      login_as(@other_user, :scope => :user)
+      visit '/'
+      page.should have_text('berkeley high')
+      page.should_not have_text('No active projects')
+    end
+
+    it 'creates new inspection event' do
       click_link 'New Inspection Event'
       click_button 'Save'
       page.should have_text('Inspection event was successfully created.')
+    end
 
+    it 'shows correct inspection event to user' do
+      login_as(@current_user, :scope => :user)
       visit '/'
-      page.should have_text('UTC')
+      page.should have_text('CEM2030 for ec jungle gym on 2013-04-01 00:00:00 UTC')
+      page.should_not have_text('No pending inspections.')
+
+      login_as(@other_user, :scope => :user)
+      visit '/'
       page.should have_text('CEM2031 for berkeley high on 2013-04-01 00:00:00 UTC')
       page.should_not have_text('No pending inspections.')
     end
