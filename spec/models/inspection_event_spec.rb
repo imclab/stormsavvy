@@ -4,23 +4,32 @@ describe InspectionEvent do
 
   before :each do
   	@site= FactoryGirl.create(:site)
-  	@inspection_event = FactoryGirl.create(:inspection_event)
+  	@ie = FactoryGirl.create(:inspection_event)
   end
 
   it "has correct project attributes" do
-  	@inspection_event.site_id.should == 1
-  	@inspection_event.inspection_type.should == "weekly"
-  	@inspection_event.inspection_description.should == "ec jungle gym inspection"
-  	@inspection_event.inspection_date.should == "Mon, 01 Apr 2013 00:00:00 UTC +00:00"
-  	@inspection_event.submitted_by.should == "wyu"
-  	@inspection_event.inspected_by.should == "wyu"
-  	@inspection_event.completed.should == false
+  	@ie.site_id.should == 1
+  	@ie.inspection_type.should == "weekly"
+  	@ie.inspection_description.should == "ec jungle gym inspection"
+  	@ie.inspection_date.should == "Mon, 01 Apr 2013 00:00:00 UTC +00:00"
+  	@ie.submitted_by.should == "wyu"
+  	@ie.inspected_by.should == "wyu"
+  	@ie.completed.should == false
+  end
+
+  it 'returns correct pulldown menu values' do
+    InspectionEvent::TYPES.should == [
+      'CEM2023', 'CEM2024', 'CEM2030', 'CEM2034', 'CEM2035', 'CEM2040', 'CEM2041',
+      'CEM2045', 'CEM2046', 'CEM2047', 'CEM2048', 'CEM2040', 'CEM2050', 'CEM2051',
+      'CEM2052'
+    ]
   end
 
   it "creates a new instance given valid attributes" do
-    @inspection_event = InspectionEvent.new(@attr)
-    @inspection_event.save
-    @inspection_event.should be_valid
+    @ie = InspectionEvent.new(@attr)
+    @ie.save
+    @ie.should be_valid
+
   end
 
   describe "nested scope attributes" do
