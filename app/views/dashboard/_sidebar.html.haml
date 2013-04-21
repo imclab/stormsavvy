@@ -23,7 +23,7 @@
           - @pending_ie.each do |ie|
             = link_to "Inspection for #{ie.site.name} on #{ie.inspection_date}", edit_inspection_event_path(ie)
         - else
-          - 'No pending inspections'
+          No pending inspections
   #current_action_items.widget.bottom-10
     .inner
       %h5
