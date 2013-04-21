@@ -143,14 +143,14 @@ describe "Dashboard" do
       login_as(@current_user, :scope => :user)
       visit '/'
       page.should have_text('eb park and rec')
-      page.should have_text('# of Sites: 1')
+      page.should have_text('# of Sites: 2')
       page.should have_text('ec jungle gym')
       page.should_not have_text('No active projects')
 
       login_as(@other_user, :scope => :user)
       visit '/'
       page.should have_text('berkeley usd')
-      page.should have_text('# of Sites: 1')
+      page.should have_text('# of Sites: 2')
       page.should have_text('berkeley high')
       page.should_not have_text('No active projects')
     end
