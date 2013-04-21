@@ -41,14 +41,14 @@ describe "Dashboard" do
     @current_site = FactoryGirl.create(
       :site,
       :id => 1,
-      :project => @current_project,
+      :project_id => 1,
       :name => 'ec jungle gym',
       :zipcode => 94530
     )
     @other_site = FactoryGirl.create(
       :site,
       :id => 2,
-      :project => @other_project,
+      :project_id => 2,
       :name => 'berkeley high',
       :zipcode => 94709
     )
