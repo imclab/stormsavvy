@@ -4,7 +4,7 @@ include ApplicationHelper
 include Warden::Test::Helpers
 Warden.test_mode!
 
-describe "Dashboards" do
+describe "Dashboard" do
   before(:each) do
     @current_user = FactoryGirl.build(
       :user,
