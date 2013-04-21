@@ -17,14 +17,14 @@ describe "Dashboard" do
       :email => 'info@stormsavvy.com'
     )
 
-    @current_project = FactoryGirl.create(
+    current_project = FactoryGirl.create(
       :project,
       :id => 1,
       :user_id => 1,
       :name => 'eb park and rec',
       :description => 'playground improvements'
     )
-    @other_project = FactoryGirl.create(
+    other_project = FactoryGirl.create(
       :project,
       :id => 2,
       :user_id => 2,
