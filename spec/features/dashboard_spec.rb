@@ -10,14 +10,10 @@ describe "Dashboard" do
       :user,
       :email => 'name@stormsavvy.com'
     )
-    login_as(@current_user, :scope => :user)
-
     @other_user = FactoryGirl.build(
       :user,
       :email => 'info@stormsavvy.com'
     )
-    login_as(@other_user, :scope => :user)
-
     @all_users = [ @current_user, @other_user ]
 
     @current_project = FactoryGirl.create(
