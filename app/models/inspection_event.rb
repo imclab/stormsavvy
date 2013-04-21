@@ -22,6 +22,12 @@ class InspectionEvent < ActiveRecord::Base
     :bucket => 'stormsavvy'
   # validates_attachment :attachment, presence: true, size: { less_than: 10.megabytes }
 
+  TYPES = [
+    'CEM2023', 'CEM2024', 'CEM2030', 'CEM2034', 'CEM2035', 'CEM2040', 'CEM2041',
+    'CEM2045', 'CEM2046', 'CEM2047', 'CEM2048', 'CEM2040', 'CEM2050', 'CEM2051',
+    'CEM2052'
+  ]
+
 private
 
   def change_inspection_event_status
