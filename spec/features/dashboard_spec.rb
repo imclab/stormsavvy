@@ -32,52 +32,86 @@ describe "Dashboard" do
       :description => 'playground improvements'
     )
 
-    @current_site = FactoryGirl.create(
+    current_completed_site = FactoryGirl.create(
       :site,
       :id => 1,
       :project_id => 1,
       :name => 'ec jungle gym',
       :zipcode => 94530
     )
-    @other_site = FactoryGirl.create(
+    current_pending_site = FactoryGirl.create(
       :site,
       :id => 2,
+      :project_id => 1,
+      :name => 'ec slide',
+      :zipcode => 94530
+    )
+    other_completed_site = FactoryGirl.create(
+      :site,
+      :id => 3,
       :project_id => 2,
       :name => 'berkeley high',
       :zipcode => 94709
     )
+    other_pending_site = FactoryGirl.create(
+      :site,
+      :id => 4,
+      :project_id => 2,
+      :name => 'peoples park',
+      :zipcode => 94709
+    )
 
-    @current_ie = FactoryGirl.create(
+    current_completed_ie = FactoryGirl.create(
       :inspection_event,
+      :id => 1,
       :site_id => 1,
+      :completed => true,
+      :inspection_type => 'CEM2030'
+    )
+    current_pending_ie = FactoryGirl.create(
+      :inspection_event,
+      :id => 2,
+      :site_id => 2,
       :completed => false,
       :inspection_type => 'CEM2030'
     )
-    @other_ie = FactoryGirl.create(
+    other_completed_ie = FactoryGirl.create(
       :inspection_event,
-      :site_id => 2,
+      :id => 3,
+      :site_id => 3,
+      :completed => true,
+      :inspection_type => 'CEM2031'
+    )
+    other_pending_ie = FactoryGirl.create(
+      :inspection_event,
+      :id => 4,
+      :site_id => 4,
       :completed => false,
       :inspection_type => 'CEM2031'
     )
 
-    @current_completed = FactoryGirl.create(
+    current_completed_report = FactoryGirl.create(
       :report,
+      :id => 1,
       :site_id => 1,
       :status => "completed"
     )
-    @current_pending = FactoryGirl.create(
+    current_pending_report = FactoryGirl.create(
       :report,
-      :site_id => 1,
+      :id => 2,
+      :site_id => 2,
       :status => "needs_attention"
     )
-    @other_completed = FactoryGirl.create(
+    other_completed_report = FactoryGirl.create(
       :report,
-      :site_id => 2,
+      :id => 3,
+      :site_id => 3,
       :status => "completed"
     )
-    @other_pending = FactoryGirl.create(
+    other_pending_report = FactoryGirl.create(
       :report,
-      :site_id => 2,
+      :id => 4,
+      :site_id => 4,
       :status => "needs_attention"
     )
   end
