@@ -59,23 +59,27 @@ describe "Dashboard" do
       :completed => false,
       :inspection_type => 'CEM2031'
     )
-    @current_ie_array = [ @current_ie ]
-    @pending_ie_array = [ @pending_ie ]
-    @all_ie_array = [ @current_ie, @pending_ie ]
 
-    @completed_report = FactoryGirl.create(
+    @current_completed = FactoryGirl.create(
       :report,
-      :site => @current_site,
+      :site_id => 1,
       :status => "completed"
     )
-    @pending_report = FactoryGirl.create(
+    @current_pending = FactoryGirl.create(
       :report,
-      :site => @other_site,
+      :site_id => 1,
       :status => "needs_attention"
     )
-    @completed_reports = [ @completed_report ]
-    @pending_reports = [ @pending_report ]
-    @all_reports = [ @completed_report, @pending_report ]
+    @other_completed = FactoryGirl.create(
+      :report,
+      :site_id => 2,
+      :status => "completed"
+    )
+    @other_pending = FactoryGirl.create(
+      :report,
+      :site_id => 2,
+      :status => "needs_attention"
+    )
   end
 
   describe "dashboard/projects" do
