@@ -46,9 +46,6 @@ describe "Dashboard" do
       :name => 'berkeley high',
       :zipcode => 94709
     )
-    @current_sites = [ @current_site ]
-    @other_sites = [ @other_site ]
-    @all_sites = [ @current_site, @pending_site ]
 
     @current_ie = FactoryGirl.create(
       :inspection_event,
