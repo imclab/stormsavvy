@@ -196,12 +196,12 @@ describe "Dashboard" do
       it 'shows correct inspection event to user' do
         login_as(@current_user, :scope => :user)
         visit '/'
-        page.should have_text('CEM2030 for ec jungle gym on 2013-04-01 00:00:00 UTC')
+        page.should have_text('CEM2030 for ec slide on 2013-04-01 00:00:00 UTC')
         page.should_not have_text('No pending inspections.')
 
         login_as(@other_user, :scope => :user)
         visit '/'
-        page.should have_text('CEM2031 for berkeley high on 2013-04-01 00:00:00 UTC')
+        page.should have_text('CEM2031 for peoples park on 2013-04-01 00:00:00 UTC')
         page.should_not have_text('No pending inspections.')
       end
     end
