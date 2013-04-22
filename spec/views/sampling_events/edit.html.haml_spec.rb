@@ -42,7 +42,7 @@ describe "sampling_events/edit" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => sampling_events_path(@sampling_event), :method => "post" do
       assert_select "input#sampling_event_site_id", :name => "sampling_event[site_id]"
-      assert_select "input#sampling_event_sampling_type", :name => "sampling_event[sampling_type]"
+      assert_select "select#sampling_event_sampling_type", :name => "sampling_event[sampling_type]"
       # assert_select "textarea#sampling_event_sampling_description", :name => "sampling_event[sampling_description]"
       assert_select "input#sampling_event_submitted_by", :name => "sampling_event[submitted_by]"
       assert_select "input#sampling_event_sampled_by", :name => "sampling_event[sampled_by]"
