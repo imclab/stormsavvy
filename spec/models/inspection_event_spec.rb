@@ -20,8 +20,7 @@ describe InspectionEvent do
   it 'returns correct pulldown menu values' do
     InspectionEvent::TYPES.should == [
       'CEM2023', 'CEM2024', 'CEM2030', 'CEM2034', 'CEM2035', 'CEM2040', 'CEM2041',
-      'CEM2045', 'CEM2046', 'CEM2047', 'CEM2048', 'CEM2040', 'CEM2050', 'CEM2051',
-      'CEM2052'
+      'CEM2045', 'CEM2046', 'CEM2047', 'CEM2048'
     ]
   end
 
