@@ -82,6 +82,10 @@ describe SamplingEvent do
     @sampling_event.analysis_average_5.should == "7.01"
   end
 
+  it 'returns correct pulldown menu values' do
+    SamplingEvent::TYPES.should == [ 'CEM2050', 'CEM2051', 'CEM2052' ]
+  end
+
   it "creates new instance given valid attributes" do
     sampling_event = SamplingEvent.new(@attr)
     sampling_event.save
