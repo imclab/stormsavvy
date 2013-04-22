@@ -51,6 +51,8 @@ class SamplingEvent < ActiveRecord::Base
       :bucket => 'stormsavvy'
     # validates_attachment :attachment, presence: true, size: { less_than: 10.megabytes }
 
+    TYPES = [ 'CEM2050', 'CEM2051', 'CEM2052' ]
+
 private
 
   def change_inspection_event_status
