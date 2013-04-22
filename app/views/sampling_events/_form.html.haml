@@ -4,7 +4,8 @@
   .span4
     .form-inputs
       = f.input :site_id
-      = f.input :sampling_type
+      = f.label :sampling_type
+      = f.select :sampling_type, SamplingEvent::TYPES
       = f.input :sampling_description
       = f.input :submitted_by
       = f.input :sampled_by
