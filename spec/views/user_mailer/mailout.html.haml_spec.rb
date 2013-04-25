@@ -5,31 +5,20 @@ describe "user_mailer/mailout" do
 	before(:all) do
     @greeting = "Greetings"
     @user = FactoryGirl.create(:user)
-    @project1 = FactoryGirl.create(
+    @project = FactoryGirl.create(
       :project,
       :user => @user,
       :created_at => 1.day.ago
       )
-    @project2 = FactoryGirl.create(
-      :project,
-      :user => @user,
-      :created_at => 1.hour.ago
-      )
-    @projects = [@project1, @project2]
+    @projects = [ @project ]
 
-    @site1 = FactoryGirl.create(
+    @site = FactoryGirl.create(
       :site,
-      :project => @project1,
+      :project => @project,
       :name => 'ec jungle gym',
       :zipcode => 94530
       )
-    @site2 = FactoryGirl.create(
-      :site,
-      :project => @project2,
-      :name => 'ec playground slide',
-      :zipcode => 94530
-      )
-    @sites = [@site1, @site2]
+    @sites = [ @site ]
   end
 
   it "renders mailout mailer" do
