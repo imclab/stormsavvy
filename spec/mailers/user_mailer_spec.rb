@@ -10,14 +10,11 @@ describe UserMailer do
     @greeting = 'Greetings'
     @salutation = 'The Storm Savvy Team'
 
-    @users = [@user]
-
     @project = FactoryGirl.create(
       :project,
       :user => @user,
       :created_at => 1.day.ago
       )
-    @projects = [ @project ]
 
     @site = FactoryGirl.create(
       :site,
