@@ -23,53 +23,27 @@ describe UserMailer do
       :zipcode => 94530
       )
 
-    @report1 = FactoryGirl.create(
+    @report = FactoryGirl.create(
       :report,
       :site => @site,
       :status => 'needs_attention'
     )
-    @report2 = FactoryGirl.create(
-      :report,
-      :site => @site,
-      :status => 'needs_attention'
-    )
-    @numreports = [ @report1, @report2 ]
+    @numreports = [ @report ]
 
-    @ie1 = FactoryGirl.create(
+    @ie = FactoryGirl.create(
       :inspection_event,
       :completed => false
     )
-    @ie2 = FactoryGirl.create(
-      :inspection_event,
-      :completed => true
-    )
-    @numinspections = [ @ie1, @ie2 ]
+    @numinspections = [ @ie ]
 
     @numusers = [ @user ]
-    @numprojects = [@project]
-    @numsites = [@site]
+    @numprojects = [ @project ]
+    @numsites = [ @site ]
 
     @fullcount = 29
     @lat = 37.9202057
     @long = -122.2937428
     @nf = double(NOAAForecast)
-
-    @nf.stub(:get_lat_long).with(94530).and_return([@lat, @long])
-
-    @nf.stub(:ping_noaa).with([@lat, @long], 168, 6) do
-      IO.read("./spec/lib/weather/noaa_response.xml")
-    end
-
-    @nf.stub(:get_forecast).with(@nf.get_lat_long(94530)) do
-      response = @nf.ping_noaa([@lat, @long], 168, 6)
-      nf = NOAAForecast.new(94530)
-      nf.parse_weather_data(response)
-    end
-
-    @nf.stub(:seven_day_weather) do
-      latlong = @nf.get_lat_long(94530)
-      @nf.get_forecast(latlong)
-    end
   end
 
   describe '#pester_admins' do
