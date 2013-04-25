@@ -3,7 +3,7 @@
     .alert.alert-error.fade.in
       /%a.close{"data-dismiss" => "alert", :href => "#"} ×
       = f.error_notification
-  - flash.each do |name, msg|
+  -# flash.each do |name, msg|
     %h4 Error!
     %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
       /%a.close{"data-dismiss" => "alert"} ×
