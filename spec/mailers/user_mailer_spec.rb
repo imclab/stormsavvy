@@ -22,7 +22,6 @@ describe UserMailer do
       :name => 'ec jungle gym',
       :zipcode => 94530
       )
-    @sites = [ @site ]
 
     @report1 = FactoryGirl.create(
       :report,
