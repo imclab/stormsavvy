@@ -22,33 +22,28 @@ describe "user_mailer/mailout" do
       :site => @site
     )
     @reports = [ @report ]
+
+    @ie = FactoryGirl.create(
+      :inspection_event,
+      :site => @site
+    )
+    @pending_ie = [ @ie ]
   end
 
   it "renders mailout mailer" do
     render
-    rendered.should have_selector 'h1', :text => 'Daily Site POP Alert'
-    rendered.should =~ /Daily Site POP Alert/
-    rendered.should =~ /Here are your pending reports:/
+    rendered.should have_selector 'h1', :text => 'Daily Project Status'
+    rendered.should =~ /Here are your pending tasks below./
   end
 
   it "renders pending reports" do
     render
     rendered.should have_text 'Report for'
-    rendered.should_not have_text 'No pending reports.'
+    rendered.should_not have_text 'No pending reports'
   end
 
-  it "renders the forecast partial" do
-    render 'user_mailer/mailout_forecast'
-    rendered.should have_content "Date"
-    rendered.should have_content "Forecast"
-    # rendered.should have_content "Rainfall"
-  end
-
-  it "renders the forecast table" do
-    render 'user_mailer/mailout_forecast'
-    rendered.should have_selector 'table'
-    rendered.should have_selector 'th', :text => "Date"
-    rendered.should have_selector 'th', :text => "Forecast"
-    # rendered.should have_selector 'th', :text => "Rainfall"
+  it "renders pending inspections" do
+    render
+    rendered.should_not have_text 'No pending inspections'
   end
 end
