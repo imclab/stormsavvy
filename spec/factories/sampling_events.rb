@@ -38,6 +38,7 @@ FactoryGirl.define do
     analysis_type_5 "pH"
     analysis_result_5 "7.20"
     analysis_average_5 "7.01"
+    completed false
   end
 
   factory :sampling_event_attachment do
