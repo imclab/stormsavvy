@@ -7,8 +7,8 @@ Devise.setup do |config|
   config.mailer_sender = "support@stormsavvy.com"
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = "Devise::Mailer"
-  config.mailer = "ActionMailer::UserMailer"
+  config.mailer = "Devise::Mailer"
+  # config.mailer = "ActionMailer::UserMailer"
 
   # Comment out 'config.apply_schema' based on deprecation warning.
   # Automatically apply schema changes in tableless databases
