@@ -2,19 +2,22 @@
   %tr
     %td
       %h1
-        Daily Site POP Alert
+        Daily Project Status
       %p
         = @greeting
       %p
-        Here are your pending reports:
+        Here are your pending tasks below.
+      %p
+        = @salutation
       %p
         - unless @reports.blank?
           - @reports.each do |report|
             %li= "Report for #{report.created_at}"
         - else
-          No pending reports.
+          No pending reports
       %p
-        = @salutation
-      %hr
-      %p
-        = render 'mailout_forecast', :projects => @projects
+        - unless @pending_ie.blank?
+          - @pending_ie.each do |ie|
+            = link_to "#{ie.inspection_type} for #{ie.site.name} on #{ie.inspection_date}", edit_inspection_event_path(ie)
+        - else
+          No pending inspections
