@@ -61,7 +61,6 @@ class UserMailer < ActionMailer::Base
           zipcode = @site.zipcode
           nf = NOAAForecast.new(zipcode)
           @forecast = nf.forecast_by_zipcode(zipcode)
-
           @reports = Report.where(:status => "needs_attention")
         end
       end
