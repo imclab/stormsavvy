@@ -1,7 +1,7 @@
 .container
   .row
     .span8#project-attributes
-      - if notice
+      -# if notice
         %p#notice.alert.alert-success= notice
       %h2 Project Information
       = button_to 'Delete This Project', project_path(@project), :method => :delete
