@@ -19,6 +19,12 @@ describe "user_mailer/mailout" do
       :zipcode => 94530
       )
     @sites = [ @site ]
+
+    @report = FactoryGirl.create(
+      :report,
+      :site => @site
+    )
+    @reports = [ @report ]
   end
 
   it "renders mailout mailer" do
