@@ -49,9 +49,6 @@ describe UserMailer do
     @numprojects = [@project]
     @numsites = [@site]
 
-    # @project = FactoryGirl.create(:project_with_sites)
-    # @site = FactoryGirl.create(:site)
-
     @fullcount = 29
     @lat = 37.9202057
     @long = -122.2937428
