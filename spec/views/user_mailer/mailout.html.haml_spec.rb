@@ -34,8 +34,10 @@ describe "user_mailer/mailout" do
     rendered.should =~ /Here are your pending reports:/
   end
 
-  it "renders the dashboard partial" do
-    render 'dashboard/sidebar'
+  it "renders pending reports" do
+    render
+    rendered.should have_text 'Report for'
+    rendered.should_not have_text 'No pending reports.'
   end
 
   it "renders the forecast partial" do
