@@ -8,15 +8,12 @@ describe "user_mailer/mailout" do
     @project = FactoryGirl.create(
       :project,
       :user => @user,
-      :created_at => 1.day.ago
       )
     @projects = [ @project ]
 
     @site = FactoryGirl.create(
       :site,
       :project => @project,
-      :name => 'ec jungle gym',
-      :zipcode => 94530
       )
     @sites = [ @site ]
 
