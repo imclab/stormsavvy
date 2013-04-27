@@ -32,7 +32,7 @@ describe "user_mailer/mailout" do
 
   it "renders mailout mailer" do
     render
-    rendered.should have_selector 'h1', :text => 'Weekly Project Status'
+    rendered.should have_selector 'h1', :text => 'Daily Project Status'
     rendered.should =~ /Here are your pending tasks below./
   end
 
