@@ -17,25 +17,23 @@ describe UserMailer do
 
     @site = FactoryGirl.create(
       :site,
-      :project => @project,
+      :project => @project
       )
 
     @report = FactoryGirl.create(
       :report,
-      :site => @site,
-      :status => 'needs_attention'
+      :site => @site
     )
-    @numreports = [ @report ]
 
     @ie = FactoryGirl.create(
-      :inspection_event,
-      :completed => false
+      :inspection_event
     )
-    @numinspections = [ @ie ]
 
-    @numusers = [ @user ]
-    @numprojects = [ @project ]
-    @numsites = [ @site ]
+    @numusers = User.count
+    @numprojects = Project.count
+    @numsites = Site.count
+    @numreports = Report.count
+    @numinspections = InspectionEvent.count
 
     @fullcount = 29
     @lat = 37.9202057
