@@ -72,7 +72,7 @@ class UserMailer < ActionMailer::Base
         mail(
           :from     => "alerts@stormsavvy.com",
           :to       => @user.email,
-          :subject  => "Storm Savvy Weekly Project Status Update"
+          :subject  => "Storm Savvy Weekly Project Status"
           ).deliver
       end
     end
