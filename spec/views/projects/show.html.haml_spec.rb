@@ -27,12 +27,6 @@ describe "projects/show" do
     render.should have_selector('div#project-attributes')
   end
 
-  it "renders flash message" do
-    flash[:notice] = "This is a flash message"
-    render
-    rendered.should =~ /This is a flash message/
-  end
-
   it "renders edit / back / delete" do
     render
     rendered.should match(/Edit/)
