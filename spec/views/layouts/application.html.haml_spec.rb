@@ -39,4 +39,12 @@ describe "layouts/application.html.haml" do
       rendered.should match(/Sampling/)
     end
   end
+
+  describe 'flash message' do
+    it "displays flash message" do
+      flash[:error] = "Form fields are incorrect"
+      render
+      rendered.should have_selector('div.alert-error')#, :class => twitterized_type(:alert), :count => 1)
+    end
+  end
 end
