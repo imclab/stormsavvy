@@ -2,19 +2,23 @@
   %tr
     %td
       %h1
-        Daily Project Status
+        Weekly Project Status
       %p
         = @greeting
       %p
         Here are your pending tasks below.
       %p
         = @salutation
+      %h2
+        Pending Reports
       %p
         - unless @reports.blank?
           - @reports.each do |report|
             %li= "Report for #{report.created_at}"
         - else
           %li= 'No pending reports'
+      %h2
+        Pending Inspections
       %p
         - unless @pending_ie.blank?
           - @pending_ie.each do |ie|
