@@ -14,10 +14,10 @@
           - @reports.each do |report|
             %li= "Report for #{report.created_at}"
         - else
-          No pending reports
+          %li= 'No pending reports'
       %p
         - unless @pending_ie.blank?
           - @pending_ie.each do |ie|
             = link_to "#{ie.inspection_type} for #{ie.site.name} on #{ie.inspection_date}", edit_inspection_event_path(ie)
         - else
-          No pending inspections
+          %li= 'No pending inspections'
