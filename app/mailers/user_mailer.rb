@@ -44,8 +44,8 @@ class UserMailer < ActionMailer::Base
   end
 
   def mailout(to = nil)
-    @greeting = "Greetings"
     @users = User.all
+    @greeting = "Greetings"
     @salutation = "The Storm Savvy Team"
 
     @users.each do |user|
