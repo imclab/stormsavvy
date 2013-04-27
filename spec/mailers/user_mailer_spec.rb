@@ -12,15 +12,12 @@ describe UserMailer do
 
     @project = FactoryGirl.create(
       :project,
-      :user => @user,
-      :created_at => 1.day.ago
+      :user => @user
       )
 
     @site = FactoryGirl.create(
       :site,
       :project => @project,
-      :name => 'ec jungle gym',
-      :zipcode => 94530
       )
 
     @report = FactoryGirl.create(
