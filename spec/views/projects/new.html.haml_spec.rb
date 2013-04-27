@@ -20,10 +20,4 @@ describe "projects/new" do
       assert_select "input#project_finishdate", :name => "project[finishdate]"
     end
   end
-
-  it "displays flash message" do
-    flash[:error] = "Form fields are incorrect"
-    render
-    rendered.should have_selector('div.alert-error')#, :class => twitterized_type(:alert), :count => 1)
-  end
 end
