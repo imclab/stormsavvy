@@ -109,6 +109,12 @@ describe UserMailer do
       @numsites.should_not be_nil
       @numreports.should_not be_nil
       @numinspections.should_not be_nil
+
+      @numprojects.should_not be_nil
+      @numusers.should_not be_nil
+      @numsites.should_not be_nil
+      @numreports.should_not be_nil
+      @numinspections.should_not be_nil
     end
   end
 
