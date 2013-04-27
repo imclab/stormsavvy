@@ -64,7 +64,10 @@ describe UserMailer do
       @salutation.should == 'The Storm Savvy Team'
     end
 
+    @users = User.all
     it "renders correct count" do
+      @numprojects.should == Project.count
+
       @numprojects.should_not be_nil
       @numusers.should_not be_nil
       @numsites.should_not be_nil
