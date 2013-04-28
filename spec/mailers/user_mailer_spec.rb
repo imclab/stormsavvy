@@ -67,6 +67,10 @@ describe UserMailer do
     @users = User.all
     it "renders correct count" do
       @numprojects.should == Project.count
+      @numusers.should == User.count
+      @numsites.should == Site.count
+      @numreports.should == Report.count
+      @numinspections.should == InspectionEvent.count
 
       @numprojects.should_not be_nil
       @numusers.should_not be_nil
