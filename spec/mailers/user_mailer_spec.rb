@@ -162,6 +162,13 @@ describe UserMailer do
     it "renders correct variables" do
       @users.should == User.all
       @users.should_not be_nil
+
+      @projects.should == @user.projects
+      @projects.should_not be_nil
+
+      @sites.should == @project.sites
+      @sites.should_not be_nil
+
     end
 
     it "returns nf stub value" do
