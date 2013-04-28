@@ -169,6 +169,11 @@ describe UserMailer do
       @sites.should == @project.sites
       @sites.should_not be_nil
 
+      @reports.should == @site.reports
+      @reports.should_not be_nil
+
+      @pending_ie.should == @site.inspection_events
+      @pending_ie.should_not be_nil
     end
 
     it "returns nf stub value" do
