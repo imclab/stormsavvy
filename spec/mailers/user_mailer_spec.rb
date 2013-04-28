@@ -16,20 +16,22 @@ describe UserMailer do
       :project,
       :user => @user
       )
+    @projects = [ @project ]
 
     @site = FactoryGirl.create(
       :site,
       :project => @project
       )
+    @sites = [ @site ]
 
     @report = FactoryGirl.create(
       :report,
       :site => @site
     )
+    @reports = [ @report ]
 
-    @ie = FactoryGirl.create(
-      :inspection_event
-    )
+    @ie = FactoryGirl.create(:inspection_event)
+    @pending_ie = [ @ie ]
 
     @numusers = User.count
     @numprojects = Project.count
