@@ -5,10 +5,12 @@ describe UserMailer do
   before { ActionMailer::Base.deliveries = [] }
 
   before(:each) do
-    @user = FactoryGirl.create(:user)
     @email = 'walter@stormsavvy.com'
     @greeting = 'Greetings'
     @salutation = 'The Storm Savvy Team'
+
+    @user = FactoryGirl.create(:user)
+    @users = [ @user ]
 
     @project = FactoryGirl.create(
       :project,
