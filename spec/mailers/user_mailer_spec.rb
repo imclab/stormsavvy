@@ -157,6 +157,11 @@ describe UserMailer do
       @project.get_site_zipcodes.should == zipcodes
     end
 
+    it "renders correct variables" do
+      @users.should == User.all
+      @users.should_not be_nil
+    end
+
     it "returns nf stub value" do
       @nf.should_not be_nil
     end
