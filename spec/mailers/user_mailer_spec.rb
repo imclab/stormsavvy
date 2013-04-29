@@ -175,10 +175,6 @@ describe UserMailer do
       @pending_ie.should == @site.inspection_events
       @pending_ie.should_not be_nil
     end
-
-    it "returns nf stub value" do
-      @nf.should_not be_nil
-    end
   end
 
   describe '#thankyou' do
