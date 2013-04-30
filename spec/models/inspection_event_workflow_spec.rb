@@ -42,67 +42,77 @@ describe InspectionEventWorkflow do
     end
   end
 
-  describe '#check_inspection_event' do
-    it 'creates new inspection event if none exists' do
-      expect {
-        @iew.inspection_event = false
-        @iew.prepare_inspection_event
-      }.to change(InspectionEvent, :count).by(1)
+  describe 'workflow methods' do
+    describe '#inspection_needed?' do
+    end
+
+    describe '#check_inspection_event' do
+      it 'creates new inspection event if none exists' do
+        expect {
+          @iew.inspection_event = false
+          @iew.prepare_inspection_event
+        }.to change(InspectionEvent, :count).by(1)
+      end
+    end
+
+    describe '#prepare_inspection_event' do
     end
   end
 
-  describe '#check_cem2023' do
-    it 'creates new CEM2023 if none exists' do
-      expect {
-        @iew.cem2023 = false
-        @iew.prepare_cem2023
-      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
+  describe 'cem forms' do
+    describe '#check_cem2023' do
+      it 'creates new CEM2023 if none exists' do
+        expect {
+          @iew.cem2023 = false
+          @iew.prepare_cem2023
+        }.to change(InspectionEvent.where(:completed => false), :count).by(1)
 
-      @iew.cem2023.should == true
+        @iew.cem2023.should == true
+      end
     end
-  end
 
-  describe '#check_cem2024' do
-    it 'creates new CEM2024 if none exists' do
-      expect {
-        @iew.cem2024 = false
-        @iew.prepare_cem2024
-      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
+    describe '#check_cem2024' do
+      it 'creates new CEM2024 if none exists' do
+        expect {
+          @iew.cem2024 = false
+          @iew.prepare_cem2024
+        }.to change(InspectionEvent.where(:completed => false), :count).by(1)
 
-      @iew.cem2024.should == true
+        @iew.cem2024.should == true
+      end
     end
-  end
 
-  describe '#check_cem2034' do
-    it 'creates new CEM2034 if none exists' do
-      expect {
-        @iew.cem2034 = false
-        @iew.prepare_cem2034
-      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
+    describe '#check_cem2034' do
+      it 'creates new CEM2034 if none exists' do
+        expect {
+          @iew.cem2034 = false
+          @iew.prepare_cem2034
+        }.to change(InspectionEvent.where(:completed => false), :count).by(1)
 
-      @iew.cem2034.should == true
+        @iew.cem2034.should == true
+      end
     end
-  end
 
-  describe '#check_cem2035' do
-    it 'creates new CEM2035 if none exists' do
-      expect {
-        @iew.cem2035 = false
-        @iew.prepare_cem2035
-      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
+    describe '#check_cem2035' do
+      it 'creates new CEM2035 if none exists' do
+        expect {
+          @iew.cem2035 = false
+          @iew.prepare_cem2035
+        }.to change(InspectionEvent.where(:completed => false), :count).by(1)
 
-      @iew.cem2035.should == true
+        @iew.cem2035.should == true
+      end
     end
-  end
 
-  describe '#check_cem2040' do
-    it 'creates new CEM2040 if none exists' do
-      expect {
-        @iew.cem2040 = false
-        @iew.prepare_cem2040
-      }.to change(InspectionEvent.where(:completed => false), :count).by(1)
+    describe '#check_cem2040' do
+      it 'creates new CEM2040 if none exists' do
+        expect {
+          @iew.cem2040 = false
+          @iew.prepare_cem2040
+        }.to change(InspectionEvent.where(:completed => false), :count).by(1)
 
-      @iew.cem2040.should == true
+        @iew.cem2040.should == true
+      end
     end
   end
 end
