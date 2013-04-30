@@ -27,11 +27,6 @@ class InspectionEventWorkflow < ActiveRecord::Base
     :report_sent,
     :turbidity
 
-  # need this for current_user and sites but throws error
-  # def initialize(site)
-  # @site = site
-  # end
-
   def inspection_needed?
     if Time.now.sunday?
       start_inspection_event_workflow
