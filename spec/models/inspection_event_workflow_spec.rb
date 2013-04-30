@@ -11,10 +11,14 @@ describe InspectionEventWorkflow do
       :site,
       :project => @project
     )
+    @ie = FactoryGirl.create(
+      :inspection_event,
+      :site => @site
+    )
     @iew = FactoryGirl.create(:inspection_event_workflow)
   end
 
-  it "default model is valid" do
+  it "has valid default model" do
     @iew.should be_valid
   end
 
