@@ -12,7 +12,7 @@ describe "layouts/application.html.haml" do
 
   context "using content_for(:title)" do
 
-    let(:page_title) { "StormSavvy" }
+    let(:page_title) { "Storm Savvy" }
     let(:brand_title) { "Storm Savvy" }
 
     before do
