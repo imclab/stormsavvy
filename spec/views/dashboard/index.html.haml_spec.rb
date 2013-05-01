@@ -109,6 +109,7 @@ describe "dashboard/index" do
       # TODO: add spec for sidebar links
       # rendered.should have_link inspection_event_path
       # rendered.should have_link project_site_path
+      # rendered.should have_link report_path
     end
 
     it "shows correct report links" do
