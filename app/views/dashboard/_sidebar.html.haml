@@ -21,7 +21,8 @@
       %hr
         - unless @pending_ie.blank?
           - @pending_ie.each do |ie|
-            = link_to "#{ie.inspection_type} for #{ie.site.name} on #{ie.inspection_date}", edit_inspection_event_path(ie)
+            .cf
+              = link_to "#{ie.inspection_type} for #{ie.site.name} on #{ie.inspection_date}", inspection_event_path(ie)
         - else
           No pending inspections
   #current_action_items.widget.bottom-10
