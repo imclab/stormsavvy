@@ -105,6 +105,10 @@ describe "dashboard/index" do
       rendered.should =~ /Pending Inspections/
       rendered.should =~ /Pending Reports/
       rendered.should =~ /Report Forms/
+
+      # TODO: add spec for sidebar links
+      # rendered.should have_link inspection_event_path
+      # rendered.should have_link project_site_path
     end
 
     it "shows correct report links" do
