@@ -37,6 +37,7 @@ describe "layouts/application.html.haml" do
       render
       rendered.should match(/Inspections/)
       rendered.should match(/Sampling/)
+      rendered.should match(/Reports/)
     end
   end
 
