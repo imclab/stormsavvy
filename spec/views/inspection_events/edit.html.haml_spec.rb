@@ -41,8 +41,6 @@ describe "inspection_events/edit" do
     rendered.should =~ /Inspection description/
     rendered.should =~ /Save/
     rendered.should =~ /Back/
-    rendered.should =~ /Save/
-    rendered.should =~ /Back/
   end
 
   describe 'file attachment partial' do
