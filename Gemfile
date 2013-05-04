@@ -34,6 +34,7 @@ gem 'aws-sdk'
 group :development do
   gem 'therubyracer', :platforms => :ruby, :require => 'v8'
   gem 'letter_opener'
+  gem 'xray-rails'
 end
 
 group :test, :development do
