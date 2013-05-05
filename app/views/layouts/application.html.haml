@@ -29,8 +29,4 @@
                 = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
             = yield
 
-    - if user_signed_in?
-      .footer
-        /= render 'layouts/footer'
-
     = render 'layouts/olark'
