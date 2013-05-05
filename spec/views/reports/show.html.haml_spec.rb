@@ -26,8 +26,6 @@ describe "reports/show" do
     rendered.should have_text('Site ID')
     rendered.should have_text('Inspection Type')
     rendered.should have_text('Status')
-    rendered.should have_text('')
-    rendered.should have_text('')
 
     rendered.should =~ /Download File/
     rendered.should =~ /Edit/
