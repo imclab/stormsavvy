@@ -17,8 +17,6 @@ gem 'rb-readline'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass', ">= 2.1.0.1"
-
-# use for asset:precompile error on active_admin: http://goo.gl/OKVai
 gem 'coffee-script-source', '~> 1.4.0'
 
 gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
