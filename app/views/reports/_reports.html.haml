@@ -16,6 +16,8 @@
 
   - @reports.each do |report|
     %tr
+      %td= report.site_id
+      %td= report.inspection_type
       %td= report.id
       %td= report.created_at
 
