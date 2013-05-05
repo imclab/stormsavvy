@@ -54,15 +54,6 @@ group :test, :development do
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'simplecov', :require => false
-
-#   gem 'pry'
-#   gem 'pry-remote'
-#   gem 'pry-nav'
-
-#   gem 'travis'
-#   gem 'ZenTest'
-#   gem 'autotest-growl'
-#   gem 'autotest-fsevent'
 end
 
 group :assets do
