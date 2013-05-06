@@ -13,3 +13,14 @@ and complete their annual reporting on time.
 ## Technology Stack ##
 Storm Savvy currently runs Rails and is deployed on Heroku at
 [http://stormsavvy.com](http://stormsavvy.com)
+
+## Inspection Work Flow ##
+Storm Savvy automates the following work flow:
+* Inspection Event
+* Inspection Record
+* File Attachment
+* Archive in Database
+
+## Weather Alerts ##
+Storm Savvy provides weather alert notifications over email using the
+[NOAA API](http://graphical.weather.gov/xml/)
