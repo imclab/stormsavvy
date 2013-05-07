@@ -8,13 +8,11 @@
         - @report.errors.full_messages.each do |msg|
           %li= msg
 
-  %h3
+  %h2
     Instructions: Select Report For Upload Below
-  %br
   .field
     /= f.label :attachment
     = f.file_field :attachment, class: 'button'
-  %br
   .actions
     = f.submit 'Upload Attachment', class: 'button'
     = link_to 'Cancel', reports_path
