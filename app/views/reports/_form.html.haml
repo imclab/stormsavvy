@@ -10,6 +10,14 @@
     =f.label :site_id
   .controls
     = f.text_field :site_id
+  .control-group
+    =f.label :inspection_type
+  .controls
+    = f.text_field :inspection_type
+  .control-group
+    =f.label :status
+  .controls
+    = f.text_field :status
   .actions
     = f.submit 'Save'
-    = link_to 'Back', inspection_events_path
+    = link_to 'Back', reports_path
