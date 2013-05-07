@@ -1,9 +1,9 @@
 = simple_nested_form_for @report do |f|
   -if @report.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+      %h2= "#{pluralize(@report.errors.count, "error")} prohibited this report from being saved:"
       %ul
-        - @project.errors.full_messages.each do |msg|
+        - @report.errors.full_messages.each do |msg|
           %li= msg
 
   .control-group
