@@ -18,6 +18,7 @@ describe "reports/new" do
     rendered.should =~ /New Report/
     rendered.should =~ /Site/
     rendered.should =~ /Inspection type/
+    rendered.should =~ /Status/
     rendered.should =~ /Save/
     rendered.should =~ /Back/
   end
