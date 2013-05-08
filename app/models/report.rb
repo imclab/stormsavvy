@@ -10,6 +10,7 @@ class Report < ActiveRecord::Base
     :type,
     :status,
     :inspection_type,
+    :site_id,
     :attachment # s3 uploads via paperclip
 
   has_attached_file :attachment,
