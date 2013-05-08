@@ -13,4 +13,29 @@ describe "reports/new" do
       assert_select "input#report_status", :name => "report[status]"
     end
   end
+
+  it "renders form partial correctly" do
+    rendered.should =~ /New Report/
+    rendered.should =~ /Site/
+    rendered.should =~ /Inspection type/
+    rendered.should =~ /Save/
+    rendered.should =~ /Back/
+  end
+
+  describe 'file attachment partial' do
+    before(:each) do
+      assign(:reports, [
+        stub_model(Report),
+        stub_model(Report)
+      ])
+      @report = FactoryGirl.create(:report, :id => 1)
+      render
+    end
+
+    it "renders partial correctly" do
+      rendered.should_not be_nil
+      rendered.should =~ /Instructions: Attach File & Complete Description Below/
+      rendered.should =~ /Cancel/
+    end
+  end
 end
