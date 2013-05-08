@@ -13,7 +13,7 @@ describe "inspection_events/new" do
     render
   end
 
-  it "renders new inspection_event form" do
+  it "renders new inspection_event fields" do
     assert_select "form", :action => inspection_events_path, :method => "post" do
       assert_select "input#inspection_event_site_id", :name => "inspection_event[site_id]"
       assert_select "select#inspection_event_inspection_type", :name => "inspection_event[inspection_type]"
