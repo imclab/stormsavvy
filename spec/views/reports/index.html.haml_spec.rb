@@ -19,5 +19,8 @@ describe "reports/index" do
 
   it 'has new report button' do
     rendered.should have_link('New Report')
+    rendered.should have_link('Show')
+    rendered.should have_link('Edit')
+    rendered.should have_link('Destroy')
   end
 end
