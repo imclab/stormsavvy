@@ -10,6 +10,8 @@ gem 'devise'
 gem 'pg'
 gem 'redis'
 
+gem 'json', '~>1.7.7'
+
 gem 'carmen'
 gem 'activeadmin'
 gem 'rb-readline'
@@ -41,10 +43,10 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'factory_girl_rails'
-  gem 'cucumber-rails',"1.3.0", :require => false
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara'
-  gem 'cucumber', "1.2.1"
+  gem 'cucumber'
   gem 'sqlite3'
   gem 'spork-rails'
 
