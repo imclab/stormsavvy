@@ -38,8 +38,8 @@ end
 group :test, :development do
   gem 'builder'
 
-  gem 'rspec-rails', "2.12.0"
-  gem 'rspec', "2.12.0"
+  gem 'rspec-rails'
+  gem 'rspec'
   gem 'factory_girl_rails'
   gem 'cucumber-rails',"1.3.0", :require => false
   gem 'database_cleaner'
