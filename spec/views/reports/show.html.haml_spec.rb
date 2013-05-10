@@ -6,8 +6,19 @@ describe "reports/show" do
       stub_model(Report),
       stub_model(Report)
     ])
-
-    @report = FactoryGirl.create(:report)
+    @site = FactoryGirl.create(
+      :site,
+      :id => 1,
+      :name => 'ec jungle gym'
+    )
+    @site_report = FactoryGirl.create(
+      :report,
+      :site_id => 1
+    )
+    @report = FactoryGirl.create(
+      :report,
+      :site_id => 1
+    )
     # @project = assign(:project, stub_model(Project,
     #   :user_id => 1,
     #   :name => "Name",
