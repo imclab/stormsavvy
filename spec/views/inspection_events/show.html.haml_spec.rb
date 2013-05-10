@@ -49,4 +49,11 @@ describe "inspection_events/show" do
     rendered.should have_link('Back')
     rendered.should have_button('Delete This Inspection Event')
   end
+
+  it 'shows site id and name' do
+    id = @ie.site_id
+    id.should == 1
+
+    @site_ie.site.name.should == 'ec jungle gym'
+  end
 end
