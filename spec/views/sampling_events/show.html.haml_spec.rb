@@ -2,7 +2,16 @@ require 'spec_helper'
 
 describe "sampling_events/show" do
   before(:each) do
-    @sampling_event = assign(:sampling_event, stub_model(SamplingEvent,
+    @site = FactoryGirl.create(
+      :site,
+      :id => 1,
+      :name => 'ec jungle gym'
+    )
+    @site_se = FactoryGirl.create(
+      :sampling_event,
+      :site_id => 1
+    )
+    @se = assign(:sampling_event, stub_model(SamplingEvent,
       :site_id => 1,
       :sampling_type => "Sampling Type",
       :sampling_description => "MyText",
