@@ -45,38 +45,45 @@ describe "sampling_events/show" do
     ))
   end
 
-  it "renders attributes in <p>" do
-    render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/1/)
-    rendered.should match(/Sampling Type/)
-    rendered.should match(/MyText/)
-    rendered.should match(/Submitted By/)
-    rendered.should match(/Sampled By/)
-    rendered.should match(/2/)
-    rendered.should match(/Sample Location 1/)
-    rendered.should match(/Analysis Type 1/)
-    rendered.should match(/Analysis Result 1/)
-    rendered.should match(/Analysis Average 1/)
-    rendered.should match(/3/)
-    rendered.should match(/Sample Location 2/)
-    rendered.should match(/Analysis Type 2/)
-    rendered.should match(/Analysis Result 2/)
-    rendered.should match(/Analysis Average 2/)
-    rendered.should match(/4/)
-    rendered.should match(/Sample Location 3/)
-    rendered.should match(/Analysis Type 3/)
-    rendered.should match(/Analysis Result 3/)
-    rendered.should match(/Analysis Average 3/)
-    rendered.should match(/5/)
-    rendered.should match(/Sample Location 4/)
-    rendered.should match(/Analysis Type 4/)
-    rendered.should match(/Analysis Result 4/)
-    rendered.should match(/Analysis Average 4/)
-    rendered.should match(/6/)
-    rendered.should match(/Sample Location 5/)
-    rendered.should match(/Analysis Type 5/)
-    rendered.should match(/Analysis Result 5/)
-    rendered.should match(/Analysis Average 5/)
+  describe 'form fields'  do
+    it "renders attributes in <p>" do
+      render
+      rendered.should match(/1/)
+      rendered.should match(/Sampling Type/)
+      rendered.should match(/MyText/)
+      rendered.should match(/Submitted By/)
+      rendered.should match(/Sampled By/)
+      rendered.should match(/2/)
+      rendered.should match(/Sample Location 1/)
+      rendered.should match(/Analysis Type 1/)
+      rendered.should match(/Analysis Result 1/)
+      rendered.should match(/Analysis Average 1/)
+      rendered.should match(/3/)
+      rendered.should match(/Sample Location 2/)
+      rendered.should match(/Analysis Type 2/)
+      rendered.should match(/Analysis Result 2/)
+      rendered.should match(/Analysis Average 2/)
+      rendered.should match(/4/)
+      rendered.should match(/Sample Location 3/)
+      rendered.should match(/Analysis Type 3/)
+      rendered.should match(/Analysis Result 3/)
+      rendered.should match(/Analysis Average 3/)
+      rendered.should match(/5/)
+      rendered.should match(/Sample Location 4/)
+      rendered.should match(/Analysis Type 4/)
+      rendered.should match(/Analysis Result 4/)
+      rendered.should match(/Analysis Average 4/)
+      rendered.should match(/6/)
+      rendered.should match(/Sample Location 5/)
+      rendered.should match(/Analysis Type 5/)
+      rendered.should match(/Analysis Result 5/)
+      rendered.should match(/Analysis Average 5/)
+    end
+
+    it 'shows site id and name' do
+      id = @se.site_id
+      id.should == 1
+      @site_se.site.name.should == 'ec jungle gym'
+    end
   end
 end
