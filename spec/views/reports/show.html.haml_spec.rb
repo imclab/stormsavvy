@@ -42,4 +42,9 @@ describe "reports/show" do
     rendered.should =~ /Edit/
     rendered.should =~ /Back/
   end
+
+  it 'shows site id and name' do
+    @report.site_id.should == 1
+    @site_report.site.name.should == 'ec jungle gym'
+  end
 end
