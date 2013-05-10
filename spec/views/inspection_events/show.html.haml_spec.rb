@@ -53,7 +53,6 @@ describe "inspection_events/show" do
   it 'shows site id and name' do
     id = @ie.site_id
     id.should == 1
-
     @site_ie.site.name.should == 'ec jungle gym'
   end
 end
