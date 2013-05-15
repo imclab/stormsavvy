@@ -10,7 +10,7 @@ gem 'devise'
 gem 'pg'
 gem 'redis'
 
-gem 'json'#, '~>1.7.7'
+gem 'json'
 
 gem 'carmen'
 gem 'activeadmin'
