@@ -299,7 +299,7 @@ DEPENDENCIES
   activeadmin
   awesome_print
   aws-sdk
-  bootstrap-sass (>= 2.1.0.1)
+  bootstrap-sass
   builder
   capybara
   carmen
