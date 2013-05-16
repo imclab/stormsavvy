@@ -17,14 +17,14 @@ gem 'rb-readline'
 
 gem 'haml-rails'
 gem 'jquery-rails'
-gem 'bootstrap-sass', ">= 2.1.0.1"
+gem 'bootstrap-sass'#, ">= 2.1.0.1"
 gem 'coffee-script-source', '~> 1.4.0'
 
 gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
 gem 'pdf-reader'
 
 gem 'simple_form'
-gem 'nested_form'#, :git => "git://github.com/ryanb/nested_form.git"
+gem 'nested_form'
 
 gem 'unicorn'
 gem 'paperclip'
