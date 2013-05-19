@@ -45,7 +45,8 @@
   .control-group
     =f.label :state, :class => "control-label"
     .controls
-      = f.select :state, Carmen.states, {:include_blank => true}, :selected => f.object.state
+      = f.text_field :state
+      /= f.select :state, Carmen.states, {:include_blank => true}, :selected => f.object.state
 
   .control-group
     =f.label :zipcode, :class => "control-label"
