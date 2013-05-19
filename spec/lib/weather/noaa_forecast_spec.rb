@@ -264,7 +264,6 @@ describe NOAAForecast do
       return @zipcode
     }
 
-    # @nf2.stub(:get_forecast_array).with(@zipcode) {
     @nf2.stub(:get_forecast_array) {
       [
         { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
