@@ -336,6 +336,6 @@ DEPENDENCIES
   sqlite3
   therubyracer
   typhoeus
-  uglifier (>= 1.0.3)
+  uglifier
   unicorn
   xray-rails
