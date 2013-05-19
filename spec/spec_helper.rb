@@ -1,4 +1,4 @@
-require 'rubygems'
+# require 'rubygems'
 require 'devise'
 require 'prawn'
 require 'pdf/reader'
