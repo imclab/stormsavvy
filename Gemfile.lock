@@ -302,7 +302,7 @@ DEPENDENCIES
   builder
   capybara
   carmen
-  coffee-rails (~> 3.2.1)
+  coffee-rails
   coffee-script-source
   cucumber
   cucumber-rails
