@@ -304,7 +304,7 @@ DEPENDENCIES
   capybara
   carmen
   coffee-rails (~> 3.2.1)
-  coffee-script-source (~> 1.4.0)
+  coffee-script-source
   cucumber
   cucumber-rails
   database_cleaner
