@@ -172,9 +172,11 @@ describe NOAAForecast do
         {:rainfall=>"99"},
         {:rainfall=>"99"}
       ]
+      return @zipcode
     }
 
-    @nf2.stub(:get_time_pop_hash).with(@zipcode) {
+    # @nf2.stub(:get_time_pop_hash).with(@zipcode) {
+    @nf2.stub(:get_time_pop_hash) {
 
       time_array = []
       for t in 0..27
