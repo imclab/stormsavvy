@@ -328,7 +328,7 @@ DEPENDENCIES
   redis
   rspec
   rspec-rails
-  sass-rails (~> 3.2.3)
+  sass-rails
   sentry-raven
   simple_form
   simplecov
