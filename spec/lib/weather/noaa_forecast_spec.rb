@@ -229,10 +229,12 @@ describe NOAAForecast do
         time_array[26].update(new_pop_array[26]),
         time_array[27].update(new_pop_array[27])
       ]
+      return @zipcode
     }
 
     @nf3 = NOAAForecast.new(@zipcode,168,6)
-    @nf3.stub(:get_pop_table_hash).with(@zipcode) {
+    # @nf3.stub(:get_pop_table_hash).with(@zipcode) {
+    @nf3.stub(:get_pop_table_hash) {
       time_pop_hash = @nf2.get_time_pop_hash
       new_qpf_array = @qpf
 
