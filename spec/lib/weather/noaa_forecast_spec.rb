@@ -115,7 +115,6 @@ describe NOAAForecast do
       return @zipcode
     }
 
-    # @nf2.stub(:get_qpf_array).with(@zipcode) {
     @nf2.stub(:get_qpf_array) {
 
 =begin
