@@ -407,8 +407,11 @@ describe NOAAForecast do
 
   describe "#get_forecast_array" do
     it "returns forecast_by_zipcode" do
-      pop = @nf2.pop
-      qpf = @nf2.qpf
+      # pop = @nf2.pop
+      # qpf = @nf2.qpf
+
+      pop = @pop
+      qpf = @qpf
 
       forecast_array = [
         { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
