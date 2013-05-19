@@ -164,7 +164,6 @@ describe NOAAForecast do
       return @zipcode
     }
 
-    # @nf2.stub(:get_time_pop_hash).with(@zipcode) {
     @nf2.stub(:get_time_pop_hash) {
 
       time_array = []
