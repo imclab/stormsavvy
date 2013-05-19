@@ -41,7 +41,6 @@ describe NOAAForecast do
       @nf2.parse_weather_data(response)
     }
 
-    # @nf2.stub(:seven_day_weather).with(@zipcode) {
     @nf2.stub(:seven_day_weather) {
       latlong = [@lat, @long]
       @nf.get_forecast(latlong)
