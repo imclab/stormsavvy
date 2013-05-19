@@ -14,17 +14,8 @@ describe NOAAForecast do
     @nf = double(NOAAForecast)
     @nf2 = NOAAForecast.new(@zipcode,168,6)
 
-    # @nf2.seven_day_weather(@zipcode)
-
-    pop= [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0]
-    qpf = [99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]
-    # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-    @pop = @nf2.pop
-    @qpf = @nf2.qpf
-
-    # pop = @nf2.pop
-    # qpf = @nf2.qpf
+    @pop = @nf2.get_pop(@zipcode)
+    @qpf = @nf2.get_qpf(@zipcode)
 
     @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
     @nf.stub(:get_lat_long).with("99999999999999999999").and_return([])
