@@ -274,9 +274,11 @@ describe NOAAForecast do
         time_pop_hash[26].update(new_qpf_array[26]),
         time_pop_hash[27].update(new_qpf_array[27]),
       ]
+      return @zipcode
     }
 
-    @nf2.stub(:get_forecast_array).with(@zipcode) {
+    # @nf2.stub(:get_forecast_array).with(@zipcode) {
+    @nf2.stub(:get_forecast_array) {
       [
         { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
         { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1], :rainfall => qpf[1] },
