@@ -8,9 +8,7 @@ gem 'geocoder'
 gem 'devise'
 gem 'pg'
 gem 'redis'
-
 gem 'json'
-
 gem 'carmen'
 gem 'activeadmin'
 gem 'rb-readline'
