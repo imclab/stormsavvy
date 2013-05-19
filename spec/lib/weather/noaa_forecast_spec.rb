@@ -77,8 +77,8 @@ describe NOAAForecast do
       # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
     }
 
-    @nf2.stub(:get_pop_array).with(@zipcode) {
-
+    # @nf2.stub(:get_pop_array).with(@zipcode) {
+    @nf2.stub(:get_pop_array) {
 =begin
       # array not being returned correctly
       pop_array = @pop
