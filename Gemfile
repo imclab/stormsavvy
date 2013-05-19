@@ -20,7 +20,6 @@ gem 'coffee-script-source'
 
 gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
 gem 'pdf-reader'
-
 gem 'simple_form'
 gem 'nested_form'
 
@@ -36,7 +35,6 @@ end
 
 group :test, :development do
   gem 'builder'
-
   gem 'rspec-rails'
   gem 'rspec'
   gem 'factory_girl_rails'
