@@ -451,12 +451,12 @@ describe NOAAForecast do
 
   describe "#get_pop" do
     it "returns pop results" do
-      pop = [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0]
+      # pop = [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0]
       # may need to revert back later
       # pop = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
 
       # test by number of array elements instead
-      @nf2.get_pop.should == pop
+      @nf2.get_pop(@zipcode).should == @pop
     end
   end
 
