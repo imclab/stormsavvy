@@ -26,6 +26,7 @@ gem 'nested_form'
 gem 'unicorn'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'heroku'
 
 group :development do
   gem 'therubyracer', :platforms => :ruby, :require => 'v8'
