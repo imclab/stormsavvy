@@ -462,13 +462,13 @@ describe NOAAForecast do
 
   describe "#get_qpf" do
     it "returns qpf results" do
-      qpf = [99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]
+      # qpf = [99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]
       # may need to revert back later
       # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
 
       # test by number of array elements instead
-      @nf2.qpf.should == qpf
+      @nf2.get_qpf(@zipcode).should == @qpf
     end
   end
 
