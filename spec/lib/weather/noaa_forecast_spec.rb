@@ -486,7 +486,7 @@ describe NOAAForecast do
   describe "#get_pop_array" do
     it "returns pop array" do
       # @nf2.seven_day_weather(@zipcode)
-      pop_array = @nf2.pop
+      pop_array = @nf2.get_pop(@zipcode)
 
       # debug collect method later
       # new_pop_array.collect {|i| new_pop_array << { :weather => pop_array[i].to_s } }
