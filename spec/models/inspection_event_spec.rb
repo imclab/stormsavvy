@@ -66,8 +66,10 @@ describe InspectionEvent do
     end
 
     describe "#attachment" do
-      it "returns correct url" do
+      it "returns correct attachment info" do
         @attachment.attachment.url.should_not be_nil
+        @attachment.attachment.url.should == '/attachments/original/missing.png'
+        @attachment.attachment.bucket_name.should == 'stormsavvy'
       end
     end
   end
