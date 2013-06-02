@@ -20,4 +20,18 @@ class CurrentUserObject
 
     return @sites
   end
+
+  def get_ie
+    get_sites
+    @pending_ie = []
+    @sites.each do |s|
+      s.inspection_events.each do |ie|
+        if ie.completed == false
+          @pending_ie << ie
+        end
+      end
+    end
+
+    return @pending_ie
+  end
 end
