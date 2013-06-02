@@ -100,8 +100,6 @@ describe CurrentUserObject do
 
   describe "#get_ie" do
     it "returns all reports to current user" do
-      sign_in @current_user
-      controller.stub!(:get_ie).and_return(@all_ie_array)
       @all_ie_array.should include(@current_ie)
       @all_ie_array.should include(@other_ie)
       @all_ie_array.should_not be_nil
