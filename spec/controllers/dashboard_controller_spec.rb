@@ -101,12 +101,10 @@ describe DashboardController do
     it 'returns current projects and sites' do
       sign_in @current_user
       @current_projects.should == @current_user.projects.all
-      # @current_user.projects.blank?.should be_false
-      @current_sites.should == @current_user.sites.all # nested attribute
-      # @current_user.sites.blank?.should be_false
+      @current_user.projects.blank?.should be_false
+      @current_sites.should == @current_user.sites.all
+      @current_user.sites.blank?.should be_false
       # @weather_events.should == @site.weather_events.all
-      puts @current_user.projects.all
-      puts @current_user.sites.all
     end
 
     it "returns pending inspection events" do
