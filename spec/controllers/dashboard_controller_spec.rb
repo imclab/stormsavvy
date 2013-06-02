@@ -70,6 +70,13 @@ describe DashboardController do
 
     sign_in @current_user
     sign_in @other_user
+=begin
+    @weather_event = FactoryGirl.create(
+      :weather_event,
+      :site => @site
+    )
+    @weather_events = [@weather_event]
+=end
   end
 
   describe "GET 'index' for signed in user" do
