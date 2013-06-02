@@ -20,8 +20,9 @@ class InspectionEvent < ActiveRecord::Base
     :url => "http://stormsavvy.s3-website-us-east-1.amazonaws.com",
     :storage => :s3,
     :bucket => 'stormsavvy',
-    :preserve_files => true
-  # validates_attachment :attachment, presence: true, size: { less_than: 10.megabytes }
+    :preserve_files => true,
+    :path => "user/:attachment/:style/:id.:extension"
+    # validates_attachment :attachment, presence: true, size: { less_than: 10.megabytes }
 
   TYPES = [
     'CEM2023', 'CEM2024', 'CEM2030', 'CEM2034', 'CEM2035', 'CEM2040', 'CEM2041',
