@@ -2,9 +2,6 @@ require 'spec_helper'
 
 describe InspectionEventsController do
 
-  # This should return the minimal set of attributes required to create a valid
-  # InspectionEvent. As you add validations to InspectionEvent, be sure to
-  # update the return value of this method accordingly.
   def valid_attributes
     {
       :site_id => 1,

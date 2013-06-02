@@ -1,4 +1,5 @@
 class InspectionEventsController < ApplicationController
+
   # GET /inspection_events
   # GET /inspection_events.json
   def index
