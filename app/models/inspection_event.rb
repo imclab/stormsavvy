@@ -17,11 +17,10 @@ class InspectionEvent < ActiveRecord::Base
     :attachment # s3 uploads via paperclip
 
   has_attached_file :attachment,
-    :url => "http://stormsavvy.s3-website-us-east-1.amazonaws.com",
     :storage => :s3,
     :bucket => 'stormsavvy',
-    :preserve_files => true,
-    :path => ":filename"
+    :preserve_files => true
+    # :url => "http://stormsavvy.s3-website-us-east-1.amazonaws.com",
     # :path => "/image/:id/:filename"
     # validates_attachment :attachment, presence: true, size: { less_than: 10.megabytes }
 
