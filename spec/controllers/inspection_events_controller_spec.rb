@@ -12,10 +12,7 @@ describe InspectionEventsController do
       :inspected_by => "wyu"
     }
   end
-  
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # InspectionEventsController. Be sure to keep this updated too.
+
   def valid_session
     {}
   end
@@ -92,10 +89,6 @@ describe InspectionEventsController do
     describe "with valid params" do
       it "updates the requested inspection_event" do
         inspection_event = InspectionEvent.create! valid_attributes
-        # Assuming there are no other inspection_events in the database, this
-        # specifies that the InspectionEvent created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
         InspectionEvent.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, {:id => inspection_event.to_param, :inspection_event => {'these' => 'params'}}, valid_session
       end
@@ -116,7 +109,6 @@ describe InspectionEventsController do
     describe "with invalid params" do
       it "assigns the inspection_event as @inspection_event" do
         inspection_event = InspectionEvent.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         InspectionEvent.any_instance.stub(:save).and_return(false)
         put :update, {:id => inspection_event.to_param, :inspection_event => {}}, valid_session
         assigns(:inspection_event).should eq(inspection_event)
@@ -124,7 +116,6 @@ describe InspectionEventsController do
 
       it "re-renders the 'edit' template" do
         inspection_event = InspectionEvent.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         InspectionEvent.any_instance.stub(:save).and_return(false)
         put :update, {:id => inspection_event.to_param, :inspection_event => {}}, valid_session
         response.should render_template("edit")

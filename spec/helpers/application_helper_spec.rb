@@ -57,7 +57,6 @@ describe ApplicationHelper do
   end
 
   describe '#projects' do
-    # throws authentication error, test from controller instead
     it 'returns instance variable' do
       projects = Project.all
       assign(:projects, projects)
