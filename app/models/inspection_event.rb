@@ -21,7 +21,8 @@ class InspectionEvent < ActiveRecord::Base
     :storage => :s3,
     :bucket => 'stormsavvy',
     :preserve_files => true,
-    :path => "/image/:id/:filename"
+    :path => ":filename"
+    # :path => "/image/:id/:filename"
     # validates_attachment :attachment, presence: true, size: { less_than: 10.megabytes }
 
   TYPES = [
