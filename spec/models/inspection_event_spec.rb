@@ -69,6 +69,10 @@ describe InspectionEvent do
       it "returns correct attachment info" do
         @attachment.attachment.url.should_not be_nil
         @attachment.attachment.url.should == '/attachments/original/missing.png'
+        puts @attachment.attachment.path
+        puts @attachment.attachment.url
+        # @attachment.attachment.path.should_not be_nil
+        # @attachment.attachment.path.should == 'user/:attachment/:style/:id.:extension'
         @attachment.attachment.bucket_name.should == 'stormsavvy'
       end
     end
