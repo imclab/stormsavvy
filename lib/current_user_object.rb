@@ -46,4 +46,17 @@ class CurrentUserObject
 
     return @all_reports
   end
+
+  def pending_reports
+    get_reports
+    @pending_reports = []
+
+    @all_reports.each do |r|
+      if r.status == 'needs_attention'
+        @pending_reports << r
+      end
+    end
+
+    return @pending_reports
+  end
 end
