@@ -7,14 +7,9 @@ describe DashboardHelper do
     @zipcode = 94530
     @lat = 37.9202057
     @long = -122.2937428
-    lat_long = [@lat, @long]
+
     @nf = double(NOAAForecast)
     @nf2 = NOAAForecast.new(@zipcode,168,6)
-    # @nf2.seven_day_weather(@zipcode)
-
-    pop= [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0]
-    qpf = [99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]
-
     @pop = @nf2.pop
     @qpf = @nf2.qpf
 
