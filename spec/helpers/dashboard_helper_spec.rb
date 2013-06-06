@@ -144,6 +144,12 @@ describe DashboardHelper do
       @other_user.projects.all.should == @other_projects
       @other_user.projects.all.should_not == @current_projects
     end
+
+    xit 'returns correct projects from lib class' do
+      # fix this...
+      projects = CurrentUserObject::get_projects
+      projects.should == @current_projects
+    end
   end
 
   describe "#get_sites" do
