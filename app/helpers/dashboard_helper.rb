@@ -1,5 +1,6 @@
 require 'weather/noaa_forecast'
 require 'weather/forecast_examiner'
+require 'current_user_object'
 
 module DashboardHelper
 
