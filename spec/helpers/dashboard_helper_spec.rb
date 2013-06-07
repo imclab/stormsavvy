@@ -145,9 +145,10 @@ describe DashboardHelper do
       @other_user.projects.all.should_not == @current_projects
     end
 
-    xit 'returns correct projects from lib class' do
-      # fix this...
-      projects = CurrentUserObject::get_projects
+    it 'returns correct projects from lib class' do
+      # puts CurrentUserObject.methods
+      cuo = CurrentUserObject.new
+      projects = cuo.get_projects
       projects.should == @current_projects
     end
   end
