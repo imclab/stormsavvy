@@ -35,8 +35,8 @@ class CurrentUserObject
     return @pending_ie
   end
 
-  def get_reports
-    get_sites
+  def get_reports(user)
+    get_sites(user)
     @all_reports = []
     @sites.each do |s|
       s.reports.each do |r|
