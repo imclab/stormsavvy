@@ -146,9 +146,8 @@ describe DashboardHelper do
     end
 
     it 'returns correct projects from lib class' do
-      # puts CurrentUserObject.methods
-      cuo = CurrentUserObject.new
-      projects = cuo.get_projects
+      cu = CurrentUserObject.new
+      projects = cu.get_projects(@current_user)
       projects.should == @current_projects
     end
   end
