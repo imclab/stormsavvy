@@ -23,37 +23,6 @@ describe "Reports" do
       current_path.should == '/reports'
     end
 
-    it "visits each pdf report path" do
-=begin
-      visit '/reports/CEM2030.pdf'
-      current_path.should == '/reports/CEM2030.pdf'
-
-      visit reports_CEM2034_path
-      current_path.should == reports_CEM2034_path
-
-      visit reports_CEM2035_path
-      current_path.should == reports_CEM2035_path
-
-      visit reports_CEM2040_path
-      current_path.should == reports_CEM2040_path
-
-      visit reports_CEM2045_path
-      current_path.should == reports_CEM2045_path
-
-      visit reports_CEM2050_path
-      current_path.should == reports_CEM2050_path
-
-      visit reports_CEM2051_path
-      current_path.should == reports_CEM2051_path
-
-      visit reports_CEM2052_path
-      current_path.should == reports_CEM2052_path
-
-      visit reports_CEM4601_path
-      current_path.should == reports_CEM4601_path
-=end
-    end
-
     it "should GET /reports" do
       @report = FactoryGirl.build(:report)
       visit reports_path(:report => @report.id)
