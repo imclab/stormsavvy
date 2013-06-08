@@ -144,22 +144,5 @@ describe DashboardHelper do
   end
 
   describe "#pending_reports" do
-    it "returns pending reports to current user" do
-      @pending_reports.should include(@pending_report)
-      @pending_reports.should_not include(@completed_report)
-    end
-
-    it "returns correct reports to each user" do
-      # @current_site.reports.all.should == @pending_reports
-      # @current_site.reports.all.should_not == @completed_reports
-      # @other_site.reports.all.should == @other_reports
-      # @other_site.reports.all.should_not == @current_reports
-    end
-
-    it 'returns pending reports from lib class' do
-      cu = CurrentUserObject.new
-      pending_reports = cu.pending_reports(@current_user)
-      pending_reports.should == @pending_reports
-    end
   end
 end
