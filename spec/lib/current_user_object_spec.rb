@@ -81,6 +81,12 @@ describe CurrentUserObject do
       @other_user.projects.all.should == @other_projects
       @other_user.projects.all.should_not == @current_projects
     end
+
+    it 'returns current projects' do
+      cu = CurrentUserObject.new
+      projects = cu.get_projects(@current_user)
+      projects.should == @current_projects
+    end
   end
 
   describe "#get_sites" do
