@@ -9,8 +9,8 @@ class CurrentUserObject
     return @projects
   end
 
-  def get_sites
-    get_projects
+  def get_sites(user)
+    get_projects(user)
     @sites = []
     @projects.each do |p|
       p.sites.each do |s|
