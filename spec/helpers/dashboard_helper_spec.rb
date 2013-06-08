@@ -165,6 +165,12 @@ describe DashboardHelper do
       @other_user.sites.all.should == @other_sites
       @other_user.sites.all.should_not == @current_sites
     end
+
+    it 'returns correct sites from lib class' do
+      cu = CurrentUserObject.new
+      sites = cu.get_sites(@current_user)
+      sites.should == @current_sites
+    end
   end
 
   describe "#get_ie" do
