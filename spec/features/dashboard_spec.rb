@@ -221,5 +221,48 @@ describe "Dashboard" do
         page.should_not have_text('No active projects')
       end
     end
+
+    describe 'report forms' do
+      before(:each) do
+        login_as(@current_user, :scope => :user)
+      end
+
+      it "visits each pdf report path" do
+        visit '/'
+        click_link('CEM 2030 Weekly Inspection Report')
+        current_path.should == '/pdf/CEM2030'
+
+        visit '/'
+        click_link('CEM 2034 Corrective Action Report')
+        current_path.should == '/pdf/CEM2034'
+
+        visit '/'
+        click_link('CEM 2035 BMP Status Report')
+        current_path.should == '/pdf/CEM2035'
+
+        visit '/'
+        click_link('CEM 2040 Weather Forecast Report')
+        current_path.should == '/pdf/CEM2040'
+
+        visit '/'
+        click_link('CEM 2045 REAP Report')
+        current_path.should == '/pdf/CEM2045'
+
+        visit '/'
+        click_link('CEM 4601 Daily Report')
+        current_path.should == '/pdf/CEM4601'
+      end
+
+      it 'visits remaining pdf reports' do
+        # visit pdf_CEM2050_path
+        # current_path.should == pdf_CEM2050_path
+
+        # visit pdf_CEM2051_path
+        # current_path.should == pdf_CEM2051_path
+
+        # visit pdf_CEM2052_path
+        # current_path.should == pdf_CEM2052_path
+      end
+    end
   end
 end
