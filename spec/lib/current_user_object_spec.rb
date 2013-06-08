@@ -157,5 +157,11 @@ describe CurrentUserObject do
       # @other_site.reports.all.should == @other_reports
       # @other_site.reports.all.should_not == @current_reports
     end
+
+    it 'returns pending reports from lib class' do
+      cu = CurrentUserObject.new
+      pending_reports = cu.pending_reports(@current_user)
+      pending_reports.should == @pending_reports
+    end
   end
 end
