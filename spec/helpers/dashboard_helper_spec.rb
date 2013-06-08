@@ -186,6 +186,12 @@ describe DashboardHelper do
       @other_site.inspection_events.all.should == @other_ie_array
       @other_site.inspection_events.all.should_not == @current_ie_array
     end
+
+    it 'returns current inspection events from lib class' do
+      cu = CurrentUserObject.new
+      current_ie = cu.get_ie(@current_user)
+      current_ie.should == @current_ie_array
+    end
   end
 
   describe "#get_reports" do
