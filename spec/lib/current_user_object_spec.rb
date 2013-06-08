@@ -137,6 +137,12 @@ describe CurrentUserObject do
       @all_reports.should include(@completed_report)
       @all_reports.should_not be_nil
     end
+
+    it 'returns current reports from lib class' do
+      cu = CurrentUserObject.new
+      pending_reports = cu.get_reports(@current_user)
+      pending_reports.should include(@pending_report)
+    end
   end
 
   describe "#pending_reports" do
