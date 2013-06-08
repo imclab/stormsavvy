@@ -118,16 +118,15 @@ describe DashboardHelper do
 
   describe '#precipitation_state' do
     it "returns @rain_state" do
-=begin
-      # spec out later
+      # finish spec later
+      forecast = []
       if forecast == [[],[]]
         @rain_state = :null
         return
       end
-      fe = ForecastExaminer.new(forecast)
-      fe.find_rain_chance()
-      @rain_state = fe.rain
-=end
+      fe = ForecastExaminer.new(@site, forecast)
+      # fe.find_rain_chance()
+      # @rain_state = fe.rain
     end
   end
 
