@@ -47,8 +47,8 @@ class CurrentUserObject
     return @all_reports
   end
 
-  def pending_reports
-    get_reports
+  def pending_reports(user)
+    get_reports(user)
     @pending_reports = []
 
     @all_reports.each do |r|
