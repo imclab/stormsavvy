@@ -29,7 +29,7 @@ describe "reports/show" do
 
   it "renders correct text" do
     render
-    rendered.should =~ /View Report/
+    rendered.should =~ /Report Information/
     rendered.should =~ /Delete This Report/
 
     rendered.should have_text('Report ID')
