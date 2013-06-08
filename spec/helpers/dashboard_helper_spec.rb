@@ -132,80 +132,15 @@ describe DashboardHelper do
   end
 
   describe "#get_projects" do
-    it "returns all projects to current user" do
-      @all_projects.should include(@current_project)
-      @all_projects.should include(@other_project)
-      @all_projects.should_not be_nil
-    end
-
-    it "returns correct projects to each user" do
-      @current_user.projects.all.should == @current_projects
-      @current_user.projects.all.should_not == @other_projects
-      @other_user.projects.all.should == @other_projects
-      @other_user.projects.all.should_not == @current_projects
-    end
-
-    it 'returns correct projects from lib class' do
-      cu = CurrentUserObject.new
-      projects = cu.get_projects(@current_user)
-      projects.should == @current_projects
-    end
   end
 
   describe "#get_sites" do
-    it "returns all sites to current user" do
-      @all_sites.should include(@current_site)
-      @all_sites.should include(@other_site)
-      @all_sites.should_not be_nil
-    end
-
-    it "returns correct sites to each user" do
-      @current_user.sites.all.should == @current_sites
-      @current_user.sites.all.should_not == @other_sites
-      @other_user.sites.all.should == @other_sites
-      @other_user.sites.all.should_not == @current_sites
-    end
-
-    it 'returns correct sites from lib class' do
-      cu = CurrentUserObject.new
-      sites = cu.get_sites(@current_user)
-      sites.should == @current_sites
-    end
   end
 
   describe "#get_ie" do
-    it "returns all reports to current user" do
-      @all_ie_array.should include(@current_ie)
-      @all_ie_array.should include(@other_ie)
-      @all_ie_array.should_not be_nil
-    end
-
-    it "returns correct inspection_events to each user" do
-      @current_site.inspection_events.all.should == @current_ie_array
-      @current_site.inspection_events.all.should_not == @other_ie_array
-      @other_site.inspection_events.all.should == @other_ie_array
-      @other_site.inspection_events.all.should_not == @current_ie_array
-    end
-
-    it 'returns current inspection events from lib class' do
-      cu = CurrentUserObject.new
-      current_ie = cu.get_ie(@current_user)
-      current_ie.should == @current_ie_array
-    end
   end
 
   describe "#get_reports" do
-    it "returns all reports to current user" do
-      @all_reports.should include(@pending_report)
-      @all_reports.should include(@completed_report)
-      @all_reports.should_not be_nil
-    end
-
-    xit 'returns current reports from lib class' do
-      cu = CurrentUserObject.new
-      pending_reports = cu.get_reports(@current_user)
-      pending_reports.should == @pending_reports_array
-    end
   end
 
   describe "#pending_reports" do
