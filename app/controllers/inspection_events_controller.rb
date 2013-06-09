@@ -1,3 +1,5 @@
+require 'current_user_object'
+
 class InspectionEventsController < ApplicationController
 
   # GET /inspection_events
