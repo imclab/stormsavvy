@@ -139,4 +139,11 @@ describe InspectionEventsController do
     end
   end
 
+  describe '#get_ie'  do
+    it 'returns pending ie from lib class' do
+      user = FactoryGirl.create(:user)
+      cu = CurrentUserObject.new
+      @ie = cu.get_ie(user)
+    end
+  end
 end
