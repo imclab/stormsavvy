@@ -232,4 +232,12 @@ describe InspectionEventsController do
       ie.should == @current_ie_array
     end
   end
+
+  describe '#all_ie'  do
+    it 'returns all ie from lib class' do
+      cu = CurrentUserObject.new
+      ie = cu.all_ie(@current_user)
+      ie.should == @current_ie_array
+    end
+  end
 end
