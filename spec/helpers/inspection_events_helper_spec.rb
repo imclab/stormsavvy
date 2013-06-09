@@ -1,16 +1,10 @@
 require 'spec_helper'
+require 'current_user_object'
 
-# Specs in this file have access to a helper object that includes
-# the InspectionEventsHelper. For example:
-#
-# describe InspectionEventsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe InspectionEventsHelper do
-  it "knows about itself" do
+  it 'returns current user variables' do
+    # @projects = CurrentUserObject::get_projects(user)
+    # @sites = CurrentUserObject::get_sites(user)
+    # @pending_ie = CurrentUserObject::get_ie(user)
   end
 end
