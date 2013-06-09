@@ -190,8 +190,11 @@ describe DashboardController do
     it "returns correct sites to each user" do
       @current_user.sites.all.should == @current_sites
       @current_user.sites.all.should_not == @other_sites
+      @current_sites.should_not be_nil
+
       @other_user.sites.all.should == @other_sites
       @other_user.sites.all.should_not == @current_sites
+      @other_sites.should_not be_nil
     end
   end
 
