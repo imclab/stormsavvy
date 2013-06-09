@@ -234,7 +234,6 @@ describe DashboardController do
   end
 
   describe "index view" do
-
     before do
       request.env['warden'].stub :authenticate! => @current_user
       controller.stub :current_user => @current_user
