@@ -225,6 +225,12 @@ describe DashboardController do
       @other_site.inspection_events.all.should == @other_ie_array
       @other_site.inspection_events.all.should_not == @current_ie_array
     end
+
+    it 'returns pending ie from lib class' do
+      cu = CurrentUserObject.new
+      ie = cu.get_ie(@current_user)
+      ie.should == @current_ie_array
+    end
   end
 
   describe "#get_reports" do
