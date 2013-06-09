@@ -258,10 +258,15 @@ describe DashboardController do
     end
 
     it "returns correct reports to each user" do
-      # @current_site.reports.all.should == @pending_reports
-      # @current_site.reports.all.should_not == @completed_reports
-      # @other_site.reports.all.should == @other_reports
-      # @other_site.reports.all.should_not == @current_reports
+      @current_site.reports.all.should include(@pending_reports)
+      @current_site.reports.all.should_not include(@completed_report)
+    end
+
+    it 'returns reports from lib class' do
+      cu = CurrentUserObject.new
+      reports = cu.pending_reports(@current_user)
+      reports.should == @pending_reports
+      reports.should_not include(@completed_report)
     end
   end
 
