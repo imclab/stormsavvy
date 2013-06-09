@@ -176,6 +176,12 @@ describe DashboardController do
       @other_user.projects.all.should_not == @current_projects
       @other_projects.should_not be_nil
     end
+
+    it 'returns projects from lib class' do
+      cu = CurrentUserObject.new
+      projects = cu.get_projects(@current_user)
+      projects.should == @current_projects
+    end
   end
 
   describe "#get_sites" do
