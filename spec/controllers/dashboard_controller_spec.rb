@@ -3,10 +3,9 @@ require 'spec_helper'
 describe DashboardController do
 
   before(:each) do
-=begin
-    @current_user = FactoryGirl.build(:current_user)
-    @other_user = FactoryGirl.build(:other_user)
-=end
+    # @current_user = FactoryGirl.build(:current_user)
+    # @other_user = FactoryGirl.build(:other_user)
+
     @current_user = FactoryGirl.build(
       :user,
       :email => '@stormsavvy.com'
