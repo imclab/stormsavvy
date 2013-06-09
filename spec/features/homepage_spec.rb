@@ -10,10 +10,11 @@ describe "homepage" do
   before :each do
     @user = FactoryGirl.create(
       :user,
-      :email    => 'testem@stormsavvy.com',
+      :email => 'testem@stormsavvy.com',
       :password => 'testem',
       :password_confirmation => 'testem'
     )
+    # login_as(@user, :scope => :user)
   end
 
   it "renders sign-in page" do
