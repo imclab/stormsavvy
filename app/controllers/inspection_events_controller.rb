@@ -11,6 +11,26 @@ class InspectionEventsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @inspection_events }
     end
+
+    if current_user
+      cu = CurrentUserObject.new
+      user = current_user
+      cu.get_projects(user)
+      cu.get_sites(user)
+      cu.get_ie(user)
+
+      # get_projects
+      # @projects = current_user.projects.all
+
+      # get_sites
+      # @sites = current_user.sites.all
+
+      # pending_reports
+      # @reports = Report.where(:status => "needs_attention")
+
+      # get_ie
+      # @inspection_events = []
+    end
   end
 
   # GET /inspection_events/1
