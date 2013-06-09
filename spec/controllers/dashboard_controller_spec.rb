@@ -202,6 +202,12 @@ describe DashboardController do
       @other_user.sites.all.should_not == @current_sites
       @other_sites.should_not be_nil
     end
+
+    it 'returns sites from lib class' do
+      cu = CurrentUserObject.new
+      sites = cu.get_sites(@current_user)
+      sites.should == @current_sites
+    end
   end
 
   describe "#get_ie" do
