@@ -11,8 +11,6 @@ class InspectionEventsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @inspection_events }
     end
-
-    get_ie
   end
 
   # GET /inspection_events/1
