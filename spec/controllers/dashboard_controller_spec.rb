@@ -96,15 +96,17 @@ describe DashboardController do
     it 'returns current projects and sites' do
       sign_in @current_user
       @current_projects.should == @current_user.projects.all
-      @current_sites.should == @current_user.sites.all
+      @current_projects.should_not include(@other_projects)
+      @current_projects.should_not be_nil
 
-      # @current_user.projects.blank?.should be_false
-      # @current_user.sites.blank?.should be_false
-      # @weather_events.should == @site.weather_events.all
+      @current_sites.should == @current_user.sites.all
+      @current_sites.should_not include(@other_sites)
+      @current_sites.should_not be_nil
     end
 
     it "returns pending inspection events" do
       @current_ie_array.should == @current_site.inspection_events.where(:completed => false)
+      @current_ie_array.should_not include(@other_ie)
     end
   end
 
