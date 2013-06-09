@@ -241,6 +241,12 @@ describe DashboardController do
       @all_reports.should include(@completed_report)
       @all_reports.should_not be_nil
     end
+
+    it 'returns reports from lib class' do
+      cu = CurrentUserObject.new
+      reports = cu.get_reports(@current_user)
+      reports.should == @all_reports
+    end
   end
 
   describe "#pending_reports" do
