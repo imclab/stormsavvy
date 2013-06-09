@@ -207,22 +207,29 @@ describe InspectionEventsController do
     end
   end
 
-  describe "dashboard variables: users, projects and sites" do
+  describe "current_user variables: users, projects and sites" do
     it 'returns current projects and sites' do
       sign_in @current_user
       @current_projects.should == @current_user.projects.all
+      @current_projects.should_not include(@other_projects)
+      @current_projects.should_not be_nil
+
       @current_sites.should == @current_user.sites.all
+      @current_sites.should_not include(@other_sites)
+      @current_sites.should_not be_nil
     end
 
     it "returns pending inspection events" do
       @current_ie_array.should == @current_site.inspection_events.where(:completed => false)
+      @current_ie_array.should_not include(@other_ie)
     end
   end
 
   describe '#get_ie'  do
     it 'returns pending ie from lib class' do
       cu = CurrentUserObject.new
-      @ie = cu.get_ie(@current_user)
+      ie = cu.get_ie(@current_user)
+      ie.should == @current_ie_array
     end
   end
 end
