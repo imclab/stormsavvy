@@ -23,8 +23,4 @@ module DashboardHelper
     fe.find_rain_chance()
     @rain_state = fe.rain
   end
-
-  def get_projects
-    @projects = CurrentUserObject::get_projects
-  end
 end
