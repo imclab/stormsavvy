@@ -143,6 +143,14 @@ describe CurrentUserObject do
     end
   end
 
+  describe "#all_ie" do
+    it 'returns all inspection events' do
+      cu = CurrentUserObject.new
+      all_ie = cu.all_ie(@current_user)
+      all_ie.should == @current_ie_array
+    end
+  end
+
   describe "#get_se" do
     it "returns all sampling events to current user" do
       @all_se_array.should include(@current_se)
