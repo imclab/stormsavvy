@@ -61,16 +61,16 @@ class CurrentUserObject
     return @pending_se
   end
 
-  def all_ie(user)
+  def all_se(user)
     get_sites(user)
-    @all_ie = []
+    @all_se = []
     @sites.each do |s|
-      s.inspection_events.each do |ie|
-        @all_ie << ie
+      s.sampling_events.each do |se|
+        @all_se << se
       end
     end
 
-    return @all_ie
+    return @all_se
   end
 
   def get_reports(user)
