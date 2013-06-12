@@ -9,6 +9,15 @@ class SamplingEventsController < InheritedResources::Base
       format.html # new.html.erb
       format.json { render json: @sampling_event }
     end
+
+    if current_user
+      cu = CurrentUserObject.new
+      user = current_user
+      @projects = cu.get_projects(user)
+      @sites = cu.get_sites(user)
+      @pending_se = cu.get_se(user)
+      @sampling_events = cu.all_se(user)
+    end
   end
 
   # GET /sampling_events/1/edit
