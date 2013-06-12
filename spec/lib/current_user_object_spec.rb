@@ -167,7 +167,7 @@ describe CurrentUserObject do
   describe "#all_se" do
     it 'returns all sampling events' do
       cu = CurrentUserObject.new
-      all_se = cu.get_se(@current_user)
+      all_se = cu.all_se(@current_user)
       all_se.should == @current_se_array
     end
   end
