@@ -19,18 +19,6 @@ class InspectionEventsController < ApplicationController
       @sites = cu.get_sites(user)
       @pending_ie = cu.get_ie(user)
       @inspection_events = cu.all_ie(user)
-
-      # get_projects
-      # @projects = current_user.projects.all
-
-      # get_sites
-      # @sites = current_user.sites.all
-
-      # pending_reports
-      # @reports = Report.where(:status => "needs_attention")
-
-      # get_ie
-      # @inspection_events = []
     end
   end
 
