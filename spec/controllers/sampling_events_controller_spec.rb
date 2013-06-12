@@ -40,17 +40,17 @@ describe SamplingEventsController do
     @other_sites = [ @other_site ]
     @all_sites = [ @current_site, @other_site ]
 
-    @current_ie = FactoryGirl.create(
-      :inspection_event,
+    @current_se = FactoryGirl.create(
+      :sampling_event,
       :site => @current_site
     )
-    @other_ie = FactoryGirl.create(
-      :inspection_event,
+    @other_se = FactoryGirl.create(
+      :sampling_event,
       :site => @other_site
     )
-    @current_ie_array = [ @current_ie ]
-    @other_ie_array = [ @other_ie ]
-    @all_ie_array = [ @current_ie, @other_ie ]
+    @current_se_array = [ @current_se ]
+    @other_se_array = [ @other_se ]
+    @all_se_array = [ @current_se, @other_se ]
 
     @completed_report = FactoryGirl.create(
       :report,
