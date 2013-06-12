@@ -1,12 +1,8 @@
 require 'spec_helper'
 
 describe SamplingEventsController do
-
-  # This should return the minimal set of attributes required to create a valid
-  # SamplingEvent. As you add validations to SamplingEvent, be sure to
-  # update the return value of this method accordingly.
   def valid_attributes
-    { 
+    {
       :site_id => 1,
       :sampling_type => "pH",
       :sampling_description => "ec jungle gym samplng",
