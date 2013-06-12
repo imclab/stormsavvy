@@ -1,3 +1,5 @@
+require 'current_user_object'
+
 class SamplingEventsController < InheritedResources::Base
 
   def new
