@@ -53,6 +53,18 @@ describe CurrentUserObject do
     @other_ie_array = [ @other_ie ]
     @all_ie_array = [ @current_ie, @other_ie ]
 
+    @current_se = FactoryGirl.create(
+      :sampling_event,
+      :site => @current_site
+    )
+    @other_se = FactoryGirl.create(
+      :sampling_event,
+      :site => @other_site
+    )
+    @current_se_array = [ @current_se ]
+    @other_se_array = [ @other_se ]
+    @all_se_array = [ @current_se, @other_se ]
+
     @completed_report = FactoryGirl.create(
       :report,
       :site => @current_site,
