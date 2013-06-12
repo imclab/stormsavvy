@@ -143,6 +143,27 @@ describe CurrentUserObject do
     end
   end
 
+  describe "#get_se" do
+    it "returns all sampling events to current user" do
+      @all_se_array.should include(@current_se)
+      @all_se_array.should include(@other_se)
+      @all_se_array.should_not be_nil
+    end
+
+    it "returns correct sampling_events to each user" do
+      @current_site.sampling_events.all.should == @current_se_array
+      @current_site.sampling_events.all.should_not == @other_se_array
+      @other_site.sampling_events.all.should == @other_se_array
+      @other_site.sampling_events.all.should_not == @current_se_array
+    end
+
+    it 'returns current sampling events' do
+      cu = CurrentUserObject.new
+      current_se = cu.get_se(@current_user)
+      current_se.should == @current_se_array
+    end
+  end
+
   describe "#get_reports" do
     it "returns all reports to current user" do
       @all_reports.should include(@pending_report)
