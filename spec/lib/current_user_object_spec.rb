@@ -123,13 +123,13 @@ describe CurrentUserObject do
   end
 
   describe "#get_ie" do
-    it "returns all reports to current user" do
+    it "returns all inspection events to current user" do
       @all_ie_array.should include(@current_ie)
       @all_ie_array.should include(@other_ie)
       @all_ie_array.should_not be_nil
     end
 
-    it "returns correct inspection_events to each user" do
+    it "returns correct inspection events to each user" do
       @current_site.inspection_events.all.should == @current_ie_array
       @current_site.inspection_events.all.should_not == @other_ie_array
       @other_site.inspection_events.all.should == @other_ie_array
