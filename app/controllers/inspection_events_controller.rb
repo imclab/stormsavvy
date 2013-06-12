@@ -15,9 +15,10 @@ class InspectionEventsController < ApplicationController
     if current_user
       cu = CurrentUserObject.new
       user = current_user
-      cu.get_projects(user)
-      cu.get_sites(user)
-      cu.get_ie(user)
+      @projects = cu.get_projects(user)
+      @sites = cu.get_sites(user)
+      @pending_ie = cu.get_ie(user)
+      @inspection_events = cu.all_ie(user)
 
       # get_projects
       # @projects = current_user.projects.all
