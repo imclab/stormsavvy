@@ -35,6 +35,20 @@ class CurrentUserObject
     return @pending_ie
   end
 
+  def get_se(user)
+    get_sites(user)
+    @pending_se = []
+    @sites.each do |s|
+      s.sampling_events.each do |se|
+        if se.completed == false
+          @pending_se << se
+        end
+      end
+    end
+
+    return @pending_se
+  end
+
   def all_ie(user)
     get_sites(user)
     @all_ie = []
