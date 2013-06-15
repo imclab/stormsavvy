@@ -19,11 +19,12 @@ describe "SamplingEvents" do
     end
 
     it "creates new sampling event" do
-      visit '/users/sign_in'
-      fill_in 'Email', :with => 'barney@stormsavvy.com'
-      fill_in 'Password', :with => 'foobarbaz'
-      click_button 'Sign in'
-      page.should have_content 'Invalid email or password'
+      visit '/sampling_events/new'
+      click_button 'Save'
+      page.should have_content 'Sampling event was successfully created'
+      page.should have_text('Sampling Event')
+      page.should have_text('Edit')
+      page.should have_text('Back')
     end
   end
 end
