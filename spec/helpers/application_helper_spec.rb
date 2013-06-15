@@ -9,8 +9,6 @@ describe ApplicationHelper do
       :user => @user,
       :created_at => 1.day.ago
       )
-    @projects = [@project]
-
     @site = FactoryGirl.create(
       :site,
       :project => @project,
