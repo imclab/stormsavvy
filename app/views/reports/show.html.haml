@@ -1,14 +1,11 @@
-.container
-  .row
-    %p
-      #notice
-        = notice
-        = button_to 'Delete This Report', report_path(@report), :method => :delete
+%p
+  #notice
+    = notice
+    = button_to 'Delete This Report', report_path(@report), :method => :delete
+%p
+  %h2 Report Information
 
-    %fieldset
-      .span10
-        %p
-          %h2 Report Information:
-          %br
-            = render 'show_file'
-            = render 'download_links'
+.span10
+  %p
+    = render 'show_file'
+    = render 'download_links'
