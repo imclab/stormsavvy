@@ -1,7 +1,10 @@
-%p#notice= notice
+%p
+  #notice
+    = notice
+    = button_to 'Delete This Sampling Event', sampling_event_path(@sampling_event), :method => :delete
 
 %p
-  %h2 Sampling Event
+  %h2 Sampling Event Information
 .span5
   %p
     %b Site ID:
