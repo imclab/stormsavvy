@@ -10,11 +10,20 @@ describe "SamplingEvents" do
 
   describe 'sampling events page' do
     it "renders correct page" do
-      visit '/reports'
-      page.should have_text('Inspection Type')
-      page.should have_text('Report Date')
+      visit '/sampling_events'
+      page.should have_text('Sampling Type')
+      page.should have_text('Sampling Date')
+      page.should have_text('Submitted By')
+      page.should have_text('Sampled By')
       page.should have_text('Attachment URL')
-      page.should have_text('New Report')
+    end
+
+    it "creates new sampling event" do
+      visit '/users/sign_in'
+      fill_in 'Email', :with => 'barney@stormsavvy.com'
+      fill_in 'Password', :with => 'foobarbaz'
+      click_button 'Sign in'
+      page.should have_content 'Invalid email or password'
     end
   end
 end
