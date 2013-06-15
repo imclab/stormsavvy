@@ -1,33 +1,30 @@
-.container
-  .row
-    %p
-      #notice
-        = notice
-        = button_to 'Delete This Inspection Event', inspection_event_path(@inspection_event), :method => :delete
+%p
+  #notice
+    = notice
+    = button_to 'Delete This Inspection Event', inspection_event_path(@inspection_event), :method => :delete
+%p
+  %h2 Inspection Event Information
 
-    %fieldset
-      .span10
-        %p
-          %h2 Inspection Event Information:
-        %p
-          %b Site ID:
-          = @inspection_event.site_id
-        %p
-          %b Inspection Type:
-          = @inspection_event.inspection_type
-        %p
-          %b Description:
-          = @inspection_event.inspection_description
-        %p
-          %b Date:
-          = @inspection_event.inspection_date
-        %p
-          %b Submitted By:
-          = @inspection_event.submitted_by
-        %p
-          %b Inspected By:
-          = @inspection_event.inspected_by
+.span10
+  %p
+    %b Site ID:
+    = @inspection_event.site_id
+  %p
+    %b Inspection Type:
+    = @inspection_event.inspection_type
+  %p
+    %b Description:
+    = @inspection_event.inspection_description
+  %p
+    %b Date:
+    = @inspection_event.inspection_date
+  %p
+    %b Submitted By:
+    = @inspection_event.submitted_by
+  %p
+    %b Inspected By:
+    = @inspection_event.inspected_by
 
-        = link_to 'Edit', edit_inspection_event_path(@inspection_event)
-        \|
-        = link_to 'Back', inspection_events_path
+  = link_to 'Edit', edit_inspection_event_path(@inspection_event)
+  \|
+  = link_to 'Back', inspection_events_path
