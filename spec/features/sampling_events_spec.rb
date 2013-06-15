@@ -1,10 +1,20 @@
 require 'spec_helper'
 
 describe "SamplingEvents" do
-  describe "GET /sampling_events" do
-    it "works! (now write some real specs)" do
-      # get sampling_events_path
-      # response.status.should be(200)
+  before :each do
+    @user = FactoryGirl.create(
+      :user
+    )
+    login_as(@user, :scope => :user)
+  end
+
+  describe 'sampling events page' do
+    it "renders correct page" do
+      visit '/reports'
+      page.should have_text('Inspection Type')
+      page.should have_text('Report Date')
+      page.should have_text('Attachment URL')
+      page.should have_text('New Report')
     end
   end
 end
