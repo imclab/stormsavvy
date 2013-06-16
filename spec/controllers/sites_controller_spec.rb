@@ -154,6 +154,7 @@ describe SitesController do
         Site.any_instance.stub(:save).and_return(false)
         post :create, {:site => {}, :project_id => @project.id}
         assigns(:site).should be_a_new(Site)
+        assigns(:site).should_not be_persisted
       end
 
       it "re-renders the 'new' template" do
