@@ -271,8 +271,11 @@ describe SitesController do
 
     it "responds with flash message" do
       sign_in @user
-      post :create, {:site => valid_attributes, :project_id => @project.id}
-      flash[:notice].should == "Site was successfully created."
+      delete :destroy, {
+        :id => site.to_param,
+        :project_id => @project.id
+      }, valid_session
+      flash[:notice].should == 'Site was successfully deleted.'
     end
   end
 end
