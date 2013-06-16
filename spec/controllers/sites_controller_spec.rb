@@ -81,7 +81,6 @@ describe SitesController do
   end
 
   describe "POST create" do
-
     before(:each) do
       @project = @user.projects.create!(project_attributes)
     end
