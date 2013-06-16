@@ -39,7 +39,8 @@ class InspectionEventsController < ApplicationController
     @inspection_event = InspectionEvent.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render html: @inspection_event, :notice => 'Error: See details below.',
+                    :flash => { :error => 'Error!' } }
       format.json { render json: @inspection_event }
     end
   end
