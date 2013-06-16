@@ -163,6 +163,12 @@ describe SitesController do
         # This also works.
         response.should redirect_to("/projects/#{project.id}/sites/#{site.id}")
       end
+
+      it "responds with flash message" do
+        sign_in @user
+        post :create, {:site => valid_attributes, :project_id => @project.id}
+        flash[:notice].should == "Site was successfully created."
+      end
     end
 
     describe "with invalid params" do
