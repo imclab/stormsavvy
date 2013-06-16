@@ -145,6 +145,12 @@ describe InspectionEventsController do
         post :create, {:inspection_event => valid_attributes}, valid_session
         response.should redirect_to(InspectionEvent.last)
       end
+
+      it "responds with flash message" do
+        sign_in @current_user
+        post :create, {:inspection_event => valid_attributes}, valid_session
+        flash[:notice].should == "Inspection event was successfully created."
+      end
     end
 
     describe "with invalid params" do
