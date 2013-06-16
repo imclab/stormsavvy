@@ -201,6 +201,7 @@ describe InspectionEventsController do
         inspection_event = InspectionEvent.create! valid_attributes
         put :update, {:id => inspection_event.to_param, :inspection_event => valid_attributes}, valid_session
         assigns(:inspection_event).should eq(inspection_event)
+        assigns(:inspection_event).should be_persisted
       end
 
       it "redirects to the inspection_event" do
