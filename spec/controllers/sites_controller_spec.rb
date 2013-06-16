@@ -195,6 +195,7 @@ describe SitesController do
           :site => valid_attributes
         }, valid_session
         assigns(:site).should eq(site)
+        assigns(:site).should be_persisted
       end
 
       it "redirects to the site" do
