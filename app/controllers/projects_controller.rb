@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @sites = @project.sites.build
     respond_to do |format|
-      format.html { render html: @project, :notice => 'See details below.',
+      format.html { render html: @project, :notice => 'Error: See details below.',
                     :flash => { :error => 'Error!' } }
       format.json { render json: @project }
     end
