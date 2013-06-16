@@ -114,6 +114,7 @@ describe SitesController do
       site = @project.sites.create!(valid_attributes)
       get :edit, {:id => site.to_param, :project_id => @project.id}
       assigns(:site).should eq(site)
+      assigns(:site).should be_persisted
     end
   end
 
