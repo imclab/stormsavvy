@@ -36,11 +36,27 @@ describe SitesController do
       :project => @project,
       :name => 'ec jungle gym'
     )
+    @completed_report = FactoryGirl.create(
+      :report,
+      :site => @site,
+      :status => "completed"
+    )
+    @pending_report = FactoryGirl.create(
+      :report,
+      :site => @site,
+      :status => "needs_attention"
+    )
+    @completed_reports = [ @completed_report ]
+    @pending_reports = [ @pending_report ]
+    @all_reports = [ @completed_report, @pending_report ]
+
+    @completed_reports = @site.reports.completed
+    @needs_attention_reports = @site.reports.needs_attention
+
     sign_in @user
   end
 
   describe "GET index" do
-
     it "has a 200 status code" do
       site = @project.sites.create!(valid_attributes)
       get :edit, {:id => site.to_param, :project_id => @project.id}
