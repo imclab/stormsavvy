@@ -236,7 +236,7 @@ describe SamplingEventsController do
       }.to change(SamplingEvent, :count).by(-1)
     end
 
-    xit "redirects to the sampling_events list" do
+    it "redirects to the sampling_events list" do
       sampling_event = SamplingEvent.create! valid_attributes
       delete :destroy, {:id => sampling_event.to_param}, valid_session
       response.should redirect_to(sampling_events_url)
