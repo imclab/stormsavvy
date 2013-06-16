@@ -225,6 +225,7 @@ describe InspectionEventsController do
         InspectionEvent.any_instance.stub(:save).and_return(false)
         put :update, {:id => inspection_event.to_param, :inspection_event => {}}, valid_session
         assigns(:inspection_event).should eq(inspection_event)
+        assigns(:inspection_event).should be_persisted
       end
 
       it "re-renders the 'edit' template" do
