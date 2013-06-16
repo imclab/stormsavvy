@@ -222,6 +222,17 @@ describe InspectionEventsController do
         put :update, {:id => inspection_event.to_param, :inspection_event => {}}, valid_session
         response.should render_template("edit")
       end
+
+      it "responds with flash message" do
+        sign_in @current_user
+        inspection_event = InspectionEvent.create! valid_attributes
+        InspectionEvent.any_instance.stub(:save).and_return(false)
+        put :update, {:id => inspection_event.to_param, :inspection_event => {}}, valid_session
+        # Site.any_instance.stub(:save).and_return(false)
+        # post :create, {:site => valid_attributes, :project_id => @project.id}
+        response.should render_template('edit')
+        flash[:error].should == 'Error: See details below.'
+      end
     end
   end
 
