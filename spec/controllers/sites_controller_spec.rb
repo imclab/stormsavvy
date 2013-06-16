@@ -77,6 +77,7 @@ describe SitesController do
 
       get :show, {:id => site.to_param, :project_id => @project.id}#, valid_session
       assigns(:site).should eq(site)
+      assigns(:site).should be_persisted
     end
 
     it 'assigns completed reports variables' do
