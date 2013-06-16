@@ -74,8 +74,8 @@ describe SitesController do
       sign_in @user
       Site.any_instance.stub(:save).and_return(false)
       post :create, {:site => valid_attributes, :project_id => @project.id}
-      # post :create, {:site => {}}
       response.should render_template('new')
+      # flash[:error].should == 'Error: See details below.'
     end
   end
 
