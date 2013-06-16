@@ -259,6 +259,13 @@ describe InspectionEventsController do
       delete :destroy, {:id => inspection_event.to_param}, valid_session
       response.should redirect_to(inspection_events_url)
     end
+
+    it "responds with flash message" do
+      sign_in @current_user
+      inspection_event = InspectionEvent.create! valid_attributes
+      delete :destroy, {:id => inspection_event.to_param}, valid_session
+      flash[:notice].should == 'Inspection event was successfully deleted.'
+    end
   end
 
   describe "current_user variables: users, projects and sites" do
