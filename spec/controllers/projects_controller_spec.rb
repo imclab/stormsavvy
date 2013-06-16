@@ -196,6 +196,11 @@ describe ProjectsController do
       delete :destroy, {:id => project.to_param}, valid_session
       response.should redirect_to(projects_url)
     end
-  end
 
+    it "responds with flash message" do
+      sign_in @user
+      post :create, {:project => valid_attributes}
+      flash[:notice].should == "Project was successfully created."
+    end
+  end
 end
