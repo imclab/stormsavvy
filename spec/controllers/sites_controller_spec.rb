@@ -69,6 +69,14 @@ describe SitesController do
       get :new, {:project_id => @project.id}, valid_session
       assigns(:site).should be_a_new(Site)
     end
+
+    it "responds with flash message" do
+      sign_in @user
+      Site.any_instance.stub(:save).and_return(false)
+      post :create, {:site => valid_attributes, :project_id => @project.id}
+      # post :create, {:site => {}}
+      response.should render_template('new')
+    end
   end
 
   describe "GET edit" do

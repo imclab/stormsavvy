@@ -31,7 +31,8 @@ class SitesController < ApplicationController
     @site = Site.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render html: @site, :notice => 'Error: See details below.',
+                    :flash => { :error => 'Error!' } }
       format.json { render json: @site }
     end
   end
