@@ -173,13 +173,6 @@ describe SamplingEventsController do
         post :create, {:sampling_event => { "site_id" => "invalid value" }}, valid_session
         assigns(:sampling_event).should be_a_new(SamplingEvent)
       end
-
-      xit "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        SamplingEvent.any_instance.stub(:save).and_return(false)
-        post :create, {:sampling_event => { "site_id" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
     end
   end
 
