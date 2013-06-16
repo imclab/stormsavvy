@@ -82,11 +82,13 @@ describe SitesController do
     it 'assigns completed reports variables' do
       @completed_reports.should == @site.reports.completed
       @completed_reports.should_not include(@pending_report)
+      @completed_reports.should_not be_nil
     end
 
     it 'assigns pending reports variables' do
       @needs_attention_reports.should == @site.reports.needs_attention
       @needs_attention_reports.should_not include(@completed_reports)
+      @needs_attention_reports.should_not be_nil
     end
   end
 
