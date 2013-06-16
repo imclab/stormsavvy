@@ -97,6 +97,7 @@ describe SitesController do
     it "assigns a new site as @site" do
       get :new, {:project_id => @project.id}, valid_session
       assigns(:site).should be_a_new(Site)
+      assigns(:site).should_not be_persisted
     end
 
     it "responds with flash message" do
