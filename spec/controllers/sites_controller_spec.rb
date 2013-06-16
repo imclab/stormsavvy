@@ -103,7 +103,6 @@ describe SitesController do
       Site.any_instance.stub(:save).and_return(false)
       post :create, {:site => valid_attributes, :project_id => @project.id}
       response.should render_template('new')
-      # flash[:error].should == 'Error: See details below.'
     end
   end
 
