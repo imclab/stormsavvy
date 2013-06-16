@@ -87,10 +87,11 @@ describe InspectionEventsController do
   end
 
   describe "GET index" do
-    xit "assigns all inspection_events as @inspection_events" do
+    it "assigns all inspection_events as @inspection_events" do
       inspection_event = InspectionEvent.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:inspection_events).should eq([inspection_event])
+      assigns(:inspection_events).should eq(InspectionEvent.all)
+      # assigns(:inspection_events).should eq([inspection_event])
     end
   end
 
