@@ -211,6 +211,14 @@ describe SitesController do
         }, valid_session
         response.should render_template("edit")
       end
+
+      it "responds with flash message" do
+        sign_in @user
+        Site.any_instance.stub(:save).and_return(false)
+        post :create, {:site => valid_attributes, :project_id => @project.id}
+        response.should render_template('new')
+        flash[:error].should == 'Error: See details below.'
+      end
     end
   end
 
