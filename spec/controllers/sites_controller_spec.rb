@@ -78,6 +78,16 @@ describe SitesController do
       get :show, {:id => site.to_param, :project_id => @project.id}#, valid_session
       assigns(:site).should eq(site)
     end
+
+    it 'assigns completed reports variables' do
+      @completed_reports.should == @site.reports.completed
+      @completed_reports.should_not include(@pending_report)
+    end
+
+    it 'assigns pending reports variables' do
+      @needs_attention_reports.should == @site.reports.needs_attention
+      @needs_attention_reports.should_not include(@completed_reports)
+    end
   end
 
   describe "GET new" do
