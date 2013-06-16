@@ -198,6 +198,14 @@ describe InspectionEventsController do
         put :update, {:id => inspection_event.to_param, :inspection_event => valid_attributes}, valid_session
         response.should redirect_to(inspection_event)
       end
+
+      it "responds with flash message" do
+        sign_in @current_user
+        inspection_event = InspectionEvent.create! valid_attributes
+        put :update, {:id => inspection_event.to_param, :inspection_event => valid_attributes}, valid_session
+        # post :create, {:site => valid_attributes, :project_id => @project.id}
+        flash[:notice].should == "Inspection event was successfully updated."
+      end
     end
 
     describe "with invalid params" do
