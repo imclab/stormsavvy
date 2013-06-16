@@ -100,6 +100,7 @@ describe InspectionEventsController do
       inspection_event = InspectionEvent.create! valid_attributes
       get :show, {:id => inspection_event.to_param}, valid_session
       assigns(:inspection_event).should eq(inspection_event)
+      assigns(:inspection_event).should be_persisted
     end
   end
 
