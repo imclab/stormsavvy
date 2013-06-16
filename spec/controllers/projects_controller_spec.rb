@@ -113,7 +113,9 @@ describe ProjectsController do
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => {}}
         post :create, {:project => valid_attributes}
-        flash[:notice].should == "Project was successfully created."
+        response.should render_template("new")
+        # post :create, {:project => valid_attributes}
+        # flash[:notice].should == "Project was successfully created."
       end
     end
   end
