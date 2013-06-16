@@ -116,10 +116,10 @@ describe SamplingEventsController do
   end
 
   describe "GET index" do
-    xit "assigns all sampling_events as @sampling_events" do
+    it "assigns all sampling_events as @sampling_events" do
       sampling_event = SamplingEvent.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:sampling_events).should eq([sampling_event])
+      assigns(:sampling_events).should eq(SamplingEvent.all)
     end
   end
 
