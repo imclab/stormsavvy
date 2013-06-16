@@ -1,13 +1,12 @@
 require 'current_user_object'
 
 class SamplingEventsController < InheritedResources::Base
-
-  def new
-    @sampling_event = SamplingEvent.new
+  def index
+    @sampling_events = SamplingEvent.all
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @sampling_event }
+      format.json { render json: @sampling_events }
     end
 
     if current_user
