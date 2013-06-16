@@ -206,8 +206,10 @@ describe SitesController do
           :project_id => @project.id,
           :site => valid_attributes
         }, valid_session
+
         # http://guides.rubyonrails.org/routing.html#creating-paths-and-urls-from-objects
         response.should redirect_to(project_site_path(project,site))
+
         # This also works.
         response.should redirect_to("/projects/#{project.id}/sites/#{site.id}")
       end
