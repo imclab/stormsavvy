@@ -53,10 +53,12 @@ class SitesController < ApplicationController
     respond_to do |format|
       if @site.save
         #format.html { redirect_to @site, notice: 'Site was successfully created.' }
-        format.html { redirect_to project_site_path(@site.project_id, @site), notice: 'Site was successfully created.' }
+        format.html { redirect_to project_site_path(@site.project_id, @site),
+                      notice: 'Site was successfully created.' }
         format.json { render json: @site, status: :created, location: @site }
       else
-        format.html { render action: "new" }
+        format.html { flash.now[:error] = "Error: See details below."
+                      render action: "new" }
         format.json { render json: @site.errors, status: :unprocessable_entity }
       end
     end
