@@ -77,7 +77,8 @@ class InspectionEventsController < ApplicationController
         format.html { redirect_to @inspection_event, notice: 'Inspection event was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { flash.now[:error] = "Error: See details below."
+                      render action: "edit" }
         format.json { render json: @inspection_event.errors, status: :unprocessable_entity }
       end
     end
