@@ -71,7 +71,8 @@ class SitesController < ApplicationController
         format.html { redirect_to project_site_path(@site.project, @site), notice: 'Site was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { flash.now[:error] = "Error: See details below."
+                      render action: "edit" }
         format.json { render json: @site.errors, status: :unprocessable_entity }
       end
     end
