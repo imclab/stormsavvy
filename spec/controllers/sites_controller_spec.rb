@@ -230,6 +230,7 @@ describe SitesController do
           :site => {}
         }, valid_session
         assigns(:site).should eq(site)
+        assigns(:site).should be_persisted
       end
 
       it "re-renders the 'edit' template" do
