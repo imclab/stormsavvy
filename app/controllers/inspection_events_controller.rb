@@ -60,7 +60,8 @@ class InspectionEventsController < ApplicationController
         format.html { redirect_to @inspection_event, notice: 'Inspection event was successfully created.' }
         format.json { render json: @inspection_event, status: :created, location: @inspection_event }
       else
-        format.html { render action: "new" }
+        format.html { flash.now[:error] = "Error: See details below."
+                      render action: "new" }
         format.json { render json: @inspection_event.errors, status: :unprocessable_entity }
       end
     end
