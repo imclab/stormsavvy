@@ -124,10 +124,6 @@ describe ProjectsController do
         sign_in @user
         #project = Project.create! valid_attributes
         project = @user.projects.create valid_attributes
-        # Assuming there are no other projects in the database, this
-        # specifies that the Project created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
         Project.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, {:id => project.to_param, :project => {'these' => 'params'}}
       end
