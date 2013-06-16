@@ -91,9 +91,8 @@ class InspectionEventsController < ApplicationController
     @inspection_event.destroy
 
     respond_to do |format|
-      format.html { redirect_to inspection_events_url }
+      format.html { redirect_to inspection_events_url, notice: 'Inspection event was successfully deleted.' }
       format.json { head :no_content }
     end
   end
-
 end
