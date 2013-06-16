@@ -262,9 +262,11 @@ describe DashboardController do
       @pending_reports.should_not include(@completed_report)
     end
 
-    xit "returns correct reports to each user" do
-      @current_site.reports.all.should include(@pending_reports)
-      @current_site.reports.all.should_not include(@completed_report)
+    it "returns correct reports to each user" do
+      sign_in @current_user
+      controller.stub!(:pending_reports).and_return(@pending_reports)
+      @current_site.reports.all.should include(@pending_report)
+      @current_site.reports.all.should_not include(@other_report)
     end
 
     it 'returns reports from lib class' do
