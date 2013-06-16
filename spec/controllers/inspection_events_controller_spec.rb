@@ -168,6 +168,7 @@ describe InspectionEventsController do
         InspectionEvent.any_instance.stub(:save).and_return(false)
         post :create, {:inspection_event => {}}, valid_session
         assigns(:inspection_event).should be_a_new(InspectionEvent)
+        assigns(:inspection_event).should_not be_persisted
       end
 
       it "re-renders the 'new' template" do
