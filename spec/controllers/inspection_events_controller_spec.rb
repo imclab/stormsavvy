@@ -110,12 +110,21 @@ describe InspectionEventsController do
       assigns(:inspection_event).should be_a_new(InspectionEvent)
     end
 
-    it "responds with flash message" do
-      sign_in @current_user
-      InspectionEvent.any_instance.stub(:save).and_return(false)
-      post :create, {:inspection_event => valid_attributes}, valid_session
-      response.should render_template('new')
-      # flash[:error].should == 'Error: See details below.'
+    describe 'with invalid params' do
+      it "re-renders the 'new' template" do
+        sign_in @current_user
+        InspectionEvent.any_instance.stub(:save).and_return(false)
+        post :create, {:inspection_event => valid_attributes}, valid_session
+        response.should render_template('new')
+      end
+
+      it "responds with flash message" do
+        sign_in @current_user
+        InspectionEvent.any_instance.stub(:save).and_return(false)
+        post :create, {:inspection_event => valid_attributes}, valid_session
+        response.should render_template('new')
+        flash[:error].should == 'Error: See details below.'
+      end
     end
   end
 
