@@ -276,21 +276,4 @@ describe DashboardController do
       reports.should_not include(@completed_report)
     end
   end
-
-  describe "index view" do
-    before do
-      request.env['warden'].stub :authenticate! => @current_user
-      controller.stub :current_user => @current_user
-
-      def controller.index
-        render :partial => 'projects'
-      end
-    end
-
-    it "renders the projects template" do
-      get :index
-      response.should =~ /Active Projects/
-      response.should have_link('New Project')
-    end
-  end
 end
