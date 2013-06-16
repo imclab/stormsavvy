@@ -92,7 +92,6 @@ describe InspectionEventsController do
       inspection_event = InspectionEvent.create! valid_attributes
       get :index, {}, valid_session
       assigns(:inspection_events).should eq(InspectionEvent.all)
-      # assigns(:inspection_events).should eq([inspection_event])
     end
   end
 
