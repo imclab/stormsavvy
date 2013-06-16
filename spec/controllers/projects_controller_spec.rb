@@ -99,6 +99,22 @@ describe ProjectsController do
         post :create, {:project => {}}
         response.should render_template("new")
       end
+
+      it "responds with flash message" do
+        sign_in @user
+        Project.any_instance.stub(:save).and_return(false)
+        post :create, {:project => {}}
+        flash[:error].should == "Error: See details below."
+      end
+
+      it "re-renders the 'new' template" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        sign_in @user
+        Project.any_instance.stub(:save).and_return(false)
+        post :create, {:project => {}}
+        post :create, {:project => valid_attributes}
+        flash[:notice].should == "Project was successfully created."
+      end
     end
   end
 
