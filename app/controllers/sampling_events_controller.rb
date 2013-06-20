@@ -24,7 +24,8 @@ class SamplingEventsController < InheritedResources::Base
     @sampling_event = SamplingEvent.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render html: @sampling_event, :notice => 'Error: See details below.',
+                    :flash => { :error => 'Error!' } }
       format.json { render json: @sampling_event }
     end
   end
