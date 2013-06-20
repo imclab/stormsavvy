@@ -279,6 +279,7 @@ describe SitesController do
 
     it "responds with flash message" do
       sign_in @user
+      site = Site.create! valid_attributes
       delete :destroy, {
         :id => site.to_param,
         :project_id => @project.id
