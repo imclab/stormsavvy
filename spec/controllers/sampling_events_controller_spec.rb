@@ -201,10 +201,6 @@ describe SamplingEventsController do
     describe "with valid params" do
       it "updates the requested sampling_event" do
         sampling_event = SamplingEvent.create! valid_attributes
-        # Assuming there are no other sampling_events in the database, this
-        # specifies that the SamplingEvent created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
         SamplingEvent.any_instance.should_receive(:update_attributes).with({ "site_id" => "1" })
         put :update, {:id => sampling_event.to_param, :sampling_event => { "site_id" => "1" }}, valid_session
       end
