@@ -163,6 +163,12 @@ describe SamplingEventsController do
         post :create, {:sampling_event => valid_attributes}, valid_session
         response.should redirect_to(SamplingEvent.last)
       end
+
+      it "responds with flash message" do
+        sign_in @current_user
+        post :create, {:sampling_event => valid_attributes}, valid_session
+        flash[:notice].should == "Sampling event was successfully created."
+      end
     end
 
     describe "with invalid params" do
