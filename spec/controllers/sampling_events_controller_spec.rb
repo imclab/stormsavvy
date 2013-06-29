@@ -243,6 +243,14 @@ describe SamplingEventsController do
         response.should render_template("edit")
       end
 =end
+      it "responds with flash message" do
+        sign_in @current_user
+        sampling_event = SamplingEvent.create! valid_attributes
+        SamplingEvent.any_instance.stub(:save).and_return(false)
+        put :update, {:id => sampling_event.to_param, :sampling_event => {}}, valid_session
+        response.should render_template('edit')
+        flash[:error].should == 'Error: See details below.'
+      end
     end
   end
 
