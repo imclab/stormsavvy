@@ -257,15 +257,19 @@ describe InspectionEventsController do
   end
 
   describe "current_user variables: users, projects and sites" do
-    it 'returns current projects and sites' do
-      sign_in current_user
-      current_projects.should == current_user.projects.all
-      current_projects.should_not include(other_projects)
-      current_projects.should_not be_nil
+    subject(:cp) { current_projects }
+    subject(:cs) { current_sites }
 
-      current_sites.should == current_user.sites.all
-      current_sites.should_not include(other_sites)
-      current_sites.should_not be_nil
+    it 'returns current projects' do
+      cp.should == current_user.projects.all
+      cp.should_not include(other_projects)
+      cp.should_not be_nil
+    end
+
+    it 'returns current sites' do
+      cs.should == current_user.sites.all
+      cs.should_not include(other_sites)
+      cs.should_not be_nil
     end
 
     it "returns pending inspection events" do
