@@ -58,24 +58,25 @@ describe InspectionEventsController do
       :zipcode => 94709
     )
   }
-  let(:current_sites) { [ current_site ] }
+  let!(:current_sites) { [ current_site ] }
   let(:other_sites)  { [ other_site ] }
   let(:all_sites) { [ current_site, other_site ] }
 
-  before(:each) do
-
-    @current_ie = FactoryGirl.create(
+  let!(:current_ie) { FactoryGirl.create(
       :inspection_event,
       :site => current_site
     )
-    @other_ie = FactoryGirl.create(
+  }
+  let(:other_ie) { FactoryGirl.create(
       :inspection_event,
       :site => other_site
     )
-    @current_ie_array = [ @current_ie ]
-    @other_ie_array = [ @other_ie ]
-    @all_ie_array = [ @current_ie, @other_ie ]
+  }
+  let!(:current_ie_array) { [ current_ie ] }
+  let(:other_ie_array) { [ other_ie ] }
+  let(:all_ie_array) { [ current_ie, other_ie ] }
 
+  before(:each) do
     @completed_report = FactoryGirl.create(
       :report,
       :site => current_site,
