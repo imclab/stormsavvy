@@ -259,6 +259,7 @@ describe InspectionEventsController do
   describe "current_user variables: users, projects and sites" do
     subject(:cp) { current_projects }
     subject(:cs) { current_sites }
+    subject(:ca) { current_ie_array }
 
     it 'returns current projects' do
       cp.should == current_user.projects.all
