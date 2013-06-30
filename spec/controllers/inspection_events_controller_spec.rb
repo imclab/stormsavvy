@@ -18,7 +18,7 @@ describe InspectionEventsController do
     {}
   end
 
-  let(:current_user) { FactoryGirl.build(
+  let!(:current_user) { FactoryGirl.build(
       :user,
       :email => '@stormsavvy.com'
     )
