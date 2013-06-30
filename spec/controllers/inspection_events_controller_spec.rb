@@ -119,7 +119,7 @@ describe InspectionEventsController do
 
     describe 'with invalid params' do
       it "re-renders the 'new' template" do
-        sign_in @current_user
+        sign_in current_user
         InspectionEvent.any_instance.stub(:save).and_return(false)
         get :new, {:inspection_event => {}}, valid_session
         response.should render_template('new')
