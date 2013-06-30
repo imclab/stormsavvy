@@ -236,7 +236,7 @@ describe InspectionEventsController do
       end
 
       it "responds with flash message" do
-        sign_in @current_user
+        sign_in current_user
         inspection_event = InspectionEvent.create! valid_attributes
         InspectionEvent.any_instance.stub(:save).and_return(false)
         put :update, {:id => inspection_event.to_param, :inspection_event => {}}, valid_session
