@@ -78,12 +78,12 @@ describe InspectionEventsController do
 
     @completed_report = FactoryGirl.create(
       :report,
-      :site => @current_site,
+      :site => current_site,
       :status => "completed"
     )
     @pending_report = FactoryGirl.create(
       :report,
-      :site => @current_site,
+      :site => current_site,
       :status => "needs_attention"
     )
     @completed_reports = [ @completed_report ]
