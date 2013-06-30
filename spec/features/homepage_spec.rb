@@ -6,18 +6,16 @@ Warden.test_mode!
 
 describe "homepage" do
 
-  before :each do
-    @user = FactoryGirl.create(
+  let!(:user) { FactoryGirl.create(
       :user,
       :email => 'testem@stormsavvy.com',
       :password => 'testem',
       :password_confirmation => 'testem'
     )
-    # login_as(@user, :scope => :user)
-  end
+  }
 
   describe 'sign-in page' do
-    it "renders sign-in page" do
+    it "renders landing page text" do
       visit '/index'
       page.should have_text('Sign in')
       page.should have_text('Making SWPPP Easy')
