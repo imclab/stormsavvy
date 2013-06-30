@@ -270,9 +270,9 @@ describe InspectionEventsController do
   describe "current_user variables: users, projects and sites" do
     it 'returns current projects and sites' do
       sign_in current_user
-      @current_projects.should == current_user.projects.all
-      @current_projects.should_not include(@other_projects)
-      @current_projects.should_not be_nil
+      current_projects.should == current_user.projects.all
+      current_projects.should_not include(other_projects)
+      current_projects.should_not be_nil
 
       @current_sites.should == current_user.sites.all
       @current_sites.should_not include(@other_sites)
