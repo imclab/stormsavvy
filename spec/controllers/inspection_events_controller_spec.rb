@@ -23,21 +23,22 @@ describe InspectionEventsController do
       :email => '@stormsavvy.com'
     )
   }
-
-  before(:each) do
-    @other_user = FactoryGirl.build(
+  let(:other_user) { FactoryGirl.build(
       :user,
       :email => 'info@stormsavvy.com'
     )
+  }
+
+  before(:each) do
     @all_users = [ @current_user, @other_user ]
 
     @current_project = FactoryGirl.create(
       :project,
-      :user => @current_user
+      :user => current_user
     )
     @other_project = FactoryGirl.create(
       :project,
-      :user => @other_user
+      :user => other_user
     )
     @current_projects = [ @current_project ]
     @other_projects = [ @other_project ]
