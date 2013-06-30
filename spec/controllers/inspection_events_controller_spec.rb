@@ -28,31 +28,33 @@ describe InspectionEventsController do
       :email => 'info@stormsavvy.com'
     )
   }
-  let(:all_users) { [ @current_user, @other_user ] }
+  let(:all_users) { [ current_user, other_user ] }
 
-  before(:each) do
-
-    @current_project = FactoryGirl.create(
+  let(:current_project) { FactoryGirl.create(
       :project,
       :user => current_user
     )
-    @other_project = FactoryGirl.create(
+  }
+  let(:other_project) { FactoryGirl.create(
       :project,
       :user => other_user
     )
-    @current_projects = [ @current_project ]
-    @other_projects = [ @other_project ]
-    @all_projects = [ @current_project, @other_project ]
+  }
+  let(:current_projects) { [ current_project ] }
+  let(:other_projects) { [ other_project ] }
+  let(:all_projects) { [ current_project, other_project ] }
+
+  before(:each) do
 
     @current_site = FactoryGirl.create(
       :site,
-      :project => @current_project,
+      :project => current_project,
       :name => 'ec jungle gym',
       :zipcode => 94530
     )
     @other_site = FactoryGirl.create(
       :site,
-      :project => @other_project,
+      :project => other_project,
       :name => 'berkeley high',
       :zipcode => 94709
     )
