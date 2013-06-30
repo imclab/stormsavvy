@@ -87,7 +87,7 @@ describe InspectionEventsController do
     @all_reports = [ @completed_report, @pending_report ]
 
     sign_in current_user
-    sign_in @other_user
+    sign_in other_user
   end
 
   describe "GET index" do
