@@ -274,8 +274,8 @@ describe InspectionEventsController do
     end
 
     it "returns pending inspection events" do
-      current_ie_array.should == current_site.inspection_events.where(:completed => false)
-      current_ie_array.should_not include(other_ie)
+      ca.should == current_site.inspection_events.where(:completed => false)
+      ca.should_not include(other_ie)
     end
   end
 
