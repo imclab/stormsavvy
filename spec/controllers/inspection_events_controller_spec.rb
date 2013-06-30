@@ -179,7 +179,7 @@ describe InspectionEventsController do
       end
 
       it "responds with flash message" do
-        sign_in @current_user
+        sign_in current_user
         InspectionEvent.any_instance.stub(:save).and_return(false)
         post :create, {:inspection_event => {}}, valid_session
         # post :create, {:site => valid_attributes, :project_id => @project.id}
