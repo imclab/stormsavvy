@@ -89,7 +89,7 @@ describe InspectionEventsController do
     @pending_reports = [ @pending_report ]
     @all_reports = [ @completed_report, @pending_report ]
 
-    sign_in @current_user
+    sign_in current_user
     sign_in @other_user
   end
 
