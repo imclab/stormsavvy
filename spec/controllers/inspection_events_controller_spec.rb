@@ -28,9 +28,9 @@ describe InspectionEventsController do
       :email => 'info@stormsavvy.com'
     )
   }
+  let(:all_users) { [ @current_user, @other_user ] }
 
   before(:each) do
-    @all_users = [ @current_user, @other_user ]
 
     @current_project = FactoryGirl.create(
       :project,
