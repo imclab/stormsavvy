@@ -17,7 +17,17 @@ class SamplingEventsController < InheritedResources::Base
       @pending_se = cu.get_se(user)
       @sampling_events = cu.all_se(user)
     end
+  end
 
+  # GET /sampling_events/1
+  # GET /sampling_events/1.json
+  def show
+    @sampling_event = SamplingEvent.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @sampling_event }
+    end
   end
 
   def new
