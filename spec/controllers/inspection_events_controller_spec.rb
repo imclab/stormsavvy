@@ -44,31 +44,33 @@ describe InspectionEventsController do
   let(:other_projects) { [ other_project ] }
   let(:all_projects) { [ current_project, other_project ] }
 
-  before(:each) do
-
-    @current_site = FactoryGirl.create(
+  let(:current_site) { FactoryGirl.create(
       :site,
       :project => current_project,
       :name => 'ec jungle gym',
       :zipcode => 94530
     )
-    @other_site = FactoryGirl.create(
+  }
+  let(:other_site) { FactoryGirl.create(
       :site,
       :project => other_project,
       :name => 'berkeley high',
       :zipcode => 94709
     )
-    @current_sites = [ @current_site ]
-    @other_sites = [ @other_site ]
-    @all_sites = [ @current_site, @other_site ]
+  }
+  let(:current_sites) { [ current_site ] }
+  let(:other_sites)  { [ other_site ] }
+  let(:all_sites) { [ current_site, other_site ] }
+
+  before(:each) do
 
     @current_ie = FactoryGirl.create(
       :inspection_event,
-      :site => @current_site
+      :site => current_site
     )
     @other_ie = FactoryGirl.create(
       :inspection_event,
-      :site => @other_site
+      :site => other_site
     )
     @current_ie_array = [ @current_ie ]
     @other_ie_array = [ @other_ie ]
