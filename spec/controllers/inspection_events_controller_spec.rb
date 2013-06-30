@@ -289,7 +289,7 @@ describe InspectionEventsController do
   describe '#get_ie'  do
     it 'returns pending ie from lib class' do
       cu = CurrentUserObject.new
-      ie = cu.get_ie(@current_user)
+      ie = cu.get_ie(current_user)
       ie.should == @current_ie_array
     end
   end
@@ -297,7 +297,7 @@ describe InspectionEventsController do
   describe '#all_ie'  do
     it 'returns all ie from lib class' do
       cu = CurrentUserObject.new
-      ie = cu.all_ie(@current_user)
+      ie = cu.all_ie(current_user)
       ie.should == @current_ie_array
     end
   end
