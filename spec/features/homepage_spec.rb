@@ -40,8 +40,7 @@ describe "homepage" do
       page.should have_content 'Signed in successfully.'
 
       click_link "Inspections"
-      visit new_inspection_event_path
-      current_path.should == new_inspection_event_path
+      current_path.should == inspection_events_path
 
       click_link "Settings"
       current_path.should == edit_user_registration_path
