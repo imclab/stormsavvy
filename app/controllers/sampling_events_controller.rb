@@ -45,4 +45,49 @@ class SamplingEventsController < InheritedResources::Base
     @sampling_event = SamplingEvent.find(params[:id])
   end
 
+  # POST /sampling_events
+  # POST /sampling_events.json
+  def create
+    @sampling_event = SamplingEvent.new(params[:sampling_event])
+
+    respond_to do |format|
+      if @sampling_event.save
+        format.html { redirect_to @sampling_event, notice: 'Sampling event was successfully created.' }
+        format.json { render json: @sampling_event, status: :created, location: @sampling_event }
+      else
+        format.html { flash.now[:error] = "Error: See details below."
+                      render action: "new" }
+        format.json { render json: @sampling_event.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /sampling_events/1
+  # PUT /sampling_events/1.json
+  def update
+    @sampling_event = SamplingEvent.find(params[:id])
+
+    respond_to do |format|
+      if @sampling_event.update_attributes(params[:sampling_event])
+        format.html { redirect_to @sampling_event, notice: 'Sampling event was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { flash.now[:error] = "Error: See details below."
+                      render action: "edit" }
+        format.json { render json: @sampling_event.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /sampling_events/1
+  # DELETE /sampling_events/1.json
+  def destroy
+    @sampling_event = SamplingEvent.find(params[:id])
+    @sampling_event.destroy
+
+    respond_to do |format|
+      format.html { redirect_to sampling_events_url, notice: 'Sampling event was successfully deleted.' }
+      format.json { head :no_content }
+    end
+  end
 end
