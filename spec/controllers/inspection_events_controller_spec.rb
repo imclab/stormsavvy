@@ -77,20 +77,6 @@ describe InspectionEventsController do
   let(:all_ie_array) { [ current_ie, other_ie ] }
 
   before(:each) do
-    @completed_report = FactoryGirl.create(
-      :report,
-      :site => current_site,
-      :status => "completed"
-    )
-    @pending_report = FactoryGirl.create(
-      :report,
-      :site => current_site,
-      :status => "needs_attention"
-    )
-    @completed_reports = [ @completed_report ]
-    @pending_reports = [ @pending_report ]
-    @all_reports = [ @completed_report, @pending_report ]
-
     sign_in current_user
     sign_in other_user
   end
