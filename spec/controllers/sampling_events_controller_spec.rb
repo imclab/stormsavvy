@@ -246,7 +246,7 @@ describe SamplingEventsController do
       end
 
       it "responds with flash message" do
-        sign_in @current_user
+        sign_in current_user
         SamplingEvent.any_instance.stub(:save).and_return(false)
         post :create, {:sampling_event => {}}, valid_session
         # post :create, {:site => valid_attributes, :project_id => @project.id}
@@ -277,7 +277,7 @@ describe SamplingEventsController do
       end
 
       it "responds with flash message" do
-        sign_in @current_user
+        sign_in current_user
         sampling_event = SamplingEvent.create! valid_attributes
         put :update, {:id => sampling_event.to_param, :sampling_event => valid_attributes}, valid_session
         # post :create, {:site => valid_attributes, :project_id => @project.id}
@@ -303,7 +303,7 @@ describe SamplingEventsController do
       end
 =end
       it "responds with flash message" do
-        sign_in @current_user
+        sign_in current_user
         sampling_event = SamplingEvent.create! valid_attributes
         SamplingEvent.any_instance.stub(:save).and_return(false)
         put :update, {:id => sampling_event.to_param, :sampling_event => {}}, valid_session
@@ -328,7 +328,7 @@ describe SamplingEventsController do
     end
 
     it "responds with flash message" do
-      sign_in @current_user
+      sign_in current_user
       sampling_event = SamplingEvent.create! valid_attributes
       delete :destroy, {:id => sampling_event.to_param}, valid_session
       flash[:notice].should == 'Sampling event was successfully deleted.'
