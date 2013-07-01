@@ -338,16 +338,16 @@ describe SamplingEventsController do
   describe '#get_se'  do
     it 'returns pending se from lib class' do
       cu = CurrentUserObject.new
-      se = cu.get_se(@current_user)
-      se.should == @current_se_array
+      se = cu.get_se(current_user)
+      se.should == current_se_array
     end
   end
 
   describe '#all_se'  do
     it 'returns all se from lib class' do
       cu = CurrentUserObject.new
-      se = cu.all_se(@current_user)
-      se.should == @current_se_array
+      se = cu.all_se(current_user)
+      se.should == current_se_array
     end
   end
 end
