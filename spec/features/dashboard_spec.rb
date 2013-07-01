@@ -5,114 +5,128 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Dashboard" do
-  let(:current_user) { FactoryGirl.build(
-    :user,
-    :id => 1,
-    :email => 'name@stormsavvy.com'
+  let!(:current_user) { FactoryGirl.build(
+      :user,
+      :id => 1,
+      :email => 'name@stormsavvy.com'
     )
   }
-  let(:other_user) { FactoryGirl.build(
+  let!(:other_user) { FactoryGirl.build(
       :user,
       :id => 2,
       :email => 'info@stormsavvy.com'
     )
   }
-
-  before(:each) do
-    current_project = FactoryGirl.create(
+  let!(:current_project) { FactoryGirl.create(
       :project,
       :id => 1,
       :user_id => 1,
       :name => 'eb park and rec',
       :description => 'playground improvements'
     )
-    other_project = FactoryGirl.create(
+  }
+  let!(:other_project) { FactoryGirl.create(
       :project,
       :id => 2,
       :user_id => 2,
       :name => 'berkeley usd',
       :description => 'playground improvements'
     )
-    current_completed_site = FactoryGirl.create(
+  }
+  let!(:current_completed_site) { FactoryGirl.create(
       :site,
       :id => 1,
       :project_id => 1,
       :name => 'ec jungle gym',
       :zipcode => 94530
     )
-    current_pending_site = FactoryGirl.create(
+  }
+  let!(:current_pending_site) { FactoryGirl.create(
       :site,
       :id => 2,
       :project_id => 1,
       :name => 'ec slide',
       :zipcode => 94530
     )
-    other_completed_site = FactoryGirl.create(
+  }
+  let!(:other_completed_site) { FactoryGirl.create(
       :site,
       :id => 3,
       :project_id => 2,
       :name => 'berkeley high',
       :zipcode => 94709
     )
-    other_pending_site = FactoryGirl.create(
+  }
+  let!(:other_pending_site) { FactoryGirl.create(
       :site,
       :id => 4,
       :project_id => 2,
       :name => 'peoples park',
       :zipcode => 94709
     )
-    current_completed_ie = FactoryGirl.create(
+  }
+  let!(:current_completed_ie) { FactoryGirl.create(
       :inspection_event,
       :id => 1,
       :site_id => 1,
       :completed => true,
       :inspection_type => 'CEM2030'
     )
-    current_pending_ie = FactoryGirl.create(
+  }
+  let!(:current_pending_ie) { FactoryGirl.create(
       :inspection_event,
       :id => 2,
       :site_id => 2,
       :completed => false,
       :inspection_type => 'CEM2030'
     )
-    other_completed_ie = FactoryGirl.create(
+  }
+  let!(:other_completed_ie) { FactoryGirl.create(
       :inspection_event,
       :id => 3,
       :site_id => 3,
       :completed => true,
       :inspection_type => 'CEM2031'
     )
-    other_pending_ie = FactoryGirl.create(
+  }
+  let!(:other_pending_ie) { FactoryGirl.create(
       :inspection_event,
       :id => 4,
       :site_id => 4,
       :completed => false,
       :inspection_type => 'CEM2031'
     )
-    current_completed_report = FactoryGirl.create(
+  }
+  let!(:current_completed_report) { FactoryGirl.create(
       :report,
       :id => 1,
       :site_id => 1,
       :status => "completed"
     )
-    current_pending_report = FactoryGirl.create(
+  }
+  let!(:current_pending_report) { FactoryGirl.create(
       :report,
       :id => 2,
       :site_id => 2,
       :status => "needs_attention"
     )
-    other_completed_report = FactoryGirl.create(
+  }
+  let!(:other_completed_report) { FactoryGirl.create(
       :report,
       :id => 3,
       :site_id => 3,
       :status => "completed"
     )
-    other_pending_report = FactoryGirl.create(
+  }
+  let!(:other_pending_report) { FactoryGirl.create(
       :report,
       :id => 4,
       :site_id => 4,
       :status => "needs_attention"
     )
+  }
+
+  before(:each) do
   end
 
   describe "dashboard/projects" do
