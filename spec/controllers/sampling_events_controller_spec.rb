@@ -1,7 +1,111 @@
 require 'spec_helper'
 
 describe SamplingEventsController do
+  def valid_attributes
+    {
+      :site_id => 1,
+      :sampling_type => "pH",
+      :sampling_description => "ec jungle gym samplng",
+      :sampling_date => "2013-01-27 15:34:07",
+      :submitted_by => "wyu",
+      :sampled_by => "wyu",
+      :sample_id_1 => 1,
+      :sample_location_1 => "jungle gym",
+      :sample_time_1 => "2013-01-27 15:34:07",
+      :analysis_type_1 => "pH",
+      :analysis_result_1 => "7.00",
+      :analysis_average_1 => "7.01",
+      :sample_id_2 => 1,
+      :sample_location_2 => "playground slide",
+      :sample_time_2 => "2013-01-27 15:34:07",
+      :analysis_type_2 => "pH",
+      :analysis_result_2 => "7.10",
+      :analysis_average_2 => "7.01",
+      :sample_id_3 => 1,
+      :sample_location_3 => "playground seesaw",
+      :sample_time_3 => "2013-01-27 15:34:07",
+      :analysis_type_3 => "pH",
+      :analysis_result_3 => "6.90",
+      :analysis_average_3 => "7.01",
+      :sample_id_4 => 1,
+      :sample_location_4 => "merry go round",
+      :sample_time_4 => "2013-01-27 15:34:07",
+      :analysis_type_4 => "pH",
+      :analysis_result_4 => "6.95",
+      :analysis_average_4 => "7.01",
+      :sample_id_5 => 1,
+      :sample_location_5 => "playground swings",
+      :sample_time_5 => "2013-01-27 15:34:07",
+      :analysis_type_5 => "pH",
+      :analysis_result_5 => "7.20",
+      :analysis_average_5 => "7.01"
+    }
+  end
+
+  def valid_session
+    {}
+  end
+
+  let!(:current_user) { FactoryGirl.build(
+      :user,
+      :email => '@stormsavvy.com'
+    )
+  }
+  let(:other_user) { FactoryGirl.build(
+      :user,
+      :email => 'info@stormsavvy.com'
+    )
+  }
+  let(:all_users) { [ current_user, other_user ] }
+
+  let!(:current_project) { FactoryGirl.create(
+      :project,
+      :user => current_user
+    )
+  }
+  let(:other_project) { FactoryGirl.create(
+      :project,
+      :user => other_user
+    )
+  }
+  let(:current_projects) { [ current_project ] }
+  let(:other_projects) { [ other_project ] }
+  let(:all_projects) { [ current_project, other_project ] }
+
+  let!(:current_site) { FactoryGirl.create(
+      :site,
+      :project => current_project,
+      :name => 'ec jungle gym',
+      :zipcode => 94530
+    )
+  }
+  let(:other_site) { FactoryGirl.create(
+      :site,
+      :project => other_project,
+      :name => 'berkeley high',
+      :zipcode => 94709
+    )
+  }
+  let!(:current_sites) { [ current_site ] }
+  let(:other_sites)  { [ other_site ] }
+  let(:all_sites) { [ current_site, other_site ] }
+
+  let!(:current_se) { FactoryGirl.create(
+      :sampling_event,
+      :site => current_site
+    )
+  }
+  let(:other_se) { FactoryGirl.create(
+      :sampling_event,
+      :site => other_site
+    )
+  }
+  let!(:current_se_array) { [ current_se ] }
+  let(:other_se_array) { [ other_se ] }
+  let(:all_se_array) { [ current_se, other_se ] }
+
   before(:each) do
+=begin
     @current_user = FactoryGirl.build(
       :user,
       :email => '@stormsavvy.com'
