@@ -5,17 +5,20 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Dashboard" do
-  before(:each) do
-    @current_user = FactoryGirl.build(
-      :user,
-      :id => 1,
-      :email => 'name@stormsavvy.com'
+  let(:current_user) { FactoryGirl.build(
+    :user,
+    :id => 1,
+    :email => 'name@stormsavvy.com'
     )
-    @other_user = FactoryGirl.build(
+  }
+  let(:other_user) { FactoryGirl.build(
       :user,
       :id => 2,
       :email => 'info@stormsavvy.com'
     )
+  }
+
+  before(:each) do
     current_project = FactoryGirl.create(
       :project,
       :id => 1,
