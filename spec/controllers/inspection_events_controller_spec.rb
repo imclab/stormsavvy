@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'current_user_object'
 
 describe InspectionEventsController do
-
   def valid_attributes
     {
       :site_id => 1,
