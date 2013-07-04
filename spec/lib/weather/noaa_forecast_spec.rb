@@ -15,18 +15,6 @@ describe NOAAForecast do
   let(:qpf) { nf2.get_qpf(zipcode) }
 
   before(:each) do
-=begin
-    @fullcount = 29
-    @zipcode = 94530
-    @lat = 37.9202057
-    @long = -122.2937428
-    @lat_long = [lat, long]
-    @nf = double(NOAAForecast)
-    @nf2 = NOAAForecast.new(zipcode,168,6)
-    @pop = nf2.get_pop(zipcode)
-    @qpf = nf2.get_qpf(zipcode)
-=end
-
     nf.stub(:get_lat_long).with(zipcode).and_return([lat, long])
     nf.stub(:get_lat_long).with("99999999999999999999").and_return([])
 
