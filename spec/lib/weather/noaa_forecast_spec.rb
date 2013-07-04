@@ -73,7 +73,7 @@ describe NOAAForecast do
       # debug collect method later
       # pop_array.collect {|i| new_pop_array << { :weather => pop_array[i].to_s } }
 =end
-      IO.read("./spec/fixtures/new_pop_array.csv")
+      IO.read("./spec/fixtures/new_pop_array.rb")
       return zipcode
     }
 
