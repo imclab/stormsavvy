@@ -324,38 +324,38 @@ describe NOAAForecast do
 
   describe "#get_lat_long" do
     it "returns get_lat_long stub values" do
-      @nf.get_lat_long(zipcode).should == [37.9202057, -122.2937428]
+      nf.get_lat_long(zipcode).should == [37.9202057, -122.2937428]
     end
 
     it 'handles exceptions with benign value' do
-      @nf.get_lat_long("99999999999999999999").should == []
+      nf.get_lat_long("99999999999999999999").should == []
     end
 
     it "sets and gets lat/long with redis" do
-      @nf.set_lat_long(zipcode)
+      nf.set_lat_long(zipcode)
       lat = $redis.get(zipcode.to_s + '_lat')
       long = $redis.get(zipcode.to_s + '_long')
       lat_long = [lat.to_f, long.to_f]
-      @nf.get_lat_long(zipcode).should == lat_long
+      nf.get_lat_long(zipcode).should == lat_long
     end
 
     it 'validates rails api caching on class object' do
       zipcode = 94901
       results = Geocoder.search(zipcode)
-      @lat = results[0].data["geometry"]["location"]["lat"]
-      @lng = results[0].data["geometry"]["location"]["lng"]
-      lat_long = [] << @lat << @lng
+      lat = results[0].data["geometry"]["location"]["lat"]
+      lng = results[0].data["geometry"]["location"]["lng"]
+      lat_long = [] << lat << lng
 
       Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
       # puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
 
       Rails.cache.clear
-      Rails.cache.fetch(zipcode.to_s + '_lat') {@lat}
-      Rails.cache.fetch(zipcode.to_s + '_lat').should == @lat
-      Rails.cache.fetch(zipcode.to_s + '_lng') {@lng}
-      Rails.cache.fetch(zipcode.to_s + '_lng').should == @lng
+      Rails.cache.fetch(zipcode.to_s + '_lat') {lat}
+      Rails.cache.fetch(zipcode.to_s + '_lat').should == lat
+      Rails.cache.fetch(zipcode.to_s + '_lng') {lng}
+      Rails.cache.fetch(zipcode.to_s + '_lng').should == lng
       nf = NOAAForecast.new(zipcode)
-      nf.get_lat_long(zipcode).should == [@lat, @lng]
+      nf.get_lat_long(zipcode).should == [lat, lng]
     end
   end
 
