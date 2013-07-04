@@ -308,13 +308,8 @@ describe NOAAForecast do
     @nf2.class.should == NOAAForecast
   end
 
-  it "instantiates error class" do
-    ae = ApiError.new
-    ae.class.should == ApiError
-  end
-
   it "returns lat/long for given zipcode" do
-    latlong = [@lat, @long]
+    latlong = [lat, long]
     latlong.size.should == 2
     tol = 0.0001
     latlong[0].should be_within(tol).of(37.9202057)
