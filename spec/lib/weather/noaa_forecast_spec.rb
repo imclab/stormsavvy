@@ -318,7 +318,7 @@ describe NOAAForecast do
 
   describe "#get_lat_long" do
     it "returns get_lat_long stub values" do
-      @nf.get_lat_long(@zipcode).should == [37.9202057, -122.2937428]
+      @nf.get_lat_long(zipcode).should == [37.9202057, -122.2937428]
     end
 
     it 'handles exceptions with benign value' do
@@ -326,11 +326,11 @@ describe NOAAForecast do
     end
 
     it "sets and gets lat/long with redis" do
-      @nf.set_lat_long(@zipcode)
-      lat = $redis.get(@zipcode.to_s + '_lat')
-      long = $redis.get(@zipcode.to_s + '_long')
+      @nf.set_lat_long(zipcode)
+      lat = $redis.get(zipcode.to_s + '_lat')
+      long = $redis.get(zipcode.to_s + '_long')
       lat_long = [lat.to_f, long.to_f]
-      @nf.get_lat_long(@zipcode).should == lat_long
+      @nf.get_lat_long(zipcode).should == lat_long
     end
 
     it 'validates rails api caching on class object' do
@@ -356,28 +356,28 @@ describe NOAAForecast do
   describe "Rails.cache.fetch" do
     it 'caches geocoder results with rails.cache.fetch' do
       zipcode = 94530
-      Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { @lat_long }
+      Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
       puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
 
       Rails.cache.clear
-      Rails.cache.fetch(zipcode.to_s + '_lat') {@lat}
-      Rails.cache.fetch(zipcode.to_s + '_lat').should == @lat
-      Rails.cache.fetch(zipcode.to_s + '_lng') {@long}
-      Rails.cache.fetch(zipcode.to_s + '_lng').should == @long
+      Rails.cache.fetch(zipcode.to_s + '_lat') { lat }
+      Rails.cache.fetch(zipcode.to_s + '_lat').should == lat
+      Rails.cache.fetch(zipcode.to_s + '_lng') { long }
+      Rails.cache.fetch(zipcode.to_s + '_lng').should == long
     end
   end
 
   describe "#parse_weather_data" do
     it "parses weather data from noaa for one week" do
-      response = @nf.ping_noaa([@lat, @long], 168, 6)
+      response = @nf.ping_noaa([lat, long], 168, 6)
       forecast = @nf2.parse_weather_data(response)
-      forecast[0].size.should == @fullcount
+      forecast[0].size.should == fullcount
     end
   end
 
   describe "#get_valid_dates" do
     it "procures the valid date from the NOAA response" do
-      response = @nf.ping_noaa([@lat, @long], 168, 6)
+      response = @nf.ping_noaa([lat, long], 168, 6)
       dates = @nf2.get_valid_dates(response)
       dates.size.should == 8
     end
@@ -385,7 +385,7 @@ describe NOAAForecast do
 
   describe "#get_forecast_creation_time" do
     it "procures forecast creation time from the NOAA response" do
-      response = @nf.ping_noaa([@lat, @long], 168, 6)
+      response = @nf.ping_noaa([lat, long], 168, 6)
       creation_time = @nf2.get_forecast_creation_time(response)
       datehash = DateTime.parse("Sun Nov 18 23:02:24 2012 UTC", "%a %b %d %H:%M:%S %Y %Z")
       creation_time.should == datehash
@@ -394,13 +394,13 @@ describe NOAAForecast do
 
   describe "#seven_day_weather" do
     it "returns array from seven_day_weather" do
-      forecast = @nf2.seven_day_weather(@zipcode)
-      forecast[0].size.should == @fullcount
+      forecast = @nf2.seven_day_weather(zipcode)
+      forecast[0].size.should == fullcount
     end
 
     it 'returns correct forecast' do
       nf = NOAAForecast.new(94530)
-      nf.seven_day_weather(@zipcode)
+      nf.seven_day_weather(zipcode)
     end
   end
 
@@ -444,7 +444,7 @@ describe NOAAForecast do
         { :date => ProjectLocalTime::format(Date.today + 168.hours), :weather => pop[28], :rainfall => qpf[28] }
         ]
 
-      @nf2.get_forecast_array(@zipcode).should == forecast_array
+      @nf2.get_forecast_array(zipcode).should == forecast_array
     end
   end
 
@@ -455,7 +455,7 @@ describe NOAAForecast do
       # pop = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
 
       # test by number of array elements instead
-      @nf2.get_pop(@zipcode).should == @pop
+      @nf2.get_pop(zipcode).should == @pop
     end
   end
 
@@ -467,7 +467,7 @@ describe NOAAForecast do
       # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
 
       # test by number of array elements instead
-      @nf2.get_qpf(@zipcode).should == @qpf
+      @nf2.get_qpf(zipcode).should == @qpf
     end
   end
 
@@ -485,7 +485,7 @@ describe NOAAForecast do
   describe "#get_pop_array" do
     it "returns pop array" do
       # @nf2.seven_day_weather(@zipcode)
-      pop_array = @nf2.get_pop(@zipcode)
+      pop_array = @nf2.get_pop(zipcode)
 
       # debug collect method later
       # new_pop_array.collect {|i| new_pop_array << { :weather => pop_array[i].to_s } }
@@ -498,13 +498,13 @@ describe NOAAForecast do
       # puts @nf2.get_pop_array(@zipcode)
       # puts new_pop_array
 
-      @nf2.get_pop_array(@zipcode).should == new_pop_array
+      @nf2.get_pop_array(zipcode).should == new_pop_array
     end
   end
 
   describe "#get_qpf_array" do
     it "returns qpf array" do
-      @nf2.seven_day_weather(@zipcode)
+      @nf2.seven_day_weather(zipcode)
       qpf_array = @nf2.qpf
 
       new_qpf_array = []
@@ -516,7 +516,7 @@ describe NOAAForecast do
       # puts @nf2.get_qpf_array(@zipcode)
       # puts new_qpf_array
 
-      @nf2.get_qpf_array(@zipcode).should == new_qpf_array
+      @nf2.get_qpf_array(zipcode).should == new_qpf_array
     end
   end
 
@@ -527,8 +527,8 @@ describe NOAAForecast do
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      @nf2.seven_day_weather(@zipcode)
-      pop_array = @nf2.get_pop(@zipcode)
+      @nf2.seven_day_weather(zipcode)
+      pop_array = @nf2.get_pop(zipcode)
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
@@ -579,7 +579,7 @@ describe NOAAForecast do
       # puts @nf2.get_time_pop_hash(@zipcode)
       # puts time_pop_hash
 
-      @nf2.get_time_pop_hash(@zipcode).should == time_pop_hash
+      @nf2.get_time_pop_hash(zipcode).should == time_pop_hash
     end
   end
 
@@ -684,7 +684,7 @@ describe NOAAForecast do
 
       time_pop_hash = []
 
-      @nf3.get_pop_table_hash(@zipcode).should == pop_table_hash
+      @nf3.get_pop_table_hash(zipcode).should == pop_table_hash
     end
   end
 
