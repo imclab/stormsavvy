@@ -116,7 +116,7 @@ describe NOAAForecast do
         {:weather=>"0"},
         {:weather=>"0"}
       ]
-      return @zipcode
+      return zipcode
     }
 
     @nf2.stub(:get_qpf_array) {
@@ -165,7 +165,7 @@ describe NOAAForecast do
         {:rainfall=>"99"},
         {:rainfall=>"99"}
       ]
-      return @zipcode
+      return zipcode
     }
 
     @nf2.stub(:get_time_pop_hash) {
@@ -175,7 +175,7 @@ describe NOAAForecast do
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      @nf2.seven_day_weather(@zipcode)
+      @nf2.seven_day_weather(zipcode)
       pop_array = @nf2.pop
       new_pop_array = []
       pop_array.each do |i|
@@ -221,10 +221,10 @@ describe NOAAForecast do
         time_array[26].update(new_pop_array[26]),
         time_array[27].update(new_pop_array[27])
       ]
-      return @zipcode
+      return zipcode
     }
 
-    @nf3 = NOAAForecast.new(@zipcode,168,6)
+    @nf3 = NOAAForecast.new(zipcode,168,6)
     @nf3.stub(:get_pop_table_hash) {
       time_pop_hash = @nf2.get_time_pop_hash
       new_qpf_array = @qpf
@@ -265,7 +265,7 @@ describe NOAAForecast do
         time_pop_hash[26].update(new_qpf_array[26]),
         time_pop_hash[27].update(new_qpf_array[27]),
       ]
-      return @zipcode
+      return zipcode
     }
 
     @nf2.stub(:get_forecast_array) {
@@ -300,7 +300,7 @@ describe NOAAForecast do
         { :date => ProjectLocalTime::format(Date.today + 162.hours), :weather => pop[27], :rainfall => qpf[27] },
         { :date => ProjectLocalTime::format(Date.today + 168.hours), :weather => pop[28], :rainfall => qpf[28] }
       ]
-      return @zipcode
+      return zipcode
     }
   end # need this here for before :each block!
 
