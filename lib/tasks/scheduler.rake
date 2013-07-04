@@ -5,8 +5,8 @@ namespace :scheduler do
     test_users = [
       'walter@stormsavvy.com',
       'wing.wingyu@gmail.com',
-      'JonathanM@ghilottibros.com',
-      'KjellD@ghilottibros.com',
+      # 'JonathanM@ghilottibros.com',
+      # 'KjellD@ghilottibros.com',
       'walter_yu@dot.ca.gov'
       ]
     test_users.each do |address|
