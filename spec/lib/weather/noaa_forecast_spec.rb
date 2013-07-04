@@ -92,37 +92,7 @@ describe NOAAForecast do
 =end
 
       # refactor into proper loop
-      new_qpf_array = [
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"},
-        {:rainfall=>"99"}
-      ]
+      IO.read("./spec/fixtures/new_qpf_array.rb")
       return zipcode
     }
 
