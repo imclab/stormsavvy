@@ -261,7 +261,7 @@ describe NOAAForecast do
       nf.get_lat_long(zipcode).should == lat_long
     end
 
-    it 'validates rails api caching on class object' do
+    xit 'validates rails api caching on class object' do
       zipcode = 94901
       results = Geocoder.search(zipcode)
       lat = results[0].data["geometry"]["location"]["lat"]
