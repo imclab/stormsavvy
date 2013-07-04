@@ -375,24 +375,24 @@ describe NOAAForecast do
 
   describe "#parse_weather_data" do
     it "parses weather data from noaa for one week" do
-      response = @nf.ping_noaa([lat, long], 168, 6)
-      forecast = @nf2.parse_weather_data(response)
+      response = nf.ping_noaa([lat, long], 168, 6)
+      forecast = nf2.parse_weather_data(response)
       forecast[0].size.should == fullcount
     end
   end
 
   describe "#get_valid_dates" do
     it "procures the valid date from the NOAA response" do
-      response = @nf.ping_noaa([lat, long], 168, 6)
-      dates = @nf2.get_valid_dates(response)
+      response = nf.ping_noaa([lat, long], 168, 6)
+      dates = nf2.get_valid_dates(response)
       dates.size.should == 8
     end
   end
 
   describe "#get_forecast_creation_time" do
     it "procures forecast creation time from the NOAA response" do
-      response = @nf.ping_noaa([lat, long], 168, 6)
-      creation_time = @nf2.get_forecast_creation_time(response)
+      response = nf.ping_noaa([lat, long], 168, 6)
+      creation_time = nf2.get_forecast_creation_time(response)
       datehash = DateTime.parse("Sun Nov 18 23:02:24 2012 UTC", "%a %b %d %H:%M:%S %Y %Z")
       creation_time.should == datehash
     end
@@ -400,7 +400,7 @@ describe NOAAForecast do
 
   describe "#seven_day_weather" do
     it "returns array from seven_day_weather" do
-      forecast = @nf2.seven_day_weather(zipcode)
+      forecast = nf2.seven_day_weather(zipcode)
       forecast[0].size.should == fullcount
     end
 
@@ -412,11 +412,11 @@ describe NOAAForecast do
 
   describe "#get_forecast_array" do
     it "returns forecast_by_zipcode" do
-      # pop = @nf2.pop
-      # qpf = @nf2.qpf
+      # pop = nf2.pop
+      # qpf = nf2.qpf
 
-      pop = @pop
-      qpf = @qpf
+      # pop = @pop
+      # qpf = @qpf
 
       forecast_array = [
         { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
@@ -450,7 +450,7 @@ describe NOAAForecast do
         { :date => ProjectLocalTime::format(Date.today + 168.hours), :weather => pop[28], :rainfall => qpf[28] }
         ]
 
-      @nf2.get_forecast_array(zipcode).should == forecast_array
+      nf2.get_forecast_array(zipcode).should == forecast_array
     end
   end
 
@@ -461,7 +461,7 @@ describe NOAAForecast do
       # pop = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
 
       # test by number of array elements instead
-      @nf2.get_pop(zipcode).should == @pop
+      nf2.get_pop(zipcode).should == pop
     end
   end
 
@@ -473,7 +473,7 @@ describe NOAAForecast do
       # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
 
       # test by number of array elements instead
-      @nf2.get_qpf(zipcode).should == @qpf
+      nf2.get_qpf(zipcode).should == qpf
     end
   end
 
