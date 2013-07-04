@@ -73,38 +73,7 @@ describe NOAAForecast do
       # debug collect method later
       # pop_array.collect {|i| new_pop_array << { :weather => pop_array[i].to_s } }
 =end
-      # refactor into proper loop
-      new_pop_array = [
-        {:weather=>"0"},
-        {:weather=>"0"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"5"},
-        {:weather=>"0"},
-        {:weather=>"0"},
-        {:weather=>"0"},
-        {:weather=>"0"},
-        {:weather=>"0"}
-      ]
+      IO.read("./spec/fixtures/new_pop_array.csv")
       return zipcode
     }
 
