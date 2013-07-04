@@ -593,13 +593,13 @@ describe NOAAForecast do
     # throws error when merging hashes
     xit "returns pop_table hash" do
 
-      pop_array = @nf2.pop
+      pop_array = nf2.pop
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
       end
 
-      qpf_array = @nf2.qpf
+      qpf_array = nf2.qpf
       new_qpf_array = []
       qpf_array.each do |i|
         new_qpf_array << { :rainfall => i.to_s }
@@ -616,7 +616,7 @@ describe NOAAForecast do
         time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
       end
 
-      time_pop_hash = @nf2.get_time_pop_hash(@zipcode)
+      time_pop_hash = nf2.get_time_pop_hash(zipcode)
 
       # array not being returned correctly
       pop_table_hash = []
@@ -690,7 +690,7 @@ describe NOAAForecast do
 
       time_pop_hash = []
 
-      @nf3.get_pop_table_hash(zipcode).should == pop_table_hash
+      nf3.get_pop_table_hash(zipcode).should == pop_table_hash
     end
   end
 
@@ -701,7 +701,7 @@ describe NOAAForecast do
   describe "#set_lat_long" do
     it "calls set_lat_long method successfully" do
       lat_long = [lat, long]
-      @nf.set_lat_long(zipcode)
+      nf.set_lat_long(zipcode)
       $redis.get(zipcode.to_s + '_lat').should == lat_long[0].to_s
       $redis.get(zipcode.to_s + '_long').should == lat_long[1].to_s
     end
@@ -721,8 +721,8 @@ describe NOAAForecast do
       lat = $redis.get(zipcode.to_s + '_lat')
       long = $redis.get(zipcode.to_s + '_long')
       results = [lat,long]
-      @nf.set_lat_long(zipcode)
-      @nf.return_lat_long(zipcode).should == results
+      nf.set_lat_long(zipcode)
+      nf.return_lat_long(zipcode).should == results
     end
   end
 end
