@@ -484,14 +484,14 @@ describe NOAAForecast do
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      @nf2.get_time_array.should == time_array
+      nf2.get_time_array.should == time_array
     end
   end
 
   describe "#get_pop_array" do
     it "returns pop array" do
-      # @nf2.seven_day_weather(@zipcode)
-      pop_array = @nf2.get_pop(zipcode)
+      # nf2.seven_day_weather(zipcode)
+      pop_array = nf2.get_pop(zipcode)
 
       # debug collect method later
       # new_pop_array.collect {|i| new_pop_array << { :weather => pop_array[i].to_s } }
@@ -501,17 +501,17 @@ describe NOAAForecast do
       end
 
       # leave here for debugging
-      # puts @nf2.get_pop_array(@zipcode)
+      # puts nf2.get_pop_array(zipcode)
       # puts new_pop_array
 
-      @nf2.get_pop_array(zipcode).should == new_pop_array
+      nf2.get_pop_array(zipcode).should == new_pop_array
     end
   end
 
   describe "#get_qpf_array" do
     it "returns qpf array" do
-      @nf2.seven_day_weather(zipcode)
-      qpf_array = @nf2.qpf
+      nf2.seven_day_weather(zipcode)
+      qpf_array = nf2.qpf
 
       new_qpf_array = []
       qpf_array.each do |i|
@@ -519,10 +519,10 @@ describe NOAAForecast do
       end
 
       # leave here for debugging
-      # puts @nf2.get_qpf_array(@zipcode)
+      # puts nf2.get_qpf_array(zipcode)
       # puts new_qpf_array
 
-      @nf2.get_qpf_array(zipcode).should == new_qpf_array
+      nf2.get_qpf_array(zipcode).should == new_qpf_array
     end
   end
 
@@ -533,8 +533,8 @@ describe NOAAForecast do
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      @nf2.seven_day_weather(zipcode)
-      pop_array = @nf2.get_pop(zipcode)
+      nf2.seven_day_weather(zipcode)
+      pop_array = nf2.get_pop(zipcode)
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
@@ -582,10 +582,10 @@ describe NOAAForecast do
       # puts new_pop_array
       # puts time_array[0].update(new_pop_array[0])
 
-      # puts @nf2.get_time_pop_hash(@zipcode)
+      # puts nf2.get_time_pop_hash(zipcode)
       # puts time_pop_hash
 
-      @nf2.get_time_pop_hash(zipcode).should == time_pop_hash
+      nf2.get_time_pop_hash(zipcode).should == time_pop_hash
     end
   end
 
