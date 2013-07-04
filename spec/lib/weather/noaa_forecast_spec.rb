@@ -4,47 +4,51 @@ require 'redis'
 require 'time'
 
 describe NOAAForecast do
+  let(:fullcount) { 29 }
+  let(:zipcode) { 94530 }
+  let(:lat) { 37.9202057 }
+  let(:long) { -122.2937428 }
 
   before(:each) do
-    @fullcount = 29
-    @zipcode = 94530
-    @lat = 37.9202057
-    @long = -122.2937428
-    @lat_long = [@lat, @long]
+    # @fullcount = 29
+    # @zipcode = 94530
+    # @lat = 37.9202057
+    # @long = -122.2937428
+    @lat_long = [lat, long]
     @nf = double(NOAAForecast)
-    @nf2 = NOAAForecast.new(@zipcode,168,6)
+    @nf2 = NOAAForecast.new(zipcode,168,6)
 
-    @pop = @nf2.get_pop(@zipcode)
-    @qpf = @nf2.get_qpf(@zipcode)
+    @pop = @nf2.get_pop(zipcode)
+    @qpf = @nf2.get_qpf(zipcode)
 
-    @nf.stub(:get_lat_long).with(@zipcode).and_return([@lat, @long])
+    @nf.stub(:get_lat_long).with(zipcode).and_return([lat, long])
     @nf.stub(:get_lat_long).with("99999999999999999999").and_return([])
 
     @nf.stub(:set_lat_long) {
-      $redis.set(@zipcode.to_s + '_lat', @lat)
-      $redis.set(@zipcode.to_s + '_long', @long)
+      $redis.set(zipcode.to_s + '_lat', lat)
+      $redis.set(zipcode.to_s + '_long', long)
     }
 
     @nf.stub(:return_lat_long) {
-      @nf.set_lat_long(@zipcode)
-      lat = $redis.get(@zipcode.to_s + '_lat')
-      long = $redis.get(@zipcode.to_s + '_long')
+      @nf.set_lat_long(zipcode)
+      lat = $redis.get(zipcode.to_s + '_lat')
+      long = $redis.get(zipcode.to_s + '_long')
       lat_long = [lat, long]
     }
 
-    @nf.stub(:ping_noaa).with([@lat, @long], 168, 6) {
+    @nf.stub(:ping_noaa).with([lat, long], 168, 6) {
       IO.read("./spec/lib/weather/noaa_response.xml")
     }
 
-    @nf.stub(:get_forecast).with([@lat, @long]) {
-      response = @nf.ping_noaa([@lat, @long], 168, 6)
+    @nf.stub(:get_forecast).with([lat, long]) {
+      response = @nf.ping_noaa([lat, long], 168, 6)
       @nf2.parse_weather_data(response)
     }
 
     @nf2.stub(:seven_day_weather) {
-      latlong = [@lat, @long]
+      latlong = [lat, long]
       @nf.get_forecast(latlong)
-      return @zipcode
+      return zipcode
     }
 
     @nf.stub(:get_time_array) {
