@@ -78,7 +78,7 @@ describe NOAAForecast do
       # qpf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33, 45, 77, 77, 64, 64, 18, 18, 19, 19, 28, 28, 24, 24, 24, 24, 22]
     }
 
-    @nf2.stub(:get_pop_array) {
+    nf2.stub(:get_pop_array) {
 =begin
       # array not being returned correctly
       pop_array = @pop
@@ -125,7 +125,7 @@ describe NOAAForecast do
       return zipcode
     }
 
-    @nf2.stub(:get_qpf_array) {
+    nf2.stub(:get_qpf_array) {
 
 =begin
       # array not being returned correctly
@@ -174,15 +174,15 @@ describe NOAAForecast do
       return zipcode
     }
 
-    @nf2.stub(:get_time_pop_hash) {
+    nf2.stub(:get_time_pop_hash) {
 
       time_array = []
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      @nf2.seven_day_weather(zipcode)
-      pop_array = @nf2.pop
+      nf2.seven_day_weather(zipcode)
+      pop_array = nf2.pop
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
@@ -230,9 +230,9 @@ describe NOAAForecast do
       return zipcode
     }
 
-    @nf3 = NOAAForecast.new(zipcode,168,6)
-    @nf3.stub(:get_pop_table_hash) {
-      time_pop_hash = @nf2.get_time_pop_hash
+    nf3 = NOAAForecast.new(zipcode,168,6)
+    nf3.stub(:get_pop_table_hash) {
+      time_pop_hash = nf2.get_time_pop_hash
       new_qpf_array = @qpf
 
 =begin
@@ -274,7 +274,7 @@ describe NOAAForecast do
       return zipcode
     }
 
-    @nf2.stub(:get_forecast_array) {
+    nf2.stub(:get_forecast_array) {
       [
         { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
         { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1], :rainfall => qpf[1] },
@@ -311,7 +311,7 @@ describe NOAAForecast do
   end # need this here for before :each block!
 
   it "instantiates class with valid zipcode" do
-    @nf2.class.should == NOAAForecast
+    nf2.class.should == NOAAForecast
   end
 
   it "returns lat/long for given zipcode" do
