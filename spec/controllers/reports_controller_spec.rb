@@ -244,5 +244,12 @@ describe ReportsController do
       delete :destroy, :id => report #{:id => report.to_param}, valid_session
       response.should redirect_to(reports_url)
     end
+
+    it "responds with flash message" do
+      sign_in current_user
+      report = Report.create! valid_attributes
+      delete :destroy, {:id => report.to_param}, valid_session
+      flash[:notice].should == 'Report was successfully deleted.'
+    end
   end
 end
