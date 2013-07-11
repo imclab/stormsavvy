@@ -63,12 +63,14 @@ class ReportsController < ApplicationController
 
   def update
     @report = Report.find(params[:id])
+
     respond_to do |format|
       if @report.update_attributes(params[:report])
         format.html { redirect_to @report, notice: 'Report was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { flash.now[:error] = "Error: See details below."
+                      render action: "edit" }
         format.json { render json: @report.errors, status: :unprocessable_entity }
       end
     end
