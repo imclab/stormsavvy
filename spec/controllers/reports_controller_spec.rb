@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe ReportsController do
-
-  # Setup valid session values:
   def valid_attributes
     {}
   end
