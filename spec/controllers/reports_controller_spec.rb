@@ -79,6 +79,7 @@ describe ReportsController do
       report = Report.create! valid_attributes
       get :show, {:id => report.to_param}, valid_session
       assigns(:report).should eq(report)
+      assigns(:report).should be_persisted
     end
 
     it "renders png from app/assets/images directory" do
