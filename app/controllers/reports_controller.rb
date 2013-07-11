@@ -26,7 +26,8 @@ class ReportsController < ApplicationController
     @report = Report.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render html: @report, :notice => 'Error: See details below.',
+                    :flash => { :error => 'Error!' } }
       format.json { render json: @report }
     end
   end
