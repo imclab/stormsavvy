@@ -83,7 +83,7 @@ class ReportsController < ApplicationController
     @report.destroy
 
     respond_to do |format|
-      format.html { redirect_to reports_path }
+      format.html { redirect_to reports_path, notice: 'Report was successfully deleted.' }
       format.json { head :no_content }
     end
   end
