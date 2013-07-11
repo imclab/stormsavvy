@@ -156,6 +156,15 @@ describe ReportsController do
         post :create, {:report => {}}, valid_session
         response.should render_template("new")
       end
+
+      it "responds with flash message" do
+        sign_in current_user
+        Report.any_instance.stub(:save).and_return(false)
+        post :create, {:report => {}}, valid_session
+        # post :create, {:site => valid_attributes, :project_id => @project.id}
+        response.should render_template('new')
+        flash[:error].should == 'Error: See details below.'
+      end
     end
   end
 
