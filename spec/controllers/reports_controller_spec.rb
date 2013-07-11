@@ -147,6 +147,7 @@ describe ReportsController do
         Report.any_instance.stub(:save).and_return(false)
         post :create, {:report => {}}, valid_session
         assigns(:report).should be_a_new(Report)
+        assigns(:report).should_not be_persisted
       end
 
       it "re-renders the 'new' template" do
