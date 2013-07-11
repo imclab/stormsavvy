@@ -9,8 +9,65 @@ describe ReportsController do
     {}
   end
 
-  describe "GET index" do
+  let!(:current_user) { FactoryGirl.build(
+      :user,
+      :email => '@stormsavvy.com'
+    )
+  }
+  let(:other_user) { FactoryGirl.build(
+      :user,
+      :email => 'info@stormsavvy.com'
+    )
+  }
+  let(:all_users) { [ current_user, other_user ] }
 
+  let!(:current_project) { FactoryGirl.create(
+      :project,
+      :user => current_user
+    )
+  }
+  let(:other_project) { FactoryGirl.create(
+      :project,
+      :user => other_user
+    )
+  }
+  let(:current_projects) { [ current_project ] }
+  let(:other_projects) { [ other_project ] }
+  let(:all_projects) { [ current_project, other_project ] }
+
+  let!(:current_site) { FactoryGirl.create(
+      :site,
+      :project => current_project,
+      :name => 'ec jungle gym',
+      :zipcode => 94530
+    )
+  }
+  let(:other_site) { FactoryGirl.create(
+      :site,
+      :project => other_project,
+      :name => 'berkeley high',
+      :zipcode => 94709
+    )
+  }
+  let!(:current_sites) { [ current_site ] }
+  let(:other_sites)  { [ other_site ] }
+  let(:all_sites) { [ current_site, other_site ] }
+
+  let!(:current_report) { FactoryGirl.create(
+      :report,
+      :site => current_site
+    )
+  }
+  let(:other_report) { FactoryGirl.create(
+      :report,
+      :site => other_site
+    )
+  }
+  let!(:current_report_array) { [ current_report ] }
+  let(:other_report_array) { [ other_report ] }
+  let(:all_report_array) { [ current_report, other_report ] }
+
+  describe "GET index" do
     it "renders the index template" do
       get :index
       response.should render_template("index")
