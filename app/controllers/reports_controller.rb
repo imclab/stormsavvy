@@ -44,7 +44,8 @@ class ReportsController < ApplicationController
         format.html { redirect_to @report, notice: 'Report was successfully created.' }
         format.json { head :no_content }
       else
-        format.html { render action: "new" }
+        format.html { flash.now[:error] = "Error: See details below."
+                      render action: "new" }
         format.json { render json: @report.errors, status: :unprocessable_entity }
       end
     end
