@@ -219,6 +219,15 @@ describe ReportsController do
         put :update, {:id => report.to_param, :report => {}}, valid_session
         response.should render_template("edit")
       end
+
+      it "responds with flash message" do
+        sign_in current_user
+        report = Report.create! valid_attributes
+        Report.any_instance.stub(:save).and_return(false)
+        put :update, {:id => report.to_param, :report => {}}, valid_session
+        response.should render_template('edit')
+        flash[:error].should == 'Error: See details below.'
+      end
     end
   end
 
