@@ -209,6 +209,7 @@ describe ReportsController do
         Report.any_instance.stub(:save).and_return(false)
         put :update, {:id => report.to_param, :report => {}}, valid_session
         assigns(:report).should eq(report)
+        assigns(:report).should be_persisted
       end
 
       it "re-renders the 'edit' template" do
