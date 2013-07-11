@@ -91,6 +91,16 @@ describe ReportsController do
     it "assigns new report as @report" do
       get :new, {}, valid_session
       assigns(:report).should be_a_new(Report)
+      assigns(:report).should_not be_persisted
+    end
+
+    describe 'with invalid params' do
+      it "re-renders the 'new' template" do
+        sign_in current_user
+        Report.any_instance.stub(:save).and_return(false)
+        get :new, {:report => {}}, valid_session
+        response.should render_template('new')
+      end
     end
   end
 
