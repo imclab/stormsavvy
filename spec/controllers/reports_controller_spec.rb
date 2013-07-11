@@ -133,6 +133,12 @@ describe ReportsController do
       it "redirects to the created inspection_event" do
         response.should redirect_to(Report.last)
       end
+
+      it "responds with flash message" do
+        sign_in current_user
+        post :create, {:report => valid_attributes}, valid_session
+        flash[:notice].should == "Report was successfully created."
+      end
     end
 
     describe "with invalid params" do
