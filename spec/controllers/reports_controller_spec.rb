@@ -184,6 +184,7 @@ describe ReportsController do
         report = Report.create! valid_attributes
         put :update, {:id => report.to_param, :report => valid_attributes}, valid_session
         assigns(:report).should eq(report)
+        assigns(:report).should be_persisted
       end
 
       it "redirects to the report" do
