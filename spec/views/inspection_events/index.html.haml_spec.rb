@@ -52,4 +52,8 @@ describe "inspection_events/index" do
   it "renders only uploaded attachments" do
     rendered.should =~ /Upload Attachment/
   end
+
+  it 'shows correct site name' do
+    site_ie.site.name.should == 'ec jungle gym'
+  end
 end
