@@ -18,6 +18,7 @@
   - @inspection_events.each do |inspection_event|
     %tr
       %td= inspection_event.site_id
+      %td= inspection_event.site.name
       %td= inspection_event.inspection_type
       / %td= inspection_event.inspection_description
       %td= inspection_event.inspection_date
