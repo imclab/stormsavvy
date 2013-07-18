@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe "inspection_events/index" do
+  let!(:site) { FactoryGirl.create(
+    :site,
+    :id => 1,
+    :name => 'ec jungle gym'
+    )
+  }
+  let!(:site_ie) { FactoryGirl.create(
+    :inspection_event,
+    :site_id => 1
+    )
+  }
   before(:each) do
     assign(:inspection_events, [
       stub_model(InspectionEvent,
