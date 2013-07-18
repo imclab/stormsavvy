@@ -36,6 +36,7 @@ describe "inspection_events/show" do
 
   it "renders correct columns" do
     rendered.should match(/Site ID:/)
+    rendered.should match(/Site Name:/)
     rendered.should match(/Inspection Type:/)
     rendered.should match(/Description:/)
     rendered.should match(/Date:/)
