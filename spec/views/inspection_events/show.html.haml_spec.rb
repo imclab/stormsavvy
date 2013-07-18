@@ -24,6 +24,7 @@ describe "inspection_events/show" do
         :inspected_by => "wyu"
       )
     )
+
     render
   end
 
@@ -53,9 +54,12 @@ describe "inspection_events/show" do
     rendered.should have_button('Delete This Inspection Event')
   end
 
-  it 'shows site id and name' do
+  it 'shows correct site id ' do
     id = @ie.site_id
     id.should == 1
-    @site_ie.site.name.should == 'ec jungle gym'
+  end
+
+  it 'shows correct site name' do
+    site_ie.site.name.should == 'ec jungle gym'
   end
 end
