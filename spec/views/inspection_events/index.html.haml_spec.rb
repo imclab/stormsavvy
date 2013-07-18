@@ -26,11 +26,13 @@ describe "inspection_events/index" do
   it "renders a list of inspection_events" do
     assert_select "tr>td", :text => 1.to_s, :count => 2
     assert_select "tr>td", :text => "weekly", :count => 2
-    # assert_select "tr>td", :text => "ec jungle gym inspection", :count => 2
+
+    inspection_event.site_id.should == 1
   end
 
   it "renders form partial correctly" do
     rendered.should =~ /Site ID/
+    rendered.should =~ /Site Name/
     rendered.should =~ /Inspection Type/
     rendered.should =~ /Inspection Date/
     rendered.should =~ /Submitted By/
