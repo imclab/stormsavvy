@@ -66,5 +66,10 @@ describe "inspection_events/show" do
 
   it 'has correct ie attributes' do
     @ie.site_id.should == 1
+    @ie.inspection_type.should == 'weekly'
+    @ie.inspection_description.should == 'ec jungle gym inspection'
+    @ie.inspection_date.should == '2013-01-26 23:13:55'
+    @ie.submitted_by.should == 'wyu'
+    @ie.inspected_by.should == 'wyu'
   end
 end
