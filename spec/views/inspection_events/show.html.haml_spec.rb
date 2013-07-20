@@ -55,11 +55,6 @@ describe "inspection_events/show" do
     rendered.should have_button('Delete This Inspection Event')
   end
 
-  it 'has correct site id' do
-    id = @ie.site_id
-    id.should == 1
-  end
-
   it 'has correct site_ie attributes' do
     site_ie.site.name.should == 'ec jungle gym'
   end
