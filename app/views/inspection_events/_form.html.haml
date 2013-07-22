@@ -8,6 +8,9 @@
 
   %legend Inspection Event
   .span4
+    .actions
+      = f.submit 'Save'
+      = link_to 'Back', inspection_events_path
     .field
       = f.label :completed
       = f.check_box :completed
