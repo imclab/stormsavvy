@@ -331,13 +331,14 @@ DEPENDENCIES
   json
   letter_opener
   nested_form
+  newrelic_rpm
   nokogiri
   paperclip
   pdf-inspector
   pdf-reader
   pg
   prawn!
-  rails
+  rails (= 3.2.14)
   rake
   rb-readline
   redis
