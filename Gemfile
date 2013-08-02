@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rake'
-gem 'rails'
+gem 'rails', '3.2.14'
 gem 'typhoeus'
 gem 'nokogiri'
 gem 'geocoder'
