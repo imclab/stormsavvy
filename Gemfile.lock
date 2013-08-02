@@ -12,12 +12,12 @@ GEM
   remote: http://rubygems.org/
   specs:
     Ascii85 (1.0.2)
-    actionmailer (3.2.13)
-      actionpack (= 3.2.13)
-      mail (~> 2.5.3)
-    actionpack (3.2.13)
-      activemodel (= 3.2.13)
-      activesupport (= 3.2.13)
+    actionmailer (3.2.14)
+      actionpack (= 3.2.14)
+      mail (~> 2.5.4)
+    actionpack (3.2.14)
+      activemodel (= 3.2.14)
+      activesupport (= 3.2.14)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
