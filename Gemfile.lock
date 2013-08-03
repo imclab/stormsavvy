@@ -342,7 +342,7 @@ DEPENDENCIES
   pdf-reader
   pg
   prawn!
-  rails (= 3.2.14)
+  rails
   rake
   rb-readline
   redis
