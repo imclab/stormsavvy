@@ -324,7 +324,7 @@ DEPENDENCIES
   coffee-script-source
   cucumber
   cucumber-rails
-  database_cleaner
+  database_cleaner (= 0.9.1)
   devise
   email_spec
   factory_girl_rails
