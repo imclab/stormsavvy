@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe "sampling_events/index" do
+  let!(:site) { FactoryGirl.create(
+    :site,
+    :id => 1,
+    :name => 'ec jungle gym'
+    )
+  }
+  let!(:site_se) { FactoryGirl.create(
+    :sampling_event,
+    :site_id => 1
+    )
+  }
   before(:each) do
     assign(:sampling_events, [
       stub_model(SamplingEvent,
