@@ -46,7 +46,7 @@ describe SamplingEvent do
   it "has correct attributes" do
     @sampling_event.site_id.should == 1
     @sampling_event.sampling_type.should == "pH"
-    @sampling_event.sampling_description.should == "ec jungle gym samplng"
+    @sampling_event.sampling_description.should == "ec jungle gym sampling"
     @sampling_event.sampling_date.should == "2013-01-27 15:34:07"
     @sampling_event.submitted_by.should == "wyu"
     @sampling_event.sampled_by.should == "wyu"
