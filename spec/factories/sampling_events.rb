@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :sampling_event do
     site_id 1
     sampling_type "pH"
-    sampling_description "ec jungle gym samplng"
+    sampling_description "ec jungle gym sampling"
     sampling_date "2013-01-27 15:34:07"
     submitted_by "wyu"
     sampled_by "wyu"
