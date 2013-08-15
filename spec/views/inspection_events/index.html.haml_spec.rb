@@ -53,6 +53,15 @@ describe "inspection_events/index" do
     rendered.should =~ /Upload Attachment/
   end
 
+  it 'shows correct ie attributes' do
+    site_ie.id.should == 1
+    site_ie.inspection_type.should == 'weekly'
+    site_ie.inspection_description.should == 'ec jungle gym inspection'
+    site_ie.inspection_date.should == '2013-04-01 00:00:00'
+    site_ie.submitted_by.should == 'wyu'
+    site_ie.inspected_by.should == 'wyu'
+  end
+
   it 'shows correct site name' do
     site_ie.site.name.should == 'ec jungle gym'
   end
