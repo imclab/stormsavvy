@@ -85,7 +85,7 @@ describe "sampling_events/index" do
     render
     assert_select "tr>td", :text => 1.to_s, :count => 2
     assert_select "tr>td", :text => "Sampling Type".to_s, :count => 2
-    # assert_select "tr>td", :text => "MyText".to_s, :count => 2
+    # assert_select "tr>td", :text => "Sampling Description".to_s, :count => 2
     # assert_select "tr>td", :text => "Submitted By".to_s, :count => 2
     # assert_select "tr>td", :text => "Sampled By".to_s, :count => 2
     # assert_select "tr>td", :text => 2.to_s, :count => 2
