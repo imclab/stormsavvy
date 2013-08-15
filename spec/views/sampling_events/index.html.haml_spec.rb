@@ -120,23 +120,23 @@ describe "sampling_events/index" do
     rendered.should =~ /Site ID/
     rendered.should =~ /Site Name/
     rendered.should =~ /Sampling Type/
-    # rendered.should =~ /Sampling Description/
+    rendered.should =~ /Sampling Description/
     rendered.should =~ /Submitted By/
     rendered.should =~ /Sampled By/
     rendered.should =~ /Attachment URL/
   end
 
-  it "renders only uploaded attachments" do
+  xit "renders only uploaded attachments" do
     rendered.should =~ /Upload Attachment/
   end
 
   it 'shows correct ie attributes' do
     site_se.id.should == 1
     site_se.sampling_type.should == 'pH'
-    site_se.sampling_description.should == 'Sampling Description'
-    site_se.sampling_date.should == '2013-04-01 00:00:00'
+    site_se.sampling_description.should == 'ec jungle gym sampling'
+    site_se.sampling_date.should == 'Sun, 27 Jan 2013 15:34:07 UTC +00:00'
     site_se.submitted_by.should == 'wyu'
-    site_se.inspected_by.should == 'wyu'
+    site_se.sampled_by.should == 'wyu'
   end
 
   it 'shows correct site name' do
