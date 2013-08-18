@@ -619,7 +619,7 @@ describe NOAAForecast do
   end
 
   describe "#return_lat_long" do
-    it "calls return_lat_long method successfully" do
+    xit "calls return_lat_long method successfully" do
       lat = $redis.get(zipcode.to_s + '_lat')
       long = $redis.get(zipcode.to_s + '_long')
       results = [lat,long]
