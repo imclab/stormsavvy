@@ -29,6 +29,7 @@ describe "SamplingEvents" do
 
     it "creates and destroys new sampling event" do
       visit '/sampling_events/new'
+      fill_in 'Site', :with => '1'
       click_button 'Save'
       page.should have_content 'Sampling event was successfully created'
       page.should have_text('Sampling Event')
