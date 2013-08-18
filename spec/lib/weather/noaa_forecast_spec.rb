@@ -63,34 +63,32 @@ describe NOAAForecast do
     }
 
     nf2.stub(:get_pop_array) {
-=begin
+
       # array not being returned correctly
-      pop_array = @pop
-      new_pop_array = []
-      pop_array.each do |i|
-        new_pop_array << { :weather => pop_array[i].to_s }
-      end
+      # pop_array = @pop
+      # new_pop_array = []
+      # pop_array.each do |i|
+      #   new_pop_array << { :weather => pop_array[i].to_s }
+      # end
 
       # debug collect method later
       # pop_array.collect {|i| new_pop_array << { :weather => pop_array[i].to_s } }
-=end
+
       IO.read("./spec/fixtures/new_pop_array.rb")
       return zipcode
     }
 
     nf2.stub(:get_qpf_array) {
 
-=begin
       # array not being returned correctly
-      qpf_array = @qpf
-      new_qpf_array = []
-      qpf_array.each do |i|
-        new_qpf_array << { :rainfall => qpf_array[i].to_s }
-      end
+      # qpf_array = @qpf
+      # new_qpf_array = []
+      # qpf_array.each do |i|
+      #   new_qpf_array << { :rainfall => qpf_array[i].to_s }
+      # end
 
       # debug collect method later
       # qpf_array.collect {|i| new_qpf_array << { :rainfall => qpf_array[i].to_s } }
-=end
 
       # refactor into proper loop
       IO.read("./spec/fixtures/new_qpf_array.rb")
