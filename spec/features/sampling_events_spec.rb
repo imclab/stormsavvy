@@ -1,12 +1,21 @@
 require 'spec_helper'
 
 describe "SamplingEvents" do
-  before :each do
-    @user = FactoryGirl.create(
-      :user
-    )
+  let(:user) {
+    FactoryGirl.create(:user)
     login_as(@user, :scope => :user)
-  end
+  }
+
+  let(:site) {
+    FactoryGirl.create(:site, :id => 1)
+  }
+
+  # before :each do
+  #   @user = FactoryGirl.create(
+  #     :user
+  #   )
+  #   login_as(@user, :scope => :user)
+  # end
 
   describe 'sampling events page' do
     it "renders correct page" do
