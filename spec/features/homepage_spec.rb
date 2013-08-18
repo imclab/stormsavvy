@@ -8,13 +8,13 @@ describe "homepage" do
 
   let!(:user) { FactoryGirl.create(
       :user,
-      :email => 'testem@stormsavvy.com',
-      :password => 'testem',
-      :password_confirmation => 'testem'
+      :email => 'demo@stormsavvy.com',
+      :password => 'savvy_demo',
+      :password_confirmation => 'savvy_demo'
     )
   }
 
-  describe 'sign-in page' do
+  describe 'signin page' do
     it "renders landing page text" do
       visit '/index'
       page.should have_text('Sign in')
