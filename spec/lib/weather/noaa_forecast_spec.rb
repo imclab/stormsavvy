@@ -25,9 +25,9 @@ describe NOAAForecast do
 
     nf.stub(:return_lat_long) {
       nf.set_lat_long(zipcode)
-      lat = $redis.get(zipcode.to_s + '_lat')
-      long = $redis.get(zipcode.to_s + '_long')
-      lat_long = [lat, long]
+      # lat = $redis.get(zipcode.to_s + '_lat')
+      # long = $redis.get(zipcode.to_s + '_long')
+      # lat_long = [lat, long]
     }
 
     nf.stub(:ping_noaa).with([lat, long], 168, 6) {
