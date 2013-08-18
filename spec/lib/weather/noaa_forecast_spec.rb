@@ -54,6 +54,7 @@ describe NOAAForecast do
 
     nf2.stub(:get_pop) {
       pop = [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0]
+      return pop
     }
 
     nf2.stub(:get_qpf) {
