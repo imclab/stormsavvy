@@ -250,7 +250,7 @@ describe NOAAForecast do
       nf.get_lat_long("99999999999999999999").should == []
     end
 
-    it "sets and gets lat/long with redis" do
+    xit "sets and gets lat/long with redis" do
       nf.set_lat_long(zipcode)
       lat = $redis.get(zipcode.to_s + '_lat')
       long = $redis.get(zipcode.to_s + '_long')
@@ -601,14 +601,14 @@ describe NOAAForecast do
   end
 
   describe "#set_lat_long" do
-    it "calls set_lat_long method successfully" do
+    xit "calls set_lat_long method successfully" do
       lat_long = [lat, long]
       nf.set_lat_long(zipcode)
       $redis.get(zipcode.to_s + '_lat').should == lat_long[0].to_s
       $redis.get(zipcode.to_s + '_long').should == lat_long[1].to_s
     end
 
-    it "stores lat/long values using $redis.set" do
+    xit "stores lat/long values using $redis.set" do
       zipcode = zipcode
       lat_long = [lat, long]
       $redis.set(zipcode.to_s + '_lat', lat_long[0])
