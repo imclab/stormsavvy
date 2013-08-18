@@ -31,9 +31,7 @@ class InspectionEvent < ActiveRecord::Base
   ]
 
 private
-
   def change_inspection_event_status
     self.status = "completed"
   end
-
 end
