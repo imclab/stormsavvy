@@ -50,6 +50,17 @@ describe "homepage" do
     end
   end
 
+  describe 'signup page' do
+    it "signs up new user" do
+      visit '/users/sign_up'
+      fill_in 'Email', :with => 'walter@stormsavvy.com'
+      fill_in 'Password', :with => 'automate_workflow'
+      fill_in 'Password confirmation', :with => 'automate_workflow'
+      click_button 'Sign up'
+      page.should have_content 'You have signed up successfully.'
+    end
+  end
+
   describe 'homepage' do
     it "renders correct links and pages from home page" do
       visit '/index'
