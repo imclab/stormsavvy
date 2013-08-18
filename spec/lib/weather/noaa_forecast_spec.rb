@@ -109,16 +109,14 @@ describe NOAAForecast do
         new_pop_array << { :weather => i.to_s }
       end
 
-=begin
-      # array not being returned correctly
-      time_pop_hash = []
-      for h in 0..27
-        time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
-      end
-=end
+      # time_pop_hash = []
+      # for h in 0..27
+      #   time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
+      # end
 
       # refactor into proper loop
-      time_pop_hash = [
+      # time_pop_hash = [
+      [
         time_array[0].update(new_pop_array[0]),
         time_array[1].update(new_pop_array[1]),
         time_array[2].update(new_pop_array[2]),
