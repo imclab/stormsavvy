@@ -78,19 +78,19 @@ class NOAAForecast
     # return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
   end
 
-  def set_lat_long(zipcode)
-    $redis.set(zipcode.to_s + '_lat')
-    $redis.set(zipcode.to_s + '_long')
-    # $redis.set(zipcode.to_s + '_lat', response[0])
-    # $redis.set(zipcode.to_s + '_long', response[1])
-  end
+  # def set_lat_long(zipcode)
+  #   $redis.set(zipcode.to_s + '_lat')
+  #   $redis.set(zipcode.to_s + '_long')
+  #   $redis.set(zipcode.to_s + '_lat', response[0])
+  #   $redis.set(zipcode.to_s + '_long', response[1])
+  # end
 
-  def return_lat_long(zipcode)
-    lat = $redis.get(zipcode.to_s + '_lat')
-    long = $redis.get(zipcode.to_s + '_long')
-    lat_long = [lat.to_f, long.to_f]
-    return lat_long
-  end
+  # def return_lat_long(zipcode)
+  #   lat = $redis.get(zipcode.to_s + '_lat')
+  #   long = $redis.get(zipcode.to_s + '_long')
+  #   lat_long = [lat.to_f, long.to_f]
+  #   return lat_long
+  # end
 
   def get_forecast(latlong)
     response = ping_noaa(latlong, @duration, @interval)
