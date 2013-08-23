@@ -57,6 +57,7 @@ describe "inspection_events/show" do
 
   it 'has correct site_ie attributes' do
     site_ie.site.name.should == 'ec jungle gym'
+    site_ie.site.name.should_not == 'No site assigned, please do so on inspection page'
   end
 
   it 'has correct ie attributes' do
