@@ -49,7 +49,6 @@ describe "inspection_events/show" do
     rendered.should match(/Edit/)
     rendered.should match(/Back/)
     rendered.should match(/Delete/)
-
     rendered.should have_link('Edit')
     rendered.should have_link('Back')
     rendered.should have_button('Delete This Inspection Event')
