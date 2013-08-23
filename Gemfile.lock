@@ -318,7 +318,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeadmin
+  activeadmin!
   awesome_print
   aws-sdk
   bootstrap-sass
