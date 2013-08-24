@@ -2,17 +2,27 @@ require 'spec_helper'
 
 describe WeatherEventsController do
 
+  include Devise::TestHelpers
+
+  let(:user) {
+    FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
+  }
+
   def valid_attributes
-    {}
+    {
+      :id => 1,
+      :site_id => 1
+    }
   end
 
   def valid_session
-    {}
+    { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
   describe "GET index" do
     it "assigns all weather_events as @weather_events" do
-      get :index, {}, valid_session
+      get :index, {}
       expect(assigns(:weather_events)).to eq(WeatherEvent.all)
     end
   end
