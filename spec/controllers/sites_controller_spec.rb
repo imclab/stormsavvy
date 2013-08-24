@@ -26,12 +26,15 @@ describe SitesController do
   end
 
   def valid_session
-    {}
+    { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
   before(:each) do
     @user = FactoryGirl.create(
       :user,
+      :email => 'demo@stormsavvy.com',
+      :password => 'kharmeleon',
+      :password_confirmation => 'kharmeleon'
     )
     @project = FactoryGirl.create(
       :project,
