@@ -21,6 +21,7 @@ describe "SamplingEvents" do
     end
 
     it "creates and destroys new sampling event" do
+      login_as(user, :scope => :user)
       visit '/sampling_events/new'
       fill_in 'Site', :with => '1'
       click_button 'Save'
