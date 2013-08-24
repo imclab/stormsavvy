@@ -24,7 +24,7 @@ describe "homepage" do
     end
 
     it "signs in as another user" do
-      visit '/users/sign_in'
+      visit user_session_path
       fill_in 'Email', :with => 'barney@stormsavvy.com'
       fill_in 'Password', :with => 'foobarbaz'
       click_button 'Sign in'
