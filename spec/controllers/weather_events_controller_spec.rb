@@ -6,14 +6,15 @@ describe WeatherEventsController do
 
   let(:user) {
     FactoryGirl.create(:user)
-    login_as(user, :scope => :user)
+    # login_as(user, :scope => :user)
   }
 
+  before :each do
+    sign_in user
+  end
+
   def valid_attributes
-    {
-      :id => 1,
-      :site_id => 1
-    }
+    {}
   end
 
   def valid_session
