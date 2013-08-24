@@ -3,22 +3,15 @@ require 'spec_helper'
 describe "SamplingEvents" do
   let(:user) {
     FactoryGirl.create(:user)
-    login_as(@user, :scope => :user)
   }
 
   let(:site) {
     FactoryGirl.create(:site, :id => 1)
   }
 
-  # before :each do
-  #   @user = FactoryGirl.create(
-  #     :user
-  #   )
-  #   login_as(@user, :scope => :user)
-  # end
-
   describe 'sampling events page' do
     it "renders correct page" do
+      login_as(user, :scope => :user)
       visit '/sampling_events'
       page.should have_text('Sampling Type')
       page.should have_text('Sampling Date')
