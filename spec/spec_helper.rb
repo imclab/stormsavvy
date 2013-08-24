@@ -10,6 +10,7 @@ require 'spork'
 
 include Warden::Test::Helpers
 Warden.test_mode!
+Warden.test_reset!
 
 Spork.prefork do
 end
