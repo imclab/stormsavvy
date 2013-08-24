@@ -32,7 +32,7 @@ describe "homepage" do
     end
 
     it "renders correct links and pages after login" do
-      visit '/users/sign_in' 
+      visit user_session_path
       fill_in 'Email', :with => 'demo@stormsavvy.com'
       fill_in 'Password', :with => 'savvy_demo'
       click_button 'Sign in'
