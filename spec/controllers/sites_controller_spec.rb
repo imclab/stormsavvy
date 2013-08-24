@@ -2,6 +2,13 @@ require 'spec_helper'
 
 describe SitesController do
 
+  include Devise::TestHelpers
+
+  let(:user) {
+    FactoryGirl.create(:user)
+    # login_as(user, :scope => :user)
+  }
+
   def valid_attributes
     {
       :zipcode => 94530,
