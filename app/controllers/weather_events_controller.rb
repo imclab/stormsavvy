@@ -1,4 +1,7 @@
 class WeatherEventsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /weather_events
   # GET /weather_events.json
   def index
