@@ -94,7 +94,7 @@ describe ProjectsController do
     describe "with invalid params" do
       it "assigns a newly created but unsaved project as @project" do
         # Trigger the behavior that occurs when invalid params are submitted
-        sign_in @user
+        # sign_in @user
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => {}}
         assigns(:project).should be_a_new(Project)
