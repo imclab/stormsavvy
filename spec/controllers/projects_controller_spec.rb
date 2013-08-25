@@ -6,11 +6,9 @@ describe ProjectsController do
 
   let(:user) {
     FactoryGirl.create(:user)
-    # login_as(user, :scope => :user)
   }
 
   before(:each) do
-    # @user = FactoryGirl.create(:user)
     sign_in user
   end
 
