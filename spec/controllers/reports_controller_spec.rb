@@ -150,7 +150,6 @@ describe ReportsController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved report as @report'" do
-        # Trigger the behavior that occurs when invalid params are submitted
         Report.any_instance.stub(:save).and_return(false)
         post :create, {:report => {}}, valid_session
         assigns(:report).should be_a_new(Report)
