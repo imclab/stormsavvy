@@ -107,7 +107,6 @@ describe ReportsController do
 
     describe 'with invalid params' do
       it "re-renders the 'new' template" do
-        sign_in current_user
         Report.any_instance.stub(:save).and_return(false)
         get :new, {:report => {}}, valid_session
         response.should render_template('new')
