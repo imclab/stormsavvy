@@ -2,6 +2,18 @@ require 'spec_helper'
 
 describe DashboardController do
 
+  include Devise::TestHelpers
+
+  let(:user) {
+    FactoryGirl.create(:user)
+    # login_as(user, :scope => :user)
+  }
+
+  before :each do
+    sign_in user
+  end
+
+
   before(:each) do
     # @current_user = FactoryGirl.build(:current_user)
     # @other_user = FactoryGirl.build(:other_user)
