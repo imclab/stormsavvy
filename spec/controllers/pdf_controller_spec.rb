@@ -1,6 +1,18 @@
 require 'spec_helper'
 
 describe PdfController do
+
+  include Devise::TestHelpers
+
+  let(:user) {
+    FactoryGirl.create(:user)
+    # login_as(user, :scope => :user)
+  }
+
+  before :each do
+    sign_in user
+  end
+
   it "renders methods with 200 code" do
     get :CEM2030
     response.code.should eq("200")
