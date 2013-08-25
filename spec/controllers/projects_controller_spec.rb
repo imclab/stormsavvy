@@ -173,9 +173,9 @@ describe ProjectsController do
       end
 
       it "re-renders the 'edit' template" do
-        sign_in @user
+        # sign_in @user
         #project = Project.create! valid_attributes
-        project = @user.projects.create valid_attributes
+        project = user.projects.create valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Project.any_instance.stub(:save).and_return(false)
         put :update, {:id => project.to_param, :project => {}}
