@@ -157,14 +157,12 @@ describe ReportsController do
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
         Report.any_instance.stub(:save).and_return(false)
         post :create, {:report => {}}, valid_session
         response.should render_template("new")
       end
 
       it "responds with flash message" do
-        sign_in current_user
         Report.any_instance.stub(:save).and_return(false)
         post :create, {:report => {}}, valid_session
         # post :create, {:site => valid_attributes, :project_id => @project.id}
