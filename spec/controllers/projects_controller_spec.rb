@@ -37,9 +37,9 @@ describe ProjectsController do
 
   describe "GET show" do
     it "assigns the requested project as @project" do
-      sign_in @user
-      #project = Project.create! valid_attributes
-      project = @user.projects.create! valid_attributes
+      # sign_in @user
+      # project = Project.create! valid_attributes
+      project = user.projects.create! valid_attributes
       get :show, {:id => project.to_param}
       assigns(:project).should eq(project)
     end
