@@ -57,7 +57,7 @@ describe "homepage" do
   describe 'signup page' do
     it "signs up new user" do
       visit '/users/sign_up'
-      fill_in 'Email', :with => 'walter@stormsavvy.com'
+      fill_in 'Email', :with => 'demo2@stormsavvy.com'
       fill_in 'Password', :with => 'automate_workflow'
       fill_in 'Password confirmation', :with => 'automate_workflow'
       click_button 'Sign up'
