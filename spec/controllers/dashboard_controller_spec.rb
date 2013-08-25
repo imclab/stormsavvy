@@ -261,14 +261,14 @@ describe DashboardController do
 
   describe "#pending_reports" do
     it "returns pending reports to current user" do
-      sign_in @current_user
+      # sign_in @current_user
       controller.stub!(:pending_reports).and_return(@pending_reports)
       @pending_reports.should include(@pending_report)
       @pending_reports.should_not include(@completed_report)
     end
 
     it "returns correct reports to each user" do
-      sign_in @current_user
+      # sign_in @current_user
       controller.stub!(:pending_reports).and_return(@pending_reports)
       @current_site.reports.all.should include(@pending_report)
       @current_site.reports.all.should_not include(@other_report)
