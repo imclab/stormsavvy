@@ -182,7 +182,6 @@ describe ProjectsController do
     end
 
     it "responds with flash message" do
-      # sign_in @user
       post :create, {:project => valid_attributes}
       flash[:notice].should == "Project was successfully created."
     end
