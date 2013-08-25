@@ -7,10 +7,8 @@ Warden.test_mode!
 describe "homepage" do
 
   let!(:user) { FactoryGirl.create(
-      :user,
-      :email => 'demo@stormsavvy.com',
-      :password => 'savvy_demo',
-      :password_confirmation => 'savvy_demo'
+      :user
+      # :user,
     )
   }
 
