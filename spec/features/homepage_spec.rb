@@ -30,11 +30,17 @@ describe "homepage" do
     end
 
     it "renders correct links and pages after login" do
+      FactoryGirl.create(
+        :user,
+        :email => 'demo@stormsavvy.com',
+        :password => 'savvy_demo',
+        :password_confirmation => 'savvy_demo'
+      )
+
       visit user_session_path
       fill_in 'Email', :with => 'demo@stormsavvy.com'
       fill_in 'Password', :with => 'savvy_demo'
       click_button 'Sign in'
-
       page.should have_content 'Signed in successfully.'
 
       click_link "Inspections"
