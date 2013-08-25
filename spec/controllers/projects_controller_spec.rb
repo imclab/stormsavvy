@@ -2,6 +2,18 @@ require 'spec_helper'
 
 describe ProjectsController do
 
+  include Devise::TestHelpers
+
+  let(:user) {
+    FactoryGirl.create(:user)
+    # login_as(user, :scope => :user)
+  }
+
+  before(:each) do
+    # @user = FactoryGirl.create(:user)
+    sign_in user
+  end
+
   def valid_attributes
     {
       :name => 'My Project',
