@@ -144,27 +144,22 @@ describe ProjectsController do
 
     describe "with invalid params" do
       it "assigns the project as @project" do
-        # sign_in @user
-        #project = Project.create! valid_attributes
+        # project = Project.create! valid_attributes
         project = user.projects.create valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         Project.any_instance.stub(:save).and_return(false)
         put :update, {:id => project.to_param, :project => {}}
         assigns(:project).should eq(project)
       end
 
       it "re-renders the 'edit' template" do
-        # sign_in @user
-        #project = Project.create! valid_attributes
+        # project = Project.create! valid_attributes
         project = user.projects.create valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         Project.any_instance.stub(:save).and_return(false)
         put :update, {:id => project.to_param, :project => {}}
         response.should render_template("edit")
       end
 
       it "responds with flash message" do
-        # sign_in @user
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => {}}
         flash[:error].should == "Error: See details below."
