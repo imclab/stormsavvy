@@ -263,7 +263,6 @@ describe SamplingEventsController do
     end
 
     it "responds with flash message" do
-      sign_in current_user
       sampling_event = SamplingEvent.create! valid_attributes
       delete :destroy, {:id => sampling_event.to_param}, valid_session
       flash[:notice].should == 'Sampling event was successfully deleted.'
