@@ -4,6 +4,7 @@ class Report < ActiveRecord::Base
   scope :completed, where(:status => "completed")
 
   belongs_to :site
+  # validates_presence_of :site_id
 
   attr_accessible :needs_attention,
     :completed,
