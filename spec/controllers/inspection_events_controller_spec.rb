@@ -252,7 +252,6 @@ describe InspectionEventsController do
     end
 
     it "responds with flash message" do
-      sign_in current_user
       inspection_event = InspectionEvent.create! valid_attributes
       delete :destroy, {:id => inspection_event.to_param}, valid_session
       flash[:notice].should == 'Inspection event was successfully deleted.'
