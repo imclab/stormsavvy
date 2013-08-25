@@ -196,7 +196,7 @@ describe DashboardController do
 
   describe "#get_sites" do
     it "returns all sites to current user" do
-      sign_in @current_user
+      # sign_in @current_user
       controller.stub!(:get_sites).and_return(@all_sites)
       @all_sites.should include(@current_site)
       @all_sites.should include(@other_site)
