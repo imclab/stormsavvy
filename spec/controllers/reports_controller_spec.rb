@@ -132,16 +132,17 @@ describe ReportsController do
       end
 
       it "assigns newly created report as @report" do
+        post :create, {:report => valid_attributes}, valid_session
         assigns(:report).should be_a(Report)
         assigns(:report).should be_persisted
       end
 
       it "redirects to the created inspection_event" do
+        post :create, {:report => valid_attributes}, valid_session
         response.should redirect_to(Report.last)
       end
 
       it "responds with flash message" do
-        sign_in current_user
         post :create, {:report => valid_attributes}, valid_session
         flash[:notice].should == "Report was successfully created."
       end
