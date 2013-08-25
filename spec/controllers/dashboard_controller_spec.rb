@@ -102,17 +102,9 @@ describe DashboardController do
     end
   end
 
-  describe "GET 'index' for non-signed in user" do
-    it "returns http success" do
-      sign_out @current_user
-      get :index
-      response.should redirect_to index_path
-    end
-  end
-
   describe "dashboard variables: users, projects and sites" do
     it 'returns current projects and sites' do
-      sign_in @current_user
+      # sign_in @current_user
       @current_projects.should == @current_user.projects.all
       @current_projects.should_not include(@other_projects)
       @current_projects.should_not be_nil
