@@ -2,6 +2,14 @@ require 'spec_helper'
 require 'current_user_object'
 
 describe InspectionEventsController do
+
+  include Devise::TestHelpers
+
+  let(:user) {
+    FactoryGirl.create(:user)
+    # login_as(user, :scope => :user)
+  }
+
   def valid_attributes
     {
       :site_id => 1,
