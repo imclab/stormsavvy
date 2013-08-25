@@ -24,11 +24,7 @@ describe ProjectsController do
   end
 
   def valid_session
-    {}
-  end
-
-  before(:each) do
-    @user = FactoryGirl.create(:user)
+    { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
   describe "GET index" do
