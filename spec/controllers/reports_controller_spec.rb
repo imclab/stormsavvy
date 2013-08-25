@@ -1,12 +1,23 @@
 require 'spec_helper'
 
 describe ReportsController do
+
+  include Devise::TestHelpers
+
+  let(:user) {
+    FactoryGirl.create(:user)
+  }
+
+  before :each do
+    sign_in user
+  end
+
   def valid_attributes
     {}
   end
 
   def valid_session
-    {}
+    { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
   let!(:current_user) { FactoryGirl.build(
