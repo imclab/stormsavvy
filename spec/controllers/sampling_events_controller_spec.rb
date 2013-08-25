@@ -174,21 +174,18 @@ describe SamplingEventsController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved sampling_event as @sampling_event" do
-        # Trigger the behavior that occurs when invalid params are submitted
         SamplingEvent.any_instance.stub(:save).and_return(false)
         post :create, {:sampling_event => { "site_id" => "invalid value" }}, valid_session
         assigns(:sampling_event).should be_a_new(SamplingEvent)
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
         SamplingEvent.any_instance.stub(:save).and_return(false)
         post :create, {:sampling_event => {}}, valid_session
         response.should render_template("new")
       end
 
       it "responds with flash message" do
-        sign_in current_user
         SamplingEvent.any_instance.stub(:save).and_return(false)
         post :create, {:sampling_event => {}}, valid_session
         # post :create, {:site => valid_attributes, :project_id => @project.id}
