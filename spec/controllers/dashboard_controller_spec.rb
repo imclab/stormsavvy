@@ -170,7 +170,7 @@ describe DashboardController do
 
   describe "#get_projects" do
     it "returns all projects to current user" do
-      sign_in @current_user
+      # sign_in @current_user
       controller.stub!(:get_projects).and_return(@all_projects)
       @all_projects.should include(@current_project)
       @all_projects.should include(@other_project)
