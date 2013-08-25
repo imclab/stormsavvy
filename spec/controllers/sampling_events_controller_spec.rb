@@ -226,22 +226,19 @@ describe SamplingEventsController do
     describe "with invalid params" do
       it "assigns the sampling_event as @sampling_event" do
         sampling_event = SamplingEvent.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         SamplingEvent.any_instance.stub(:save).and_return(false)
         put :update, {:id => sampling_event.to_param, :sampling_event => { "site_id" => "invalid value" }}, valid_session
         assigns(:sampling_event).should eq(sampling_event)
       end
-=begin
+
       it "re-renders the 'edit' template" do
         sampling_event = SamplingEvent.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         SamplingEvent.any_instance.stub(:save).and_return(false)
         put :update, {:id => sampling_event.to_param, :sampling_event => { "site_id" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
-=end
+
       it "responds with flash message" do
-        sign_in current_user
         sampling_event = SamplingEvent.create! valid_attributes
         SamplingEvent.any_instance.stub(:save).and_return(false)
         put :update, {:id => sampling_event.to_param, :sampling_event => {}}, valid_session
