@@ -5,6 +5,7 @@ class InspectionEvent < ActiveRecord::Base
 
   belongs_to :site
   accepts_nested_attributes_for :site
+  # validates_presence_of :site_id
 
   attr_accessible :inspected_by,
     :inspection_date,
