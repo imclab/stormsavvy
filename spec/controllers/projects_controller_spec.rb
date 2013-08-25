@@ -183,7 +183,7 @@ describe ProjectsController do
       end
 
       it "responds with flash message" do
-        sign_in @user
+        # sign_in @user
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => {}}
         flash[:error].should == "Error: See details below."
