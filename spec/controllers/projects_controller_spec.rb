@@ -65,27 +65,27 @@ describe ProjectsController do
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Project" do
-        sign_in @user
+        # sign_in @user
         expect {
           post :create, {:project => valid_attributes}
         }.to change(Project, :count).by(1)
       end
 
       it "assigns a newly created project as @project" do
-        sign_in @user
+        # sign_in @user
         post :create, {:project => valid_attributes}
         assigns(:project).should be_a(Project)
         assigns(:project).should be_persisted
       end
 
       it "redirects to the created project" do
-        sign_in @user
+        # sign_in @user
         post :create, {:project => valid_attributes}
         response.should redirect_to(Project.last)
       end
 
       it "responds with flash message" do
-        sign_in @user
+        # sign_in @user
         post :create, {:project => valid_attributes}
         flash[:notice].should == "Project was successfully created."
       end
