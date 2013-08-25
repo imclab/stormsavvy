@@ -176,10 +176,6 @@ describe ReportsController do
     describe "with valid params" do
       it "updates requested report" do
         report = Report.create! valid_attributes
-        # Assuming there are no other inspection_events in the database, this
-        # specifies that the InspectionEvent created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
         Report.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, {:id => report.to_param, :report => {'these' => 'params'}}, valid_session
       end
