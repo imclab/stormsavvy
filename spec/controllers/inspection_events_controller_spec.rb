@@ -151,7 +151,6 @@ describe InspectionEventsController do
       end
 
       it "responds with flash message" do
-        sign_in current_user
         post :create, {:inspection_event => valid_attributes}, valid_session
         flash[:notice].should == "Inspection event was successfully created."
       end
