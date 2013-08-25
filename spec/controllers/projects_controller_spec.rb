@@ -55,8 +55,8 @@ describe ProjectsController do
   describe "GET edit" do
     it "assigns the requested project as @project" do
       #project = Project.create! valid_attributes
-      sign_in @user
-      project = @user.projects.create! valid_attributes
+      # sign_in @user
+      project = user.projects.create! valid_attributes
       get :edit, {:id => project.to_param}
       assigns(:project).should eq(project)
     end
