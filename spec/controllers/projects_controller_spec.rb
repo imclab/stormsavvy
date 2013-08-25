@@ -85,31 +85,24 @@ describe ProjectsController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved project as @project" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        # sign_in @user
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => {}}
         assigns(:project).should be_a_new(Project)
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        # sign_in @user
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => {}}
         response.should render_template("new")
       end
 
       it "responds with flash message" do
-        # sign_in @user
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => {}}
         flash[:error].should == "Error: See details below."
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        # sign_in @user
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => {}}
         post :create, {:project => valid_attributes}
