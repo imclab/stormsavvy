@@ -1,10 +1,25 @@
 require 'spec_helper'
 
 include ApplicationHelper
+# include Devise::TestHelpers
 include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Dashboard" do
+=begin
+  let(:user) {
+    FactoryGirl.create(:user)
+    # login_as(user, :scope => :user)
+  }
+
+  before :each do
+    sign_in user
+  end
+=end
+  def valid_session
+    { "warden.user.user.key" => session["warden.user.user.key"] }
+  end
+
   let!(:current_user) { FactoryGirl.build(
       :user,
       :id => 1,
