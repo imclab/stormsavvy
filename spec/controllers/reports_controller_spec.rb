@@ -124,10 +124,6 @@ describe ReportsController do
   end
 
   describe "POST create" do
-    before :each do
-      post :create, {:report => valid_attributes}, valid_session
-    end
-
     describe "with valid params" do
       it "creates new Report" do
         expect {
