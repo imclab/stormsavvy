@@ -203,7 +203,6 @@ describe ReportsController do
     describe "with invalid params" do
       it "assigns report as @report" do
         report = Report.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         Report.any_instance.stub(:save).and_return(false)
         put :update, {:id => report.to_param, :report => {}}, valid_session
         assigns(:report).should eq(report)
