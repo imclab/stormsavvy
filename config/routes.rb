@@ -55,6 +55,7 @@ Stormsavvy::Application.routes.draw do
   match '/team',      :to => "pages#team",           :as => :team
   match '/pdf',       :to => "pages#pdf",            :as => :pdf
 
-  root :to => "dashboard#index"
+  root :to => "pages#index"
+  # root :to => "dashboard#index"
 
 end
