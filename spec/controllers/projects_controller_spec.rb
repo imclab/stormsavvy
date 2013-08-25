@@ -131,31 +131,31 @@ describe ProjectsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested project" do
-        sign_in @user
+        # sign_in @user
         #project = Project.create! valid_attributes
-        project = @user.projects.create valid_attributes
+        project = user.projects.create valid_attributes
         Project.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, {:id => project.to_param, :project => {'these' => 'params'}}
       end
 
       it "assigns the requested project as @project" do
-        sign_in @user
+        # sign_in @user
         #project = Project.create! valid_attributes
-        project = @user.projects.create valid_attributes
+        project = user.projects.create valid_attributes
         put :update, {:id => project.to_param, :project => valid_attributes}
         assigns(:project).should eq(project)
       end
 
       it "redirects to the project" do
-        sign_in @user
+        # sign_in @user
         #project = Project.create! valid_attributes
-        project = @user.projects.create valid_attributes
+        project = user.projects.create valid_attributes
         put :update, {:id => project.to_param, :project => valid_attributes}
         response.should redirect_to(project)
       end
 
       it "responds with flash message" do
-        sign_in @user
+        # sign_in @user
         post :create, {:project => valid_attributes}
         flash[:notice].should == "Project was successfully created."
       end
