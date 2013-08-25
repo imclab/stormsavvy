@@ -211,14 +211,12 @@ describe ReportsController do
 
       it "re-renders the 'edit' template" do
         report = Report.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         Report.any_instance.stub(:save).and_return(false)
         put :update, {:id => report.to_param, :report => {}}, valid_session
         response.should render_template("edit")
       end
 
       it "responds with flash message" do
-        sign_in current_user
         report = Report.create! valid_attributes
         Report.any_instance.stub(:save).and_return(false)
         put :update, {:id => report.to_param, :report => {}}, valid_session
