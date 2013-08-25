@@ -22,7 +22,7 @@ describe InspectionEventsController do
   end
 
   def valid_session
-    {}
+    { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
   let!(:current_user) { FactoryGirl.build(
