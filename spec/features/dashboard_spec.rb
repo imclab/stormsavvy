@@ -141,9 +141,6 @@ describe "Dashboard" do
     )
   }
 
-  before(:each) do
-  end
-
   describe "dashboard/projects" do
     before(:each) do
       login_as(current_user, :scope => :user)
