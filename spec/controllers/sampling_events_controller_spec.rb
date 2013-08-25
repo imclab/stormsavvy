@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe SamplingEventsController do
+
+  include Devise::TestHelpers
+
+  let(:user) {
+    FactoryGirl.create(:user)
+  }
+
   def valid_attributes
     {
       :site_id => 1,
