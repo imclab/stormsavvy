@@ -216,7 +216,6 @@ describe SamplingEventsController do
       end
 
       it "responds with flash message" do
-        sign_in current_user
         sampling_event = SamplingEvent.create! valid_attributes
         put :update, {:id => sampling_event.to_param, :sampling_event => valid_attributes}, valid_session
         # post :create, {:site => valid_attributes, :project_id => @project.id}
