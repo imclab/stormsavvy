@@ -194,10 +194,8 @@ describe ReportsController do
       end
 
       it "responds with flash message" do
-        sign_in current_user
         report = Report.create! valid_attributes
         put :update, {:id => report.to_param, :report => valid_attributes}, valid_session
-        # post :create, {:site => valid_attributes, :project_id => @project.id}
         flash[:notice].should == "Report was successfully updated."
       end
     end
