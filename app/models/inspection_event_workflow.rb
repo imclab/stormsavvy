@@ -3,6 +3,8 @@ require 'time'
 
 class InspectionEventWorkflow < ActiveRecord::Base
 
+  belongs_to :site
+
   attr_accessible :site,
     :cem2023,
     :cem2024,
