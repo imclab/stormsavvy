@@ -5,13 +5,14 @@ class InspectionEvent < ActiveRecord::Base
 
   belongs_to :site
   accepts_nested_attributes_for :site
-  # validates :site_id, :presence => true
+
+  attr_writer :site_id
+  validates :site_id, :presence => true
 
   attr_accessible :inspected_by,
     :inspection_date,
     :inspection_description,
     :inspection_type,
-    :site_id,
     :submitted_by,
     :status,
     :completed,
