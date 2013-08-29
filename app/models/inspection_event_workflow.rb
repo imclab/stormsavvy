@@ -6,10 +6,10 @@ class InspectionEventWorkflow < ActiveRecord::Base
   belongs_to :site
   accepts_nested_attributes_for :site
 
-  attr_writer :site_id
-  validates :site_id, :presence => true
+  # validates :site_id, :presence => true
 
   attr_accessible :site,
+    :site_id,
     :cem2023,
     :cem2024,
     :cem2030,
