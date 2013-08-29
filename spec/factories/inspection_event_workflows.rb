@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :inspection_event_workflow do
+    site_id 1
     hours_before_rain 1
     reap false
     cem2023 false
