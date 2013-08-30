@@ -31,7 +31,6 @@ describe InspectionEvent do
   it "creates a new instance given valid attributes" do
     site = Site.new
     @ie = InspectionEvent.new(
-      @attr,
       :site => site,
       :site_id => site.object_id
     )
