@@ -29,19 +29,27 @@ describe InspectionEvent do
   end
 
   it "creates a new instance given valid attributes" do
-    @ie = InspectionEvent.new(@attr)
+    site = Site.new
+    @ie = InspectionEvent.new(
+      @attr,
+      :site => site,
+      :site_id => site.object_id
+    )
     @ie.save
     @ie.should be_valid
   end
 
   describe "nested scope attributes" do
     it 'has valid needs_attention attribute' do
-      ie = InspectionEvent.needs_attention.build
+      ie = InspectionEvent.needs_attention.build(
+        :site => @site,
+        :site_id => @site.object_id
+      )
       ie.should be_valid
     end
 
     it 'has valid completed attribute' do
-      ie = FactoryGirl.create(:inspection_event)
+      # ie = FactoryGirl.create(:inspection_event)
       @site.inspection_events.should_not be_nil
     end
   end
