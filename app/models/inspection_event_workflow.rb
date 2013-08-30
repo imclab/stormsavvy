@@ -105,6 +105,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2023
     InspectionEvent.create(
+      :site => @site,
+      :site_id => @site.object_id,
       :inspection_date => Date.today,
       :inspection_type => "CEM2023",
       :completed => false,
@@ -137,6 +139,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2024
     InspectionEvent.create(
+      :site => @site,
+      :site_id => @site.object_id,
       :inspection_date => Date.today,
       :inspection_type => "CEM2024",
       :completed => false
@@ -158,6 +162,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2034
     InspectionEvent.create(
+      :site => @site,
+      :site_id => @site.object_id,
       :inspection_date => Date.today,
       :inspection_type => "CEM2034",
       :completed => false
@@ -179,6 +185,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2035
     InspectionEvent.create(
+      :site => @site,
+      :site_id => @site.object_id,
       :inspection_date => Date.today,
       :inspection_type => "CEM2035",
       :completed => false
@@ -200,6 +208,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_cem2040
     InspectionEvent.create(
+      :site => @site,
+      :site_id => @site.object_id,
       :inspection_date => Date.today,
       :inspection_type => "CEM2040",
       :completed => false
