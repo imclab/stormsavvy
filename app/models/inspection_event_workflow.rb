@@ -77,6 +77,8 @@ class InspectionEventWorkflow < ActiveRecord::Base
 
   def prepare_inspection_event
     InspectionEvent.create(
+      :site => @site,
+      :site_id => @site.object_id,
       :inspection_date => Date.today,
       :inspection_type => "CEM2030",
       :completed => false
