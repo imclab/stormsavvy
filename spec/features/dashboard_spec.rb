@@ -216,6 +216,7 @@ describe "Dashboard" do
 
       it 'creates new inspection event' do
         click_link 'New Inspection Event'
+        fill_in 'Site', :with => 1
         click_button 'Save'
         page.should have_text('Inspection event was successfully created.')
       end
