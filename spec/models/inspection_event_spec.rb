@@ -3,8 +3,12 @@ require 'spec_helper'
 describe InspectionEvent do
 
   before :each do
-  	@site= FactoryGirl.create(:site)
-  	@ie = FactoryGirl.create(:inspection_event)
+  	@site = FactoryGirl.create(:site)
+  	@ie = FactoryGirl.create(
+      :inspection_event,
+      :site => @site,
+      :site_id => @site.object_id
+    )
   end
 
   it "has correct project attributes" do
