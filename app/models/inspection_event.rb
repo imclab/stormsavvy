@@ -4,11 +4,12 @@ class InspectionEvent < ActiveRecord::Base
   scope :completed, where(:completed => true)
 
   belongs_to :site
-  # accepts_nested_attributes_for :site
+  accepts_nested_attributes_for :site
 
   validates :site_id, :presence => true
 
-  attr_accessible :inspected_by,
+  attr_accessible :site,
+    :inspected_by,
     :site_id,
     :inspection_date,
     :inspection_description,
