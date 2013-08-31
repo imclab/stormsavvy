@@ -138,8 +138,16 @@ describe DashboardController do
     end
 
     it "returns inspection event if present to current user" do
-      ie1 = InspectionEvent.create(:completed => true)
-      ie2 = InspectionEvent.create(:completed => true)
+      ie1 = InspectionEvent.create(
+        :site => @current_site,
+        :site_id => @current_site.object_id,
+        :completed => true
+      )
+      ie2 = InspectionEvent.create(
+        :site => @other_site,
+        :site_id => @other_site.object_id,
+        :completed => true
+      )
 
       inspection_events = InspectionEvent.completed
       inspection_events.blank?.should == false
