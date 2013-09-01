@@ -10,5 +10,4 @@ class DashboardController < ApplicationController
       @pending_reports = @sites.collect{|s| s.reports.select{ |r| r.status == 'needs_attention' } }.flatten
     end
   end
-
 end
