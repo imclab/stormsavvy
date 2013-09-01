@@ -237,7 +237,7 @@ describe ReportsController do
     it "redirects to the reports list" do
       report = Report.create! valid_attributes
       delete :destroy, :id => report #{:id => report.to_param}, valid_session
-      response.should redirect_to(reports_url)
+      response.should redirect_to(reports_path)
     end
 
     it "responds with flash message" do

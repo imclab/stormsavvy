@@ -285,7 +285,7 @@ describe SitesController do
         :id => site.to_param,
         :project_id => @project.id
       }, valid_session
-      response.should redirect_to(sites_url)
+      response.should redirect_to(sites_path)
     end
 
     it "responds with flash message" do

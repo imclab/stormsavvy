@@ -248,7 +248,7 @@ describe InspectionEventsController do
     it "redirects to the inspection_events list" do
       inspection_event = InspectionEvent.create! valid_attributes
       delete :destroy, {:id => inspection_event.to_param}, valid_session
-      response.should redirect_to(inspection_events_url)
+      response.should redirect_to(inspection_events_path)
     end
 
     it "responds with flash message" do

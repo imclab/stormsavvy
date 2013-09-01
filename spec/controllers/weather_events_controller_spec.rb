@@ -143,7 +143,7 @@ describe WeatherEventsController do
     it "redirects to the weather_events list" do
       weather_event = WeatherEvent.create! valid_attributes
       delete :destroy, {:id => weather_event.to_param}, valid_session
-      response.should redirect_to(weather_events_url)
+      response.should redirect_to(weather_events_path)
     end
   end
 

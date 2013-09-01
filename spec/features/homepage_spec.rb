@@ -13,14 +13,6 @@ describe "homepage" do
   }
 
   describe 'signin page' do
-    it "renders landing page text" do
-      visit '/index'
-      page.should have_text('Sign in')
-      page.should have_text('Making SWPPP Easy')
-      page.should have_text('Free Email Alerts & Reports')
-      page.should have_text('Sign Up Now For Free Access')
-    end
-
     it "signs in as another user" do
       visit user_session_path
       fill_in 'Email', :with => 'barney@stormsavvy.com'
@@ -50,7 +42,7 @@ describe "homepage" do
       current_path.should == edit_user_registration_path
 
       click_link "Sign out"
-      current_path.should == '/users/sign_in'
+      current_path.should == '/index'
     end
   end
 
@@ -66,6 +58,15 @@ describe "homepage" do
   end
 
   describe 'homepage' do
+
+    it "renders landing page text" do
+      visit index_path
+      page.should have_text('Sign in')
+      page.should have_text('Making SWPPP Easy')
+      page.should have_text('Free Email Alerts & Reports')
+      page.should have_text('Sign Up Now For Free Access')
+    end
+
     it "renders correct links and pages from home page" do
       visit '/index'
       click_link "Privacy"

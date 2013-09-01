@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130829033045) do
+ActiveRecord::Schema.define(:version => 20130901004225) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -118,8 +118,9 @@ ActiveRecord::Schema.define(:version => 20130829033045) do
     t.date     "startdate"
     t.date     "finishdate"
     t.boolean  "active"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "sites_count", :default => 0, :null => false
   end
 
   create_table "rain_event_workflows", :force => true do |t|

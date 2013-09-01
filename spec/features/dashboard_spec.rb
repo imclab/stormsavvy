@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 include ApplicationHelper
-# include Devise::TestHelpers
+include Devise::TestHelpers
 include Warden::Test::Helpers
 Warden.test_mode!
 
@@ -144,11 +144,10 @@ describe "Dashboard" do
   describe "dashboard/projects" do
     before(:each) do
       login_as(current_user, :scope => :user)
-      visit '/'
+      visit root_path
     end
 
     it "renders dashboard" do
-      current_path.should == '/'
       page.should have_text('Storm Savvy')
       page.should have_text('Inspections')
       page.should have_text('Sampling')
@@ -166,7 +165,7 @@ describe "Dashboard" do
 
     it 'shows correct project and site to user' do
       login_as(current_user, :scope => :user)
-      visit '/'
+      visit root_path
       page.should have_text('eb park and rec')
       page.should have_text('# of Sites: 2')
       page.should have_text('ec jungle gym')
@@ -174,7 +173,7 @@ describe "Dashboard" do
       page.should_not have_text('No active projects')
 
       login_as(other_user, :scope => :user)
-      visit '/'
+      visit root_path
       page.should have_text('berkeley usd')
       page.should have_text('# of Sites: 2')
       page.should have_text('berkeley high')
@@ -187,12 +186,12 @@ describe "Dashboard" do
     describe 'weather forecast' do
       it 'shows correct site to user' do
         login_as(current_user, :scope => :user)
-        visit '/'
+        visit root_path
         page.should have_text('ec jungle gym')
         page.should_not have_text('No active projects')
 
         login_as(other_user, :scope => :user)
-        visit '/'
+        visit root_path
         page.should have_text('berkeley high')
         page.should_not have_text('No active projects')
       end
@@ -201,7 +200,7 @@ describe "Dashboard" do
     describe 'upcoming inspections' do
       before(:each) do
         login_as(current_user, :scope => :user)
-        visit '/'
+        visit root_path
         click_link 'Inspections'
       end
 
@@ -223,13 +222,13 @@ describe "Dashboard" do
 
       it 'shows correct inspection event to user' do
         login_as(current_user, :scope => :user)
-        visit '/'
+        visit root_path
         page.should have_text('CEM2030 for ec slide on 2013-04-01 00:00:00 UTC')
         page.should_not have_text('CEM2030 for ec jungle gym on 2013-04-01 00:00:00 UTC')
         page.should_not have_text('No pending inspections.')
 
         login_as(other_user, :scope => :user)
-        visit '/'
+        visit root_path
         page.should have_text('CEM2031 for peoples park on 2013-04-01 00:00:00 UTC')
         page.should_not have_text('CEM2031 for berkeley high on 2013-04-01 00:00:00 UTC')
         page.should_not have_text('No pending inspections.')
@@ -239,13 +238,13 @@ describe "Dashboard" do
     describe 'pending reports' do
       it 'shows correct pending reports to user' do
         login_as(current_user, :scope => :user)
-        visit '/'
+        visit root_path
         page.should have_text('Report for ec slide')
         page.should_not have_text('Report for ec jungle gym')
         page.should_not have_text('No active projects')
 
         login_as(other_user, :scope => :user)
-        visit '/'
+        visit root_path
         page.should have_text('Report for peoples park')
         page.should_not have_text('Report for berkeley high')
         page.should_not have_text('No active projects')
