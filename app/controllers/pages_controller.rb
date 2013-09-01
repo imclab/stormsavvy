@@ -3,9 +3,7 @@ class PagesController < ApplicationController
     :except => [:index, :about, :contact, :terms, :about_us, :privacy]
 
   def index
-    if user_signed_in?
-      redirect_to sites_path
-    end
+
   end
 
   def contact
