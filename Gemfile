@@ -27,6 +27,7 @@ gem 'unicorn'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'heroku'
+gem "unirest"
 
 group :development do
   gem 'therubyracer', :platforms => :ruby, :require => 'v8'
