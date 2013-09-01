@@ -13,7 +13,9 @@ class Site < ActiveRecord::Base
     :zipcode,
     :city,
     :exposed_area,
-    :project_attributes
+    :project_attributes,
+    :lat,
+    :lng
 
   belongs_to :project, counter_cache: true
   has_many :reports, :dependent => :destroy
@@ -59,9 +61,8 @@ class Site < ActiveRecord::Base
   end
 
   def save_geo_coordinates
-
-
-    self.update_attributes(lat: lat, lng: lng)
+    service = GeocoderService.new(zipcode: zipcode)
+    self.update_attributes(service.get_lat_lng)
   end
 
   def latlng
