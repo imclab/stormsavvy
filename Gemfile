@@ -13,7 +13,6 @@ gem 'json'
 gem 'carmen'
 gem 'activeadmin', github: "gregbell/active_admin"
 
-
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
