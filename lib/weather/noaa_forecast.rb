@@ -24,26 +24,15 @@ class NOAAForecast
     @interval = interval
   end
 
-  def seven_day_weather(zipcode)
+  def seven_day_weather
     @duration = 168
     @interval = 6
-
-    # comment back in when redis works
-    # if return_lat_long(@zipcode) == nil
-    #   latlong = get_lat_long(@zipcode)
-    #   return latlong
-    # else
-    #   latlong = get_lat_long(@zipcode)
-    #   return get_forecast(latlong)
-    # end
-    # set_lat_long(@zipcode)
-
-    latlong = get_lat_long(zipcode)
-    return get_forecast(latlong)
+    latlong = get_lat_long
+    get_forecast(latlong)
   end
 
-  def get_lat_long(zipcode)
-    lat_long ||= Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) do
+  def get_lat_long
+    lat_long ||= Rails.cache.fetch(@zipcode.to_s + '_lat_long', expires_in: 24.hours) do
       unless lat_long == [nil, nil]
         begin
           results = Geocoder.search(zipcode)
@@ -52,7 +41,7 @@ class NOAAForecast
           lat_long = [] << @lat << @lng
           puts "Geocoder API call: lat_long = #{lat_long}"
 
-          Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
+          Rails.cache.fetch(@zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
 
         rescue Exception => e
           # throws error on logger exception method
@@ -68,29 +57,7 @@ class NOAAForecast
     lat_long = [] << @lat << @lng
     return lat_long
 
-    # Original geocoder call
-    # results = Geocoder.search(zipcode)
-    # @lat = results[0].data["geometry"]["location"]["lat"]
-    # @lng = results[0].data["geometry"]["location"]["lng"]
-    # lat_long = [] << @lat << @lng
-    # return lat_long
-
-    # return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
   end
-
-  # def set_lat_long(zipcode)
-  #   $redis.set(zipcode.to_s + '_lat')
-  #   $redis.set(zipcode.to_s + '_long')
-  #   $redis.set(zipcode.to_s + '_lat', response[0])
-  #   $redis.set(zipcode.to_s + '_long', response[1])
-  # end
-
-  # def return_lat_long(zipcode)
-  #   lat = $redis.get(zipcode.to_s + '_lat')
-  #   long = $redis.get(zipcode.to_s + '_long')
-  #   lat_long = [lat.to_f, long.to_f]
-  #   return lat_long
-  # end
 
   def get_forecast(latlong)
     response = ping_noaa(latlong, @duration, @interval)
@@ -99,13 +66,13 @@ class NOAAForecast
 
   def get_pop(zipcode)
     nf = NOAAForecast.new(zipcode,168,6)
-    nf.seven_day_weather(zipcode)
+    nf.seven_day_weather
     pop = nf.pop
   end
 
   def get_qpf(zipcode)
     nf = NOAAForecast.new(zipcode,168,6)
-    nf.seven_day_weather(zipcode)
+    nf.seven_day_weather
     qpf = nf.qpf
   end
 
@@ -120,9 +87,6 @@ class NOAAForecast
 
   def get_pop_array(zipcode)
     pop_array = get_pop(zipcode)
-    # nf = NOAAForecast.new(94530,168,6)
-    # nf.seven_day_weather
-    # pop_array = nf.pop
     new_pop_array = []
     pop_array.each do |i|
       new_pop_array << { :weather => pop_array[i].to_s }
@@ -132,10 +96,7 @@ class NOAAForecast
   end
 
   def get_qpf_array(zipcode)
-    qpf_array = get_qpf(zipcode)
-    # nf = NOAAForecast.new(94530,168,6)
-    # nf.seven_day_weather
-    # qpf_array = nf.qpf
+    qpf_array = get_qpf(@zipcode)
     new_qpf_array = []
     qpf_array.each do |i|
       new_qpf_array << { :rainfall => qpf_array[i].to_s }
@@ -238,20 +199,9 @@ class NOAAForecast
     return pop_table_hash
   end
 
-  # def get_pt_hash
-  #   nf = NOAAForecast.new(94530,168,6)
-  #   nf.seven_day_weather(zipcode)
-  #   pop = nf.pop
-  #   pt = []
-  #   pop.each do |i|
-  #     pt << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
-  #   end
-  #   return pt
-  # end
-
   def get_forecast_array(zipcode)
     nf = NOAAForecast.new(zipcode,168,6)
-    pop = nf.seven_day_weather(zipcode)
+    pop = nf.seven_day_weather
     [
       { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0][0], :rainfall => pop[1][0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[0][1], :rainfall => pop[1][1] },
@@ -287,7 +237,7 @@ class NOAAForecast
 
   def forecast_by_zipcode(zipcode)
     nf = NOAAForecast.new(zipcode,168,6)
-    pop = nf.seven_day_weather(zipcode)
+    pop = nf.seven_day_weather
     [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0][0], :rainfall => pop[1][0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[0][1], :rainfall => pop[1][1] },

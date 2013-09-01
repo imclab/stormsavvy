@@ -49,7 +49,7 @@ AlertMailer.pester_admins(email).deliver
 
 zipcode = 94901
 nf = NOAAForecast.new(zipcode)
-forecast = nf.seven_day_weather(zipcode)
+forecast = nf.seven_day_weather
 
 time = Time.new
 values = time.to_a

@@ -109,7 +109,7 @@ describe DashboardHelper do
   describe '#chance_of_rain' do
     it "returns @max_rain" do
       zipcode = 94530
-      @nf2.seven_day_weather(zipcode)
+      @nf2.seven_day_weather
 
       # where is method called in noaa forecast?
       # @max_rain = nf.noaa_forecast[0][0..4].max
