@@ -11,8 +11,9 @@ gem 'pg'
 gem 'redis'
 gem 'json'
 gem 'carmen'
-gem 'activeadmin', :github => "gregbell/active_admin"
-gem 'rb-readline'
+gem 'activeadmin', github: "gregbell/active_admin"
+# gem 'activeadmin', :github => "gregbell/active_admin"
+# gem 'rb-readline'
 
 gem 'haml-rails'
 gem 'jquery-rails'
