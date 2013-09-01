@@ -178,7 +178,7 @@ describe ProjectsController do
     it "redirects to the projects list" do
       project = Project.create! valid_attributes
       delete :destroy, {:id => project.to_param}, valid_session
-      response.should redirect_to(projects_url)
+      response.should redirect_to(projects_path)
     end
 
     it "responds with flash message" do

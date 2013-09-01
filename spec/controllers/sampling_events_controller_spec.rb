@@ -259,7 +259,7 @@ describe SamplingEventsController do
     it "redirects to the sampling_events list" do
       sampling_event = SamplingEvent.create! valid_attributes
       delete :destroy, {:id => sampling_event.to_param}, valid_session
-      response.should redirect_to(sampling_events_url)
+      response.should redirect_to(sampling_events_path)
     end
 
     it "responds with flash message" do
