@@ -72,7 +72,7 @@ describe Project do
 
     it "should require a description" do
       @project.description = ''
-      @project.should_not be_valid  
+      @project.should_not be_valid
     end
 
     it "requires a starting date" do
@@ -98,7 +98,7 @@ describe Project do
       end
     end
 
-    context :site do 
+    context :site do
       it "should be associated with sites" do
         @project.should respond_to(:sites)
       end
@@ -126,11 +126,11 @@ describe Project do
       end
 
       it "should be able to delete an added site" do
-        precount = @project.sites.count
+        precount = @project.sites_count
         @project.sites << @site1
         @site1.save
         @site1.delete
-        @project.sites.count.should == precount
+        @project.sites_count.should == precount
       end
     end
   end

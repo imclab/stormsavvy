@@ -79,7 +79,7 @@ class WeatherEventsController < ApplicationController
     @weather_event.destroy
 
     respond_to do |format|
-      format.html { redirect_to weather_events_url }
+      format.html { redirect_to weather_events_path }
       format.json { head :no_content }
     end
   end

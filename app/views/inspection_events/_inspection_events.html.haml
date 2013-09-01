@@ -1,35 +1,36 @@
-%table.table.table-condensed
-  %tr
-    = link_to 'New Inspection Event', new_inspection_event_path, :class => 'btn'
-%table.table.table-condensed
-  %tr
-    %th Site ID
-    %th Site Name
-    %th Inspection Type
-    %th Inspection Description
-    %th Inspection Date
-    %th Submitted By
-    %th Inspected By
-    %th Attachment URL
-    %th
-    %th
-    %th
-
-  - @inspection_events.each do |inspection_event|
+.top-20
+  %table.table.table-condensed
     %tr
-      %td= inspection_event.site_id
-      /%td= inspection_event.site.name
-      %td= inspection_event.inspection_type
-      %td= inspection_event.inspection_description
-      %td= inspection_event.inspection_date
-      %td= inspection_event.submitted_by
-      %td= inspection_event.inspected_by
+      = link_to 'New Inspection Event', new_inspection_event_path, :class => 'btn'
+  %table.table.table-condensed
+    %tr
+      %th Site ID
+      %th Site Name
+      %th Inspection Type
+      %th Inspection Description
+      %th Inspection Date
+      %th Submitted By
+      %th Inspected By
+      %th Attachment URL
+      %th
+      %th
+      %th
 
-      - if inspection_event.attachment.url =~ /missing.png/
-        %td= link_to 'Upload Attachment', edit_inspection_event_path(inspection_event)
-      - else
-        %td= link_to "#{inspection_event.attachment.url}", inspection_event.attachment.url
+    - @inspection_events.each do |inspection_event|
+      %tr
+        %td= inspection_event.site_id
+        %td= inspection_event.site.name
+        %td= inspection_event.inspection_type
+        %td= inspection_event.inspection_description
+        %td= inspection_event.inspection_date
+        %td= inspection_event.submitted_by
+        %td= inspection_event.inspected_by
 
-      %td= link_to 'Show', inspection_event
-      %td= link_to 'Edit', edit_inspection_event_path(inspection_event)
-      %td= link_to 'Destroy', inspection_event, :confirm => 'Are you sure?', :method => :delete
+        - if inspection_event.attachment.url =~ /missing.png/
+          %td= link_to 'Upload Attachment', edit_inspection_event_path(inspection_event)
+        - else
+          %td= link_to "#{inspection_event.attachment.url}", inspection_event.attachment.url
+
+        %td= link_to 'Show', inspection_event
+        %td= link_to 'Edit', edit_inspection_event_path(inspection_event)
+        %td= link_to 'Destroy', inspection_event, :confirm => 'Are you sure?', :method => :delete
