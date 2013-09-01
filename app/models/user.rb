@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   def has_site?
     self.projects.each do |project|
-      return true if project.sites.count > 0
+      return true if project.sites_count > 0
     end
     return false
   end
