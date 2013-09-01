@@ -25,14 +25,6 @@ describe ProjectsController do
     { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
-  describe "GET index" do
-    it "assigns all projects as @projects" do
-      # project = Project.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:projects).should eq(Project.all)
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested project as @project" do
       # project = Project.create! valid_attributes

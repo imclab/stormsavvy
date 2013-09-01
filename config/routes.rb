@@ -11,20 +11,21 @@ Stormsavvy::Application.routes.draw do
 
   get "sites", :to => "sites#users_sites"
 
-  get "location/index"
-  get "location/new"
-  get "location/create"
+  resource :location, only: [:index, :new, :create]
+
   get "noaa/secret"
 
-  get "pdf/CEM2030"
-  get "pdf/CEM2034"
-  get "pdf/CEM2035"
-  get "pdf/CEM2040"
-  get "pdf/CEM2045"
-  get "pdf/CEM2050"
-  get "pdf/CEM2051"
-  get "pdf/CEM2052"
-  get "pdf/CEM4601"
+  namespace :pdf do
+    get "CEM2030"
+    get "CEM2034"
+    get "CEM2035"
+    get "CEM2040"
+    get "CEM2045"
+    get "CEM2050"
+    get "CEM2051"
+    get "CEM2052"
+    get "CEM4601"
+  end
 
   resources :sampling_events,
     :inspection_events,
@@ -34,10 +35,11 @@ Stormsavvy::Application.routes.draw do
 
   # Projects controller needs #show, redirect to root instead,
   # place before nested resource so that it is mapped properly.
-  match '/projects', :to => "dashboard#index", :via => :get
+  # get '/projects', :to => "dashboard#index"
 
-  resources :projects do
+  resources :projects, except: [:index] do
     resources :sites
+    root to: "dashboard#index"
   end
 
   ReportsController::STATIC_REPORTS.each do |name|

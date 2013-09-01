@@ -18,14 +18,7 @@ class DashboardController < ApplicationController
   end
 
   def get_projects
-    @projects = []
-    projects = current_user.projects.all
-
-    projects.each do |p|
-      @projects << p
-    end
-
-    return @projects
+    @projects = current_user.projects
   end
 
   def get_sites
@@ -37,7 +30,7 @@ class DashboardController < ApplicationController
       end
     end
 
-    return @sites
+    return
   end
 
   def get_ie
