@@ -2,7 +2,7 @@
   .inner
     %h5 Weather Report
     %hr
-      - unless @projects.blank?
+      - unless @projects.empty?
         - @projects.each do |project|
           = render project.sites
       - else
