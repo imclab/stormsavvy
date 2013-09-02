@@ -48,6 +48,5 @@ class NullCloudmadeGeocoder
   def initialize; end
   def results
     OpenStruct.new( { body: { "places" => [ "position" => { "lat" => 0.0, "lon" => 0.0 } ] } } )
-    # [position: {}]
   end
 end

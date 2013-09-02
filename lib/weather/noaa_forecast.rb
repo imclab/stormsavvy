@@ -6,8 +6,7 @@ require 'time'
 require 'project_local_time'
 require 'redis'
 
-class ApiError < StandardError
-end
+class ApiError < StandardError; end
 
 class NOAAForecast
 
@@ -16,12 +15,10 @@ class NOAAForecast
 
   attr_reader :pop, :qpf
 
-  # DEFAULT_FALLBACK = ->(error) {raise}
-
-  def initialize(zipcode, duration = 168, interval = 6)
-    @zipcode  = zipcode
-    @duration = duration
-    @interval = interval
+  def initialize(opts = {})
+    @zipcode  = opts[:latlng]
+    @duration = opts[:duration] || 168
+    @interval = opts[:interval] || 6
   end
 
   def seven_day_weather
