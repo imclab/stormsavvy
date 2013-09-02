@@ -25,8 +25,7 @@ class Site < ActiveRecord::Base
   has_many :site_pop, :dependent => :destroy
   accepts_nested_attributes_for :project
 
-  geocoded_by :address, :latitude => :lat, :longitude => :long
-  after_validation :geocode
+  after_validation :save_geo_coordinates, if: :zipcode_changed?
 
   validates_presence_of :name, :zipcode
   validates :zipcode, :presence => true
