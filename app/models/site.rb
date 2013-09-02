@@ -13,7 +13,9 @@ class Site < ActiveRecord::Base
     :zipcode,
     :city,
     :exposed_area,
-    :project_attributes
+    :project_attributes,
+    :lat,
+    :lng
 
   belongs_to :project, counter_cache: true
   has_many :reports, :dependent => :destroy
@@ -23,13 +25,10 @@ class Site < ActiveRecord::Base
   has_many :site_pop, :dependent => :destroy
   accepts_nested_attributes_for :project
 
-  geocoded_by :address,
-    :latitude => :lat,
-    :longitude => :long
+  geocoded_by :address, :latitude => :lat, :longitude => :long
   after_validation :geocode
 
-  validates_presence_of :name,
-    :zipcode
+  validates_presence_of :name, :zipcode
   validates :zipcode, :presence => true
 
   def address
@@ -39,43 +38,16 @@ class Site < ActiveRecord::Base
   attr_reader :rain_state, :max_rain, :chance_of_rain, :forecast
 
   def chance_of_rain
-    #zipcode = 90210 unless self.zipcode.present?
-    #nf.forecast(@lat, @long)
-
-    nf = NOAAForecast.new(zipcode.to_i)
-    forecast = nf.seven_day_weather(zipcode.to_i)
+    process_noaa_forecast
     precipitation_state(forecast)
     @max_rain = forecast[0][0..5].max
-    return @max_rain.to_i
-
-    # zipcode = 90210 unless self.zipcode.present?
-    # nf = NOAAForecast.new(zipcode.to_i)
-    # forecast = nf.seven_day_weather(zipcode.to_i)
-    # nf.forecast(@lat, @long)
-    # precipitation_state(forecast)
-    # @max_rain = forecast[0][0..5].max
+    @max_rain.to_i
   end
 
   def forecast
-    #zipcode = 90210 unless self.zipcode.present?
-    #nf.forecast(@lat, @long)
-
-    nf = NOAAForecast.new(zipcode.to_i)
-    forecast = nf.seven_day_weather(zipcode.to_i)
+    process_noaa_forecast
     precipitation_state(forecast)
     @forecast = forecast
-
-    #precipitation_state(nf.noaa_forecast)
-    #@forecast = nf.noaa_forecast
-
-    # zipcode = 90210 unless self.zipcode.present?
-    # nf = NOAAForecast.new(zipcode.to_i)
-    # forecast = nf.seven_day_weather(zipcode.to_i)
-    # nf.forecast(@lat, @long)
-    # precipitation_state(forecast)
-    # @forecast = nf.seven_day_weather(zipcode.to_i)
-    # precipitation_state(nf.noaa_forecast)
-    # @forecast = nf.noaa_forecast
   end
 
   def precipitation_state(forecast)
@@ -88,7 +60,26 @@ class Site < ActiveRecord::Base
     @rain_state = fe.rain
   end
 
+  def save_geo_coordinates
+    begin
+      service = GeocoderService.new(zipcode: zipcode)
+      self.update_attributes(service.get_lat_lng)
+    rescue => e
+    end
+  end
+
+  def latlng
+    [self.lat, self.lng]
+  end
+
   def get_zipcode
     return self.zipcode.to_s
+  end
+
+  private
+
+  def process_noaa_forecast
+    nf = NOAAForecast.new(zipcode.to_i)
+    forecast = nf.seven_day_weather
   end
 end

@@ -9,7 +9,7 @@ module DashboardHelper
   def chance_of_rain(zipcode)
     zipcode = 90210 unless zipcode.present?
     nf = NOAAForecast.new(zipcode)
-    nf.seven_day_weather(zipcode)
+    nf.seven_day_weather
     #precipitation_state(nf.noaa_forecast)
     @max_rain = nf.noaa_forecast[0][0..4].max
   end

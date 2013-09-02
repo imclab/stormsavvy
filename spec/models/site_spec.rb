@@ -56,7 +56,7 @@ describe Site do
     lat_long = [@lat, @long]
     @nf = double(NOAAForecast)
     @nf2 = NOAAForecast.new(@zipcode,168,6)
-    @nf2.seven_day_weather(@zipcode)
+    @nf2.seven_day_weather
 
     @nf.stub(:ping_noaa).with([@lat, @long], 168, 6) do
       IO.read("./spec/lib/weather/noaa_response.xml")
@@ -66,15 +66,6 @@ describe Site do
       response = @nf.ping_noaa([@lat, @long], 168, 6)
       @nf2.parse_weather_data(response)
     end
-
-    # @nf.stub(:seven_day_weather).with(@zipcode) do
-    #   latlong = [@lat, @long]
-    #   @nf.get_forecast(latlong)
-    #   forecast = [
-    #     [0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 7, 7, 7, 7, 8], 
-    #     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    #   ]
-    # end
 
     @site.stub(:forecast) do
       latlong = [@lat, @long]
@@ -182,7 +173,7 @@ describe Site do
     end
   end
 
-  describe 'lat/long stub values' do 
+  describe 'lat/long stub values' do
     it "returns correct stub for oakland latlong" do
       @site.lat.round.should == 38
       @site.long.round.should == -122
