@@ -15,7 +15,8 @@ describe NOAAForecast do
   let(:qpf) { nf2.get_qpf(zipcode) }
 
   before(:each) do
-    nf.stub(:get_lat_long).and_return([lat, long])
+    nf.stub(:get_lat_long).with(zipcode).and_return([lat, long])
+    nf.stub(:get_lat_long).with("99999999999999999999").and_return([])
 
     nf.stub(:set_lat_long) {
       $redis.set(zipcode.to_s + '_lat', lat)
@@ -23,7 +24,7 @@ describe NOAAForecast do
     }
 
     nf.stub(:return_lat_long) {
-      nf.set_lat_long
+      nf.set_lat_long(zipcode)
       # lat = $redis.get(zipcode.to_s + '_lat')
       # long = $redis.get(zipcode.to_s + '_long')
       # lat_long = [lat, long]
@@ -101,7 +102,7 @@ describe NOAAForecast do
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      nf2.seven_day_weather
+      nf2.seven_day_weather(zipcode)
       pop_array = nf2.pop
       new_pop_array = []
       pop_array.each do |i|
@@ -159,7 +160,7 @@ describe NOAAForecast do
       for i in 0..27
         pop_table_hash << Hash[time_pop_hash[i]].update(Hash[new_qpf_array[i]])
       end
-=end
+=end 
       [
         time_pop_hash[1].update(new_qpf_array[1]),
         time_pop_hash[2].update(new_qpf_array[2]),
@@ -242,19 +243,19 @@ describe NOAAForecast do
 
   describe "#get_lat_long" do
     it "returns get_lat_long stub values" do
-      nf.get_lat_long.should == [37.9202057, -122.2937428]
+      nf.get_lat_long(zipcode).should == [37.9202057, -122.2937428]
     end
 
-    # it 'handles exceptions with benign value' do
-    #   nf.get_lat_long("99999999999999999999").should == []
-    # end
+    it 'handles exceptions with benign value' do
+      nf.get_lat_long("99999999999999999999").should == []
+    end
 
     xit "sets and gets lat/long with redis" do
       nf.set_lat_long(zipcode)
       lat = $redis.get(zipcode.to_s + '_lat')
       long = $redis.get(zipcode.to_s + '_long')
       lat_long = [lat.to_f, long.to_f]
-      nf.get_lat_long.should == lat_long
+      nf.get_lat_long(zipcode).should == lat_long
     end
 
     it 'validates rails api caching on class object' do
@@ -273,7 +274,7 @@ describe NOAAForecast do
       Rails.cache.fetch(zipcode.to_s + '_lng') {lng}
       Rails.cache.fetch(zipcode.to_s + '_lng').should == lng
       nf = NOAAForecast.new(zipcode)
-      nf.get_lat_long.should == [lat, lng]
+      nf.get_lat_long(zipcode).should == [lat, lng]
     end
   end
 
@@ -318,13 +319,13 @@ describe NOAAForecast do
 
   describe "#seven_day_weather" do
     it "returns array from seven_day_weather" do
-      forecast = nf2.seven_day_weather
+      forecast = nf2.seven_day_weather(zipcode)
       forecast[0].size.should == fullcount
     end
 
     it 'returns correct forecast' do
       nf = NOAAForecast.new(94530)
-      nf.seven_day_weather
+      nf.seven_day_weather(zipcode)
     end
   end
 
@@ -411,7 +412,7 @@ describe NOAAForecast do
 
   describe "#get_qpf_array" do
     it "returns qpf array" do
-      nf2.seven_day_weather
+      nf2.seven_day_weather(zipcode)
       qpf_array = nf2.qpf
 
       new_qpf_array = []

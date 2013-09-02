@@ -304,10 +304,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    unirest (1.0.8)
-      addressable
-      json
-      rest-client
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
@@ -365,5 +361,4 @@ DEPENDENCIES
   typhoeus
   uglifier
   unicorn
-  unirest
   xray-rails
