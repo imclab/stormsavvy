@@ -12,7 +12,7 @@ class GeocoderService
 
   def run_geocoder
     if google_geocoder_lookup == [0.0, 0.0] || []
-      cloudmade_geocoder_lookup
+      geoname_geocoder_lookup
       return_results_hash
     else
       return_results_hash
@@ -25,10 +25,10 @@ class GeocoderService
     @lat, @lng = result["lat"], result["lng"]
   end
 
-  def cloudmade_geocoder_lookup
-    results = CloudmadeGeocodingService.search(@zipcode).presence || NullCloudmadeGeocoder.new.results
-    result = results.body["places"][0]["position"]
-    @lat, @lng = result["lat"], result["lon"]
+  def geoname_geocoder_lookup
+    results = GeonamesGeocodingService.search(@zipcode).presence || NullGeonamesGeocoder.new.results
+    result = results.body["postalCodes"][0]
+    @lat, @lng = result["lat"], result["lng"]
   end
 
   def return_results_hash
@@ -44,9 +44,10 @@ class NullGoogleGeocoder
   end
 end
 
-class NullCloudmadeGeocoder
+class NullGeonamesGeocoder
   def initialize; end
   def results
-    OpenStruct.new( { body: { "places" => [ "position" => { "lat" => 0.0, "lon" => 0.0 } ] } } )
+    data = { "adminName2"=>"Empty", "adminCode2"=>"Empty", "adminCode1"=>"Empty", "postalCode"=>"Empty", "countryCode"=>"Empty", "lng"=> 0.0, "placeName"=>"Empty", "lat"=> 0.0, "adminName1"=>"Empty"}
+    OpenStruct.new({ body: { "postalCodes"=> [ data ] } } )
   end
 end
