@@ -23,12 +23,12 @@ class Site < ActiveRecord::Base
   has_many :inspection_event_workflows, :dependent => :destroy
   has_many :sampling_events, :dependent => :destroy
   has_many :site_pop, :dependent => :destroy
+  has_many :weather_updates
   accepts_nested_attributes_for :project
 
   after_validation :save_geo_coordinates, if: :zipcode_changed?
 
-  validates_presence_of :name, :zipcode
-  validates :zipcode, :presence => true
+  validates :zipcode, :name, :zipcode, :presence => true
 
   def address
     "#{self.address_1} #{self.address_2} #{self.city} #{self.state} #{self.zipcode}".strip
