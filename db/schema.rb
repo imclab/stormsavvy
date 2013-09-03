@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902234532) do
+ActiveRecord::Schema.define(:version => 20130903022521) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string    "resource_id",   :null => false
@@ -52,6 +52,29 @@ ActiveRecord::Schema.define(:version => 20130902234532) do
     t.timestamp "created_at",  :null => false
     t.timestamp "updated_at",  :null => false
   end
+
+  create_table "forecast_periods", :force => true do |t|
+    t.datetime "forecast_prediction_time"
+    t.integer  "temperature"
+    t.integer  "dewpoint"
+    t.integer  "rh"
+    t.integer  "sky_cover"
+    t.integer  "wind_speed"
+    t.integer  "wind_direction"
+    t.integer  "wind_gust"
+    t.integer  "pop"
+    t.float    "qpf"
+    t.float    "snow_amount"
+    t.integer  "snow_level"
+    t.string   "wx"
+    t.integer  "site_id"
+    t.integer  "weather_update_id"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "forecast_periods", ["site_id"], :name => "index_forecast_periods_on_site_id"
+  add_index "forecast_periods", ["weather_update_id"], :name => "index_forecast_periods_on_weather_update_id"
 
   create_table "inspection_event_workflows", :force => true do |t|
     t.integer   "hours_before_rain"
