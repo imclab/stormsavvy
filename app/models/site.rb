@@ -60,10 +60,12 @@ class Site < ActiveRecord::Base
   end
 
   def save_geo_coordinates
-    begin
-      service = GeocoderService.new(zipcode: zipcode)
-      self.update_attributes(service.get_lat_lng)
-    rescue => e
+    unless lat.presence && lng.presence
+      begin
+        service = GeocoderService.new(zipcode: zipcode)
+        self.update_attributes(service.get_lat_lng)
+      rescue => e
+      end
     end
   end
 
