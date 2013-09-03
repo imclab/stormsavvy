@@ -218,6 +218,7 @@ describe Site do
   end
 
   describe '#forecast' do
+=begin
     it 'returns forecast' do
       latlong = [@lat, @long]
       forecast = @nf.get_forecast(latlong)
@@ -234,6 +235,7 @@ describe Site do
       :description   => 'North of Lake Merritt'
       )
     forecast = site.forecast
+=end
   end
 
   describe '#get_zipcode' do
