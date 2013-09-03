@@ -1,5 +1,7 @@
 class NoaaForecastService
 
+  attr_reader :weather_update, :forecast_periods
+
   API_URL = "http://www.wrh.noaa.gov/forecast/xml/xml.php?"
 
   def initialize( opts = {} )
@@ -23,10 +25,7 @@ class NoaaForecastService
   private
 
   def save_forecast_periods
-    @forecast_periods.each do |f|
-      puts f
-    end
-    # @forecast_periods.map(&:save)
+    @forecast_periods.map(&:save)
   end
 
   def fetch_noaa_data
@@ -55,7 +54,6 @@ class NoaaForecastService
     forecast_days.each do |forecast_day|
       parse_forecase_day(forecast_day)
     end
-    puts @forecast_periods
   end
 
   def parse_forecase_day(forecast_day)
@@ -66,7 +64,7 @@ class NoaaForecastService
   end
 
   def create_forecast_period_record(period, validDate)
-    forecast_period = @weather_update.forecast_periods.build
+    forecast_period = @weather_update.forecast_periods.new
     forecast_period.build_from_xml(period, validDate, @site.id)
     forecast_period
   end
