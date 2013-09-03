@@ -1,12 +1,16 @@
 class WeatherUpdate < ActiveRecord::Base
   belongs_to :site
+  has_many :forecast_periods
   attr_accessible :duration, :elevation, :forecast_creation_time, :interval, :lat, :lng
 
   validates :forecast_creation_time, uniqueness: {scope: [:lat, :lng]}
 
+  accepts_nested_attributes_for :forecast_periods
+
   def build_from_xml(xml)
     @xml = xml
-    assign_attributes = { forecast_creation_time: get_forecast_creation_time, latitude: get_latitude, longitude: get_longitude, elevation: get_elevation, duration: get_duration, interval: get_interval }
+    data = { forecast_creation_time: get_forecast_creation_time, lat: get_latitude, lng: get_longitude, elevation: get_elevation, duration: get_duration, interval: get_interval }
+    assign_attributes(data)
   end
 
   private
