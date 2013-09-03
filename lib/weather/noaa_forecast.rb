@@ -6,7 +6,8 @@ require 'time'
 require 'project_local_time'
 require 'redis'
 
-class ApiError < StandardError; end
+class ApiError < StandardError
+end
 
 class NOAAForecast
 
@@ -15,10 +16,12 @@ class NOAAForecast
 
   attr_reader :pop, :qpf
 
-  def initialize(opts = {})
-    @zipcode  = opts[:latlng]
-    @duration = opts[:duration] || 168
-    @interval = opts[:interval] || 6
+  # DEFAULT_FALLBACK = ->(error) {raise}
+
+  def initialize(zipcode, duration = 168, interval = 6)
+    @zipcode  = zipcode
+    @duration = duration
+    @interval = interval
   end
 
   def seven_day_weather
@@ -28,7 +31,7 @@ class NOAAForecast
     get_forecast(latlong)
   end
 
-  def get_lat_long
+  def get_lat_long(zipcode)
     lat_long ||= Rails.cache.fetch(@zipcode.to_s + '_lat_long', expires_in: 24.hours) do
       unless lat_long == [nil, nil]
         begin
