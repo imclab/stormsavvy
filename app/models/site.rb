@@ -21,16 +21,12 @@ class Site < ActiveRecord::Base
   has_many :inspection_event_workflows, :dependent => :destroy
   has_many :sampling_events, :dependent => :destroy
   has_many :site_pop, :dependent => :destroy
+  has_many :weather_updates
   accepts_nested_attributes_for :project
 
-  geocoded_by :address,
-    :latitude => :lat,
-    :longitude => :long
-  after_validation :geocode
+  after_validation :save_geo_coordinates, if: :zipcode_changed?
 
-  validates_presence_of :name,
-    :zipcode
-  validates :zipcode, :presence => true
+  validates :zipcode, :name, :zipcode, :presence => true
 
   def address
     "#{self.address_1} #{self.address_2} #{self.city} #{self.state} #{self.zipcode}".strip
@@ -86,6 +82,20 @@ class Site < ActiveRecord::Base
     fe = ForecastExaminer.new(self, forecast)
     fe.find_rain_chance()
     @rain_state = fe.rain
+  end
+
+  def save_geo_coordinates
+    unless lat.presence && lng.presence
+      begin
+        service = GeocoderService.new(zipcode: zipcode)
+        self.update_attributes(service.get_lat_lng)
+      rescue => e
+      end
+    end
+  end
+
+  def latlng
+    [self.lat, self.lng]
   end
 
   def get_zipcode

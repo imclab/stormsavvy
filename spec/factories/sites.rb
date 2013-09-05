@@ -11,5 +11,8 @@ FactoryGirl.define do
     costcode '450AZC'
     size '20 acres'
     exposed_area '10 acres'
+
+    lat 38.2473117
+    lng 122.5712101
   end
 end

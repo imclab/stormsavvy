@@ -43,7 +43,7 @@ class NOAAForecast
   end
 
   def get_lat_long(zipcode)
-    lat_long ||= Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) do
+    lat_long ||= Rails.cache.fetch(@zipcode.to_s + '_lat_long', expires_in: 24.hours) do
       unless lat_long == [nil, nil]
         begin
           results = Geocoder.search(zipcode)
