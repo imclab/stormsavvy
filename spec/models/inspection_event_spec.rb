@@ -11,31 +11,38 @@ describe InspectionEvent do
     )
   end
 
-  it "has correct project attributes" do
-  	@ie.site_id.should == 1
-  	@ie.inspection_type.should == "weekly"
-  	@ie.inspection_description.should == "ec jungle gym inspection"
-  	@ie.inspection_date.should == "Mon, 01 Apr 2013 00:00:00 UTC +00:00"
-  	@ie.submitted_by.should == "wyu"
-  	@ie.inspected_by.should == "wyu"
-  	@ie.completed.should == false
-  end
+  describe 'valid attributes' do
+    it "has correct project attributes" do
+      @ie.site_id.should == 1
+      @ie.inspection_type.should == "weekly"
+      @ie.inspection_description.should == "ec jungle gym inspection"
+      @ie.inspection_date.should == "Mon, 01 Apr 2013 00:00:00 UTC +00:00"
+      @ie.submitted_by.should == "wyu"
+      @ie.inspected_by.should == "wyu"
+      @ie.completed.should == false
+    end
 
-  it 'returns correct pulldown menu values' do
-    InspectionEvent::TYPES.should == [
-      'CEM2023', 'CEM2024', 'CEM2030', 'CEM2034', 'CEM2035', 'CEM2040', 'CEM2041',
-      'CEM2045', 'CEM2046', 'CEM2047', 'CEM2048'
-    ]
-  end
+    it 'returns correct pulldown menu values' do
+      InspectionEvent::TYPES.should == [
+        'CEM2023', 'CEM2024', 'CEM2030', 'CEM2034', 'CEM2035', 'CEM2040', 'CEM2041',
+        'CEM2045', 'CEM2046', 'CEM2047', 'CEM2048'
+      ]
+    end
 
-  it "creates a new instance given valid attributes" do
-    site = Site.new
-    @ie = InspectionEvent.new(
-      :site => site,
-      :site_id => site.object_id
-    )
-    @ie.save
-    @ie.should be_valid
+    it "creates a new instance given valid attributes" do
+      site = Site.new
+      @ie = InspectionEvent.new(
+        :site => site,
+        :site_id => site.object_id
+      )
+      @ie.save
+      @ie.should be_valid
+    end
+
+    it 'requires site_id for new inspection_event' do
+      no_name = InspectionEvent.new
+      no_name.should_not be_valid
+    end
   end
 
   describe "nested scope attributes" do
