@@ -60,7 +60,7 @@ describe InspectionEvent do
     end
   end
 
-  describe "inspection_event associations" do
+  describe "associations" do
   	before(:each) do
   	  @ie = InspectionEvent.new(@attr)
   	end
