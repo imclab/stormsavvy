@@ -5,7 +5,8 @@ class SamplingEvent < ActiveRecord::Base
 
   belongs_to :site
   accepts_nested_attributes_for :site
-  # validates_presence_of :site_id
+
+  validates :site_id, :presence => true
 
   attr_accessible :analysis_average_1,
     :analysis_average_2,
