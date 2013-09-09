@@ -1,4 +1,8 @@
 class SamplingEventWorkflow < ActiveRecord::Base
+
+  belongs_to :site
+  accepts_nested_attributes_for :site
+
   # attr_accessible :title, :body
   attr_accessible :site,
     :cem2051,
