@@ -2,24 +2,30 @@ require 'spec_helper'
 
 describe Report do
 
-  before(:each) do 
+  before(:each) do
     @reports1 = [@r1, @r2]
     @reports2 = [@r3, @r4]
 
     [@r1, @r2].each do |r|
-      FactoryGirl.create(:report)
+      FactoryGirl.create(
+        :report,
+        :site => @site,
+        :site_id => @site.object_id
+      )
     end
 
     [@r3, @r4].each do |r|
-      FactoryGirl.create(:report)
+      FactoryGirl.create(
+        :report,
+        :site => @site,
+        :site_id => @site.object_id
+      )
     end
   end
 
-  # Testing framework count methods
-  context 'counting' do 
-
-    it "should increase report count by 1" do
-      expect { Report.create }.to change(Report, :count).by(+1)
+  context 'counting' do
+    it "needs site_id before creating new report" do
+      expect { Report.create }.to change(Report, :count).by(+0)
     end
   end
 
