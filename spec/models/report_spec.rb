@@ -24,8 +24,12 @@ describe Report do
   end
 
   context 'counting' do
-    it "needs site_id before creating new report" do
-      expect { Report.create }.to change(Report, :count).by(+0)
+    it "creates new report given site_id" do
+      expect { Report.create(
+        :site => @site,
+        :site_id => @site.object_id
+        )
+      }.to change(Report, :count).by(+1)
     end
   end
 
