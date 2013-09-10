@@ -4,9 +4,12 @@ class Report < ActiveRecord::Base
   scope :completed, where(:status => "completed")
 
   belongs_to :site
-  # validates_presence_of :site_id
+  accepts_nested_attributes_for :site
 
-  attr_accessible :needs_attention,
+  validates :site_id, :presence => true
+
+  attr_accessible :site,
+    :needs_attention,
     :completed,
     :type,
     :status,
