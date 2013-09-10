@@ -53,11 +53,17 @@ describe Report do
       @r1.id.should eq(1)
     end
 
-    it "should not insert invalid reports" do
-      r = Report.new
+    it "should not insert invalid reports given site_id" do
+      r = Report.new(
+        :site => @site,
+        :site_id => @site.object_id
+      )
       r.should be_valid
 
-      @r5 = Report.create
+      @r5 = Report.create(
+        :site => @site,
+        :site_id => @site.object_id
+      )
       expect { @reports2 << @r5 }.to change(Report, :count).by(0)
     end
   end
