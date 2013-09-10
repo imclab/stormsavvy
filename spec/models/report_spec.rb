@@ -86,6 +86,7 @@ describe Report do
       Report.any_instance.stub(:destroy_attached_files).and_return(true) 
       @attachment = FactoryGirl.create :report
     end
+
     describe "#attachment" do
       it "returns correct url" do
         @attachment.attachment.url.should_not be_nil
