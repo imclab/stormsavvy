@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :report do
+    site_id 1
   	status "Active"
   end
 
