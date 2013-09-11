@@ -9,16 +9,14 @@ describe Report do
     [@r1, @r2].each do |r|
       FactoryGirl.create(
         :report,
-        :site => @site,
-        :site_id => @site.object_id
+        :site_id => 1
       )
     end
 
     [@r3, @r4].each do |r|
       FactoryGirl.create(
         :report,
-        :site => @site,
-        :site_id => @site.object_id
+        :site_id => 2
       )
     end
   end
