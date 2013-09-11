@@ -13,7 +13,7 @@ describe ReportsController do
   end
 
   def valid_attributes
-    {}
+    { :site_id => 1 }
   end
 
   def valid_session
