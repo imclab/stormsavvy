@@ -48,6 +48,7 @@ describe ReportsController do
 
   let!(:current_site) { FactoryGirl.create(
       :site,
+      :id => 1,
       :project => current_project,
       :name => 'ec jungle gym',
       :zipcode => 94530
@@ -55,6 +56,7 @@ describe ReportsController do
   }
   let(:other_site) { FactoryGirl.create(
       :site,
+      :id => 2,
       :project => other_project,
       :name => 'berkeley high',
       :zipcode => 94709
@@ -66,11 +68,13 @@ describe ReportsController do
 
   let!(:current_report) { FactoryGirl.create(
       :report,
+      :site_id => 1,
       :site => current_site
     )
   }
   let(:other_report) { FactoryGirl.create(
       :report,
+      :site_id => 2,
       :site => other_site
     )
   }
