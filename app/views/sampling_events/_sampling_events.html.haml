@@ -1,96 +1,97 @@
-%table.table.table-condensed
-  %tr
-    = link_to 'New Sampling Event', new_sampling_event_path, :class => 'btn'
-%table.table.table-condensed
-  %tr
-    %th Site ID
-    %th Site Name
-    %th Sampling Type
-    %th Sampling Description
-    %th Sampling Date
-    %th Submitted By
-    %th Sampled By
-    %th Attachment URL
-    /%th Sample id 1
-    /%th Sample location 1
-    /%th Sample time 1
-    /%th Analysis type 1
-    /%th Analysis result 1
-    /%th Analysis average 1
-    /%th Sample id 2
-    /%th Sample location 2
-    /%th Sample time 2
-    /%th Analysis type 2
-    /%th Analysis result 2
-    /th Analysis average 2
-    /th Sample id 3
-    /th Sample location 3
-    /th Sample time 3
-    /th Analysis type 3
-    /th Analysis result 3
-    /th Analysis average 3
-    /th Sample id 4
-    /th Sample location 4
-    /th Sample time 4
-    /th Analysis type 4
-    /th Analysis result 4
-    /th Analysis average 4
-    /th Sample id 5
-    /th Sample location 5
-    /th Sample time 5
-    /th Analysis type 5
-    /th Analysis result 5
-    /th Analysis average 5
-    %th
-    %th
-    %th
-
-  - @sampling_events.each do |sampling_event|
+.top-20
+  %table.table.table-condensed
     %tr
-      %td= sampling_event.site_id
-      %td= sampling_event.site.name
-      %td= sampling_event.sampling_type
-      %td= sampling_event.sampling_description
-      %td= sampling_event.sampling_date
-      %td= sampling_event.submitted_by
-      %td= sampling_event.sampled_by
-      %td= sampling_event.attachment.url
+      = link_to 'New Sampling Event', new_sampling_event_path, :class => 'btn'
+  %table.table.table-condensed
+    %tr
+      %th Site ID
+      %th Site Name
+      %th Sampling Type
+      %th Sampling Description
+      %th Sampling Date
+      %th Submitted By
+      %th Sampled By
+      %th Attachment URL
+      /%th Sample id 1
+      /%th Sample location 1
+      /%th Sample time 1
+      /%th Analysis type 1
+      /%th Analysis result 1
+      /%th Analysis average 1
+      /%th Sample id 2
+      /%th Sample location 2
+      /%th Sample time 2
+      /%th Analysis type 2
+      /%th Analysis result 2
+      /th Analysis average 2
+      /th Sample id 3
+      /th Sample location 3
+      /th Sample time 3
+      /th Analysis type 3
+      /th Analysis result 3
+      /th Analysis average 3
+      /th Sample id 4
+      /th Sample location 4
+      /th Sample time 4
+      /th Analysis type 4
+      /th Analysis result 4
+      /th Analysis average 4
+      /th Sample id 5
+      /th Sample location 5
+      /th Sample time 5
+      /th Analysis type 5
+      /th Analysis result 5
+      /th Analysis average 5
+      %th
+      %th
+      %th
 
-      - if sampling_event.attachment.url =~ /missing.png/
-        %td= link_to 'Upload Attachment', edit_sampling_event_path(sampling_event)
-      - else
-        %td= link_to "#{sampling_event.attachment.url}", sampling_event.attachment.url
+    - @sampling_events.each do |sampling_event|
+      %tr
+        %td= sampling_event.site_id
+        /%td= sampling_event.site.name
+        %td= sampling_event.sampling_type
+        %td= sampling_event.sampling_description
+        %td= sampling_event.sampling_date
+        %td= sampling_event.submitted_by
+        %td= sampling_event.sampled_by
+        %td= sampling_event.attachment.url
 
-      /td= sampling_event.sample_id_1
-      /td= sampling_event.sample_location_1
-      /td= sampling_event.sample_time_1
-      /td= sampling_event.analysis_type_1
-      /td= sampling_event.analysis_result_1
-      /td= sampling_event.analysis_average_1
-      /td= sampling_event.sample_id_2
-      /td= sampling_event.sample_location_2
-      /td= sampling_event.sample_time_2
-      /td= sampling_event.analysis_type_2
-      /td= sampling_event.analysis_result_2
-      /td= sampling_event.analysis_average_2
-      /td= sampling_event.sample_id_3
-      /td= sampling_event.sample_location_3
-      /td= sampling_event.sample_time_3
-      /td= sampling_event.analysis_type_3
-      /td= sampling_event.analysis_result_3
-      /td= sampling_event.analysis_average_3
-      /td= sampling_event.sample_id_4
-      /td= sampling_event.sample_location_4
-      /td= sampling_event.sample_time_4
-      /td= sampling_event.analysis_type_4
-      /td= sampling_event.analysis_result_4
-      /td= sampling_event.analysis_average_4
-      /td= sampling_event.sample_id_5
-      /td= sampling_event.sample_location_5
-      /td= sampling_event.sample_time_5
-      /td= sampling_event.analysis_type_5
-      /td= sampling_event.analysis_result_5
-      /td= sampling_event.analysis_average_5
-      %td= link_to 'Show', sampling_event
-      %td= link_to 'Edit', edit_sampling_event_path(sampling_event)
-      %td= link_to 'Destroy', sampling_event, method: :delete, data: { confirm: 'Are you sure?' }
+        - if sampling_event.attachment.url =~ /missing.png/
+          %td= link_to 'Upload Attachment', edit_sampling_event_path(sampling_event)
+        - else
+          %td= link_to "#{sampling_event.attachment.url}", sampling_event.attachment.url
+
+        /td= sampling_event.sample_id_1
+        /td= sampling_event.sample_location_1
+        /td= sampling_event.sample_time_1
+        /td= sampling_event.analysis_type_1
+        /td= sampling_event.analysis_result_1
+        /td= sampling_event.analysis_average_1
+        /td= sampling_event.sample_id_2
+        /td= sampling_event.sample_location_2
+        /td= sampling_event.sample_time_2
+        /td= sampling_event.analysis_type_2
+        /td= sampling_event.analysis_result_2
+        /td= sampling_event.analysis_average_2
+        /td= sampling_event.sample_id_3
+        /td= sampling_event.sample_location_3
+        /td= sampling_event.sample_time_3
+        /td= sampling_event.analysis_type_3
+        /td= sampling_event.analysis_result_3
+        /td= sampling_event.analysis_average_3
+        /td= sampling_event.sample_id_4
+        /td= sampling_event.sample_location_4
+        /td= sampling_event.sample_time_4
+        /td= sampling_event.analysis_type_4
+        /td= sampling_event.analysis_result_4
+        /td= sampling_event.analysis_average_4
+        /td= sampling_event.sample_id_5
+        /td= sampling_event.sample_location_5
+        /td= sampling_event.sample_time_5
+        /td= sampling_event.analysis_type_5
+        /td= sampling_event.analysis_result_5
+        /td= sampling_event.analysis_average_5
+        %td= link_to 'Show', sampling_event
+        %td= link_to 'Edit', edit_sampling_event_path(sampling_event)
+        %td= link_to 'Destroy', sampling_event, method: :delete, data: { confirm: 'Are you sure?' }
