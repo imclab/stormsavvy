@@ -53,7 +53,7 @@ class SamplingEvent < ActiveRecord::Base
       :url => "http://stormsavvy.s3-website-us-east-1.amazonaws.com",
       :storage => :s3,
       :bucket => 'stormsavvy'
-    # validates_attachment :attachment, presence: true, size: { less_than: 10.megabytes }
+      # validates_attachment :attachment, presence: true, size: { less_than: 10.megabytes }
 
     TYPES = [ 'CEM2050', 'CEM2051', 'CEM2052' ]
 
