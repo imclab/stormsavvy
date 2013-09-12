@@ -3,7 +3,10 @@ require 'spec_helper'
 describe InspectionEvent do
 
   before :each do
-  	@site = FactoryGirl.create(:site)
+  	@site = FactoryGirl.create(
+      :site,
+      :name => 'ec jungle gym'
+    )
   	@ie = FactoryGirl.create(
       :inspection_event,
       :site => @site,
@@ -42,6 +45,10 @@ describe InspectionEvent do
     it 'requires site_id for new inspection_event' do
       no_name = InspectionEvent.new
       no_name.should_not be_valid
+    end
+
+    it 'has site name' do
+      @ie.site.name.should == 'ec jungle gym'
     end
   end
 
