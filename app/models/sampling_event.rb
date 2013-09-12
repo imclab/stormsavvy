@@ -9,6 +9,7 @@ class SamplingEvent < ActiveRecord::Base
   validates :site_id, :presence => true
 
   attr_accessible :site,
+    :site_id,
     :analysis_average_1,
     :analysis_average_2,
     :analysis_average_3,
