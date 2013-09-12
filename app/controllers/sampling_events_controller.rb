@@ -1,6 +1,8 @@
 require 'current_user_object'
 
-class SamplingEventsController < InheritedResources::Base
+class SamplingEventsController < ApplicationController
+# class SamplingEventsController < InheritedResources::Base
+
   def index
     @sampling_events = SamplingEvent.all
 
