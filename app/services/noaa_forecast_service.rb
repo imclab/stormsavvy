@@ -25,7 +25,12 @@ class NoaaForecastService
   private
 
   def save_forecast_periods
-    @forecast_periods.map(&:save)
+    @forecast_periods.each do |forecast|
+      forecast = @site.forecast_periods.find_or_create_by_pop(pop: forecast.pop)
+      unless forecast
+        forecast.update_attributes(forecast)
+      end
+    end
   end
 
   def fetch_noaa_data
