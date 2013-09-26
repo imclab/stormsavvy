@@ -36,21 +36,8 @@ class Site < ActiveRecord::Base
   attr_reader :rain_state, :max_rain, :chance_of_rain, :forecast
 
   def chance_of_rain
-    #zipcode = 90210 unless self.zipcode.present?
-    #nf.forecast(@lat, @long)
-
-    nf = NOAAForecast.new(zipcode.to_i)
-    forecast = nf.seven_day_weather(zipcode.to_i)
-    precipitation_state(forecast)
-    @max_rain = forecast[0][0..5].max
-    return @max_rain.to_i
-
-    # zipcode = 90210 unless self.zipcode.present?
-    # nf = NOAAForecast.new(zipcode.to_i)
-    # forecast = nf.seven_day_weather(zipcode.to_i)
-    # nf.forecast(@lat, @long)
-    # precipitation_state(forecast)
-    # @max_rain = forecast[0][0..5].max
+    forecast_period = self.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day)
+    forecast_period.order('pop DESC').first
   end
 
   def forecast
