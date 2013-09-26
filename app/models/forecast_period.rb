@@ -23,7 +23,23 @@ class ForecastPeriod < ActiveRecord::Base
   def build_from_xml(period, validDate, site_id)
     @period = period
     @valid_date = validDate
-    data = { forecast_prediction_time: get_full_time, temperature: get_temperature, dewpoint: get_dew_point, rh: get_rh, sky_cover: get_sky_cover, wind_speed: get_wind_speed, wind_direction: get_wind_direction, wind_gust: get_wind_gust, pop: get_pop, qpf: get_qpf, snow_amount: get_snow_amt, snow_level: get_snow_level, wx: wx, site_id: site_id }
+    # Check that pop is being passed and not temp for max pop
+    data = {
+      forecast_prediction_time: get_full_time,
+      temperature: get_temperature,
+      dewpoint: get_dew_point,
+      rh: get_rh,
+      sky_cover: get_sky_cover,
+      wind_speed: get_wind_speed,
+      wind_direction: get_wind_direction,
+      wind_gust: get_wind_gust,
+      pop: get_pop,
+      qpf: get_qpf,
+      snow_amount: get_snow_amt,
+      snow_level: get_snow_level,
+      wx: wx,
+      site_id: site_id
+    }
     assign_attributes(data)
   end
 
