@@ -89,4 +89,5 @@ class Site < ActiveRecord::Base
   def get_zipcode
     return self.zipcode.to_s
   end
+
 end
