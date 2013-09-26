@@ -51,6 +51,7 @@ zipcode = 94901
 nf = NOAAForecast.new(zipcode)
 forecast = nf.seven_day_weather(zipcode)
 
+# Script for generating site and forecast periods in console
 site = Site.last
 site.lat = 38.2470
 site.lng = -122.5620
