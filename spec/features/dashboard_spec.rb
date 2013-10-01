@@ -73,7 +73,9 @@ describe "Dashboard" do
       :id => 3,
       :project_id => 2,
       :name => 'berkeley high',
-      :zipcode => 94709
+      :zipcode => 94709,
+      :lat => 37.8870,
+      :lng => -122.2670
     )
   }
   let!(:other_pending_site) { FactoryGirl.create(
