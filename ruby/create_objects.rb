@@ -56,6 +56,7 @@ site = Site.last
 site.lat = 38.2470
 site.lng = -122.5620
 site.save
+site.chance_of_rain.pop
 noaa = NoaaForecastService.new(:site => site)
 noaa.get_forecast
 noaa.save_results
