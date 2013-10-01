@@ -83,7 +83,9 @@ describe "Dashboard" do
       :id => 4,
       :project_id => 2,
       :name => 'peoples park',
-      :zipcode => 94709
+      :zipcode => 94709,
+      :lat => 37.8870,
+      :lng => -122.2670
     )
   }
   let!(:current_completed_ie) { FactoryGirl.create(
