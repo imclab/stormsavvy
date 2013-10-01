@@ -63,7 +63,9 @@ describe "Dashboard" do
       :id => 2,
       :project_id => 1,
       :name => 'ec slide',
-      :zipcode => 94530
+      :zipcode => 94530,
+      :lat => 37.9260,
+      :lng => -122.3060
     )
   }
   let!(:other_completed_site) { FactoryGirl.create(
