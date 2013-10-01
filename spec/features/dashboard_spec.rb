@@ -53,7 +53,9 @@ describe "Dashboard" do
       :id => 1,
       :project_id => 1,
       :name => 'ec jungle gym',
-      :zipcode => 94530
+      :zipcode => 94530,
+      :lat => 37.9260,
+      :lng => -122.3060
     )
   }
   let!(:current_pending_site) { FactoryGirl.create(
