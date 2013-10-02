@@ -88,6 +88,16 @@ describe "Dashboard" do
       :lng => -122.2670
     )
   }
+  let!(:site) { FactoryGirl.create(
+      :site,
+      :id => 5,
+      :project_id => 2,
+      :name => 'sproul hall',
+      :zipcode => 94709,
+      :lat => 37.8870,
+      :lng => -122.2670
+    )
+  }
   let!(:current_completed_ie) { FactoryGirl.create(
       :inspection_event,
       :id => 1,
