@@ -86,15 +86,15 @@ describe Site do
 
   describe "validations" do
     it "should have a name" do
-      @site.name = ''
-      @site.should_not be_valid
+      site.name = ''
+      site.should_not be_valid
     end
   end
 
   describe "project associations" do
     before(:each) do
       @project = FactoryGirl.create(:project)
-      @site = FactoryGirl.create(:site)
+      site = FactoryGirl.create(:site)
     end
 
    it "creates new instance of given valid attributes" do
