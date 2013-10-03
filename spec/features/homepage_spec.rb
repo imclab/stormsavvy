@@ -6,11 +6,14 @@ Warden.test_mode!
 
 describe "homepage" do
 
-  let!(:user) { FactoryGirl.create(
-      :user
-      # :user,
+  before :each do
+    FactoryGirl.create(
+      :user,
+      :email => 'demo@stormsavvy.com',
+      :password => 'savvy_demo',
+      :password_confirmation => 'savvy_demo'
     )
-  }
+  end
 
   describe 'signin page' do
     it "signs in as another user" do
