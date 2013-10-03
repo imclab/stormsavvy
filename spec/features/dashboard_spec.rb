@@ -226,15 +226,37 @@ describe "Dashboard" do
       end
 
       it 'loops thru sites array' do
-        sites = [ current_completed_site, current_pending_site,
-                  other_completed_site, other_pending_site ]
+        # sites = [ current_completed_site, current_pending_site,
+        #           other_completed_site, other_pending_site ]
+
+        sites = [ site ]
         sites.each do |s|
-          puts s.name
+          pp s.name
           noaa = NoaaForecastService.new(:site => s)
           noaa.get_forecast
           noaa.save_results
-          puts s.chance_of_rain.pop
+          pp s.chance_of_rain.pop
         end
+
+        pp current_completed_site.name
+        noaa = NoaaForecastService.new(:site => current_completed_site)
+        noaa.get_forecast
+        noaa.save_results
+        pp current_completed_site.chance_of_rain.pop
+
+        pp current_pending_site.name
+        noaa = NoaaForecastService.new(:site => current_pending_site)
+        noaa.get_forecast
+        noaa.save_results
+        pp forecast_period = current_pending_site.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).map(&:pop)
+        pp current_pending_site.forecast_periods.max_by(&:pop).pop
+        # pp current_pending_site.chance_of_rain.pop
+
+        pp site.name
+        noaa = NoaaForecastService.new(:site => site)
+        noaa.get_forecast
+        noaa.save_results
+        pp site.chance_of_rain.pop
       end
     end
 
