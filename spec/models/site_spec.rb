@@ -12,45 +12,47 @@ describe Site do
     @data.delete_if { |r| r == [] }
   end
 
-  before(:each) do
-    @lat = 37.81164190000001
-    @long = -122.255463
-    @zipcode = 94610
-    @zipcode2 = ''
-    @latlong = [@lat, @long]
-    @address = '111 Adams Street Suite 181 Oakland CA 94610'
+  let!(:lat) { 37.81164190000001 }
+  let!(:long) { -122.255463 }
+  let!(:zipcode) { 94610 }
+  let!(:zipcode2) { '' }
+  let!(:latlong) { [ lat, long ] }
+  let!(:address) { '111 Adams Street Suite 181 Oakland CA 94610' }
 
-    @site = FactoryGirl.create(
-      :site,
-      :name => 'ec jungle gym'
+  let!(:site) { FactoryGirl.create(
+    :site,
+    :name => 'ec jungle gym'
     )
+  }
+
+  before(:each) do
 
     @report = FactoryGirl.create(
       :report,
-      :site => @site
+      :site => site
       )
     @reports = [@report]
 
     @inspection_event = FactoryGirl.create(
       :inspection_event,
-      :site => @site
+      :site => site
       )
     @inspection_events = [@inspection_event]
 
     @sampling_event = FactoryGirl.create(
       :sampling_event,
-      :site => @site
+      :site => site
       )
     @sampling_events = [@sampling_event]
 
-    @site.stub(:lat) do
-      lat = @lat
+    site.stub(:lat) do
+      lat = 37.81164190000001
     end
-    @site.stub(:long) do
-      long = @long
+    site.stub(:long) do
+      long = -122.255463
     end
-    @site.stub(:zipcode) do
-      zipcode = @zipcode
+    site.stub(:zipcode) do
+      zipcode = 94610#
     end
 
     lat_long = [@lat, @long]
