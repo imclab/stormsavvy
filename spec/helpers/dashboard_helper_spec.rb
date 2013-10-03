@@ -33,19 +33,4 @@ describe DashboardHelper do
       # @rain_state = fe.rain
     end
   end
-
-  describe "#get_projects" do
-  end
-
-  describe "#get_sites" do
-  end
-
-  describe "#get_ie" do
-  end
-
-  describe "#get_reports" do
-  end
-
-  describe "#pending_reports" do
-  end
 end
