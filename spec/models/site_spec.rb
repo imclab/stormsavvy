@@ -24,14 +24,14 @@ describe Site do
     :name => 'ec jungle gym'
     )
   }
+  let!(:report) { FactoryGirl.create(
+    :report,
+    :site => site
+    )
+  }
 
   before(:each) do
 
-    @report = FactoryGirl.create(
-      :report,
-      :site => site
-      )
-    @reports = [@report]
 
     @inspection_event = FactoryGirl.create(
       :inspection_event,
