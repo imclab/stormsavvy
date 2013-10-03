@@ -163,11 +163,6 @@ describe "Dashboard" do
     before(:each) do
       login_as(current_user, :scope => :user)
       visit root_path
-
-      site.chance_of_rain.pop
-      noaa = NoaaForecastService.new(:site => site)
-      noaa.get_forecast
-      noaa.save_results
     end
 
     it "renders dashboard" do
