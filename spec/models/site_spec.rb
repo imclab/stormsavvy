@@ -131,15 +131,15 @@ describe Site do
 
   describe 'inspection_event associations' do
     it 'responds to inspection_events' do
-      @site.should respond_to(:inspection_events)
+      site.should respond_to(:inspection_events)
     end
 
     it 'has inspection events in correct order' do
-      @site.inspection_events.should == @inspection_events
+      site.inspection_events.should == @inspection_events
     end
 
     it 'destroys associated inspection events' do
-      @site.destroy
+      site.destroy
       @inspection_events.each do |inspection_event|
         InspectionEvent.find_by_id(inspection_event.id).should be_nil
       end
