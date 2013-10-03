@@ -262,6 +262,7 @@ describe "Dashboard" do
           pp forecast_period = current_pending_site.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).map(&:pop)
           pp current_pending_site.forecast_periods.max_by(&:pop).pop
           pp current_pending_site.chance_of_rain.pop
+          pp forecast_period.class
         rescue
           pp 'not online or pop method error'
         end
