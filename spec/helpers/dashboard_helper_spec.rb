@@ -15,9 +15,6 @@ describe DashboardHelper do
   describe '#chance_of_rain' do
     it "returns @max_rain" do
       nf2.seven_day_weather(zipcode)
-
-      # where is method called in noaa forecast?
-      # @max_rain = nf.noaa_forecast[0][0..4].max
     end
   end
 
@@ -29,8 +26,10 @@ describe DashboardHelper do
         return
       end
       fe = ForecastExaminer.new(@site, forecast)
-      # fe.find_rain_chance()
-      # @rain_state = fe.rain
     end
+  end
+
+  describe '#get_pop' do
+    # spec goes here
   end
 end

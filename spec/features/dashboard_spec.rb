@@ -221,6 +221,7 @@ describe "Dashboard" do
         pp site.chance_of_rain.pop
         pp forecast_period = site.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).map(&:pop)
         pp site.forecast_periods.max_by(&:pop).pop
+        pp forecast_period.class
 
         site.chance_of_rain.pop.should == site.forecast_periods.max_by(&:pop).pop
       end
