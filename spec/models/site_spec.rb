@@ -78,7 +78,7 @@ describe Site do
     #   ]
     # end
 
-    @site.stub(:forecast) do
+    site.stub(:forecast) do
       latlong = [@lat, @long]
       @nf.get_forecast(latlong)
     end
