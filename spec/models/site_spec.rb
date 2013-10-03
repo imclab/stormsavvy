@@ -186,36 +186,36 @@ describe Site do
 
   describe 'lat/long stub values' do 
     it "returns correct stub for oakland latlong" do
-      @site.lat.round.should == 38
-      @site.long.round.should == -122
+      site.lat.round.should == 38
+      site.long.round.should == -122
     end
   end
 
   describe '#address' do
     it 'returns site address' do
-      @site.address.should == @address
+      site.address.should == address
     end
   end
 
   describe '#precipitation_state' do
     it 'sets rain state to imminent' do
       forecast = [@data[6], @data[7]]
-      @site.precipitation_state(forecast).should == :imminent
+      site.precipitation_state(forecast).should == :imminent
     end
 
     it 'sets rain state to warning' do
       forecast = [@data[8], @data[9]]
-      @site.precipitation_state(forecast).should == :warning
+      site.precipitation_state(forecast).should == :warning
     end
 
     it 'sets rain state to watch' do
       forecast = [@data[2], @data[3]]
-      @site.precipitation_state(forecast).should == :watch
+      site.precipitation_state(forecast).should == :watch
     end
 
     it 'sets rain state to clear' do
       forecast = [@data[0], @data[1]]
-      @site.precipitation_state(forecast).should == :clear
+      site.precipitation_state(forecast).should == :clear
     end
   end
 
