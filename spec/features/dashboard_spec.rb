@@ -214,23 +214,25 @@ describe "Dashboard" do
         page.should_not have_text('No active projects')
       end
 
-      it 'shows forecast by site' do
-        puts site.name
+      it 'shows site pop' do
         noaa = NoaaForecastService.new(:site => site)
         noaa.get_forecast
         noaa.save_results
-        site.chance_of_rain.pop
-        site.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).map(&:pop)
+        pp site.chance_of_rain.pop
+        pp forecast_period = site.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).map(&:pop)
+        pp site.forecast_periods.max_by(&:pop).pop
+
+        site.chance_of_rain.pop.should == site.forecast_periods.max_by(&:pop).pop
       end
 
       it 'loops thru sites array' do
         sites = [ current_completed_site, current_pending_site,
                   other_completed_site, other_pending_site ]
         sites.each do |s|
+          puts s.name
           noaa = NoaaForecastService.new(:site => s)
           noaa.get_forecast
           noaa.save_results
-          puts s.name
           puts s.chance_of_rain.pop
         end
       end
