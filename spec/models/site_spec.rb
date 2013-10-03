@@ -148,15 +148,15 @@ describe Site do
 
   describe 'sampling_event associations' do
     it 'responds to sampling_events' do
-      @site.should respond_to(:sampling_events)
+      site.should respond_to(:sampling_events)
     end
 
     it 'has sampling events in correct order' do
-      @site.sampling_events.should == @sampling_events
+      site.sampling_events.should == @sampling_events
     end
 
     it 'destroys associated sampling events' do
-      @site.destroy
+      site.destroy
       @sampling_events.each do |sampling_event|
         SamplingEvent.find_by_id(sampling_event.id).should be_nil
       end
