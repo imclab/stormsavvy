@@ -255,7 +255,7 @@ describe Site do
 
   describe '#get_zipcode' do
     it 'returns zipcode' do
-      @site.get_zipcode.should == @site.zipcode.to_s
+      site.get_zipcode.should == site.zipcode.to_s
     end
   end
 end
