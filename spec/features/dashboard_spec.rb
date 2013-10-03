@@ -213,6 +213,27 @@ describe "Dashboard" do
         page.should have_text('berkeley high')
         page.should_not have_text('No active projects')
       end
+
+      it 'shows forecast by site' do
+        puts site.name
+        noaa = NoaaForecastService.new(:site => site)
+        noaa.get_forecast
+        noaa.save_results
+        site.chance_of_rain.pop
+        site.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).map(&:pop)
+      end
+
+      it 'loops thru sites array' do
+        sites = [ current_completed_site, current_pending_site,
+                  other_completed_site, other_pending_site ]
+        sites.each do |s|
+          noaa = NoaaForecastService.new(:site => s)
+          noaa.get_forecast
+          noaa.save_results
+          puts s.name
+          puts s.chance_of_rain.pop
+        end
+      end
     end
 
     describe 'upcoming inspections' do
