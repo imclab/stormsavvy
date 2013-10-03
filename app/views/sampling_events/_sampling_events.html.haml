@@ -49,7 +49,10 @@
     - @sampling_events.each do |sampling_event|
       %tr
         %td= sampling_event.site_id
-        /%td= sampling_event.site.name
+        - begin
+          %td= sampling_event.site.name
+        - rescue
+          %td= 'Valid site required'
         %td= sampling_event.sampling_type
         %td= sampling_event.sampling_description
         %td= sampling_event.sampling_date
