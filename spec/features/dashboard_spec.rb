@@ -193,7 +193,7 @@ describe "Dashboard" do
       login_as(other_user, :scope => :user)
       visit root_path
       page.should have_text('berkeley usd')
-      page.should have_text('# of Sites: 2')
+      page.should have_text('# of Sites: 3')
       page.should have_text('berkeley high')
       page.should have_text('peoples park')
       page.should_not have_text('No active projects')
