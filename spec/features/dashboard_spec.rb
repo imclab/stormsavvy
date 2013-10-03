@@ -245,6 +245,8 @@ describe "Dashboard" do
         pp current_completed_site.chance_of_rain.pop
 
         pp current_pending_site.name
+        pp current_pending_site.lat
+        pp current_pending_site.lng
         noaa = NoaaForecastService.new(:site => current_pending_site)
         noaa.get_forecast
         noaa.save_results
