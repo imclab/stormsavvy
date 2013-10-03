@@ -5,7 +5,7 @@ require 'current_user_object'
 module DashboardHelper
 
   attr_reader :rain_state, :max_rain
-
+=begin
   def chance_of_rain(zipcode)
     zipcode = 90210 unless zipcode.present?
     nf = NOAAForecast.new(zipcode)
@@ -13,7 +13,7 @@ module DashboardHelper
     #precipitation_state(nf.noaa_forecast)
     @max_rain = nf.noaa_forecast[0][0..4].max
   end
-
+=end
   def precipitation_state(forecast)
     if forecast == [[],[]]
       @rain_state = :null
