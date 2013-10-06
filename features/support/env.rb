@@ -106,3 +106,6 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+Capybara.configure do |config|
+    config.exact = true # exact will be true by default in option hashes. It's false by default
+end
