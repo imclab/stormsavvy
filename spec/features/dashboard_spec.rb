@@ -189,6 +189,16 @@ describe "Dashboard" do
       page.should have_text('peoples park')
       page.should_not have_text('No active projects')
     end
+
+    it 'creates and displays new projects' do
+      # visit new_project_path
+      click_link 'New Project'
+      fill_in :project_name, :with => 'Troll Bridge Retrofit', :exact => true
+      fill_in 'Description', :with => 'Retrofit for the trolls'
+      fill_in 'Zipcode', :with => '94954'
+      click_button 'Create Project'
+      page.should have_text('Project was successfully created.')
+    end
   end
 
   describe "dashboard/sidebar" do
