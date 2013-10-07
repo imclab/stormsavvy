@@ -90,6 +90,13 @@ describe ProjectsController do
         post :create, {:project => valid_attributes}
         flash[:notice].should == "Project was successfully created."
       end
+
+      it 'creates new projects for current_user' do
+        user.projects.create! valid_attributes
+        user.projects.create! second_attributes
+        user.projects.create! third_attributes
+        user.projects.count.should == 3
+      end
     end
 
     describe "with invalid params" do
