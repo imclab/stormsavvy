@@ -97,6 +97,11 @@ describe ProjectsController do
         user.projects.create! third_attributes
         user.projects.count.should == 3
       end
+
+      it 'creates new projects using build method' do
+        user.projects.build(:id => 4)
+        pp user.projects
+      end
     end
 
     describe "with invalid params" do
