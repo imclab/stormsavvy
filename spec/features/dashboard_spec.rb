@@ -191,7 +191,6 @@ describe "Dashboard" do
     end
 
     it 'creates and displays new projects' do
-      # visit new_project_path
       click_link 'New Project'
       fill_in :project_name, :with => 'Troll Bridge Retrofit', :exact => true
       fill_in 'Description', :with => 'Retrofit for the trolls'
