@@ -99,8 +99,20 @@ describe ProjectsController do
       end
 
       it 'creates new projects using build method' do
-        user.projects.build(:id => 4)
-        pp user.projects
+        expect{
+          project_build = user.projects.build(valid_attributes)
+          # user.projects << project_build
+          project_build.save
+
+          project_new = user.projects.new(valid_attributes)
+          project_new.save
+
+          project_create = user.projects.create(valid_attributes)
+          project_create.save
+
+          pp user.projects
+          pp user.projects.count
+        }.to change(user.projects, :count).by(3)
       end
     end
 
