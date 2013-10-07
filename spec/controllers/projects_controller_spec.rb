@@ -14,10 +14,27 @@ describe ProjectsController do
 
   def valid_attributes
     {
+      :id => 1,
       :name => 'My Project',
       :description => 'What a great project',
-      :startdate => 5.days.ago,
-      :finishdate => 1.day.ago
+      # :startdate => 5.days.ago,
+      # :finishdate => 1.day.ago
+    }
+  end
+
+  def second_attributes
+    {
+      :id => 2,
+      :name => 'Troll Bridge',
+      :description => 'Bridge for trolls',
+    }
+  end
+
+  def third_attributes
+    {
+      :id => 3,
+      :name => 'Gingerbread House',
+      :description => 'House for Goldilocks',
     }
   end
 
