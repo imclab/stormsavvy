@@ -38,7 +38,8 @@ end
 we = WeatherEvent.new
 we.save
 
-project = Project.new
+project = Project.new(:name => 'foo', :description => 'bar')
+project.save
 sites = project.sites.build
 
 report = ReportsPdf.new
