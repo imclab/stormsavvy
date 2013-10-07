@@ -34,7 +34,6 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = current_user.projects.build(params[:project])
-    @project.save
     respond_to do |format|
       if @project.save
         # format.html { redirect_to(@project, :flash => { :success => 'Project was successfully created.'}) }
