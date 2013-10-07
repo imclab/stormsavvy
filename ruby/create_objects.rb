@@ -51,6 +51,7 @@ AlertMailer.pester_admins(email).deliver
 zipcode = 94901
 nf = NOAAForecast.new(zipcode)
 forecast = nf.seven_day_weather(zipcode)
+pp forecast
 
 # Script for generating site and forecast periods in console
 site = Site.last
