@@ -5,4 +5,9 @@
         %h2 Active Projects
         = link_to 'New Project', new_project_path, :class => "btn"
         %p
+          -# @projects.each do |p|
+            %li
+              %strong Name of Project:
+              = p.name
+        %p
         = render 'dashboard/projects'
