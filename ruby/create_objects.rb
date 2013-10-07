@@ -38,6 +38,10 @@ end
 we = WeatherEvent.new
 we.save
 
+u = user.last
+u.projects.build(:id =>1)
+pp u.projects
+
 project = Project.new(:name => 'foo', :description => 'bar')
 project.save
 sites = project.sites.build
