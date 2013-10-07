@@ -29,9 +29,9 @@ describe Site do
     :site => site
     )
   }
+  let!(:reports) { [ report ] }
 
   before(:each) do
-
 
     @inspection_event = FactoryGirl.create(
       :inspection_event,
