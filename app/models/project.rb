@@ -9,12 +9,11 @@ class Project < ActiveRecord::Base
     :active,
     :sites_attributes
 
+  has_many :sites, :dependent => :destroy
   accepts_nested_attributes_for :sites
 
   validates_presence_of :name,
     :description
-
-    # Comment out until calendars are debugged
     # :startdate,
     # :finishdate
 
