@@ -4,7 +4,9 @@ class DashboardController < ApplicationController
   def index
     redirect_to index_path unless user_signed_in?
     if user_signed_in?
-      @projects = current_user.projects.includes(sites: [:reports, :inspection_events])
+      # @projects = Project.all
+      # @projects = current_user.projects.includes(sites: [:reports, :inspection_events])
+      @projects = current_user.projects.all
       @sites = @projects.each.collect { |p| p.sites }.flatten
       @pending_ie = @sites.collect{|s| s.inspection_events.needs_attention }.flatten
       @pending_reports = @sites.collect{|s| s.reports.select{ |r| r.status == 'needs_attention' } }.flatten
