@@ -1,6 +1,5 @@
 class Project < ActiveRecord::Base
   belongs_to :user
-  has_many :sites
 
   #has_many :reports, :through => :sites
   attr_accessible :name,
