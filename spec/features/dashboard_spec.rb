@@ -192,11 +192,15 @@ describe "Dashboard" do
 
     it 'creates and displays new projects' do
       click_link 'New Project'
+      pp current_path
+      current_path.should == new_project_path
       fill_in :project_name, :with => 'Troll Bridge Retrofit', :exact => true
       fill_in 'Description', :with => 'Retrofit for the trolls'
       fill_in 'Zipcode', :with => '94954'
       click_button 'Create Project'
+      pp current_path
       page.should have_text('Project was successfully created.')
+      current_path.should == project_path
     end
   end
 
