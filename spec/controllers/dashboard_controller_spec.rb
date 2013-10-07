@@ -13,7 +13,6 @@ describe DashboardController do
     sign_in user
   end
 
-
   before(:each) do
     # @current_user = FactoryGirl.build(:current_user)
     # @other_user = FactoryGirl.build(:other_user)
@@ -179,7 +178,7 @@ describe DashboardController do
   describe "#get_projects" do
     it "returns all projects to current user" do
       # sign_in @current_user
-      controller.stub!(:get_projects).and_return(@all_projects)
+      controller.stub(:get_projects).and_return(@all_projects)
       @all_projects.should include(@current_project)
       @all_projects.should include(@other_project)
       @all_projects.should_not be_nil
@@ -205,7 +204,7 @@ describe DashboardController do
   describe "#get_sites" do
     it "returns all sites to current user" do
       # sign_in @current_user
-      controller.stub!(:get_sites).and_return(@all_sites)
+      controller.stub(:get_sites).and_return(@all_sites)
       @all_sites.should include(@current_site)
       @all_sites.should include(@other_site)
       @all_sites.should_not be_nil
@@ -231,7 +230,7 @@ describe DashboardController do
   describe "#get_ie" do
     it "returns all reports to current user" do
       # sign_in @current_user
-      controller.stub!(:get_ie).and_return(@all_ie_array)
+      controller.stub(:get_ie).and_return(@all_ie_array)
       @all_ie_array.should include(@current_ie)
       @all_ie_array.should include(@other_ie)
       @all_ie_array.should_not be_nil
@@ -254,7 +253,7 @@ describe DashboardController do
   describe "#get_reports" do
     it "returns all reports to current user" do
       # sign_in @current_user
-      controller.stub!(:get_reports).and_return(@all_reports)
+      controller.stub(:get_reports).and_return(@all_reports)
       @all_reports.should include(@pending_report)
       @all_reports.should include(@completed_report)
       @all_reports.should_not be_nil
@@ -270,14 +269,14 @@ describe DashboardController do
   describe "#pending_reports" do
     it "returns pending reports to current user" do
       # sign_in @current_user
-      controller.stub!(:pending_reports).and_return(@pending_reports)
+      controller.stub(:pending_reports).and_return(@pending_reports)
       @pending_reports.should include(@pending_report)
       @pending_reports.should_not include(@completed_report)
     end
 
     it "returns correct reports to each user" do
       # sign_in @current_user
-      controller.stub!(:pending_reports).and_return(@pending_reports)
+      controller.stub(:pending_reports).and_return(@pending_reports)
       @current_site.reports.all.should include(@pending_report)
       @current_site.reports.all.should_not include(@other_report)
     end
