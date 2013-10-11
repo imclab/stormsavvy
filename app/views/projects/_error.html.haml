@@ -1,0 +1,10 @@
+= f.fields_for :projects do |f|
+  - if f.error_notification
+    .alert.alert-error.fade.in
+      /%a.close{"data-dismiss" => "alert", :href => "#"} ×
+      = f.error_notification
+  - flash.each do |name, msg|
+    %h4 Error!
+    %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+      /%a.close{"data-dismiss" => "alert"} ×
+      = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
