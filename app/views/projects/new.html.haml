@@ -11,6 +11,23 @@
       %h4 Got a notice
       %p#notice.alert.alert-success= notice
     .span10
-
       %h1 New Project
-      = render 'form'
+      /= render 'form'
+      = form_for @project do |f|
+        %fieldset
+          %legend Project Details
+          .action
+            = f.submit 'Save'
+            = link_to 'Back', projects_path
+          .span5
+            = f.label:name
+            = f.text_field :name
+            = f.label :startdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
+            = f.text_field :startdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
+            = f.label :finishdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
+            = f.text_field :finishdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
+            = f.label :active
+            = f.text_field :active
+          .span4
+            = f.label :description
+            = f.text_field :description
