@@ -29,15 +29,14 @@ describe "Projects" do
     end
 
 		it "saves the new project" do
-			visit '/projects/new'
+      visit new_project_path
       current_path.should == new_project_path
-      page.body.should_not be_nil
+      page.should have_content('New Project')
+      fill_in 'Name', :with => 'ECP Improvements'
+      fill_in 'Description', :with => 'Jungle Gym, etc.'
       click_button 'Save'
-      # click_button 'Create Project'
+      page.should have_content('Project was successfully created.')
       current_path.should == '/projects'
-
-      # page.should have_selector('a', :text => 'Storm Savvy')
-			# page.body.should have_content('Project page')
     end
 
   end
