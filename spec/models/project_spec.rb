@@ -137,7 +137,6 @@ describe Project do
 
   describe "date format validations" do
     it "start date should be less than finish date" do
-      # @project = FactoryGirl.create(:project)
       @project.startdate.should < @project.finishdate
     end
 
