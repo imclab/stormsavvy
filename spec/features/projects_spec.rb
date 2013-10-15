@@ -23,16 +23,17 @@ describe "Projects" do
     it "correct content on homepage" do
       current_path.should == new_project_path
       page.should have_content('New Project')
-      
-      # page.body.should_not be_nil
-      # click_link 'Storm Savvy'
-      # page.should have_selector('a', :text => 'Storm Savvy')
+      page.body.should_not be_nil
+      click_link 'Storm Savvy'
+      page.should have_selector('a', :text => 'Storm Savvy')
     end
 
 		it "saves the new project" do
 			visit '/projects/new'
+      current_path.should == new_project_path
       page.body.should_not be_nil
-      click_button 'Create Project'
+      click_button 'Save'
+      # click_button 'Create Project'
       current_path.should == '/projects'
 
       # page.should have_selector('a', :text => 'Storm Savvy')
