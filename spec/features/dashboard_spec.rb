@@ -205,6 +205,10 @@ describe "Dashboard" do
       page.should have_text('Project was successfully created.')
       current_path.should == project_path
     end
+
+    it 'creates new projects for current_user' do
+      current_user.projects.count.should == 1
+    end
   end
 
   describe "dashboard/sidebar" do
