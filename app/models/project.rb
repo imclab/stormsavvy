@@ -1,8 +1,10 @@
 class Project < ActiveRecord::Base
   belongs_to :user
+  accepts_nested_attributes_for :user
 
   #has_many :reports, :through => :sites
-  attr_accessible :name,
+  attr_accessible :user,
+    :name,
     :description,
     :startdate,
     :finishdate,
