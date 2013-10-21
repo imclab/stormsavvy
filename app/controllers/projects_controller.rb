@@ -30,14 +30,18 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @project = current_user.projects.find(params[:id])
+    @project = Project.find(params[:id])
+    # @project = current_user.projects.find(params[:id])
   end
 
   # POST /projects
   # POST /projects.json
   def create
-    @project = current_user.projects.build(params[:project])
-    @project.save
+    @project = Project.new(params[:project])
+
+    # @project = current_user.projects.build(params[:project])
+    # @project.save
+
     respond_to do |format|
       if @project.save
         # format.html { redirect_to(@project, :flash => { :success => 'Project was successfully created.'}) }
