@@ -38,6 +38,12 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
+    @project.user = current_user
+    @project.save
+
+    # @project = current_user.projects.find(params[:project])
+    # @project.build
+    # @project.save
 
     # @project = current_user.projects.build(params[:project])
     # @project.save
