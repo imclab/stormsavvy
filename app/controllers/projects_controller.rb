@@ -19,6 +19,8 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
     @sites = @project.sites.build
+    # @project = current_user.projects.find(params[:id])
+
     respond_to do |format|
       format.html { render html: @project, :notice => 'Error: See details below.',
                     :flash => { :error => 'Error!' } }
