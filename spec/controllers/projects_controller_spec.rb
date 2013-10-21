@@ -104,10 +104,13 @@ describe ProjectsController do
       end
 
       it 'creates new projects for current_user' do
+        pp user.projects.count
         user.projects.create! valid_attributes
         user.projects.create! second_attributes
         user.projects.create! third_attributes
-        user.projects.count.should == 3
+        user.projects.count.should == 4
+        pp user.projects
+        pp project
       end
 
       it 'creates new projects using build method' do
