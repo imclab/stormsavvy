@@ -9,6 +9,7 @@ describe "homepage" do
   before :each do
     FactoryGirl.create(
       :user,
+      :id => 1,
       :email => 'demo@stormsavvy.com',
       :password => 'savvy_demo',
       :password_confirmation => 'savvy_demo'
