@@ -206,8 +206,9 @@ describe "Dashboard" do
       current_path.should == project_path
     end
 
-    it 'creates new projects for current_user' do
+    it 'creates new projects for factory users' do
       current_user.projects.count.should == 1
+      other_user.projects.count.should == 1
     end
   end
 
