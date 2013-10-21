@@ -4,8 +4,20 @@ describe ProjectsController do
 
   include Devise::TestHelpers
 
-  let(:user) {
-    FactoryGirl.create(:user)
+  let!(:user) { FactoryGirl.create(
+      :user,
+      :id => 1,
+      :email => 'walter@stormsavvy.com'
+    )
+  }
+
+  let!(:project) { FactoryGirl.create(
+      :project,
+      :id => 4,
+      :name => 'ECP',
+      :description => 'Plaza Improvements',
+      :user_id => 1
+    )
   }
 
   before(:each) do
