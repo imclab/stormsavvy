@@ -156,7 +156,7 @@ describe "Dashboard" do
       visit root_path
     end
 
-    it "renders dashboard" do
+    it "renders dashboard header" do
       page.should have_text('Storm Savvy')
       page.should have_text('Inspections')
       page.should have_text('Sampling')
@@ -165,7 +165,7 @@ describe "Dashboard" do
       page.should_not be_nil
     end
 
-    it "renders projects partial and div tags" do
+    it "renders projects info" do
       page.should have_text('# of Sites:')
       page.should have_text('Last Updated:')
       page.should have_link('View Project')
