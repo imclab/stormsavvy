@@ -191,24 +191,40 @@ describe "Dashboard" do
     end
 
     it 'creates and displays new projects' do
+      login_as(current_user, :scope => :user)
+      visit root_path
       click_link 'New Project'
-      pp current_path
       current_path.should == new_project_path
+
       fill_in 'Name', :with => 'Troll Bridge Retrofit', :exact => true
       # fill_in :project_name, :with => 'Troll Bridge Retrofit', :exact => true
       # fill_in :description, :with => 'Retrofit for the trolls'
+
       fill_in 'Description', :with => 'Retrofit for the trolls'
       # fill_in 'Zipcode', :with => '94954'
       # click_button 'Create Project'
+
       click_button 'Save'
-      pp current_path
       page.should have_text('Project was successfully created.')
       current_path.should == project_path
     end
 
     it 'creates new projects for factory users' do
+      login_as(current_user, :scope => :user)
       current_user.projects.count.should == 1
+      pp current_user.projects
+
+      project = current_user.projects.build(
+        :name => 'ECP',
+        :description => 'Plaza Improvements'
+      )
+      project.save
+      current_user.projects.count.should == 2
+      pp current_user.projects
+
+      login_as(other_user, :scope => :user)
       other_user.projects.count.should == 1
+      pp other_user.projects
     end
   end
 
