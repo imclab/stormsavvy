@@ -197,13 +197,7 @@ describe "Dashboard" do
       current_path.should == new_project_path
 
       fill_in 'Name', :with => 'Troll Bridge Retrofit', :exact => true
-      # fill_in :project_name, :with => 'Troll Bridge Retrofit', :exact => true
-      # fill_in :description, :with => 'Retrofit for the trolls'
-
       fill_in 'Description', :with => 'Retrofit for the trolls'
-      # fill_in 'Zipcode', :with => '94954'
-      # click_button 'Create Project'
-
       click_button 'Save'
       page.should have_text('Project was successfully created.')
       current_path.should == project_path
