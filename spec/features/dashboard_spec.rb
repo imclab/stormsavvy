@@ -11,13 +11,13 @@ describe "Dashboard" do
     { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
-  let!(:current_user) { FactoryGirl.build(
+  let!(:current_user) { FactoryGirl.create(
       :user,
       :id => 1,
       :email => 'name@stormsavvy.com'
     )
   }
-  let!(:other_user) { FactoryGirl.build(
+  let!(:other_user) { FactoryGirl.create(
       :user,
       :id => 2,
       :email => 'info@stormsavvy.com'
