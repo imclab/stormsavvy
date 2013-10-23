@@ -2,6 +2,9 @@ class ProjectsController < ApplicationController
   require 'carmen'
   include Carmen
 
+  before_filter :authenticate_user!
+  protect_from_forgery
+
   # GET /projects/1
   # GET /projects/1.json
   def show
