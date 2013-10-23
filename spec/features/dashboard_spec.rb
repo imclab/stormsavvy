@@ -206,7 +206,7 @@ describe "Dashboard" do
     it 'creates new projects for factory users' do
       login_as(current_user, :scope => :user)
       current_user.projects.count.should == 1
-      pp current_user.projects
+      # pp current_user.projects
 
       project = current_user.projects.build(
         :name => 'ECP',
@@ -214,11 +214,13 @@ describe "Dashboard" do
       )
       project.save
       current_user.projects.count.should == 2
-      pp current_user.projects
+      pp current_user.email
+      # pp current_user.projects
 
       login_as(other_user, :scope => :user)
       other_user.projects.count.should == 1
-      pp other_user.projects
+      pp other_user.email
+      # pp other_user.projects
     end
   end
 
