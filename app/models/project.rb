@@ -19,15 +19,15 @@ class Project < ActiveRecord::Base
     # :startdate,
     # :finishdate
 
-  before_save :check_dates
+    # before_save :check_dates
 
-  def check_dates
-    # return false if self.startdate > self.finishdate
-    #
-    # if self.startdate > self.finishdate
-    #   raise ActiveRecord::RecordNotSaved, 'Starting date must precede finishing date'
+    # def check_dates
+    #   return false if self.startdate > self.finishdate
+
+    #   if self.startdate > self.finishdate
+    #     raise ActiveRecord::RecordNotSaved, 'Starting date must precede finishing date'
+    #   end
     # end
-  end
 
   def get_site_zipcodes
     zipcodes = []
