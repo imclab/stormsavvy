@@ -39,26 +39,6 @@ class User < ActiveRecord::Base
     return false
   end
 
-  # def map_forecasts
-  #   self.sites.each do |site|
-  #     @forecasts_array = pp site.forecast
-  #   end
-  # end
-
-  # def puts_forecasts
-  #   puts @forecasts_array
-  # end
-
-  # def print_forecasts
-  #   self.sites.each do |forecasts|
-  #     if self.has_site? == true
-  #       self.map_forecasts
-  #       self.puts_forecasts
-  #     end
-  #     puts "No sites = no forecasts"
-  #   end
-  # end
-
   def mail_alerts
     @name = self.firstname
     AlertMailer.pop_alert(self).deliver
