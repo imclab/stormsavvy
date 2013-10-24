@@ -29,8 +29,8 @@ describe ProjectsController do
       :id => 1,
       :name => 'My Project',
       :description => 'What a great project',
-      # :startdate => 5.days.ago,
-      # :finishdate => 1.day.ago
+      :startdate => 5.days.ago,
+      :finishdate => 1.day.ago
     }
   end
 
