@@ -42,7 +42,16 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
     @project.user = current_user
-    @project.save
+    # pp @project.user
+
+    @project.save!
+    pp @project.new_record?
+
+    if @project.save
+      pp 'Project Saved!'
+    else
+      pp 'WTF??'
+    end
 
     # @project = current_user.projects.find(params[:project])
     # @project.build
