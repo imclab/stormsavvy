@@ -5,7 +5,7 @@ describe CurrentUserObject do
   before(:each) do
     @current_user = FactoryGirl.build(
       :user,
-      :email => '@stormsavvy.com'
+      :email => 'walter@stormsavvy.com'
     )
     @other_user = FactoryGirl.build(
       :user,
