@@ -22,10 +22,6 @@ describe ProjectsController do
     )
   }
 
-  before(:each) do
-    sign_in user
-  end
-
   def valid_attributes
     {
       :id => 1,
