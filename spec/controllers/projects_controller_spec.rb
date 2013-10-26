@@ -36,7 +36,7 @@ describe ProjectsController do
     {
       :id => 2,
       :name => 'Troll Bridge',
-      :description => 'Bridge for trolls',
+      :description => 'Bridge for trolls'
     }
   end
 
@@ -44,12 +44,16 @@ describe ProjectsController do
     {
       :id => 3,
       :name => 'Gingerbread House',
-      :description => 'House for Goldilocks',
+      :description => 'House for Goldilocks'
     }
   end
 
   def valid_session
     { "warden.user.user.key" => session["warden.user.user.key"] }
+  end
+
+  before(:each) do
+    sign_in user
   end
 
   describe "GET show" do
@@ -83,6 +87,7 @@ describe ProjectsController do
         expect {
           post :create, {:project => valid_attributes}
         }.to change(Project, :count).by(1)
+        puts user.email
       end
 
       it "assigns a newly created project as @project" do
