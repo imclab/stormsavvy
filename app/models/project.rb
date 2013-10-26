@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
 
   #has_many :reports, :through => :sites
   attr_accessible :user,
+    :user_id,
     :name,
     :description,
     :startdate,
