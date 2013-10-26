@@ -7,7 +7,9 @@ describe ProjectsController do
   let!(:user) { FactoryGirl.create(
       :user,
       :id => 1,
-      :email => 'walter@stormsavvy.com'
+      :email => 'walter@stormsavvy.com',
+      :password => 'passwood',
+      :password_confirmation => 'passwood'
     )
   }
 
