@@ -22,7 +22,7 @@ describe ReportsController do
 
   let!(:current_user) { FactoryGirl.build(
       :user,
-      :email => '@stormsavvy.com'
+      :email => 'barney@stormsavvy.com'
     )
   }
   let(:other_user) { FactoryGirl.build(
