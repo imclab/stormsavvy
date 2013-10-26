@@ -3,8 +3,8 @@ FactoryGirl.define do
     firstname "Walter"
     lastname "Yu"
     email "walter@stormsavvy.com"
-    password "DarkAndStormy"
-    password_confirmation "DarkAndStormy"
+    password "passwood"
+    password_confirmation "passwood"
     remember_me :true
 
     factory :user_with_projects do
