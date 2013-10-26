@@ -55,7 +55,7 @@ describe SamplingEventsController do
 
   let!(:current_user) { FactoryGirl.build(
       :user,
-      :email => '@stormsavvy.com'
+      :email => 'me@stormsavvy.com'
     )
   }
   let(:other_user) { FactoryGirl.build(
