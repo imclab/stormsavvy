@@ -17,11 +17,6 @@ class SamplingEventWorkflow < ActiveRecord::Base
     :forecast_rain,
     :sampling_event
 
-  # need this for current_user and sites but throws error
-  # def initialize(site)
-  #   @site = site
-  # end
-
   def sampling_imminent?
     if chance_of_rain > 50 && forecast_rain > 0.5 && hours_before_rain < 24
       start_sampling_event_workflow
