@@ -5,8 +5,8 @@ describe InspectionEventsController do
 
   include Devise::TestHelpers
 
-  let(:user) {
-    FactoryGirl.create(:user_with_projects)
+  let!(:user) {
+    FactoryGirl.create(:user_with_sites)
     # login_as(user, :scope => :user)
   }
 
