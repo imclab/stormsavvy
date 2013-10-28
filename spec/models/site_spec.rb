@@ -48,16 +48,15 @@ describe Site do
 
   before(:each) do
     site.stub(:lat) do
-      lat = 37.81164190000001
+      37.81164190000001
     end
     site.stub(:long) do
-      long = -122.255463
+      -122.255463
     end
     site.stub(:zipcode) do
-      zipcode = 94610
+      94610
     end
 
-    lat_long = [@lat, @long]
     @nf = double(NOAAForecast)
     @nf2 = NOAAForecast.new(@zipcode,168,6)
     @nf2.seven_day_weather(@zipcode)
