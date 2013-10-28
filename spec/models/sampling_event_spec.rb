@@ -3,18 +3,15 @@ require 'spec_helper'
 describe SamplingEvent do
   before :each do
   	@site = FactoryGirl.create(
-      :site,
-      :name => 'ec jungle gym'
+      :site
     )
   	@se = FactoryGirl.create(
       :sampling_event,
-      :site => @site,
-      :site_id => @site.object_id
+      :site => @site
     )
   	@sampling_event = FactoryGirl.create(:sampling_event)
   	@attr = {
       :site => @site,
-      # :site_id => 1,
       :sampling_type => "pH",
       :sampling_description => "ec jungle gym sampling",
       :sampling_date => "2013-01-27 15:34:07",
