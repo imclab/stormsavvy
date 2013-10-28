@@ -13,7 +13,8 @@ describe SamplingEvent do
     )
   	@sampling_event = FactoryGirl.create(:sampling_event)
   	@attr = {
-      :site_id => 1,
+      :site => @site,
+      # :site_id => 1,
       :sampling_type => "pH",
       :sampling_description => "ec jungle gym sampling",
       :sampling_date => "2013-01-27 15:34:07",
