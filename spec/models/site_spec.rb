@@ -95,17 +95,16 @@ describe Site do
 
   describe "project associations" do
     before(:each) do
-      @project = FactoryGirl.create(:project)
       site = FactoryGirl.create(:site)
     end
 
    it "creates new instance of given valid attributes" do
-      @project.sites.create!(
+      project.sites.create!(
         :name    => "Oakland Adams Point",
         :city    => "Oakland",
         :zipcode => 94610
         )
-      @project.sites.first.should be_valid
+      project.sites.first.should be_valid
     end
 
     # TDD for handling belongs_to
