@@ -54,10 +54,6 @@ describe Site do
   end
 
   describe "project associations" do
-    before(:each) do
-      site = FactoryGirl.create(:site)
-    end
-
    it "creates new instance of given valid attributes" do
       project.sites.create!(
         :name    => "Oakland Adams Point",
@@ -74,10 +70,6 @@ describe Site do
   end
 
   describe 'report associations' do
-    before(:each) do
-      reports = [ report ]
-    end
-
     it 'responds to reports' do
       site.should respond_to(:reports)
     end
@@ -152,7 +144,7 @@ describe Site do
   describe 'lat/long stub values' do 
     it "returns correct stub for oakland latlong" do
       site.lat.round.should == 38
-      site.long.round.should == -122
+      site.lng.round.should == 123
     end
   end
 
