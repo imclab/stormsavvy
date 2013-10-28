@@ -30,20 +30,21 @@ describe Site do
   }
   let!(:reports) { [ report ] }
 
-  before(:each) do
-
-    @inspection_event = FactoryGirl.create(
+  let!(:inspection_event) { FactoryGirl.create(
       :inspection_event,
       :site => site
       )
-    @inspection_events = [@inspection_event]
+  }
+  let!(:inspection_events) { [inspection_event] }
 
-    @sampling_event = FactoryGirl.create(
+  let!(:sampling_event) { FactoryGirl.create(
       :sampling_event,
       :site => site
       )
-    @sampling_events = [@sampling_event]
+  }
+  let!(:sampling_events) { [sampling_event] }
 
+  before(:each) do
     site.stub(:lat) do
       lat = 37.81164190000001
     end
@@ -51,7 +52,7 @@ describe Site do
       long = -122.255463
     end
     site.stub(:zipcode) do
-      zipcode = 94610#
+      zipcode = 94610
     end
 
     lat_long = [@lat, @long]
@@ -138,12 +139,12 @@ describe Site do
     end
 
     it 'has inspection events in correct order' do
-      site.inspection_events.should == @inspection_events
+      site.inspection_events.should == inspection_events
     end
 
     it 'destroys associated inspection events' do
       site.destroy
-      @inspection_events.each do |inspection_event|
+      inspection_events.each do |inspection_event|
         InspectionEvent.find_by_id(inspection_event.id).should be_nil
       end
     end
@@ -155,12 +156,12 @@ describe Site do
     end
 
     it 'has sampling events in correct order' do
-      site.sampling_events.should == @sampling_events
+      site.sampling_events.should == sampling_events
     end
 
     it 'destroys associated sampling events' do
       site.destroy
-      @sampling_events.each do |sampling_event|
+      sampling_events.each do |sampling_event|
         SamplingEvent.find_by_id(sampling_event.id).should be_nil
       end
     end
