@@ -1,3 +1,5 @@
+require 'pp'
+
 DATAFILE = File.join(Rails.root, 'db', 'seed_data', 'zipcodes.txt')
 
 # Clear all location data
