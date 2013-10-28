@@ -9,18 +9,15 @@ describe SamplingEventWorkflow do
     )
     @site = FactoryGirl.create(
       :site,
-      :id => 1,
       :project => @project
     )
     @se = FactoryGirl.create(
       :sampling_event,
-      :site => @site,
-      :site_id => 1
+      :site => @site
     )
     @sew = FactoryGirl.create(
       :sampling_event_workflow,
-      :site => @site,
-      :site_id => 1
+      :site => @site
     )
   end
 
