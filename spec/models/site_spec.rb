@@ -19,8 +19,10 @@ describe Site do
   let!(:latlong) { [ lat, long ] }
   let!(:address) { '111 Adams Street Suite 181 Oakland CA 94610' }
 
+  let!(:project) { FactoryGirl.create(:project) }
   let!(:site) { FactoryGirl.create(
     :site,
+    :project => project
     )
   }
   let!(:report) { FactoryGirl.create(
