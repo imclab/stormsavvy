@@ -21,7 +21,6 @@ describe Site do
 
   let!(:site) { FactoryGirl.create(
     :site,
-    :name => 'ec jungle gym'
     )
   }
   let!(:report) { FactoryGirl.create(
