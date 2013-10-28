@@ -20,14 +20,8 @@ describe ReportsController do
     { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
-  let!(:current_user) { FactoryGirl.create(
-      :user
-    )
-  }
-  let!(:other_user) { FactoryGirl.create(
-      :user
-    )
-  }
+  let!(:current_user) { FactoryGirl.create(:user) }
+  let!(:other_user) { FactoryGirl.create(:user) }
   let(:all_users) { [ current_user, other_user ] }
 
   let!(:current_project) { FactoryGirl.create(
