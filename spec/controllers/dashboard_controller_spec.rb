@@ -19,7 +19,7 @@ describe DashboardController do
 
     @current_user = FactoryGirl.build(
       :user,
-      :email => '@stormsavvy.com'
+      :email => 'name@stormsavvy.com'
     )
     @other_user = FactoryGirl.build(
       :user,
