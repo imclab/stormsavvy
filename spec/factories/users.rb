@@ -1,11 +1,9 @@
 FactoryGirl.define do
   factory :user do
     sequence(:email) { |n| 'email#{n}@stormsavvy.com' }
-    firstname "Walter"
-    lastname "Yu"
     password "passwood"
     password_confirmation "passwood"
-    remember_me :true
+    # remember_me :true
 
     factory :user_with_sites do
       sequence(:email) { |n| 'email#{n}@stormsavvy.com' }
