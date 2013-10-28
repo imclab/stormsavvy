@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :project do
     sequence(:name) { |n| "project_name#{n}" }
     sequence(:description) { |n| "project_description#{n}" }
-    user_id      1
+    # user_id      1
     # name        "Hwy 101 Corridor"
     # description "Highway Improvements"
     startdate    DateTime.new(2011)
