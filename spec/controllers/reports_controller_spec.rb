@@ -4,7 +4,7 @@ describe ReportsController do
 
   include Devise::TestHelpers
 
-  let(:user) {
+  let!(:user) {
     FactoryGirl.create(:user)
   }
 
@@ -20,12 +20,12 @@ describe ReportsController do
     { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
-  let!(:current_user) { FactoryGirl.build(
+  let!(:current_user) { FactoryGirl.create(
       :user,
       :email => 'barney@stormsavvy.com'
     )
   }
-  let(:other_user) { FactoryGirl.build(
+  let!(:other_user) { FactoryGirl.create(
       :user,
       :email => 'info@stormsavvy.com'
     )
@@ -37,7 +37,7 @@ describe ReportsController do
       :user => current_user
     )
   }
-  let(:other_project) { FactoryGirl.create(
+  let!(:other_project) { FactoryGirl.create(
       :project,
       :user => other_user
     )
@@ -54,7 +54,7 @@ describe ReportsController do
       :zipcode => 94530
     )
   }
-  let(:other_site) { FactoryGirl.create(
+  let!(:other_site) { FactoryGirl.create(
       :site,
       :id => 2,
       :project => other_project,
@@ -72,7 +72,7 @@ describe ReportsController do
       :site => current_site
     )
   }
-  let(:other_report) { FactoryGirl.create(
+  let!(:other_report) { FactoryGirl.create(
       :report,
       :site_id => 2,
       :site => other_site
