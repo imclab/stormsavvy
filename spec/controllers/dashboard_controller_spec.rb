@@ -14,14 +14,11 @@ describe DashboardController do
   end
 
   before(:each) do
-    # @current_user = FactoryGirl.build(:current_user)
-    # @other_user = FactoryGirl.build(:other_user)
-
-    @current_user = FactoryGirl.build(
+    @current_user = FactoryGirl.create(
       :user,
       :email => 'name@stormsavvy.com'
     )
-    @other_user = FactoryGirl.build(
+    @other_user = FactoryGirl.create(
       :user,
       :email => 'info@stormsavvy.com'
     )
