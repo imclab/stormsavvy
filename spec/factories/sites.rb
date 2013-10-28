@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :site do
-    name 'Oakland Adams Point'
-    address_1 '111 Adams Street'
-    address_2 'Suite 181'
+    sequence(:name) { |n| "project_name#{n}" }
+    # name 'Oakland Adams Point'
+    # address_1 '111 Adams Street'
+    # address_2 'Suite 181'
     city 'Oakland'
     state 'CA'
     zipcode 94610
