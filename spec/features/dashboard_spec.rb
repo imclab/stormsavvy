@@ -11,24 +11,10 @@ describe "Dashboard" do
     { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
-  let!(:current_user) { FactoryGirl.create(
-      :user,
-      :id => 1,
-      :email => 'name@stormsavvy.com'
-    )
-  }
-  let!(:other_user) { FactoryGirl.create(
-      :user,
-      :id => 2,
-      :email => 'info@stormsavvy.com'
-    )
-  }
+  let!(:current_user) { FactoryGirl.create(:user) }
+  let!(:other_user) { FactoryGirl.create(:user) }
   let!(:current_project) { FactoryGirl.create(
-      :project,
-      :id => 1,
-      :user_id => 1,
-      :name => 'eb park and rec',
-      :description => 'playground improvements'
+      :project
     )
   }
   let!(:other_project) { FactoryGirl.create(
