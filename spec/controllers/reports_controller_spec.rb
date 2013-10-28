@@ -66,7 +66,7 @@ describe ReportsController do
       :site => other_site
     )
   }
-  let!(:current_report_array) { [ current_report ] }
+  let(:current_report_array) { [ current_report ] }
   let(:other_report_array) { [ other_report ] }
   let(:all_report_array) { [ current_report, other_report ] }
 
