@@ -7,8 +7,8 @@ describe "dashboard/index" do
       :user,
       :email => 'name@stormsavvy.com'
     )
-    controller.stub!(:current_user).and_return(@current_user)
-    view.stub!(:current_user).and_return(@current_user)
+    controller.stub(:current_user).and_return(@current_user)
+    view.stub(:current_user).and_return(@current_user)
 
     @other_user = FactoryGirl.build(
       :user,
