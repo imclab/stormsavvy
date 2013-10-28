@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:email) { |n| 'email#{n}@stormsavvy.com' }
+    sequence(:email) { |n| "email#{n}@stormsavvy.com" }
     password "passwood"
     password_confirmation "passwood"
     # remember_me :true
 
     factory :user_with_sites do
-      sequence(:email) { |n| 'email#{n}@stormsavvy.com' }
+      sequence(:email) { |n| "email#{n}@stormsavvy.com" }
 
       ignore do
         projects_count 1

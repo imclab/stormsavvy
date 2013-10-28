@@ -21,13 +21,11 @@ describe ReportsController do
   end
 
   let!(:current_user) { FactoryGirl.create(
-      :user,
-      :email => 'barney@stormsavvy.com'
+      :user
     )
   }
   let!(:other_user) { FactoryGirl.create(
-      :user,
-      :email => 'info@stormsavvy.com'
+      :user
     )
   }
   let(:all_users) { [ current_user, other_user ] }
