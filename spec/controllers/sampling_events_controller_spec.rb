@@ -53,12 +53,12 @@ describe SamplingEventsController do
     { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
-  let!(:current_user) { FactoryGirl.build(
+  let!(:current_user) { FactoryGirl.create(
       :user,
       :email => 'me@stormsavvy.com'
     )
   }
-  let(:other_user) { FactoryGirl.build(
+  let(:other_user) { FactoryGirl.create(
       :user,
       :email => 'info@stormsavvy.com'
     )
