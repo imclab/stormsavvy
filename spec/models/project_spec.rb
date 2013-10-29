@@ -1,16 +1,6 @@
 require 'spec_helper'
 
 describe Project do
-=begin
-   let!(:attr) { {
-        :name => "Hwy 99",
-        :description => "Pothole Repair",
-        :startdate => DateTime.new(2010),
-        :finishdate => DateTime.new(2011),
-        :active => true
-        }
-      }
-=end
   describe 'saving before validation' do
     it "creates new instance given valid attributes" do
       project = Project.new(@attr)
