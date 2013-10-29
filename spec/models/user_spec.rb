@@ -2,23 +2,23 @@ require 'spec_helper'
 
 describe User do
 
-  before(:each) do
-    @user = FactoryGirl.create(:user)
-    @project = FactoryGirl.create(
-      :project,
-      :user => @user,
-      :created_at => 1.day.ago
-      )
-    @projects = [@project]
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:project) { FactoryGirl.create(
+    :project,
+    :user => user,
+    :created_at => 1.day.ago
+    )
+  }
+  let!(:projects) { [project] }
 
-    @site = FactoryGirl.create(
-      :site,
-      :project => @project,
-      :name => 'ec jungle gym',
-      :zipcode => 94530
-      )
-    @sites = [@site]
-  end
+  let!(:site) { FactoryGirl.create(
+    :site,
+    :project => project,
+    :name => 'ec jungle gym',
+    :zipcode => 94530
+    )
+  }
+  let!(:sites) { [site] }
 
   it "should create a valid user" do
     user = User.create(
