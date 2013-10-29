@@ -1,7 +1,47 @@
 require 'spec_helper'
 
 describe Project do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:project) { FactoryGirl.create(:project_with_sites) }
+  let!(:project1) { FactoryGirl.create(
+    :project,
+    :user => user,
+    :created_at => 1.day.ago
+    )
+  }
+  let!(:project2) { FactoryGirl.create(
+    :project,
+    :user => user,
+    :created_at => 1.hour.ago
+    )
+  }
+  let!(:projects) { [project1, project2] }
+
+  let!(:site1) { FactoryGirl.create(
+    :site,
+    :project => project1,
+    :name => 'ec jungle gym',
+    :zipcode => 94530
+    )
+  }
+  let!(:site2) { FactoryGirl.create(
+    :site,
+    :project => project2,
+    :name => 'ec playground slide',
+    :zipcode => 94530
+    )
+  }
+  let!(:sites) { [site1, site2] }
+
   describe 'saving before validation' do
+    @attr = {
+      :name => "Hwy 99",
+      :description => "Pothole Repair",
+      :startdate => DateTime.new(2010),
+      :finishdate => DateTime.new(2011),
+      :active => true
+    }
+
     it "creates new instance given valid attributes" do
       project = Project.new(@attr)
       project.save
