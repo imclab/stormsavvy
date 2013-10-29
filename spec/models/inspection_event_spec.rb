@@ -2,27 +2,27 @@ require 'spec_helper'
 
 describe InspectionEvent do
 
-  before :each do
-  	@site = FactoryGirl.create(
-      :site,
-      :name => 'ec jungle gym'
+  let(:site) { FactoryGirl.create(
+    :site,
+    :name => 'ec jungle gym'
     )
-  	@ie = FactoryGirl.create(
-      :inspection_event,
-      :site => @site,
-      :site_id => @site.object_id
+  }
+  let(:ie) { FactoryGirl.create(
+    :inspection_event,
+    :site => site,
+    :site_id => site.object_id
     )
-  end
+  }
 
   describe 'valid attributes' do
     it "has correct project attributes" do
-      @ie.site_id.should == 1
-      @ie.inspection_type.should == "weekly"
-      @ie.inspection_description.should == "ec jungle gym inspection"
-      @ie.inspection_date.should == "Mon, 01 Apr 2013 00:00:00 UTC +00:00"
-      @ie.submitted_by.should == "wyu"
-      @ie.inspected_by.should == "wyu"
-      @ie.completed.should == false
+      ie.site_id.should == 1
+      ie.inspection_type.should == "weekly"
+      ie.inspection_description.should == "ec jungle gym inspection"
+      ie.inspection_date.should == "Mon, 01 Apr 2013 00:00:00 UTC +00:00"
+      ie.submitted_by.should == "wyu"
+      ie.inspected_by.should == "wyu"
+      ie.completed.should == false
     end
 
     it 'returns correct pulldown menu values' do
@@ -34,12 +34,12 @@ describe InspectionEvent do
 
     it "creates a new instance given valid attributes" do
       site = Site.new
-      @ie = InspectionEvent.new(
+      ie = InspectionEvent.new(
         :site => site,
         :site_id => site.object_id
       )
-      @ie.save
-      @ie.should be_valid
+      ie.save
+      ie.should be_valid
     end
 
     it 'requires site_id for new inspection_event' do
@@ -48,22 +48,22 @@ describe InspectionEvent do
     end
 
     it 'has site name' do
-      @ie.site.name.should == 'ec jungle gym'
+      ie.site.name.should == 'ec jungle gym'
     end
   end
 
   describe "nested scope attributes" do
     it 'has valid needs_attention attribute' do
       ie = InspectionEvent.needs_attention.build(
-        :site => @site,
-        :site_id => @site.object_id
+        :site => site,
+        :site_id => site.object_id
       )
       ie.should be_valid
     end
 
     it 'has valid completed attribute' do
       # ie = FactoryGirl.create(:inspection_event)
-      @site.inspection_events.should_not be_nil
+      site.inspection_events.should_not be_nil
     end
   end
 
@@ -95,8 +95,6 @@ describe InspectionEvent do
         @attachment.attachment.url.should_not be_nil
         @attachment.attachment.url.should == '/attachments/original/missing.png'
         @attachment.attachment.bucket_name.should == 'stormsavvy'
-        # @attachment.attachment.path.should_not be_nil
-        # @attachment.attachment.path.should == '/image/:id/:filename'
       end
     end
   end
