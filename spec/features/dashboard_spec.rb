@@ -13,10 +13,7 @@ describe "Dashboard" do
 
   let!(:current_user) { FactoryGirl.create(:user) }
   let!(:other_user) { FactoryGirl.create(:user) }
-  let!(:current_project) { FactoryGirl.create(
-      :project
-    )
-  }
+  let!(:current_project) { FactoryGirl.create(:project) }
   let!(:other_project) { FactoryGirl.create(
       :project,
       :id => 2,
