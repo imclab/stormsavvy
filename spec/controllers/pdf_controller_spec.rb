@@ -4,9 +4,8 @@ describe PdfController do
 
   include Devise::TestHelpers
 
-  let(:user) {
+  let!(:user) {
     FactoryGirl.create(:user)
-    # login_as(user, :scope => :user)
   }
 
   before :each do
