@@ -13,19 +13,21 @@ describe "Dashboard" do
 
   let!(:current_user) { FactoryGirl.create(:user) }
   let!(:other_user) { FactoryGirl.create(:user) }
-  let!(:current_project) { FactoryGirl.create(:project) }
+  let!(:current_project) { FactoryGirl.create(
+    :project,
+    :user => current_user,
+    :name => 'ec park and rec'
+    ) 
+  }
   let!(:other_project) { FactoryGirl.create(
-      :project,
-      :id => 2,
-      :user_id => 2,
-      :name => 'berkeley usd',
-      :description => 'playground improvements'
+    :project,
+    :user => other_user,
+    :name => 'berkeley usd'
     )
   }
   let!(:current_completed_site) { FactoryGirl.create(
       :site,
-      :id => 1,
-      :project_id => 1,
+      :project => current_project,
       :name => 'ec jungle gym',
       :zipcode => 94530,
       :lat => 37.9260,
@@ -34,8 +36,7 @@ describe "Dashboard" do
   }
   let!(:current_pending_site) { FactoryGirl.create(
       :site,
-      :id => 2,
-      :project_id => 1,
+      :project => current_project,
       :name => 'ec slide',
       :zipcode => 94530,
       :lat => 37.9260,
@@ -44,8 +45,7 @@ describe "Dashboard" do
   }
   let!(:other_completed_site) { FactoryGirl.create(
       :site,
-      :id => 3,
-      :project_id => 2,
+      :project_id => other_project,
       :name => 'berkeley high',
       :zipcode => 94709,
       :lat => 37.8870,
@@ -54,8 +54,7 @@ describe "Dashboard" do
   }
   let!(:other_pending_site) { FactoryGirl.create(
       :site,
-      :id => 4,
-      :project_id => 2,
+      :project => other_project,
       :name => 'peoples park',
       :zipcode => 94709,
       :lat => 37.8870,
