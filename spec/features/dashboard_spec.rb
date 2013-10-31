@@ -103,29 +103,25 @@ describe "Dashboard" do
   }
   let!(:current_completed_report) { FactoryGirl.create(
       :report,
-      :id => 1,
-      :site_id => 1,
+      :site => current_completed_site,
       :status => "completed"
     )
   }
   let!(:current_pending_report) { FactoryGirl.create(
       :report,
-      :id => 2,
-      :site_id => 2,
+      :site => current_pending_site,
       :status => "needs_attention"
     )
   }
   let!(:other_completed_report) { FactoryGirl.create(
       :report,
-      :id => 3,
-      :site_id => 3,
+      :site => other_completed_site,
       :status => "completed"
     )
   }
   let!(:other_pending_report) { FactoryGirl.create(
       :report,
-      :id => 4,
-      :site_id => 4,
+      :site => other_pending_site,
       :status => "needs_attention"
     )
   }
