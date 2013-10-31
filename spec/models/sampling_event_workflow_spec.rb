@@ -2,11 +2,12 @@ require 'spec_helper'
 
 describe SamplingEventWorkflow do
   before(:each) do
-    @user = FactoryGirl.create(:user)
-    @project = FactoryGirl.create(
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:project) { FactoryGirl.create(
       :project,
       :user => @user
-    )
+      )
+    }
     @site = FactoryGirl.create(
       :site,
       :project => @project
