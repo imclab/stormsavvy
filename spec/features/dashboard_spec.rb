@@ -166,6 +166,8 @@ describe "Dashboard" do
       page.should have_text('berkeley high')
       page.should have_text('peoples park')
       page.should_not have_text('No active projects')
+      pp other_user.class
+      pp other_user.projects
     end
 
     it 'creates and displays new projects' do
