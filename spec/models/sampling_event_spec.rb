@@ -107,7 +107,7 @@ describe SamplingEvent do
     end
 
     it 'has site name' do
-      @se.site.name.should == 'Oakland Adams Point'
+      se.site.name.should == 'Oakland Adams Point'
     end
   end
 
