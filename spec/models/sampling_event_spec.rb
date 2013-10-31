@@ -107,10 +107,6 @@ describe SamplingEvent do
       no_name = SamplingEvent.new
       no_name.should_not be_valid
     end
-
-    it 'has site name' do
-      se.site.name.should == 'Oakland Adams Point'
-    end
   end
 
   describe "associations" do
