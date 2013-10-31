@@ -1,17 +1,18 @@
 require 'spec_helper'
 
 describe SamplingEvent do
-  before :each do
-  	@site = FactoryGirl.create(
-      :site
-    )
-  	@se = FactoryGirl.create(
+
+  let!(:site) { FactoryGirl.create(:site) }
+  let!(:se) { FactoryGirl.create(
       :sampling_event,
-      :site => @site
+      :site => site
     )
-  	@sampling_event = FactoryGirl.create(:sampling_event)
+  }
+  let!(:sampling_event) { FactoryGirl.create(:sampling_event) }
+
+  before :each do
   	@attr = {
-      :site => @site,
+      :site => site,
       :sampling_type => "pH",
       :sampling_description => "ec jungle gym sampling",
       :sampling_date => "2013-01-27 15:34:07",
