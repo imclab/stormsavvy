@@ -148,15 +148,17 @@ describe "Dashboard" do
       page.should_not be_nil
     end
 
-    it 'shows correct project and site to user' do
-      login_as(current_user, :scope => :user)
-      visit root_path
+    it 'shows correct project and site to current_user' do
+      # login_as(current_user, :scope => :user)
+      # visit root_path
       page.should have_text('eb park and rec')
       page.should have_text('# of Sites: 2')
       page.should have_text('ec jungle gym')
       page.should have_text('ec slide')
       page.should_not have_text('No active projects')
+    end
 
+    it 'shows correct project and site to other_user' do
       login_as(other_user, :scope => :user)
       visit root_path
       page.should have_text('berkeley usd')
