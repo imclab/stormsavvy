@@ -63,8 +63,6 @@ describe "Dashboard" do
   }
   let!(:site) { FactoryGirl.create(
       :site,
-      :id => 5,
-      :project_id => 2,
       :name => 'sproul hall',
       :zipcode => 94709,
       :lat => 37.8870,
