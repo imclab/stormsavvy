@@ -19,7 +19,8 @@ describe "homepage" do
   describe 'signin page' do
     it "signs in as another user" do
       visit user_session_path
-      current_path.should == user_session_path
+      current_path.should == '/users/sign_in'
+      # current_path.should == user_session_path
       fill_in 'Email', :with => 'barney@stormsavvy.com'
       fill_in 'Password', :with => 'foobarbaz'
       click_button 'Sign in'
