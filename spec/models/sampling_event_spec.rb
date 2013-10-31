@@ -92,7 +92,9 @@ describe SamplingEvent do
     end
 
     it 'returns correct pulldown menu values' do
-      SamplingEvent::TYPES.should == [ 'CEM2050', 'CEM2051', 'CEM2052' ]
+      SamplingEvent::TYPES.should == [ 
+        'Daily Monitoring', 'Creek Diversion Monitoring', 'Rain Event Sampling' 'Notice of Discharge'
+      ]
     end
 
     it "creates new instance given valid attributes" do
