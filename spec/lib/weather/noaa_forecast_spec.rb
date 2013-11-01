@@ -123,14 +123,14 @@ describe NOAAForecast do
     nf3.stub(:get_pop_table_hash) {
       time_pop_hash = nf2.get_time_pop_hash
       new_qpf_array = @qpf
+      IO.read("./spec/fixtures/get_pop_table_hash.rb")
 
-=begin
       # array not being returned correctly
-      pop_table_hash = []
-      for i in 0..27
-        pop_table_hash << Hash[time_pop_hash[i]].update(Hash[new_qpf_array[i]])
-      end
-=end 
+      # pop_table_hash = []
+      # for i in 0..27
+      #   pop_table_hash << Hash[time_pop_hash[i]].update(Hash[new_qpf_array[i]])
+      # end
+=begin
       [
         time_pop_hash[1].update(new_qpf_array[1]),
         time_pop_hash[2].update(new_qpf_array[2]),
