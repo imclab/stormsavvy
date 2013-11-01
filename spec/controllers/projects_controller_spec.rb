@@ -5,11 +5,11 @@ describe ProjectsController do
   include Devise::TestHelpers
 
   let!(:user) { FactoryGirl.create(
-      :user,
-      :id => 1,
-      :email => 'walter@stormsavvy.com',
-      :password => 'passwood',
-      :password_confirmation => 'passwood'
+      :user
+      # :id => 1,
+      # :email => 'walter@stormsavvy.com',
+      # :password => 'passwood',
+      # :password_confirmation => 'passwood'
     )
   }
 
@@ -24,7 +24,6 @@ describe ProjectsController do
 
   def valid_attributes
     {
-      :id => 1,
       :name => 'My Project',
       :description => 'What a great project',
       :startdate => 5.days.ago,
@@ -34,7 +33,6 @@ describe ProjectsController do
 
   def second_attributes
     {
-      :id => 2,
       :name => 'Troll Bridge',
       :description => 'Bridge for trolls'
     }
@@ -42,7 +40,6 @@ describe ProjectsController do
 
   def third_attributes
     {
-      :id => 3,
       :name => 'Gingerbread House',
       :description => 'House for Goldilocks'
     }
