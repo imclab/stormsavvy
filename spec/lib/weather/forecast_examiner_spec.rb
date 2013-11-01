@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'weather/forecast_examiner'
 
 describe ForecastExaminer do
-
   before(:all) do
     @data = []
     CSV.foreach(Rails.root.to_s + '/spec/lib/weather/ss_fc_fixture.csv') do |row|
@@ -11,12 +10,11 @@ describe ForecastExaminer do
     @data.delete_if { |r| r == [] }
   end
 
+  let!(:project) { FactoryGirl.create(:project) }
+  let!(:site) { FactoryGirl.create(:site) }
+  let!(:fe) { double(ForecastExaminer) }
+
   before(:each) do
-    @project = FactoryGirl.create(:project)
-    @site = @project.sites.create({
-      :name => 'ec jungle gym',
-      :zipcode => '94530'
-      })
     @fe = double(ForecastExaminer)
   end
 
