@@ -251,6 +251,7 @@ describe NOAAForecast do
 
   describe "#get_forecast_array" do
     it "returns forecast_by_zipcode" do
+      forecast_array = IO.read("./spec/fixtures/get_full_forecast_array.rb")
       forecast_array = [
         { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
         { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1], :rainfall => qpf[1] },
