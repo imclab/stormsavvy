@@ -53,12 +53,12 @@ describe NOAAForecast do
     }
 
     nf2.stub(:get_pop) {
-      pop = [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0]
+      IO.read("./spec/fixtures/get_pop_array.rb")
       return pop
     }
 
     nf2.stub(:get_qpf) {
-      qpf = [99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]
+      IO.read("./spec/fixtures/get_qpf_array.rb")
       return qpf
     }
 
