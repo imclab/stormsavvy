@@ -28,7 +28,7 @@ describe ForecastExaminer do
     it "should check for rain warning" do
       lambda do
         forecast = [@data[8], @data[9]]
-        @fe = ForecastExaminer.new(@site, forecast)
+        @fe = ForecastExaminer.new(site, forecast)
         @fe.find_rain_chance()
         @fe.rain.should == :warning
       end.should change(Report, :count).by(1)
