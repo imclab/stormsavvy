@@ -91,6 +91,7 @@ describe NOAAForecast do
       # qpf_array.collect {|i| new_qpf_array << { :rainfall => qpf_array[i].to_s } }
 
       # refactor into proper loop
+
       IO.read("./spec/fixtures/new_qpf_array.rb")
       return zipcode
     }
