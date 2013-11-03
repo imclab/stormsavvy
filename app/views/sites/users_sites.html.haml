@@ -8,7 +8,8 @@
               %h1 Active Sites
               %hr
               %ul
-                - @projects.each do |project|
+                /- @projects.each do |project|
+                - current_user.projects.each do |project|
                   %h3
                     = link_to project.name, project_path(project), :class => "project_name_link"
                     %ul.project_sites_list.is_hidden
