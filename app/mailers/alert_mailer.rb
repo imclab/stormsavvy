@@ -10,7 +10,7 @@ class AlertMailer < ActionMailer::Base
   end
 
   def northbay_forecast(email)
-    self.set_default
+    self.set_defaults
     # @greeting = "Greetings"
     # @salutation = "The Storm Savvy Team"
     # @support = "Questions? Email us at info@stormsavvy.com!"
