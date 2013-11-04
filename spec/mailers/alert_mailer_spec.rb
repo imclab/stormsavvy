@@ -5,16 +5,30 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe AlertMailer do
-
+=begin
+  let!(:user) { FactoryGirl.create(
+      :user,
+      :email => 'support@stormsavvy.com'
+    )
+  }
+  let!(:project) { FactoryGirl.create(
+      :project,
+      :user => user,
+      :name => 'ECP',
+      :description => 'Plaza Improvements'
+    )
+  }
+=end
   before { ActionMailer::Base.deliveries = [] }
-
   before(:each) do
-    @user = User.create(
-      :firstname              => 'Walter',
-      :lastname               => 'Yu',
-      :email                  => 'walter@stormsavvy.com',
-      :password               => 'DarkAndStormy',
-      :password_confirmation  => 'DarkAndStormy'
+    @user = FactoryGirl.create(
+    # @user = User.create(
+      :user,
+      :firstname => 'Walter',
+      :lastname => 'Yu',
+      :email => 'walter@stormsavvy.com',
+      :password => 'DarkAndStormy',
+      :password_confirmation => 'DarkAndStormy'
       )
     @project = FactoryGirl.create(
       :project,
