@@ -2,11 +2,19 @@ class AlertMailer < ActionMailer::Base
 
   default :from => "alerts@stormsavvy.com"
 
-  def northbay_forecast(email)
+  def set_default
     @greeting = "Greetings"
     @salutation = "The Storm Savvy Team"
     @support = "Questions? Email us at info@stormsavvy.com!"
     @noaa_info = "Forecast is based on NOAA data feed. For more info, visit: "
+  end
+
+  def northbay_forecast(email)
+    self.set_default
+    # @greeting = "Greetings"
+    # @salutation = "The Storm Savvy Team"
+    # @support = "Questions? Email us at info@stormsavvy.com!"
+    # @noaa_info = "Forecast is based on NOAA data feed. For more info, visit: "
 
     @location1 = "San Rafael, CA 94901"
     @nf1 = NOAAForecast.new(94901)
