@@ -165,17 +165,44 @@ describe AlertMailer do
   end
 
   describe "noaa_forecast" do
-
     before(:each) do
-      @user = FactoryGirl.create(:user, :email => "test@example.com")
-      project = @user.projects.create(
-        :name => "foo",
-        :description => "bar",
-        :startdate => Date.today,
-        :finishdate => Date.today + 30.days
-      )
-      site = project.sites.build
       @mailer = AlertMailer.noaa_forecast(@user.email).deliver
+    end
+
+    it "renders the headers" do
+      # @mailer.greeting.should eq("The Storm Savvy Team")
+      # @mailer.salutation.should eq("The Storm Savvy Team")
+      # @mailer.support.should eq("Questions? Email us at info@stormsavvy.com!")
+      # @mailer.noaa_info.should eq("Forecast is based on NOAA data feed. For more info, visit: ")
+
+      @mailer.subject.should =~ /NOAA Forecast Notification/
+      @mailer.to.should eq(["#{@user.email}"])
+      @mailer.from.should eq(["alerts@stormsavvy.com"])
+    end
+
+    it "should send something via mailout" do
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
+
+    it "should render successfully" do
+      lambda { @mailer }.should_not raise_error
+    end
+  end
+
+  describe "pop_alert" do
+    before(:each) do
+      @mailer = AlertMailer.pop_alert(@user.email).deliver
+    end
+
+    it "renders the headers" do
+      # @mailer.greeting.should eq("The Storm Savvy Team")
+      # @mailer.salutation.should eq("The Storm Savvy Team")
+      # @mailer.support.should eq("Questions? Email us at info@stormsavvy.com!")
+      # @mailer.noaa_info.should eq("Forecast is based on NOAA data feed. For more info, visit: ")
+
+      @mailer.subject.should =~ /Storm Savvy POP Alert/
+      @mailer.to.should eq(["#{@user.email}"])
+      @mailer.from.should eq(["alerts@stormsavvy.com"])
     end
 
     it "should send something via mailout" do
