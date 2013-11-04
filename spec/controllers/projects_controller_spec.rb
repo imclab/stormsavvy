@@ -6,20 +6,14 @@ describe ProjectsController do
 
   let!(:user) { FactoryGirl.create(
       :user
-      # :id => 1,
-      # :email => 'walter@stormsavvy.com',
-      # :password => 'passwood',
-      # :password_confirmation => 'passwood'
     )
   }
 
   let!(:project) { FactoryGirl.create(
       :project,
       :user => user,
-      # :id => 4,
       :name => 'ECP',
       :description => 'Plaza Improvements'
-      # :user_id => 1
     )
   }
 
