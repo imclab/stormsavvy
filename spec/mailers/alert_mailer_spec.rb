@@ -129,30 +129,33 @@ describe AlertMailer do
       @mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
       @mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
       @mailer.body.encoded.should =~ /The Storm Savvy Team/
-      # @mailer.body.encoded.should match("Greetings")
     end
 
     it "delivers and receives mailer" do
-      # AlertMailer.southbay_forecast(@user)
+      # AlertMailer.southbay_forecast(user)
       ActionMailer::Base.deliveries.should_not be_empty
     end
   end
 
   describe "noaa_alert" do
-
     before :each do
       @mailer = AlertMailer.noaa_alert(@user).deliver
     end
 
     it "renders the headers" do
+      # @mailer.greeting.should eq("The Storm Savvy Team")
+      # @mailer.salutation.should eq("The Storm Savvy Team")
+      # @mailer.support.should eq("Questions? Email us at info@stormsavvy.com!")
+      # @mailer.noaa_info.should eq("Forecast is based on NOAA data feed. For more info, visit: ")
+
       @mailer.subject.should =~ /Storm Savvy Daily/
       @mailer.to.should eq(["#{@user.email}"])
       @mailer.from.should eq(["alerts@stormsavvy.com"])
     end
 
     it "renders the body" do
-      # @mailer.body.encoded.should match("Greetings")
-      # @mailer.body.encoded.should =~ /daily weather forecast/
+      @mailer.body.encoded.should match("Greetings")
+      @mailer.body.encoded.should =~ /Please be advised that there is a forecast rain event in your area./
     end
 
     it "delivers and receives mailer" do
