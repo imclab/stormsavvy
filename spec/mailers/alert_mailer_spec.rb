@@ -70,7 +70,7 @@ describe AlertMailer do
     end
 
     it "delivers and receives mailer" do
-      # AlertMailer.northbay_forecast(@user)
+      # AlertMailer.northbay_forecast(user)
       ActionMailer::Base.deliveries.should_not be_empty
     end
   end
@@ -82,6 +82,11 @@ describe AlertMailer do
     end
 
     it "renders the headers" do
+      # @mailer.greeting.should eq("The Storm Savvy Team")
+      # @mailer.salutation.should eq("The Storm Savvy Team")
+      # @mailer.support.should eq("Questions? Email us at info@stormsavvy.com!")
+      # @mailer.noaa_info.should eq("Forecast is based on NOAA data feed. For more info, visit: ")
+
       @mailer.subject.should eq("Storm Savvy Daily Forecast: East Bay")
       @mailer.to.should eq(["#{@user.email}"])
       @mailer.from.should eq(["alerts@stormsavvy.com"])
@@ -104,10 +109,16 @@ describe AlertMailer do
   describe "#southbay_forecast" do
 
     before :each do
+      @user = FactoryGirl.create(:user, :email => "test@example.com")
       @mailer = AlertMailer.southbay_forecast(@user.email).deliver
     end
 
     it "renders the headers" do
+      # @mailer.greeting.should eq("The Storm Savvy Team")
+      # @mailer.salutation.should eq("The Storm Savvy Team")
+      # @mailer.support.should eq("Questions? Email us at info@stormsavvy.com!")
+      # @mailer.noaa_info.should eq("Forecast is based on NOAA data feed. For more info, visit: ")
+
       @mailer.subject.should eq("Storm Savvy Daily Forecast: South Bay")
       @mailer.to.should eq(["#{@user.email}"])
       @mailer.from.should eq(["alerts@stormsavvy.com"])
