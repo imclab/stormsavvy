@@ -52,8 +52,8 @@ class ProjectsController < ApplicationController
     # @project.user = current_user
     # pp @project.user
 
-    @project.save!
-    pp @project.new_record?
+    # @project.save!
+    # pp @project.new_record?
 
     if @project.save
       pp 'Project Saved!'
