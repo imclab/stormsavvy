@@ -34,16 +34,11 @@ describe Project do
   let!(:sites) { [site1, site2] }
 
   describe 'saving before validation' do
-    @attr = {
-      :name => "Hwy 99",
-      :description => "Pothole Repair",
-      :startdate => DateTime.new(2010),
-      :finishdate => DateTime.new(2011),
-      :active => true
-    }
-
     it "creates new instance given valid attributes" do
-      project = Project.new(@attr)
+      project = Project.new(
+        :name => 'ecp', 
+        :description => 'plaza work'
+      )
       project.save
       project.should be_valid
     end
