@@ -70,28 +70,26 @@ class AlertMailer < ActionMailer::Base
   end
 
   def southbay_forecast(email)
-    @greeting = "Greetings"
-    @salutation = "The Storm Savvy Team"
-    @support = "Questions? Email us at info@stormsavvy.com!"
+    self.set_defaults
+    # @greeting = "Greetings"
+    # @salutation = "The Storm Savvy Team"
+    # @support = "Questions? Email us at info@stormsavvy.com!"
+    # @noaa_info = "Forecast is based on NOAA data feed. For more info, visit: "
 
     @location1 = "Fremont, CA 94538"
     @nf1 = NOAAForecast.new(94538)
-    # @nf2 = @nf1.get_pop_table_hash(94538)
     @nf2 = @nf1.forecast_by_zipcode(94538)
 
     @location2 = "Sunnyvale, CA 94087"
     @nf3 = NOAAForecast.new(94087)
-    # @nf4 = @nf3.get_pop_table_hash(94087)
     @nf4 = @nf3.forecast_by_zipcode(94087)
 
     @location3 = "San Jose, CA 95113"
     @nf5 = NOAAForecast.new(95113)
-    # @nf6 = @nf5.get_pop_table_hash(95113)
     @nf6 = @nf5.forecast_by_zipcode(95113)
 
     @location4 = "Palo Alto, CA 94305"
     @nf7 = NOAAForecast.new(94305)
-    # @nf8 = @nf7.get_pop_table_hash(94305)
     @nf8 = @nf7.forecast_by_zipcode(94305)
 
     mail(
