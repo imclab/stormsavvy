@@ -2,7 +2,7 @@ class AlertMailer < ActionMailer::Base
 
   default :from => "alerts@stormsavvy.com"
 
-  def set_default
+  def set_defaults
     @greeting = "Greetings"
     @salutation = "The Storm Savvy Team"
     @support = "Questions? Email us at info@stormsavvy.com!"
