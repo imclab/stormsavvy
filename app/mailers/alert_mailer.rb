@@ -114,9 +114,11 @@ class AlertMailer < ActionMailer::Base
   end
 
   def noaa_alert(user)
-    @greeting = "Greetings"
-    @salutation = "The Storm Savvy Team"
-    @support = "Questions? Email us at info@stormsavvy.com!"
+    self.set_defaults
+    # @greeting = "Greetings"
+    # @salutation = "The Storm Savvy Team"
+    # @support = "Questions? Email us at info@stormsavvy.com!"
+    # @noaa_info = "Forecast is based on NOAA data feed. For more info, visit: "
 
     @users = User.all
     @users.each do |user|
