@@ -5,24 +5,11 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe AlertMailer do
-=begin
-  let!(:user) { FactoryGirl.create(
-      :user,
-      :email => 'support@stormsavvy.com'
-    )
-  }
-  let!(:project) { FactoryGirl.create(
-      :project,
-      :user => user,
-      :name => 'ECP',
-      :description => 'Plaza Improvements'
-    )
-  }
-=end
+
   before { ActionMailer::Base.deliveries = [] }
+
   before(:each) do
     @user = FactoryGirl.create(
-    # @user = User.create(
       :user,
       :firstname => 'Walter',
       :lastname => 'Yu',
@@ -70,7 +57,7 @@ describe AlertMailer do
     end
 
     it "delivers and receives mailer" do
-      # AlertMailer.northbay_forecast(user)
+      # AlertMailer.northbay_forecast(@user)
       ActionMailer::Base.deliveries.should_not be_empty
     end
   end
@@ -132,7 +119,7 @@ describe AlertMailer do
     end
 
     it "delivers and receives mailer" do
-      # AlertMailer.southbay_forecast(user)
+      # AlertMailer.southbay_forecast(@user)
       ActionMailer::Base.deliveries.should_not be_empty
     end
   end
