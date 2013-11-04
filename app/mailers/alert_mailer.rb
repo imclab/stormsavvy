@@ -124,7 +124,8 @@ class AlertMailer < ActionMailer::Base
 
     @users = User.all
     @users.each do |user|
-      @user = user # `@user` is needed for the template
+      # @user needed for template
+      @user = user
       if @user.has_site?
         mail(
           :from     => "alerts@stormsavvy.com",
@@ -143,7 +144,8 @@ class AlertMailer < ActionMailer::Base
     @users = User.all
     # if @forecast == :imminent then
     @users.each do |user|
-      @user = user # `@user` is needed for the template
+      # @user needed for template
+      @user = user
       if @user.has_site?
         mail(
           :from     => "alerts@stormsavvy.com",
