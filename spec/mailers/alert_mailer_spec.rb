@@ -51,6 +51,11 @@ describe AlertMailer do
     end
 
     it "sets correct mailer settings" do
+      # @mailer.greeting.should eq("Greetings")
+      # @mailer.salutation.should eq("The Storm Savvy Team")
+      # @mailer.support.should eq("Questions? Email us at info@stormsavvy.com!")
+      # @mailer.noaa_info.should eq("Forecast is based on NOAA data feed. For more info, visit: ")
+
       @mailer.subject.should eq("Storm Savvy Daily Forecast: North Bay")
       @mailer.to.should eq(["#{@user.email}"])
       @mailer.from.should eq(["alerts@stormsavvy.com"])
