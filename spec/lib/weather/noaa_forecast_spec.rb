@@ -251,7 +251,13 @@ describe NOAAForecast do
 
   describe "#get_forecast_array" do
     it "returns forecast_by_zipcode" do
+      pop = [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0]
+      qpf = [99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]
+      pp pop[0]
+      pp qpf[0]
+
       forecast_array = IO.read("./spec/fixtures/get_full_forecast_array.rb")
+=begin
       forecast_array = [
         { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
         { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1], :rainfall => qpf[1] },
@@ -283,7 +289,7 @@ describe NOAAForecast do
         { :date => ProjectLocalTime::format(Date.today + 162.hours), :weather => pop[27], :rainfall => qpf[27] },
         { :date => ProjectLocalTime::format(Date.today + 168.hours), :weather => pop[28], :rainfall => qpf[28] }
         ]
-
+=end
       nf2.get_forecast_array(zipcode).should == forecast_array
     end
   end
