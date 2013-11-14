@@ -32,8 +32,8 @@ describe "Projects" do
       visit new_project_path
       current_path.should == new_project_path
       page.should have_content('New Project')
-      fill_in 'Name', :with => 'ECP Improvements'
-      fill_in 'Description', :with => 'Jungle Gym, etc.'
+      fill_in 'Name', :with => 'ECP Improvements', :match => :prefer_exact
+      fill_in 'Description', :with => 'Jungle Gym, etc.', :match => :prefer_exact
       click_button 'Save'
       page.should have_content('Project was successfully created.')
       current_path.should == '/projects'
