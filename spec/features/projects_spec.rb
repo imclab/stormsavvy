@@ -15,7 +15,7 @@ describe "Projects" do
       :password_confirmation => 'autospec1'
     )
     login_as(@user, :scope => :user)
-    visit '/projects/new'
+    visit new_project_path
   end
 
   describe "GET /projects", :type => :feature do
