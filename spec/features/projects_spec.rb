@@ -34,9 +34,13 @@ describe "Projects" do
       page.should have_content('New Project')
       fill_in 'Name', :with => 'ECP Improvements', :match => :prefer_exact
       fill_in 'Description', :with => 'Jungle Gym, etc.', :match => :prefer_exact
-      click_button 'Save'
+      click_button 'Create Project'
       page.should have_content('Project was successfully created.')
-      current_path.should == '/projects'
+      # current_path.should == '/projects'
+      current_path.should == projects_path
+
+      pp current_user.projects
+      pp current_user.email
     end
 
   end
