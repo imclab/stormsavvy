@@ -1,24 +1,17 @@
 require 'spec_helper'
 
 include ApplicationHelper
-
+include Devise::TestHelpers
 include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Projects" do
-
-	before :each do
-		@user = FactoryGirl.create(
-      :user,
-      :email    => 'name@stormsavvy.com',
-      :password => 'autospec1',
-      :password_confirmation => 'autospec1'
-    )
-    login_as(@user, :scope => :user)
-    visit new_project_path
-  end
-
   describe "GET /projects", :type => :feature do
+    before :each do
+      @user = FactoryGirl.create(:user)
+      login_as(@user, :scope => :user)
+      visit new_project_path
+    end
 
     it "correct content on homepage" do
       current_path.should == new_project_path
