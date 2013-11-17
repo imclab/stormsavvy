@@ -176,11 +176,14 @@ describe "Dashboard" do
       click_link 'New Project'
       current_path.should == new_project_path
 
-      fill_in 'Name', :with => 'Troll Bridge Retrofit', :exact => true
-      fill_in 'Description', :with => 'Retrofit for the trolls'
-      click_button 'Save'
+      fill_in 'Name', :with => 'Troll Bridge Retrofit', :match => :prefer_exact
+      fill_in 'Description', :with => 'Retrofit for the trolls', :match => :prefer_exact
+      click_button 'Create Project'
       page.should have_text('Project was successfully created.')
       current_path.should == project_path
+
+      pp current_user.email
+      pp current_user.projects
     end
 
     it 'creates new projects for factory users' do
