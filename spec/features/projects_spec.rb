@@ -6,6 +6,11 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Projects" do
+
+  def valid_session
+    { "warden.user.user.key" => session["warden.user.user.key"] }
+  end
+
   describe "GET /projects", :type => :feature do
     before :each do
       @user = FactoryGirl.create(:user)

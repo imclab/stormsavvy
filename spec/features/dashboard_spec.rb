@@ -179,6 +179,7 @@ describe "Dashboard" do
       fill_in 'Name', :with => 'Troll Bridge Retrofit', :match => :prefer_exact
       fill_in 'Description', :with => 'Retrofit for the trolls', :match => :prefer_exact
       click_button 'Create Project'
+
       page.should have_text('Project was successfully created.')
       current_path.should == project_path
 
