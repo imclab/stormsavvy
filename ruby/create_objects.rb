@@ -45,7 +45,8 @@ pp user.projects
 
 project = Project.new(:name => 'foo', :description => 'bar')
 project.save
-sites = project.sites.build
+site = project.sites.build(:name => 'ecp', :zipcode => 94530)
+site.save
 
 report = ReportsPdf.new
 report.testem_fields
