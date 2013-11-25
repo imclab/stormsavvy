@@ -16,8 +16,8 @@ describe "projects/new" do
       assert_select "input#project_name", :name => "project[name]"
 
       # possibly causing record not to save
-      assert_select "input#project_description", :name => "project[description]"
-      # assert_select "textarea#project_description", :name => "project[description]"
+      # assert_select "input#project_description", :name => "project[description]"
+      assert_select "textarea#project_description", :name => "project[description]"
 
       assert_select "input#project_active", :name => "project[active]"
       assert_select "input#project_startdate", :name => "project[startdate]"
