@@ -9,13 +9,13 @@
               %hr
               %ul
                 /- @projects.each do |project|
-                - current_user.projects.each do |project|
+                - current_user.sites.each do |site|
                   %h3
-                    = link_to project.name, project_path(project), :class => "project_name_link"
+                    = link_to site.name, site_path(site), :class => "project_name_link"
                     %ul.project_sites_list.is_hidden
-                      - project.sites.each do |site|
+                      - sites.each do |site|
                         %li
                           %h3
-                            = link_to site.name, project_site_path(project, site)
+                            = link_to site.name, site_path(site)
 
         .span4= render 'dashboard/sidebar'
