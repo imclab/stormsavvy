@@ -24,7 +24,7 @@ class Site < ActiveRecord::Base
   has_many :site_pop, :dependent => :destroy
   has_many :weather_updates
   has_many :forecast_periods
-  accepts_nested_attributes_for :project
+  # accepts_nested_attributes_for :project
 
   after_validation :save_geo_coordinates, if: :zipcode_changed?
 
