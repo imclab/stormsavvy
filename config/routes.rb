@@ -39,10 +39,11 @@ Stormsavvy::Application.routes.draw do
   # place before nested resource so that it is mapped properly.
   # get '/projects', :to => "dashboard#index"
 
-  resources :projects, except: [:index] do
-    resources :sites
-    root to: "dashboard#index"
-  end
+  # Breaks current_user projects in dashboard view
+  # resources :projects, except: [:index] do
+  #   resources :sites
+  #   root to: "dashboard#index"
+  # end
 
   ReportsController::STATIC_REPORTS.each do |name|
     match "/reports/#{name}" => "reports##{name}"
