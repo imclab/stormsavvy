@@ -15,7 +15,8 @@ class Site < ActiveRecord::Base
     :exposed_area,
     :project_attributes
 
-  belongs_to :project, counter_cache: true
+  belongs_to :user#, counter_cache: true
+  # belongs_to :project, counter_cache: true
   has_many :reports, :dependent => :destroy
   has_many :inspection_events, :dependent => :destroy
   has_many :inspection_event_workflows, :dependent => :destroy
