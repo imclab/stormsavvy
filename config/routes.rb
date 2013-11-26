@@ -28,7 +28,8 @@ Stormsavvy::Application.routes.draw do
     get "CEM4601"
   end
 
-  resources :sites,
+  resources :projects,
+    :sites,
     :sampling_events,
     :inspection_events,
     :weather_events,
