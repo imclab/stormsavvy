@@ -31,9 +31,11 @@
           %b Exposed area:
           = @site.exposed_area
         %p
-          = link_to 'Edit', edit_project_site_path(@site.project, @site)
+          = link_to 'Edit', edit_site_path(@site)
+          /= link_to 'Edit', edit_project_site_path(@site.project, @site)
           \|
-          = link_to 'Back', project_path(@site.project_id)
+          = link_to 'Back', site_path(@site.id)
+          /= link_to 'Back', project_path(@site.project_id)
       .span4
         %p
           %b Address 1:
