@@ -2,9 +2,9 @@
   .row
     .span10
       %h1 Edit Site
-
       = render 'form'
-
-      = link_to 'Show', project_site_path(@project, @site)
+      = link_to 'Show', site_path(@site)
+      /= link_to 'Show', project_site_path(@project, @site)
       \|
-      = link_to 'Back', projects_path
+      = link_to 'Back', sites_path
+      /= link_to 'Back', projects_path
