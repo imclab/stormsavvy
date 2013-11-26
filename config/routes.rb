@@ -10,6 +10,7 @@ Stormsavvy::Application.routes.draw do
   get "dashboard/index"
 
   get "sites", :to => "sites#users_sites"
+  root to: "sites#users_sites"
 
   resource :location, only: [:index, :new, :create]
 
