@@ -13,7 +13,8 @@ describe "user_mailer/mailout" do
 
     @site = FactoryGirl.create(
       :site,
-      :project => @project,
+      :user => @user
+      # :project => @project,
       )
     @sites = [ @site ]
 
