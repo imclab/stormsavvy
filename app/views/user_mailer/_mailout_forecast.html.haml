@@ -1,27 +1,23 @@
 %table
   %tr
-    - @projects.each do |project|
-      %h3
-        = "Project: #{project.name}"
+    - @sites.each do |site|
+      %tr
+        %th
+          = "Site: #{site.name}, "
+          = "Zipcode: #{site.zipcode}"
+        %th
+      %tr
+        %th
+          Date
+        %th
+          Forecast
 
-      - project.sites.each do |site|
-        %tr
-          %th
-            = "Site: #{site.name}, "
-            = "Zipcode: #{site.zipcode}"
-          %th
-        %tr
-          %th
-            Date
-          %th
-            Forecast
-
-          - zipcode = site.zipcode
-          - nf = NOAAForecast.new(zipcode)
-          - forecast = nf.forecast_by_zipcode(zipcode)
-          - forecast.each do |f|
-            %tr
-              %td
-                = f[:date]
-              %td
-                = f[:weather]
+        - zipcode = site.zipcode
+        - nf = NOAAForecast.new(zipcode)
+        - forecast = nf.forecast_by_zipcode(zipcode)
+        - forecast.each do |f|
+          %tr
+            %td
+              = f[:date]
+            %td
+              = f[:weather]
