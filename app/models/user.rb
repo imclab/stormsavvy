@@ -21,11 +21,12 @@ class User < ActiveRecord::Base
     # :contactor_state,
     # :contactor_zipcode
 
-  has_many :projects, :dependent => :destroy
-  accepts_nested_attributes_for :projects
+  has_many :sites, :dependent => :destroy
+  # has_many :projects, :dependent => :destroy
+  # accepts_nested_attributes_for :projects
 
-  has_many :sites, :dependent => :destroy, :through => :projects
-  accepts_nested_attributes_for :sites
+  has_many :sites, :dependent => :destroy#, :through => :projects
+  # accepts_nested_attributes_for :sites
 
   validates :email, :presence => true
   validates_presence_of :email,
