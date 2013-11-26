@@ -39,13 +39,15 @@ describe "user_mailer/_mailout_forecast" do
 
     @site1 = FactoryGirl.create(
       :site,
-      :project => @project1,
+      :user => @user,
+      # :project => @project1,
       :name => 'ec jungle gym',
       :zipcode => 94530
       )
     @site2 = FactoryGirl.create(
       :site,
-      :project => @project2,
+      :user => @user,
+      # :project => @project2,
       :name => 'ec playground slide',
       :zipcode => 94530
       )
