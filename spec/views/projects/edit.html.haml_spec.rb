@@ -4,7 +4,7 @@ describe "projects/edit" do
 
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @project = @user.projects.create!(
+    @project = @user.projects.create(
       {
         :name        => "MyString",
         :description => "MyText",
