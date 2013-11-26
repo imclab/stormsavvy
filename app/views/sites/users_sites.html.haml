@@ -6,6 +6,7 @@
           .panel
             .inner
               %h1 Active Sites
+              = link_to 'New Site', new_site_path(@site)
               %hr
               %ul
                 /- @projects.each do |project|
