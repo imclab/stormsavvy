@@ -2,14 +2,16 @@
   Site Information
 %p#notice
   = notice
-  = button_to 'Delete This Site', project_path(@site.project), :method => :delete
+  = button_to 'Delete This Site', site_path(@site), :method => :delete
+  /= button_to 'Delete This Site', project_path(@site.project), :method => :delete
 
   .container
     .row
       .span4
         %p
           %b Project:
-          = link_to @site.project.name, project_path(@site.project)
+          = link_to @site.name, site_path(@site)
+          /= link_to @site.project.name, project_path(@site.project)
         %p
           %b Site ID:
           = @site.id
