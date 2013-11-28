@@ -9,14 +9,14 @@ FactoryGirl.define do
     finishdate   DateTime.new(2012)
     active       false
 
-    factory :project_with_sites do
-      ignore do
-        sites_count 1
-      end
+    # factory :project_with_sites do
+    #   ignore do
+    #     sites_count 1
+    #   end
 
-      after(:create) do | project, evaluator|
-        FactoryGirl.create_list(:site, evaluator.sites_count, project: project)
-      end
-    end
+    #   after(:create) do | project, evaluator|
+    #     FactoryGirl.create_list(:site, evaluator.sites_count, project: project)
+    #   end
+    # end
   end
 end
