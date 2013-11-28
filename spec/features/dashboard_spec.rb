@@ -47,7 +47,8 @@ describe "Dashboard" do
   }
   let!(:other_completed_site) { FactoryGirl.create(
       :site,
-      :project_id => other_project,
+      :user => other_user,
+      # :project_id => other_project,
       :name => 'berkeley high',
       :zipcode => 94709,
       :lat => 37.8870,
