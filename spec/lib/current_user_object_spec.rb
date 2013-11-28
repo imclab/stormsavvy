@@ -27,13 +27,15 @@ describe CurrentUserObject do
 
     @current_site = FactoryGirl.create(
       :site,
-      :project => @current_project,
+      :user => @current_user,
+      # :project => @current_project,
       :name => 'ec jungle gym',
       :zipcode => 94530
     )
     @other_site = FactoryGirl.create(
       :site,
-      :project => @other_project,
+      :user => @other_user,
+      # :project => @other_project,
       :name => 'berkeley high',
       :zipcode => 94709
     )
