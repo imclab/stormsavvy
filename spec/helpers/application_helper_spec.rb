@@ -11,7 +11,8 @@ describe ApplicationHelper do
       )
     @site = FactoryGirl.create(
       :site,
-      :project => @project,
+      :user => @user,
+      # :project => @project,
       :name => 'ec jungle gym',
       :zipcode => 94530
       )
