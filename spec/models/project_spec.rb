@@ -92,7 +92,7 @@ describe Project do
         project.should respond_to(:sites)
       end
 
-      it "should be able to add 1 site" do
+      xit "should be able to add 1 site" do
         lambda{
           FactoryGirl.create(
             :site,
