@@ -163,10 +163,11 @@ describe UserMailer do
       @users.should == User.all
       @users.should_not be_nil
 
-      @projects.should == @user.projects
-      @projects.should_not be_nil
+      # @projects.should == @user.projects
+      # @projects.should_not be_nil
 
-      @sites.should == @project.sites
+      @sites.should == @user.sites
+      # @sites.should == @project.sites
       @sites.should_not be_nil
 
       @reports.should == @site.reports
