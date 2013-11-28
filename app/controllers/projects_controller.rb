@@ -66,7 +66,8 @@ class ProjectsController < ApplicationController
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
-        format.html { redirect_to new_project_site_path, flash.now[:error] => 'Error: See details below.' }
+        format.html { redirect_to new_project_path, flash.now[:error] => 'Error: See details below.' }
+        #format.html { redirect_to new_project_site_path, flash.now[:error] => 'Error: See details below.' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
         # :flash => { :error => 'Please fix the problems shown.' } }
         # format.html { render action: "new", notice: 'Project was unsuccessfully created.' }
