@@ -75,32 +75,36 @@ describe "Dashboard" do
   }
   let!(:current_completed_ie) { FactoryGirl.create(
       :inspection_event,
-      :id => 1,
-      :site_id => 1,
+      :site => site,
+      # :id => 1,
+      # :site_id => 1,
       :completed => true,
       :inspection_type => 'CEM2030'
     )
   }
   let!(:current_pending_ie) { FactoryGirl.create(
       :inspection_event,
-      :id => 2,
-      :site_id => 2,
+      :site => site,
+      # :id => 2,
+      # :site_id => 2,
       :completed => false,
       :inspection_type => 'CEM2030'
     )
   }
   let!(:other_completed_ie) { FactoryGirl.create(
       :inspection_event,
-      :id => 3,
-      :site_id => 3,
+      :site => site,
+      # :id => 3,
+      # :site_id => 3,
       :completed => true,
       :inspection_type => 'CEM2031'
     )
   }
   let!(:other_pending_ie) { FactoryGirl.create(
       :inspection_event,
-      :id => 4,
-      :site_id => 4,
+      :site => site,
+      # :id => 4,
+      # :site_id => 4,
       :completed => false,
       :inspection_type => 'CEM2031'
     )
