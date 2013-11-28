@@ -37,7 +37,8 @@ describe "Dashboard" do
   }
   let!(:current_pending_site) { FactoryGirl.create(
       :site,
-      :project => current_project,
+      :user => current_user,
+      # :project => current_project,
       :name => 'ec slide',
       :zipcode => 94530,
       :lat => 37.9260,
