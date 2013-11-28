@@ -34,9 +34,11 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   def has_site?
-    self.projects.each do |project|
-      return true if project.sites_count > 0
-    end
+    return true if self.sites_count > 0
+
+    # self.projects.each do |project|
+    #   return true if project.sites_count > 0
+    # end
     return false
   end
 
