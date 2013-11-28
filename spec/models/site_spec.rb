@@ -21,8 +21,8 @@ describe Site do
 
   let!(:project) { FactoryGirl.create(:project) }
   let!(:site) { FactoryGirl.create(
-    :site,
-    :project => project
+    :site
+    # :project => project
     )
   }
   let!(:report) { FactoryGirl.create(
