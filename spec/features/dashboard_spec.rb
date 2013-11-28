@@ -57,7 +57,8 @@ describe "Dashboard" do
   }
   let!(:other_pending_site) { FactoryGirl.create(
       :site,
-      :project => other_project,
+      :user => other_user,
+      # :project => other_project,
       :name => 'peoples park',
       :zipcode => 94709,
       :lat => 37.8870,
