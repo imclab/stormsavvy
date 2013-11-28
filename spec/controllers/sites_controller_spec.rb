@@ -214,19 +214,22 @@ describe SitesController do
       end
 
       it "redirects to the site" do
-        project = FactoryGirl.create(:project)
-        site = project.sites.create! valid_attributes
+        user = FactoryGirl.create(:user)
+        site = user.sites.create! valid_attributes
+        # project = FactoryGirl.create(:project)
+        # site = project.sites.create! valid_attributes
         put :update, {
           :id => site.to_param,
-          :project_id => @project.id,
+          # :project_id => @project.id,
           :site => valid_attributes
         }, valid_session
 
         # http://guides.rubyonrails.org/routing.html#creating-paths-and-urls-from-objects
-        response.should redirect_to(project_site_path(project,site))
+        response.should redirect_to(site_path(site))
+        # response.should redirect_to(project_site_path(project,site))
 
         # This also works.
-        response.should redirect_to("/projects/#{project.id}/sites/#{site.id}")
+        # response.should redirect_to("/projects/#{project.id}/sites/#{site.id}")
       end
 
       it "responds with flash message" do
