@@ -50,11 +50,15 @@ class User < ActiveRecord::Base
   def get_site_zipcodes
     zipcodes = []
 
-    self.projects.each do |project|
-      self.sites.each do |site|
-        zipcodes << site.zipcode
-      end
+    self.sites.each do |site|
+      zipcodes << site.zipcode
     end
+
+    # self.projects.each do |project|
+    #   self.sites.each do |site|
+    #     zipcodes << site.zipcode
+    #   end
+    # end
 
     return zipcodes
   end
@@ -62,11 +66,15 @@ class User < ActiveRecord::Base
   def get_sites
     @site_names = []
 
-    self.projects.each do |p|
-      p.sites.each do |s|
-        @site_names << s.name.to_s
-      end
+    self.sites.each do |s|
+      @site_names << s.name.to_s
     end
+
+    # self.projects.each do |p|
+    #   p.sites.each do |s|
+    #     @site_names << s.name.to_s
+    #   end
+    # end
 
     unless @site_names.blank?
       return @site_names
