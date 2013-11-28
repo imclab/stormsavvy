@@ -73,7 +73,8 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.update_attributes(params[:site])
-        format.html { redirect_to project_site_path(@site.project, @site), notice: 'Site was successfully updated.' }
+        format.html { redirect_to site_path(@site), notice: 'Site was successfully updated.' }
+        # format.html { redirect_to project_site_path(@site.project, @site), notice: 'Site was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { flash.now[:error] = "Error: See details below."
