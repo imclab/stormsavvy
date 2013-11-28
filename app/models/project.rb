@@ -15,7 +15,7 @@ class Project < ActiveRecord::Base
   has_many :sites, :dependent => :destroy
   accepts_nested_attributes_for :sites
 
-  # validates_presence_of :name, :description
+  validates_presence_of :name, :description
   # , :startdate, :finishdate
 
   # before_save :check_dates
