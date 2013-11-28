@@ -8,19 +8,16 @@ describe InspectionEventWorkflow do
       :user => @user
     )
     @site = FactoryGirl.create(
-      :site,
-      :id => 1,
-      :project => @project
+      :site
+      # :project => @project
     )
     @ie = FactoryGirl.create(
       :inspection_event,
-      :site => @site,
-      :site_id => 1
+      :site => @site
     )
     @iew = FactoryGirl.create(
       :inspection_event_workflow,
-      :site => @site,
-      :site_id => 1
+      :site => @site
     )
   end
 
