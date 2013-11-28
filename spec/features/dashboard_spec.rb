@@ -149,14 +149,14 @@ describe "Dashboard" do
       page.should_not be_nil
     end
 
-    it "renders projects info" do
+    xit "renders projects info" do
       page.should have_text('# of Sites:')
       page.should have_text('Last Updated:')
       page.should have_link('View Project')
       page.should_not be_nil
     end
 
-    it 'shows correct project and site to current_user' do
+    xit 'shows correct project and site to current_user' do
       # login_as(current_user, :scope => :user)
       # visit root_path
       page.should have_text('eb park and rec')
@@ -166,7 +166,7 @@ describe "Dashboard" do
       page.should_not have_text('No active projects')
     end
 
-    it 'shows correct project and site to other_user' do
+    xit 'shows correct project and site to other_user' do
       login_as(other_user, :scope => :user)
       visit root_path
       page.should have_text('berkeley usd')
@@ -178,7 +178,7 @@ describe "Dashboard" do
       pp other_user.projects
     end
 
-    it 'creates and displays new projects' do
+    xit 'creates and displays new projects' do
       login_as(current_user, :scope => :user)
       visit root_path
       click_link 'New Project'
@@ -195,7 +195,7 @@ describe "Dashboard" do
       pp current_user.projects
     end
 
-    it 'creates new projects for factory users' do
+    xit 'creates new projects for factory users' do
       login_as(current_user, :scope => :user)
       current_user.projects.count.should == 1
       # pp current_user.projects
@@ -218,7 +218,7 @@ describe "Dashboard" do
 
   describe "dashboard/sidebar" do
     describe 'weather forecast' do
-      it 'shows correct site to user' do
+      xit 'shows correct site to user' do
         login_as(current_user, :scope => :user)
         visit root_path
         page.should have_text('ec jungle gym')
@@ -318,7 +318,7 @@ describe "Dashboard" do
         page.should have_text('Inspection event was successfully created.')
       end
 
-      it 'shows correct inspection event to user' do
+      xit 'shows correct inspection event to user' do
         login_as(current_user, :scope => :user)
         visit root_path
         page.should have_text('CEM2030 for ec slide on 2013-04-01 00:00:00 UTC')
@@ -334,7 +334,7 @@ describe "Dashboard" do
     end
 
     describe 'pending reports' do
-      it 'shows correct pending reports to user' do
+      xit 'shows correct pending reports to user' do
         login_as(current_user, :scope => :user)
         visit root_path
         page.should have_text('Report for ec slide')
