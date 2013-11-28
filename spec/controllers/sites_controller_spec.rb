@@ -43,7 +43,8 @@ describe SitesController do
     )
     @site = FactoryGirl.create(
       :site,
-      :project => @project,
+      :user => @user,
+      # :project => @project,
       :name => 'ec jungle gym'
     )
     @completed_report = FactoryGirl.create(
