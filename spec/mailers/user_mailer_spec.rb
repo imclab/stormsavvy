@@ -20,7 +20,7 @@ describe UserMailer do
 
     @site = FactoryGirl.create(
       :site,
-      :project => @project
+      :user => @user
       )
     @sites = [ @site ]
 
