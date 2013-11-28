@@ -150,7 +150,8 @@ describe SitesController do
 
       it "redirects to the created site" do
         post :create, {:site => valid_attributes, :project_id => @project.id}
-        response.should redirect_to(project_site_path(@project.id, Site.last))
+        response.should redirect_to(site_path(Site.last))
+        # response.should redirect_to(project_site_path(@project.id, Site.last))
       end
 
       it "responds with flash message" do
