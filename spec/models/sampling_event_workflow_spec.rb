@@ -10,7 +10,8 @@ describe SamplingEventWorkflow do
   }
   let!(:site) { FactoryGirl.create(
     :site,
-    :project => project
+    :user => user
+    # :project => project
     )
   }
   let!(:se) { FactoryGirl.create(
