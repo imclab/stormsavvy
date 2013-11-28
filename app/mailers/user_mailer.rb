@@ -51,21 +51,22 @@ class UserMailer < ActionMailer::Base
     @users.each do |user|
       @user = user # needed for the template below
       @projects = @user.projects
+      @sites = @user.sites
 
-      @projects.each do |project|
-        @project = project
-        @sites = @project.sites
+      # @projects.each do |project|
+      #   @project = project
+      #   @sites = @project.sites
 
-        @sites.each do |site|
-          @site = site
-          @reports = site.reports.all
-          @pending_ie = site.inspection_events.all
+      @sites.each do |site|
+        @site = site
+        @reports = site.reports.all
+        @pending_ie = site.inspection_events.all
 
           # zipcode = @site.zipcode
           # nf = NOAAForecast.new(zipcode)
           # @forecast = nf.forecast_by_zipcode(zipcode)
           # @reports = Report.where(:status => "needs_attention")
-        end
+        # end
       end
 
       if @user.has_site?
