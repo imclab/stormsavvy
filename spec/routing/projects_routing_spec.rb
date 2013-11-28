@@ -21,7 +21,8 @@ describe ProjectsController do
     end
 
     it "routes to #create" do
-      post("/projects").should route_to("dashboard#index")
+      post("/projects").should route_to("projects#create")
+      # post("/projects").should route_to("dashboard#index")
     end
 
     it "routes to #update" do
