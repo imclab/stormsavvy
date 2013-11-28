@@ -19,7 +19,7 @@ describe SamplingEventWorkflow do
     :site => site
     )
   }
-  let!(:sew) { FactoryGirl.create(
+  let(:sew) { FactoryGirl.create(
     :sampling_event_workflow,
     :site => site
     )
