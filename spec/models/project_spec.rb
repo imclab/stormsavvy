@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Project do
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:project) { FactoryGirl.create(:project_with_sites) }
+  let!(:project) { FactoryGirl.create(:project) }
+  # let!(:project) { FactoryGirl.create(:project_with_sites) }
   let!(:project1) { FactoryGirl.create(
     :project,
     :user => user,
