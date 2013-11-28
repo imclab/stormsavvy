@@ -138,7 +138,8 @@ describe Site do
       @site.city.should == 'Oakland'
       @site.zipcode.should == 94610
 
-      @site.should respond_to(:project)
+      @site.should respond_to(:user)
+      # @site.should respond_to(:project)
     end
   end
 
