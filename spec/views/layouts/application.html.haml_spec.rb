@@ -20,7 +20,7 @@ describe "layouts/application.html.haml" do
       render
     end
 
-    xit "sets <title>" do
+    it "sets <title>" do
       rendered.should have_selector "title", :text => "#{page_title}"
       rendered.should have_selector "title", :text => "Storm Savvy"
       rendered.should_not have_selector "a.random_text", :text => "Storm Savvy"

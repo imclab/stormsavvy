@@ -113,6 +113,8 @@ describe "sampling_events/index" do
     # assert_select "tr>td", :text => "Analysis Type 5".to_s, :count => 2
     # assert_select "tr>td", :text => "Analysis Result 5".to_s, :count => 2
     # assert_select "tr>td", :text => "Analysis Average 5".to_s, :count => 2
+
+    rendered.should =~ /Upload Attachment/
   end
 
   it "renders form partial correctly" do
@@ -124,10 +126,6 @@ describe "sampling_events/index" do
     rendered.should =~ /Submitted By/
     rendered.should =~ /Sampled By/
     rendered.should =~ /Attachment URL/
-  end
-
-  xit "renders only uploaded attachments" do
-    rendered.should =~ /Upload Attachment/
   end
 
   it 'shows correct ie attributes' do
