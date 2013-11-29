@@ -26,20 +26,25 @@ describe "Projects" do
       page.should have_selector('a', :text => 'Storm Savvy')
     end
 
-		xit "saves the new project" do
-      visit new_project_path
-      current_path.should == new_project_path
-      page.should have_content('New Project')
-      fill_in 'Name', :with => 'ECP Improvements', :match => :prefer_exact
-      fill_in 'Description', :with => 'Jungle Gym, etc.', :match => :prefer_exact
-      click_button 'Create Project'
+    describe 'Sites'do
+      it "saves the new project" do
+        visit root_path
+        click_link 'New Site'
 
-      page.should have_content('Project was successfully created.')
-      # current_path.should == '/projects'
-      current_path.should == projects_path
+        # visit new_site_path
+        current_path.should == new_site_path
+        page.should have_content('New Site')
+        fill_in 'Name', :with => 'ECP Improvements', :match => :prefer_exact
+        fill_in 'Description', :with => 'Jungle Gym, etc.', :match => :prefer_exact
+        fill_in 'Zipcode', :with => 94530
+        click_button 'Save'
 
-      pp @user.projects
-      pp @user.email
+        page.should have_content('Site was successfully created.')
+        current_path.should == site_path
+
+        pp @user.projects
+        pp @user.email
+      end
     end
   end
 end
