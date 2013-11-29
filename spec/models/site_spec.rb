@@ -146,7 +146,7 @@ describe Site do
   describe 'lat/long stub values' do 
     it "returns correct stub for oakland latlong" do
       site.lat.round.should == 38
-      site.lng.round.should == 123
+      site.long.round.should == 123
     end
   end
 
