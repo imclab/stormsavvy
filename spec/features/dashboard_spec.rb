@@ -31,8 +31,8 @@ describe "Dashboard" do
       # :project => current_project,
       :name => 'ec jungle gym',
       :zipcode => 94530,
-      :lat => 37.9260,
-      :lng => -122.3060
+      # :lat => 37.9260,
+      # :long => -122.3060
     )
   }
   let!(:current_pending_site) { FactoryGirl.create(
@@ -41,8 +41,8 @@ describe "Dashboard" do
       # :project => current_project,
       :name => 'ec slide',
       :zipcode => 94530,
-      :lat => 37.9260,
-      :lng => -122.3060
+      # :lat => 37.9260,
+      # :lng => -122.3060
     )
   }
   let!(:other_completed_site) { FactoryGirl.create(
@@ -51,8 +51,8 @@ describe "Dashboard" do
       # :project_id => other_project,
       :name => 'berkeley high',
       :zipcode => 94709,
-      :lat => 37.8870,
-      :lng => -122.2670
+      # :lat => 37.8870,
+      # :lng => -122.2670
     )
   }
   let!(:other_pending_site) { FactoryGirl.create(
@@ -61,16 +61,16 @@ describe "Dashboard" do
       # :project => other_project,
       :name => 'peoples park',
       :zipcode => 94709,
-      :lat => 37.8870,
-      :lng => -122.2670
+      # :lat => 37.8870,
+      # :lng => -122.2670
     )
   }
   let!(:site) { FactoryGirl.create(
       :site,
       :name => 'sproul hall',
       :zipcode => 94709,
-      :lat => 37.8870,
-      :lng => -122.2670
+      # :lat => 37.8870,
+      # :lng => -122.2670
     )
   }
   let!(:current_completed_ie) { FactoryGirl.create(
