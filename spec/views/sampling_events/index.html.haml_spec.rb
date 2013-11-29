@@ -128,9 +128,6 @@ describe "sampling_events/index" do
     rendered.should =~ /Attachment URL/
   end
 
-  it "renders only uploaded attachments" do
-  end
-
   it 'shows correct ie attributes' do
     site_se.id.should == 1
     site_se.sampling_type.should == 'pH'
