@@ -84,7 +84,7 @@ class Site < ActiveRecord::Base
   end
 
   def latlng
-    [self.lat, self.lng]
+    [self.lat, self.long]
   end
 
   def get_zipcode
