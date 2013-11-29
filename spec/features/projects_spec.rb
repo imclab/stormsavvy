@@ -11,12 +11,13 @@ describe "Projects" do
     { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
+  before :each do
+    @user = FactoryGirl.create(:user)
+    login_as(@user, :scope => :user)
+    visit new_project_path
+  end
+
   describe "GET /projects", :type => :feature do
-    before :each do
-      @user = FactoryGirl.create(:user)
-      login_as(@user, :scope => :user)
-      visit new_project_path
-    end
 
     it "correct content on homepage" do
       current_path.should == new_project_path
