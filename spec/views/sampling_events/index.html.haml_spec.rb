@@ -128,8 +128,7 @@ describe "sampling_events/index" do
     rendered.should =~ /Attachment URL/
   end
 
-  xit "renders only uploaded attachments" do
-    rendered.should =~ /Upload Attachment/
+  it "renders only uploaded attachments" do
   end
 
   it 'shows correct ie attributes' do
