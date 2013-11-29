@@ -40,10 +40,7 @@ describe "Projects" do
         click_button 'Save'
 
         page.should have_content('Site was successfully created.')
-        current_path.should == site_path
-
-        pp @user.projects
-        pp @user.email
+        current_path.should == '/sites/1'
       end
     end
   end
