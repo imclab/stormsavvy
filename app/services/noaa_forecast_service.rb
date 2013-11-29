@@ -7,7 +7,7 @@ class NoaaForecastService
   def initialize( opts = {} )
     @site = opts[:site]
     @lat = @site.lat
-    @lng = @site.lng
+    @lng = @site.long
     @duration = opts[:duration] || 168
     @interval = opts[:interval] || 3
     @forecast_periods = []
