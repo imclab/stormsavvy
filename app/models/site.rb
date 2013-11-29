@@ -74,7 +74,7 @@ class Site < ActiveRecord::Base
   end
 
   def save_geo_coordinates
-    unless lat.presence && lng.presence
+    unless lat.presence && long.presence
       begin
         service = GeocoderService.new(zipcode: zipcode)
         self.update_attributes(service.get_lat_lng)
