@@ -14,6 +14,6 @@ FactoryGirl.define do
     exposed_area '10 acres'
 
     lat 38.2473117
-    lng 122.5712101
+    long 122.5712101
   end
 end
