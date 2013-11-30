@@ -24,10 +24,7 @@ class NOAAForecast
     @interval = interval
   end
 
-  def seven_day_weather(zipcode)
-    @duration = 168
-    @interval = 6
-
+  def some_redis_function
     # comment back in when redis works
     # if return_lat_long(@zipcode) == nil
     #   latlong = get_lat_long(@zipcode)
@@ -37,7 +34,12 @@ class NOAAForecast
     #   return get_forecast(latlong)
     # end
     # set_lat_long(@zipcode)
+  end
 
+  def seven_day_weather(zipcode)
+    #@duration = 168
+    #@interval = 6
+    #some_redis_function
     latlong = get_lat_long(zipcode)
     return get_forecast(latlong)
   end
@@ -50,7 +52,6 @@ class NOAAForecast
           @lat = results[0].data["geometry"]["location"]["lat"]
           @lng = results[0].data["geometry"]["location"]["lng"]
           lat_long = [] << @lat << @lng
-          puts "Geocoder API call: lat_long = #{lat_long}"
 
           Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
 
@@ -127,7 +128,6 @@ class NOAAForecast
     pop_array.each do |i|
       new_pop_array << { :weather => pop_array[i].to_s }
     end
-
     return new_pop_array
   end
 
@@ -148,14 +148,6 @@ class NOAAForecast
     nf = NOAAForecast.new(zipcode)
     time_array = nf.get_time_array
     new_pop_array = nf.get_pop_array(zipcode)
-
-=begin
-    # array not being returned correctly
-    time_pop_hash = []
-    for i in 0..27
-      time_pop_hash << Hash[time_array[i]].update(Hash[new_pop_array[i]])
-    end
-=end
 
     # refactor into proper loop
     time_pop_hash = [
@@ -188,7 +180,6 @@ class NOAAForecast
       time_array[26].update(new_pop_array[26]),
       time_array[27].update(new_pop_array[27])
     ]
-    return time_pop_hash
   end
 
   def get_pop_table_hash(zipcode)
@@ -196,15 +187,14 @@ class NOAAForecast
     time_pop_hash = nf.get_time_pop_hash(zipcode)
     new_qpf_array = nf.get_qpf_array(zipcode)
 
+    # refactor into proper loop
+
 =begin
-    # array not being returned correctly
-    pop_table_hash = []
-    for i in 0..27
-      pop_table_hash << Hash[time_pop_hash[i]].update(Hash[new_qpf_array[i]])
+    pop_table_hash.each_index do |i|
+      time_pop_hash[i+1].update(new_qpf_array[i+1]),
     end
 =end
 
-    # refactor into proper loop
     pop_table_hash = [
       time_pop_hash[1].update(new_qpf_array[1]),
       time_pop_hash[2].update(new_qpf_array[2]),
@@ -234,8 +224,6 @@ class NOAAForecast
       time_pop_hash[26].update(new_qpf_array[26]),
       time_pop_hash[27].update(new_qpf_array[27])
     ]
-
-    return pop_table_hash
   end
 
   # def get_pt_hash
@@ -285,6 +273,7 @@ class NOAAForecast
     ]
   end
 
+  #alias ProjectLocalTime PLT
   def forecast_by_zipcode(zipcode)
     nf = NOAAForecast.new(zipcode,168,6)
     pop = nf.seven_day_weather(zipcode)
@@ -331,10 +320,11 @@ class NOAAForecast
               :timeout       => 2000, # milliseconds
               # :cache_timeout => 60, # seconds
               :params        => {:field1 => "a field"})
+
     hydra = Typhoeus::Hydra.new
     hydra.queue(request)
     hydra.run
-    return request.response.body
+    request.response.body
   end
 
   def get_valid_dates(xmldoc)
@@ -353,6 +343,6 @@ class NOAAForecast
     @pop = doc.xpath("//pop").map { |n| n.content.to_i }
     @qpf = doc.xpath("//qpf").map { |n| n.content.to_i }
     noaa_forecast =  [] << @pop << @qpf
-    return noaa_forecast
+    noaa_forecast
   end
 end
