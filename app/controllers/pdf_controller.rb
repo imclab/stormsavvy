@@ -1,8 +1,7 @@
 class PdfController < ApplicationController
 
-  def CEM2030
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.pdf"
-    filename = "#{Rails.root}/app/assets/pdfs/CEM2030_production_v1.pdf"
+  def set_defaults
+    filename = "#{Rails.root}/app/assets/pdfs/#{@file}.pdf"
     pdf = Prawn::Document.new(
       :template => filename,
       :page_size => "A4"
