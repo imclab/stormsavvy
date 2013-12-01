@@ -23,7 +23,3 @@ noaa.get_forecast
 noaa.save_results
 site.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).map(&:pop)
 ForecastPeriod.where('pop = ?', 66)
-
-time = Time.new
-values = time.to_a
-p values
