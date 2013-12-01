@@ -88,4 +88,5 @@ class PdfController < ApplicationController
     send_data pdf.render, type: "application/pdf", disposition: "inline"
   end
 
+=end
 end
