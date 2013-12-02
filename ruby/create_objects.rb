@@ -3,6 +3,9 @@
 we = WeatherEvent.new
 we.save
 
+s = Site.new(:name => 'ecp', :zipcode => 94530)
+s.get_lat_long(94530)
+
 time = Time.new
 values = time.to_a
 p values
