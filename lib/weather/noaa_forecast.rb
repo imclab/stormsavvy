@@ -45,23 +45,25 @@ class NOAAForecast
   end
 
   def get_lat_long(zipcode)
-    lat_long ||= Rails.cache.fetch(@zipcode.to_s + '_lat_long', expires_in: 24.hours) do
-      unless lat_long == [nil, nil]
-        begin
-          results = Geocoder.search(zipcode)
-          @lat = results[0].data["geometry"]["location"]["lat"]
-          @lng = results[0].data["geometry"]["location"]["lng"]
-          lat_long = [] << @lat << @lng
+    # lat_long ||= Rails.cache.fetch(@zipcode.to_s + '_lat_long', expires_in: 24.hours) do
+    #   unless lat_long == [nil, nil]
 
-          Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
+    begin
+      results = Geocoder.search(zipcode)
+      @lat = results[0].data["geometry"]["location"]["lat"]
+      @lng = results[0].data["geometry"]["location"]["lng"]
+      lat_long = [] << @lat << @lng
 
-        rescue Exception => e
-          # throws error on logger exception method
-          # logger.info "Exception occurred fetching Geocoder latitude: #{e.to_s}"
-          nil
-        end
-      end
+      Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
+
+    rescue Exception => e
+      # throws error on logger exception method
+      # logger.info "Exception occurred fetching Geocoder latitude: #{e.to_s}"
+      nil
     end
+
+    #   end
+    # end
 
     # puts "NOAAForecast.get_lat_long(zipcode): lat_long = [#{@lat}, #{@lng}]"
     # puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
