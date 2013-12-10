@@ -37,11 +37,11 @@ describe NOAAForecast do
       # lat_long = [lat, long]
     }
 
-    nf.stub(:ping_noaa).with([lat, long], 168, 6) {
+    nf.stub!(:ping_noaa).with([lat, long], 168, 6) {
       IO.read("./spec/lib/weather/noaa_response.xml")
     }
 
-    nf.stub(:get_forecast).with([lat, long]) {
+    nf.stub!(:get_forecast).with([lat, long]) {
       response = nf.ping_noaa([lat, long], 168, 6)
       nf2.parse_weather_data(response)
     }
