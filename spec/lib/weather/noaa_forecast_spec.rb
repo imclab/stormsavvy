@@ -10,12 +10,6 @@ describe NOAAForecast do
   let(:long) { -122.2937428 }
   let(:lat_long) { [lat, long] }
   let(:nf) { double(NOAAForecast) }
-  # let(:nf) { FactoryGirl.build(
-  #   :NOAA_forecast,
-  #   :zipcode => 94530,
-  #   :duration => 168,
-  #   :interval => 6
-  # ) }
   let(:nf2) { NOAAForecast.new(zipcode,168,6) }
   let(:pop) { nf2.get_pop(zipcode) }
   let(:qpf) { nf2.get_qpf(zipcode) }
