@@ -39,8 +39,9 @@ class SitesController < ApplicationController
 
   # GET /sites/1/edit
   def edit
-    @project = Project.find(params[:project_id])
-    @site = @project.sites.find(params[:id])
+    @site = Site.find(params[:id])
+    # @project = Project.find(params[:project_id])
+    # @site = @project.sites.find(params[:id])
   end
 
   # POST /sites
