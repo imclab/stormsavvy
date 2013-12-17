@@ -190,24 +190,14 @@ describe Site do
   end
 
   describe '#forecast' do
-=begin
+
+    let(:nf) { NOAAForecast.new(zipcode,168,6) }
+
     it 'returns forecast' do
       latlong = [@lat, @long]
-      forecast = @nf.get_forecast(latlong)
-      @site.forecast.should == forecast
+      forecast = nf.get_forecast(latlong)
+      site.forecast.should == forecast
     end
-
-    site = Site.create!(
-      :name          => 'Oakland Adams Point',
-      :address_1     => '111 Adams Street',
-      :address_2     => 'Suite 181',
-      :city          => 'Oakland',
-      :state         => 'CA',
-      :zipcode       => 94610,
-      :description   => 'North of Lake Merritt'
-      )
-    forecast = site.forecast
-=end
   end
 
   describe '#get_zipcode' do
