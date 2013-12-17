@@ -87,11 +87,6 @@ describe NOAAForecast do
         new_pop_array << { :weather => i.to_s }
       end
 
-      # time_pop_hash = []
-      # for h in 0..27
-      #   time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
-      # end
-
       IO.read("./spec/fixtures/get_time_pop_hash.rb")
       return zipcode
     }
