@@ -123,22 +123,20 @@ describe Site do
 
   describe "attributes" do
 
-    before :each do
-      @site = FactoryGirl.create(:site)
-    end
+    let!(:site) { FactoryGirl.create(:site) }
 
     it 'has correct attributes' do
-      # @site.name.should == "Oakland Adams Point"
-      # @site.description.should == "North of Lake Merritt"
-      @site.costcode.should == "450AZC"
-      @site.size.should == "20 acres"
-      @site.exposed_area.should == "10 acres"
-      # @site.address_1.should == '111 Adams Street'
-      # @site.address_2.should == 'Suite 181'
-      @site.city.should == 'Oakland'
-      @site.zipcode.should == 94610
+      # site.name.should == "Oakland Adams Point"
+      # site.description.should == "North of Lake Merritt"
+      site.costcode.should == "450AZC"
+      site.size.should == "20 acres"
+      site.exposed_area.should == "10 acres"
+      # site.address_1.should == '111 Adams Street'
+      # site.address_2.should == 'Suite 181'
+      site.city.should == 'Oakland'
+      site.zipcode.should == 94610
 
-      @site.should respond_to(:user)
+      site.should respond_to(:user)
       # @site.should respond_to(:project)
     end
   end
