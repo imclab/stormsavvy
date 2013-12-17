@@ -94,15 +94,6 @@ describe NOAAForecast do
     nf3 = NOAAForecast.new(zipcode,168,6)
     nf3.stub(:get_pop_table_hash) {
 
-      # time_pop_hash = nf2.get_time_pop_hash
-      # new_qpf_array = @qpf
-
-      # array not being returned correctly
-      # pop_table_hash = []
-      # for i in 0..27
-      #   pop_table_hash << Hash[time_pop_hash[i]].update(Hash[new_qpf_array[i]])
-      # end
-
       IO.read("./spec/fixtures/get_pop_table_hash.rb")
       return zipcode
     }
