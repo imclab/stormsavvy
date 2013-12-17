@@ -179,7 +179,7 @@ describe Site do
   describe '#chance_of_rain' do
     it 'returns chance of rain' do
       begin
-        max_rain = @site.chance_of_rain
+        max_rain = site.chance_of_rain
         max_rain.should be_between(0,100)
         max_rain.should >= 0
         max_rain.should <= 100
@@ -194,7 +194,7 @@ describe Site do
     let(:nf) { NOAAForecast.new(zipcode,168,6) }
 
     it 'returns forecast' do
-      latlong = [@lat, @long]
+      latlong = [lat, long]
       forecast = nf.get_forecast(latlong)
       site.forecast.should == forecast
     end
