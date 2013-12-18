@@ -8,5 +8,4 @@ class GeonamesGeocodingService
     result ||= Unirest::get(url)
   end
 
-
 end

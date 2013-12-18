@@ -54,7 +54,8 @@ describe Site do
   end
 
   describe "project associations" do
-   it "creates new instance of given valid attributes" do
+    # Project associations no longer in use
+    xit "creates new instance of given valid attributes" do
       project.sites.create!(
         :name    => "Oakland Adams Point",
         :city    => "Oakland",
