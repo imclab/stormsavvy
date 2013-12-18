@@ -65,7 +65,7 @@ describe Site do
     end
 
     # TDD for handling belongs_to
-    it "should have a user attribute" do
+    xit "should have a user attribute" do
       site.should respond_to(:user)
       # site.should respond_to(:project)
     end
