@@ -36,8 +36,8 @@ describe GeonamesGeocodingService do
   end
 
   describe "without a site" do
-    xit "should raise an exception" do
-      expect{ GeonamesGeocodingService.new.should }.to raise_error
+    it "should raise an exception" do
+      expect{ GeonamesGeocodingService.search(0).should }.to raise_error
     end
   end
 end
