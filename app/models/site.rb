@@ -13,7 +13,9 @@ class Site < ActiveRecord::Base
     :zipcode,
     :city,
     :exposed_area,
-    :project_attributes
+    :project_attributes,
+    :lat,
+    :long
 
   belongs_to :user#, counter_cache: true
   # belongs_to :project, counter_cache: true
