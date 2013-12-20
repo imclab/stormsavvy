@@ -7,15 +7,14 @@ describe GeonamesGeocodingService do
     let(:result) { query_results.body["postalCodes"][0] }
 
     describe "with valid zipcode" do
-      it "successfully retrieves results from geonames" do
-        query_results.should_not == nil
-      end
 
       context "API query" do
 
-        it "should return lat/long after API query" do
+        it "returns postal code info after API query" do
           begin
             pp query_results.body["postalCodes"][0]
+            query_results.should_not == nil
+
             result["adminName2"].should == 'Contra Costa'
             result["AdminCode2"].should == 013
             result["AdminCode1"].should == 'CA'
