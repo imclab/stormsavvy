@@ -35,9 +35,10 @@ describe GeonamesGeocodingService do
     end
   end
 
-  describe "without a site" do
-    it "should raise an exception" do
-      expect{ GeonamesGeocodingService.search(0).should }.to raise_error
+  describe "without valid zipcode" do
+    it "returns nil for invalid zipcode" do
+      query_results = GeonamesGeocodingService.search(0)
+      query_results.body["postalCodes"][0].should == nil
     end
   end
 end
