@@ -27,7 +27,7 @@ describe GeonamesGeocodingService do
             result["lat"].should_not == nil
             expect{ result["foobar"].should  }.to raise_error
           rescue
-            'not online or method throwing error'
+            'not online or api query error'
           end
         end
       end
