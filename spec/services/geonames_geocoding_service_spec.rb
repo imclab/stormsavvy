@@ -2,53 +2,31 @@ require "spec_helper"
 
 describe GeonamesGeocodingService do
   context "when contacting geonames" do
-    before :each do
-      # site = FactoryGirl.build(:site)
-      @result =  GeonamesGeocodingService.search(94530)
-    end
+    let(:zipcode) { 94530 }
+    let(:query_results) { GeonamesGeocodingService.search(zipcode) }
+    let(:result) { query_results.body["postalCodes"][0] }
 
-    describe "with a site with valid lat/lng" do
-      it "should successfully create a new NoaaForecastService object" do
-        @result.should_not == nil
+    describe "with valid zipcode" do
+      it "successfully retrieves results from geonames" do
+        query_results.should_not == nil
       end
 
       context "API query" do
-        before :each do
-          pp GeonamesGeocodingService.search(94530)
-          @n.search(94530)
-        end
 
-        xit "should return lat/long after API query" do
+        it "should return lat/long after API query" do
           begin
-            pp @n.search(94949)
-          rescue
-            'not online or method throwing error'
-          end
-        end
+            pp query_results.body["postalCodes"][0]
+            result["adminName2"].should == 'Contra Costa'
+            result["AdminCode2"].should == 013
+            result["AdminCode1"].should == 'CA'
+            result["postalCode"].should == 94530
+            result["countryCode"].should == 'US'
+            result["placeName"].should == 'El Cerrito'
+            result["adminName1"].should == 'California'
 
-        xit "should set forecast_periods after API query" do
-          begin
-            @n.forecast_periods.length.should == 57
-          rescue
-            'not online or method throwing error'
-          end
-        end
-
-        xit "should successfully save WeatherUpdate" do
-          begin
-            weather_update_count = WeatherUpdate.count
-            @n.save_results
-            WeatherUpdate.count.should == weather_update_count + 1
-          rescue
-            'not online or method throwing error'
-          end
-        end
-
-        xit "should successfully save ForecastPeriods" do
-          begin
-            weather_update_count = ForecastPeriod.count
-            @n.save_results
-            ForecastPeriod.count.should == weather_update_count + 57
+            result["lng"].should_not == nil
+            result["lat"].should_not == nil
+            expect{ result["foobar"].should  }.to raise_error
           rescue
             'not online or method throwing error'
           end
