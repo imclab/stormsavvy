@@ -47,8 +47,11 @@ class SitesController < ApplicationController
   # POST /sites
   # POST /sites.json
   def create
-    #site = Site.new(params[:site])
+    # @site = Site.new(params[:site])
     @site = current_user.sites.build(params[:site])
+
+    Rails.logger.debug 'Site lat is ' + @site.lat.to_s
+    Rails.logger.debug 'Site long is ' + @site.long.to_s
 
     # @project = Project.find(params[:project_id])
     # @site = @project.sites.build(params[:site])
