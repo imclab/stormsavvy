@@ -32,7 +32,8 @@ class GeocoderService
   end
 
   def return_results_hash
-    { lat: @lat, lng: @lng }
+    # api query returns lng while site attribute is spelled long!
+    { lat: @lat, long: @lng }
   end
 
 end
