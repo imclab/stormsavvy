@@ -17,10 +17,11 @@ forecast = nf.seven_day_weather(zipcode)
 pp forecast
 
 # Script for generating site and forecast periods in console
-site = Site.last
-site.lat = 38.2470
-site.lng = -122.5620
+site = Site.new(name: 'ecp', zipcode: 94530)
 site.save
+site.lat
+site.long
+
 site.chance_of_rain.pop
 noaa = NoaaForecastService.new(:site => site)
 noaa.get_forecast
