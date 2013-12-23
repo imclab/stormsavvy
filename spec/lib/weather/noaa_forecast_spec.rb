@@ -297,7 +297,7 @@ describe NOAAForecast do
   end
 
   describe "#get_qpf_array" do
-    it "returns qpf array" do
+    xit "returns qpf array" do
       nf2.seven_day_weather(zipcode)
       qpf_array = nf2.qpf
 
