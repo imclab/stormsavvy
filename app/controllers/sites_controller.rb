@@ -49,7 +49,11 @@ class SitesController < ApplicationController
   def create
     # @site = Site.new(params[:site])
     @site = current_user.sites.build(params[:site])
+    @site.lat = @lat
+    @site.long = @long
+    @site.save
 
+    Rails.logger.debug 'User email is ' + @site.user.email.to_s
     Rails.logger.debug 'Site lat is ' + @site.lat.to_s
     Rails.logger.debug 'Site long is ' + @site.long.to_s
 
