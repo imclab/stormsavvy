@@ -69,6 +69,17 @@ describe GeocoderService do
         end
       end
     end
+
+    describe "#return_results_hash" do
+      begin
+        result = Geocoder.search(zipcode)
+        result.return_results_hash
+        pp result["lat"]
+        pp result["lng"]
+      rescue
+        'not online or api query error'
+      end
+    end
   end
 
   describe "without valid zipcode" do
