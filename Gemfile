@@ -31,6 +31,7 @@ gem 'heroku'
 gem 'unirest'
 
 # Rails 4 upgrade gems
+gem 'activeresource'
 gem 'protected_attributes'
 gem 'rails-observers'
 gem 'actionpack-page_caching'
