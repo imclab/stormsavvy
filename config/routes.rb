@@ -47,20 +47,32 @@ Stormsavvy::Application.routes.draw do
   # end
 
   ReportsController::STATIC_REPORTS.each do |name|
-    match "/reports/#{name}" => "reports##{name}"
+    get "/reports/#{name}" => "reports##{name}"
+    # match "/reports/#{name}" => "reports##{name}"
   end
 
-  match '/index',     :to => "pages#index",          :as => :index
-  match '/about',     :to => "pages#about",          :as => :about
-  match '/terms',     :to => "pages#terms",          :as => :terms
-  match '/faq',       :to => "pages#faq",            :as => :faq
-  match '/privacy',   :to => "pages#privacy",        :as => :privacy
-  match '/contact',   :to => "pages#contact",        :as => :contact
-  match '/plans',     :to => "pages#plans",          :as => :plans
-  match '/features',  :to => "pages#features",       :as => :features
-  match '/team',      :to => "pages#team",           :as => :team
-  match '/pdf',       :to => "pages#pdf",            :as => :pdf
+  get '/index',     :to => "pages#index"#,          :as => :index
+  get '/about',     :to => "pages#about"#,          :as => :about
+  get '/terms',     :to => "pages#terms"#,          :as => :terms
+  get '/faq',       :to => "pages#faq"#,            :as => :faq
+  get '/privacy',   :to => "pages#privacy"#,        :as => :privacy
+  get '/contact',   :to => "pages#contact"#,        :as => :contact
+  get '/plans',     :to => "pages#plans"#,          :as => :plans
+  get '/features',  :to => "pages#features"#,       :as => :features
+  get '/team',      :to => "pages#team"#,           :as => :team
+  get '/pdf',       :to => "pages#pdf"#,            :as => :pdf
 
-  root :to => "dashboard#index"
+  # match '/index',     :to => "pages#index",          :as => :index
+  # match '/about',     :to => "pages#about",          :as => :about
+  # match '/terms',     :to => "pages#terms",          :as => :terms
+  # match '/faq',       :to => "pages#faq",            :as => :faq
+  # match '/privacy',   :to => "pages#privacy",        :as => :privacy
+  # match '/contact',   :to => "pages#contact",        :as => :contact
+  # match '/plans',     :to => "pages#plans",          :as => :plans
+  # match '/features',  :to => "pages#features",       :as => :features
+  # match '/team',      :to => "pages#team",           :as => :team
+  # match '/pdf',       :to => "pages#pdf",            :as => :pdf
+
+  # root :to => "dashboard#index"
 
 end
