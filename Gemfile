@@ -49,14 +49,15 @@ group :test, :development do
   gem 'rspec'
   gem 'factory_girl_rails'
   gem 'cucumber-rails', :require => false
-  gem 'database_cleaner', '0.9.1'
+  gem "database_cleaner", '1.0.0.RC1'
+  # gem 'database_cleaner', '0.9.1'
   gem 'capybara'
   gem 'cucumber'
   gem 'sqlite3'
   gem 'spork-rails'
   gem 'autotest'
 
-  # gem 'email_spec' # comment out for bundle update
+  gem 'email_spec' # comment out for bundle update
   gem 'awesome_print'
   gem 'pdf-inspector', :require => "pdf/inspector"
   gem 'simplecov', :require => false
