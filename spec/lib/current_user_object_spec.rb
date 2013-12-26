@@ -111,10 +111,10 @@ describe CurrentUserObject do
     end
 
     it "returns correct sites to each user" do
-      @current_user.sites.all.should == @current_sites
-      @current_user.sites.all.should_not == @other_sites
-      @other_user.sites.all.should == @other_sites
-      @other_user.sites.all.should_not == @current_sites
+      @current_user.sites.should == @current_sites
+      @current_user.sites.should_not == @other_sites
+      @other_user.sites.should == @other_sites
+      @other_user.sites.should_not == @current_sites
     end
 
     it 'returns current sites class' do
