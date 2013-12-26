@@ -12,7 +12,7 @@ class CurrentUserObject
   def get_sites(user)
     # get_projects(user)
     @sites = []
-    sites = user.sites.all
+    sites = user.sites
     sites.each do |s|
       @sites << s
     end
