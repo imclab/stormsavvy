@@ -53,7 +53,6 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'cucumber-rails', :require => false
   gem "database_cleaner", '1.0.0.RC1'
-  # gem 'database_cleaner', '0.9.1'
   gem 'capybara'
   gem 'cucumber'
   gem 'sqlite3'
