@@ -228,6 +228,6 @@ Devise.setup do |config|
   # config.secret_key. By upgrading Devise, your previous confirmation, reset 
   # and unlock tokens in the database will no longer work unless you set the 
   # following option to true in your Devise initializer:
-  config.allow_insecure_token_lookup = true
+  # config.allow_insecure_token_lookup = true
   config.secret_key = '0f4c7a8e84c896a0fdbb230a3c20d83d7d9ce310e5a598ec5364dbce5d45583f9f51f6ad1606ed676d1c8397c9d4cdefa10b06810011e53c7f281fbe4be5cb0d'
 end
