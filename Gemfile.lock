@@ -328,7 +328,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack-action_caching
+  actionpack-page_caching
   activeadmin!
+  activerecord-deprecated_finders
   autotest
   awesome_print
   aws-sdk
@@ -342,7 +345,6 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner (= 0.9.1)
   devise
-  email_spec
   factory_girl_rails
   geocoder
   haml-rails
@@ -358,7 +360,9 @@ DEPENDENCIES
   pdf-reader
   pg
   prawn!
-  rails (= 3.2.15)
+  protected_attributes
+  rails (= 4.0.2)
+  rails-observers
   rake
   redis
   rspec
