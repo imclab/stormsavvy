@@ -12,14 +12,17 @@ gem 'pg'
 gem 'redis'
 gem 'json'
 gem 'carmen'
-gem 'activeadmin', github: "gregbell/active_admin"
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'coffee-script-source'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
-gem 'prawn', :git => "git://github.com/WalterYu/prawn.git"
+gem 'prawn', :git => 'git://github.com/WalterYu/prawn.git'
 gem 'pdf-reader'
 gem 'simple_form'
 gem 'nested_form'
@@ -52,7 +55,7 @@ group :test, :development do
   gem 'rspec'
   gem 'factory_girl_rails'
   gem 'cucumber-rails', :require => false
-  gem "database_cleaner", '1.0.0.RC1'
+  gem 'database_cleaner', '1.0.0.RC1'
   gem 'capybara'
   gem 'cucumber'
   gem 'sqlite3'
@@ -61,14 +64,8 @@ group :test, :development do
 
   gem 'email_spec' # comment out for bundle update
   gem 'awesome_print'
-  gem 'pdf-inspector', :require => "pdf/inspector"
+  gem 'pdf-inspector', :require => 'pdf/inspector'
   gem 'simplecov', :require => false
-end
-
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
 end
 
 group :production do
