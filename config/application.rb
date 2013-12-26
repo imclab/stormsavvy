@@ -2,12 +2,18 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+# Rails 4 config update: 
+# http://railscasts.com/episodes/415-upgrading-to-rails-4?view=asciicast
+Bundler.require(:default, Rails.env)
+
+=begin
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
+=end
 
 module Stormsavvy
   class Application < Rails::Application
