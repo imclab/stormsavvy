@@ -161,10 +161,10 @@ describe CurrentUserObject do
     end
 
     it "returns correct sampling_events to each user" do
-      @current_site.sampling_events.all.should == @current_se_array
-      @current_site.sampling_events.all.should_not == @other_se_array
-      @other_site.sampling_events.all.should == @other_se_array
-      @other_site.sampling_events.all.should_not == @current_se_array
+      @current_site.sampling_events.should == @current_se_array
+      @current_site.sampling_events.should_not == @other_se_array
+      @other_site.sampling_events.should == @other_se_array
+      @other_site.sampling_events.should_not == @current_se_array
     end
 
     it 'returns current sampling events' do
