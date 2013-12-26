@@ -1,7 +1,7 @@
 class CurrentUserObject
   def get_projects(user)
     @projects = []
-    projects = user.projects.all
+    projects = user.projects
     projects.each do |p|
       @projects << p
     end
