@@ -30,6 +30,13 @@ gem 'aws-sdk'
 gem 'heroku'
 gem 'unirest'
 
+# Rails 4 upgrade gems
+gem 'protected_attributes'
+gem 'rails-observers'
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
+gem 'activerecord-deprecated_finders'
+
 group :development do
   gem 'therubyracer', :platforms => :ruby, :require => 'v8'
   gem 'letter_opener'
