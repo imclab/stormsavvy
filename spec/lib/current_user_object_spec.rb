@@ -132,10 +132,10 @@ describe CurrentUserObject do
     end
 
     it "returns correct inspection events to each user" do
-      @current_site.inspection_events.all.should == @current_ie_array
-      @current_site.inspection_events.all.should_not == @other_ie_array
-      @other_site.inspection_events.all.should == @other_ie_array
-      @other_site.inspection_events.all.should_not == @current_ie_array
+      @current_site.inspection_events.should == @current_ie_array
+      @current_site.inspection_events.should_not == @other_ie_array
+      @other_site.inspection_events.should == @other_ie_array
+      @other_site.inspection_events.should_not == @current_ie_array
     end
 
     it 'returns current inspection events' do
