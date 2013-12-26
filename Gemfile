@@ -46,6 +46,7 @@ group :test, :development do
   gem 'cucumber'
   gem 'sqlite3'
   gem 'spork-rails'
+  gem 'autotest'
 
   gem 'email_spec' # comment out for bundle update
   gem 'awesome_print'
