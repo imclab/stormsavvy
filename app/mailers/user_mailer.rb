@@ -59,8 +59,8 @@ class UserMailer < ActionMailer::Base
 
       @sites.each do |site|
         @site = site
-        @reports = site.reports.all
-        @pending_ie = site.inspection_events.all
+        @reports = site.reports
+        @pending_ie = site.inspection_events
 
           # zipcode = @site.zipcode
           # nf = NOAAForecast.new(zipcode)
