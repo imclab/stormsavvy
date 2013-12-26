@@ -4,6 +4,8 @@ Stormsavvy::Application.configure do
   # Code is not reloaded between requests
   config.cache_classes = true
 
+  config.eager_load = true
+
   # Path to Geocoder caching file path
   config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
 
@@ -16,6 +18,7 @@ Stormsavvy::Application.configure do
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
+  config.assets.js_compressor = :uglifier
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
