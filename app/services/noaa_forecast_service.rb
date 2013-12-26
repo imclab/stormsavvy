@@ -26,10 +26,10 @@ class NoaaForecastService
 
   def save_forecast_periods
     @forecast_periods.each do |forecast|
-      forecast = @site.forecast_periods.find_or_create_by_pop(pop: forecast.pop)
+      # forecast = @site.forecast_periods.find_or_create_by_pop(pop: forecast.pop)
 
       # Rails 4 deprecate find_or_create_by method
-      # forecast = @site.forecast_periods.where(pop: forecast.pop)
+      forecast = @site.forecast_periods.where(pop: forecast.pop)
 
       unless forecast
         forecast.update_attributes(forecast)
