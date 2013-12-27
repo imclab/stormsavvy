@@ -265,10 +265,6 @@ describe NOAAForecast do
         new_pop_array << { :weather => pop_array[i].to_s }
       end
 
-      # leave here for debugging
-      # puts nf2.get_pop_array(zipcode)
-      # puts new_pop_array
-
       nf2.get_pop_array(zipcode).should == new_pop_array
     end
   end
