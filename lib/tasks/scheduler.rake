@@ -81,10 +81,11 @@ namespace :scheduler do
   task :staging_mailer => :environment do
     if Time.now.sunday? # weekly scheduler: http://goo.gl/Bj6zL
       admins = [
-        'walter@stormsavvy.com'
+        'walter@stormsavvy.com',
+        'kharma+stormsavvy@gmail.com'
         ]
       admins.each do |address|
-        UserMailer.staging_mailer(address)
+        UserMailer.delay.staging_mailer(address)
       end
     end
   end
