@@ -307,6 +307,8 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     ttfunk (1.0.3)
+    turbolinks (2.1.0)
+      coffee-rails
     typhoeus (0.6.7)
       ethon (~> 0.6.2)
     tzinfo (0.3.38)
@@ -381,6 +383,7 @@ DEPENDENCIES
   spork-rails
   sqlite3
   therubyracer
+  turbolinks
   typhoeus
   uglifier
   unicorn
