@@ -14,6 +14,12 @@ class WeatherGetter
   def initialize
   end
 
+  def display_forecast
+    @zipcode = "94530"
+    @forecast = wg.get_forecast(@zipcode)
+    @forecastday = wg.parse_wunderground_10day(@forecast)
+  end
+
   def get_forecast(zipcode)
     @hydra = Typhoeus::Hydra.new
     url = "http://api.wunderground.com/api/#{APIKEY}/forecast10day/q/#{zipcode}.json"
