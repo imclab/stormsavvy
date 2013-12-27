@@ -147,12 +147,9 @@ class NOAAForecast
     new_qpf_array = nf.get_qpf_array(zipcode)
 
     # refactor into proper loop
-
-=begin
-    pop_table_hash.each_index do |i|
-      time_pop_hash[i+1].update(new_qpf_array[i+1]),
-    end
-=end
+    # pop_table_hash.each_index do |i|
+    #   time_pop_hash[i+1].update(new_qpf_array[i+1]),
+    # end
 
     pop_table_hash = [
       time_pop_hash[1].update(new_qpf_array[1]),
