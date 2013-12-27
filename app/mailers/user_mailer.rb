@@ -2,18 +2,21 @@ class UserMailer < ActionMailer::Base
 
   default :from => "alerts@stormsavvy.com"
 
-  def pester_admins(email)
+  def set_vars
     @numusers = User.count
     @numprojects = Project.count
     @numsites = Site.count
     @numinspections = InspectionEvent.count
     @numreports = Report.count
-
     @greeting = "Greetings"
+    @salutation = "The Storm Savvy Team"
+  end
+
+  def pester_admins(email)
+    set_vars
     zipcode = 94530
     nf = NOAAForecast.new(zipcode)
     @forecast1 = nf.get_forecast_array(zipcode)
-    @salutation = "The Storm Savvy Team"
 
     mail(
       :from     => "alerts@stormsavvy.com",
