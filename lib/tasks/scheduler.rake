@@ -32,10 +32,11 @@ namespace :scheduler do
   task :southbay_forecast => :environment do
     test_users = [
       'walter@stormsavvy.com',
+      'kharma+stormsavvy@gmail.com',
       'wing.wingyu@gmail.com'
       ]
     test_users.each do |address|
-      AlertMailer.southbay_forecast(address)
+      AlertMailer.delay.southbay_forecast(address)
     end
   end
 
