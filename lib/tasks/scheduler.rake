@@ -4,11 +4,12 @@ namespace :scheduler do
   task :northbay_forecast => :environment do
     test_users = [
       'walter@stormsavvy.com',
+      'walter_yu@dot.ca.gov',
+      'kharma+stormsavvy@gmail.com',
       'wing.wingyu@gmail.com',
-      'david.doolin+stormsavvy@gmail.com',
+      'david.doolin+stormsavvy@gmail.com'
       # 'JonathanM@ghilottibros.com',
-      # 'KjellD@ghilottibros.com',
-      'walter_yu@dot.ca.gov'
+      # 'KjellD@ghilottibros.com'
       ]
     test_users.each do |address|
       AlertMailer.northbay_forecast(address)
