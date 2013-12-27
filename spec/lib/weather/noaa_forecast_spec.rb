@@ -448,36 +448,4 @@ describe NOAAForecast do
       nf3.get_pop_table_hash(zipcode).should == pop_table_hash
     end
   end
-
-  it "creates redis object" do
-    $redis.class.should == Redis
-  end
-
-  describe "#set_lat_long" do
-    xit "calls set_lat_long method successfully" do
-      lat_long = [lat, long]
-      nf.set_lat_long(zipcode)
-      $redis.get(zipcode.to_s + '_lat').should == lat_long[0].to_s
-      $redis.get(zipcode.to_s + '_long').should == lat_long[1].to_s
-    end
-
-    xit "stores lat/long values using $redis.set" do
-      zipcode = zipcode
-      lat_long = [lat, long]
-      $redis.set(zipcode.to_s + '_lat', lat_long[0])
-      $redis.set(zipcode.to_s + '_long', lat_long[1])
-      $redis.get(zipcode.to_s + '_lat').should == lat_long[0].to_s
-      $redis.get(zipcode.to_s + '_long').should == lat_long[1].to_s
-    end
-  end
-
-  describe "#return_lat_long" do
-    xit "calls return_lat_long method successfully" do
-      lat = $redis.get(zipcode.to_s + '_lat')
-      long = $redis.get(zipcode.to_s + '_long')
-      results = [lat,long]
-      nf.set_lat_long(zipcode)
-      nf.return_lat_long(zipcode).should == results
-    end
-  end
 end
