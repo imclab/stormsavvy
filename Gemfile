@@ -33,6 +33,8 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'heroku'
 gem 'unirest'
+gem 'redis'
+gem 'sidekiq'
 
 # Rails 4 upgrade gems
 gem 'activeresource'
