@@ -7,6 +7,8 @@ require 'email_spec'
 require 'capybara/rspec'
 require 'rack/test'
 require 'spork'
+require 'sidekiq'
+require 'sidekiq/testing'
 
 include Warden::Test::Helpers
 Warden.test_mode!
