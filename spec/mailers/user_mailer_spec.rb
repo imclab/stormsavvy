@@ -8,7 +8,7 @@ describe UserMailer do
   let(:greeting) { 'Greetings' }
   let(:salutation) { 'The Storm Savvy Team' }
 
-  let!(:user) { FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.build(:user) }
   let(:users) { [ user ] }
 
   let!(:site) { FactoryGirl.create(
