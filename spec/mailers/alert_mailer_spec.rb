@@ -179,7 +179,13 @@ describe AlertMailer do
     end
 
     it "should render successfully" do
-      lambda { @mailer }.should_not raise_error
+      lambda { mailer }.should_not raise_error
+    end
+
+    it 'delays delivery using sidekiq' do
+      expect { AlertMailer.delay.pop_alert(user.email)}.to change(
+        Sidekiq::Extensions::DelayedMailer.jobs, :size
+      ).by(1)
     end
   end
 end
