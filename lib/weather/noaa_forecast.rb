@@ -42,43 +42,15 @@ class NOAAForecast
           Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
 
         rescue Exception => e
-          # throws error on logger exception method
-          # logger.info "Exception occurred fetching Geocoder latitude: #{e.to_s}"
           nil
         end
 
       end
     end
 
-    # puts "NOAAForecast.get_lat_long(zipcode): lat_long = [#{@lat}, #{@lng}]"
-    # puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
-
     lat_long = [] << @lat << @lng
     return lat_long
-
-    # Original geocoder call
-    # results = Geocoder.search(zipcode)
-    # @lat = results[0].data["geometry"]["location"]["lat"]
-    # @lng = results[0].data["geometry"]["location"]["lng"]
-    # lat_long = [] << @lat << @lng
-    # return lat_long
-
-    # return [] << results[0].data["geometry"]["location"]["lat"] << results[0].data["geometry"]["location"]["lng"] #yuck
   end
-
-  # def set_lat_long(zipcode)
-  #   $redis.set(zipcode.to_s + '_lat')
-  #   $redis.set(zipcode.to_s + '_long')
-  #   $redis.set(zipcode.to_s + '_lat', response[0])
-  #   $redis.set(zipcode.to_s + '_long', response[1])
-  # end
-
-  # def return_lat_long(zipcode)
-  #   lat = $redis.get(zipcode.to_s + '_lat')
-  #   long = $redis.get(zipcode.to_s + '_long')
-  #   lat_long = [lat.to_f, long.to_f]
-  #   return lat_long
-  # end
 
   def get_forecast(latlong)
     response = ping_noaa(latlong, @duration, @interval)
