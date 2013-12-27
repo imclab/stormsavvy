@@ -118,6 +118,12 @@ describe UserMailer do
       numreports.should_not be_nil
       numinspections.should_not be_nil
     end
+
+    it 'delays delivery using sidekiq' do
+      expect { UserMailer.delay.staging_mailer(email)}.to change(
+        Sidekiq::Extensions::DelayedMailer.jobs, :size
+      ).by(1)
+    end
   end
 
   describe '#mailout' do
