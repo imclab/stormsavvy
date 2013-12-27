@@ -3,7 +3,6 @@ require 'json'
 
 include Typhoeus
 
-# Add conditional for heroku config variable
 # APIKEY = ENV['WUNDERGROUND_APIKEY']
 
 # Chomp method removes newline from text file
