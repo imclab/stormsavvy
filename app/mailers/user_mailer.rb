@@ -26,15 +26,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def staging_mailer(email)
-    @numusers = User.count
-    @numprojects = Project.count
-    @numsites = Site.count
-    @numinspections = InspectionEvent.count
-    @numreports = Report.count
-
-    @greeting = "Greetings"
-    @salutation = "The Storm Savvy Team"
-
+    set_vars
     zipcode = 94605
     nf = NOAAForecast.new(zipcode)
     @forecast1 = nf.get_forecast_array(zipcode)
