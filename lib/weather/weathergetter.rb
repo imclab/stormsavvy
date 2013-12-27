@@ -1,11 +1,13 @@
 require 'typhoeus'
 require 'json'
-require 'yaml'
 
 include Typhoeus
 
+# Add conditional for heroku config variable
 # APIKEY = ENV['WUNDERGROUND_APIKEY']
-APIKEY = '4dea709a3af5d74c'
+
+# Chomp method removes newline from text file
+APIKEY = IO.read('./config/wunderground_apikey.txt').chomp
 
 class WeatherGetter
 
