@@ -201,5 +201,11 @@ describe UserMailer do
       greeting.should == 'Greetings'
       salutation.should == 'The Storm Savvy Team'
     end
+
+    it 'delays delivery using sidekiq' do
+      expect { UserMailer.delay.thankyou(email)}.to change(
+        Sidekiq::Extensions::DelayedMailer.jobs, :size
+      ).by(1)
+    end
   end
 end
