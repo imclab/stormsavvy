@@ -29,7 +29,6 @@ describe UserMailer do
   let(:pending_ie) { [ ie ] }
 
   let(:numusers) { User.count }
-  let(:numprojects) { Project.count }
   let(:numsites) { Site.count }
   let(:numreports) { Report.count }
   let(:numinspections) { InspectionEvent.count }
