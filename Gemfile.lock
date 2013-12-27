@@ -243,7 +243,6 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
-    redis (3.0.6)
     ref (1.0.5)
     responders (1.0.0)
       railties (>= 3.2, < 5)
@@ -373,7 +372,6 @@ DEPENDENCIES
   rails-observers
   rails_12factor
   rake
-  redis
   rspec
   rspec-rails
   sass-rails
