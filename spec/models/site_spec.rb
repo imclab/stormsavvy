@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'weather/forecast_examiner'
-require 'redis'
 
 describe Site do
 
