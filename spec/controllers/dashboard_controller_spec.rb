@@ -184,12 +184,12 @@ describe DashboardController do
     end
 
     it "returns correct projects to each user" do
-      @current_user.projects.all.should == @current_projects
-      @current_user.projects.all.should_not == @other_projects
+      @current_user.projects.should == @current_projects
+      @current_user.projects.should_not == @other_projects
       @current_projects.should_not be_nil
 
-      @other_user.projects.all.should == @other_projects
-      @other_user.projects.all.should_not == @current_projects
+      @other_user.projects.should == @other_projects
+      @other_user.projects.should_not == @current_projects
       @other_projects.should_not be_nil
     end
 
