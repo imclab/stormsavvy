@@ -78,7 +78,9 @@ describe UserMailer do
     end
 
     it 'delays delivery using sidekiq' do
-      expect { UserMailer.delay.pester_admins(email)}.to change(Sidekiq::Extensions::DelayedMailer.jobs, :size).by(1)
+      expect { UserMailer.delay.pester_admins(email)}.to change(
+        Sidekiq::Extensions::DelayedMailer.jobs, :size
+      ).by(1)
     end
   end
 
