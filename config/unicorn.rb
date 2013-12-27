@@ -21,6 +21,14 @@ after_fork do |server, worker|
 
   defined?(ActiveRecord::Base) and
     ActiveRecord::Base.establish_connection
+
+  Sidekiq.configure_client do |config|
+    config.redis = ConnectionPool.new(:size => 1, :timeout => 1) do
+      # MyRedisWrapper.new(...)
+    end
+  end
+end
+
 end
 
 =begin
