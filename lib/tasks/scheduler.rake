@@ -93,20 +93,22 @@ namespace :scheduler do
   desc "Delivers mailout mailer"
   task :mailout => :environment do
   	users = [
-      'walter@stormsavvy.com'
+      'walter@stormsavvy.com',
+      'kharma+stormsavvy@gmail.com'
       ]
     users.each do |address|
-      UserMailer.mailout
+      UserMailer.delay.mailout
     end
   end
 
   desc "Delivers thank you mailer"
   task :thankyou => :environment do
     test_users = [
-      'walter@stormsavvy.com'
+      'walter@stormsavvy.com',
+      'kharma+stormsavvy@gmail.com'
       ]
     test_users.each do |address|
-      UserMailer.thankyou(address)
+      UserMailer.delay.thankyou(address)
     end
   end
 
