@@ -173,6 +173,12 @@ describe UserMailer do
       pending_ie.should == site.inspection_events
       pending_ie.should_not be_nil
     end
+
+    it 'delays delivery using sidekiq' do
+      expect { UserMailer.delay.mailout(email)}.to change(
+        Sidekiq::Extensions::DelayedMailer.jobs, :size
+      ).by(1)
+    end
   end
 
   describe '#thankyou' do
