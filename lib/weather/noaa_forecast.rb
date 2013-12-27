@@ -4,7 +4,6 @@ require 'geocoder'
 require 'date'
 require 'time'
 require 'project_local_time'
-require 'redis'
 
 class ApiError < StandardError
 end
@@ -16,30 +15,15 @@ class NOAAForecast
 
   attr_reader :pop, :qpf
 
-  # DEFAULT_FALLBACK = ->(error) {raise}
-
   def initialize(zipcode, duration = 168, interval = 6)
     @zipcode  = zipcode
     @duration = duration
     @interval = interval
   end
 
-  def some_redis_function
-    # comment back in when redis works
-    # if return_lat_long(@zipcode) == nil
-    #   latlong = get_lat_long(@zipcode)
-    #   return latlong
-    # else
-    #   latlong = get_lat_long(@zipcode)
-    #   return get_forecast(latlong)
-    # end
-    # set_lat_long(@zipcode)
-  end
-
   def seven_day_weather(zipcode)
     #@duration = 168
     #@interval = 6
-    #some_redis_function
     latlong = get_lat_long(zipcode)
     return get_forecast(latlong)
   end
