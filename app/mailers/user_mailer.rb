@@ -66,9 +66,6 @@ class UserMailer < ActionMailer::Base
   end
 
   def thankyou(email)
-    @greeting = "Greetings"
-    @salutation = "The Storm Savvy Team"
-
     mail(
       :from     => "alerts@stormsavvy.com",
       :to       => email,
