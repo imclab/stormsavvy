@@ -279,10 +279,6 @@ describe NOAAForecast do
         new_qpf_array << { :rainfall => i.to_s }
       end
 
-      # leave here for debugging
-      # puts nf2.get_qpf_array(zipcode)
-      # puts new_qpf_array
-
       nf2.get_qpf_array(zipcode).should == new_qpf_array
     end
   end
