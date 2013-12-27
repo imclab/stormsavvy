@@ -1,5 +1,5 @@
-require "spec_helper"
-require "date"
+require 'spec_helper'
+require 'date'
 
 include Warden::Test::Helpers
 Warden.test_mode!
@@ -8,139 +8,141 @@ describe AlertMailer do
 
   before { ActionMailer::Base.deliveries = [] }
 
-  before(:each) do
-    @user = FactoryGirl.create(
-      :user,
-      :firstname => 'Walter',
-      :lastname => 'Yu',
-      :email => 'walter@stormsavvy.com',
-      :password => 'DarkAndStormy',
-      :password_confirmation => 'DarkAndStormy'
-      )
-    @project = FactoryGirl.create(
-      :project,
-      :user => @user,
-      :startdate => Date.today,
-      :finishdate => Date.today + 30.days,
-      :created_at => 1.day.ago
-      )
-    @site = FactoryGirl.create(
-      :site,
-      :user => @user,
-      :name => 'ec jungle gym',
-      :zipcode => 94530
-      )
-  end
+  let!(:user) { FactoryGirl.create(
+    :user
+    )
+  }
+  let!(:project) { FactoryGirl.create(
+    :project,
+    :user => user
+    )
+  }
+  let!(:site) { FactoryGirl.create(
+    :site,
+    :user => user
+    )
+  }
 
   describe "#northbay_forecast" do
-    before :each do
-      @mailer = AlertMailer.northbay_forecast(@user.email).deliver
-    end
+    let!(:mailer) { AlertMailer.northbay_forecast(user.email).deliver }
 
     it "sets correct mailer settings" do
-      @mailer.subject.should eq("Storm Savvy Daily Forecast: North Bay")
-      @mailer.to.should eq(["#{@user.email}"])
-      @mailer.from.should eq(["alerts@stormsavvy.com"])
+      mailer.subject.should eq("Storm Savvy Daily Forecast: North Bay")
+      mailer.to.should eq(["#{user.email}"])
+      mailer.from.should eq(["alerts@stormsavvy.com"])
     end
 
     it "renders the body" do
-      @mailer.body.encoded.should =~ /Greetings/
-      @mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
-      @mailer.body.encoded.should =~ /Forecast is based on NOAA data feed/
-      @mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
-      @mailer.body.encoded.should =~ /The Storm Savvy Team/
+      mailer.body.encoded.should =~ /Greetings/
+      mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
+      mailer.body.encoded.should =~ /Forecast is based on NOAA data feed/
+      mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
+      mailer.body.encoded.should =~ /The Storm Savvy Team/
     end
 
     it "delivers and receives mailer" do
-      # AlertMailer.northbay_forecast(@user)
       ActionMailer::Base.deliveries.should_not be_empty
+    end
+
+    it 'delays delivery using sidekiq' do
+      expect { AlertMailer.delay.northbay_forecast(user.email)}.to change(
+        Sidekiq::Extensions::DelayedMailer.jobs, :size
+      ).by(1)
     end
   end
 
   describe "#eastbay_forecast" do
-    before :each do
-      @mailer = AlertMailer.eastbay_forecast(@user.email).deliver
-    end
+    let!(:mailer) { AlertMailer.eastbay_forecast(user.email).deliver }
 
     it "renders the headers" do
-      @mailer.subject.should eq("Storm Savvy Daily Forecast: East Bay")
-      @mailer.to.should eq(["#{@user.email}"])
-      @mailer.from.should eq(["alerts@stormsavvy.com"])
+      mailer.subject.should eq("Storm Savvy Daily Forecast: East Bay")
+      mailer.to.should eq(["#{user.email}"])
+      mailer.from.should eq(["alerts@stormsavvy.com"])
     end
 
     it "renders the body" do
-      @mailer.body.encoded.should =~ /Greetings/
-      @mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
-      @mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
-      @mailer.body.encoded.should =~ /The Storm Savvy Team/
-      # @mailer.body.encoded.should match("Greetings")
+      mailer.body.encoded.should =~ /Greetings/
+      mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
+      mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
+      mailer.body.encoded.should =~ /The Storm Savvy Team/
+      # mailer.body.encoded.should match("Greetings")
     end
 
     it "delivers and receives mailer" do
-      # AlertMailer.eastbay_forecast(@user)
       ActionMailer::Base.deliveries.should_not be_empty
+    end
+
+    it 'delays delivery using sidekiq' do
+      expect { AlertMailer.delay.eastbay_forecast(user.email)}.to change(
+        Sidekiq::Extensions::DelayedMailer.jobs, :size
+      ).by(1)
     end
   end
 
   describe "#southbay_forecast" do
-    before :each do
-      @mailer = AlertMailer.southbay_forecast(@user.email).deliver
-    end
+    let!(:mailer) { AlertMailer.southbay_forecast(user.email).deliver }
 
     it "renders the headers" do
-      @mailer.subject.should eq("Storm Savvy Daily Forecast: South Bay")
-      @mailer.to.should eq(["#{@user.email}"])
-      @mailer.from.should eq(["alerts@stormsavvy.com"])
+      mailer.subject.should eq("Storm Savvy Daily Forecast: South Bay")
+      mailer.to.should eq(["#{user.email}"])
+      mailer.from.should eq(["alerts@stormsavvy.com"])
     end
 
     it "renders the body" do
-      @mailer.body.encoded.should =~ /Greetings/
-      @mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
-      @mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
-      @mailer.body.encoded.should =~ /The Storm Savvy Team/
+      mailer.body.encoded.should =~ /Greetings/
+      mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
+      mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
+      mailer.body.encoded.should =~ /The Storm Savvy Team/
     end
 
     it "delivers and receives mailer" do
       ActionMailer::Base.deliveries.should_not be_empty
+    end
+
+    it 'delays delivery using sidekiq' do
+      expect { AlertMailer.delay.southbay_forecast(user.email)}.to change(
+        Sidekiq::Extensions::DelayedMailer.jobs, :size
+      ).by(1)
     end
   end
 
   describe "noaa_alert" do
-    before :each do
-      @mailer = AlertMailer.noaa_alert(@user).deliver
-    end
+    let!(:mailer) { AlertMailer.noaa_alert(user).deliver }
 
     it "renders the headers" do
-      @mailer.subject.should =~ /Storm Savvy Daily/
-      @mailer.to.should eq(["#{@user.email}"])
-      @mailer.from.should eq(["alerts@stormsavvy.com"])
+      mailer.subject.should =~ /Storm Savvy Daily/
+      mailer.to.should eq(["#{user.email}"])
+      mailer.from.should eq(["alerts@stormsavvy.com"])
     end
 
     it "renders the body" do
-      @mailer.body.encoded.should match("Greetings")
-      #@mailer.body.encoded.should =~ /Please be advised that there is a forecast rain event in your area./
+      mailer.body.encoded.should match("Greetings")
+      # mailer.body.encoded.should =~ /Please be advised that there is a forecast rain event in your area./
     end
 
     it "delivers and receives mailer" do
-      # AlertMailer.noaa_alert(@user)
       ActionMailer::Base.deliveries.should_not be_empty
+    end
+
+    it 'delays delivery using sidekiq' do
+      expect { AlertMailer.delay.noaa_alert(user)}.to change(
+        Sidekiq::Extensions::DelayedMailer.jobs, :size
+      ).by(1)
     end
   end
 
   describe "noaa_forecast" do
-    before(:each) do
-      @mailer = AlertMailer.noaa_forecast(@user.email).deliver
-    end
+    let!(:mailer) { AlertMailer.noaa_forecast(user.email).deliver }
 
     it "renders the headers" do
-      # @mailer.greeting.should eq("The Storm Savvy Team")
-      # @mailer.salutation.should eq("The Storm Savvy Team")
-      # @mailer.support.should eq("Questions? Email us at info@stormsavvy.com!")
-      # @mailer.noaa_info.should eq("Forecast is based on NOAA data feed. For more info, visit: ")
+      # mailer.greeting.should eq("The Storm Savvy Team")
+      # mailer.salutation.should eq("The Storm Savvy Team")
+      # mailer.support.should eq("Questions? Email us at info@stormsavvy.com!")
+      # mailer.noaa_info.should eq("Forecast is based on NOAA data feed. For more info, visit: ")
 
-      @mailer.subject.should =~ /NOAA Forecast Notification/
-      @mailer.to.should eq(["#{@user.email}"])
-      @mailer.from.should eq(["alerts@stormsavvy.com"])
+      mailer.subject.should =~ /NOAA Forecast Notification/
+      mailer.to.should eq(["#{user.email}"])
+      mailer.from.should eq(["alerts@stormsavvy.com"])
     end
 
     it "should send something via mailout" do
