@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'weather/noaa_forecast'
-require 'redis'
 require 'time'
 
 describe NOAAForecast do
@@ -15,22 +14,8 @@ describe NOAAForecast do
   let(:qpf) { nf2.get_qpf(zipcode) }
 
   before(:each) do
-    # DEPRECATION: stub! is deprecated. Use stub instead.
     nf.stub!(:get_lat_long).with(zipcode).and_return([lat, long])
     nf.stub!(:get_lat_long).with("99999999999999999999").and_return([])
-
-    nf.stub(:set_lat_long) {
-      $redis.set(zipcode.to_s + '_lat', lat)
-      $redis.set(zipcode.to_s + '_long', long)
-    }
-
-    nf.stub(:return_lat_long) {
-      nf.set_lat_long(zipcode)
-      # lat = $redis.get(zipcode.to_s + '_lat')
-      # long = $redis.get(zipcode.to_s + '_long')
-      # lat_long = [lat, long]
-    }
-
     nf.stub!(:ping_noaa).with([lat, long], 168, 6) {
       IO.read("./spec/lib/weather/noaa_response.xml")
     }
