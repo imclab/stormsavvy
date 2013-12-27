@@ -68,11 +68,12 @@ namespace :scheduler do
   task :dailynotice => :environment do
     admins = [
       'walter@stormsavvy.com',
+      'kharma+stormsavvy@gmail.com',
       'wing.wingyu@gmail.com',
       'david.doolin+stormsavvy@gmail.com'
       ]
     admins.each do |address|
-      UserMailer.pester_admins(address)
+      UserMailer.delay.pester_admins(address)
     end
   end
 
