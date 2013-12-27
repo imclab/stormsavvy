@@ -103,13 +103,11 @@ describe UserMailer do
     end
 
     it "renders correct count" do
-      numprojects.should == Project.count
       numusers.should == User.count
       numsites.should == Site.count
       numreports.should == Report.count
       numinspections.should == InspectionEvent.count
 
-      numprojects.should_not be_nil
       numusers.should_not be_nil
       numsites.should_not be_nil
       numreports.should_not be_nil
