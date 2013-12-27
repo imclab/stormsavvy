@@ -110,14 +110,6 @@ describe NOAAForecast do
       nf.get_lat_long("99999999999999999999").should == []
     end
 
-    xit "sets and gets lat/long with redis" do
-      nf.set_lat_long(zipcode)
-      lat = $redis.get(zipcode.to_s + '_lat')
-      long = $redis.get(zipcode.to_s + '_long')
-      lat_long = [lat.to_f, long.to_f]
-      nf.get_lat_long(zipcode).should == lat_long
-    end
-
     it 'validates rails api caching on class object' do
       begin
         zipcode = 94901
