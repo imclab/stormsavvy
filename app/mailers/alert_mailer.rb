@@ -10,12 +10,7 @@ class AlertMailer < ActionMailer::Base
   end
 
   def northbay_forecast(email)
-    self.set_defaults
-    # @greeting = "Greetings"
-    # @salutation = "The Storm Savvy Team"
-    # @support = "Questions? Email us at info@stormsavvy.com!"
-    # @noaa_info = "Forecast is based on NOAA data feed. For more info, visit: "
-
+    set_defaults
     @location1 = "San Rafael, CA 94901"
     @nf1 = NOAAForecast.new(94901)
     @nf2 = @nf1.forecast_by_zipcode(94901)
@@ -40,12 +35,7 @@ class AlertMailer < ActionMailer::Base
   end
 
   def eastbay_forecast(email)
-    self.set_defaults
-    # @greeting = "Greetings"
-    # @salutation = "The Storm Savvy Team"
-    # @support = "Questions? Email us at info@stormsavvy.com!"
-    # @noaa_info = "Forecast is based on NOAA data feed. For more info, visit: "
-
+    set_defaults
     @location1 = "Oakland, CA 94621"
     @nf1 = NOAAForecast.new(94621)
     @nf2 = @nf1.forecast_by_zipcode(94621)
@@ -70,12 +60,7 @@ class AlertMailer < ActionMailer::Base
   end
 
   def southbay_forecast(email)
-    self.set_defaults
-    # @greeting = "Greetings"
-    # @salutation = "The Storm Savvy Team"
-    # @support = "Questions? Email us at info@stormsavvy.com!"
-    # @noaa_info = "Forecast is based on NOAA data feed. For more info, visit: "
-
+    set_defaults
     @location1 = "Fremont, CA 94538"
     @nf1 = NOAAForecast.new(94538)
     @nf2 = @nf1.forecast_by_zipcode(94538)
@@ -114,16 +99,10 @@ class AlertMailer < ActionMailer::Base
   end
 
   def noaa_alert(user)
-    self.set_defaults
-    # @greeting = "Greetings"
-    # @salutation = "The Storm Savvy Team"
-    # @support = "Questions? Email us at info@stormsavvy.com!"
-    # @noaa_info = "Forecast is based on NOAA data feed. For more info, visit: "
-
+    set_defaults
     @users = User.all
     @users.each do |user|
-      # @user needed for template
-      @user = user
+      @user = user # @user needed for template
       if @user.has_site?
         mail(
           :from     => "alerts@stormsavvy.com",
@@ -135,12 +114,7 @@ class AlertMailer < ActionMailer::Base
   end
 
   def pop_alert(user)
-    self.set_defaults
-    # @greeting = "Greetings,"
-    # @salutation = "The Storm Savvy Team"
-    # @support = "Questions? Email us at info@stormsavvy.com!"
-    # @noaa_info = "Forecast is based on NOAA data feed. For more info, visit: "
-
+    set_defaults
     @users = User.all
     # if @forecast == :imminent then
     @users.each do |user|
