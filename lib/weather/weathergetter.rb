@@ -28,10 +28,12 @@ class WeatherGetter
 
 
   def make_request(url)
-    request = Typhoeus::Request.new(url,
-            :method        => :get,
-            :timeout       => 5000, # milliseconds
-            :cache_timeout => 60) # seconds
+    request = Typhoeus::Request.new(
+      url,
+      :method        => :get,
+      :timeout       => 5000#, # milliseconds
+      #:cache_timeout => 60 # seconds
+    )
     @hydra.queue(request)
     @hydra.run
     response = request.response
