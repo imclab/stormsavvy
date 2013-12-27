@@ -5,6 +5,7 @@ development:
   AWS_ACCESS_KEY_ID: AKIAI2XLVAVUZ6BBZ3ZA
   AWS_BUCKET: stormsavvy
   AWS_SECRET_ACCESS_KEY: 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
+  WUNDERGROUND_APIKEY: 4dea709a3af5d74c
 
 test:
   perform_authentication: true
