@@ -36,12 +36,12 @@ gem 'unirest'
 # Rails 4 upgrade gems
 gem 'activeresource'
 gem 'protected_attributes'
-gem 'rails-observers'
-gem 'actionpack-page_caching'
-gem 'actionpack-action_caching'
 gem 'activerecord-deprecated_finders'
-gem 'activerecord-session_store'
-gem 'rails-perftest'
+gem 'rails-observers'
+# gem 'actionpack-page_caching'
+# gem 'actionpack-action_caching'
+# gem 'activerecord-session_store'
+# gem 'rails-perftest'
 
 group :development do
   gem 'therubyracer', :platforms => :ruby, :require => 'v8'
