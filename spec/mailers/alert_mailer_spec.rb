@@ -8,13 +8,8 @@ describe AlertMailer do
 
   before { ActionMailer::Base.deliveries = [] }
 
-  let!(:user) { FactoryGirl.create(
+  let!(:user) { FactoryGirl.build(
     :user
-    )
-  }
-  let!(:project) { FactoryGirl.create(
-    :project,
-    :user => user
     )
   }
   let!(:site) { FactoryGirl.create(
