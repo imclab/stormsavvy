@@ -135,7 +135,6 @@ describe UserMailer do
 
     it "has text in body" do
       mailer.body.should_not be_empty
-      # @mailer.body.should have_selector("ul.projects")
       # @mailer.body.should have_selector("ul.sites")
     end
 
