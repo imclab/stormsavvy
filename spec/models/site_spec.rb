@@ -21,7 +21,6 @@ describe Site do
   let!(:project) { FactoryGirl.create(:project) }
   let!(:site) { FactoryGirl.create(
     :site
-    # :project => project
     )
   }
   let!(:report) { FactoryGirl.create(
@@ -49,24 +48,6 @@ describe Site do
     it "should have a name" do
       site.name = ''
       site.should_not be_valid
-    end
-  end
-
-  describe "project associations" do
-    # Project associations no longer in use
-    xit "creates new instance of given valid attributes" do
-      project.sites.create!(
-        :name    => "Oakland Adams Point",
-        :city    => "Oakland",
-        :zipcode => 94610
-        )
-      project.sites.first.should be_valid
-    end
-
-    # TDD for handling belongs_to
-    xit "should have a user attribute" do
-      site.should respond_to(:user)
-      # site.should respond_to(:project)
     end
   end
 
