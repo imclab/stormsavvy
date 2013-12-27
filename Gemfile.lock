@@ -100,6 +100,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    configatron (3.0.0.rc1)
     connection_pool (1.2.0)
     cucumber (1.3.10)
       builder (>= 2.1.2)
@@ -362,6 +363,7 @@ DEPENDENCIES
   carmen
   coffee-rails
   coffee-script-source
+  configatron (= 3.0.0.rc1)
   cucumber
   cucumber-rails
   database_cleaner (= 1.0.0.RC1)
