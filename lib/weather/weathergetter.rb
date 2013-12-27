@@ -1,12 +1,11 @@
-## Get forecast from wunderground
-
 require 'typhoeus'
 require 'json'
+require 'yaml'
 
 include Typhoeus
 
-# APIKEY = IO.read("./config/wunderground_api_key.rb")
-APIKEY = ENV['WUNDERGROUND_APIKEY']
+# APIKEY = ENV['WUNDERGROUND_APIKEY']
+APIKEY = '4dea709a3af5d74c'
 
 class WeatherGetter
 

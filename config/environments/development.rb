@@ -52,6 +52,7 @@ Stormsavvy::Application.configure do
 
   # Loads yaml password configuration file in development
   APP_CONFIG = YAML.load_file(File.join(Rails.root, 'config', 'config.yml'))[Rails.env]
+
   config.action_mailer.smtp_settings = {
     :user_name            => APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
     :password             => APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
