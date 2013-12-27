@@ -44,21 +44,23 @@ namespace :scheduler do
   task :popalert => :environment do
     test_users = [
       'walter@stormsavvy.com',
+      'kharma+stormsavvy@gmail.com',
       'wing.wingyu@gmail.com'
       ]
     test_users.each do |address|
-      AlertMailer.pop_alert(address)
+      AlertMailer.delay.pop_alert(address)
     end
   end
 
   desc "Delivers noaa_alert mailer"
   task :noaaalert => :environment do
   	test_users = [
-      'walter@stormsavvy.com'
+      'walter@stormsavvy.com',
+      'kharma+stormsavvy@gmail.com'
       ]
     # if user.sites.precipitation_state(forecast) == :imminent then
     test_users.each do |address|
-  	  AlertMailer.noaa_alert(address)
+  	  AlertMailer.delay.noaa_alert(address)
   	end
   end
 
