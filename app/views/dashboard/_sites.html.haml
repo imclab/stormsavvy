@@ -1,0 +1,24 @@
+.cf
+  - unless @sites.blank?
+    - @sites.each do |site|
+      .project.closed{ :class=>"#{cycle('even','odd')}" }
+        .cf.headline
+          %h3.pull-left= site.name
+          .small.more_details.pull-right
+            %i{ :class => "icon icon-plus" }
+            %i{ :class => "icon icon-minus is_hidden" }
+
+        / debug is_hidden attribute
+        /.more_details_box.is_hidden
+        .more_details_box
+          %ul
+            %li
+              %strong # of Sites:
+              = current_user.sites_count
+            %li
+              %strong Last Updated:
+              = site.updated_at
+
+          = link_to "View Site", site, :class => "view_site_link"
+  - else
+    No active sites, try starting one by clicking 'new site'.
