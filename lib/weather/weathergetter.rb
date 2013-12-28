@@ -42,8 +42,8 @@ class WeatherGetter
     @hydra.run
     response = request.response
 
-    @data = JSON.parse(response.body)
-    return @data
+    data = JSON.parse(response.body)
+    return data
   end
 
   def parse_wunderground_10day(forecast)
