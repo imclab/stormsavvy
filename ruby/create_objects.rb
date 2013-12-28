@@ -21,4 +21,5 @@ noaa.save_results
 # Logic inside chance_of_rain method
 site.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).map(&:pop)
 ForecastPeriod.where('pop = ?', 66)
-site.chance_of_rain.pop
+site.chance_of_rain
+site.dashboard_pop(site)
