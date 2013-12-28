@@ -288,16 +288,17 @@ describe SitesController do
         Site.any_instance.stub(:save).and_return(false)
         put :update, {
           :id => site.to_param,
-          :project_id => @project.id,
+          # :project_id => @project.id,
           :site => {}
         }, valid_session
         response.should render_template("edit")
       end
 
       it "responds with flash message" do
-        sign_in @user
+        sign_in user
         Site.any_instance.stub(:save).and_return(false)
-        post :create, {:site => {}, :project_id => @project.id}
+        post :create, {:site => {}}
+        # post :create, {:site => {}, :project_id => @project.id}
         response.should render_template('new')
         flash[:error].should == 'Error: See details below.'
       end
