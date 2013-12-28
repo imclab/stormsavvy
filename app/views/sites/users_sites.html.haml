@@ -9,7 +9,6 @@
               = link_to 'New Site', new_site_path(@site)
               %hr
               %ul
-                /- @projects.each do |project|
                 - current_user.sites.each do |site|
                   %h3
                     = link_to site.name, site_path(site), :class => "project_name_link"
