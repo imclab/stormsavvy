@@ -64,17 +64,8 @@ Stormsavvy::Application.routes.draw do
   get '/team',      :to => "pages#team"#,           :as => :team
   get '/pdf',       :to => "pages#pdf"#,            :as => :pdf
 
-  # match '/index',     :to => "pages#index",          :as => :index
-  # match '/about',     :to => "pages#about",          :as => :about
-  # match '/terms',     :to => "pages#terms",          :as => :terms
-  # match '/faq',       :to => "pages#faq",            :as => :faq
-  # match '/privacy',   :to => "pages#privacy",        :as => :privacy
-  # match '/contact',   :to => "pages#contact",        :as => :contact
-  # match '/plans',     :to => "pages#plans",          :as => :plans
-  # match '/features',  :to => "pages#features",       :as => :features
-  # match '/team',      :to => "pages#team",           :as => :team
-  # match '/pdf',       :to => "pages#pdf",            :as => :pdf
-
+  # root to: "dashboard#index"
   # root :to => "dashboard#index"
 
+  mount Sidekiq::Web, at: "/sidekiq"
 end
