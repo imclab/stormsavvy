@@ -156,32 +156,6 @@ describe DashboardController do
     end
   end
 
-  describe "#get_projects" do
-    it "returns all projects to current user" do
-      # sign_in @current_user
-      controller.stub(:get_projects).and_return(@all_projects)
-      @all_projects.should include(@current_project)
-      @all_projects.should include(@other_project)
-      @all_projects.should_not be_nil
-    end
-
-    it "returns correct projects to each user" do
-      @current_user.projects.should == @current_projects
-      @current_user.projects.should_not == @other_projects
-      @current_projects.should_not be_nil
-
-      @other_user.projects.should == @other_projects
-      @other_user.projects.should_not == @current_projects
-      @other_projects.should_not be_nil
-    end
-
-    it 'returns projects from lib class' do
-      cu = CurrentUserObject.new
-      projects = cu.get_projects(@current_user)
-      projects.should == @current_projects
-    end
-  end
-
   describe "#get_sites" do
     it "returns all sites to current user" do
       # sign_in @current_user
