@@ -2,12 +2,12 @@
   .span8
     .panel
       .inner
-        %h2 Active Projects
-        = link_to 'New Project', new_project_path, :class => "btn"
+        %h2 Active Sites
+        = link_to 'New Site', new_site_path, :class => "btn"
         %p
-          -# @projects.each do |p|
+          - current_user.sites.each do |site|
             %li
-              %strong Name of Project:
-              = p.name
+              %strong Name of Site:
+              = site.name
         %p
-        = render 'dashboard/projects'
+        = render 'dashboard/sites'
