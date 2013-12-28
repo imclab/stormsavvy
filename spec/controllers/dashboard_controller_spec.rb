@@ -86,13 +86,9 @@ describe DashboardController do
     end
   end
 
-  describe "dashboard variables: users, projects and sites" do
-    it 'returns current projects and sites' do
+  describe "dashboard variables: users and sites" do
+    it 'returns current sites' do
       # sign_in @current_user
-      @current_projects.should == @current_user.projects
-      @current_projects.should_not include(@other_projects)
-      @current_projects.should_not be_nil
-
       @current_sites.should == @current_user.sites
       @current_sites.should_not include(@other_sites)
       @current_sites.should_not be_nil
