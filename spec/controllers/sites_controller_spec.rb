@@ -199,14 +199,16 @@ describe SitesController do
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Site.any_instance.stub(:save).and_return(false)
-        post :create, {:site => {}, :project_id => @project.id}
+        post :create, {:site => {}}
+        # post :create, {:site => {}, :project_id => @project.id}
         response.should render_template("new")
       end
 
       it "responds with flash message" do
-        sign_in @user
+        sign_in user
         Site.any_instance.stub(:save).and_return(false)
-        post :create, {:site => {}, :project_id => @project.id}
+        post :create, {:site => {}}
+        # post :create, {:site => {}, :project_id => @project.id}
         response.should render_template('new')
         flash[:error].should == 'Error: See details below.'
       end
