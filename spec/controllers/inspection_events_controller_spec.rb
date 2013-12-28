@@ -47,7 +47,6 @@ describe InspectionEventsController do
   let(:other_site) { FactoryGirl.create(
       :site,
       :user => other_user,
-      # :project => other_project,
       :name => 'berkeley high',
       :zipcode => 94709
     )
