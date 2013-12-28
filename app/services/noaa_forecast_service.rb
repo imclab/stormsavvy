@@ -61,11 +61,11 @@ class NoaaForecastService
   def process_forecast_periods
     forecast_days = @xml.xpath("//forecastDay")
     forecast_days.each do |forecast_day|
-      parse_forecase_day(forecast_day)
+      parse_forecast_day(forecast_day)
     end
   end
 
-  def parse_forecase_day(forecast_day)
+  def parse_forecast_day(forecast_day)
     validDate = Date.parse(forecast_day.xpath("validDate").text)
     forecast_day.xpath("period").each do |period|
       @forecast_periods << create_forecast_period_record(period, validDate)
