@@ -1,27 +1,10 @@
 class CurrentUserObject
-  def get_projects(user)
-    @projects = []
-    projects = user.projects
-    projects.each do |p|
-      @projects << p
-    end
-
-    return @projects
-  end
-
   def get_sites(user)
-    # get_projects(user)
     @sites = []
     sites = user.sites
     sites.each do |s|
       @sites << s
     end
-
-    # @projects.each do |p|
-    #   p.sites.each do |s|
-    #     @sites << s
-    #   end
-    # end
 
     return @sites
   end
