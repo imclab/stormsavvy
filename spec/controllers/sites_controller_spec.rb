@@ -222,7 +222,7 @@ describe SitesController do
         Site.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, {
           :id => site.to_param,
-          :project_id => @project.id,
+          # :project_id => @project.id,
           :site => {'these' => 'params'}
         }, valid_session
       end
