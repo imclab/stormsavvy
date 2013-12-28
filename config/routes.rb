@@ -65,8 +65,5 @@ Stormsavvy::Application.routes.draw do
   get '/team',      :to => "pages#team"#,           :as => :team
   get '/pdf',       :to => "pages#pdf"#,            :as => :pdf
 
-  # root to: "dashboard#index"
-  # root :to => "dashboard#index"
-
   mount Sidekiq::Web, at: "/sidekiq"
 end
