@@ -77,8 +77,8 @@ describe "dashboard/index" do
     end
 
     it "renders modules with correct text and links" do
-      rendered.should =~ /Active Projects/
-      rendered.should have_link('New Project')
+      rendered.should =~ /Active Sites/
+      rendered.should have_link('New Site')
     end
 
     it "renders sidebar partial and div tags" do
