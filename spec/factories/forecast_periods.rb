@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :forecast_period do
-    forecase_prediction_time "2013-09-02 19:25:22"
+    forecast_prediction_time "2013-09-02 19:25:22"
     temperature 1
     dewpoint 1
     rh 1
