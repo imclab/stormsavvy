@@ -39,13 +39,6 @@ describe User do
       user.projects.should == projects
     end
 
-    it "destroys associated sites" do
-      user.destroy
-      projects.each do |p|
-        Project.find_by_id(p.id).should be_nil
-      end
-    end
-
     it "enforces unique email" do
       FactoryGirl.build(
         :user,
