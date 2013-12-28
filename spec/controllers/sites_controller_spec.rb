@@ -190,7 +190,8 @@ describe SitesController do
       it "assigns a newly created but unsaved site as @site" do
         # Trigger the behavior that occurs when invalid params are submitted
         Site.any_instance.stub(:save).and_return(false)
-        post :create, {:site => {}, :project_id => @project.id}
+        post :create, {:site => {}}
+        # post :create, {:site => {}, :project_id => @project.id}
         assigns(:site).should be_a_new(Site)
         assigns(:site).should_not be_persisted
       end
