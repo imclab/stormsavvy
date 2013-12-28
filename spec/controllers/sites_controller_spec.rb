@@ -320,17 +320,17 @@ describe SitesController do
       site = Site.create! valid_attributes
       delete :destroy, {
         :id => site.to_param,
-        :project_id => @project.id
+        # :project_id => @project.id
       }, valid_session
       response.should redirect_to(sites_path)
     end
 
     it "responds with flash message" do
-      sign_in @user
+      sign_in user
       site = Site.create! valid_attributes
       delete :destroy, {
         :id => site.to_param,
-        :project_id => @project.id
+        # :project_id => @project.id
       }, valid_session
       flash[:notice].should == 'Site was successfully deleted.'
     end
