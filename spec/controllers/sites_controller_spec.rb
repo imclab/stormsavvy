@@ -311,7 +311,7 @@ describe SitesController do
       expect {
         delete :destroy, {
           :id => site.to_param,
-          :project_id => @project.id
+          # :project_id => @project.id
         }, valid_session
       }.to change(Site, :count).by(-1)
     end
