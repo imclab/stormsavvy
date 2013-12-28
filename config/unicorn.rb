@@ -29,8 +29,6 @@ after_fork do |server, worker|
   end
 end
 
-end
-
 =begin
   # old unicorn setup
   worker_processes 4 # amount of unicorn workers to spin up
