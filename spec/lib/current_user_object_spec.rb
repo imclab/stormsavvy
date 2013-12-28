@@ -207,8 +207,8 @@ describe CurrentUserObject do
 
     it 'returns pending reports from lib class' do
       cu = CurrentUserObject.new
-      pending_reports = cu.pending_reports(@current_user)
-      pending_reports.should == @pending_reports
+      pending_reports = cu.pending_reports(current_user)
+      pending_reports.should == pending_reports
     end
   end
 end
