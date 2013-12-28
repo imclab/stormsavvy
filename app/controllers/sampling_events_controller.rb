@@ -14,7 +14,6 @@ class SamplingEventsController < ApplicationController
     if current_user
       cu = CurrentUserObject.new
       user = current_user
-      @projects = cu.get_projects(user)
       @sites = cu.get_sites(user)
       @pending_se = cu.get_se(user)
       @sampling_events = cu.all_se(user)
