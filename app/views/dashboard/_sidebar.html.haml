@@ -2,11 +2,13 @@
   .inner
     %h5 Weather Report
     %hr
-      - unless @projects.blank?
-        - @projects.each do |project|
-          = render project.sites
+      - unless current_user.sites.blank?
+        - @sites.each do |site|
+          %br
+            = site.name
+            /= site.chance_of_rain
       - else
-        No active projects
+        No active sites 
 
 #current_action_items.widget.bottom-10
   .inner
