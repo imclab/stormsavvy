@@ -33,8 +33,6 @@ gem 'heroku'
 gem 'unirest'
 gem 'redis'
 gem 'sidekiq'
-gem 'sinatra', require: false
-gem 'slim'
 
 # Rails 4 upgrade gems
 gem 'activeresource'
