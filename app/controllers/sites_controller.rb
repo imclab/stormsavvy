@@ -2,7 +2,8 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.json
   def index
-    @sites = Site.all
+    @sites = current_user.sites
+    # @sites = Site.all
     @needs_attention_reports = Report.needs_attention
 
     respond_to do |format|
