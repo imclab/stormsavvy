@@ -275,7 +275,7 @@ describe SitesController do
         Site.any_instance.stub(:save).and_return(false)
         put :update, {
           :id => site.to_param,
-          :project_id => @project.id,
+          # :project_id => @project.id,
           :site => {}
         }, valid_session
         assigns(:site).should eq(site)
