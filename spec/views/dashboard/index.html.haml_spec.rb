@@ -16,29 +16,15 @@ describe "dashboard/index" do
     )
     @all_users = [ @current_user, @other_user ]
 
-    @current_project = FactoryGirl.create(
-      :project,
-      :user => @current_user
-    )
-    @other_project = FactoryGirl.create(
-      :project,
-      :user => @other_user
-    )
-    @current_projects = [ @current_project ]
-    @other_projects = [ @other_project ]
-    @all_project = [ @current_project, @pending_project ]
-
     @current_site = FactoryGirl.create(
       :site,
       :user => @current_user,
-      # :project => @current_project,
       :name => 'ec jungle gym',
       :zipcode => 94530
     )
     @other_site = FactoryGirl.create(
       :site,
       :user => @other_user,
-      # :project => @other_project,
       :name => 'berkeley high',
       :zipcode => 94709
     )
