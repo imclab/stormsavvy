@@ -244,16 +244,10 @@ describe InspectionEventsController do
     end
   end
 
-  describe "current_user variables: users, projects and sites" do
+  describe "current_user variables: users and sites" do
     subject(:cp) { current_projects }
     subject(:cs) { current_sites }
     subject(:ca) { current_ie_array }
-
-    it 'returns current projects' do
-      cp.should == current_user.projects
-      cp.should_not include(other_projects)
-      cp.should_not be_nil
-    end
 
     it 'returns current sites' do
       cs.should == current_user.sites
