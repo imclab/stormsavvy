@@ -4,159 +4,184 @@ describe SitesController do
 
   include Devise::TestHelpers
 
-  let(:user) {
-    FactoryGirl.create(:user)
-    # login_as(user, :scope => :user)
-  }
-
   def valid_attributes
     {
       :zipcode => 94530,
-      :name => 'El Cerrito'
+      :name => 'ecp'
     }
   end
 
-  def project_attributes
-    {
-      :name => 'eb park and rec',
-      :description => 'playground improvements',
-      :startdate => 5.days.ago,
-      :finishdate => 1.day.ago
-    }
-  end
+  # def project_attributes
+  #   {
+  #     :name => 'eb park and rec',
+  #     :description => 'playground improvements',
+  #     :startdate => 5.days.ago,
+  #     :finishdate => 1.day.ago
+  #   }
+  # end
 
   def valid_session
     { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
-  before(:each) do
-    @user = FactoryGirl.create(
-      :user,
-      :email => 'demo@stormsavvy.com',
-      :password => 'kharmeleon',
-      :password_confirmation => 'kharmeleon'
+  let!(:user) { FactoryGirl.build(
+    :user,
+    :email => 'demo@stormsavvy.com',
+    :password => 'kharmeleon',
+    :password_confirmation => 'kharmeleon'
     )
-    @project = FactoryGirl.create(
-      :project,
-      :user => @user,
-      :name => 'eb park and rec'
+  }
+  # @project = FactoryGirl.create(
+  #   :project,
+  #   :user => @user,
+  #   :name => 'eb park and rec'
+  # )
+  let!(:site) { FactoryGirl.create(
+    :site,
+    :user => user,
+    :name => 'ec jungle gym'
     )
-    @site = FactoryGirl.create(
-      :site,
-      :user => @user,
-      # :project => @project,
-      :name => 'ec jungle gym'
+  }
+  let!(:completed_report) { FactoryGirl.create(
+    :report,
+    :site => site,
+    :status => "completed"
     )
-    @completed_report = FactoryGirl.create(
-      :report,
-      :site => @site,
-      :status => "completed"
+  }
+  let!(:pending_report) { FactoryGirl.create(
+    :report,
+    :site => site,
+    :status => "needs_attention"
     )
-    @pending_report = FactoryGirl.create(
-      :report,
-      :site => @site,
-      :status => "needs_attention"
-    )
-    @completed_reports = [ @completed_report ]
-    @pending_reports = [ @pending_report ]
-    @all_reports = [ @completed_report, @pending_report ]
+  }
+  let(:completed_reports) {
+    [ completed_report ]
+  }
+  let(:pending_reports) {
+    [ pending_report ]
+  }
+  let(:all_reports) {
+    [ completed_report, pending_report ]
+  }
 
-    @completed_reports = @site.reports.completed
-    @needs_attention_reports = @site.reports.needs_attention
+  subject(:completed_reports) { site.reports.completed }
+  subject(:needs_attention_reports) { site.reports.needs_attention }
 
+  before :each do
     sign_in user
-    sign_in @user
   end
+  # sign_in @user
 
   describe "GET index" do
     it "has a 200 status code" do
-      site = @project.sites.create!(valid_attributes)
-      get :edit, {:id => site.to_param, :project_id => @project.id}
+      site = user.sites.create!(valid_attributes)
+      #site = @project.sites.create!(valid_attributes)
+
+      get :edit, {:id => site.to_param}
+      # get :edit, {:id => site.to_param, :project_id => @project.id}
+
       response.code.should eq("200")
     end
 
     it "assigns all sites as @sites" do
-      site = @project.sites.create!(valid_attributes)
-      get :index, {:id => site.to_param, :project_id => @project.id}
+      site = user.sites.create!(valid_attributes)
+      # site = @project.sites.create!(valid_attributes)
+
+      get :index, {:id => site.to_param}
+      # get :index, {:id => site.to_param, :project_id => @project.id}
       assigns(:sites).should eq(Site.all)
     end
   end
 
   describe "GET show" do
     it "assigns the requested site as @site" do
-      @project = @user.projects.create!(project_attributes)
-      site = @project.sites.create! valid_attributes
+      # @project = @user.projects.create!(project_attributes)
+      # site = @project.sites.create! valid_attributes
+      site = user.sites.create! valid_attributes
 
-      get :show, {:id => site.to_param, :project_id => @project.id}#, valid_session
+      get :show, {:id => site.to_param}
+      # get :show, {:id => site.to_param, :project_id => @project.id}
+
       assigns(:site).should eq(site)
       assigns(:site).should be_persisted
     end
 
     it 'assigns completed reports variables' do
-      @completed_reports.should == @site.reports.completed
-      @completed_reports.should_not include(@pending_report)
-      @completed_reports.should_not be_nil
+      completed_reports.should == site.reports.completed
+      completed_reports.should_not include(pending_report)
+      completed_reports.should_not be_nil
     end
 
     it 'assigns pending reports variables' do
-      @needs_attention_reports.should == @site.reports.needs_attention
-      @needs_attention_reports.should_not include(@completed_reports)
-      @needs_attention_reports.should_not be_nil
+      needs_attention_reports.should == site.reports.needs_attention
+      needs_attention_reports.should_not include(@completed_reports)
+      needs_attention_reports.should_not be_nil
     end
   end
 
   describe "GET new" do
     it "assigns a new site as @site" do
-      get :new, {:project_id => @project.id}, valid_session
+      get :new, {:id => site.to_param}, valid_session
+      # get :new, {:project_id => @project.id}, valid_session
+
       assigns(:site).should be_a_new(Site)
       assigns(:site).should_not be_persisted
     end
 
     it "responds with flash message" do
-      sign_in @user
       Site.any_instance.stub(:save).and_return(false)
-      post :create, {:site => valid_attributes, :project_id => @project.id}
+      post :create, {:site => valid_attributes}
+      # post :create, {:site => valid_attributes, :project_id => @project.id}
       response.should render_template('new')
     end
   end
 
   describe "GET edit" do
     it "assigns the requested site as @site" do
-      @project = @user.projects.create!(project_attributes)
-      site = @project.sites.create!(valid_attributes)
-      get :edit, {:id => site.to_param, :project_id => @project.id}
+      # @project = @user.projects.create!(project_attributes)
+
+      site = user.sites.create!(valid_attributes)
+      # site = @project.sites.create!(valid_attributes)
+
+      get :edit, {:id => site.to_param}
+      # get :edit, {:id => site.to_param, :project_id => @project.id}
       assigns(:site).should eq(site)
       assigns(:site).should be_persisted
     end
   end
 
   describe "POST create" do
+=begin
     before(:each) do
       @project = @user.projects.create!(project_attributes)
     end
-
+=end
     describe "with valid params" do
       it "creates a new Site" do
         expect {
-          post :create, {:site => valid_attributes, :project_id => @project.id}
+          post :create, {:site => valid_attributes}
+          # post :create, {:site => valid_attributes, :project_id => @project.id}
         }.to change(Site, :count).by(1)
       end
 
       it "assigns a newly created site as @site" do
-        post :create, {:site => valid_attributes, :project_id => @project.id}
+        post :create, {:site => valid_attributes}
+        # post :create, {:site => valid_attributes, :project_id => @project.id}
         assigns(:site).should be_a(Site)
         assigns(:site).should be_persisted
       end
 
       it "redirects to the created site" do
-        post :create, {:site => valid_attributes, :project_id => @project.id}
+        post :create, {:site => valid_attributes}
+        # post :create, {:site => valid_attributes, :project_id => @project.id}
         response.should redirect_to(site_path(Site.last))
         # response.should redirect_to(project_site_path(@project.id, Site.last))
       end
 
       it "responds with flash message" do
-        sign_in @user
-        post :create, {:site => valid_attributes, :project_id => @project.id}
+        sign_in user
+        post :create, {:site => valid_attributes}
+        # post :create, {:site => valid_attributes, :project_id => @project.id}
         flash[:notice].should == "Site was successfully created."
       end
     end
