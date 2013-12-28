@@ -37,24 +37,9 @@ describe InspectionEventsController do
   }
   let(:all_users) { [ current_user, other_user ] }
 
-  let!(:current_project) { FactoryGirl.create(
-      :project,
-      :user => current_user
-    )
-  }
-  let(:other_project) { FactoryGirl.create(
-      :project,
-      :user => other_user
-    )
-  }
-  let(:current_projects) { [ current_project ] }
-  let(:other_projects) { [ other_project ] }
-  let(:all_projects) { [ current_project, other_project ] }
-
   let!(:current_site) { FactoryGirl.create(
       :site,
       :user => current_user,
-      # :project => current_project,
       :name => 'ec jungle gym',
       :zipcode => 94530
     )
