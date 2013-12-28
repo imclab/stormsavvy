@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Stormsavvy::Application.routes.draw do
 
   ActiveAdmin.routes(self)
