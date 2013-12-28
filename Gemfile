@@ -11,7 +11,6 @@ gem 'pg'
 gem 'json'
 gem 'carmen'
 gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'configatron', '3.0.0.rc1'
 
 gem 'haml-rails'
 gem 'jquery-rails'
