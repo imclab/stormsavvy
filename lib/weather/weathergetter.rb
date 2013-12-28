@@ -16,9 +16,12 @@ class WeatherGetter
   end
 
   def display_forecast
-    @zipcode = "94530"
-    @forecast = wg.get_forecast(@zipcode)
-    @forecastday = wg.parse_wunderground_10day(@forecast)
+    # @zipcode = 94530
+    # @forecast = get_forecast(@zipcode)
+    # @forecastday = parse_wunderground_10day(@forecast)
+
+    @weathergetter = WeatherGetter.new
+    WeatherWorker.perform_async(@weathergetter.object_id)
   end
 
   def get_forecast(zipcode)
