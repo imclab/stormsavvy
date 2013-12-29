@@ -7,6 +7,7 @@
 *.rdebug
 *.rb~
 *.haml~
+*.old
 
 .project
 .sass-cache
