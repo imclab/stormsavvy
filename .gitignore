@@ -17,6 +17,7 @@
 .rvmrc
 .sass-cache/
 .gemrc
+.env
 
 app/assets/images/.DS_Store
 app/pdfs/*.txt
