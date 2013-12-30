@@ -22,7 +22,7 @@
 app/assets/images/.DS_Store
 app/pdfs/*.txt
 app/models/*.txt
-bash/heroku_vars.sh
+bash/heroku_vars.rb
 coverage/
 config/config.yml
 config/wunderground_apikey.txt
