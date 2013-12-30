@@ -75,4 +75,5 @@ end
 group :production do
   gem 'sentry-raven'
   gem 'newrelic_rpm'
+  gem 'foreman'
 end
