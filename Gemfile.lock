@@ -121,6 +121,7 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.1)
+    dotenv (0.9.0)
     email_spec (1.5.0)
       launchy (~> 2.1)
       mail (~> 2.2)
@@ -138,6 +139,9 @@ GEM
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     ffi (1.9.3)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
+      thor (>= 0.13.6)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
     geocoder (1.1.9)
@@ -378,6 +382,7 @@ DEPENDENCIES
   devise
   email_spec
   factory_girl_rails
+  foreman
   geocoder
   haml-rails
   heroku
