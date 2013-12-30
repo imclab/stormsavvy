@@ -18,7 +18,6 @@ describe Site do
   let!(:latlong) { [ lat, long ] }
   let!(:address) { '111 Adams Street Suite 181 Oakland CA 94610' }
 
-  let!(:project) { FactoryGirl.create(:project) }
   let!(:site) { FactoryGirl.create(
     :site
     )
@@ -56,7 +55,7 @@ describe Site do
       site.should respond_to(:reports)
     end
 
-    it 'has projects in correct order' do
+    it 'has reports in correct order' do
       site.reports.should == reports
     end
 
@@ -194,6 +193,12 @@ describe Site do
       site.long.should >= 122
       pp site.lat
       pp site.long
+    end
+  end
+
+  describe '#dashboard_pop' do
+    it 'returns noaa pop' do
+      pp site.dashboard_pop(site)
     end
   end
 end
