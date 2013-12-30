@@ -6,6 +6,7 @@
         - current_user.sites.each do |site|
           %br
             = site.name
+            = site.dashboard_pop(site)
             /= site.chance_of_rain
       - else
         No active sites 
