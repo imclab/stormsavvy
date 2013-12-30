@@ -25,7 +25,6 @@ app/models/*.txt
 bash/heroku_vars.sh
 coverage/
 config/config.yml
-config/initializers/secret_token.rb
 config/wunderground_apikey.txt
 db/development
 db/development.sqlite3
