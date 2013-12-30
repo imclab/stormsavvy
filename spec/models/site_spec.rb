@@ -195,4 +195,10 @@ describe Site do
       pp site.long
     end
   end
+
+  describe '#dashboard_pop' do
+    it 'returns noaa pop' do
+      pp site.dashboard_pop(site)
+    end
+  end
 end
