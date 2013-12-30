@@ -55,7 +55,7 @@ describe Site do
       site.should respond_to(:reports)
     end
 
-    it 'has projects in correct order' do
+    it 'has reports in correct order' do
       site.reports.should == reports
     end
 
