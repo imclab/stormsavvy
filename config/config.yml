@@ -6,11 +6,13 @@ development:
   AWS_BUCKET: stormsavvy
   AWS_SECRET_ACCESS_KEY: KIjQgG7lr350SGQwBWGxpyj1w6N1fGZtlA+a0BkN
   WUNDERGROUND_APIKEY: 4dea709a3af5d74c
+  SECRET_KEY: 3987930edc64fedc4cc8a510be09cdce08b28fe59376164f37789233ece07f300989e8235a62240dd3657cb8692e64827ad3fafd92f137324c55e76525fff6ba
 
 test:
   perform_authentication: true
   STORMSAVVY_GMAIL_USERNAME: alerts@stormsavvy.com
   STORMSAVVY_GMAIL_PASSWORD: DarkAndStormy
+  SECRET_KEY: 3987930edc64fedc4cc8a510be09cdce08b28fe59376164f37789233ece07f300989e8235a62240dd3657cb8692e64827ad3fafd92f137324c55e76525fff6ba
 
 production:
   perform_authentication: false
