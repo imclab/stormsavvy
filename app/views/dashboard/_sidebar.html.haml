@@ -3,7 +3,7 @@
     %h5 Weather Report
     %hr
       - unless current_user.sites.blank?
-        - @sites.each do |site|
+        - current_user.sites.each do |site|
           %br
             = site.name
             /= site.chance_of_rain
