@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "projects/index" do
 
+  let!(:user) { FactoryGirl.build(:user) }
+
   before(:each) do
     assign(:projects, [
       stub_model(Project,
@@ -17,6 +19,8 @@ describe "projects/index" do
         :active => false
       )
     ])
+
+    sign_in user
   end
 
   it "renders the project attributes" do
