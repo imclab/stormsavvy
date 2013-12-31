@@ -77,5 +77,4 @@ class NoaaForecastService
     forecast_period.build_from_xml(period, validDate, @site.id)
     forecast_period
   end
-
 end
