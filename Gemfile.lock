@@ -1,16 +1,15 @@
 GIT
   remote: git://github.com/WalterYu/prawn.git
-  revision: 4dde2475bcd9e2b26d8501a91369af5eccd28166
+  revision: 4cd99954db12a7cd4b21bde0d77a768a980f8bbd
   specs:
-    prawn (1.0.0.rc1)
-      afm
-      pdf-reader (>= 0.9.0, < 2.0)
+    prawn (0.14.0)
+      pdf-reader (~> 1.2)
       ruby-rc4
       ttfunk (~> 1.0.3)
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 03c7bc771bf7b166de64848f2dae92368dad6b46
+  revision: 0f333d3a0236de1b13e1cd8cda35f1406c0ceba8
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
