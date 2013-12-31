@@ -58,7 +58,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'factory_girl_rails'
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner', '1.0.0.RC1'
   gem 'capybara'
   gem 'cucumber'
