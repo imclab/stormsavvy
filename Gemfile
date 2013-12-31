@@ -68,8 +68,8 @@ group :test, :development do
 
   gem 'email_spec' # comment out for bundle update
   gem 'awesome_print'
-  gem 'pdf-inspector', :require => 'pdf/inspector'
-  gem 'simplecov', :require => false
+  gem 'pdf-inspector', require: 'pdf/inspector'
+  gem 'simplecov', require: false
 end
 
 group :production do
