@@ -21,7 +21,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'turbolinks'
 
-gem 'prawn', :git => 'git://github.com/WalterYu/prawn.git'
+gem 'prawn', git: 'git://github.com/WalterYu/prawn.git'
 gem 'pdf-reader'
 gem 'simple_form'
 gem 'nested_form'
@@ -48,7 +48,7 @@ gem 'rails_12factor'
 # gem 'rails-perftest'
 
 group :development do
-  gem 'therubyracer', :platforms => :ruby, :require => 'v8'
+  gem 'therubyracer', platforms: 'ruby', require: 'v8'
   gem 'letter_opener'
   gem 'xray-rails'
 end
@@ -58,7 +58,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'factory_girl_rails'
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner', '1.0.0.RC1'
   gem 'capybara'
   gem 'cucumber'
@@ -68,8 +68,8 @@ group :test, :development do
 
   gem 'email_spec' # comment out for bundle update
   gem 'awesome_print'
-  gem 'pdf-inspector', :require => 'pdf/inspector'
-  gem 'simplecov', :require => false
+  gem 'pdf-inspector', require: 'pdf/inspector'
+  gem 'simplecov', require: false
 end
 
 group :production do
