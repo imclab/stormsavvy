@@ -48,7 +48,7 @@ gem 'rails_12factor'
 # gem 'rails-perftest'
 
 group :development do
-  gem 'therubyracer', :platforms => :ruby, :require => 'v8'
+  gem 'therubyracer', platforms: 'ruby', require: 'v8'
   gem 'letter_opener'
   gem 'xray-rails'
 end
