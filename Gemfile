@@ -21,7 +21,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'turbolinks'
 
-gem 'prawn', :git => 'git://github.com/WalterYu/prawn.git'
+gem 'prawn', git: 'git://github.com/WalterYu/prawn.git'
 gem 'pdf-reader'
 gem 'simple_form'
 gem 'nested_form'
