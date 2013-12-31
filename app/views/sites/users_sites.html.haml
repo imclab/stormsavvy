@@ -6,15 +6,30 @@
           .panel
             .inner
               %h1 Active Sites
-              = link_to 'New Site', new_site_path(@site)
+              = link_to 'New Site', new_site_path(@site), class: 'btn'
+              %br
+                %h3
+                  User Count:
+                  = User.count
               %hr
               %ul
                 - current_user.sites.each do |site|
                   %h3
-                    = link_to site.name, site_path(site), :class => "project_name_link"
-                    %ul.project_sites_list.is_hidden
-                      - sites.each do |site|
-                        %li
-                          %h3
-                            = link_to site.name, site_path(site)
+                    = link_to site.name, site_path(site), class: 'project_name_link'
+                    /%ul.project_sites_list.is_hidden
+                    - sites.each do |site|
+                      %h3= link_to site.name, site_path(site)
+                      = link_to 'Remove Site', site, method: 'delete', class: 'btn'
+                      /= link_to 'Remove Site', site, data: { confirm: 'Are you sure?' }, method: 'delete', class: 'btn'
+                      %h4
+                        %br
+                          Site ID:
+                          = site.id
+                        %br
+                          Site Lat/Long:
+                          = site.lat
+                          = site.long
+                        %br
+                          Site Zipcode:
+                          = site.zipcode
         .span4= render 'dashboard/sidebar'
