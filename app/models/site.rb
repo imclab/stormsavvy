@@ -95,12 +95,4 @@ class Site < ActiveRecord::Base
   def get_zipcode
     return self.zipcode.to_s
   end
-
-  def dashboard_pop(site)
-    noaa = NoaaForecastService.new(:site => site)
-    noaa.get_forecast
-    noaa.save_results
-    chance_of_rain
-  end
-
 end
