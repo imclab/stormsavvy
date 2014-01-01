@@ -2,32 +2,31 @@ require "spec_helper"
 
 describe NoaaForecastService do
   context "with a site" do
-    before :each do
-      site = FactoryGirl.build(:site)
-      @n = NoaaForecastService.new(site: site)
-    end
+
+    let(:site) { FactoryGirl.build(:site) }
+    let!(:nfs) { NoaaForecastService.new(site: site) }
 
     describe "with a site with valid lat/lng" do
       it "should successfully create a new NoaaForecastService object" do
-        @n.should_not == nil
+        nfs.should_not == nil
       end
 
       it "should respond to 'get_forecast'" do
-        @n.should respond_to(:get_forecast)
+        nfs.should respond_to(:get_forecast)
       end
 
       it "should respond to 'save_results'" do
-        @n.should respond_to(:save_results)
+        nfs.should respond_to(:save_results)
       end
 
       context "API query" do
         before :each do
-          @n.get_forecast
+          nfs.get_forecast
         end
 
         it "should set weather_update after API query" do
           begin
-            @n.weather_update.class.name.should == "WeatherUpdate"
+            nfs.weather_update.class.name.should == "WeatherUpdate"
           rescue
             'not online or method throwing error'
           end
@@ -35,7 +34,7 @@ describe NoaaForecastService do
 
         it "should set forecast_periods after API query" do
           begin
-            @n.forecast_periods.length.should == 57
+            nfs.forecast_periods.length.should == 57
           rescue
             'not online or method throwing error'
           end
@@ -44,7 +43,7 @@ describe NoaaForecastService do
         it "should successfully save WeatherUpdate" do
           begin
             weather_update_count = WeatherUpdate.count
-            @n.save_results
+            nfs.save_results
             WeatherUpdate.count.should == weather_update_count + 1
           rescue
             'not online or method throwing error'
@@ -54,7 +53,7 @@ describe NoaaForecastService do
         it "should successfully save ForecastPeriods" do
           begin
             weather_update_count = ForecastPeriod.count
-            @n.save_results
+            nfs.save_results
             ForecastPeriod.count.should == weather_update_count + 57
           rescue
             'not online or method throwing error'

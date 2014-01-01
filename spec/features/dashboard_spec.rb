@@ -11,8 +11,8 @@ describe "Dashboard" do
     { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
-  let!(:current_user) { FactoryGirl.create(:user) }
-  let!(:other_user) { FactoryGirl.create(:user) }
+  let!(:current_user) { FactoryGirl.build(:user) }
+  let!(:other_user) { FactoryGirl.build(:user) }
   let!(:current_project) { FactoryGirl.create(
     :project,
     :user => current_user,

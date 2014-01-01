@@ -163,6 +163,9 @@ describe Site do
         max_rain.should be_between(0,100)
         max_rain.should >= 0
         max_rain.should <= 100
+
+        max_rain.pop.should be_between(0,100)
+        max_rain.pop.should_not be_nil
       rescue
         'not online or method throwing error'
       end

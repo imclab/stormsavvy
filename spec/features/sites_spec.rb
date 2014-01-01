@@ -14,11 +14,10 @@ describe "Sites" do
   before :each do
     @user = FactoryGirl.create(:user)
     login_as(@user, :scope => :user)
-    visit new_project_path
+    # visit new_project_path
   end
 
   describe "GET /sites" do
-
     it "saves the new project" do
       visit root_path
       click_link 'New Site'
@@ -34,6 +33,5 @@ describe "Sites" do
       page.should have_content('Site was successfully created.')
       current_path.should == '/sites/1'
     end
-
   end
 end

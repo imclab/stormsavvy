@@ -4,11 +4,9 @@ describe ReportsController do
 
   describe "routing" do
 
+    let!(:report) { FactoryGirl.create(:report) }
 
     before(:each) do
-
-      @report = FactoryGirl.create(:report)
-
       # attrs = {
       #   :name => 'Project',
       #   :description => 'My description',
