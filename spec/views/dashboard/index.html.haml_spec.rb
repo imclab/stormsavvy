@@ -106,6 +106,10 @@ describe "dashboard/index" do
       # rendered.should have_link report_path
     end
 
+    it 'shows sidebar weather report' do
+      rendered.should =~ /% chance of rain/
+    end
+
     it "shows correct report links" do
       rendered.should have_selector('div#dashboard-sidebar')
       rendered.should =~ /CEM 2030 Weekly Inspection Report/
