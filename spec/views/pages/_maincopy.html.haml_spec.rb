@@ -8,8 +8,8 @@ describe "pages/_maincopy" do
 
   it 'checks maincopy partial view' do
     render
-    rendered.should =~ /Making SWPPP Easy/
-    rendered.should =~ /Free Email Alerts & Reports/
-    rendered.should =~ /Sign Up Now For Free Access/
+    rendered.should =~ /Protect the Environment/
+    rendered.should =~ /More Effectively/
+    rendered.should =~ /Sign up now to start tracking your projects/
   end
 end
