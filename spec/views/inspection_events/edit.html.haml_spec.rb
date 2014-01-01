@@ -55,7 +55,7 @@ describe "inspection_events/edit" do
 
     it "renders partial correctly" do
       rendered.should_not be_nil
-      rendered.should =~ /Instructions: Attach File & Complete Description Below/
+      rendered.should =~ /Instructions: Save Inspection Event Before Attaching File/
       rendered.should =~ /Cancel/
     end
   end
