@@ -9,12 +9,12 @@
           %li= msg
 
   %h4
-    Instructions: Attach File & Complete Description Below
+    Instructions: Save Inspection Event Before Attaching File
   %br
   .field
     /= f.label :attachment
     = f.file_field :attachment, class: 'button'
   %br
   .actions
-    = f.submit 'Upload Attachment', class: 'button'
+    = f.submit 'Save Attachment', class: 'button'
     = link_to 'Cancel', inspection_events_path
