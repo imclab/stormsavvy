@@ -40,8 +40,8 @@ describe "homepage" do
       current_path.should == edit_user_registration_path
 
       click_link "Sign out"
-      current_path.should == '/users/sign_in'
-      # current_path.should == '/index'
+      current_path.should == '/index'
+      # current_path.should == '/users/sign_in'
     end
   end
 
