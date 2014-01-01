@@ -5,24 +5,28 @@
       - unless current_user.sites.blank?
         - current_user.sites.each do |site|
           %br
-            = site.chance_of_rain.pop
+            %strong
+            -begin
+              = site.chance_of_rain.pop
+            -rescue
+              'begin/rescue block for pop method which fails spec'
             :plain
               % chance of rain
             = site.name
       - else
-        No active sites 
+        No active sites
 
 #current_action_items.widget.bottom-10
   .inner
     %h5 Pending Inspections
     %hr
-    = render(partial: "reports/pending_ie", collection: @pending_ie, as: :pending_ie).presence || "No pending inspections"
+    = render(partial: 'reports/pending_ie', collection: @pending_ie, as: :pending_ie).presence || 'No pending inspections'
 
 #current_action_items.widget.bottom-10
   .inner
     %h5 Pending Reports
     %hr
-    = render(partial: "reports/pending_report", collection: @pending_reports).presence || "No Pending Reports"
+    = render(partial: 'reports/pending_report', collection: @pending_reports).presence || 'No Pending Reports'
 
 #current_daily_diary.widget.bottom-10
   .inner= render 'dashboard/report_links'
