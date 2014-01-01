@@ -15,16 +15,11 @@
     /= render :partial => "shared/flash_messages", :locals => {:flash => flash}
     /- if user_signed_in?
     = render 'layouts/header'
-
+    %br
+    %br
     .container-fluid
       .container
         .row
-          %br
-          %br
-            - flash.each do |name, msg|
-              %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-                /%a.close{"data-dismiss" => "alert"} ×
-                = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
-            = yield
+          = yield
 
     = render 'layouts/olark'
