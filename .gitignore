@@ -26,6 +26,7 @@ coverage/
 config/config.yml
 config/heroku_vars.rb
 config/wunderground_apikey.txt
+config/heroku_vars.rb
 db/development
 db/development.sqlite3
 db/test.sqlite3
