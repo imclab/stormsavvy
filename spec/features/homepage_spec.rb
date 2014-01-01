@@ -6,20 +6,19 @@ Warden.test_mode!
 
 describe "homepage" do
 
-  before :each do
-    FactoryGirl.create(
-      :user,
-      :id => 1,
-      :email => 'demo@stormsavvy.com',
-      :password => 'savvy_demo',
-      :password_confirmation => 'savvy_demo'
+  let!(:user) { FactoryGirl.create(
+    :user,
+    :email => 'demo@stormsavvy.com',
+    :password => 'savvy_demo',
+    :password_confirmation => 'savvy_demo'
     )
-  end
+  }
 
   describe 'signin page' do
     it "signs in as another user" do
       visit user_session_path
       current_path.should == '/users/sign_in'
+      # current_path.should == '/index'
       # current_path.should == user_session_path
       fill_in 'Email', :with => 'barney@stormsavvy.com'
       fill_in 'Password', :with => 'foobarbaz'
@@ -41,8 +40,8 @@ describe "homepage" do
       current_path.should == edit_user_registration_path
 
       click_link "Sign out"
-      current_path.should == '/users/sign_in'
-      # current_path.should == '/index'
+      current_path.should == '/index'
+      # current_path.should == '/users/sign_in'
     end
   end
 

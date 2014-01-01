@@ -3,22 +3,26 @@
     - @sites.each do |site|
       .project.closed{ :class=>"#{cycle('even','odd')}" }
         .cf.headline
-          %h3.pull-left= site.name
+          %h3.pull-left
+            = link_to site.name, site_path(site), class: 'project_name_link'
+            = link_to 'Remove Site', site, method: 'delete', class: 'btn'
           .small.more_details.pull-right
             %i{ :class => "icon icon-plus" }
             %i{ :class => "icon icon-minus is_hidden" }
-
-        / debug is_hidden attribute
-        /.more_details_box.is_hidden
         .more_details_box
           %ul
             %li
-              %strong # of Sites:
-              = current_user.sites_count
-            %li
               %strong Last Updated:
               = site.updated_at
-
-          = link_to "View Site", site, :class => "view_site_link"
+            %li
+              %strong Site ID:
+              = site.id
+            %li
+              %strong Site Lat/Long:
+              = site.lat
+              = site.long
+            %li
+              %strong Site Zipcode:
+              = site.zipcode
   - else
     No active sites, try starting one by clicking 'new site'.
