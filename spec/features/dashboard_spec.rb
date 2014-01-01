@@ -13,22 +13,9 @@ describe "Dashboard" do
 
   let!(:current_user) { FactoryGirl.create(:user) }
   let!(:other_user) { FactoryGirl.create(:user) }
-  let!(:current_project) { FactoryGirl.create(
-    :project,
-    :user => current_user,
-    :name => 'eb park and rec'
-    ) 
-  }
-  let!(:other_project) { FactoryGirl.create(
-    :project,
-    :user => other_user,
-    :name => 'berkeley usd'
-    )
-  }
   let!(:current_completed_site) { FactoryGirl.create(
       :site,
       :user => current_user,
-      # :project => current_project,
       :name => 'ec jungle gym',
       :zipcode => 94530,
       # :lat => 37.9260,
@@ -38,7 +25,6 @@ describe "Dashboard" do
   let!(:current_pending_site) { FactoryGirl.create(
       :site,
       :user => current_user,
-      # :project => current_project,
       :name => 'ec slide',
       :zipcode => 94530,
       # :lat => 37.9260,
@@ -48,7 +34,6 @@ describe "Dashboard" do
   let!(:other_completed_site) { FactoryGirl.create(
       :site,
       :user => other_user,
-      # :project_id => other_project,
       :name => 'berkeley high',
       :zipcode => 94709,
       # :lat => 37.8870,
@@ -58,7 +43,6 @@ describe "Dashboard" do
   let!(:other_pending_site) { FactoryGirl.create(
       :site,
       :user => other_user,
-      # :project => other_project,
       :name => 'peoples park',
       :zipcode => 94709,
       # :lat => 37.8870,
@@ -76,8 +60,6 @@ describe "Dashboard" do
   let!(:current_completed_ie) { FactoryGirl.create(
       :inspection_event,
       :site => site,
-      # :id => 1,
-      # :site_id => 1,
       :completed => true,
       :inspection_type => 'CEM2030'
     )
@@ -85,8 +67,6 @@ describe "Dashboard" do
   let!(:current_pending_ie) { FactoryGirl.create(
       :inspection_event,
       :site => site,
-      # :id => 2,
-      # :site_id => 2,
       :completed => false,
       :inspection_type => 'CEM2030'
     )
@@ -94,8 +74,6 @@ describe "Dashboard" do
   let!(:other_completed_ie) { FactoryGirl.create(
       :inspection_event,
       :site => site,
-      # :id => 3,
-      # :site_id => 3,
       :completed => true,
       :inspection_type => 'CEM2031'
     )
@@ -103,8 +81,6 @@ describe "Dashboard" do
   let!(:other_pending_ie) { FactoryGirl.create(
       :inspection_event,
       :site => site,
-      # :id => 4,
-      # :site_id => 4,
       :completed => false,
       :inspection_type => 'CEM2031'
     )
@@ -149,10 +125,11 @@ describe "Dashboard" do
       page.should_not be_nil
     end
 
-    xit "renders projects info" do
-      page.should have_text('# of Sites:')
+    it "renders site info" do
       page.should have_text('Last Updated:')
-      page.should have_link('View Project')
+      page.should have_text('Site ID:')
+      page.should have_link('Site Lat/Long:')
+      page.should have_link('Site Zipcode:')
       page.should_not be_nil
     end
 
