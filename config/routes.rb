@@ -10,10 +10,10 @@ Stormsavvy::Application.routes.draw do
   get "alert_pages/sender"
   get "alert_pages/thankyou"
   get "dashboard/index"
-  # root to: "dashboard#index"
+  root to: "dashboard#index"
 
   get "sites", :to => "sites#users_sites"
-  root to: "sites#users_sites"
+  # root to: "sites#users_sites"
 
   resource :location, only: [:index, :new, :create]
 
