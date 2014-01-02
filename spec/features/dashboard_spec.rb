@@ -246,28 +246,37 @@ describe "Dashboard" do
           noaa = NoaaForecastService.new(:site => current_completed_site)
           noaa.get_forecast
           noaa.save_results
-          pp current_completed_site.chance_of_rain.pop
+          current_completed_site.chance_of_rain.pop.should be_between(0, 100)
+          current_completed_site.chance_of_rain.pop.should_not be_nil
+        rescue
+          pp 'not online or pop method error'
+        end
+      end
 
+      it 'gets pop for current_pending_site' do
+        begin
           pp current_pending_site.name
           pp current_pending_site.lat
           pp current_pending_site.lng
           noaa = NoaaForecastService.new(:site => current_pending_site)
           noaa.get_forecast
           noaa.save_results
-          pp forecast_period = current_pending_site.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).map(&:pop)
           pp current_pending_site.forecast_periods.max_by(&:pop).pop
-          pp current_pending_site.chance_of_rain.pop
-          pp forecast_period.class
+          current_pending_site.chance_of_rain.pop.should be_between(0,100)
+          current_pending_site.chance_of_rain.pop.should_not be_nil
         rescue
           pp 'not online or pop method error'
         end
+      end
 
+      it 'gets pop for site' do
         begin
           pp site.name
           noaa = NoaaForecastService.new(:site => site)
           noaa.get_forecast
           noaa.save_results
-          pp site.chance_of_rain.pop
+          site.chance_of_rain.pop.should be_between(0,100)
+          site.chance_of_rain.pop.should_not be_nil
         rescue
           pp 'not online or pop method error'
         end
