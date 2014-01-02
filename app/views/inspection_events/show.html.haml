@@ -1,11 +1,12 @@
 %p
   #notice
-    = notice
+    /= notice
     = button_to 'Delete This Inspection Event', inspection_event_path(@inspection_event), :method => :delete
+    = link_to 'Edit', edit_inspection_event_path(@inspection_event)
+    \|
+    = link_to 'Back', inspection_events_path
 %p
   %h2 Inspection Event Information
-
-.span10
   %p
     %b Site ID:
     = @inspection_event.site_id
