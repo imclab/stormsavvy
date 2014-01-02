@@ -129,82 +129,82 @@ describe "Dashboard" do
       page.should have_text('Last Updated:')
       page.should have_text('Site ID:')
       # page.should have_link('Site Lat/Long:')
-      page.should have_link('Site Zipcode:')
+      # page.should have_link('Site Zipcode:')
       page.should_not be_nil
     end
 
-    xit 'shows correct project and site to current_user' do
+    it 'shows correct site to current_user' do
       # login_as(current_user, :scope => :user)
       # visit root_path
-      page.should have_text('eb park and rec')
-      page.should have_text('# of Sites: 2')
+      # page.should have_text('eb park and rec')
+      # page.should have_text('# of Sites: 2')
       page.should have_text('ec jungle gym')
       page.should have_text('ec slide')
       page.should_not have_text('No active projects')
+      page.should_not have_text('berkeley high')
     end
 
-    xit 'shows correct project and site to other_user' do
+    it 'shows correct site to other_user' do
       login_as(other_user, :scope => :user)
       visit root_path
-      page.should have_text('berkeley usd')
-      page.should have_text('# of Sites: 2')
+      # page.should have_text('berkeley usd')
+      # page.should have_text('# of Sites: 2')
       page.should have_text('berkeley high')
       page.should have_text('peoples park')
       page.should_not have_text('No active projects')
-      pp other_user.class
-      pp other_user.projects
+      page.should_not have_text('ec jungle gym')
     end
 
-    xit 'creates and displays new projects' do
+    it 'creates and displays new sites' do
       login_as(current_user, :scope => :user)
       visit root_path
-      click_link 'New Project'
-      current_path.should == new_project_path
+      click_link 'New Site'
+      current_path.should == new_site_path
 
       fill_in 'Name', :with => 'Troll Bridge Retrofit', :match => :prefer_exact
       fill_in 'Description', :with => 'Retrofit for the trolls', :match => :prefer_exact
-      click_button 'Create Project'
+      fill_in 'Zipcode', with: 94530
+      click_button 'Save'
 
-      page.should have_text('Project was successfully created.')
-      current_path.should == project_path
-
-      pp current_user.email
-      pp current_user.projects
+      page.should have_text('Site was successfully created.')
+      # current_path.should == site_path
     end
 
-    xit 'creates new projects for factory users' do
+    it 'creates new sites for factory users' do
       login_as(current_user, :scope => :user)
-      current_user.projects.count.should == 1
-      # pp current_user.projects
+      current_user.sites.count.should == 2
 
-      project = current_user.projects.build(
+      site = current_user.sites.build(
         :name => 'ECP',
-        :description => 'Plaza Improvements'
+        :description => 'Plaza Improvements',
+        zipcode: 94530
       )
-      project.save
-      current_user.projects.count.should == 2
-      pp current_user.email
-      # pp current_user.projects
+      site.save
+      current_user.sites.count.should == 3
 
       login_as(other_user, :scope => :user)
-      other_user.projects.count.should == 1
-      pp other_user.email
-      # pp other_user.projects
+      other_user.sites.count.should == 2
     end
   end
 
   describe "dashboard/sidebar" do
     describe 'weather forecast' do
-      xit 'shows correct site to user' do
+      it 'shows correct site to user' do
         login_as(current_user, :scope => :user)
         visit root_path
         page.should have_text('ec jungle gym')
-        page.should_not have_text('No active projects')
+        page.should have_text('ec slide')
+        page.should_not have_text('peoples park')
+        page.should_not have_text('berkeley high')
+        page.should_not have_text('No active sites')
 
         login_as(other_user, :scope => :user)
         visit root_path
         page.should have_text('peoples park')
-        page.should_not have_text('No active projects')
+        page.should have_text('berkeley high')
+        page.should_not have_text('ec jungle gym')
+        page.should_not have_text('ec slide')
+        page.should_not have_text('No active sites')
       end
 
       it 'shows site pop' do
