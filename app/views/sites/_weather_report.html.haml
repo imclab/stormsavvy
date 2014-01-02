@@ -2,10 +2,23 @@
   #current_weather.widget.bottom-10
     .inner
       %h5 Weather Report
-      %hr
       %p
         -#="Today's chance of rain: #{chance_of_rain(@site.zipcode)}%"
-        ="Today's chance of rain: #{@site.chance_of_rain}%"
+        -#="Today's chance of rain: #{@site.chance_of_rain}%"
+      %hr
+        - unless current_user.sites.blank?
+          - current_user.sites.each do |site|
+            %p
+            %strong
+            -begin
+              = site.chance_of_rain.pop
+            -rescue
+              nil
+            :plain
+              % chance of rain
+            = site.name
+        - else
+          No active sites
   #current_action_items.widget.bottom-10
     .inner
       %h5 Pending Reports

@@ -118,3 +118,8 @@
   %p
     %b Analysis average 5:
     = @sampling_event.analysis_average_5
+  %p
+    = link_to 'Edit', edit_sampling_event_path(@sampling_event)
+    \|
+    = link_to 'Back', sampling_events_path
+  %br

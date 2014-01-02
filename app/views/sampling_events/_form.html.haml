@@ -1,21 +1,15 @@
 = simple_form_for(@sampling_event) do |f|
   = f.error_notification
-
-  .span4
-    .actions
-      = f.submit 'Save'
-      = link_to 'Back', sampling_events_path
-    .form-inputs
-      = f.input :site_id
-      = f.label :sampling_type
-      = f.select :sampling_type, SamplingEvent::TYPES
-      = f.input :sampling_description
-      = f.input :submitted_by
-      = f.input :sampled_by
-    .field
-      = f.label :sampling_date
-      = f.date_select :sampling_date
-  .span3
+  .form-inputs
+    = f.input :site_id
+    = f.label :sampling_type
+    = f.select :sampling_type, SamplingEvent::TYPES
+    = f.input :sampling_description
+    = f.input :submitted_by
+    = f.input :sampled_by
+  .field
+    = f.label :sampling_date
+    = f.date_select :sampling_date
     = f.input :sample_id_1
     = f.input :sample_location_1
     = f.input :sample_time_1
@@ -34,7 +28,6 @@
     = f.input :analysis_type_3
     = f.input :analysis_result_3
     = f.input :analysis_average_3
-  .span3
     = f.input :sample_id_4
     = f.input :sample_location_4
     = f.input :sample_time_4
@@ -47,3 +40,7 @@
     = f.input :analysis_type_5
     = f.input :analysis_result_5
     = f.input :analysis_average_5
+  .actions
+    = f.submit 'Save'
+    = link_to 'Back', sampling_events_path
+  %br

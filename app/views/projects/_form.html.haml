@@ -11,13 +11,11 @@
 
   %fieldset
     %legend Project Details
-    .span5
-      = f.input :name
-      = f.input :startdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
-      = f.input :finishdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
-      = f.input :active
-    .span4
-      = f.input :description
+    = f.input :name
+    = f.input :startdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
+    = f.input :finishdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
+    = f.input :active
+    = f.input :description
 
   %fieldset
     %legend Project Sites
@@ -25,19 +23,17 @@
     .sitesWrapper
       = f.fields_for :sites do |site|
         .sitesInner
-          .span5
-            = site.input :name
-            = site.input :description
-            = site.input :costcode
-          .span4
-            = site.input :address_1
-            = site.input :address_2
-            = site.input :city
-            = site.input :state
-            /= site.input :state, :as => :select, :collection => Carmen.states
-            = site.input :zipcode, :as => :string
-          .pull-right
-            = site.link_to_remove "Remove this site"
+          = site.input :name
+          = site.input :description
+          = site.input :costcode
+          = site.input :address_1
+          = site.input :address_2
+          = site.input :city
+          = site.input :state
+          /= site.input :state, :as => :select, :collection => Carmen.states
+          = site.input :zipcode, :as => :string
+        .pull-right
+          = site.link_to_remove "Remove this site"
 
   .form-actions
     = f.submit
