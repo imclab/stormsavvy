@@ -128,7 +128,7 @@ describe "Dashboard" do
     it "renders site info" do
       page.should have_text('Last Updated:')
       page.should have_text('Site ID:')
-      page.should have_link('Site Lat/Long:')
+      # page.should have_link('Site Lat/Long:')
       page.should have_link('Site Zipcode:')
       page.should_not be_nil
     end
