@@ -5,7 +5,6 @@
       %ul
         - @site.errors.full_messages.each do |msg|
           %li= msg
-
   .cf
     = f.label :name
     .input
@@ -26,32 +25,27 @@
     = f.label :exposed_area
     .input
       = f.text_field :exposed_area
-
   .control-group
     =f.label :address_1, :class => "control-label"
     .controls
       = f.text_field :address_1
-
   .control-group
     =f.label :address_2, :class => "control-label"
     .controls
       = f.text_field :address_2
-
   .control-group
     =f.label :city, :class => "control-label"
     .controls
       = f.text_field :city
-
   .control-group
     =f.label :state, :class => "control-label"
     .controls
       = f.text_field :state
       /= f.select :state, Carmen.states, {:include_blank => true}, :selected => f.object.state
-
   .control-group
     =f.label :zipcode, :class => "control-label"
     .controls
       = f.text_field :zipcode
-
   .actions
     = f.submit 'Save', :class => "btn"
+    = link_to 'Back', sites_path
