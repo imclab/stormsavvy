@@ -186,8 +186,8 @@ describe Site do
   describe '#save_geo_coordinates' do
     it 'saves geo coordinates' do
       site.save_geo_coordinates
-      site.lat.should >= 38
-      site.long.should >= 122
+      site.lat.should be_between(37,39)
+      site.long.should be_between(121,123)
       pp site.lat
       pp site.long
     end
