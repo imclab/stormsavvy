@@ -11,13 +11,11 @@
 
   %fieldset
     %legend Project Details
-    .span5
-      = f.input :name
-      = f.input :startdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
-      = f.input :finishdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
-      = f.input :active
-    .span4
-      = f.input :description
+    = f.input :name
+    = f.input :startdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
+    = f.input :finishdate, :as => :string, :hint => "Format: YYYY-MM-DD"#, :input_html => { :class => 'datePicker' }
+    = f.input :active
+    = f.input :description
 
   %fieldset
     %legend Project Sites
