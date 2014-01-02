@@ -17,8 +17,8 @@ describe "homepage" do
   describe 'signin page' do
     it "signs in as another user" do
       visit user_session_path
-      # current_path.should == '/index'
-      current_path.should == '/users/sign_in'
+      current_path.should == '/index'
+      # current_path.should == '/users/sign_in'
       # current_path.should == user_session_path
       fill_in 'Email', :with => 'barney@stormsavvy.com'
       fill_in 'Password', :with => 'foobarbaz'
@@ -61,9 +61,9 @@ describe "homepage" do
     it "renders landing page text" do
       visit index_path
       page.should have_text('Sign in')
-      page.should have_text('Making SWPPP Easy')
-      page.should have_text('Free Email Alerts & Reports')
-      page.should have_text('Sign Up Now For Free Access')
+      page.should have_text('Protect the Environment,')
+      page.should have_text('Together and In Real-Time')
+      page.should have_text('Sign up now to start tracking projects, together')
     end
 
     it "renders correct links and pages from home page" do
