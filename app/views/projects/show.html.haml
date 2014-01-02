@@ -5,6 +5,10 @@
         %p#notice.alert.alert-success= notice
       %h2 Project Information
       = button_to 'Delete This Project', project_path(@project), :method => :delete
+      \|
+      = link_to 'Edit', edit_project_path(@project)
+      \|
+      = link_to 'Back', projects_path
       %p
         %b Name:
         = @project.name
