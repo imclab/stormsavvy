@@ -220,23 +220,25 @@ describe "Dashboard" do
         rescue
           pp 'not online or pop method error'
         end
-
       end
 
       it 'loops thru sites array' do
         begin
           sites = [ site ]
-          sites.each do |s|
-            pp s.name
-            noaa = NoaaForecastService.new(:site => s)
+          sites.each do |site|
+            pp site.name
+            noaa = NoaaForecastService.new(:site => site)
             noaa.get_forecast
             noaa.save_results
-            pp s.chance_of_rain.pop
+            site.chance_of_rain.pop.should be_between(0,100)
+            site.chance_of_rain.pop.should_not be_nil
           end
         rescue
           pp 'not online or pop method error'
         end
+      end
 
+      it 'gets pop for current_completed_site' do
         begin
           pp current_completed_site.name
           pp current_completed_site.lat
