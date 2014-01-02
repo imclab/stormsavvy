@@ -160,8 +160,6 @@ describe Site do
       begin
         max_rain = site.chance_of_rain
         max_rain.should be_between(0,100)
-        max_rain.should >= 0
-        max_rain.should <= 100
       rescue
         'not online or method throwing error'
       end
