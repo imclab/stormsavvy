@@ -9,13 +9,12 @@
             -begin
               = site.chance_of_rain.pop
             -rescue
-              'begin/rescue block for pop method which fails spec'
+              nil
             :plain
               % chance of rain
             = site.name
       - else
         No active sites
-
 #current_action_items.widget.bottom-10
   .inner
     %h5 Pending Inspections
