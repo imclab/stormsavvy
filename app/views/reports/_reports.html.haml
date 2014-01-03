@@ -24,7 +24,8 @@
       - if report.attachment.url =~ /missing.png/
         %td= link_to 'Upload Attachment', edit_report_path(report)
       - else
-        %td= link_to "#{report.attachment.url}", report.attachment.url
+        %td= link_to 'View Attachment', report.attachment.url
+        /%td= link_to "#{report.attachment.url}", report.attachment.url
 
       /%td= report.attachment.url
       %td
