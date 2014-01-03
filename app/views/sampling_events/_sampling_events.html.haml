@@ -58,12 +58,13 @@
         %td= sampling_event.sampling_date
         %td= sampling_event.submitted_by
         %td= sampling_event.sampled_by
-        %td= sampling_event.attachment.url
+        /%td= sampling_event.attachment.url
 
         - if sampling_event.attachment.url =~ /missing.png/
           %td= link_to 'Upload Attachment', edit_sampling_event_path(sampling_event)
         - else
-          %td= link_to "#{sampling_event.attachment.url}", sampling_event.attachment.url
+          %td= link_to 'View Attachment', sampling_event.attachment.url
+          /%td= link_to "#{sampling_event.attachment.url}", sampling_event.attachment.url
 
         /td= sampling_event.sample_id_1
         /td= sampling_event.sample_location_1
