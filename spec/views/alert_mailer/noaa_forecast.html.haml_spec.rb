@@ -4,13 +4,11 @@ describe "alert_mailer/noaa_forecast" do
 
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @project = @user.projects.build(
-      :name => "foo", 
-      :description => "bar",
-      :startdate => Date.today,
-      :finishdate => Date.today + 30.days
+    @site = @user.sites.build(
+      name: 'ecp',
+      zipcode: 94530
     )
-    @project.save
+    @site.save
     sign_in @user
   end
 

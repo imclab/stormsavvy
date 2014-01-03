@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe "layouts/application.html.haml" do
 
+  let!(:user) { FactoryGirl.create(:user) }
+
   before(:each) do
-    @user = FactoryGirl.create(:user)
-    sign_in @user
+    sign_in user
     stub_template "shared/_google_analytics.html.haml" => 'google analytics header'
     stub_template "shared/_flash_messages.html.haml" => 'flash message template'
     stub_template "shared/_hero.html.haml" => 'hero copy template'
@@ -34,11 +35,29 @@ describe "layouts/application.html.haml" do
   end
 
   describe 'navbar' do
-    it 'has correct links' do
-      render
-      rendered.should match(/Inspections/)
-      rendered.should match(/Sampling/)
-      rendered.should match(/Reports/)
+    context 'when signed in' do
+      it 'has correct links' do
+        sign_in user
+        render
+        rendered.should match(/Home/)
+        rendered.should match(/Inspections/)
+        rendered.should match(/Sampling/)
+        rendered.should match(/Reports/)
+        rendered.should match(/Settings/)
+        rendered.should match(/Sign Out/)
+      end
+    end
+
+    context 'when signed out' do
+      it 'has correct links' do
+        sign_out user
+        render
+        rendered.should match(/Privacy/)
+        rendered.should match(/Terms/)
+        rendered.should match(/Contact/)
+        rendered.should match(/Sign Up/)
+        rendered.should match(/Sign In/)
+      end
     end
   end
 
