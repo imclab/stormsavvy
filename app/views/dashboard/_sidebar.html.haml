@@ -3,16 +3,20 @@
     %h5 Weather Report
     %hr
       - unless current_user.sites.blank?
-        - current_user.sites.each do |site|
-          %br
-            %strong
-            -begin
-              = site.chance_of_rain.pop
-            -rescue
-              nil
-            :plain
-              % chance of rain
-            = site.name
+        %ul
+          - current_user.sites.each do |site|
+            %li.cf
+              - begin
+                - site.chance_of_rain
+                .span
+                %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
+                  %i=link_to "#{site.name}: ", site_path(site)
+                  = "#{site.max_rain}% chance of rain"
+              -rescue
+                nil
+                :plain
+                  % chance of rain
+                = site.name
       - else
         No active sites
 #current_action_items.widget.bottom-10
