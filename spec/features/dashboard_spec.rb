@@ -121,7 +121,7 @@ describe "Dashboard" do
       page.should have_text('Inspections')
       page.should have_text('Sampling')
       page.should have_text('Settings')
-      page.should have_text('Sign out')
+      page.should have_text('Sign Out')
       page.should_not be_nil
     end
 
