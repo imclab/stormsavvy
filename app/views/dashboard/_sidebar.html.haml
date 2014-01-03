@@ -1,35 +1,37 @@
-#current_weather.widget.bottom-10.top-20
-  .inner
-    %h5 Weather Report
-    %hr
-      - unless current_user.sites.blank?
-        %ul
-          - current_user.sites.each do |site|
-            %li.cf
-              - begin
-                - site.chance_of_rain
-                .span
-                %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
-                  %i=link_to "#{site.name}: ", site_path(site)
-                  = "#{site.max_rain}% chance of rain"
-              -rescue
-                nil
-                :plain
-                  % chance of rain
-                = site.name
-      - else
-        No active sites
-#current_action_items.widget.bottom-10
-  .inner
-    %h5 Pending Inspections
-    %hr
-    = render(partial: 'reports/pending_ie', collection: @pending_ie, as: :pending_ie).presence || 'No pending inspections'
+.row-fluid
+  #current_weather.widget.bottom-10.top-20
+    .inner
+      %h5 Weather Report
+      %hr
+        - unless current_user.sites.blank?
+          %ul
+            - current_user.sites.each do |site|
+              %li.cf
+                - begin
+                  - site.chance_of_rain
+                  /.span
+                  %p
+                  %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
+                    %i=link_to "#{site.name}: ", site_path(site)
+                    = "#{site.max_rain}% chance of rain"
+                -rescue
+                  nil
+                  :plain
+                    % chance of rain
+                  = site.name
+        - else
+          No active sites
+  #current_action_items.widget.bottom-10
+    .inner
+      %h5 Pending Inspections
+      %hr
+      = render(partial: 'reports/pending_ie', collection: @pending_ie, as: :pending_ie).presence || 'No pending inspections'
 
-#current_action_items.widget.bottom-10
-  .inner
-    %h5 Pending Reports
-    %hr
-    = render(partial: 'reports/pending_report', collection: @pending_reports).presence || 'No Pending Reports'
+  #current_action_items.widget.bottom-10
+    .inner
+      %h5 Pending Reports
+      %hr
+      = render(partial: 'reports/pending_report', collection: @pending_reports).presence || 'No Pending Reports'
 
-#current_daily_diary.widget.bottom-10
-  .inner= render 'dashboard/report_links'
+  #current_daily_diary.widget.bottom-10
+    .inner= render 'dashboard/report_links'
