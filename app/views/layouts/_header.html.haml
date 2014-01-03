@@ -3,36 +3,36 @@
     .container
       %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
         %span.icon-th-list
-          %a.brand{:href => root_path } Storm Savvy
+          %a.brand{:href => root_path} Storm Savvy
           .nav-collapse.collapse
             %ul.nav.pull-right
               -if user_signed_in?
                 %li.active
-                  %a{:href => root_path } Home
+                  %a{:href => root_path} Home
                 %li
-                  %a{:href => inspection_events_path } Inspections
+                  %a{:href => inspection_events_path} Inspections
                 %li
-                  %a{:href => sampling_events_path } Sampling
+                  %a{:href => sampling_events_path} Sampling
                 %li
-                  %a{:href => reports_path } Reports
+                  %a{:href => reports_path} Reports
                 %li
-                  %a{:href => edit_user_registration_path } Settings
+                  %a{:href => edit_user_registration_path} Settings
                 %li
-                  %a{:href => destroy_user_session_path } Sign Out
+                  %a{:href => destroy_user_session_path} Sign Out
               -else
                 %li
-                  %a{:href => privacy_path } Privacy
+                  %a{:href => privacy_path} Privacy
                 %li
-                  %a{:href => terms_path } Terms
+                  %a{:href => terms_path} Terms
                 %li
-                  %a{:href => contact_path } Contact
+                  %a{:href => contact_path} Contact
                 %li
-                  %a{:href => new_user_registration_path } Sign Up
+                  %a{:href => new_user_registration_path} Sign Up
                 %li
-                  %a{:href => new_user_session_path } Sign In
+                  %a{:href => new_user_session_path} Sign In
             %ul.nav
               %li.active
-                /%a.brand{:href => root_path } Storm Savvy
+                /%a.brand{:href => root_path} Storm Savvy
                 - if user_signed_in?
                   /%li=link_to "Inspections", inspection_events_path
                   /%li=link_to "Sampling", sampling_events_path
