@@ -36,7 +36,7 @@ describe 'homepage' do
       click_link "Settings"
       current_path.should == edit_user_registration_path
 
-      click_link "Sign out"
+      click_link "Sign Out"
       current_path.should == '/index'
       # current_path.should == '/users/sign_in'
     end
