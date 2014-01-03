@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe "layouts/application.html.haml" do
 
+  let!(:user) { FactoryGirl.create(:user) }
+
   before(:each) do
-    @user = FactoryGirl.create(:user)
-    sign_in @user
+    sign_in user
     stub_template "shared/_google_analytics.html.haml" => 'google analytics header'
     stub_template "shared/_flash_messages.html.haml" => 'flash message template'
     stub_template "shared/_hero.html.haml" => 'hero copy template'
