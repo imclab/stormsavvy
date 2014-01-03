@@ -11,5 +11,6 @@ describe "pages/_maincopy" do
     rendered.should =~ /Protect the Environment,/
     rendered.should =~ /Together and In Real-Time/
     rendered.should =~ /Sign up now to start tracking projects, together/
+    rendered.should =~ /Get Started/
   end
 end
