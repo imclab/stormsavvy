@@ -1,24 +1,52 @@
 .navbar.navbar-inverse.navbar-fixed-top
   .navbar-inner
     .container
-      .nav-collapse.collapse
-        %ul.nav
-          %li.active
-            %a.brand{:href => root_path } Storm Savvy
-            - if user_signed_in?
-              %li=link_to "Inspections", inspection_events_path
-              %li=link_to "Sampling", sampling_events_path
-              %li=link_to "Reports", reports_path
-              %li=link_to "Settings", edit_user_registration_path
-              %li=link_to "Sign out", destroy_user_session_path
-              / %li=link_to "Sites", index_path
-              / %li=link_to "Forms", pdf_path
-            - else
-              %li=link_to "Privacy", privacy_path
-              %li=link_to "Terms", terms_path
-              %li=link_to "Contact", contact_path
-              %li=link_to "Sign up", new_user_registration_path
-              %li=link_to "Sign in", new_user_session_path
-              / %li=link_to "Plans & Pricing", plans_path
-              / %li=link_to "Feature Tour", features_path
-              / %li=link_to "Blog", 'http://stormsavvy.me'
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-th-list
+          %a.brand{:href => root_path } Storm Savvy
+          .nav-collapse.collapse
+            %ul.nav.pull-right
+              -if user_signed_in?
+                %li.active
+                  %a{:href => root_path } Home
+                %li
+                  %a{:href => inspection_events_path } Inspections
+                %li
+                  %a{:href => sampling_events_path } Sampling
+                %li
+                  %a{:href => reports_path } Reports
+                %li
+                  %a{:href => edit_user_registration_path } Settings
+                %li
+                  %a{:href => destroy_user_session_path } Sign Out
+              -else
+                %li
+                  %a{:href => privacy_path } Privacy
+                %li
+                  %a{:href => terms_path } Terms
+                %li
+                  %a{:href => contact_path } Contact
+                %li
+                  %a{:href => new_user_registration_path } Sign Up
+                %li
+                  %a{:href => new_user_session_path } Sign In
+            %ul.nav
+              %li.active
+                /%a.brand{:href => root_path } Storm Savvy
+                - if user_signed_in?
+                  /%li=link_to "Inspections", inspection_events_path
+                  /%li=link_to "Sampling", sampling_events_path
+                  /%li=link_to "Reports", reports_path
+                  /%li=link_to "Settings", edit_user_registration_path
+                  /%li=link_to "Sign Out", destroy_user_session_path
+                  / %li=link_to "Sites", index_path
+                  / %li=link_to "Forms", pdf_path
+                - else
+                  /%li=link_to "Privacy", privacy_path
+                  /%li=link_to "Terms", terms_path
+                  /%li=link_to "Contact", contact_path
+                  /%li=link_to "Sign Up", new_user_registration_path
+                  /%li=link_to "Sign In", new_user_session_path
+                  / %li=link_to "Plans & Pricing", plans_path
+                  / %li=link_to "Feature Tour", features_path
+                  / %li=link_to "Blog", 'http://stormsavvy.me'
