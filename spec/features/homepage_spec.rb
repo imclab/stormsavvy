@@ -57,7 +57,8 @@ describe 'homepage' do
 
     it "renders landing page text" do
       visit index_path
-      page.should have_text('Sign in')
+      page.should have_text('Sign In')
+      page.should have_text('Get Started')
       page.should have_text('Protect the Environment,')
       page.should have_text('Together and In Real-Time')
       page.should have_text('Sign up now to start tracking projects, together')
