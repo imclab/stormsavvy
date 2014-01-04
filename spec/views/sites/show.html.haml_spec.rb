@@ -27,6 +27,8 @@ describe "sites/show" do
     rendered.should match(/City/)
     rendered.should match(/State/)
     rendered.should match(/Zipcode/)
+    rendered.should match(/Lat/)
+    rendered.should match(/Long/)
   end
 
   it "has edit, back and delete links" do
