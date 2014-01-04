@@ -1,2 +1,18 @@
-%h1 StaticPages#index
-%p Find me in app/views/static_pages/index.html.haml
+!!!
+%html{"ng-app" => "site"}
+  %head
+    %title Site
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %div{"ng-view" => ""}
+    Static_Pages#Index
+    %p
+    %a{:href => "/#"} index
+    %ul{"ng-repeat" => "site in sites"}
+      %li
+        %a{"ng-click" => "viewSite(site.id)"} {{ site.name }}
+        %li
+          {{site.name}} ({{site.id}})
+    = yield
