@@ -2,18 +2,21 @@ require 'sidekiq/web'
 
 Stormsavvy::Application.routes.draw do
 
+  get "static_pages/index"
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
 
+  root 'static_pages#index'
+  # root to: 'dashboard#index'
+  # root to: 'sites#users_sites'
+
   get "alert_pages/sender"
   get "alert_pages/thankyou"
   get "dashboard/index"
-  root to: "dashboard#index"
 
   get "sites", :to => "sites#users_sites"
-  # root to: "sites#users_sites"
 
   resource :location, only: [:index, :new, :create]
 
