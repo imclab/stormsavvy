@@ -1,4 +1,4 @@
-// spec/javascripts/restauranteur.conf.js
+// spec/javascripts/site.conf.js
 
 module.exports = function(config) {
   config.set({
