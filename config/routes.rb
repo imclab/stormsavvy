@@ -9,8 +9,8 @@ Stormsavvy::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
 
-  root to: 'main#index'
-  # root to: 'dashboard#index'
+  # root to: 'main#index'
+  root to: 'dashboard#index'
   # root to: 'sites#users_sites'
 
   get "alert_pages/sender"
