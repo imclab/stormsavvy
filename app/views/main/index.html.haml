@@ -1,12 +1,2 @@
-%h1 Main#index
-.container{"ng-controller" => "IndexCtrl"}
-  %h1.text-center My Site
-  .row{"ng-repeat" => "site in data.sites"}
-    %h2 {{ site.name }}
-    %p {{ site.zipcode }}
-
-.container{"ng-controller" => "IndexCtrl"}
-  %h1.text-center My blog
-  .row{"ng-repeat" => "post in data.posts"}
-    %h2 {{ post.title }}
-    %p {{ post.contents }}
+%script{:src => "angular-route.js"}
+.container{"ng-view" => ""}
