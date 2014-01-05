@@ -30,6 +30,7 @@ Stormsavvy::Application.routes.draw do
     get "CEM4601"
   end
 
+  resource :location, only: [:index, :new, :create]
   resources :projects,
     :sites,
     :sampling_events,
