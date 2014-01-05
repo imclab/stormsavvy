@@ -1,21 +1,13 @@
-# HomeCtrl specifically. This is basically how we tell
-# Angular about the existence of our application.
-@site = angular.module('site', ['ngRoute'])
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
 
-# This routing directive tells Angular about the default
-# route for our application.
-@site.config(['$routeProvider', ($routeProvider) ->
-  $routeProvider.
-    when('/sites', {
-      templateUrl: '../templates/sites/index.html.haml',
-      controller: 'SiteIndexCtrl'
-    }).
-    when('/sites/:id', {
-      templateUrl: '../templates/sites/show.html.haml',
-      controller: 'SiteShowCtrl'
-    }).
-    otherwise({
-      templateUrl: '../templates/home.html.haml',
-      controller: 'HomeCtrl'
-    })
-])
+#= require_self
+#= require_tree ./angular/services/global
+#= require_tree ./angular/services/main
+#= require_tree ./angular/filters/global
+#= require_tree ./angular/filters/main
+#= require_tree ./angular/controllers/global
+#= require_tree ./angular/controllers/main
+#= require_tree ./angular/directives/global
+#= require_tree ./angular/directives/main
