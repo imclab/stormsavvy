@@ -12,7 +12,7 @@
 #= require_tree ./angular/directives/global
 #= require_tree ./angular/directives/main
 
-Site = angular.module('Site', ['ngRoute'])
+Site = angular.module('Site', [])
 
 Site.config(['$routeProvider', ($routeProvider) ->
   $routeProvider.when('/site', { templateUrl: '../assets/templates/mainSite.html.haml', controller: 'SiteCtrl' } )
