@@ -1,10 +1,11 @@
 !!!
-%html{"ng-app" => "site"}
+%html{"ng-app" => ""}
   %head
     %title #{title}
     %link{:href => "https://plus.google.com/100567972543112604606", :rel => "publisher"}/
     = stylesheet_link_tag :application
-    = javascript_include_tag 'http://w.sharethis.com/button/buttons.js', :application, controller_name
+    /= javascript_include_tag 'http://w.sharethis.com/button/buttons.js', :application
+    = javascript_include_tag "application", controller_name
     = render 'shared/google_analytics'
     %meta{:charset => "utf-8"}
     = csrf_meta_tag
