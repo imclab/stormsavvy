@@ -1,9 +1,0 @@
-Sites#Index
-%div{"ng-controller" => "SiteCtrl"}
-  %h1 {{ title }}
-
-%a{:href => "/#"} index
-%ul{"ng-repeat" => "site in sites"}
-  %li
-    %a{"ng-click" => "viewSite(site.id)"} {{ site.name }}
-= yield
