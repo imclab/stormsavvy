@@ -1,5 +1,5 @@
 !!!
-%html
+%html{"ng-app" => "site"}
   %head
     %title #{title}
     %link{:href => "https://plus.google.com/100567972543112604606", :rel => "publisher"}/
@@ -12,6 +12,7 @@
     %link{:href => "assets/css/bootstrap-responsive.css.scss", :rel => "stylesheet"}
 
   %body{ template_id, template_class }
+    %div{"ng-view" => ""}
     /= render :partial => "shared/flash_messages", :locals => {:flash => flash}
     /- if user_signed_in?
     = render 'layouts/header'
