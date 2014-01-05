@@ -5,13 +5,12 @@
     %link{:href => "https://plus.google.com/100567972543112604606", :rel => "publisher"}/
     /= stylesheet_link_tag :application
     = stylesheet_link_tag  "application", media: "all"
-    /= javascript_include_tag 'http://w.sharethis.com/button/buttons.js', :application
-    = javascript_include_tag "application", controller_name
-    = render 'shared/google_analytics'
-    %meta{:charset => "utf-8"}
+    = javascript_include_tag 'http://w.sharethis.com/button/buttons.js', :application
+    /= javascript_include_tag "application", controller_name
     = csrf_meta_tag
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %script{:src => "angular-route.js"}
+
+    = render 'shared/google_analytics'
+    %meta{:charset => "utf-8", :content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 
   %body{ template_id, template_class }
     %div
