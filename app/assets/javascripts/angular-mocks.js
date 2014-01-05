@@ -29,7 +29,7 @@ angular.mock = {};
  * that there are several helper methods available which can be used in tests.
  */
 angular.mock.$BrowserProvider = function() {
-  this.$get = function() {
+  this.$get = function(){
     return new angular.mock.$Browser();
   };
 };
@@ -75,13 +75,6 @@ angular.mock.$Browser = function() {
   };
 
 
-  /**
-   * @name ngMock.$browser#defer.now
-   * @propertyOf ngMock.$browser
-   *
-   * @description
-   * Current milliseconds mock time.
-   */
   self.defer.now = 0;
 
 
@@ -117,7 +110,7 @@ angular.mock.$Browser = function() {
       if (self.deferredFns.length) {
         self.defer.now = self.deferredFns[self.deferredFns.length-1].time;
       } else {
-        throw new Error('No deferred tasks to be flushed');
+        throw Error('No deferred tasks to be flushed');
       }
     }
 
@@ -125,6 +118,13 @@ angular.mock.$Browser = function() {
       self.deferredFns.shift().fn();
     }
   };
+  /**
+   * @name ngMock.$browser#defer.now
+   * @propertyOf ngMock.$browser
+   *
+   * @description
+   * Current milliseconds mock time.
+   */
 
   self.$$baseHref = '';
   self.baseHref = function() {
@@ -162,7 +162,7 @@ angular.mock.$Browser.prototype = {
 
   cookies:  function(name, value) {
     if (name) {
-      if (angular.isUndefined(value)) {
+      if (value == undefined) {
         delete this.cookieHash[name];
       } else {
         if (angular.isString(value) &&       //strings only
@@ -190,8 +190,8 @@ angular.mock.$Browser.prototype = {
  * @name ngMock.$exceptionHandlerProvider
  *
  * @description
- * Configures the mock implementation of {@link ng.$exceptionHandler} to rethrow or to log errors
- * passed into the `$exceptionHandler`.
+ * Configures the mock implementation of {@link ng.$exceptionHandler} to rethrow or to log errors passed
+ * into the `$exceptionHandler`.
  */
 
 /**
@@ -241,13 +241,13 @@ angular.mock.$ExceptionHandlerProvider = function() {
    *
    * @param {string} mode Mode of operation, defaults to `rethrow`.
    *
-   *   - `rethrow`: If any errors are passed into the handler in tests, it typically
+   *   - `rethrow`: If any errors are are passed into the handler in tests, it typically
    *                means that there is a bug in the application or test, so this mock will
    *                make these tests fail.
-   *   - `log`: Sometimes it is desirable to test that an error is thrown, for this case the `log`
-   *            mode stores an array of errors in `$exceptionHandler.errors`, to allow later
-   *            assertion of them. See {@link ngMock.$log#assertEmpty assertEmpty()} and
-   *            {@link ngMock.$log#reset reset()}
+   *   - `log`: Sometimes it is desirable to test that an error is thrown, for this case the `log` mode stores an
+   *            array of errors in `$exceptionHandler.errors`, to allow later assertion of them.
+   *            See {@link ngMock.$log#assertEmpty assertEmpty()} and
+   *             {@link ngMock.$log#reset reset()}
    */
   this.mode = function(mode) {
     switch(mode) {
@@ -270,7 +270,7 @@ angular.mock.$ExceptionHandlerProvider = function() {
         handler.errors = errors;
         break;
       default:
-        throw new Error("Unknown mode '" + mode + "', only 'log'/'rethrow' modes are allowed!");
+        throw Error("Unknown mode '" + mode + "', only 'log'/'rethrow' modes are allowed!");
     }
   };
 
@@ -293,32 +293,18 @@ angular.mock.$ExceptionHandlerProvider = function() {
  *
  */
 angular.mock.$LogProvider = function() {
-  var debug = true;
 
   function concat(array1, array2, index) {
     return array1.concat(Array.prototype.slice.call(array2, index));
   }
 
-  this.debugEnabled = function(flag) {
-    if (angular.isDefined(flag)) {
-      debug = flag;
-      return this;
-    } else {
-      return debug;
-    }
-  };
 
   this.$get = function () {
     var $log = {
       log: function() { $log.log.logs.push(concat([], arguments, 0)); },
       warn: function() { $log.warn.logs.push(concat([], arguments, 0)); },
       info: function() { $log.info.logs.push(concat([], arguments, 0)); },
-      error: function() { $log.error.logs.push(concat([], arguments, 0)); },
-      debug: function() {
-        if (debug) {
-          $log.debug.logs.push(concat([], arguments, 0));
-        }
-      }
+      error: function() { $log.error.logs.push(concat([], arguments, 0)); }
     };
 
     /**
@@ -336,75 +322,36 @@ angular.mock.$LogProvider = function() {
        * @propertyOf ngMock.$log
        *
        * @description
-       * Array of messages logged using {@link ngMock.$log#log}.
-       *
-       * @example
-       * <pre>
-       * $log.log('Some Log');
-       * var first = $log.log.logs.unshift();
-       * </pre>
+       * Array of logged messages.
        */
       $log.log.logs = [];
-      /**
-       * @ngdoc property
-       * @name ngMock.$log#info.logs
-       * @propertyOf ngMock.$log
-       *
-       * @description
-       * Array of messages logged using {@link ngMock.$log#info}.
-       *
-       * @example
-       * <pre>
-       * $log.info('Some Info');
-       * var first = $log.info.logs.unshift();
-       * </pre>
-       */
-      $log.info.logs = [];
       /**
        * @ngdoc property
        * @name ngMock.$log#warn.logs
        * @propertyOf ngMock.$log
        *
        * @description
-       * Array of messages logged using {@link ngMock.$log#warn}.
-       *
-       * @example
-       * <pre>
-       * $log.warn('Some Warning');
-       * var first = $log.warn.logs.unshift();
-       * </pre>
+       * Array of logged messages.
        */
       $log.warn.logs = [];
+      /**
+       * @ngdoc property
+       * @name ngMock.$log#info.logs
+       * @propertyOf ngMock.$log
+       *
+       * @description
+       * Array of logged messages.
+       */
+      $log.info.logs = [];
       /**
        * @ngdoc property
        * @name ngMock.$log#error.logs
        * @propertyOf ngMock.$log
        *
        * @description
-       * Array of messages logged using {@link ngMock.$log#error}.
-       *
-       * @example
-       * <pre>
-       * $log.log('Some Error');
-       * var first = $log.error.logs.unshift();
-       * </pre>
+       * Array of logged messages.
        */
       $log.error.logs = [];
-        /**
-       * @ngdoc property
-       * @name ngMock.$log#debug.logs
-       * @propertyOf ngMock.$log
-       *
-       * @description
-       * Array of messages logged using {@link ngMock.$log#debug}.
-       *
-       * @example
-       * <pre>
-       * $log.debug('Some Error');
-       * var first = $log.debug.logs.unshift();
-       * </pre>
-       */
-      $log.debug.logs = [];
     };
 
     /**
