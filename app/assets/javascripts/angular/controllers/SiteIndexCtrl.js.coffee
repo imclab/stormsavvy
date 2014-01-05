@@ -6,6 +6,9 @@
     $scope.sites = data
   )
 
+  ($scope) ->
+    $scope.title = "Active Sites"
+
   $scope.viewSite = (id) ->
     $location.url "/sites/#{id}"
 ]
