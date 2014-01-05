@@ -5,4 +5,7 @@
   $http.get('./sites.json').success((data) ->
     $scope.sites = data
   )
+
+  $scope.viewSite = (id) ->
+    $location.url "/sites/#{id}"
 ]
