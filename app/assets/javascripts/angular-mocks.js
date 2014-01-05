@@ -1,11 +1,10 @@
 /**
- * @license AngularJS v1.2.7
- * (c) 2010-2014 Google, Inc. http://angularjs.org
+ * @license AngularJS v1.0.6
+ * (c) 2010-2012 Google, Inc. http://angularjs.org
  * License: MIT
+ *
+ * TODO(vojta): wrap whole file into closure during build
  */
-(function(window, angular, undefined) {
-
-'use strict';
 
 /**
  * @ngdoc overview
