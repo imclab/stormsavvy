@@ -9,9 +9,13 @@
 # route for our application.
 @site.config(['$routeProvider', ($routeProvider) ->
   $routeProvider.
-    when('/site_list', {
-      templateUrl: '../templates/sites/index.html',
+    when('/sites', {
+      templateUrl: '../templates/sites/index.html.haml',
       controller: 'SiteIndexCtrl'
+    }).
+    when('/sites/:id', {
+      templateUrl: '../templates/sites/show.html.haml',
+      controller: 'SiteShowCtrl'
     }).
     otherwise({
       templateUrl: '../templates/home.html.haml',
