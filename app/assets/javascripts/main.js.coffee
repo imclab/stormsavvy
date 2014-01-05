@@ -11,3 +11,10 @@
 #= require_tree ./angular/controllers/main
 #= require_tree ./angular/directives/global
 #= require_tree ./angular/directives/main
+
+Site = angular.module('Site', ['ngRoute'])
+
+Site.config(['$routeProvider', ($routeProvider) ->
+  $routeProvider.when('/site', { templateUrl: '../assets/templates/mainSite.html.haml', controller: 'SiteCtrl' } )
+  $routeProvider.otherwise({ templateUrl: '../assets/templates/mainIndex.html.haml', controller: 'IndexCtrl' } )
+])
