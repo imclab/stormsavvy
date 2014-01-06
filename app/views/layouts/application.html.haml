@@ -5,10 +5,10 @@
     %link{:href => "https://plus.google.com/100567972543112604606", :rel => "publisher"}/
 
     = stylesheet_link_tag  "application", media: "all"
-    = javascript_include_tag 'http://w.sharethis.com/button/buttons.js', :application
+    = javascript_include_tag "application", controller_name
 
     /= stylesheet_link_tag :application
-    /= javascript_include_tag "application", controller_name
+    /= javascript_include_tag 'http://w.sharethis.com/button/buttons.js', :application
 
     = csrf_meta_tag
     = render 'shared/google_analytics'
