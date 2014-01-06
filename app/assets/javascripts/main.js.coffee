@@ -15,6 +15,6 @@
 Site = angular.module('Site', [])
 
 Site.config(['$routeProvider', ($routeProvider) ->
-  $routeProvider.when('/site', { templateUrl: '../assets/templates/mainSite.html.haml', controller: 'SiteCtrl' } )
-  $routeProvider.otherwise({ templateUrl: '../assets/templates/mainIndex.html.haml', controller: 'IndexCtrl' } )
+  $routeProvider.when('/site', { templateUrl: '../assets/mainSite.html.haml', controller: 'SiteCtrl' } )
+  $routeProvider.otherwise({ templateUrl: '../assets/mainIndex.html.haml', controller: 'IndexCtrl' } )
 ])
