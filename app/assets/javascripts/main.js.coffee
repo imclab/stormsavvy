@@ -3,18 +3,20 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 #= require_self
-#= require_tree ./angular/services/global
-#= require_tree ./angular/services/main
-#= require_tree ./angular/filters/global
-#= require_tree ./angular/filters/main
-#= require_tree ./angular/controllers/global
-#= require_tree ./angular/controllers/main
-#= require_tree ./angular/directives/global
-#= require_tree ./angular/directives/main
+#= require_tree ./services/global
+#= require_tree ./services/main
+#= require_tree ./filters/global
+#= require_tree ./filters/main
+#= require_tree ./controllers/global
+#= require_tree ./controllers/main
+#= require_tree ./directives/global
+#= require_tree ./directives/main
 
+# Creates new Angular module called 'Site' 
 Site = angular.module('Site', [])
 
+# Sets up routing
 Site.config(['$routeProvider', ($routeProvider) ->
-  $routeProvider.when('/site', { templateUrl: '../assets/mainSite.html.haml', controller: 'SiteCtrl' } )
-  $routeProvider.otherwise({ templateUrl: '../assets/mainIndex.html.haml', controller: 'IndexCtrl' } )
+  $routeProvider.when('/site/:siteId', { templateUrl: '../assets/mainSite.html', controller: 'SiteCtrl' } )
+  $routeProvider.otherwise({ templateUrl: '../assets/mainIndex.html', controller: 'IndexCtrl' } )
 ])
