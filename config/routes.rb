@@ -3,14 +3,13 @@ require 'sidekiq/web'
 Stormsavvy::Application.routes.draw do
 
   get "main/index"
-  get "static_pages/index"
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
 
-  # root to: 'main#index'
   root to: 'dashboard#index'
+  # root to: 'main#index'
   # root to: 'sites#users_sites'
 
   get "alert_pages/sender"
