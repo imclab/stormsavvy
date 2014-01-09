@@ -14,9 +14,3 @@
 
 # Creates new Angular module called 'Site' 
 Site = angular.module('Site', [])
-
-# Sets up routing
-Site.config(['$routeProvider', ($routeProvider) ->
-  $routeProvider.when('/site/:siteId', { templateUrl: '../assets/mainSite.html', controller: 'SiteCtrl' } )
-  $routeProvider.otherwise({ templateUrl: '../assets/mainIndex.html', controller: 'IndexCtrl' } )
-])
