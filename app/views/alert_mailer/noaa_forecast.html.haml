@@ -7,3 +7,19 @@ Here is your NOAA forecast:
       %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
         %i=link_to "#{site.name}: ", site_path(site)
         = "#{site.max_rain}% chance of rain"
+
+%table{ :style => "width: 600px; background-color: #eee;", :align => "center" }
+  %tr
+    %td
+      %h1
+        Daily Weather Forecast
+      %p
+        = @greeting
+      %p
+        Listed below are the daily weather forecasts for the North Bay.
+      %p
+        = @noaa_info
+        %a{ :href=>"http://w1.weather.gov/xml/current_obs/" }
+          weather.gov
+      %li
+        = @pop
