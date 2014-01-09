@@ -1,6 +1,2 @@
-@IndexCtrl = ($scope, $location) ->
-  $scope.data =
-    sites: [{name: 'ecp', zipcode: '94531'}, {name: 'berkeley high', zipcode: '94709'}]
-  $scope.viewSite = (siteId) ->
-    $location.url('/site/'+siteId)
+@IndexCtrl = ($scope) ->
   $scope.title = "Active Sites"
