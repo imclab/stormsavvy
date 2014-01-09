@@ -130,7 +130,7 @@ describe AlertMailer do
     let!(:mailer) { AlertMailer.noaa_forecast(user).deliver }
 
     it 'collects site forecast' do
-      mailer.noaa_forecast(user)
+      pp mailer
     end
 
     it "renders the headers" do
@@ -142,6 +142,12 @@ describe AlertMailer do
       mailer.subject.should =~ /NOAA Forecast Notification/
       mailer.to.should eq(["#{user.email}"])
       mailer.from.should eq(["alerts@stormsavvy.com"])
+    end
+
+    it "renders the body" do
+      mailer.body.encoded.should match("Greetings")
+      mailer.body.encoded.should match("Here are the daily forecasts for your sites:")
+      mailer.body.encoded.should match("Here are the weekly forecasts for your sites:")
     end
 
     it "should send something via mailout" do
