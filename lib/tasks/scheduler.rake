@@ -54,12 +54,9 @@ namespace :scheduler do
 
   desc "Delivers noaa_forecast mailer"
   task :noaa_forecast => :environment do
-  	test_users = [
-      'walter@stormsavvy.com',
-      'kharma+stormsavvy@gmail.com'
-      ]
-    test_users.each do |address|
-  	  AlertMailer.noaa_forecast(address)
+    users = User.all
+    users.each do |user|
+  	  AlertMailer.noaa_forecast(user)
   	end
   end
 
