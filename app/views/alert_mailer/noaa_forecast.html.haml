@@ -1,25 +1,30 @@
-Here is your NOAA forecast:
-%ul
-  - @user.sites.each do |site|
-    %li.cf
-      - site.chance_of_rain
-      .span
-      %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
-        %i=link_to "#{site.name}: ", site_path(site)
-        = "#{site.max_rain}% chance of rain"
-
 %table{ :style => "width: 600px; background-color: #eee;", :align => "center" }
   %tr
     %td
       %h1
-        Daily Weather Forecast
+        NOAA Daily Forecast
       %p
         = @greeting
       %p
-        Listed below are the daily weather forecasts for the North Bay.
+        Here are the daily forecasts for your sites:
+        %ul
+          - @user.sites.each do |site|
+            %li.cf
+              - site.chance_of_rain
+              .span
+              %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
+                %i=link_to "#{site.name}: ", site_path(site)
+                = "#{site.max_rain}% chance of rain"
+      %p
+        Here are the weekly forecasts for your sites:
       %p
         = @noaa_info
         %a{ :href=>"http://w1.weather.gov/xml/current_obs/" }
           weather.gov
-      %li
+      %p
+        = @support
+      %p
+        = @salutation
+      %hr
+      %p
         = @pop
