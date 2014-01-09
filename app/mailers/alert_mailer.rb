@@ -115,7 +115,7 @@ class AlertMailer < ActionMailer::Base
       if user.has_site?
         mail(
           :from     => "alerts@stormsavvy.com",
-          :to       => user.email,
+          :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
           :subject  => "NOAA Forecast Notification"
           ).deliver
       end
