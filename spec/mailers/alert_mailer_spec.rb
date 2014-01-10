@@ -130,7 +130,7 @@ describe AlertMailer do
     let!(:mailer) { AlertMailer.noaa_forecast(user).deliver }
 
     it 'collects site forecast' do
-      pp mailer
+      # pp mailer
     end
 
     it "renders the headers" do
