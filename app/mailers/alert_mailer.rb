@@ -95,13 +95,18 @@ class AlertMailer < ActionMailer::Base
     for i in (0..28)
       date = { :date => ProjectLocalTime::format(Date.today + i.hours) }
       weather = { :weather => noaa.forecast_periods[i].pop }
-      @pop.push(date)
-      @pop.push(weather)
+      @pop.push(date, weather)
+      @pop.each do |f|
+        pp f[:date]
+        # pp f[:weather]
+      end
     end
   end
 
   def noaa_forecast(user)
     set_defaults
+
+    # refactor logic later
     if user.has_site?
       user.sites.each do |site|
         site_forecast(site)
