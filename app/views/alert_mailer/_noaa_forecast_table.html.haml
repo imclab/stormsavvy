@@ -1,0 +1,14 @@
+%table
+  %h3
+    = @site.name
+  %tr
+    %th
+      Date
+    %th
+      Forecast
+    - @pop.each do |f|
+      %tr
+        %td
+          = f[:date]
+        %td
+          = f[:weather]
