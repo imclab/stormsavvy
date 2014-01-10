@@ -117,6 +117,10 @@ class AlertMailer < ActionMailer::Base
     @users = User.all
     @users.each do |user|
       @user = user # `@user` is needed for the template
+      user.sites.each do |site|
+        @site = site
+      end
+
       if user.has_site?
         mail(
           :from     => "alerts@stormsavvy.com",
