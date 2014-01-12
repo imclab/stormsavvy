@@ -14,6 +14,6 @@ describe "alert_mailer/noaa_forecast" do
 
   it "renders the noaa forecast alert email view" do
     render
-    rendered.should =~ /Here is your NOAA forecast:/
+    rendered.should =~ /Here are the daily forecasts for your sites:/
   end
 end
