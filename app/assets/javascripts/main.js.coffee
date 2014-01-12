@@ -13,4 +13,4 @@
 #= require_tree ./directives/main
 
 # Creates new Angular module called 'Site' 
-Site = angular.module('Site', [])
+Site = angular.module('Site', ['ngResource'])
