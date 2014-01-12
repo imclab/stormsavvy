@@ -1,5 +1,5 @@
-<h1 class="text-center">Active Sites</h1>
+<h1 class="text-center">{{ title }}</h1>
 <div class="row" ng-repeat="site in data.sites">
-  <h3><a ng-click="viewSite($index)">{{ site.name }}</a></h2>
-  <p>{{ site.zipcode }}</p> 
+  <h2>{{ site.name }}</h2>
+  <p>{{ site.zipcode }}</p>
 </div>
