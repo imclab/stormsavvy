@@ -17,8 +17,9 @@ Site = angular.module('Site', ['ngResource'])
 
 # Sets up routing
 Site.config(['$routeProvider', ($routeProvider) ->
-  # Route for '/post'
-  $routeProvider.when('/post', { templateUrl: '../assets/mainSite.html', controller: 'SiteCtrl' } )
+
+  # Route for '/site'
+  $routeProvider.when('/site/:siteId', { templateUrl: '../assets/mainSite.html', controller: 'SiteCtrl' } )
 
   # Default
   $routeProvider.otherwise({ templateUrl: '../assets/mainIndex.html', controller: 'IndexCtrl' } )
