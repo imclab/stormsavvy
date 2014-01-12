@@ -20,6 +20,7 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'turbolinks'
+gem 'angularjs-rails'
 
 gem 'prawn', git: 'git://github.com/WalterYu/prawn.git'
 gem 'pdf-reader'
