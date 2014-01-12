@@ -17,5 +17,7 @@
 //= require underscore-min
 //= require bootstrap
 //= require angular
+//= require angular-resource
+//= require app
 //= require_self
-//= require_tree .
+//= require tree .
