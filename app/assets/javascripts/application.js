@@ -11,13 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
-//= require jquery
-//= require jquery_ujs
-//= require jquery_nested_form
 //= require underscore-min
 //= require bootstrap
 //= require angular
 //= require angular-resource
-//= require app
-//= require_self
-//= require tree .
+//= require jquery
+//= require jquery_ujs
+//= require jquery_nested_form
