@@ -9,8 +9,9 @@ class AlertMailer < ActionMailer::Base
     @noaa_info = "Forecast is based on NOAA data feed. For more info, visit: "
   end
 
-  def northbay_forecast(email)
-    set_defaults
+  def set_northbay
+    @subject = "Storm Savvy Daily Forecast: North Bay"
+
     @location1 = "San Rafael, CA 94901"
     @nf1 = NOAAForecast.new(94901)
     @nf2 = @nf1.forecast_by_zipcode(94901)
