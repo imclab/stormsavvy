@@ -170,7 +170,6 @@ class AlertMailer < ActionMailer::Base
       @user = user
       if @user.has_site?
         mail(
-          :from     => "alerts@stormsavvy.com",
           :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
           :subject  => "Storm Savvy POP Alert"
           ).deliver
