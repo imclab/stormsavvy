@@ -101,31 +101,6 @@ describe AlertMailer do
     end
   end
 
-  describe "noaa_alert" do
-    let!(:mailer) { AlertMailer.noaa_alert(user).deliver }
-
-    it "renders the headers" do
-      mailer.subject.should =~ /Storm Savvy Daily/
-      mailer.to.should eq(["#{user.email}"])
-      mailer.from.should eq(["alerts@stormsavvy.com"])
-    end
-
-    it "renders the body" do
-      mailer.body.encoded.should match("Greetings")
-      # mailer.body.encoded.should =~ /Please be advised that there is a forecast rain event in your area./
-    end
-
-    it "delivers and receives mailer" do
-      ActionMailer::Base.deliveries.should_not be_empty
-    end
-
-    it 'delays delivery using sidekiq' do
-      expect { AlertMailer.delay.noaa_alert(user)}.to change(
-        Sidekiq::Extensions::DelayedMailer.jobs, :size
-      ).by(1)
-    end
-  end
-
   describe "noaa_forecast" do
     let!(:mailer) { AlertMailer.noaa_forecast(user).deliver }
 
