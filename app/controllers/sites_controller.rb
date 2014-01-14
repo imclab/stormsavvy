@@ -1,4 +1,6 @@
 class SitesController < ApplicationController
+  respond_to :json
+
   # GET /sites
   # GET /sites.json
   def index
