@@ -40,7 +40,7 @@ describe NoaaForecastService do
 
         it "should set forecast_periods after API query" do
           begin
-            @n.forecast_periods.length.should == 57
+            nfs.forecast_periods.length.should == 57
           rescue
             'not online or method throwing error'
           end
@@ -49,7 +49,7 @@ describe NoaaForecastService do
         it "should successfully save WeatherUpdate" do
           begin
             weather_update_count = WeatherUpdate.count
-            @n.save_results
+            nfs.save_results
             WeatherUpdate.count.should == weather_update_count + 1
           rescue
             'not online or method throwing error'
@@ -59,7 +59,7 @@ describe NoaaForecastService do
         it "should successfully save ForecastPeriods" do
           begin
             weather_update_count = ForecastPeriod.count
-            @n.save_results
+            nfs.save_results
             ForecastPeriod.count.should == weather_update_count + 57
           rescue
             'not online or method throwing error'
