@@ -23,9 +23,23 @@ class NoaaForecastService
   end
 
   def site_forecast(site)
-    @noaa = self.new(:site => site)
+    @noaa = NoaaForecastService.new(:site => site)
     @noaa.get_forecast
     @noaa.save_results
+  end
+
+  def forecast_table(site)
+    site_forecast(site)
+
+    @pop = []
+    for i in (0..27)
+      date = { :date => ProjectLocalTime::format(Date.today + (6*i).hours) }
+      weather = { :weather => @noaa.forecast_periods[i].pop }
+      date_weather = date.merge!(weather)
+      @pop.push(date_weather)
+    end
+
+    pp @pop
   end
 
   private
