@@ -146,20 +146,6 @@ class AlertMailer < ActionMailer::Base
     end
   end
 
-  def noaa_alert(user)
-    set_defaults
-    @users = User.all
-    @users.each do |user|
-      @user = user # @user needed for template
-      if @user.has_site?
-        mail(
-          :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
-          :subject  => "Storm Savvy Daily Weather Forecasts"
-          ).deliver
-      end
-    end
-  end
-
   def pop_alert(user)
     set_defaults
     @users = User.all
