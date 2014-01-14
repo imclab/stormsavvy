@@ -61,18 +61,6 @@ namespace :scheduler do
   	end
   end
 
-  desc "Delivers noaa_alert mailer"
-  task :noaaalert => :environment do
-  	test_users = [
-      'walter@stormsavvy.com',
-      'kharma+stormsavvy@gmail.com'
-      ]
-    # if user.sites.precipitation_state(forecast) == :imminent then
-    test_users.each do |address|
-  	  AlertMailer.delay.noaa_alert(address)
-  	end
-  end
-
   desc "Delivers pester_admins mailer"
   task :dailynotice => :environment do
     admins = [
