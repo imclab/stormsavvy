@@ -22,6 +22,12 @@ class NoaaForecastService
     save_forecast_periods
   end
 
+  def site_forecast(site)
+    @noaa = self.new(:site => site)
+    @noaa.get_forecast
+    @noaa.save_results
+  end
+
   private
 
   def save_forecast_periods
