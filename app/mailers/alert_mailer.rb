@@ -88,11 +88,15 @@ class AlertMailer < ActionMailer::Base
     @location4 = "Palo Alto, CA 94305"
     @nf7 = NOAAForecast.new(94305)
     @nf8 = @nf7.forecast_by_zipcode(94305)
+  end
+
+  def southbay_forecast(email)
+    set_defaults
+    set_southbay
 
     mail(
-      :from     => "alerts@stormsavvy.com",
       :to       => email,
-      :subject  => "Storm Savvy Daily Forecast: South Bay"
+      :subject  => @subject
       ).deliver
   end
 
