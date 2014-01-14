@@ -125,11 +125,11 @@ describe AlertMailer do
       mailer.body.encoded.should match("Here are the weekly forecasts for your sites:")
     end
 
-    it "should send something via mailout" do
+    it "delivers mail" do
       ActionMailer::Base.deliveries.should_not be_empty
     end
 
-    it "should render successfully" do
+    it "renders successfully" do
       lambda { mailer }.should_not raise_error
     end
 

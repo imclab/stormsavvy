@@ -2,32 +2,37 @@ require "spec_helper"
 
 describe NoaaForecastService do
   context "with a site" do
-    before :each do
+
+    let!(:site) {
       site = FactoryGirl.build(:site)
+    }
+    let!(:nfs) {
       @n = NoaaForecastService.new(site: site)
+    }
+    before :each do
     end
 
     describe "with a site with valid lat/lng" do
       it "should successfully create a new NoaaForecastService object" do
-        @n.should_not == nil
+        nfs.should_not == nil
       end
 
       it "should respond to 'get_forecast'" do
-        @n.should respond_to(:get_forecast)
+        nfs.should respond_to(:get_forecast)
       end
 
       it "should respond to 'save_results'" do
-        @n.should respond_to(:save_results)
+        nfs.should respond_to(:save_results)
       end
 
       context "API query" do
         before :each do
-          @n.get_forecast
+          nfs.get_forecast
         end
 
         it "should set weather_update after API query" do
           begin
-            @n.weather_update.class.name.should == "WeatherUpdate"
+            nfs.weather_update.class.name.should == "WeatherUpdate"
           rescue
             'not online or method throwing error'
           end
