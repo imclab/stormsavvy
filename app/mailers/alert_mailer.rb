@@ -128,6 +128,7 @@ class AlertMailer < ActionMailer::Base
 
   def pop_alert(user)
     set_defaults
+
     @users = User.all
     # if @forecast == :imminent then
     @users.each do |user|

@@ -70,12 +70,6 @@ class User < ActiveRecord::Base
       @site_names << s.name.to_s
     end
 
-    # self.projects.each do |p|
-    #   p.sites.each do |s|
-    #     @site_names << s.name.to_s
-    #   end
-    # end
-
     unless @site_names.blank?
       return @site_names
     else
