@@ -17,11 +17,8 @@ class Site < ActiveRecord::Base
     :lat,
     :long
 
-  belongs_to :user#, counter_cache: true
+  belongs_to :user #, counter_cache: true
   # accepts_nested_attributes_for :user
-
-  # belongs_to :project, counter_cache: true
-  # accepts_nested_attributes_for :project
 
   has_many :reports, :dependent => :destroy
   has_many :inspection_events, :dependent => :destroy
