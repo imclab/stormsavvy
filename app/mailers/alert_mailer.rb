@@ -27,16 +27,22 @@ class AlertMailer < ActionMailer::Base
     @location4 = "Rohnert Park, CA 94928"
     @nf7 = NOAAForecast.new(94928)
     @nf8 = @nf7.forecast_by_zipcode(94928)
+  end
+
+  def northbay_forecast(email)
+    set_defaults
+    set_northbay
 
     mail(
-      :from     => "alerts@stormsavvy.com",
+      # :from     => "alerts@stormsavvy.com",
       :to       => email,
-      :subject  => "Storm Savvy Daily Forecast: North Bay"
+      :subject  => @subject
       ).deliver
   end
 
-  def eastbay_forecast(email)
-    set_defaults
+  def set_eastbay
+    @subject = "Storm Savvy Daily Forecast: East Bay"
+
     @location1 = "Oakland, CA 94621"
     @nf1 = NOAAForecast.new(94621)
     @nf2 = @nf1.forecast_by_zipcode(94621)
