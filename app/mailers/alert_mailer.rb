@@ -154,7 +154,6 @@ class AlertMailer < ActionMailer::Base
       @user = user # @user needed for template
       if @user.has_site?
         mail(
-          :from     => "alerts@stormsavvy.com",
           :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
           :subject  => "Storm Savvy Daily Weather Forecasts"
           ).deliver
