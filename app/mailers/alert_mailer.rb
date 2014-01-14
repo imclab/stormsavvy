@@ -100,33 +100,13 @@ class AlertMailer < ActionMailer::Base
       ).deliver
   end
 
-  def site_forecast(site)
-    @noaa = NoaaForecastService.new(:site => site)
-    @noaa.get_forecast
-    @noaa.save_results
-  end
-
-  def forecast_table(noaa)
-    @pop = []
-    for i in (0..28)
-      date = { :date => ProjectLocalTime::format(Date.today + i.hours) }
-      weather = { :weather => noaa.forecast_periods[i].pop }
-      @pop.push(date, weather)
-      @pop.each do |f|
-        pp f[:date]
-        # pp f[:weather]
-      end
-    end
-  end
-
   def noaa_forecast(user)
     set_defaults
 
     # refactor logic later
     if user.has_site?
       user.sites.each do |site|
-        site_forecast(site)
-        forecast_table(@noaa)
+        NoaaForecastService.forecast_table(site)
       end
     end
 
