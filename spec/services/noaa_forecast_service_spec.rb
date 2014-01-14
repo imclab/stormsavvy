@@ -25,6 +25,20 @@ describe NoaaForecastService do
         nfs.should respond_to(:save_results)
       end
 
+      describe '#site_forecast' do
+        it 'returns site forecast' do
+          nfs.should respond_to(:site_forecast)
+          nfs.site_forecast(site).length.should == 57
+        end
+      end
+
+      describe '#forecast_table' do
+        it 'returns forecast table' do
+          nfs.should respond_to(:forecast_table)
+          pp nfs.forecast_table(site).length.should == 28
+        end
+      end
+
       context "API query" do
         before :each do
           nfs.get_forecast
