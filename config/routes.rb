@@ -12,10 +12,7 @@ Stormsavvy::Application.routes.draw do
   # root to: 'main#index'
   # root to: 'sites#users_sites'
 
-  get "alert_pages/sender"
-  get "alert_pages/thankyou"
   get "dashboard/index"
-  get "noaa/secret"
   get "sites", :to => "sites#users_sites"
 
   namespace :pdf do
