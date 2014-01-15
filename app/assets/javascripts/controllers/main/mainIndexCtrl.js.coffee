@@ -1,8 +1,8 @@
-@IndexCtrl = ($scope, $location) ->
+@IndexCtrl = ($scope, $location, $http) ->
   $scope.title = "Active Sites"
   $scope.data =
     sites: [{name: 'ecp', zipcode: '94530'}, {name: 'berkeley', zipcode: '94709'}]
-    # sites: [{title: 'Loading sites...', contents: ''}]
+    sites: [{title: 'Loading sites...', contents: ''}]
 
   loadSites = ->
     $http.get('./sites.json').success( (data) ->
