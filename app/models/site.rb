@@ -24,7 +24,6 @@ class Site < ActiveRecord::Base
   has_many :inspection_events, :dependent => :destroy
   has_many :inspection_event_workflows, :dependent => :destroy
   has_many :sampling_events, :dependent => :destroy
-  has_many :site_pop, :dependent => :destroy
   has_many :weather_updates
   has_many :forecast_periods
 
