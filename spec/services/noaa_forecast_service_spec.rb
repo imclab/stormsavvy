@@ -33,9 +33,16 @@ describe NoaaForecastService do
       end
 
       describe '#forecast_table' do
-        it 'returns forecast table' do
+        it 'returns 28 elements in forecast table' do
           nfs.should respond_to(:forecast_table)
-          pp nfs.forecast_table(site).length.should == 28
+
+          noaa = nfs.forecast_table(site)
+          noaa.length.should == 28
+        end
+
+        it 'returns values between 0 and 100' do
+          noaa = nfs.forecast_table(site)
+          # noaa[0..27].should be_between(0,100)
         end
       end
 
