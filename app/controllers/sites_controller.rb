@@ -1,16 +1,32 @@
 class SitesController < ApplicationController
   respond_to :json
+  before_filter :check_auth
+
+  def check_auth
+    authenticate_or_request_with_http_basic do |username,password|
+      resource = User.find_by_email(username)
+      if resource.valid_password?(password)
+        sign_in :user, resource
+      end
+    end
+  end
 
   # GET /sites
   # GET /sites.json
   def index
+
+    sites = Site.all
     @sites = current_user.sites
-    # @sites = Site.all
     @needs_attention_reports = Report.needs_attention
 
-    respond_to do |format|
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @sites }
+    # end
+
+    respond_with(sites) do |format|
       format.html # index.html.erb
-      format.json { render json: @sites }
+      format.json { render :json => sites.as_json }
     end
   end
 
