@@ -70,7 +70,6 @@ describe SitesController do
   before :each do
     sign_in user
   end
-  # sign_in @user
 
   describe "GET index" do
     it "has a 200 status code" do
@@ -93,7 +92,7 @@ describe SitesController do
     end
   end
 
-  describe "GET show" do
+ describe "GET show" do
     it "assigns the requested site as @site" do
       # @project = @user.projects.create!(project_attributes)
       # site = @project.sites.create! valid_attributes
