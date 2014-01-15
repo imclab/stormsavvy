@@ -38,8 +38,7 @@ class NoaaForecastService
       date_weather = date.merge!(weather)
       @pop.push(date_weather)
     end
-
-    pp @pop
+    return @pop
   end
 
   private
