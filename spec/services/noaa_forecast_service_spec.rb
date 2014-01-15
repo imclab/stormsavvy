@@ -33,11 +33,12 @@ describe NoaaForecastService do
       end
 
       describe '#forecast_table' do
-        it 'returns 28 elements in forecast table' do
+        it 'returns correct number of elements' do
           nfs.should respond_to(:forecast_table)
 
           noaa = nfs.forecast_table(site)
           noaa.length.should == 28
+          pp noaa
         end
 
         it 'returns values between 0 and 100' do
