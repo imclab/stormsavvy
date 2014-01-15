@@ -25,7 +25,7 @@ class SitesController < ApplicationController
     # end
 
     respond_with(sites) do |format|
-      format.html { redirect_to site_user_sites_path }
+      format.html # { redirect_to site_user_sites_path }
       format.json { render :json => @sites.as_json }
     end
   end
