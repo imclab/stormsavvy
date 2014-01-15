@@ -106,7 +106,7 @@ class AlertMailer < ActionMailer::Base
     # refactor logic later
     if user.has_site?
       user.sites.each do |site|
-        nfs = NoaaForecastService.new
+        nfs = NoaaForecastService.new(site: site)
         nfs.forecast_table(site)
       end
     end
