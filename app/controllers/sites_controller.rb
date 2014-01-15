@@ -26,7 +26,7 @@ class SitesController < ApplicationController
 
     respond_with(sites) do |format|
       format.html # index.html.erb
-      format.json { render :json => sites.as_json }
+      format.json { render :json => @sites.as_json }
     end
   end
 
