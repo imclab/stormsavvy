@@ -13,7 +13,10 @@ Stormsavvy::Application.routes.draw do
   # root to: 'sites#users_sites'
 
   get "dashboard/index"
-  get "sites", :to => "sites#users_sites"
+  get "site/user_sites"
+
+  # Interferes with json response for api http auth
+  # get "sites", :to => "sites#users_sites"
 
   namespace :pdf do
     get "CEM2030"
