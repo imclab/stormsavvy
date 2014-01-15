@@ -107,8 +107,10 @@ class AlertMailer < ActionMailer::Base
     if user.has_site?
       user.sites.each do |site|
         nfs = NoaaForecastService.new(site: site)
-        nfs.forecast_table(site)
+        @pop = nfs.forecast_table(site)
       end
+    else
+      @pop = 'no current sites'
     end
 
     @users = User.all
