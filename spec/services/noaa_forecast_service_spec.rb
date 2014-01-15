@@ -38,12 +38,15 @@ describe NoaaForecastService do
 
           noaa = nfs.forecast_table(site)
           noaa.length.should == 28
-          pp noaa
         end
 
         it 'returns values between 0 and 100' do
           noaa = nfs.forecast_table(site)
-          # noaa[0..27].should be_between(0,100)
+          weather_array = []
+          noaa.each do |f|
+            weather_array << f[:weather]
+          end
+          weather_array.length.should == 28
         end
       end
 
