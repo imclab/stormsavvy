@@ -3,12 +3,11 @@ require 'spec_helper'
 describe "alert_mailer/noaa_forecast" do
 
   before(:each) do
-    @user = FactoryGirl.create(:user)
-    @site = @user.sites.build(
+    @user = FactoryGirl.build(:user)
+    @site = @user.sites.create(
       name: 'ecp',
       zipcode: 94530
     )
-    @site.save
     sign_in @user
   end
 
