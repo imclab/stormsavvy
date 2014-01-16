@@ -64,7 +64,6 @@ class UserMailer < ActionMailer::Base
 
   def thankyou(email)
     mail(
-      :from     => "alerts@stormsavvy.com",
       :to       => email,
       :subject  => "Storm Savvy Sign-up Confirmation"
       ).deliver
