@@ -16,8 +16,6 @@
                 %i=link_to "#{site.name}: ", site_path(site)
                 = "#{site.max_rain}% chance of rain"
       %p
-        Here are the weekly forecasts for your sites:
-      %p
         = @noaa_info
         %a{ :href=>"http://w1.weather.gov/xml/current_obs/" }
           weather.gov
