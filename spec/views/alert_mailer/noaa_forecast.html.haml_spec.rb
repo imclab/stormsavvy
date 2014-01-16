@@ -4,10 +4,11 @@ describe "alert_mailer/noaa_forecast" do
 
   before(:each) do
     @user = FactoryGirl.build(:user)
-    @site = @user.sites.create(
+    @site = @user.sites.build(
       name: 'ecp',
       zipcode: 94530
     )
+    @site.save
     sign_in @user
   end
 
