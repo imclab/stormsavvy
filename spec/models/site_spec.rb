@@ -82,6 +82,11 @@ describe Site do
         InspectionEvent.find_by_id(inspection_event.id).should be_nil
       end
     end
+
+    xit 'returns inspection events by type' do
+      ie = site.inspection_events.build(TYPE: 'CEM2030')
+      ie.save
+    end
   end
 
   describe 'sampling_event associations' do
