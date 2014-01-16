@@ -2,19 +2,28 @@ require 'spec_helper'
 
 describe "alert_mailer/noaa_forecast" do
 
-  before(:each) do
-    @user = FactoryGirl.build(:user)
-    @site = @user.sites.build(
-      name: 'ecp',
-      zipcode: 94530
+  let!(:user) { FactoryGirl.build(:user) }
+  let!(:site) { user.sites.build(
+    name: 'ecp',
+    zipcode: 94530
     )
-    @site.save
-    sign_in @user
-  end
+  }
 
   it "renders the noaa forecast alert email view" do
+    sign_in user
+    @user = user
+
+    site.save
+    @site = site
+
+    nfs = NoaaForecastService.new(site: site)
+    @pop = nfs.forecast_table(site)
+
     render
     rendered.should =~ /Here are the daily forecasts for your sites:/
-    pp rendered
+    rendered.should =~ /Here are the weekly forecasts for your sites:/
+    rendered.should =~ /Date/
+    rendered.should =~ /Forecast/
+    rendered.should =~ /UTC/
   end
 end
