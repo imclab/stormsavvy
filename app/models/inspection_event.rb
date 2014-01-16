@@ -18,6 +18,7 @@ class InspectionEvent < ActiveRecord::Base
     :status,
     :completed,
     :attachment # s3 uploads via paperclip
+    :TYPE
 
   has_attached_file :attachment,
     :storage => :s3,
