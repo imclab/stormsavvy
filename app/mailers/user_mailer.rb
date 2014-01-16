@@ -31,7 +31,6 @@ class UserMailer < ActionMailer::Base
     @forecast1 = nf.get_forecast_array(zipcode)
 
     mail(
-      :from     => "alerts@stormsavvy.com",
       :to       => email,
       :subject  => "Storm Savvy Staging App Email"
       ).deliver
