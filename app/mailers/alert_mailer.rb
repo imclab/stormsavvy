@@ -103,24 +103,17 @@ class AlertMailer < ActionMailer::Base
   def noaa_forecast(user)
     set_defaults
 
-    # refactor logic later
-    if user.has_site?
-      user.sites.each do |site|
-        nfs = NoaaForecastService.new(site: site)
-        @pop = nfs.forecast_table(site)
-      end
-    else
-      @pop = 'no current sites'
-    end
-
     @users = User.all
     @users.each do |user|
       @user = user # `@user` is needed for the template
-      user.sites.each do |site|
-        @site = site
-      end
 
       if user.has_site?
+        user.sites.each do |site|
+          @site = site
+          nfs = NoaaForecastService.new(site: site)
+          @pop = nfs.forecast_table(site)
+        end
+
         mail(
           :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
           :subject  => "NOAA Forecast Notification"
