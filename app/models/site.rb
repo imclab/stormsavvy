@@ -18,7 +18,6 @@ class Site < ActiveRecord::Base
     :long
 
   belongs_to :user #, counter_cache: true
-  # accepts_nested_attributes_for :user
 
   has_many :reports, :dependent => :destroy
   has_many :inspection_events, :dependent => :destroy
@@ -26,6 +25,9 @@ class Site < ActiveRecord::Base
   has_many :sampling_events, :dependent => :destroy
   has_many :weather_updates
   has_many :forecast_periods
+
+  # accepts_nested_attributes_for :user
+  # accepts_nested_attributes_for :inspection_event
 
   after_validation :save_geo_coordinates, if: :zipcode_changed?
 
