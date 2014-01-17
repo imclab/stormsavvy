@@ -3,14 +3,18 @@
     = @site.name
   %h3
     = @site.zipcode
+  %li
+    %strong Site Lat/Long:
+    = @site.lat
+    = @site.long
   %tr
     %th
       Date
     %th
-      Forecast
+      Chance of Rain
     - @pop.each do |f|
       %tr
         %td
           = f[:date]
         %td
-          = f[:weather]
+          = f[:weather] + '%'
