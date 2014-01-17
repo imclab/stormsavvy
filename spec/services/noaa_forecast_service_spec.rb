@@ -28,20 +28,28 @@ describe NoaaForecastService do
       end
 
       describe '#forecast_table' do
-        it 'returns correct number of elements' do
+        it "responds to 'forecast_table'" do
           nfs.should respond_to(:forecast_table)
+        end
 
+        it 'returns correct number of elements' do
           noaa = nfs.forecast_table(site)
           noaa.length.should == 28
         end
 
-        it 'returns values between 0 and 100' do
-          noaa = nfs.forecast_table(site)
-          weather_array = []
-          noaa.each do |f|
-            weather_array << f[:weather]
+        context 'when collecting pop and qpf data' do
+
+          it 'returns values between 0 and 100' do
+            weather_rainfall = []
+
+            noaa.each do |f|
+              weather_rainfall << f[:weather] << f[:rainfall]
+              f[:weather].should be_between(0,100)
+              f[:rainfall].should be_between(0,100)
+            end
+
+            weather_rainfall.length.should == 56
           end
-          weather_array.length.should == 28
         end
       end
 
