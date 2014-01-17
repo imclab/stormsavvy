@@ -109,7 +109,7 @@ class AlertMailer < ActionMailer::Base
         @site = site
         nfs = NoaaForecastService.new(site: site)
         # @pop = nfs.forecast_table(site)
-        @site_pop = nfs.site_pop
+        @site_pop = nfs.site_pop(site)
       end
 
       mail(
