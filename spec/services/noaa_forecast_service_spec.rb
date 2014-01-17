@@ -3,14 +3,9 @@ require "spec_helper"
 describe NoaaForecastService do
   context "with a site" do
 
-    let!(:site) {
-      site = FactoryGirl.build(:site)
-    }
-    let!(:nfs) {
-      @n = NoaaForecastService.new(site: site)
-    }
-    before :each do
-    end
+    let!(:site) { site = FactoryGirl.build(:site) }
+    let!(:nfs) { NoaaForecastService.new(site: site) }
+    let!(:noaa) { nfs.forecast_table(site) }
 
     describe "with a site with valid lat/lng" do
       it "should successfully create a new NoaaForecastService object" do
