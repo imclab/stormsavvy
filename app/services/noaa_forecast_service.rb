@@ -30,14 +30,18 @@ class NoaaForecastService
 
   def forecast_table(site)
     site_forecast(site)
-
     @pop = []
+
     for i in (0..27)
       date = { :date => ProjectLocalTime::format(Date.today + (6*i).hours) }
       weather = { :weather => @noaa.forecast_periods[i].pop }
+      rainfall = { :rainfall => @noaa.forecast_periods[i].qpf }
+
       date_weather = date.merge!(weather)
-      @pop.push(date_weather)
+      date_weather_rainfall = date_weather.merge!(rainfall)
+      @pop.push(date_weather_rainfall)
     end
+
     return @pop
   end
 
