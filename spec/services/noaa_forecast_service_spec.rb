@@ -6,6 +6,8 @@ describe NoaaForecastService do
     let!(:site) { site = FactoryGirl.build(:site) }
     let!(:nfs) { NoaaForecastService.new(site: site) }
     let!(:noaa) { nfs.forecast_table(site) }
+    let!(:site_info) { nfs.site_info(site) }
+    let!(:site_pop) { nfs.site_pop(site) }
 
     describe "with a site with valid lat/lng" do
       it "should successfully create a new NoaaForecastService object" do
@@ -24,6 +26,21 @@ describe NoaaForecastService do
         it 'returns site forecast' do
           nfs.should respond_to(:site_forecast)
           nfs.site_forecast(site).length.should == 57
+        end
+      end
+
+      describe '#site_info' do
+        context 'when collecting site data' do
+          it 'returns zipcode, lat and long' do
+            name_lat_long = []
+            site_info.each do |f|
+              name_lat_long << f[:name] << f[:lat] << f[:long]
+              pp f[:name]
+              pp f[:lat]
+              pp f[:long]
+            end
+            pp site_info
+          end
         end
       end
 
