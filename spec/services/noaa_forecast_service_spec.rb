@@ -3,7 +3,14 @@ require "spec_helper"
 describe NoaaForecastService do
   context "with a site" do
 
-    let!(:site) { site = FactoryGirl.build(:site) }
+    let!(:site) {
+      site = FactoryGirl.build(
+        :site,
+        :name => 'ecp',
+        :lat => 38,
+        :long => 122
+      )
+    }
     let!(:nfs) { NoaaForecastService.new(site: site) }
     let!(:noaa) { nfs.forecast_table(site) }
     let!(:site_info) { nfs.site_info(site) }
