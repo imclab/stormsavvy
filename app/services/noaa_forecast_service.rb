@@ -57,6 +57,15 @@ class NoaaForecastService
     return @pop
   end
 
+  def site_pop(site)
+    site_info(site)
+    forecast_table(site)
+
+    @site_pop = []
+    @site_pop << @site << @pop
+    return @site_pop
+  end
+
   private
 
   def save_forecast_periods
