@@ -55,7 +55,6 @@ describe NoaaForecastService do
         end
 
         context 'when collecting pop and qpf data' do
-
           it 'returns values between 0 and 100' do
             weather_rainfall = []
 
@@ -67,6 +66,12 @@ describe NoaaForecastService do
 
             weather_rainfall.length.should == 56
           end
+        end
+      end
+
+      describe '#site_pop' do
+        it 'returns site pop info' do
+          pp site_pop
         end
       end
 
