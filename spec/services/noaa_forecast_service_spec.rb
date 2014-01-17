@@ -78,7 +78,16 @@ describe NoaaForecastService do
 
       describe '#site_pop' do
         it 'returns site pop info' do
-          pp site_pop
+          # pp site_pop[0][0]
+          # pp site_pop[0][1]
+          # pp site_pop[1][0]
+          # pp site_pop[1][1]
+
+          site_pop.each do |sub|
+            sub.each do |data|
+              pp data
+            end
+          end
         end
       end
 
