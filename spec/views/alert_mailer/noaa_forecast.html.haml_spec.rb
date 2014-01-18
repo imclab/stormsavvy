@@ -21,16 +21,12 @@ describe "alert_mailer/noaa_forecast" do
 
     ecp.save
     ucb.save
-    @site_pop = []
     @forecast_table = []
 
     sites.each do |site|
       nfs = NoaaForecastService.new(site: site)
       forecast_table = nfs.forecast_table(site)
       @forecast_table << forecast_table
-
-      # site_pop = nfs.site_pop(site)
-      # @site_pop << site_pop
     end
 
     render
