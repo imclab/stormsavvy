@@ -37,17 +37,18 @@ describe NoaaForecastService do
         end
       end
 
-      describe '#site_info' do
+      describe '#site_data' do
         context 'when collecting site data' do
           it 'returns zipcode, lat and long' do
-            name_lat_long = []
-            site_info.each do |f|
-              name_lat_long << f[:name] << f[:lat] << f[:long]
-              pp f[:name]
-              pp f[:lat]
-              pp f[:long]
+            name_zipcode_lat_long = []
+            site_data.each do |f|
+              # name_lat_long << f[:name] << f[:lat] << f[:long]
+              f[:name].should == 'ecp'
+              f[:zipcode].should == 94530
+              f[:lat].should == 38
+              f[:long].should == 122
             end
-            pp site_info
+            pp site_data
           end
         end
       end
