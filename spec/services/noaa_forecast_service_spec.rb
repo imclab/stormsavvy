@@ -16,6 +16,14 @@ describe NoaaForecastService do
     let!(:noaa) { nfs.forecast_table(site) }
     let!(:site_data) { nfs.site_data(site) }
     let!(:site_pop) { nfs.site_pop(site) }
+    let!(:forecast) { [] }
+    let!(:forecast_array) {
+      site_pop.each do |sub|
+        sub.each do |data|
+          forecast << data
+        end
+      end
+    }
 
     describe "with a site with valid lat/lng" do
       it "should successfully create a new NoaaForecastService object" do
