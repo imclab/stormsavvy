@@ -72,37 +72,37 @@ describe NoaaForecastService do
         end
 
         it 'returns correct number of elements' do
-          noaa = nfs.forecast_table(site)
           noaa.length.should == 28
         end
 
         context 'when collecting pop and qpf data' do
           it 'returns values between 0 and 100' do
-            weather_rainfall = []
-
             noaa.each do |f|
-              # weather_rainfall << f[:weather] << f[:rainfall]
               f[:weather].should be_between(0,100)
               f[:rainfall].should be_between(0,100)
             end
-
-            weather_rainfall.length.should == 56
           end
         end
       end
 
       describe '#site_pop' do
-        it 'returns site pop info' do
-          # pp site_pop[0][0]
-          # pp site_pop[0][1]
-          # pp site_pop[1][0]
-          # pp site_pop[1][1]
+        it 'returns site data in array' do
+          forecast_array[0].should == {:name=>"ecp", :zipcode=>94530, :lat=>38.0, :long=>122.0}
+        end
 
-          site_pop.each do |sub|
-            sub.each do |data|
-              pp data
-            end
+        it 'returns pop and qpf data in array' do
+          noaa = []
+
+          for i in (1..28)
+            noaa << forecast_array[i]
           end
+
+          noaa.each do |f|
+            f[:weather].should be_between(0,100)
+            f[:rainfall].should be_between(0,100)
+          end
+
+          noaa.length.should == 28
         end
       end
 
