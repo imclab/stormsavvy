@@ -11,25 +11,26 @@
       = site.long
     %li
       %strong NOAA Forecast Table:
-      %a{ href: "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{site.lat}&lon=#{site.long}&clrindex=0&table=custom&duration=7&interval=6" }
+      %a{ href: @url }
         = site.zipcode
     %br
-    %tr
-      %th
-        Date
-      %th
-        Chance of Rain
-      %th
-        Forecast Rain
-      - site.forecast_table.each do |f|
-        %tr
-          %td
-            = f[:date]
-          %td
-            = f[:weather]
-            :plain
-              %
-          %td
-            = f[:rainfall]
-            :plain
-              inch
+    %table
+      %tr
+        %th
+          Date
+        %th
+          Chance of Rain
+        %th
+          Forecast Rain
+        - site.forecast_table.each do |f|
+          %tr
+            %td
+              = f[:date]
+            %th
+              = f[:weather]
+              :plain
+                %
+            %th
+              = f[:rainfall]
+              :plain
+                inch
