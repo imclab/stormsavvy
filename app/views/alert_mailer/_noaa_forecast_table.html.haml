@@ -38,17 +38,14 @@
     %th
       Forecast Rain
     %tr
-      - for i in (0..27)
+      - for i in (1..28)
         %td
-          /= f[:date]
-          = @site_pop[i][:date]
+          /= @site_pop[i][:date]
         %td
-          /= f[:weather]
-          = @site_pop[i][:weather]
+          /= @site_pop[i][:weather]
           :plain
             %
         %td
-          /= f[:rainfall]
-          = @site_pop[i][:rainfall]
+          /= @site_pop[i][:rainfall]
           :plain
             "
