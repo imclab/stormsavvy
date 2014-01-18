@@ -160,36 +160,53 @@ describe Site do
 
   describe '#chance_of_rain' do
     it 'returns chance of rain' do
+      site.should respond_to(:chance_of_rain)
       max_rain = site.chance_of_rain
       pp max_rain.pop
       max_rain.pop.should be_between(0,100)
     end
   end
 
+  describe '#forecast_table' do
+    it 'returns forecast table' do
+
+    end
+  end
+
   describe '#forecast' do
-
-    let(:nf) { NOAAForecast.new(zipcode,168,6) }
-
     it 'returns forecast' do
-      latlong = [lat, long]
-      forecast = nf.get_forecast(latlong)
-      site.forecast.should == forecast
+      site.should respond_to(:forecast)
+
+      # latlong = [lat, long]
+      # forecast = nf.get_forecast(latlong)
+      # site.forecast.should == forecast
+
+      forecast = site.forecast
+
+      forecast.each do |sub|
+        sub.each do |data|
+          if data == -999
+            data = 0
+          end
+          data.should be_between(0,100)
+        end
+      end
     end
   end
 
   describe '#get_zipcode' do
     it 'returns zipcode' do
+      site.should respond_to(:get_zipcode)
       site.get_zipcode.should == site.zipcode.to_s
     end
   end
 
   describe '#save_geo_coordinates' do
     it 'saves geo coordinates' do
+      site.should respond_to(:save_geo_coordinates)
       site.save_geo_coordinates
       site.lat.should be_between(37,39)
       site.long.should be_between(121,123)
-      pp site.lat
-      pp site.long
     end
   end
 end
