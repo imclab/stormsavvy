@@ -108,9 +108,6 @@ describe Site do
   end
 
   describe "attributes" do
-
-    let(:site) { FactoryGirl.create(:site) }
-
     it 'has correct attributes' do
       # site.name.should == "Oakland Adams Point"
       # site.description.should == "North of Lake Merritt"
