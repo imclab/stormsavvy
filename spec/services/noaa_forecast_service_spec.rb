@@ -7,13 +7,14 @@ describe NoaaForecastService do
       site = FactoryGirl.build(
         :site,
         :name => 'ecp',
+        :zipcode => 94530,
         :lat => 38,
         :long => 122
       )
     }
     let!(:nfs) { NoaaForecastService.new(site: site) }
     let!(:noaa) { nfs.forecast_table(site) }
-    let!(:site_info) { nfs.site_info(site) }
+    let!(:site_data) { nfs.site_data(site) }
     let!(:site_pop) { nfs.site_pop(site) }
 
     describe "with a site with valid lat/lng" do
