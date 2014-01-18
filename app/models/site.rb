@@ -46,6 +46,11 @@ class Site < ActiveRecord::Base
     forecast_period.order('pop DESC').first
   end
 
+  def forecast_table
+    nfs = NoaaForecastService.new(site: self)
+    nfs.forecast_table(self)
+  end
+
   def forecast
     #zipcode = 90210 unless self.zipcode.present?
     #nf.forecast(@lat, @long)
