@@ -106,10 +106,10 @@ class AlertMailer < ActionMailer::Base
 
     if user.has_site?
       user.sites.each do |site|
-        @site = site
+        # @site = site
         nfs = NoaaForecastService.new(site: site)
-        # @pop = nfs.forecast_table(site)
         @site_pop = nfs.site_pop(site)
+        pp @site_pop
       end
 
       mail(
