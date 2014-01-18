@@ -60,7 +60,7 @@ class NoaaForecastService
   end
 
   def site_pop(site)
-    site_info(site)
+    site_data(site)
     forecast_table(site)
 
     @site_pop = []
