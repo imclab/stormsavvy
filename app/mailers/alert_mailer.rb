@@ -108,6 +108,7 @@ class AlertMailer < ActionMailer::Base
 
     if user.has_site?
       user.sites.each do |site|
+        @url = "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{site.lat}&lon=#{site.long}&clrindex=0&table=custom&duration=7&interval=6"
         @site = site
         nfs = NoaaForecastService.new(site: site)
 
