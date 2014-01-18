@@ -8,6 +8,9 @@ describe "alert_mailer/noaa_forecast" do
     zipcode: 94530
     )
   }
+  let!(:nfs) {
+    NoaaForecastService.new(site: site)
+  }
 
   it "renders the noaa forecast alert email view" do
     sign_in user
