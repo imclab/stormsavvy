@@ -103,12 +103,16 @@ class AlertMailer < ActionMailer::Base
   def noaa_forecast(user)
     set_defaults
     @user = user # `@user` is needed for the template
+    @forecast_table = []
+    @site_pop = []
 
     if user.has_site?
       user.sites.each do |site|
-        # @site = site
+        @site = site
         nfs = NoaaForecastService.new(site: site)
-        @site_pop = nfs.site_pop(site)
+
+        site_pop = nfs.site_pop(site)
+        @site_pop << site_pop
       end
 
       mail(
