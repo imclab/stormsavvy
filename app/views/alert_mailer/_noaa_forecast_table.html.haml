@@ -16,38 +16,20 @@
     %br
     %tr
       %th
-        :plain
-          Date
-        - @forecast_table.each do |sub|
-          - sub.each do |data|
-            %br
-              = data[:date]
+        Date
       %th
-        :plain
-          Chance of Rain
-        - @forecast_table.each do |sub|
-          - sub.each do |data|
-            %br
-              = data[:weather]
-              :plain
-                %
+        Chance of Rain
       %th
-        :plain
-          Forecast Rain
-        - @forecast_table.each do |sub|
-          - sub.each do |data|
-            %br
-              = data[:rainfall]
-              :plain
-                "
-    %tr
-      %td
-        /= f[:date]
-      %td
-        /= f[:weather]
-        :plain
-          %
-      %td
-        /= f[:rainfall]
-        :plain
-          "
+        Forecast Rain
+      - site.forecast_table.each do |f|
+        %tr
+          %td
+            = f[:date]
+          %td
+            = f[:weather]
+            :plain
+              %
+          %td
+            = f[:rainfall]
+            :plain
+              inch
