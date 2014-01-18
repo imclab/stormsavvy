@@ -19,14 +19,14 @@
       %th
         Forecast Rain
       %tr
-      - @pop.each do |f|
-        %td
-          = f[:date]
-        %td
-          = f[:weather]
-          :plain
-            %
-        %td
-          = f[:rainfall]
-          :plain
-            "
+        - @site_pop.each do |f|
+          %td
+            = f[:date]
+          %td
+            = f[:weather]
+            :plain
+              %
+          %td
+            = f[:rainfall]
+            :plain
+              "
