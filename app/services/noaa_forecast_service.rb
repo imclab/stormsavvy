@@ -30,10 +30,12 @@ class NoaaForecastService
 
   def site_data(site)
     @site_data = []
+
     name = { :name => site.name }
     zipcode = { :zipcode => site.zipcode }
     lat = { :lat => site.lat }
     long = { :long => site.long }
+
     name_zipcode = name.merge!(zipcode)
     name_zipcode_lat = name_zipcode.merge!(lat)
     name_zipcode_lat_long = name_zipcode_lat.merge!(long)
