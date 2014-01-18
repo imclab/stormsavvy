@@ -1,18 +1,15 @@
 %table
   = pp @site_pop
-  - @pop.each do |f|
+  - @site_pop.each do |f|
     %h3
-      /= f[:name]
-      = @site.name
+      = f[:name]
     %li
       %strong Site Zipcode:
-      = @site.zipcode
+      = f[:zipcode]
     %li
       %strong Site Lat/Long:
-      = @site.lat
-      /= f[:lat]
-      = @site.long
-      /= f[:long]
+      = f[:lat]
+      = f[:long]
     %br
     %tr
       %th
