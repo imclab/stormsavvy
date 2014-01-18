@@ -29,7 +29,7 @@ class NoaaForecastService
   end
 
   def site_data(site)
-    @site = []
+    @site_data = []
     name = { :name => site.name }
     zipcode = { :zipcode => site.zipcode }
     lat = { :lat => site.lat }
