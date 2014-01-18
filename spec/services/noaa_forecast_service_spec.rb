@@ -68,7 +68,7 @@ describe NoaaForecastService do
             weather_rainfall = []
 
             noaa.each do |f|
-              weather_rainfall << f[:weather] << f[:rainfall]
+              # weather_rainfall << f[:weather] << f[:rainfall]
               f[:weather].should be_between(0,100)
               f[:rainfall].should be_between(0,100)
             end
