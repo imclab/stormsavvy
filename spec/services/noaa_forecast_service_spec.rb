@@ -46,17 +46,22 @@ describe NoaaForecastService do
       end
 
       describe '#site_data' do
+        it "responds to 'site_data'" do
+          nfs.should respond_to(:site_data)
+        end
+
         context 'when collecting site data' do
           it 'returns zipcode, lat and long' do
             name_zipcode_lat_long = []
             site_data.each do |f|
-              # name_lat_long << f[:name] << f[:lat] << f[:long]
               f[:name].should == 'ecp'
               f[:zipcode].should == 94530
               f[:lat].should == 38
               f[:long].should == 122
             end
-            pp site_data
+            site_data.should == [
+              {:name=>"ecp", :zipcode=>94530, :lat=>38.0, :long=>122.0}
+            ]
           end
         end
       end
