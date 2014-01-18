@@ -1,32 +1,37 @@
 %table
   = pp @site_pop
-  - @site_pop.each do |f|
-    %h3
-      = f[:name]
-    %li
-      %strong Site Zipcode:
-      = f[:zipcode]
-    %li
-      %strong Site Lat/Long:
-      = f[:lat]
-      = f[:long]
-    %br
+  = pp @site_pop[0].class
+  = pp @site_pop[0][:name]
+
+  %h3
+    = @site_pop[0][:name]
+  %li
+    %strong Site Zipcode:
+    = @site_pop[0][:zipcode]
+  %li
+    %strong Site Lat/Long:
+    = @site_pop[0][:lat]
+    = @site_pop[0][:long]
+  %br
+  %tr
+    %th
+      Date
+    %th
+      Chance of Rain
+    %th
+      Forecast Rain
     %tr
-      %th
-        Date
-      %th
-        Chance of Rain
-      %th
-        Forecast Rain
-      %tr
-        - @site_pop.each do |f|
-          %td
-            = f[:date]
-          %td
-            = f[:weather]
-            :plain
-              %
-          %td
-            = f[:rainfall]
-            :plain
-              "
+      - for i in (0..27)
+        %td
+          /= f[:date]
+          = @site_pop[i][:date]
+        %td
+          /= f[:weather]
+          = @site_pop[i][:weather]
+          :plain
+            %
+        %td
+          /= f[:rainfall]
+          = @site_pop[i][:rainfall]
+          :plain
+            "
