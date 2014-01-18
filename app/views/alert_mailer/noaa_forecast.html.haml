@@ -10,11 +10,10 @@
         %ul
           - @user.sites.each do |site|
             %li.cf
-              - site.chance_of_rain
               .span
               %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
                 %i=link_to "#{site.name}: ", site_path(site)
-                = "#{site.max_rain}% chance of rain"
+                = "#{site.chance_of_rain.pop}% chance of rain"
       %p
         = @noaa_info
         %a{ href: "http://w1.weather.gov/xml/current_obs/" }
