@@ -17,6 +17,7 @@ describe Site do
   let!(:zipcode2) { '' }
   let!(:latlong) { [ lat, long ] }
   let!(:address) { '111 Adams Street Suite 181 Oakland CA 94610' }
+  let!(:nf) { NOAAForecast.new(zipcode,168,6) }
 
   let!(:site) { FactoryGirl.create(
     :site
