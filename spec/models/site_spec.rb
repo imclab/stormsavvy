@@ -169,7 +169,20 @@ describe Site do
 
   describe '#forecast_table' do
     it 'returns forecast table' do
+      site.should respond_to(:forecast_table)
 
+      forecast = site.forecast_table
+      forecast.each do |f|
+        if f[:weather] == -999
+          f[:weather] = 0
+        end
+        f[:weather].should be_between(0,100)
+
+        if f[:rainfall] == -999
+          f[:rainfall] = 0
+        end
+        f[:rainfall].should be_between(0,100)
+      end
     end
   end
 
