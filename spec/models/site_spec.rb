@@ -162,12 +162,9 @@ describe Site do
 
   describe '#chance_of_rain' do
     it 'returns chance of rain' do
-      begin
-        max_rain = site.chance_of_rain
-        max_rain.should be_between(0,100)
-      rescue
-        'not online or method throwing error'
-      end
+      max_rain = site.chance_of_rain
+      pp max_rain.pop
+      max_rain.pop.should be_between(0,100)
     end
   end
 
