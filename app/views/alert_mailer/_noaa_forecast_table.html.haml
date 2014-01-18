@@ -1,17 +1,34 @@
 %table
-  = pp @site_pop
-  = pp @site_pop[0].class
-  = pp @site_pop[0][:name]
+  = pp @site_pop[0][0][:name]
+  = pp @site_pop[0][0][:lat]
+  = pp @site_pop[0][0][:long]
+  = pp @site_pop[0][0][:zipcode]
+
+  = pp @site_pop[1][0][:name]
+  = pp @site_pop[1][0][:lat]
+  = pp @site_pop[1][0][:long]
+  = pp @site_pop[1][0][:zipcode]
+
+  - for i in (0..1)
+    = pp @site_pop[i][0][:name]
+
+  /= pp @site_pop[0].class
+  /= pp @site_pop[0][:name]
 
   %h3
-    = @site_pop[0][:name]
+    /= @site_pop[0][:name]
+    = @site.name
   %li
     %strong Site Zipcode:
-    = @site_pop[0][:zipcode]
+    /= @site_pop[0][:zipcode]
+    = @site.zipcode
   %li
     %strong Site Lat/Long:
-    = @site_pop[0][:lat]
-    = @site_pop[0][:long]
+    /= @site_pop[0][:lat]
+    = @site.lat
+
+    /= @site_pop[0][:long]
+    = @site.long
   %br
   %tr
     %th
