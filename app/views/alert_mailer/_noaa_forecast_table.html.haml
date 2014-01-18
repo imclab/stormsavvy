@@ -1,22 +1,13 @@
 %table
   - @user.sites.each do |site|
-
-    /= pp @site_pop[0].class
-    /= pp @site_pop[0][:name]
-
     %h3
-      /= @site_pop[0][:name]
       = site.name
     %li
       %strong Site Zipcode:
-      /= @site_pop[0][:zipcode]
       = site.zipcode
     %li
       %strong Site Lat/Long:
-      /= @site_pop[0][:lat]
       = site.lat
-
-      /= @site_pop[0][:long]
       = site.long
     %li
       %strong NOAA Forecast Table:
