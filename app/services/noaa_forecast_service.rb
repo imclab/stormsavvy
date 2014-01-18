@@ -37,9 +37,9 @@ class NoaaForecastService
     name_zipcode = name.merge!(zipcode)
     name_zipcode_lat = name_zipcode.merge!(lat)
     name_zipcode_lat_long = name_zipcode_lat.merge!(long)
-    @site.push(name_zipcode_lat_long)
+    @site_data.push(name_zipcode_lat_long)
 
-    return @site
+    return @site_data
   end
 
   def forecast_table(site)
