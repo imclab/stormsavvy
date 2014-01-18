@@ -104,10 +104,6 @@ describe AlertMailer do
   describe "noaa_forecast" do
     let!(:mailer) { AlertMailer.noaa_forecast(user).deliver }
 
-    it 'collects site forecast' do
-      # pp mailer
-    end
-
     it "renders the headers" do
       # mailer.greeting.should eq("The Storm Savvy Team")
       # mailer.salutation.should eq("The Storm Savvy Team")
