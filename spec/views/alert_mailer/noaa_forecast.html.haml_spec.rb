@@ -19,8 +19,7 @@ describe "alert_mailer/noaa_forecast" do
     site.save
     @site = site
 
-    nfs = NoaaForecastService.new(site: site)
-    @pop = nfs.forecast_table(site)
+    @site_pop = nfs.site_pop(site)
 
     render
     rendered.should =~ /Here are the daily forecasts for your sites:/
