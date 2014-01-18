@@ -37,7 +37,7 @@ class Site < ActiveRecord::Base
     "#{self.address_1} #{self.address_2} #{self.city} #{self.state} #{self.zipcode}".strip
   end
 
-  attr_reader :rain_state, :max_rain, :chance_of_rain, :forecast
+  attr_reader :rain_state, :max_rain, :chance_of_rain, :forecast, :forecast_table
 
   def chance_of_rain
     nfs = NoaaForecastService.new(site: self)
