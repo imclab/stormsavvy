@@ -1,7 +1,7 @@
 %table
   - @user.sites.each do |site|
     %h3
-      = site.name
+      = link_to "#{site.name}", "https://www.stormsavvy.com/#{site_path(site)}"
     %li
       %strong Site Zipcode:
       = site.zipcode
