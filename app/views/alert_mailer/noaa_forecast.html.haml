@@ -12,12 +12,12 @@
             %li.cf
               .span
               %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
-                %i=link_to "#{site.name}: ", site_path(site)
+                %i= link_to "#{site.name}: ", "https://www.stormsavvy.com/#{site_path(site)}"
                 /= "#{site.chance_of_rain.pop}% chance of rain"
       %p
         = @noaa_info
-        %a{ href: "http://w1.weather.gov/xml/current_obs/" }
-          weather.gov
+        %a{ href: @noaa_url }
+          NWS Website
       %p
         = @support
       %p
