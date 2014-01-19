@@ -27,7 +27,7 @@ module Stormsavvy
     # config.assets.version = '1.0'
     config.assets.initialize_on_precompile = false
     config.active_record.whitelist_attributes = false
-    config.i18n.enforce_available_locales = false
+    config.i18n.enforce_available_locales = true
 
     config.to_prepare do
       DeviseController.respond_to :html, :json
