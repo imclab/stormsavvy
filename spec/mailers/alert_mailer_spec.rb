@@ -57,7 +57,6 @@ describe AlertMailer do
     it "renders the body" do
       mailer.body.encoded.should match("Greetings")
       mailer.body.encoded.should match("Listed below are the daily weather forecasts")
-      mailer.body.encoded.should match("Forecast is based on the NOAA API. Compare with the forecast table:")
       mailer.body.encoded.should match("Email us at info@stormsavvy.com")
       mailer.body.encoded.should match("The Storm Savvy Team")
     end
