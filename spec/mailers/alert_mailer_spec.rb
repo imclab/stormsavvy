@@ -28,11 +28,11 @@ describe AlertMailer do
     end
 
     it "renders the body" do
-      mailer.body.encoded.should =~ /Greetings/
-      mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
-      mailer.body.encoded.should =~ /Forecast is based on NOAA data feed/
-      mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
-      mailer.body.encoded.should =~ /The Storm Savvy Team/
+      mailer.body.encoded.should match("Greetings")
+      mailer.body.encoded.should match("Listed below are the daily weather forecasts")
+      mailer.body.encoded.should match("Forecast is based on the NOAA API. Compare with the forecast table:")
+      mailer.body.encoded.should match("Email us at info@stormsavvy.com")
+      mailer.body.encoded.should match("The Storm Savvy Team")
     end
 
     it "delivers and receives mailer" do
@@ -56,11 +56,11 @@ describe AlertMailer do
     end
 
     it "renders the body" do
-      mailer.body.encoded.should =~ /Greetings/
-      mailer.body.encoded.should =~ /Listed below are the daily weather forecasts/
-      mailer.body.encoded.should =~ /Email us at info@stormsavvy.com/
-      mailer.body.encoded.should =~ /The Storm Savvy Team/
-      # mailer.body.encoded.should match("Greetings")
+      mailer.body.encoded.should match("Greetings")
+      mailer.body.encoded.should match("Listed below are the daily weather forecasts")
+      mailer.body.encoded.should match("Forecast is based on the NOAA API. Compare with the forecast table:")
+      mailer.body.encoded.should match("Email us at info@stormsavvy.com")
+      mailer.body.encoded.should match("The Storm Savvy Team")
     end
 
     it "delivers and receives mailer" do
