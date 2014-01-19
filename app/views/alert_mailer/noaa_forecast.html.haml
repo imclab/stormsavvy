@@ -16,8 +16,10 @@
                 /= "#{site.chance_of_rain.pop}% chance of rain"
       %p
         = @noaa_info
+      %p
+        = @noaa_website
         %a{ href: @noaa_url }
-          NWS Website
+          NOAA Forecast Table
       %p
         = @support
       %p
