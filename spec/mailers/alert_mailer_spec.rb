@@ -138,11 +138,11 @@ describe AlertMailer do
       mailer.from.should eq(["alerts@stormsavvy.com"])
     end
 
-    it "should send something via mailout" do
+    it "sends something via mailout" do
       ActionMailer::Base.deliveries.should_not be_empty
     end
 
-    it "should render successfully" do
+    it "renders successfully" do
       lambda { mailer }.should_not raise_error
     end
 
