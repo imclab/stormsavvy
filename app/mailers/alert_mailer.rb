@@ -35,7 +35,6 @@ class AlertMailer < ActionMailer::Base
     set_northbay
 
     mail(
-      # :from     => "alerts@stormsavvy.com",
       :to       => email,
       :subject  => @subject
       ).deliver
