@@ -44,10 +44,6 @@ gem 'protected_attributes'
 gem 'activerecord-deprecated_finders'
 gem 'rails-observers'
 gem 'rails_12factor'
-# gem 'actionpack-page_caching'
-# gem 'actionpack-action_caching'
-# gem 'activerecord-session_store'
-# gem 'rails-perftest'
 
 group :development do
   gem 'therubyracer', platforms: 'ruby', require: 'v8'
