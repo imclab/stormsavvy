@@ -102,7 +102,7 @@ class AlertMailer < ActionMailer::Base
 
   def noaa_forecast(user)
     set_defaults
-    @user = user # `@user` is needed for the template
+    @user = user
     @forecast_table = []
     @site_pop = []
 
