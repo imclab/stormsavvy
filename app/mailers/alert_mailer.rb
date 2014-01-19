@@ -6,7 +6,8 @@ class AlertMailer < ActionMailer::Base
     @greeting = "Greetings"
     @salutation = "The Storm Savvy Team"
     @support = "Questions? Email us at info@stormsavvy.com!"
-    @noaa_info = "Forecast is based on NOAA data feed. For more info, visit: "
+    @noaa_info = "Forecast is based on the NOAA API. Compare with the forecast table:"
+    @noaa_url = "http://www.wrh.noaa.gov/forecast/wxtables/index.php?"
   end
 
   def set_northbay
