@@ -36,6 +36,7 @@ gem 'redis'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+gem 'i18n', github: 'svenfuchs/i18n'
 
 # Rails 4 upgrade gems
 gem 'activeresource'
