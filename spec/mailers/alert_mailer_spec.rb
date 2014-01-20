@@ -58,10 +58,10 @@ describe AlertMailer do
         user: user
       )
     }
-    let!(:mailer) { AlertMailer.noaa_forecast(user).deliver }
+    let!(:mailer) { AlertMailer.daily_mailer(user).deliver }
 
     it "renders the headers" do
-      mailer.subject.should eq("Storm Savvy Daily Mail for #{ProjectLocalTime::date_only(Date.today)}")
+      mailer.subject.should eq("Storm Savvy Daily Mailer for #{ProjectLocalTime::date_only(Date.today)}")
       mailer.to.should eq(["#{user.email}"])
       mailer.from.should eq(["alerts@stormsavvy.com"])
     end
