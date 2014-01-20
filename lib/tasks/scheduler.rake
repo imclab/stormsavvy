@@ -29,14 +29,17 @@ namespace :scheduler do
 
   desc "Delivers noaa_forecast mailer"
   task :noaa_forecast => :environment do
-    users = User.all
-    users.each do |user|
+    # Do not send to all users
+    # users = User.all
+
+    admins = [ (User.find_by email: 'walter@stormsavvy.com') ]
+    admins.each do |user|
   	  AlertMailer.noaa_forecast(user)
   	end
   end
 
   desc "Delivers pester_admins mailer"
-  task :dailynotice => :environment do
+  task :pester_admins => :environment do
     admins = [
       'walter@stormsavvy.com',
       'kharma+stormsavvy@gmail.com',
