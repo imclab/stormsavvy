@@ -16,30 +16,6 @@ namespace :scheduler do
     end
   end
 
-  desc "Delivers eastbay_forecast mailer"
-  task :eastbay_forecast => :environment do
-    test_users = [
-      'walter@stormsavvy.com',
-      'kharma+stormsavvy@gmail.com',
-      'wing.wingyu@gmail.com'
-      ]
-    test_users.each do |address|
-      AlertMailer.delay.eastbay_forecast(address)
-    end
-  end
-
-  desc "Delivers southbay_forecast mailer"
-  task :southbay_forecast => :environment do
-    test_users = [
-      'walter@stormsavvy.com',
-      'kharma+stormsavvy@gmail.com',
-      'wing.wingyu@gmail.com'
-      ]
-    test_users.each do |address|
-      AlertMailer.delay.southbay_forecast(address)
-    end
-  end
-
   desc "Delivers popalert mailer"
   task :popalert => :environment do
     test_users = [
