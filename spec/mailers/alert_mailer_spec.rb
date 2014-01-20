@@ -82,7 +82,7 @@ describe AlertMailer do
     end
 
     it 'delays delivery using sidekiq' do
-      expect { AlertMailer.delay.noaa_forecast(user.email)}.to change(
+      expect { AlertMailer.delay.daily_mailer(user.email)}.to change(
         Sidekiq::Extensions::DelayedMailer.jobs, :size
       ).by(1)
     end
