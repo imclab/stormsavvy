@@ -111,9 +111,9 @@ describe Site do
   describe "attributes" do
     it 'has correct attributes' do
       # site.name.should == "Oakland Adams Point"
-      # site.description.should == "North of Lake Merritt"
-      # site.address_1.should == '111 Adams Street'
-      # site.address_2.should == 'Suite 181'
+      site.description.should == "North of Lake Merritt"
+      site.address_1.should == '111 Adams Street'
+      site.address_2.should == 'Suite 181'
       site.costcode.should == "450AZC"
       site.size.should == "20 acres"
       site.exposed_area.should == "10 acres"
