@@ -45,7 +45,7 @@ describe AlertMailer do
     end
   end
 
-  describe "noaa_forecast" do
+  describe "daily_mailer" do
     let!(:user) {
       FactoryGirl.create(
         :user,
