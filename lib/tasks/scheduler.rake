@@ -8,8 +8,6 @@ namespace :scheduler do
       'kharma+stormsavvy@gmail.com',
       'wing.wingyu@gmail.com',
       'david.doolin+stormsavvy@gmail.com'
-      # 'JonathanM@ghilottibros.com',
-      # 'KjellD@ghilottibros.com'
       ]
     test_users.each do |address|
       AlertMailer.northbay_forecast(address)
