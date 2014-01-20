@@ -57,7 +57,7 @@ describe AlertMailer do
 
     it "renders the body" do
       mailer.body.encoded.should match("Greetings")
-      mailer.body.encoded.should match("Email us at info@stormsavvy.com")
+      mailer.body.encoded.should match("Email us at walter@stormsavvy.com")
       mailer.body.encoded.should match("The Storm Savvy Team")
     end
 
