@@ -45,23 +45,6 @@ class NoaaForecastService
     return @forecast
   end
 
-  def site_pop(site)
-    site_data(site)
-    forecast_table(site)
-
-    site_pop = []
-    site_pop << @site_data << @forecast
-
-    @noaa = []
-    site_pop.each do |sub|
-      sub.each do |data|
-        @noaa << data
-      end
-    end
-
-    return @noaa
-  end
-
   private
 
   def save_forecast_periods
