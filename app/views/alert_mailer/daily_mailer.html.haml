@@ -1,0 +1,31 @@
+%table{ :style => "width: 600px; background-color: #eee;", :align => "center" }
+  %tr
+    %td
+      %h1
+        NOAA Daily Mailer
+      %p
+        = @greeting
+      %p
+        Please see 7-day forecast for your sites below.
+        %ul
+          - @user.sites.each do |site|
+            %li.cf
+              .span
+              %div{ :class => "sprites weather-#{site.rain_state}", :rel => "tooltip", :title => "Rain state for this site is #{site.rain_state}"}
+                %i= link_to "#{site.name}: ", "https://www.stormsavvy.com/#{site_path(site)}"
+                /= "#{site.chance_of_rain.pop}% chance of rain"
+      %p
+        = @noaa_info
+      %p
+        = @noaa_website
+        %a{ href: @noaa_url }
+          NOAA Forecast Table
+      %p
+        = @support
+      %p
+        = @salutation
+      %hr
+      %p
+        Here are the weekly forecasts for your sites:
+      %p
+        = render 'noaa_forecast_table'
