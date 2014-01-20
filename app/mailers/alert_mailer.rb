@@ -58,7 +58,7 @@ class AlertMailer < ActionMailer::Base
 
       mail(
         :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
-        :subject  => "Storm Savvy Daily Mail for #{ProjectLocalTime::date_only(Date.today)}"
+        :subject  => "Storm Savvy Daily Mailer for #{ProjectLocalTime::date_only(Date.today)}"
         ).deliver
     end
   end
