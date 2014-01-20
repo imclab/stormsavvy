@@ -41,7 +41,7 @@ class AlertMailer < ActionMailer::Base
       ).deliver
   end
 
-  def noaa_forecast(user)
+  def daily_mailer(user)
     set_defaults
     @user = user
     @forecast_table = []
