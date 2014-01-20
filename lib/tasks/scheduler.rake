@@ -60,7 +60,8 @@ namespace :scheduler do
         'kharma+stormsavvy@gmail.com'
         ]
       admins.each do |address|
-        UserMailer.delay.staging_mailer(address)
+        UserMailer.staging_mailer(address)
+        # UserMailer.delay.staging_mailer(address)
       end
     end
   end
