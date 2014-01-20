@@ -10,6 +10,7 @@ class UserMailer < ActionMailer::Base
     @numreports = Report.count
     @greeting = "Greetings"
     @salutation = "The Storm Savvy Team"
+    @support = "Questions? Email us at walter@stormsavvy.com!"
   end
 
   def pester_admins(email)
