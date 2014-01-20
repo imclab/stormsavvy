@@ -3,7 +3,6 @@ require 'spec_helper'
 describe "user_mailer/_staging_projects" do
   it "contains a projects table" do
     render
-    rendered.should match("Please see current stats of the app below.")
     rendered.should have_selector 'table'
     rendered.should have_selector 'th', :text => "Projects"
     rendered.should have_selector 'th', :text => "Users"
