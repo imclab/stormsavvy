@@ -20,7 +20,8 @@ describe Site do
   let!(:nf) { NOAAForecast.new(zipcode,168,6) }
 
   let!(:site) { FactoryGirl.create(
-    :site
+    :site,
+    name: 'Oakland Adams Point'
     )
   }
   let!(:report) { FactoryGirl.create(
