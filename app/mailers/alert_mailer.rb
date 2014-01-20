@@ -119,7 +119,7 @@ class AlertMailer < ActionMailer::Base
 
       mail(
         :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
-        :subject  => "NOAA Forecast Notification"
+        :subject  => "Storm Savvy Daily Mail for #{ProjectLocalTime::date_only(Date.today)}"
         ).deliver
     end
   end
