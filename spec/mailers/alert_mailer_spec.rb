@@ -45,60 +45,6 @@ describe AlertMailer do
     end
   end
 
-  describe "#eastbay_forecast" do
-    let!(:mailer) { AlertMailer.eastbay_forecast(user.email).deliver }
-
-    it "renders the headers" do
-      mailer.subject.should eq("Storm Savvy Daily Forecast: East Bay")
-      mailer.to.should eq(["#{user.email}"])
-      mailer.from.should eq(["alerts@stormsavvy.com"])
-    end
-
-    it "renders the body" do
-      mailer.body.encoded.should match("Greetings")
-      mailer.body.encoded.should match("Listed below are the daily weather forecasts")
-      mailer.body.encoded.should match("Email us at info@stormsavvy.com")
-      mailer.body.encoded.should match("The Storm Savvy Team")
-    end
-
-    it "delivers and receives mailer" do
-      ActionMailer::Base.deliveries.should_not be_empty
-    end
-
-    it 'delays delivery using sidekiq' do
-      expect { AlertMailer.delay.eastbay_forecast(user.email)}.to change(
-        Sidekiq::Extensions::DelayedMailer.jobs, :size
-      ).by(1)
-    end
-  end
-
-  describe "#southbay_forecast" do
-    let!(:mailer) { AlertMailer.southbay_forecast(user.email).deliver }
-
-    it "renders the headers" do
-      mailer.subject.should eq("Storm Savvy Daily Forecast: South Bay")
-      mailer.to.should eq(["#{user.email}"])
-      mailer.from.should eq(["alerts@stormsavvy.com"])
-    end
-
-    it "renders the body" do
-      mailer.body.encoded.should match("Greetings")
-      mailer.body.encoded.should match("Listed below are the daily weather forecasts")
-      mailer.body.encoded.should match("Email us at info@stormsavvy.com")
-      mailer.body.encoded.should match("The Storm Savvy Team")
-    end
-
-    it "delivers and receives mailer" do
-      ActionMailer::Base.deliveries.should_not be_empty
-    end
-
-    it 'delays delivery using sidekiq' do
-      expect { AlertMailer.delay.southbay_forecast(user.email)}.to change(
-        Sidekiq::Extensions::DelayedMailer.jobs, :size
-      ).by(1)
-    end
-  end
-
   describe "noaa_forecast" do
     let!(:mailer) { AlertMailer.noaa_forecast(user).deliver }
 
