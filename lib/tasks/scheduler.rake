@@ -47,7 +47,8 @@ namespace :scheduler do
       'david.doolin+stormsavvy@gmail.com'
       ]
     admins.each do |address|
-      UserMailer.delay.pester_admins(address)
+      UserMailer.pester_admins(address)
+      # UserMailer.delay.pester_admins(address)
     end
   end
 
