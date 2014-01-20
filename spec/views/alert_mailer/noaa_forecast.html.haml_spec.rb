@@ -30,9 +30,6 @@ describe "alert_mailer/noaa_forecast" do
     end
 
     render
-    rendered.should =~ /Here are the daily forecasts for your sites:/
-    rendered.should =~ /Here are the weekly forecasts for your sites:/
-
     rendered.should =~ /Date/
     rendered.should =~ /Chance of Rain/
     rendered.should =~ /Forecast Rain/
