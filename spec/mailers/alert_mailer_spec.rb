@@ -46,6 +46,18 @@ describe AlertMailer do
   end
 
   describe "noaa_forecast" do
+    let!(:user) {
+      FactoryGirl.create(
+        :user,
+        email: 'walter@stormsavvy.com'
+      )
+    }
+    let!(:site) {
+      FactoryGirl.create(
+        :site,
+        user: user
+      )
+    }
     let!(:mailer) { AlertMailer.noaa_forecast(user).deliver }
 
     it "renders the headers" do
