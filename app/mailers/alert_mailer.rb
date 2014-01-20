@@ -105,7 +105,6 @@ class AlertMailer < ActionMailer::Base
     set_defaults
     @user = user
     @forecast_table = []
-    @site_pop = []
 
     if user.has_site?
       user.sites.each do |site|
