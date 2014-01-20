@@ -41,66 +41,6 @@ class AlertMailer < ActionMailer::Base
       ).deliver
   end
 
-  def set_eastbay
-    @subject = "Storm Savvy Daily Forecast: East Bay"
-
-    @location1 = "Oakland, CA 94621"
-    @nf1 = NOAAForecast.new(94621)
-    @nf2 = @nf1.forecast_by_zipcode(94621)
-
-    @location2 = "Berkeley, CA 94709"
-    @nf3 = NOAAForecast.new(94709)
-    @nf4 = @nf3.forecast_by_zipcode(94709)
-
-    @location3 = "Walnut Creek, CA 94596"
-    @nf5 = NOAAForecast.new(94596)
-    @nf6 = @nf5.forecast_by_zipcode(94596)
-
-    @location4 = "Pleasanton, CA 94566"
-    @nf7 = NOAAForecast.new(94566)
-    @nf8 = @nf7.forecast_by_zipcode(94566)
-  end
-
-  def eastbay_forecast(email)
-    set_defaults
-    set_eastbay
-
-    mail(
-      :to       => email,
-      :subject  => @subject
-      ).deliver
-  end
-
-  def set_southbay
-    @subject = "Storm Savvy Daily Forecast: South Bay"
-
-    @location1 = "Fremont, CA 94538"
-    @nf1 = NOAAForecast.new(94538)
-    @nf2 = @nf1.forecast_by_zipcode(94538)
-
-    @location2 = "Sunnyvale, CA 94087"
-    @nf3 = NOAAForecast.new(94087)
-    @nf4 = @nf3.forecast_by_zipcode(94087)
-
-    @location3 = "San Jose, CA 95113"
-    @nf5 = NOAAForecast.new(95113)
-    @nf6 = @nf5.forecast_by_zipcode(95113)
-
-    @location4 = "Palo Alto, CA 94305"
-    @nf7 = NOAAForecast.new(94305)
-    @nf8 = @nf7.forecast_by_zipcode(94305)
-  end
-
-  def southbay_forecast(email)
-    set_defaults
-    set_southbay
-
-    mail(
-      :to       => email,
-      :subject  => @subject
-      ).deliver
-  end
-
   def noaa_forecast(user)
     set_defaults
     @user = user
