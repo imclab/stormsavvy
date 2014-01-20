@@ -55,27 +55,6 @@ describe NoaaForecastService do
         end
       end
 
-      describe '#site_pop' do
-        it 'returns site data in array' do
-          forecast_array[0].should == {:name=>"ecp", :zipcode=>94530, :lat=>38.0, :long=>122.0}
-        end
-
-        it 'returns pop and qpf data in array' do
-          noaa = []
-
-          for i in (1..28)
-            noaa << forecast_array[i]
-          end
-
-          noaa.each do |f|
-            f[:weather].should be_between(0,100)
-            f[:rainfall].should be_between(0,100)
-          end
-
-          noaa.length.should == 28
-        end
-      end
-
       context "API query" do
         before :each do
           nfs.get_forecast
