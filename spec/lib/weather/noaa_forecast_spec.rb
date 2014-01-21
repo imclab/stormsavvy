@@ -12,16 +12,22 @@ describe NOAAForecast do
   let(:nf) { NOAAForecast.new(zipcode,168,6) }
   let(:pop) { nf.get_pop(zipcode) }
   let(:qpf) { nf.get_qpf(zipcode) }
+  let(:time) { [] }
+  let(:time_array) {
+    for t in (0..27)
+      time << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
+    end
+  }
 
   before(:each) do
-    nf.stub!(:get_lat_long).with(zipcode).and_return([lat, long])
-    nf.stub!(:get_lat_long).with("0").and_return([])
+    nf.stub(:get_lat_long).with(zipcode).and_return([lat, long])
+    nf.stub(:get_lat_long).with("0").and_return([])
 
-    nf.stub!(:ping_noaa).with([lat, long], 168, 6) {
+    nf.stub(:ping_noaa).with([lat, long], 168, 6) {
       IO.read("./spec/lib/weather/noaa_response.xml")
     }
 
-    nf.stub!(:get_forecast).with([lat, long]) {
+    nf.stub(:get_forecast).with([lat, long]) {
       response = nf.ping_noaa([lat, long], 168, 6)
       nf.parse_weather_data(response)
     }
