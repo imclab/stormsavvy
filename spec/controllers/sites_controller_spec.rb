@@ -186,11 +186,8 @@ describe SitesController do
       it "redirects to the site" do
         user = FactoryGirl.create(:user)
         site = user.sites.create! valid_attributes
-        # project = FactoryGirl.create(:project)
-        # site = project.sites.create! valid_attributes
         put :update, {
           :id => site.to_param,
-          # :project_id => @project.id,
           :site => valid_attributes
         }, valid_session
 
