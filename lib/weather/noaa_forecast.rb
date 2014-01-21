@@ -129,18 +129,15 @@ class NOAAForecast
       time_array[26].update(new_pop_array[26]),
       time_array[27].update(new_pop_array[27])
     ]
+=end
   end
 
   def get_pop_table_hash(zipcode)
     nf = NOAAForecast.new(zipcode)
     time_pop_hash = nf.get_time_pop_hash(zipcode)
     new_qpf_array = nf.get_qpf_array(zipcode)
-
-    # refactor into proper loop
-    # pop_table_hash.each_index do |i|
-    #   time_pop_hash[i+1].update(new_qpf_array[i+1]),
-    # end
-
+    time_pop_hash.merge!(new_qpf_array)
+=begin
     pop_table_hash = [
       time_pop_hash[1].update(new_qpf_array[1]),
       time_pop_hash[2].update(new_qpf_array[2]),
