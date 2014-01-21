@@ -167,22 +167,24 @@ class NOAAForecast
       time_pop_hash[26].update(new_qpf_array[26]),
       time_pop_hash[27].update(new_qpf_array[27])
     ]
+=end
   end
-
-  # def get_pt_hash
-  #   nf = NOAAForecast.new(94530,168,6)
-  #   nf.seven_day_weather(zipcode)
-  #   pop = nf.pop
-  #   pt = []
-  #   pop.each do |i|
-  #     pt << { :date => ProjectLocalTime::format(Date.today + (i*6).hours), :weather => i.to_s }
-  #   end
-  #   return pt
-  # end
 
   def get_forecast_array(zipcode)
     nf = NOAAForecast.new(zipcode,168,6)
     pop = nf.seven_day_weather(zipcode)
+
+    forecast_array = []
+    for i in (0..27)
+      date = { :date => ProjectLocalTime::format(Date.today + (6*i).hours) }
+      weather = { :weather => pop[0][i] }
+      rainfall = { :rainfall => pop[1][i] }
+
+      date_weather = date.merge!(weather)
+      date_weather_rainfall = date_weather.merge!(rainfall)
+      forecast_array.push(date_weather_rainfall)
+    end
+=begin
     [
       { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0][0], :rainfall => pop[1][0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[0][1], :rainfall => pop[1][1] },
