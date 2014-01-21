@@ -84,31 +84,31 @@ describe NOAAForecast do
       return zipcode
     }
 
-    nf2.stub(:get_forecast_array) {
+    nf.stub(:get_forecast_array) {
       IO.read("./spec/fixtures/get_forecast_array.rb")
       # return zipcode
     }
   end # needed for before :each block
 
   it "instantiates class with valid zipcode" do
-    nf2.class.should == NOAAForecast
+    nf.class.should == NOAAForecast
   end
 
   it "returns lat/long for given zipcode" do
     latlong = [lat, long]
     latlong.size.should == 2
     tol = 0.0001
-    latlong[0].should be_within(tol).of(37.9202057)
-    latlong[1].should be_within(tol).of(-122.2937428)
+    latlong[0].should be_within(tol).of(38)
+    latlong[1].should be_within(tol).of(-122)
   end
 
   describe "#get_lat_long" do
     it "returns get_lat_long stub values" do
-      nf.get_lat_long(zipcode).should == [37.9202057, -122.2937428]
+      nf.get_lat_long(zipcode).should == [38, -122]
     end
 
     it 'handles exceptions with benign value' do
-      nf.get_lat_long("99999999999999999999").should == []
+      nf.get_lat_long("0").should == []
     end
 
     it 'validates rails api caching on class object' do
