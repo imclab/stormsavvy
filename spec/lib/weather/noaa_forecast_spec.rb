@@ -337,7 +337,6 @@ describe NOAAForecast do
         time_array[27].update(new_pop_array[27])
       ]
 =end
-      nf.get_time_pop_hash(zipcode).should == time_pop_hash
     end
   end
 
