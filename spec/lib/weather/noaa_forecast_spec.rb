@@ -374,20 +374,14 @@ describe NOAAForecast do
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      # array not being returned correctly
-      # for h in 0..27
-      #   time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
-      # end
+      nf = NOAAForecast.new(zipcode)
+      new_pop_array = nf.get_pop_array(zipcode)
+      time_array.merge!(new_pop_array)
 
-      # time_pop_hash = nf2.get_time_pop_hash(zipcode)
-
-      # array not being returned correctly
-      # pop_table_hash = []
-      # for k in 0..27
-      #   pop_table_hash << Hash[time_pop_hash[k]].update(Hash[new_qpf_array[k]])
-      # end
-
-      # refactor into proper loop
+      time_pop_hash = nf.get_time_pop_hash(zipcode)
+      new_qpf_array = nf.get_qpf_array(zipcode)
+      time_pop_hash.merge!(new_qpf_array)
+=begin
       time_pop_hash = [
         time_array[0].update(new_pop_array[0]),
         time_array[1].update(new_pop_array[1]),
