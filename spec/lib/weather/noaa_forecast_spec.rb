@@ -39,35 +39,35 @@ describe NOAAForecast do
       end
     }
 
-    nf2.stub(:get_pop) {
+    nf.stub(:get_pop) {
       IO.read("./spec/fixtures/get_pop_array.rb")
       return pop
     }
 
-    nf2.stub(:get_qpf) {
+    nf.stub(:get_qpf) {
       IO.read("./spec/fixtures/get_qpf_array.rb")
       return qpf
     }
 
-    nf2.stub(:get_pop_array) {
+    nf.stub(:get_pop_array) {
       IO.read("./spec/fixtures/new_pop_array.rb")
       return zipcode
     }
 
-    nf2.stub(:get_qpf_array) {
+    nf.stub(:get_qpf_array) {
       IO.read("./spec/fixtures/new_qpf_array.rb")
       return zipcode
     }
 
-    nf2.stub(:get_time_pop_hash) {
+    nf.stub(:get_time_pop_hash) {
 
       time_array = []
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      nf2.seven_day_weather(zipcode)
-      pop_array = nf2.pop
+      nf.seven_day_weather(zipcode)
+      pop_array = nf.pop
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
