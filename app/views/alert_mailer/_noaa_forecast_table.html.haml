@@ -3,14 +3,14 @@
     %h3
       = link_to "#{site.name}", "https://www.stormsavvy.com/#{site_path(site)}"
     %li
-      %strong Site Zipcode:
+      %b Site Zipcode:
       = site.zipcode
     %li
-      %strong Site Lat/Long:
+      %b Site Lat/Long:
       = site.lat
       = site.long
     %li
-      %strong NOAA Forecast Table:
+      %b NOAA Forecast Table:
       %a{ href: @url }
         = site.zipcode
     %br
