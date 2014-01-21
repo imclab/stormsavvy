@@ -237,7 +237,7 @@ describe NOAAForecast do
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      nf2.get_time_array.should == time_array
+      nf.get_time_array.should == time_array
     end
   end
 
