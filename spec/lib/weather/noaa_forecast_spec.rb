@@ -412,8 +412,6 @@ describe NOAAForecast do
         time_array[26].update(new_pop_array[26]),
         time_array[27].update(new_pop_array[27])
       ]
-
-      # refactor into proper loop
       pop_table_hash = [
         time_pop_hash[1].update(new_qpf_array[1]),
         time_pop_hash[2].update(new_qpf_array[2]),
