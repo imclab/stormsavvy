@@ -334,7 +334,7 @@ describe NOAAForecast do
         new_pop_array << { :weather => i.to_s }
       end
 
-      qpf_array = nf2.qpf
+      qpf_array = nf.qpf
       new_qpf_array = []
       qpf_array.each do |i|
         new_qpf_array << { :rainfall => i.to_s }
