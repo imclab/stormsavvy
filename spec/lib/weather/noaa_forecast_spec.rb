@@ -86,9 +86,9 @@ describe NOAAForecast do
 
     nf2.stub(:get_forecast_array) {
       IO.read("./spec/fixtures/get_forecast_array.rb")
-      return zipcode
+      # return zipcode
     }
-  end # need this here for before :each block!
+  end # needed for before :each block
 
   it "instantiates class with valid zipcode" do
     nf2.class.should == NOAAForecast
