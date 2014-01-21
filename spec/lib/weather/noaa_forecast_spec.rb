@@ -280,15 +280,21 @@ describe NOAAForecast do
 
   describe "#time_pop_hash" do
     it "returns time pop hash" do
-      time_array = []
-      for t in 0..27
-        time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
-      end
+      # time_array = []
+      # for t in 0..27
+      #   time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
+      # end
 
-      nf = NOAAForecast.new(zipcode)
-      nf.seven_day_weather(zipcode)
+      nf.should respond_to(:get_forecast_array)
+
+      response = nf.ping_noaa([lat, long], 168, 6)
+      forecast = nf.parse_weather_data(response)
+
+      # nf.seven_day_weather(zipcode)
       pop_array = nf.get_pop(zipcode)
+      pp pop_array
 
+=begin
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
