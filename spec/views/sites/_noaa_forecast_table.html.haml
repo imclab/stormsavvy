@@ -1,0 +1,25 @@
+require 'spec_helper'
+
+describe 'sites/_noaa_forecast_table' do
+
+  let!(:user) { FactoryGirl.build(:user) }
+  let!(:site) {
+    FactoryGirl.create(
+      :site,
+      user: user
+    )
+  }
+
+  it 'renders the noaa forecast' do
+    sign_in user
+
+    render
+    rendered.should =~ /Date/
+    rendered.should =~ /Chance of Rain/
+    rendered.should =~ /Forecast Rain/
+
+    rendered.should =~ /UTC/
+    rendered.should =~ /%/
+    rendered.should =~ /"/
+  end
+end
