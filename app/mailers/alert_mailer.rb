@@ -44,16 +44,13 @@ class AlertMailer < ActionMailer::Base
   def daily_mailer(user)
     set_defaults
     @user = user
-    @forecast_table = []
 
     if user.has_site?
       user.sites.each do |site|
         @url = "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{site.lat}&lon=#{site.long}&clrindex=0&table=custom&duration=7&interval=6"
         @site = site
         nfs = NoaaForecastService.new(site: site)
-
-        forecast_table = nfs.forecast_table(site)
-        @forecast_table << forecast_table
+        nfs.forecast_table(site)
       end
 
       mail(
