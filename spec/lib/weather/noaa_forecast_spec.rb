@@ -23,10 +23,10 @@ describe NOAAForecast do
 
     nf.stub!(:get_forecast).with([lat, long]) {
       response = nf.ping_noaa([lat, long], 168, 6)
-      nf2.parse_weather_data(response)
+      nf.parse_weather_data(response)
     }
 
-    nf2.stub(:seven_day_weather) {
+    nf.stub(:seven_day_weather).with(zipcode).and_return {
       latlong = [lat, long]
       nf.get_forecast(latlong)
       # return zipcode
