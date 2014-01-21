@@ -158,7 +158,7 @@ describe NOAAForecast do
   describe "#get_valid_dates" do
     it "procures the valid date from the NOAA response" do
       response = nf.ping_noaa([lat, long], 168, 6)
-      dates = nf2.get_valid_dates(response)
+      dates = nf.get_valid_dates(response)
       dates.size.should == 8
     end
   end
