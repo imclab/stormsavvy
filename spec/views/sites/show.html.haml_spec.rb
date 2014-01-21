@@ -29,6 +29,11 @@ describe "sites/show" do
     rendered.should match(/Zipcode/)
     rendered.should match(/Lat/)
     rendered.should match(/Long/)
+    rendered.should match(/NOAA Forecast Table/)
+    rendered.should match(/7-Day Forecast/)
+    rendered.should match(/Date/)
+    rendered.should match(/Chance of Rain/)
+    rendered.should match(/Forecast Rain/)
   end
 
   it "has edit, back and delete links" do
