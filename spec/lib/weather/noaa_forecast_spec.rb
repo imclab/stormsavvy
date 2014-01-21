@@ -238,12 +238,14 @@ describe NOAAForecast do
 
   describe "#get_time_array" do
     it "returns time array" do
+      nf.should respond_to(:get_time_array)
+
       time_array = []
-      for t in 0..27
+      for t in (0..27)
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      nf.get_time_array.should == time_array
+      time_array.length.should == 28
     end
   end
 
