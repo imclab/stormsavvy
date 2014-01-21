@@ -11,35 +11,17 @@ describe SitesController do
     }
   end
 
-  # def project_attributes
-  #   {
-  #     :name => 'eb park and rec',
-  #     :description => 'playground improvements',
-  #     :startdate => 5.days.ago,
-  #     :finishdate => 1.day.ago
-  #   }
-  # end
-
   def valid_session
     { "warden.user.user.key" => session["warden.user.user.key"] }
   end
 
   let!(:user) { FactoryGirl.build(
-    :user,
-    :email => 'demo@stormsavvy.com',
-    :password => 'kharmeleon',
-    :password_confirmation => 'kharmeleon'
+    :user
     )
   }
-  # @project = FactoryGirl.create(
-  #   :project,
-  #   :user => @user,
-  #   :name => 'eb park and rec'
-  # )
   let!(:site) { FactoryGirl.create(
     :site,
-    :user => user,
-    :name => 'ec jungle gym'
+    :user => user
     )
   }
   let!(:completed_report) { FactoryGirl.create(
