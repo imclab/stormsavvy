@@ -349,23 +349,15 @@ describe NOAAForecast do
         time_array[26].update(new_pop_array[26]),
         time_array[27].update(new_pop_array[27])
       ]
-
-      # puts time_array
-      # puts new_pop_array
-      # puts time_array[0].update(new_pop_array[0])
-
-      # puts nf2.get_time_pop_hash(zipcode)
-      # puts time_pop_hash
-
-      nf2.get_time_pop_hash(zipcode).should == time_pop_hash
+=end
+      nf.get_time_pop_hash(zipcode).should == time_pop_hash
     end
   end
 
   describe "#pop_table_hash" do
-    # throws error when merging hashes
-    xit "returns pop_table hash" do
-
-      pop_array = nf2.pop
+    it "returns pop_table hash" do
+      nf = NOAAForecast.new(zipcode)
+      pop_array = nf.pop
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
