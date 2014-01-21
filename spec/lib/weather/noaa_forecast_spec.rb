@@ -190,55 +190,27 @@ describe NOAAForecast do
 
   describe "#get_forecast_array" do
     it "returns forecast_by_zipcode" do
-      nf = NOAAForecast.new(zipcode,168,6)
-      pop = nf.seven_day_weather(zipcode)
+      nf.should respond_to(:get_forecast_array)
+
+      response = nf.ping_noaa([lat, long], 168, 6)
+      forecast = nf.parse_weather_data(response)
 
       forecast_array = []
       for i in (0..27)
         date = { :date => ProjectLocalTime::format(Date.today + (6*i).hours) }
-        weather = { :weather => pop[0][i] }
-        rainfall = { :rainfall => pop[1][i] }
+        weather = { :weather => forecast[0][i] }
+        rainfall = { :rainfall => forecast[1][i] }
 
         date_weather = date.merge!(weather)
         date_weather_rainfall = date_weather.merge!(rainfall)
         forecast_array.push(date_weather_rainfall)
       end
 
-      # forecast_array = IO.read("./spec/fixtures/get_full_forecast_array.rb")
-=begin
-      forecast_array = [
-        { :date => ProjectLocalTime::format(Date.today + 0.hours), :weather => pop[0], :rainfall => qpf[0] },
-        { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[1], :rainfall => qpf[1] },
-        { :date => ProjectLocalTime::format(Date.today + 12.hours), :weather => pop[2], :rainfall => qpf[2] },
-        { :date => ProjectLocalTime::format(Date.today + 18.hours), :weather => pop[3], :rainfall => qpf[3] },
-        { :date => ProjectLocalTime::format(Date.today + 24.hours), :weather => pop[4], :rainfall => qpf[4] },
-        { :date => ProjectLocalTime::format(Date.today + 30.hours), :weather => pop[5], :rainfall => qpf[5] },
-        { :date => ProjectLocalTime::format(Date.today + 36.hours), :weather => pop[6], :rainfall => qpf[6] },
-        { :date => ProjectLocalTime::format(Date.today + 42.hours), :weather => pop[7], :rainfall => qpf[7] },
-        { :date => ProjectLocalTime::format(Date.today + 48.hours), :weather => pop[8], :rainfall => qpf[8] },
-        { :date => ProjectLocalTime::format(Date.today + 54.hours), :weather => pop[9], :rainfall => qpf[9] },
-        { :date => ProjectLocalTime::format(Date.today + 60.hours), :weather => pop[10], :rainfall => qpf[10] },
-        { :date => ProjectLocalTime::format(Date.today + 66.hours), :weather => pop[11], :rainfall => qpf[11] },
-        { :date => ProjectLocalTime::format(Date.today + 72.hours), :weather => pop[12], :rainfall => qpf[12] },
-        { :date => ProjectLocalTime::format(Date.today + 78.hours), :weather => pop[13], :rainfall => qpf[13] },
-        { :date => ProjectLocalTime::format(Date.today + 84.hours), :weather => pop[14], :rainfall => qpf[14] },
-        { :date => ProjectLocalTime::format(Date.today + 90.hours), :weather => pop[15], :rainfall => qpf[15] },
-        { :date => ProjectLocalTime::format(Date.today + 96.hours), :weather => pop[16], :rainfall => qpf[16] },
-        { :date => ProjectLocalTime::format(Date.today + 102.hours), :weather => pop[17], :rainfall => qpf[17] },
-        { :date => ProjectLocalTime::format(Date.today + 108.hours), :weather => pop[18], :rainfall => qpf[18] },
-        { :date => ProjectLocalTime::format(Date.today + 114.hours), :weather => pop[19], :rainfall => qpf[19] },
-        { :date => ProjectLocalTime::format(Date.today + 120.hours), :weather => pop[20], :rainfall => qpf[20] },
-        { :date => ProjectLocalTime::format(Date.today + 126.hours), :weather => pop[21], :rainfall => qpf[21] },
-        { :date => ProjectLocalTime::format(Date.today + 132.hours), :weather => pop[22], :rainfall => qpf[22] },
-        { :date => ProjectLocalTime::format(Date.today + 138.hours), :weather => pop[23], :rainfall => qpf[23] },
-        { :date => ProjectLocalTime::format(Date.today + 144.hours), :weather => pop[24], :rainfall => qpf[24] },
-        { :date => ProjectLocalTime::format(Date.today + 150.hours), :weather => pop[25], :rainfall => qpf[25] },
-        { :date => ProjectLocalTime::format(Date.today + 156.hours), :weather => pop[26], :rainfall => qpf[26] },
-        { :date => ProjectLocalTime::format(Date.today + 162.hours), :weather => pop[27], :rainfall => qpf[27] },
-        { :date => ProjectLocalTime::format(Date.today + 168.hours), :weather => pop[28], :rainfall => qpf[28] }
-        ]
-=end
-      nf2.get_forecast_array(zipcode).should == forecast_array
+      forecast_array.length.should == 28
+      forecast_array.each do |f|
+        f[:weather].should be_between(0,100)
+        f[:rainfall].should be_between(0,100)
+      end
     end
   end
 
