@@ -2,6 +2,19 @@ require 'spec_helper'
 
 describe 'sites/_noaa_forecast_table' do
 
+  include Devise::TestHelpers
+
+  def valid_attributes
+    {
+      :zipcode => 94530,
+      :name => 'ecp'
+    }
+  end
+
+  def valid_session
+    { "warden.user.user.key" => session["warden.user.user.key"] }
+  end
+
   let!(:user) { FactoryGirl.build(:user) }
   let!(:site) {
     FactoryGirl.create(

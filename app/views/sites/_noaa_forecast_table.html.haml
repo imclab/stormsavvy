@@ -6,8 +6,8 @@
       Chance of Rain
     %th
       Forecast Rain
-    - @site.forecast_table.each do |f|
       %tr
+    - @site.forecast_table.each do |f|
         %td
           = f[:date]
         %th
