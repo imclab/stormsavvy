@@ -67,20 +67,20 @@ describe NOAAForecast do
 
     nf.stub(:get_time_pop_hash) {
 
-      time_array = []
-      for t in 0..27
-        time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
-      end
+      # time_array = []
+      # for t in 0..27
+      #   time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
+      # end
 
-      nf.seven_day_weather(zipcode)
-      pop_array = nf.pop
-      new_pop_array = []
-      pop_array.each do |i|
-        new_pop_array << { :weather => i.to_s }
-      end
+      # nf.seven_day_weather(zipcode)
+      # pop_array = nf.pop
+      # new_pop_array = []
+      # pop_array.each do |i|
+      #   new_pop_array << { :weather => i.to_s }
+      # end
 
       IO.read("./spec/fixtures/get_time_pop_hash.rb")
-      return zipcode
+      # return zipcode
     }
 
     nf3 = NOAAForecast.new(zipcode,168,6)
