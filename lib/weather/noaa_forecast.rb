@@ -76,9 +76,6 @@ class NOAAForecast
 
   def get_pop_array(zipcode)
     pop_array = get_pop(zipcode)
-    # nf = NOAAForecast.new(94530,168,6)
-    # nf.seven_day_weather
-    # pop_array = nf.pop
     new_pop_array = []
     pop_array.each do |i|
       new_pop_array << { :weather => pop_array[i].to_s }
