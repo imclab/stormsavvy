@@ -16,6 +16,7 @@ describe NOAAForecast do
   before(:each) do
     nf.stub!(:get_lat_long).with(zipcode).and_return([lat, long])
     nf.stub!(:get_lat_long).with("99999999999999999999").and_return([])
+
     nf.stub!(:ping_noaa).with([lat, long], 168, 6) {
       IO.read("./spec/lib/weather/noaa_response.xml")
     }
@@ -28,7 +29,7 @@ describe NOAAForecast do
     nf2.stub(:seven_day_weather) {
       latlong = [lat, long]
       nf.get_forecast(latlong)
-      return zipcode
+      # return zipcode
     }
 
     nf.stub(:get_time_array) {
