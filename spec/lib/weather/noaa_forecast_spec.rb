@@ -50,9 +50,9 @@ describe NOAAForecast do
       return pop
     }
 
-    nf.stub(:get_qpf) {
+    nf.stub(:get_qpf).with(zipcode).and_return {
       IO.read("./spec/fixtures/get_qpf_array.rb")
-      return qpf
+      # return qpf
     }
 
     nf.stub(:get_pop_array) {
