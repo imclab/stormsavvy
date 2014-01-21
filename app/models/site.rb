@@ -48,7 +48,7 @@ class Site < ActiveRecord::Base
 
   def forecast_table
     nfs = NoaaForecastService.new(site: self)
-    forecast = nfs.forecast_table(self)
+    nfs.forecast_table(self)
   end
 
   def forecast
