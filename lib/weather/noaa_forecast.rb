@@ -85,9 +85,6 @@ class NOAAForecast
 
   def get_qpf_array(zipcode)
     qpf_array = get_qpf(zipcode)
-    # nf = NOAAForecast.new(94530,168,6)
-    # nf.seven_day_weather
-    # qpf_array = nf.qpf
     new_qpf_array = []
     qpf_array.each do |i|
       new_qpf_array << { :rainfall => qpf_array[i].to_s }
