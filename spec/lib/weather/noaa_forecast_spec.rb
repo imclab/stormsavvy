@@ -441,9 +441,7 @@ describe NOAAForecast do
         time_pop_hash[26].update(new_qpf_array[26]),
         time_pop_hash[27].update(new_qpf_array[27])
       ]
-
-      time_pop_hash = []
-
+=end
       nf3.get_pop_table_hash(zipcode).should == pop_table_hash
     end
   end
