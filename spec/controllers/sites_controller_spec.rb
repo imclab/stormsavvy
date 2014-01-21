@@ -56,33 +56,21 @@ describe SitesController do
   describe "GET index" do
     it "has a 200 status code" do
       site = user.sites.create!(valid_attributes)
-      #site = @project.sites.create!(valid_attributes)
-
       get :edit, {:id => site.to_param}
-      # get :edit, {:id => site.to_param, :project_id => @project.id}
-
       response.code.should eq("200")
     end
 
     it "assigns all sites as @sites" do
       site = user.sites.create!(valid_attributes)
-      # site = @project.sites.create!(valid_attributes)
-
       get :index, {:id => site.to_param}
-      # get :index, {:id => site.to_param, :project_id => @project.id}
       assigns(:sites).should eq(Site.all)
     end
   end
 
  describe "GET show" do
     it "assigns the requested site as @site" do
-      # @project = @user.projects.create!(project_attributes)
-      # site = @project.sites.create! valid_attributes
       site = user.sites.create! valid_attributes
-
       get :show, {:id => site.to_param}
-      # get :show, {:id => site.to_param, :project_id => @project.id}
-
       assigns(:site).should eq(site)
       assigns(:site).should be_persisted
     end
