@@ -120,13 +120,12 @@ describe NOAAForecast do
         lat_long = [] << lat << lng
 
         Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
-        # puts "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
-
         Rails.cache.clear
         Rails.cache.fetch(zipcode.to_s + '_lat') {lat}
         Rails.cache.fetch(zipcode.to_s + '_lat').should == lat
         Rails.cache.fetch(zipcode.to_s + '_lng') {lng}
         Rails.cache.fetch(zipcode.to_s + '_lng').should == lng
+
         nf = NOAAForecast.new(zipcode)
         nf.get_lat_long(zipcode).should == [lat, lng]
       rescue
