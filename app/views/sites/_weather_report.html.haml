@@ -9,7 +9,7 @@
         - unless current_user.sites.blank?
           - current_user.sites.each do |site|
             %p
-            %strong
+            %b
             -begin
               = site.chance_of_rain.pop
             -rescue
