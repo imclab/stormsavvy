@@ -3,15 +3,12 @@
 %p#notice
   /= notice
   = button_to 'Delete This Site', site_path(@site), :method => :delete
-  /= button_to 'Delete This Site', project_path(@site.project), :method => :delete
   = link_to 'Edit', edit_site_path(@site)
-  /= link_to 'Edit', edit_project_site_path(@site.project, @site)
   \|
   = link_to 'Back', site_path(@site.id)
-  /= link_to 'Back', project_path(@site.project_id)
   .container
     .row
-      .span4
+      .span6
         %br
         %p
           = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@site.lat}%2C#{@site.long}"
@@ -56,3 +53,10 @@
           %b Site Lat/Long:
           = @site.lat
           = @site.long
+        %p
+          %b NOAA Forecast Table:
+          %a{ href: "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{@site.lat}&lon=#{@site.long}&clrindex=0&table=custom&duration=7&interval=6" }
+            = @site.zipcode
+        %p
+          %b 7-Day Forecast:
+          = render 'noaa_forecast_table'
