@@ -263,7 +263,6 @@ describe SitesController do
       site = Site.create! valid_attributes
       delete :destroy, {
         :id => site.to_param,
-        # :project_id => @project.id
       }, valid_session
       flash[:notice].should == 'Site was successfully deleted.'
     end
