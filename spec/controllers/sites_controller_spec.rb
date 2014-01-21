@@ -98,76 +98,56 @@ describe SitesController do
     it "responds with flash message" do
       Site.any_instance.stub(:save).and_return(false)
       post :create, {:site => valid_attributes}
-      # post :create, {:site => valid_attributes, :project_id => @project.id}
       response.should render_template('new')
     end
   end
 
   describe "GET edit" do
     it "assigns the requested site as @site" do
-      # @project = @user.projects.create!(project_attributes)
-
       site = user.sites.create!(valid_attributes)
-      # site = @project.sites.create!(valid_attributes)
-
       get :edit, {:id => site.to_param}
-      # get :edit, {:id => site.to_param, :project_id => @project.id}
       assigns(:site).should eq(site)
       assigns(:site).should be_persisted
     end
   end
 
   describe "POST create" do
-=begin
-    before(:each) do
-      @project = @user.projects.create!(project_attributes)
-    end
-=end
     describe "with valid params" do
       it "creates a new Site" do
         expect {
           post :create, {:site => valid_attributes}
-          # post :create, {:site => valid_attributes, :project_id => @project.id}
         }.to change(Site, :count).by(1)
       end
 
       it "assigns a newly created site as @site" do
         post :create, {:site => valid_attributes}
-        # post :create, {:site => valid_attributes, :project_id => @project.id}
         assigns(:site).should be_a(Site)
         assigns(:site).should be_persisted
       end
 
       it "redirects to the created site" do
         post :create, {:site => valid_attributes}
-        # post :create, {:site => valid_attributes, :project_id => @project.id}
         response.should redirect_to(site_path(Site.last))
-        # response.should redirect_to(project_site_path(@project.id, Site.last))
       end
 
       it "responds with flash message" do
         sign_in user
         post :create, {:site => valid_attributes}
-        # post :create, {:site => valid_attributes, :project_id => @project.id}
         flash[:notice].should == "Site was successfully created."
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved site as @site" do
-        # Trigger the behavior that occurs when invalid params are submitted
         Site.any_instance.stub(:save).and_return(false)
         post :create, {:site => {}}
-        # post :create, {:site => {}, :project_id => @project.id}
         assigns(:site).should be_a_new(Site)
         assigns(:site).should_not be_persisted
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
         Site.any_instance.stub(:save).and_return(false)
         post :create, {:site => {}}
-        # post :create, {:site => {}, :project_id => @project.id}
         response.should render_template("new")
       end
 
