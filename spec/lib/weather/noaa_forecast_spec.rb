@@ -272,55 +272,53 @@ describe NOAAForecast do
 
   describe "#get_pop_array" do
     it "returns pop array" do
-      # nf2.seven_day_weather(zipcode)
-      pop_array = nf2.get_pop(zipcode)
+      nf = NOAAForecast.new(zipcode)
+      pop_array = nf.get_pop(zipcode)
 
-      # debug collect method later
-      # new_pop_array.collect {|i| new_pop_array << { :weather => pop_array[i].to_s } }
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => pop_array[i].to_s }
       end
 
-      nf2.get_pop_array(zipcode).should == new_pop_array
+      nf.get_pop_array(zipcode).should == new_pop_array
     end
   end
 
   describe "#get_qpf_array" do
-    xit "returns qpf array" do
-      nf2.seven_day_weather(zipcode)
-      qpf_array = nf2.qpf
+    it "returns qpf array" do
+      nf = NOAAForecast.new(zipcode)
+      nf.seven_day_weather(zipcode)
+      qpf_array = nf.qpf
 
       new_qpf_array = []
       qpf_array.each do |i|
         new_qpf_array << { :rainfall => i.to_s }
       end
 
-      nf2.get_qpf_array(zipcode).should == new_qpf_array
+      nf.get_qpf_array(zipcode).should == new_qpf_array
     end
   end
 
   describe "#time_pop_hash" do
-    xit "returns time pop hash" do
+    it "returns time pop hash" do
       time_array = []
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
 
-      nf2.seven_day_weather(zipcode)
-      pop_array = nf2.get_pop(zipcode)
+      nf = NOAAForecast.new(zipcode)
+      nf.seven_day_weather(zipcode)
+      pop_array = nf.get_pop(zipcode)
+
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
       end
 
-      # array not being returned correctly
-      # time_pop_hash = []
-      # for h in 0..27
-      #   time_pop_hash << Hash[time_array[h]].update(Hash[new_pop_array[h]])
-      # end
-
-      # refactor into proper loop
+      time_pop_hash = []
+      new_pop_array = nf.get_pop_array(zipcode)
+      time_pop_hash << time_array.merge!(new_pop_array)
+=begin
       time_pop_hash = [
         time_array[0].update(new_pop_array[0]),
         time_array[1].update(new_pop_array[1]),
