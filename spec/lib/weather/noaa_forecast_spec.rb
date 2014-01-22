@@ -97,7 +97,7 @@ describe NOAAForecast do
       IO.read("./spec/fixtures/get_forecast_array.rb")
       # return zipcode
     }
-  end # needed for before :each block
+  end # end of before block
 
   it "instantiates class with valid zipcode" do
     nf.class.should == NOAAForecast
