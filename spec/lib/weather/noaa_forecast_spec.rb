@@ -77,7 +77,7 @@ describe NOAAForecast do
 
     nf.stub(:get_qpf_array) {
       IO.read("./spec/fixtures/new_qpf_array.rb")
-      return zipcode
+      # return zipcode
     }
 
     nf.stub(:get_time_pop_hash) {
@@ -101,7 +101,7 @@ describe NOAAForecast do
     nf3.stub(:get_pop_table_hash) {
 
       IO.read("./spec/fixtures/get_pop_table_hash.rb")
-      return zipcode
+      # return zipcode
     }
 
     nf.stub(:get_forecast_array) {
