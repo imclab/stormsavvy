@@ -178,6 +178,9 @@ describe NOAAForecast do
       creation_time = nf.get_forecast_creation_time(response)
       datehash = DateTime.parse("Sun Nov 18 23:02:24 2012 UTC", "%a %b %d %H:%M:%S %Y %Z")
       creation_time.should == datehash
+
+      pp forecast_array
+      pp nf.get_forecast([lat, long])
     end
   end
 
