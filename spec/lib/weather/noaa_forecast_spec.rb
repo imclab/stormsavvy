@@ -375,15 +375,17 @@ describe NOAAForecast do
 
       time_pop_hash = []
       for i in (0..27)
-        time_pop = @time_array[i].update(@pop_array[i])
-        time_pop_hash.push(time_pop)
+        time_pop_hash << @time_array[i].update(@pop_array[i])
+        # time_pop = @time_array[i].update(@pop_array[i])
+        # time_pop_hash.push(time_pop)
       end
       pp time_pop_hash
 
       pop_table_hash = []
       for i in (0..27)
-        time_pop_qpf = time_pop_hash[i].update(@qpf_array[i])
-        pop_table_hash.push(time_pop_qpf)
+        pop_table_hash << time_pop_hash[i].update(@qpf_array[i])
+        # time_pop_qpf = time_pop_hash[i].update(@qpf_array[i])
+        # pop_table_hash.push(time_pop_qpf)
       end
       pp pop_table_hash
 
