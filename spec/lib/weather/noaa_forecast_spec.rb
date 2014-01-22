@@ -334,9 +334,7 @@ describe NOAAForecast do
       time_pop_hash = []
       new_pop_array = nf.get_pop_array(zipcode)
       time_pop_hash << time_array.merge!(new_pop_array)
-      pp time_pop_hash
 
-      # nf.get_time_pop_hash(zipcode).should == time_pop_hash
       time_pop_hash = [
         time_array[0].update(new_pop_array[0]),
         time_array[1].update(new_pop_array[1]),
