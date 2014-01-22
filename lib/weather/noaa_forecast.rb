@@ -169,7 +169,6 @@ class NOAAForecast
       time_pop_hash[26].update(new_qpf_array[26]),
       time_pop_hash[27].update(new_qpf_array[27])
     ]
-=end
   end
 
   def get_forecast_array(zipcode)
