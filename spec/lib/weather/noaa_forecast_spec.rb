@@ -299,7 +299,7 @@ describe NOAAForecast do
 
   describe "#get_pop_array" do
     it "returns pop array" do
-      nf = NOAAForecast.new(zipcode)
+      nf.should respond_to(:get_pop_array)
       pop_array = nf.get_pop(zipcode)
 
       new_pop_array = []
