@@ -51,7 +51,7 @@ describe NOAAForecast do
 
     nf.stub(:get_pop) {
       IO.read("./spec/fixtures/get_pop_array.rb")
-      return pop
+      # return pop
     }
 
     nf.stub(:get_qpf).with(zipcode).and_return {
@@ -59,9 +59,9 @@ describe NOAAForecast do
       # return qpf
     }
 
-    nf.stub(:get_pop_array) {
+    nf.stub(:get_pop_array).with(zipcode).and_return {
       IO.read("./spec/fixtures/new_pop_array.rb")
-      return zipcode
+      # return zipcode
     }
 
     nf.stub(:get_qpf_array) {
@@ -70,7 +70,6 @@ describe NOAAForecast do
     }
 
     nf.stub(:get_time_pop_hash) {
-
       # time_array = []
       # for t in 0..27
       #   time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
