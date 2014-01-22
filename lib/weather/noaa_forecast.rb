@@ -67,7 +67,7 @@ class NOAAForecast
 
   def get_time_array
     time_array = []
-    for t in 0..27
+    for t in (0..27)
       time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
     end
 
