@@ -332,9 +332,6 @@ describe NOAAForecast do
     it "returns time pop hash" do
       nf.should respond_to(:get_time_pop_hash)
 
-      # response = nf.ping_noaa([lat, long], 168, 6)
-      # forecast = nf.parse_weather_data(response)
-
       time_pop_hash = []
       for i in (0..27)
         time_pop_hash << @time_array[i].update(@pop_array[0])
