@@ -266,7 +266,6 @@ class NOAAForecast
       { :date => ProjectLocalTime::format(Date.today + 162.hours), :weather => pop[0][27], :rainfall => pop[1][27] },
       { :date => ProjectLocalTime::format(Date.today + 168.hours), :weather => pop[0][28], :rainfall => pop[1][28] }
     ]
-=end
   end
 
   def ping_noaa(latlong, duration, interval)
