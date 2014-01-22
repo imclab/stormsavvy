@@ -356,7 +356,7 @@ describe NOAAForecast do
         end
         pop.should be_between(0,100)
       end
-=begin
+
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
@@ -364,7 +364,9 @@ describe NOAAForecast do
 
       time_pop_hash = []
       new_pop_array = nf.get_pop_array(zipcode)
-      time_pop_hash << time_array.merge!(new_pop_array)
+      for i in (0..27)
+        time_pop_hash[i] << time_array.update(new_pop_array[i])
+      end
 
       time_pop_hash = [
         time_array[0].update(new_pop_array[0]),
