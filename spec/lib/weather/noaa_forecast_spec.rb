@@ -12,11 +12,15 @@ describe NOAAForecast do
   let(:nf) { NOAAForecast.new(zipcode,168,6) }
   let(:pop) { nf.get_pop(zipcode) }
   let(:qpf) { nf.get_qpf(zipcode) }
+
   let(:time) { [] }
   let(:time_array) {
     for t in (0..27)
       time << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
     end
+  }
+  let(:forecast_array) {
+      IO.read("./spec/fixtures/forecast_array.rb")
   }
 
   before(:each) do
