@@ -131,7 +131,6 @@ class NOAAForecast
       time_array[26].update(new_pop_array[26]),
       time_array[27].update(new_pop_array[27])
     ]
-=end
   end
 
   def get_pop_table_hash(zipcode)
