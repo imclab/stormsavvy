@@ -10,20 +10,31 @@ describe NOAAForecast do
   let(:lat_long) { [lat, long] }
   # let(:nf) { double(NOAAForecast) }
   let(:nf) { NOAAForecast.new(zipcode,168,6) }
-  let(:pop) { nf.get_pop(zipcode) }
-  let(:qpf) { nf.get_qpf(zipcode) }
 
-  let(:time) { [] }
-  let(:time_array) {
-    for t in (0..27)
-      time << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
-    end
+  let(:pop) {
+    [0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0]
   }
-  let(:forecast_array) {
-      IO.read("./spec/fixtures/forecast_array.rb")
+  let(:qpf) {
+    [0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0]
   }
 
   before(:each) do
+    @time_array = []
+    for t in (0..27)
+      date = { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
+      @time_array.push(date)
+    end
+    @pop_array = []
+    for t in (0..27)
+      pop = { :weather => 99 }
+      @pop_array.push(pop)
+    end
+    @qpf_array = []
+    for t in (0..27)
+      qpf = { :rainfall => 99 }
+      @qpf_array.push(qpf)
+    end
+
     nf.stub(:get_lat_long).with(zipcode).and_return([lat, long])
     nf.stub(:get_lat_long).with("0").and_return([])
 
