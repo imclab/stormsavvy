@@ -60,7 +60,7 @@ describe NOAAForecast do
       end
     }
 
-    nf.stub(:get_pop) {
+    nf.stub(:get_pop).with(zipcode).and_return {
       IO.read("./spec/fixtures/get_pop_array.rb")
       # return pop
     }
