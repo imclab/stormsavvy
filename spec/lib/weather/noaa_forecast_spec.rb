@@ -357,84 +357,52 @@ describe NOAAForecast do
     end
   end
 
-  describe "#pop_table_hash" do
+  describe "#get_pop_table_hash" do
     it "returns pop_table hash" do
-      pp @pop_array
-      pp @qpf_array
-      pp @time_array
+      nf.should respond_to(:get_pop_table_hash)
+
       time_pop_hash = []
       for i in (0..27)
         time_pop = @time_array[i].update(@pop_array[i])
         time_pop_hash.push(time_pop)
       end
       pp time_pop_hash
+
       pop_table_hash = []
       for i in (0..27)
-        time_pop_qpf = @time_pop_hash[i].update(@qpf_array[i])
+        time_pop_qpf = time_pop_hash[i].update(@qpf_array[i])
         pop_table_hash.push(time_pop_qpf)
       end
-=begin
-      time_pop_hash = [
-        @time_array[0].update(@pop_array[0]),
-        @time_array[1].update(@pop_array[1]),
-        @time_array[2].update(@pop_array[2]),
-        @time_array[3].update(@pop_array[3]),
-        @time_array[4].update(@pop_array[4]),
-        @time_array[5].update(@pop_array[5]),
-        @time_array[6].update(@pop_array[6]),
-        @time_array[7].update(@pop_array[7]),
-        @time_array[8].update(@pop_array[8]),
-        @time_array[9].update(@pop_array[9]),
-        @time_array[10].update(@pop_array[10]),
-        @time_array[11].update(@pop_array[11]),
-        @time_array[12].update(@pop_array[12]),
-        @time_array[13].update(@pop_array[13]),
-        @time_array[14].update(@pop_array[14]),
-        @time_array[15].update(@pop_array[15]),
-        @time_array[16].update(@pop_array[16]),
-        @time_array[17].update(@pop_array[17]),
-        @time_array[18].update(@pop_array[18]),
-        @time_array[19].update(@pop_array[19]),
-        @time_array[20].update(@pop_array[20]),
-        @time_array[21].update(@pop_array[21]),
-        @time_array[22].update(@pop_array[22]),
-        @time_array[23].update(@pop_array[23]),
-        @time_array[24].update(@pop_array[24]),
-        @time_array[25].update(@pop_array[25]),
-        @time_array[26].update(@pop_array[26]),
-        @time_array[27].update(@pop_array[27])
-      ]
-      pop_table_hash = [
-        time_pop_hash[1].update(new_qpf_array[1]),
-        time_pop_hash[2].update(new_qpf_array[2]),
-        time_pop_hash[3].update(new_qpf_array[3]),
-        time_pop_hash[4].update(new_qpf_array[4]),
-        time_pop_hash[5].update(new_qpf_array[5]),
-        time_pop_hash[6].update(new_qpf_array[6]),
-        time_pop_hash[7].update(new_qpf_array[7]),
-        time_pop_hash[8].update(new_qpf_array[8]),
-        time_pop_hash[9].update(new_qpf_array[9]),
-        time_pop_hash[10].update(new_qpf_array[10]),
-        time_pop_hash[11].update(new_qpf_array[11]),
-        time_pop_hash[12].update(new_qpf_array[12]),
-        time_pop_hash[13].update(new_qpf_array[13]),
-        time_pop_hash[14].update(new_qpf_array[14]),
-        time_pop_hash[15].update(new_qpf_array[15]),
-        time_pop_hash[16].update(new_qpf_array[16]),
-        time_pop_hash[17].update(new_qpf_array[17]),
-        time_pop_hash[18].update(new_qpf_array[18]),
-        time_pop_hash[19].update(new_qpf_array[19]),
-        time_pop_hash[20].update(new_qpf_array[20]),
-        time_pop_hash[21].update(new_qpf_array[21]),
-        time_pop_hash[22].update(new_qpf_array[22]),
-        time_pop_hash[23].update(new_qpf_array[23]),
-        time_pop_hash[24].update(new_qpf_array[24]),
-        time_pop_hash[25].update(new_qpf_array[25]),
-        time_pop_hash[26].update(new_qpf_array[26]),
-        time_pop_hash[27].update(new_qpf_array[27])
-      ]
-=end
-      nf.get_pop_table_hash(zipcode).should == pop_table_hash
+      pp pop_table_hash
+
+      pop_table = nf.get_pop_table_hash(zipcode)
+      pop_table.length.should == 27
+      pop_table.each do |f|
+        pop = f[:weather].to_i
+        if pop == -999
+          pop = 0
+        end
+        pop.should be_between(0,100)
+        qpf = f[:rainfall].to_i
+        if qpf == -999
+          qpf = 0
+        end
+        qpf.should be_between(0,100)
+      end
+
+      pop_table_hash.length.should == 28
+      pop_table_hash.each do |f|
+        pop = f[:weather].to_i
+        if pop == -999
+          pop = 0
+        end
+        pop.should be_between(0,100)
+        qpf = f[:rainfall].to_i
+        if qpf == -999
+          qpf = 0
+        end
+        qpf.should be_between(0,100)
+      end
     end
   end
 end
