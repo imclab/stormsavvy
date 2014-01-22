@@ -206,8 +206,18 @@ describe NOAAForecast do
     end
 
     it 'returns correct forecast' do
-      nf = NOAAForecast.new(94530)
-      nf.seven_day_weather(zipcode)
+      # nf = NOAAForecast.new(94530)
+      forecast = nf.seven_day_weather(zipcode)
+
+      forecast[0].length.should == 29
+      forecast[0].each do |pop|
+        pop.should be_between(0,100)
+      end
+
+      forecast[1].length.should == 29
+      forecast[1].each do |qpf|
+        qpf.should be_between(0,100)
+      end
     end
   end
 
