@@ -359,66 +359,50 @@ describe NOAAForecast do
 
   describe "#pop_table_hash" do
     it "returns pop_table hash" do
-      # pop_array = nf.get_pop
-      # pp pop_array
-      pp nf.seven_day_weather(zipcode)
-=begin
-      new_pop_array = []
-      pop_array.each do |i|
-        new_pop_array << { :weather => i.to_s }
+      pp @pop_array
+      pp @qpf_array
+      pp @time_array
+      time_pop_hash = []
+      for i in (0..27)
+        time_pop = @time_array[i].update(@pop_array[i])
+        time_pop_hash.push(time_pop)
       end
-
-      qpf_array = nf.qpf
-      new_qpf_array = []
-      qpf_array.each do |i|
-        new_qpf_array << { :rainfall => i.to_s }
+      pp time_pop_hash
+      pop_table_hash = []
+      for i in (0..27)
+        time_pop_qpf = @time_pop_hash[i].update(@qpf_array[i])
+        pop_table_hash.push(time_pop_qpf)
       end
-
-      time_array = []
-      for t in (0..27)
-        time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
-      end
-=end
-
-      new_pop_array = nf.get_pop_array(zipcode)
-
-      # time_array.merge!(new_pop_array)
-
-      # time_pop_hash = nf.get_time_pop_hash(zipcode)
-      # new_qpf_array = nf.get_qpf_array(zipcode)
-      # time_pop_hash.merge!(new_qpf_array)
-
-      nf.get_pop_table_hash(zipcode).should == pop_table_hash
 =begin
       time_pop_hash = [
-        time_array[0].update(new_pop_array[0]),
-        time_array[1].update(new_pop_array[1]),
-        time_array[2].update(new_pop_array[2]),
-        time_array[3].update(new_pop_array[3]),
-        time_array[4].update(new_pop_array[4]),
-        time_array[5].update(new_pop_array[5]),
-        time_array[6].update(new_pop_array[6]),
-        time_array[7].update(new_pop_array[7]),
-        time_array[8].update(new_pop_array[8]),
-        time_array[9].update(new_pop_array[9]),
-        time_array[10].update(new_pop_array[10]),
-        time_array[11].update(new_pop_array[11]),
-        time_array[12].update(new_pop_array[12]),
-        time_array[13].update(new_pop_array[13]),
-        time_array[14].update(new_pop_array[14]),
-        time_array[15].update(new_pop_array[15]),
-        time_array[16].update(new_pop_array[16]),
-        time_array[17].update(new_pop_array[17]),
-        time_array[18].update(new_pop_array[18]),
-        time_array[19].update(new_pop_array[19]),
-        time_array[20].update(new_pop_array[20]),
-        time_array[21].update(new_pop_array[21]),
-        time_array[22].update(new_pop_array[22]),
-        time_array[23].update(new_pop_array[23]),
-        time_array[24].update(new_pop_array[24]),
-        time_array[25].update(new_pop_array[25]),
-        time_array[26].update(new_pop_array[26]),
-        time_array[27].update(new_pop_array[27])
+        @time_array[0].update(@pop_array[0]),
+        @time_array[1].update(@pop_array[1]),
+        @time_array[2].update(@pop_array[2]),
+        @time_array[3].update(@pop_array[3]),
+        @time_array[4].update(@pop_array[4]),
+        @time_array[5].update(@pop_array[5]),
+        @time_array[6].update(@pop_array[6]),
+        @time_array[7].update(@pop_array[7]),
+        @time_array[8].update(@pop_array[8]),
+        @time_array[9].update(@pop_array[9]),
+        @time_array[10].update(@pop_array[10]),
+        @time_array[11].update(@pop_array[11]),
+        @time_array[12].update(@pop_array[12]),
+        @time_array[13].update(@pop_array[13]),
+        @time_array[14].update(@pop_array[14]),
+        @time_array[15].update(@pop_array[15]),
+        @time_array[16].update(@pop_array[16]),
+        @time_array[17].update(@pop_array[17]),
+        @time_array[18].update(@pop_array[18]),
+        @time_array[19].update(@pop_array[19]),
+        @time_array[20].update(@pop_array[20]),
+        @time_array[21].update(@pop_array[21]),
+        @time_array[22].update(@pop_array[22]),
+        @time_array[23].update(@pop_array[23]),
+        @time_array[24].update(@pop_array[24]),
+        @time_array[25].update(@pop_array[25]),
+        @time_array[26].update(@pop_array[26]),
+        @time_array[27].update(@pop_array[27])
       ]
       pop_table_hash = [
         time_pop_hash[1].update(new_qpf_array[1]),
