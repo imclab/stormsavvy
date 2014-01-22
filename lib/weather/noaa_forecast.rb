@@ -137,10 +137,9 @@ class NOAAForecast
     nf = NOAAForecast.new(zipcode)
     time_pop_hash = nf.get_time_pop_hash(zipcode)
     new_qpf_array = nf.get_qpf_array(zipcode)
-    for i in (0..27)
-      time_pop_hash[i].merge!(new_qpf_array[i])
-    end
-=begin
+    # for i in (0..27)
+    #   time_pop_hash[i].merge!(new_qpf_array[i])
+    # end
     pop_table_hash = [
       time_pop_hash[1].update(new_qpf_array[1]),
       time_pop_hash[2].update(new_qpf_array[2]),
