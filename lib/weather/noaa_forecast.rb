@@ -225,17 +225,16 @@ class NOAAForecast
     nf = NOAAForecast.new(zipcode,168,6)
     pop = nf.seven_day_weather(zipcode)
 
-    forecast_array = []
-    for i in (0..27)
-      date = { :date => ProjectLocalTime::format(Date.today + (6*i).hours) }
-      weather = { :weather => pop[0][i] }
-      rainfall = { :rainfall => pop[1][i] }
+    # forecast_array = []
+    # for i in (0..27)
+    #   date = { :date => ProjectLocalTime::format(Date.today + (6*i).hours) }
+    #   weather = { :weather => pop[0][i] }
+    #   rainfall = { :rainfall => pop[1][i] }
 
-      date_weather = date.merge!(weather)
-      date_weather_rainfall = date_weather.merge!(rainfall)
-      forecast_array.push(date_weather_rainfall)
-    end
-=begin
+    #   date_weather = date.merge!(weather)
+    #   date_weather_rainfall = date_weather.merge!(rainfall)
+    #   forecast_array.push(date_weather_rainfall)
+    # end
     [
       { :date => ProjectLocalTime::format(Date.today), :weather => pop[0][0], :rainfall => pop[1][0] },
       { :date => ProjectLocalTime::format(Date.today + 6.hours), :weather => pop[0][1], :rainfall => pop[1][1] },
