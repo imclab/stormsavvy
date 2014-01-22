@@ -346,8 +346,9 @@ describe NOAAForecast do
         end
         pop.should be_between(0,100)
       end
-
+=begin
       api_call = nf.get_time_pop_hash(zipcode)
+      pp api_call
       api_call.each do |f|
         pop = f[:weather].to_i
         if pop == -999
