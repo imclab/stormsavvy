@@ -98,10 +98,9 @@ class NOAAForecast
     time_array = nf.get_time_array
     new_pop_array = nf.get_pop_array(zipcode)
 
-    for i in (0..27)
-      time_array[i].merge!(new_pop_array[0])
-    end
-=begin
+    # for i in (0..27)
+    #   time_array[i].merge!(new_pop_array[0])
+    # end
     time_pop_hash = [
       time_array[0].update(new_pop_array[0]),
       time_array[1].update(new_pop_array[1]),
