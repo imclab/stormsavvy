@@ -249,16 +249,37 @@ describe NOAAForecast do
 
   describe "#get_pop" do
     it "returns pop results" do
-      nf = NOAAForecast.new(zipcode)
-      pp nf.get_pop(zipcode)
+      nf.should respond_to(:get_pop)
+
+      pop_array = nf.get_pop(zipcode)
+      # length as string
+      pop_array.length.should == 108
+
+      pop_array.each do |pop|
+        if pop == -999
+          pop = 0
+        end
+        pop.should be_between(0,100)
+      end
       # nf.get_pop(zipcode).should == pop
     end
   end
 
   describe "#get_qpf" do
     it "returns qpf results" do
-      nf = NOAAForecast.new(zipcode)
-      pp nf.get_qpf(zipcode)
+      nf.should respond_to(:get_qpf)
+
+      qpf_array = nf.get_qpf(zipcode)
+      pp qpf_array
+      # length as string
+      qpf_array.length.should == 102
+
+      qpf_array.each do |qpf|
+        if qpf == -999
+          qpf = 0
+        end
+        qpf.should be_between(0,100)
+      end
       # nf.get_qpf(zipcode).should == qpf
     end
   end
