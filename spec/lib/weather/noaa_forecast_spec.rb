@@ -348,8 +348,10 @@ describe NOAAForecast do
 
   describe "#pop_table_hash" do
     it "returns pop_table hash" do
-      nf = NOAAForecast.new(zipcode)
-      pop_array = nf.pop
+      # pop_array = nf.get_pop
+      # pp pop_array
+      pp nf.seven_day_weather(zipcode)
+=begin
       new_pop_array = []
       pop_array.each do |i|
         new_pop_array << { :weather => i.to_s }
