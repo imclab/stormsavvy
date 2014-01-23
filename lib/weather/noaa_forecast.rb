@@ -70,7 +70,6 @@ class NOAAForecast
     for t in (0..27)
       time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
     end
-
     return time_array
   end
 
