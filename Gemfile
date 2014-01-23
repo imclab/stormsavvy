@@ -68,6 +68,7 @@ group :test, :development do
   gem 'awesome_print'
   gem 'pdf-inspector', require: 'pdf/inspector'
   gem 'simplecov', require: false
+  gem 'reek'
 end
 
 group :production do
