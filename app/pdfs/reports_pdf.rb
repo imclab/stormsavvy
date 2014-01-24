@@ -10,11 +10,11 @@ class ReportsPdf < Prawn::Document
   end
 
   # Test method for rendering entire pdf with Prawn.
-  # def testem_fields(filename)
-  #   pdf = Prawn::Document.new(
-  #     :template => filename,
-  #     :page_size => "A4"
-  #   )
-  #   send_data pdf.render, type: "application/pdf", disposition: "inline"
-  # end
+  def testem_fields(filename)
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
+    send_data pdf.render, type: "application/pdf", disposition: "inline"
+  end
 end
