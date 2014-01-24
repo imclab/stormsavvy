@@ -24,25 +24,24 @@ class FirstReport < ReportsPdf
   # Test method for rendering entire pdf with Prawn.
   def testem_page
     testem_fields(
-      # "#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.png"
-      # "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
+      "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
       # "#{Rails.root}/app/assets/images/reports/testem_fields.pdf"
-      "#{Rails.root}/app/assets/pdfs/CEM2030_production_v1.png"
+      # "#{Rails.root}/app/assets/pdfs/testem.png"
     )
     start_new_page
   end
 
   def first_page
-    page_background("#{Rails.root}/app/assets/pdfs/CEM2030_production_v1.png")
+    # page_background("#{Rails.root}/app/assets/pdfs/testem.png")
     # page_background("#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.png")
     # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf")
     # full_report_header_block
 
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
-    # pdf = Prawn::Document.new(
-    #   :template => filename,
-    #   :page_size => "A4"
-    # )
+    filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
     # send_data pdf.render, type: "application/pdf", disposition: "inline"
 
     start_new_page
