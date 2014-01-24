@@ -2,7 +2,7 @@ module ReportsHeaderMethods
 
   # Implement checkbox here: 
   # git://gist.github.com/58890.git
-           
+
   CHECKBOX        = "\xE2\x98\x90" # "☐"
   FILLED_CHECKBOX = "\xE2\x98\x91" # "☑"
 
