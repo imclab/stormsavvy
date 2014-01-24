@@ -48,7 +48,8 @@ class FirstReport < ReportsPdf
   end
 
   def second_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf")    
+    page_background("#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.pdf")
+    # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf")
     # simple_report_header_block
 
     # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf"
