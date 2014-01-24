@@ -32,4 +32,5 @@ describe PdfController do
     get :CEM4601
     response.code.should eq("200")
   end
+
 end
