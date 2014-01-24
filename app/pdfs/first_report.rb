@@ -1,6 +1,5 @@
-require 'prawn'
-
 class FirstReport < ReportsPdf
+  require 'prawn'
 
   def initialize(report, view, options)
     super top_margin: 70
