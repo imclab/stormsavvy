@@ -16,10 +16,10 @@ class ReportsController < ApplicationController
       format.html
       format.pdf do
         # filename = "#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.pdf"
-        # pdf = FirstReport.new @report, view_context, background: "#{Prawn::DATADIR}/images/reports/CEM2031-2012_Page_01.png"
+        pdf = FirstReport.new @report, view_context, background: "#{Prawn::DATADIR}/images/reports/CEM2031-2012_Page_01.png"
         # pdf = FirstReport.new @report, view_context, background: "#{Prawn::DATADIR}/images/reports/testem_fields.pdf"
-        # pdf = FirstReport.new @report, view_context, background: "#{Rails.root}/app/assets/pdfs/CEM2030_production_v1.png"
-        pdf = FirstReport.new @report, view_context, background: "#{Rails.root}/app/assets/pdfs/testem.png"
+        # pdf = FirstReport.new @report, view_context, background: "#{Rails.root}/app/assets/pdfs/CEM2030_production_v1.pdf"
+        # pdf = FirstReport.new @report, view_context, background: "#{Rails.root}/app/assets/pdfs/testem.png"
         send_data pdf.render, filename: "report_#{@report.id}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
