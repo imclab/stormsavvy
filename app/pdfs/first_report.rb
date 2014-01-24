@@ -25,14 +25,16 @@ class FirstReport < ReportsPdf
   # Test method for rendering entire pdf with Prawn.
   def testem_page
     testem_fields(
-      "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
+      "#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.pdf"
+      # "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
       # "#{Rails.root}/app/assets/images/reports/testem_fields.pdf"
     )
     start_new_page
   end
 
   def first_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf")
+    page_background("#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.pdf")
+    # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf")
     # full_report_header_block
 
     # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
