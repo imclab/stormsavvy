@@ -1,4 +1,6 @@
-pdf = Prawn::Document.new(:background => "#{Prawn::DATADIR}/images/CEM2030-2012_Page_01.png") 
+filename = "#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.pdf"
+pdf = Prawn::Document.new(:background => filename)
+# pdf = Prawn::Document.new(:background => "#{Prawn::DATADIR}/images/CEM2030-2012_Page_01.png") 
 
 # page1 = "#{Rails.root}/app/assets/images/CEM2030-2012_Page_01.png"
 # pdf.image page1
