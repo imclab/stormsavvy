@@ -48,99 +48,99 @@ class FirstReport < ReportsPdf
   end
 
   def second_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.pdf")
+    # page_background("#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.pdf")
     # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf")
     # simple_report_header_block
 
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf"
-    # pdf = Prawn::Document.new(
-    #   :template => filename,
-    #   :page_size => "A4"
-    # )
+    filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
     start_new_page
   end
 
   def third_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_03.pdf")
+    # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_03.pdf")
     # simple_report_header_block
 
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_03.pdf"
-    # pdf = Prawn::Document.new(
-    #   :template => filename,
-    #   :page_size => "A4"
-    # )
+    filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_03.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
     start_new_page
   end
 
   def fourth_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_04.pdf")
+    # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_04.pdf")
     # simple_report_header_block
 
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_04.pdf"
-    # pdf = Prawn::Document.new(
-    #   :template => filename,
-    #   :page_size => "A4"
-    # )
+    filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_04.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
     start_new_page
   end
 
   def fifth_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_05.pdf")
+    # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_05.pdf")
     # simple_report_header_block
 
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_05.pdf"
-    # pdf = Prawn::Document.new(
-    #   :template => filename,
-    #   :page_size => "A4"
-    # )
+    filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_05.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
     start_new_page
   end
 
   def sixth_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_06.pdf")
+    # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_06.pdf")
     # simple_report_header_block
 
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_06.pdf"
-    # pdf = Prawn::Document.new(
-    #   :template => filename,
-    #   :page_size => "A4"
-    # )
+    filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_06.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
     start_new_page
-  end  
+  end
 
   def seventh_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_07.pdf")
+    # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_07.pdf")
     # simple_report_header_block
 
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf"
-    # pdf = Prawn::Document.new(
-    #   :template => filename,
-    #   :page_size => "A4"
-    # )
+    filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
     start_new_page
-  end  
+  end
 
   def eighth_page
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_08.pdf")
+    # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_08.pdf")
     # simple_report_header_block
 
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf"
-    # pdf = Prawn::Document.new(
-    #   :template => filename,
-    #   :page_size => "A4"
-    # )
+    filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
     start_new_page
-  end  
+  end
 
   def ninth_page
     # Do not start new page on last page!
-    page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_09.pdf")
+    # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_09.pdf")
     # simple_report_header_block
 
-    # filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_09.pdf"
-    # pdf = Prawn::Document.new(
-    #   :template => filename,
-    #   :page_size => "A4"
-    # )
-  end  
+    filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_09.pdf"
+    pdf = Prawn::Document.new(
+      :template => filename,
+      :page_size => "A4"
+    )
+  end
 end
