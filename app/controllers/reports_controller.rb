@@ -15,11 +15,12 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        # filename = "#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.pdf"
+        filename = "#{Prawn::DATADIR}/images/reports/CEM2030_production_v1.pdf"
         pdf = FirstReport.new(
           @report,
           view_context,
-          background: "#{Prawn::DATADIR}/images/reports/CEM2031-2012_Page_01.png"
+          background: "#{Prawn::DATADIR}/images/reports/CEM2031-2012_Page_01.png",
+          template: filename
         )
         # pdf = FirstReport.new @report, view_context, background: "#{Prawn::DATADIR}/images/reports/testem_fields.pdf"
         # pdf = FirstReport.new @report, view_context, background: "#{Rails.root}/app/assets/pdfs/CEM2030_production_v1.pdf"
