@@ -31,4 +31,17 @@ describe PdfController do
     response.code.should eq("200")
   end
 
+  it "generates a pdf with CEM2030" do
+    format = double("format")
+    format.stub(:CEM2030).and_return "CEM2030.pdf"
+    controller.stub(:respond_to).and_yield(format)
+
+    get :CEM2030
+    response.code.should eq("200")
+    pp response
+
+    controller.should_receive(:CEM2030)
+    get :CEM2030, :format => :pdf
+  end
+
 end
