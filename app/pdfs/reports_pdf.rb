@@ -1,4 +1,5 @@
 class ReportsPdf < Prawn::Document
+  require 'prawn'
 
   include ReportsHeaderMethods
 
