@@ -13,8 +13,6 @@ describe PdfController do
   end
 
   it "renders methods with 200 code" do
-    get :CEM2030
-    response.code.should eq("200")
     get :CEM2034
     response.code.should eq("200")
     get :CEM2035
