@@ -12,3 +12,10 @@ describe "Site controllers", ->
       )
       expect(scope.sites.length).toBe 1
     )
+    it "should set location with site id", inject(($controller) ->
+      scope = {}
+      ctrl = $controller("IndexCtrl",
+        $location: location
+      )
+      expect(location.url).toBe ('/site/'+siteID)
+    )
