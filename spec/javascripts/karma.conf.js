@@ -22,13 +22,13 @@ module.exports = function(config) {
 
     singlerun: false,
 
-    plugins : [
-      'karma-jasmine',
-      'karma-ng-scenario',
-      'karma-safari-launcher',
-      'karma-coffee-preprocessor',
-      'karma-junit-reporter'
-    ],
+    //plugins : [
+    //'karma-jasmine',
+    //'karma-ng-scenario',
+    //'karma-safari-launcher',
+    //'karma-coffee-preprocessor',
+    //'karma-junit-reporter'
+    //],
 
     exclude: [
       'app/assets/javascripts/angular-loader.js',
