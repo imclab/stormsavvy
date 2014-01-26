@@ -2,6 +2,7 @@
 
 describe "Site controllers", ->
   beforeEach module("Site")
+  # beforeEach(angular.mock.module('Application'));
 
   describe "mainIndexCtrl", ->
     it "should set sites to an empty array", inject(($controller) ->
