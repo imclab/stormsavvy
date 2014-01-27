@@ -16,12 +16,11 @@ describe "sites/show" do
 
   it "renders site attributes" do
     rendered.should match(/Project/)
+    rendered.should match(/Project EA/)
+    rendered.should match(/Project Costcode/)
     rendered.should match(/Site ID/)
     rendered.should match(/Site Name/)
     rendered.should match(/Description/)
-    rendered.should match(/Costcode/)
-    rendered.should match(/Size/)
-    rendered.should match(/Exposed Area/)
     rendered.should match(/Address 1/)
     rendered.should match(/Address 2/)
     rendered.should match(/City/)
