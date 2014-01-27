@@ -154,15 +154,15 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.boolean  "turbidity"
     t.boolean  "report_sent"
     t.boolean  "report_received"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "chance_of_rain"
     t.float    "amount_of_rain"
   end
 
-  create_table "reports", :force => true do |t|
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+  create_table "reports", force: true do |t|
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "site_id"
     t.string   "project_id"
     t.string   "inspection_type"
