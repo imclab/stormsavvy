@@ -41,6 +41,7 @@ module.exports = function(config) {
       'app/assets/javascripts/main.js.coffee',
       'app/assets/javascripts/controllers/main/mainSiteCtrl.js.coffee',
       'app/assets/javascripts/controllers/main/mainIndexCtrl.js.coffee',
+      'spec/javascripts/spec_helper.coffee',
       'spec/javascripts/controllers_spec.js.coffee'
     ]
   });
