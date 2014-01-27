@@ -6,7 +6,7 @@ module.exports = function(config) {
       '**/*.coffee': 'coffee'
     },
 
-    frameworks: ['jasmine', 'ng-scenario'],
+    frameworks: ['jasmine'],
 
     autoWatch: true,
 
