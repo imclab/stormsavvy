@@ -120,6 +120,48 @@ describe Site do
       site.city.should == 'Oakland'
       site.zipcode.should == 94610
 
+      site.project_ea.should == '3A23U4'
+      site.wdid_number.should == '004001005'
+      site.construction_phase.should == 'active'
+
+      site.contractor_name.should == 'gcc'
+      site.contractor_address_1.should == 'gcc hq'
+      site.contractor_address_2.should == '246 gcc ave'
+      site.contractor_city.should == 'santa rosa'
+      site.contractor_state.should == 'CA'
+      site.contractor_zipcode.should == '95407'
+      site.contract_number.should == '154009'
+
+      site.wpcm_name.should == 'yoda'
+      site.wpcm_company.should == 'gcc'
+      site.wpcm_phone.should == '707-555-9999'
+      site.wpcm_emergency_phone.should == '707-555-9999'
+      site.qsp_name.should == 'obi'
+      site.qsp_company.should == 'gcc'
+      site.qsp_phone.should == '707-555-9999'
+      site.qsp_emergency_phone.should == '707-555-9999'
+
+      site.total_area.should == 50.00
+      site.total_dsa.should == 30.00
+      site.current_dsa.should == 20.00
+      site.inactive_dsa.should == 10.00
+      site.time_since_last_storm.should == '99 days'
+      site.precipitation_received.should == 0.50
+
+      site.permits.should == '401/1601'
+      site.resident_engineer_name.should == 'yogi'
+      site.structures_representative_name.should == 'barney'
+
+      str = "Mon, 27 Jan 2014"
+      date = Date.parse str
+      site.last_bmp_status.should == date
+      site.last_inspection.should == date
+      site.last_corrective_action.should == date
+      site.last_reap.should == date
+      site.last_training.should == date
+      site.last_weather_forecast.should == date
+      site.last_sampling.should == date
+
       site.should respond_to(:user)
     end
   end
