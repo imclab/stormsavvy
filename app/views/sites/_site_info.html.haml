@@ -1,0 +1,154 @@
+%h3
+  Summary
+%p
+  %b Project:
+  = link_to @site.name, site_path(@site)
+  /= link_to @site.project.name, project_path(@site.project)
+%p
+  %b Project EA:
+  = @site.project_ea
+%p
+  %b Project Costcode:
+  = @site.costcode
+%p
+  %b Site ID:
+  = @site.id
+%p
+  %b Site Name:
+  = @site.name
+%p
+  %b Description:
+  = @site.description
+%p
+  %b Address 1:
+  = @site.address_1
+%p
+  %b Address 2:
+  = @site.address_2
+%p
+  %b City:
+  = @site.city
+%p
+  %b State:
+  = @site.state
+%p
+  %b Zipcode:
+  = @site.zipcode
+%p
+  %b Site Lat/Long:
+  = @site.lat
+  = @site.long
+%h3
+  Site Data
+%p
+  %b Risk Level:
+  = @site.risk_level
+%p
+  %b WDID Number:
+  = @site.wdid_number
+%p
+  %b Construction Phase:
+  = @site.construction_phase
+%p
+  %b Total Area:
+  = @site.total_area
+%p
+  %b Total DSA
+  = @site.total_dsa
+%p
+  %b Current DSA
+  = @site.current_dsa
+%p
+  %b Inactive DSA
+  = @site.inactive_dsa
+%p
+  %b Time Since Last Storm
+  = @site.time_since_last_storm
+%p
+  %b Precipitation Received During Last Storm
+  = @site.precipitation_received
+%p
+  %b Inactive DSA
+  = @site.inactive_dsa
+%h3
+  Contractor Information
+%p
+  %b Contractor Name:
+  = @site.contractor_name
+%p
+  %b Contractor Address 1:
+  = @site.contractor_address_1
+%p
+  %b Contractor Address 2:
+  = @site.contractor_address_2
+%p
+  %b Contractor City:
+  = @site.contractor_city
+%p
+  %b Contractor State:
+  = @site.contractor_state
+%p
+  %b Contractor Zipcode:
+  = @site.contractor_zipcode
+%h3
+  WPCM/QSP Information
+%p
+  %b WPCM Name:
+  = @site.wpcm_name
+%p
+  %b WPCM Company:
+  = @site.wpcm_company
+%p
+  %b WPCM Phone Number:
+  = @site.wpcm_phone
+%p
+  %b WPCM Emergency Phone Number:
+  = @site.wpcm_emergency_phone
+%p
+  %b QSP Name:
+  = @site.qsp_name
+%p
+  %b QSP Company:
+  = @site.qsp_company
+%p
+  %b QSP Phone Number:
+  = @site.qsp_phone
+%p
+  %b QSP Emergency Phone Number:
+  = @site.qsp_emergency_phone
+%h3
+  Weekly Report Status
+%p
+  %b Permits:
+  = @site.permits
+%p
+  %b Resident Engineer Name:
+  = @site.resident_engineer_name
+%p
+  %b Structures Representative Name:
+  = @site.structures_representative_name
+%p
+  %b Last BMP Status Report Date (CEM 2034):
+  = @site.last_bmp_status
+%p
+  %b Last Weekly Inspection Date (CEM 2030):
+  = @site.last_inspection
+%p
+  %b Last Corrective Action Report Date (CEM 2035):
+  = @site.last_corrective_action
+%p
+  %b Last REAP Report Date (CEM 2045):
+  = @site.last_reap
+%p
+  %b Last Training Report Date (CEM 2023/24):
+  = @site.last_training
+%p
+  %b Last Weather Forecast Date (CEM 2040):
+  = @site.last_weather_forecast
+%p
+  %b Last Rain Event Sampling Date (CEM 2051/52):
+  = @site.last_sampling
+%p
+  %b NOAA Forecast Table:
+  %a{ href: "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{@site.lat}&lon=#{@site.long}&clrindex=0&table=custom&duration=7&interval=6" }
+    = @site.zipcode
