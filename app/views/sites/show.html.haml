@@ -8,55 +8,14 @@
   = link_to 'Back', site_path(@site.id)
   .container
     .row
-      .span6
-        %br
+      .span8
+        %h3
+          Site Map
         %p
           = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@site.lat}%2C#{@site.long}"
         %p
-          %b Project:
-          = link_to @site.name, site_path(@site)
-          /= link_to @site.project.name, project_path(@site.project)
+          = render 'site_info'
+        %h3
+          7-Day Forecast
         %p
-          %b Site ID:
-          = @site.id
-        %p
-          %b Site Name:
-          = @site.name
-        %p
-          %b Description:
-          = @site.description
-        %p
-          %b Costcode:
-          = @site.costcode
-        %p
-          %b Size:
-          = @site.size
-        %p
-          %b Exposed area:
-          = @site.exposed_area
-        %p
-          %b Address 1:
-          = @site.address_1
-        %p
-          %b Address 2:
-          = @site.address_2
-        %p
-          %b City:
-          = @site.city
-        %p
-          %b State:
-          = @site.state
-        %p
-          %b Zipcode:
-          = @site.zipcode
-        %p
-          %b Site Lat/Long:
-          = @site.lat
-          = @site.long
-        %p
-          %b NOAA Forecast Table:
-          %a{ href: "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{@site.lat}&lon=#{@site.long}&clrindex=0&table=custom&duration=7&interval=6" }
-            = @site.zipcode
-        %p
-          %b 7-Day Forecast:
           = render 'noaa_forecast_table'
