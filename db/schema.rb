@@ -173,9 +173,9 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.datetime "attachment_updated_at"
   end
 
-  create_table "sampling_event_workflows", :force => true do |t|
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+  create_table "sampling_event_workflows", force: true do |t|
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "hours_before_rain"
     t.boolean  "cem2051"
     t.boolean  "cem2052"
@@ -189,7 +189,7 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.boolean  "sampling_event"
   end
 
-  create_table "sampling_events", :force => true do |t|
+  create_table "sampling_events", force: true do |t|
     t.integer  "site_id"
     t.string   "sampling_type"
     t.text     "sampling_description"
@@ -226,8 +226,8 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.string   "analysis_type_5"
     t.string   "analysis_result_5"
     t.string   "analysis_average_5"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
@@ -236,23 +236,23 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.boolean  "completed"
   end
 
-  create_table "site_pops", :force => true do |t|
+  create_table "site_pops", force: true do |t|
     t.datetime "date"
     t.integer  "pop"
     t.integer  "site_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "sites", :force => true do |t|
+  create_table "sites", force: true do |t|
     t.string   "name"
     t.string   "description"
     t.string   "costcode"
     t.string   "size"
     t.string   "exposed_area"
     t.string   "location"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
     t.integer  "project_id"
     t.string   "zipcode"
@@ -263,23 +263,57 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.string   "city"
     t.string   "state"
     t.string   "risk_level"
+    t.string   "project_ea"
+    t.string   "wdid_number"
+    t.string   "construction_phase"
+    t.string   "contractor_name"
+    t.string   "contractor_address_1"
+    t.string   "contractor_address_2"
+    t.string   "contractor_city"
+    t.string   "contractor_state"
+    t.string   "contractor_zipcode"
+    t.string   "contract_number"
+    t.string   "wpcm_name"
+    t.string   "wpcm_company"
+    t.string   "wpcm_phone"
+    t.string   "wpcm_emergency_phone"
+    t.string   "qsp_name"
+    t.string   "qsp_company"
+    t.string   "qsp_phone"
+    t.string   "qsp_emergency_phone"
+    t.decimal  "total_area"
+    t.decimal  "total_dsa"
+    t.decimal  "current_dsa"
+    t.decimal  "inactive_dsa"
+    t.string   "time_since_last_storm"
+    t.decimal  "precipitation_received"
+    t.string   "permits"
+    t.string   "resident_engineer_name"
+    t.string   "structures_representative_name"
+    t.date     "last_bmp_status"
+    t.date     "last_inspection"
+    t.date     "last_corrective_action"
+    t.date     "last_reap"
+    t.date     "last_training"
+    t.date     "last_weather_forecast"
+    t.date     "last_sampling"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+  create_table "users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",          default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "firstname"
     t.string   "lastname"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "contractor_name"
     t.string   "contractor_address_1"
     t.string   "contractor_address_2"
@@ -288,21 +322,21 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.string   "contractor_zipcode"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  create_table "weather_events", :force => true do |t|
+  create_table "weather_events", force: true do |t|
     t.integer  "site_id"
     t.datetime "eventdate"
     t.float    "duration"
     t.float    "rainfall"
     t.boolean  "inspected"
     t.boolean  "qualifying"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "weather_updates", :force => true do |t|
+  create_table "weather_updates", force: true do |t|
     t.integer  "site_id"
     t.datetime "forecast_creation_time"
     t.float    "lat"
@@ -310,10 +344,10 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.integer  "elevation"
     t.integer  "duration"
     t.integer  "interval"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "weather_updates", ["site_id"], :name => "index_weather_updates_on_site_id"
+  add_index "weather_updates", ["site_id"], name: "index_weather_updates_on_site_id"
 
 end
