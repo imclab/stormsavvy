@@ -69,14 +69,14 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.string   "wx"
     t.integer  "site_id"
     t.integer  "weather_update_id"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
-  add_index "forecast_periods", ["site_id"], :name => "index_forecast_periods_on_site_id"
-  add_index "forecast_periods", ["weather_update_id"], :name => "index_forecast_periods_on_weather_update_id"
+  add_index "forecast_periods", ["site_id"], name: "index_forecast_periods_on_site_id"
+  add_index "forecast_periods", ["weather_update_id"], name: "index_forecast_periods_on_weather_update_id"
 
-  create_table "inspection_event_workflows", :force => true do |t|
+  create_table "inspection_event_workflows", force: true do |t|
     t.integer  "hours_before_rain"
     t.boolean  "reap"
     t.boolean  "cem2023"
