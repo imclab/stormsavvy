@@ -97,20 +97,20 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.float    "amount_of_rain"
     t.float    "forecast_rain"
     t.boolean  "inspection_event"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "site_id"
   end
 
-  create_table "inspection_events", :force => true do |t|
+  create_table "inspection_events", force: true do |t|
     t.integer  "site_id"
     t.string   "inspection_type"
     t.text     "inspection_description"
     t.datetime "inspection_date"
     t.string   "submitted_by"
     t.string   "inspected_by"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
