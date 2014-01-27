@@ -132,21 +132,21 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.string   "state"
   end
 
-  add_index "locations", ["zipcode"], :name => "index_locations_on_zipcode"
+  add_index "locations", ["zipcode"], name: "index_locations_on_zipcode"
 
-  create_table "projects", :force => true do |t|
+  create_table "projects", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
     t.text     "description"
     t.date     "startdate"
     t.date     "finishdate"
     t.boolean  "active"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.integer  "sites_count", :default => 0, :null => false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "sites_count", default: 0, null: false
   end
 
-  create_table "rain_event_workflows", :force => true do |t|
+  create_table "rain_event_workflows", force: true do |t|
     t.integer  "hours_before_rain"
     t.boolean  "reap"
     t.boolean  "cem2030"
