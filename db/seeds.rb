@@ -46,8 +46,8 @@ dt_oakland = Project.create!(
   :finishdate => "2012-03-12 12:01:00"
   )
 
-user.projects << hwy_101
-user.projects << dt_oakland
+# user.projects << hwy_101
+# user.projects << dt_oakland
 
 pp "Sites seed data"
 Site.destroy_all
