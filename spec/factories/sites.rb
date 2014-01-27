@@ -43,17 +43,20 @@ FactoryGirl.define do
     inactive_dsa 10.00
 
     time_since_last_storm '99 days'
-    precipitation_received '0.50 inches'
+    precipitation_received 0.50
 
     permits '401/1601'
     resident_engineer_name 'yogi'
     structures_representative_name 'barney'
-    last_bmp_status 'Mon, 27 Jan 2014'
-    last_inspection 'Mon, 27 Jan 2014'
-    last_corrective_action 'Mon, 27 Jan 2014'
-    last_reap 'Mon, 27 Jan 2014'
-    last_training 'Mon, 27 Jan 2014'
-    last_weather_forecast 'Mon, 27 Jan 2014'
-    last_sampling 'Mon, 27 Jan 2014'
+
+    str = "Mon, 27 Jan 2014"
+    date = Date.parse str
+    last_bmp_status date
+    last_inspection "Mon, 27 Jan 2014"
+    last_corrective_action "Mon, 27 Jan 2014"
+    last_reap "Mon, 27 Jan 2014"
+    last_training "Mon, 27 Jan 2014"
+    last_weather_forecast "Mon, 27 Jan 2014"
+    last_sampling "Mon, 27 Jan 2014"
   end
 end
