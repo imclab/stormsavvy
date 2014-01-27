@@ -119,12 +119,12 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.boolean  "completed"
   end
 
-  create_table "locations", :force => true do |t|
+  create_table "locations", force: true do |t|
     t.integer  "zipcode"
     t.float    "lat"
     t.float    "long"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "name"
     t.string   "address_1"
     t.string   "address_2"
