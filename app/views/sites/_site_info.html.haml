@@ -1,7 +1,7 @@
 %h3
   Summary
 %p
-  %b Project:
+  %b Site Name:
   = link_to @site.name, site_path(@site)
   /= link_to @site.project.name, project_path(@site.project)
 %p
@@ -14,16 +14,13 @@
   %b Site ID:
   = @site.id
 %p
-  %b Site Name:
-  = @site.name
-%p
-  %b Description:
+  %b Project Description:
   = @site.description
 %p
-  %b Address 1:
+  %b Site Address 1:
   = @site.address_1
 %p
-  %b Address 2:
+  %b Site Address 2:
   = @site.address_2
 %p
   %b City:
@@ -56,20 +53,17 @@
   %b Total DSA
   = @site.total_dsa
 %p
-  %b Current DSA
+  %b Current DSA:
   = @site.current_dsa
 %p
-  %b Inactive DSA
+  %b Inactive DSA:
   = @site.inactive_dsa
 %p
-  %b Time Since Last Storm
+  %b Time Since Last Storm:
   = @site.time_since_last_storm
 %p
-  %b Precipitation Received During Last Storm
+  %b Precipitation Received During Last Storm:
   = @site.precipitation_received
-%p
-  %b Inactive DSA
-  = @site.inactive_dsa
 %h3
   Contractor Information
 %p
