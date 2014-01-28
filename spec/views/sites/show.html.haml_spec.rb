@@ -15,7 +15,6 @@ describe "sites/show" do
   end
 
   it "renders site attributes" do
-    rendered.should match(/Project/)
     rendered.should match(/Project EA/)
     rendered.should match(/Project Costcode/)
     rendered.should match(/Site ID/)
@@ -62,15 +61,11 @@ describe "sites/show" do
     rendered.should match(/Last Training Report Date (CEM 2023)/)
     rendered.should match(/Last Weather Forecast Date (CEM 2040)/)
     rendered.should match(/Last Rain Event Sampling Date (CEM 2051)/)
-
     rendered.should match(/NOAA Forecast Table/)
     rendered.should match(/7-Day Forecast/)
     rendered.should match(/Date/)
     rendered.should match(/Chance of Rain/)
     rendered.should match(/Forecast Rain/)
-
-    rendered.should match(/Size/)
-    rendered.should match(/Exposed Area/)
   end
 
   it "has edit, back and delete links" do
