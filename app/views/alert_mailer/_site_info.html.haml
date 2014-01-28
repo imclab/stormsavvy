@@ -3,7 +3,7 @@
 %h3
   Summary
 %p
-  Project Name:
+  Site Name:
   = link_to "#{@site.name}", "https://www.stormsavvy.com/#{site_path(@site)}"
   /= link_to @site.name, site_path(@site)
 %p
@@ -16,16 +16,13 @@
   Site ID:
   = @site.id
 %p
-  Site Name:
-  = @site.name
-%p
-  Description:
+  Project Description:
   = @site.description
 %p
-  Address 1:
+  Site Address 1:
   = @site.address_1
 %p
-  Address 2:
+  Site Address 2:
   = @site.address_2
 %p
   City:
@@ -55,23 +52,20 @@
   Total Area:
   = @site.total_area
 %p
-  Total DSA
+  Total DSA:
   = @site.total_dsa
 %p
-  Current DSA
+  Current DSA:
   = @site.current_dsa
 %p
-  Inactive DSA
+  Inactive DSA:
   = @site.inactive_dsa
 %p
-  Time Since Last Storm
+  Time Since Last Storm:
   = @site.time_since_last_storm
 %p
-  Precipitation Received During Last Storm
+  Precipitation Received During Last Storm:
   = @site.precipitation_received
-%p
-  Inactive DSA
-  = @site.inactive_dsa
 %h3
   Contractor Information
 %p
