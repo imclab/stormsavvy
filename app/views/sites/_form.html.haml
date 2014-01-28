@@ -3,49 +3,233 @@
     #error_explanation
       %h2= "#{pluralize(@f.errors.count, "error")} prohibited this site from being saved:"
       %ul
-        - @site.errors.full_messages.each do |msg|
+        - @site.errors.full_messages.eme ach do |msg|
           %li= msg
+  %h3
+    Summary
   .cf
-    = f.label :name
+    Site Name
+    /= f.label :name
     .input
       = f.text_field :name
   .cf
-    = f.label :description
+    Project EA
+    /= f.label :project_ea
     .input
-      = f.text_field :description
+      = f.text_field :project_ea
   .cf
-    = f.label :costcode
+    Project Costcode
+    /= f.label :costcode
     .input
       = f.text_field :costcode
   .cf
-    = f.label :size
+    Project Description
+    /= f.label :description
     .input
-      = f.text_field :size
-  .cf
-    = f.label :exposed_area
-    .input
-      = f.text_field :exposed_area
+      = f.text_field :description
+
   .control-group
-    =f.label :address_1, :class => "control-label"
+    Site Address 1
+    /= f.label :address_1, :class => "control-label"
     .controls
       = f.text_field :address_1
   .control-group
-    =f.label :address_2, :class => "control-label"
+    Site Address 2
+    /= f.label :address_2, :class => "control-label"
     .controls
       = f.text_field :address_2
   .control-group
-    =f.label :city, :class => "control-label"
+    City
+    /= f.label :city, :class => "control-label"
     .controls
       = f.text_field :city
   .control-group
-    =f.label :state, :class => "control-label"
+    State (abbreviation, e.g. CA)
+    /= f.label :state, :class => "control-label"
     .controls
       = f.text_field :state
       /= f.select :state, Carmen.states, {:include_blank => true}, :selected => f.object.state
   .control-group
-    =f.label :zipcode, :class => "control-label"
+    Zipcode
+    /= f.label :zipcode, :class => "control-label"
     .controls
       = f.text_field :zipcode
+
+  %h3
+    Site Data
+  .cf
+    Risk Level
+    /= f.label :risk_level
+    .input
+      = f.text_field :risk_level
+  .cf
+    WDID Number
+    /= f.label :wdid_number
+    .input
+      = f.text_field :wdid_number
+  .cf
+    Construction Phase
+    /= f.label :construction_phase
+    .input
+      = f.text_field :construction_phase
+  .cf
+    Total Area (decimal, e.g. 0.50)
+    /= f.label :total_area
+    .input
+      = f.text_field :total_area
+  .cf
+    Total DSA (decimal, e.g. 0.50)
+    /= f.label :total_dsa
+    .input
+      = f.text_field :total_dsa
+  .cf
+    Current DSA (decimal, e.g. 0.50)
+    /= f.label :current_dsa
+    .input
+      = f.text_field :current_dsa
+  .cf
+    Inactive DSA (decimal, e.g. 0.50)
+    /= f.label :inactive_dsa
+    .input
+      = f.text_field :inactive_dsa
+  .cf
+    Time Since Last Storm
+    /= f.label :time_since_last_storm
+    .input
+      = f.text_field :time_since_last_storm
+  .cf
+    Precipitation Received During Last Storm (decimal, e.g. 0.50)
+    /= f.label :precipitation_received
+    .input
+      = f.text_field :precipitation_received
+  %h3
+    Contractor Information
+  .cf
+    Contractor Name
+    /= f.label :contractor_name
+    .input
+      = f.text_field :contractor_name
+  .cf
+    Contractor Address 1
+    /= f.label :contractor_address_1
+    .input
+      = f.text_field :contractor_address_1
+  .cf
+    Contractor Address 2
+    /= f.label :contractor_address_2
+    .input
+      = f.text_field :contractor_address_2
+  .cf
+    Contractor City
+    /= f.label :contractor_city
+    .input
+      = f.text_field :contractor_city
+  .cf
+    Contractor State
+    /= f.label :contractor_state
+    .input
+      = f.text_field :contractor_state
+  .cf
+    Contractor Zipcode
+    /= f.label :contractor_zipcode
+    .input
+      = f.text_field :contractor_zipcode
+
+  %h3
+    WPCM/QSP Information
+  .cf
+    WPCM Name
+    /= f.label :wpcm_name
+    .input
+      = f.text_field :wpcm_name
+  .cf
+    WPCM Company
+    /= f.label :wpcm_company
+    .input
+      = f.text_field :wpcm_company
+  .cf
+    WPCM Phone Number
+    /= f.label :wpcm_phone
+    .input
+      = f.text_field :wpcm_phone
+  .cf
+    WPCM Emergency Phone Number
+    /= f.label :wpcm_emergency_phone
+    .input
+      = f.text_field :wpcm_emergency_phone
+  .cf
+    QSP Name
+    /= f.label :qsp_name
+    .input
+      = f.text_field :qsp_name
+  .cf
+    QSP Company
+    /= f.label :qsp_company
+    .input
+      = f.text_field :qsp_company
+  .cf
+    QSP Phone Number
+    /= f.label :qsp_phone
+    .input
+      = f.text_field :qsp_phone
+  .cf
+    QSP Emergency Phone Number
+    /= f.label :qsp_emergency_phone
+    .input
+      = f.text_field :qsp_emergency_phone
+  %h3
+    Weekly Report Status
+  .cf
+    Permits
+    /= f.label :permits
+    .input
+      = f.text_field :permits
+  .cf
+    Resident Engineer Name
+    /= f.label :resident_engineer_name
+    .input
+      = f.text_field :resident_engineer_name
+  .cf
+    Structures Representative Name
+    /= f.label :structures_representative_name
+    .input
+      = f.text_field :structures_representative_name
+  .cf
+    Last BMP Status Report Date (CEM 2034)
+    /= f.label :last_bmp_status
+    .input
+      = f.date_select :last_bmp_status
+  .cf
+    Last Weekly Inspection Date (CEM 2030)
+    /= f.label :last_inspection
+    .input
+      = f.date_select :last_inspection
+  .cf
+    Last Corrective Action Report Date (CEM 2035)
+    /= f.label :last_corrective_action
+    .input
+      = f.date_select :last_corrective_action
+  .cf
+    Last REAP Report Date (CEM 2045)
+    /= f.label :last_reap
+    .input
+      = f.date_select :last_reap
+  .cf
+    Last Training Report Date (CEM 2023/24)
+    /= f.label :last_training
+    .input
+      = f.date_select :last_training
+  .cf
+    Last Weather Forecast Date (CEM 2040)
+    /= f.label :last_weather_forecast
+    .input
+      = f.date_select :last_weather_forecast
+  .cf
+    Last Rain Event Sampling Date (CEM 2051/52)
+    /= f.label :last_sampling
+    .input
+      = f.date_select :last_sampling
+
   .actions
     = f.submit 'Save', :class => "btn"
     = link_to 'Back', sites_path
