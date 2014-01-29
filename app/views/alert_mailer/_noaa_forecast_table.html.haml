@@ -163,13 +163,13 @@
             %td
               = f[:date]
             %th
-              -if f[:weather] == -999
+              - if f[:weather] == -999
                 = f[:weather] = 0
               = f[:weather]
               :plain
                 %
             %th
-              -if f[:rainfall] == -999
+              - if f[:rainfall] == -999
                 = f[:rainfall] = 0
               = f[:rainfall]
               :plain
