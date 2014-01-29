@@ -17,6 +17,7 @@ class Site < ActiveRecord::Base
     :lat,
     :long,
     :project_ea,
+    :risk_level,
     :wdid_number,
     :construction_phase,
     :contractor_name,
