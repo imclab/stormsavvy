@@ -161,8 +161,7 @@ describe "Dashboard" do
       click_link 'New Site'
       current_path.should == new_site_path
 
-      fill_in 'Name', :with => 'Troll Bridge Retrofit', :match => :prefer_exact
-      fill_in 'Description', :with => 'Retrofit for the trolls', :match => :prefer_exact
+      fill_in 'Name', :with => 'ecp', :match => :prefer_exact
       fill_in 'Zipcode', with: 94530
       click_button 'Save'
 
