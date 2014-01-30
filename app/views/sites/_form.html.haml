@@ -60,79 +60,89 @@
   %h3
     Site Data
   .cf
-    Risk Level
+    = f.label 'Risk Level'
     /= f.label :risk_level
     .input
       = f.text_field :risk_level
   .cf
-    WDID Number
+    = f.label 'WDID Number'
     /= f.label :wdid_number
     .input
       = f.text_field :wdid_number
   .cf
-    Construction Phase
+    = f.label 'Construction Phase'
     /= f.label :construction_phase
     .input
       = f.text_field :construction_phase
   .cf
-    Total Area (decimal, e.g. 0.50)
+    = f.label 'Total Area'
+    :plain
+      (decimal e.g. 0.50)
     /= f.label :total_area
     .input
       = f.text_field :total_area
   .cf
-    Total DSA (decimal, e.g. 0.50)
+    = f.label 'Total DSA'
+    :plain
+      (decimal e.g. 0.50)
     /= f.label :total_dsa
     .input
       = f.text_field :total_dsa
   .cf
-    Current DSA (decimal, e.g. 0.50)
+    = f.label 'Current DSA'
+    :plain
+      (decimal e.g. 0.50)
     /= f.label :current_dsa
     .input
       = f.text_field :current_dsa
   .cf
-    Inactive DSA (decimal, e.g. 0.50)
+    = f.label 'Inactive DSA'
+    :plain
+      (decimal e.g. 0.50)
     /= f.label :inactive_dsa
     .input
       = f.text_field :inactive_dsa
   .cf
-    Time Since Last Storm
+    = f.label 'Time Since Last Storm'
     /= f.label :time_since_last_storm
     .input
       = f.text_field :time_since_last_storm
   .cf
-    Precipitation Received During Last Storm (decimal, e.g. 0.50)
+    = f.label 'Precipitation Received During Last Storm'
+    :plain
+      (decimal e.g. 0.50)
     /= f.label :precipitation_received
     .input
       = f.text_field :precipitation_received
   %h3
     Contractor Information
   .cf
-    Contractor Name
+    = f.label 'Contractor Name'
     /= f.label :contractor_name
     .input
       = f.text_field :contractor_name
   .cf
-    Contractor Address 1
+    = f.label 'Contractor Address 1'
     /= f.label :contractor_address_1
     .input
       = f.text_field :contractor_address_1
   .cf
-    Contractor Address 2
+    = f.label 'Contractor Address 2'
     /= f.label :contractor_address_2
     .input
       = f.text_field :contractor_address_2
   .cf
-    Contractor City
+    = f.label 'Contractor City'
     /= f.label :contractor_city
     .input
       = f.text_field :contractor_city
   .cf
-    Contractor State
+    = f.label 'Contractor State'
     /= f.label :contractor_state
     .input
       = f.text_field :contractor_state
   .cf
-    Contractor Zipcode
+    = f.label 'Contractor Zipcode'
     /= f.label :contractor_zipcode
     .input
       = f.text_field :contractor_zipcode
