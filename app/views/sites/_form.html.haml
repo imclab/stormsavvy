@@ -8,49 +8,51 @@
   %h3
     Summary
   .cf
-    Site Name
+    = f.label 'Name'
     /= f.label :name
     .input
       = f.text_field :name
   .cf
-    Project EA
+    = f.label 'Project EA'
     /= f.label :project_ea
     .input
       = f.text_field :project_ea
   .cf
-    Project Costcode
+    = f.label 'Project Costcode'
     /= f.label :costcode
     .input
       = f.text_field :costcode
   .cf
-    Project Description
+    = f.label 'Project Description'
     /= f.label :description
     .input
       = f.text_field :description
 
   .control-group
-    Site Address 1
+    = f.label 'Site Address 1'
     /= f.label :address_1, :class => "control-label"
     .controls
       = f.text_field :address_1
   .control-group
-    Site Address 2
+    = f.label 'Site Address 2'
     /= f.label :address_2, :class => "control-label"
     .controls
       = f.text_field :address_2
   .control-group
-    City
+    = f.label 'City'
     /= f.label :city, :class => "control-label"
     .controls
       = f.text_field :city
   .control-group
-    State (abbreviation, e.g. CA)
+    = f.label 'State'
+    :plain
+      (abbreviation, e.g. CA)
     /= f.label :state, :class => "control-label"
     .controls
       = f.text_field :state
       /= f.select :state, Carmen.states, {:include_blank => true}, :selected => f.object.state
   .control-group
-    Zipcode
+    = f.label 'Zipcode'
     /= f.label :zipcode, :class => "control-label"
     .controls
       = f.text_field :zipcode
