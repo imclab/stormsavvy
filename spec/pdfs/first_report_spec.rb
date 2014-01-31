@@ -60,6 +60,6 @@ describe FirstReport do
     ) do
       text "stormsavvy", size: 12, align: :right
     end
-    pdf.render_file "example.pdf"
+    pdf.render_file "stormsavvy.pdf"
   end
 end
