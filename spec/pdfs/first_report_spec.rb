@@ -2,12 +2,20 @@ require 'spec_helper'
 require 'set'
 require 'pathname'
 require 'prawn'
+require 'pdf/reader'
+require 'pdf/inspector'
 
 describe FirstReport do
 
   let(:report) { FactoryGirl.create(:report) }
   let(:filename) { "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.png" }
-  let(:img_data) { File.open(@filename, "rb") { |f| f.read } }
+  let(:content) { "stormsavvy" }
+  let(:pdf) { Prawn::Document.generate "example.pdf" do |pdf|
+      pdf.font "Times-Roman"
+      pdf.draw_text content, at: [200,720], size: 32
+      pdf.background filename
+    end
+  }
 
   before(:each) do
     create_pdf
