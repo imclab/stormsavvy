@@ -93,14 +93,21 @@ describe ReportsController do
     end
 
     context "when format is csv" do
-      let(:csv_string)  { Model.generate_csv }
-      let(:csv_options) { {filename: "report.csv", disposition: 'attachment', type: 'text/csv; charset=utf-8; header=present'} }
+      # let(:csv_string)  { Model.generate_csv }
+      # let(:csv_options) { {filename: "report.csv", disposition: 'attachment', type: 'text/csv; charset=utf-8; header=present'} }
+      let(:first_report) { FirstReport.new(
+        current_report,
+        view_context,
+        background: "#{Prawn::DATADIR}/images/reports/CEM2031-2012_Page_01.png",
+        template: filename
+        )
+      }
 
-      xit "should return a csv attachment" do
-        @controller.should_receive(:send_data).with(csv_string, csv_options).
+      it "should return a csv attachment" do
+        @controller.should_receive(:send_data).with(first_report).
           and_return { @controller.render nothing: true } # to prevent a 'missing template' error
 
-        get :index, format: :csv
+        get :index, format: 'pdf'
       end
     end
   end
