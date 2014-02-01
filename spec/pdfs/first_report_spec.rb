@@ -68,7 +68,7 @@ describe FirstReport do
       result = PDF::Inspector::Page.analyze(pdf.render)
       result.pages.size.should === 1
 
-      pdf.render_file 'stormsavvy.pdf'
+      pdf.render_file "#{Rails.root}/app/assets/pdfs/text_analysis.pdf"
     end
   end
 
