@@ -87,8 +87,21 @@ describe ReportsController do
       assigns(:report).should be_persisted
     end
 
-    it "renders png from app/assets/images directory" do
-      # Write prawn spec here
+    it "renders pdf from report data" do
+      get :show, { id: current_report.to_param }, valid_session, format: 'pdf'
+      assigns(:report).should eq(current_report)
+    end
+
+    context "when format is csv" do
+      let(:csv_string)  { Model.generate_csv }
+      let(:csv_options) { {filename: "report.csv", disposition: 'attachment', type: 'text/csv; charset=utf-8; header=present'} }
+
+      xit "should return a csv attachment" do
+        @controller.should_receive(:send_data).with(csv_string, csv_options).
+          and_return { @controller.render nothing: true } # to prevent a 'missing template' error
+
+        get :index, format: :csv
+      end
     end
   end
 
