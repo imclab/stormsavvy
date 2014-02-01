@@ -24,31 +24,39 @@ describe FirstReport do
   end
 
   describe 'pdf render and background' do
+    it 'generates pdf, font and sizing' do
+      let(:pdf) { Prawn::Document.generate "#{Rails.root}/app/assets/pdfs/example.pdf" do |pdf|
+          pdf.font "Times-Roman"
+          pdf.draw_text content, at: [200,720], size: 32
+        end
+      }
+    end
+
     it 'creates pdf with background image' do
       background_pdf = Prawn::Document.new(
         :background => "#{Prawn::BASEDIR}/data/images/reports/CEM2030-2012_Page_01.png"
       ) do
         text "stormsavvy", size: 12, align: :right
       end
-      background_pdf.render_file "stormsavvy.pdf"
+      background_pdf.render_file "#{Rails.root}/app/assets/pdfs/background.pdf"
     end
 
     it 'analyzes pdf with background image' do
-      # img = "#{Prawn::DATADIR}/images/letterhead.jpg"
-      # pdf = Prawn::Document.generate(
-      #   "background.gif",
-      #   background: img,
-      #   margin: 100
-      # ) do
-      #   text "stormsavvy", size: 12, align: :right
-      # end
+      pdf = Prawn::Document.generate(
+        "background.png",
+        background: filename,
+        margin: 100
+      ) do
+        text "stormsavvy", size: 12, align: :right
+      end
 
-      # pdf.render_file 'stormsavvy.pdf'
+      # pdf.render_file "#{Rails.root}/app/assets/pdfs/testem.pdf"
       # rendered_pdf = pdf.render
       # text_analysis = PDF::Inspector::Text.analyze('stormsavvy.pdf')
-      # text_analysis = PDF::Inspector::Text.analyze(rendered_pdf)
+      # text_analysis = PDF::Inspector::Text.analyze(pdf)
       # text_analysis.strings.should include("stormsavvy")
-      # pdf.should be_a_kind_of(Prawn::Images::PDF)
+
+      # pdf.should be_a_kind_of(Prawn::Images::PNG)
     end
   end
 
