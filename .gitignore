@@ -40,7 +40,6 @@ public/.DS_Store
 ruby/
 script/mailer/
 script/heroku/*.dump
-stormsavvy.pdf
 test/stormsavvy/
 tmp/
 vendor/cache/
