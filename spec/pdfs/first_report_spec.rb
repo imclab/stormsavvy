@@ -95,4 +95,8 @@ describe FirstReport do
       result.pages.first[:strings].last.should === "1 of 2"
     end
   end
+
+  describe '#testem_page' do
+
+  end
 end
