@@ -9,11 +9,6 @@ describe FirstReport do
 
   let(:filename) { "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.png" }
   let(:content) { "stormsavvy" }
-  let(:pdf) { Prawn::Document.generate "example.pdf" do |pdf|
-      pdf.font "Times-Roman"
-      pdf.draw_text content, at: [200,720], size: 32
-    end
-  }
 
   before(:each) do
     create_pdf
