@@ -110,7 +110,8 @@ class NOAAForecast
     # for i in (0..27)
     #   time_pop_hash[i].merge!(new_qpf_array[i])
     # end
-    pop_table_hash = [
+    # pop_table_hash = [
+    [
       time_pop_hash[1].update(new_qpf_array[1]),
       time_pop_hash[2].update(new_qpf_array[2]),
       time_pop_hash[3].update(new_qpf_array[3]),
