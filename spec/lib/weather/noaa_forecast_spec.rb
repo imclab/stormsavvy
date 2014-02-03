@@ -275,7 +275,7 @@ describe NOAAForecast do
       # length as string
       qpf_array.length.should == 102
 
-      qpf_array.each do |qpf|
+      @qpf_array.each do |qpf|
         if qpf == -999
           qpf = 0
         end
