@@ -252,6 +252,7 @@ describe NOAAForecast do
       nf.should respond_to(:get_pop)
 
       pop_array = nf.get_pop(zipcode)
+      pp pop_array
       # length as string
       pop_array.length.should == 108
 
