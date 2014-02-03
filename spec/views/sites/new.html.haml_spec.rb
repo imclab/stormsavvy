@@ -28,7 +28,7 @@ describe "sites/new" do
   it "renders site attributes" do
     rendered.should match(/Project EA/)
     rendered.should match(/Project Costcode/)
-    rendered.should match(/Site Name/)
+    rendered.should match(/Name/)
     rendered.should match(/Description/)
     rendered.should match(/Address 1/)
     rendered.should match(/Address 2/)
