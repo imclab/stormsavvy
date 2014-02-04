@@ -161,8 +161,8 @@ describe "Dashboard" do
       click_link 'New Site'
       current_path.should == new_site_path
 
-      fill_in 'Name', :with => 'ecp', :match => :prefer_exact
-      fill_in 'Zipcode', with: 94530
+      fill_in "name", with: "ecp"#, :match => :prefer_exact
+      fill_in "zipcode", with: 94530
       click_button 'Save'
 
       page.should have_text('Site was successfully created.')
