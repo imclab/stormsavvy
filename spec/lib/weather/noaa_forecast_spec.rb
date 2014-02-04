@@ -248,38 +248,38 @@ describe NOAAForecast do
   end
 
   describe "#get_pop" do
-    it "returns pop results" do
+    it "checks pop array size" do
       nf.should respond_to(:get_pop)
 
       pop_array = nf.get_pop(zipcode)
-      pp pop_array
-      # length as string
-      pop_array.length.should == 108
+      pop_array.length.should == 108 # length as string
+    end
 
-      pop_array.each do |pop|
+    it 'checks pop results' do
+      @pop_array.each do |pop|
         if pop == -999
           pop = 0
         end
-        pop.should be_between(0,100)
+        pop[:weather].should be_between(0,100)
       end
       # nf.get_pop(zipcode).should == pop
     end
   end
 
   describe "#get_qpf" do
-    it "returns qpf results" do
+    it "checks qpf array size" do
       nf.should respond_to(:get_qpf)
 
       qpf_array = nf.get_qpf(zipcode)
-      pp qpf_array
-      # length as string
-      qpf_array.length.should == 102
+      qpf_array.length.should == 102 # length as string
+    end
 
+    it 'checks qpf results' do
       @qpf_array.each do |qpf|
         if qpf == -999
           qpf = 0
         end
-        qpf.should be_between(0,100)
+        qpf[:rainfall].should be_between(0,100)
       end
       # nf.get_qpf(zipcode).should == qpf
     end
