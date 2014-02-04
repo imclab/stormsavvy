@@ -304,7 +304,7 @@ describe NOAAForecast do
       pop_array = nf.get_pop(zipcode)
 
       new_pop_array = []
-      @pop_array.each do |i|
+      pop_array.each do |i|
         new_pop_array << { :weather => pop_array[i].to_s }
       end
 
