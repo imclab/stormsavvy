@@ -103,7 +103,7 @@ describe ReportsController do
         )
       }
 
-      it "should return a csv attachment" do
+      xit "returns first report as a pdf document" do
         @controller.should_receive(:send_data).with(first_report).
           and_return { @controller.render nothing: true } # to prevent a 'missing template' error
 
