@@ -81,10 +81,13 @@ class ReportsController < ApplicationController
     # end
   end
 
+  # GET /reports/1/edit
   def edit
     @report = Report.find(params[:id])
   end
 
+  # PUT /reports/1
+  # PUT /reports/1.json
   def update
     @report = Report.find(params[:id])
 
