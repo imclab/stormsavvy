@@ -54,6 +54,8 @@ class ReportsController < ApplicationController
     end
   end
 
+  # POST /reports
+  # POST /reports.json
   def create
     @report = Report.new(params[:report])
 
