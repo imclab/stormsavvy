@@ -92,7 +92,7 @@ describe ReportsController do
       assigns(:report).should eq(current_report)
     end
 
-    context "when format is csv" do
+    context "when format is pdf" do
       # let(:csv_string)  { Model.generate_csv }
       # let(:csv_options) { {filename: "report.csv", disposition: 'attachment', type: 'text/csv; charset=utf-8; header=present'} }
       let(:first_report) { FirstReport.new(
