@@ -4,12 +4,24 @@ class ReportsController < ApplicationController
   # Include CEM report methods below to show up in routes.
   STATIC_REPORTS = %w[CEM2023 CEM2030 CEM2034 CEM2035 CEM2040 CEM2045 CEM2050 CEM2051 CEM2052 CEM4601]
 
+  # GET /reports
+  # GET /reports.json
   def index
-    @reports = Report.all
-    @completed_reports = Report.completed
-    @needs_attention_reports = Report.needs_attention
+    if current_user
+      cu = CurrentUserObject.new
+      user = current_user
+      @sites = cu.get_sites(user)
+      @pending_reports = cu.pending_reports(user)
+      @reports = cu.get_reports(user)
+    end
+
+    # @reports = Report.all
+    # @completed_reports = Report.completed
+    # @needs_attention_reports = Report.needs_attention
   end
 
+  # GET /reports/1
+  # GET /reports/1.json
   def show
     @report = Report.find(params[:id])
     respond_to do |format|
