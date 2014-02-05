@@ -21,9 +21,8 @@
                 = "#{site.chance_of_rain.pop}% chance of rain"
                 /= "#{site.max_rain}% chance of rain"
               -rescue
-                nil
                 :plain
-                  % chance of rain
+                  -- % chance of rain
                 = site.name
           - else
             No active sites
