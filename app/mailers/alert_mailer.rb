@@ -71,7 +71,7 @@ class AlertMailer < ActionMailer::Base
       if @user.has_site?
         mail(
           :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
-          :subject  => "Storm Savvy POP Alert"
+          :subject  => "Storm Savvy POP Alert for #{ProjectLocalTime::date_only(Date.today)}"
           ).deliver
       end
     end
