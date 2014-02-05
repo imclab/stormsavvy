@@ -13,6 +13,13 @@ class SamplingEventsController < ApplicationController
       @pending_se = cu.get_se(user)
       @sampling_events = cu.all_se(user)
     end
+
+    # @sampling_events = SamplingEvent.all
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @sampling_events }
+    end
   end
 
   # GET /sampling_events/1
