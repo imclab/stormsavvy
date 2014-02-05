@@ -5,11 +5,11 @@
   %h3 Sign in
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     .cf
-      = f.label :email
+      = f.label :email, 'Email'
       .input
         = f.email_field :email
     .cf
-      = f.label :password
+      = f.label :password, 'Password'
       .input
         = f.password_field :password
         / - if devise_mapping.rememberable?
