@@ -5,13 +5,6 @@ class InspectionEventsController < ApplicationController
   # GET /inspection_events
   # GET /inspection_events.json
   def index
-    @inspection_events = InspectionEvent.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @inspection_events }
-    end
-
     if current_user
       cu = CurrentUserObject.new
       user = current_user
