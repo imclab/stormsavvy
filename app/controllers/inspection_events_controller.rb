@@ -12,6 +12,14 @@ class InspectionEventsController < ApplicationController
       @pending_ie = cu.get_ie(user)
       @inspection_events = cu.all_ie(user)
     end
+
+    # @inspection_events = InspectionEvent.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @inspection_events }
+    end
+
   end
 
   # GET /inspection_events/1
