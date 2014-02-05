@@ -11,12 +11,12 @@ class WeatherEvent < ActiveRecord::Base
 
 	def return_weather
 		pp @data
-		# DisplayDate.new.set_epoch((period['date']['epoch']).to_i)
-		# pp "#{DisplayDate.new.get_day('day')},"
-		# DisplayDate.new.get_date('date')
-		# pp "#{DisplayDate.new.get_month('month')}."
-		# DisplayDate.new.get_year('year')
-		# pp "#{period['pop']}"
+		DisplayDate.new.set_epoch((period['date']['epoch']).to_i)
+		pp "#{DisplayDate.new.get_day('day')},"
+		DisplayDate.new.get_date('date')
+		pp "#{DisplayDate.new.get_month('month')}."
+		DisplayDate.new.get_year('year')
+		pp "#{period['pop']}"
 	end
 
 end
