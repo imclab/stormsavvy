@@ -25,7 +25,8 @@ describe 'homepage' do
     end
 
     it "renders correct links and pages after login" do
-      visit user_session_path
+      visit new_user_session_path
+      # visit user_session_path
       fill_in 'Email', :with => 'demo@stormsavvy.com'
       fill_in 'Password', :with => 'savvy_demo'
       click_button 'Sign in'
