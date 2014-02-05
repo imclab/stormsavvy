@@ -1,36 +1,27 @@
 .leaderboard
-  .container
+  .container-fluid
     .row
-      .span8
-        .pagination-centered
-          = render 'pages/maincopy'
-      .span4
-        = render 'pages/devise_signin'
-  .container
+      .pagination-centered
+        = render 'pages/maincopy'
     .row
-      .span12
       %hr
         %h1.pagination-centered
           How Storm Savvy Works
     %br
+  .container
     .row
-      .span6
-        %font{:face => "Arial", :size => "5"} Step 1: Create Free Account
-        %p
-        %font{:face => "Arial", :size => "3"} Sign up by email, cancel any time
-      .span6
-        %font{:face => "Arial", :size => "5"} Step 2: Dashboard Login
-        %p
-        %font{:face => "Arial", :size => "3"} View project and weather updates
-    %br
-    .row
-      .span6
-        %p
-        %font{:face => "Arial", :size => "5"} Step 3: Create New Sites
-        %p
-        %font{:face => "Arial", :size => "3"} Add name and zipcode
-      .span6
-        %p
-        %font{:face => "Arial", :size => "5"} Step 4: Start Tracking
-        %p
-        %font{:face => "Arial", :size => "3"} Share reports and updates
+      .span4
+        %h2 Create Free Account
+        %p Sign up by email, cancel any time
+        %p Monitor your projects by logging in or by email updates
+        // %a.btn.btn-primary{:href => "#", :role => "button"} View details &raquo;
+      .span4
+        %h2 Update Your Projects
+        %p Add your projects by zipcode
+        %p Next, track project information and weather updates from our dashboard
+        //%a.btn.btn-primary{:href => "#", :role => "button"} View details &raquo;
+      .span4
+        %h2 Check For Email Updates
+        %p Receive updates by email
+        %p Finally, check for daily and weekly updates with action items
+        //%a.btn.btn-primary{:href => "#", :role => "button"} View details &raquo;
