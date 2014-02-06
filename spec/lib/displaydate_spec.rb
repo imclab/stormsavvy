@@ -33,23 +33,25 @@ end
 
 describe DisplayDate do
 
-  before(:all) do
-    @epoch = 1351404000
-  end
+  let(:epoch) { 1351404000 }
+  let(:dd) { DisplayDate.new }
+
+  # before(:all) do
+  #   @epoch = 1351404000
+  # end
 
   before(:each) do
-    @dd = DisplayDate.new
-    @dd.set_epoch(@epoch)
+    # @dd = DisplayDate.new
+    dd.set_epoch(epoch)
   end
 
   it "should display the day as Saturday" do
-    day = @dd.get_day("day")
+    day = dd.get_day("day")
     day.should =~ /Saturday/
   end
 
   it "should display the  month as Oct" do
-    month = @dd.get_month("month")
+    month = dd.get_month("month")
     month.should =~ /Oct/
   end
-
 end
