@@ -3,27 +3,29 @@ require_relative '../../lib/displaydate'
 
 describe Time do
 
-  before(:all) do
-    @t = Time.at(1351404000)
-  end
+  let(:time) { Time.at(1351404000) }
+
+  # before(:all) do
+  #   @t = Time.at(1351404000)
+  # end
 
   it "shows that it's Saturday today" do
-    day = @t.strftime("%A")
+    day = time.strftime("%A")
     day.should == "Saturday"
   end
 
   it "shows that the month is October" do
-    month = @t.strftime("%B")
+    month = time.strftime("%B")
     month.should == "October"
   end
 
   it "shows the date as the 27th" do
-    date = @t.strftime("%d")
+    date = time.strftime("%d")
     date.should == "27"
   end
 
   it "shows the year as 2012" do
-    year = @t.strftime("%Y")
+    year = time.strftime("%Y")
     year.should == "2012"
   end
 
