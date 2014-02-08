@@ -51,8 +51,13 @@ class AlertMailer < ActionMailer::Base
       user.sites.each do |site|
         @url = "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{site.lat}&lon=#{site.long}&clrindex=0&table=custom&duration=7&interval=6"
         @site = site
+
         nfs = NoaaForecastService.new(site: site)
         nfs.forecast_table(site)
+
+        wg = WeatherGetter.new
+        forecast = wg.get_forecast(site.zipcode)
+        @forecastday = wg.parse_wunderground_10day(forecast)
       end
 
       mail(
