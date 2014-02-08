@@ -73,6 +73,29 @@ describe AlertMailer do
       mailer.body.encoded.should match("The Storm Savvy Team")
     end
 
+    it 'creates noaa forecast table' do
+      nfs = NoaaForecastService.new(site: site)
+      forecast = nfs.forecast_table(site)
+      nfs.should respond_to(:forecast_table)
+      forecast.each do |f|
+        f[:weather].should be_between(0,100)
+        f[:rainfall].should be_between(0,100)
+      end
+    end
+
+    it 'creates wunderground forecast' do
+      wg = WeatherGetter.new
+      forecast = wg.get_forecast(site.zipcode)
+      wg.should respond_to(:get_forecast)
+
+      forecastday = wg.parse_wunderground_10day(forecast)
+      forecastday.count.should == 10
+
+      forecastday.each do |f|
+        f['pop'].should be_between(0,100)
+      end
+    end
+
     it "delivers mail" do
       ActionMailer::Base.deliveries.should_not be_empty
     end
