@@ -47,6 +47,8 @@ class AlertMailer < ActionMailer::Base
   def daily_mailer(user)
     set_defaults
     @user = user
+    @dd = DisplayDate.new
+    wg = WeatherGetter.new
 
     if user.has_site?
       user.sites.each do |site|
