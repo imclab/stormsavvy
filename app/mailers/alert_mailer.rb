@@ -58,7 +58,6 @@ class AlertMailer < ActionMailer::Base
         nfs = NoaaForecastService.new(site: site)
         nfs.forecast_table(site)
 
-        wg = WeatherGetter.new
         forecast = wg.get_forecast(site.zipcode)
         @forecastday = wg.parse_wunderground_10day(forecast)
       end
