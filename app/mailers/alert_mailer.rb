@@ -1,4 +1,5 @@
 require 'weather/weathergetter'
+require 'displaydate'
 
 class AlertMailer < ActionMailer::Base
 
