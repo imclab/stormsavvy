@@ -1,3 +1,5 @@
+require 'weather/weathergetter'
+
 class AlertMailer < ActionMailer::Base
 
   default :from => "alerts@stormsavvy.com"
