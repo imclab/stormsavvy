@@ -30,8 +30,8 @@ describe "SamplingEvents" do
       page.should have_text('Edit')
       page.should have_text('Back')
 
-      visit '/sampling_events'
-      click_link 'Destroy'
+      click_button 'Delete This Sampling Event'
+      page.should have_content 'Sampling event was successfully deleted'
     end
   end
 end
