@@ -48,18 +48,16 @@ class AlertMailer < ActionMailer::Base
     set_defaults
     @user = user
     @dd = DisplayDate.new
-    wg = WeatherGetter.new
+    # wg = WeatherGetter.new
 
     if user.has_site?
       user.sites.each do |site|
-        @url = "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{site.lat}&lon=#{site.long}&clrindex=0&table=custom&duration=7&interval=6"
+        @noaa_url = "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{site.lat}&lon=#{site.long}&clrindex=0&table=custom&duration=7&interval=6"
+        @wg_url = "http://www.wunderground.com/cgi-bin/findweather/hdfForecast?query=#{site.zipcode}"
         @site = site
 
-        nfs = NoaaForecastService.new(site: site)
-        nfs.forecast_table(site)
-
-        forecast = wg.get_forecast(site.zipcode)
-        @forecastday = wg.parse_wunderground_10day(forecast)
+        # nfs = NoaaForecastService.new(site: site)
+        # nfs.forecast_table(site)
       end
 
       mail(
