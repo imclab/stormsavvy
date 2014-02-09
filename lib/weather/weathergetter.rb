@@ -30,7 +30,6 @@ class WeatherGetter
     @forecast = make_request(url)
   end
 
-
   def make_request(url)
     request = Typhoeus::Request.new(
       url,
