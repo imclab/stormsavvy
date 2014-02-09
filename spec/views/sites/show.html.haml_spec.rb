@@ -59,7 +59,6 @@ describe "sites/show" do
     rendered.should match(/Last Weather Forecast Date/)
     rendered.should match(/Last Rain Event Sampling Date/)
     rendered.should match(/Weather Forecast Links/)
-    rendered.should match(/NOAA Forecast Table/)
     rendered.should match(/NOAA 7-Day Forecast/)
     rendered.should match(/Wunderground 7-Day Forecast/)
     rendered.should match(/Date/)
