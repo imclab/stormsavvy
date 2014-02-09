@@ -51,4 +51,9 @@ class WeatherGetter
     @forecastday = forecast['forecast']['simpleforecast']['forecastday']
   end
 
+  def forecast_table(site)
+    forecast = self.get_forecast(site.zipcode)
+    forecastday = self.parse_wunderground_10day(forecast)
+    return forecastday
+  end
 end
