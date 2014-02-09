@@ -45,13 +45,23 @@ describe DisplayDate do
     dd.set_epoch(epoch)
   end
 
-  it "should display the day as Saturday" do
+  it "displays day as Saturday" do
     day = dd.get_day("day")
     day.should =~ /Saturday/
   end
 
-  it "should display the  month as Oct" do
+  it "displays date as 27th" do
+    date = dd.get_date("date")
+    date.should =~ /27/
+  end
+
+  it "displays month as Oct" do
     month = dd.get_month("month")
     month.should =~ /Oct/
+  end
+
+  it "displays date as 2013" do
+    year = dd.get_year("year")
+    year.should =~ /2012/
   end
 end
