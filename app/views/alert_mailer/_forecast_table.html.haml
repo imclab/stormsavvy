@@ -1,0 +1,218 @@
+%link{:rel => :stylesheet, :type => :"text/css", :href => "/assets/stylesheets/weathersnapper"}
+%table
+  - @user.sites.each do |site|
+    %table
+      %h3
+        = link_to "#{site.name}", "https://www.stormsavvy.com/#{site_path(site)}"
+      %h3
+        Summary
+      %p
+        Site Name:
+        = link_to "#{site.name}", "https://www.stormsavvy.com/#{site_path(site)}"
+        /= link_to @site.name, site_path(@site)
+      %p
+        Project EA:
+        = site.project_ea
+      %p
+        Project Costcode:
+        = site.costcode
+      %p
+        Site ID:
+        = site.id
+      %p
+        Project Description:
+        = site.description
+      %p
+        Site Address 1:
+        = site.address_1
+      %p
+        Site Address 2:
+        = site.address_2
+      %p
+        City:
+        = site.city
+      %p
+        State:
+        = site.state
+      %p
+        Zipcode:
+        = site.zipcode
+      %p
+        Site Lat/Long:
+        = site.lat
+        = site.long
+      %h3
+        Site Data
+      %p
+        Risk Level:
+        = site.risk_level
+      %p
+        WDID Number:
+        = site.wdid_number
+      %p
+        Construction Phase:
+        = site.construction_phase
+      %p
+        Total Area:
+        = site.total_area
+      %p
+        Total DSA:
+        = site.total_dsa
+      %p
+        Current DSA:
+        = site.current_dsa
+      %p
+        Inactive DSA:
+        = site.inactive_dsa
+      %p
+        Time Since Last Storm:
+        = site.time_since_last_storm
+      %p
+        Precipitation Received During Last Storm:
+        = site.precipitation_received
+      %h3
+        Contractor Information
+      %p
+        Contractor Name:
+        = site.contractor_name
+      %p
+        Contractor Address 1:
+        = site.contractor_address_1
+      %p
+        Contractor Address 2:
+        = site.contractor_address_2
+      %p
+        Contractor City:
+        = site.contractor_city
+      %p
+        Contractor State:
+        = site.contractor_state
+      %p
+        Contractor Zipcode:
+        = site.contractor_zipcode
+      %h3
+        WPCM/QSP Information
+      %p
+        WPCM Name:
+        = site.wpcm_name
+      %p
+        WPCM Company:
+        = site.wpcm_company
+      %p
+        WPCM Phone Number:
+        = site.wpcm_phone
+      %p
+        WPCM Emergency Phone Number:
+        = site.wpcm_emergency_phone
+      %p
+        QSP Name:
+        = site.qsp_name
+      %p
+        QSP Company:
+        = site.qsp_company
+      %p
+        QSP Phone Number:
+        = site.qsp_phone
+      %p
+        QSP Emergency Phone Number:
+        = site.qsp_emergency_phone
+      %h3
+        Weekly Report Status
+      %p
+        Permits:
+        = site.permits
+      %p
+        Resident Engineer Name:
+        = site.resident_engineer_name
+      %p
+        Structures Representative Name:
+        = site.structures_representative_name
+      %p
+        Last BMP Status Report Date (CEM 2034):
+        = site.last_bmp_status
+      %p
+        Last Weekly Inspection Date (CEM 2030):
+        = site.last_inspection
+      %p
+        Last Corrective Action Report Date (CEM 2035):
+        = site.last_corrective_action
+      %p
+        Last REAP Report Date (CEM 2045):
+        = site.last_reap
+      %p
+        Last Training Report Date (CEM 2023/24):
+        = site.last_training
+      %p
+        Last Weather Forecast Date (CEM 2040):
+        = site.last_weather_forecast
+      %p
+        Last Rain Event Sampling Date (CEM 2051/52):
+        = site.last_sampling
+      %h3 Weather Forecast Links
+      %p
+        NOAA Forecast Table:
+        %a{ href: "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{site.lat}&lon=#{site.long}&clrindex=0&table=custom&duration=7&interval=6" }
+          = site.zipcode
+      %p
+        Wunderground Forecast:
+        %a{ href: "http://www.wunderground.com/cgi-bin/findweather/hdfForecast?query=#{site.zipcode}" }
+          = site.zipcode
+      %tr
+        %td
+          %h3 NOAA 7-Day Forecast
+      %tr
+        %th Date
+        %th POP
+        %th QPF
+        - site.noaa_table.each do |f|
+          %tr
+            %td
+              = f[:date]
+            %th
+              - if f[:weather] == -999
+                = f[:weather] = 0
+              = f[:weather]
+              :plain
+                %
+            %th
+              - if f[:rainfall] == -999
+                = f[:rainfall] = 0
+              = f[:rainfall]
+              :plain
+                inch
+      %tr
+        %td
+          %br
+          %h3 Wunderground 7-Day Forecast
+      %tr
+        %th Date
+        %th
+        %th POP
+        %th QPF
+      %tbody
+        - site.wg_table.each do |period|
+          //- @forecastday.each do |period|
+          %tr
+            %td.date
+              = "#{period['date']['weekday']}, "
+              = "#{period['date']['day']} "
+              = "#{period['date']['monthname']} "
+              = "#{period['date']['year']} "
+              = "#{period['date']['hour']}:#{period['date']['min']} "
+              = "#{period['date']['tz_short']}"
+              //= "#{period['date']['pretty']}"
+              //- @dd.set_epoch((period['date']['epoch']).to_i)
+              //= "#{@dd.get_day('day')},"
+              //= @dd.get_date('date')
+              //= "#{@dd.get_month('month')}."
+              //= @dd.get_year('year')
+            %td.icon
+              <img src="#{period['icon_url']}" height="64" />
+            %th.pop
+              = "#{period['pop']}"
+              :plain
+                %
+            %th
+              = "#{period['qpf_allday']['in']}"
+              :plain
+                inch
