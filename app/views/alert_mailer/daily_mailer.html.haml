@@ -8,17 +8,11 @@
       %p
         Please see daily summary for your sites below.
       %p
-        = @noaa_info
-      %p
-        = @noaa_website
-        %a{ href: @noaa_url }
-          NOAA Forecast Table
-      %p
         = @support
       %p
       %b
         = @salutation
+      %p
       %hr
       %p
-        = render 'noaa_forecast_table'
-        = render 'wg_forecast_table'
+        = render 'forecast_table'
