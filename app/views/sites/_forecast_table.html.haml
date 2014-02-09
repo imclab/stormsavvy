@@ -1,0 +1,55 @@
+%table
+  %tr
+    %td
+      %h3 NOAA 7-Day Forecast
+  %tr
+    %th Date
+    %th POP
+    %th QPF
+    - @site.noaa_table.each do |f|
+      %tr
+        %td
+          = f[:date]
+        %th
+          - if f[:weather] == -999
+            = f[:weather] = 0
+          = f[:weather]
+          :plain
+            %
+        %th
+          - if f[:rainfall] == -999
+            = f[:rainfall] = 0
+          = f[:rainfall]
+          :plain
+            inch
+  %tr
+    %td
+      %br
+      %h3 Wunderground 7-Day Forecast
+  %tr
+    %th Date
+    %th
+    %th POP
+    %th QPF
+  %tbody
+    - @site.wg_table.each do |period|
+      //- @forecastday.each do |period|
+      %tr
+        %td.date
+          //= "#{period['date']['pretty']}"
+          = "#{period['date']['weekday']}, "
+          = "#{period['date']['day']} "
+          = "#{period['date']['monthname']} "
+          = "#{period['date']['year']} "
+          = "#{period['date']['hour']}:#{period['date']['min']} "
+          = "#{period['date']['tz_short']}"
+        %td.icon
+          <img src="#{period['icon_url']}" height="64" />
+        %th.pop
+          = "#{period['pop']}"
+          :plain
+            %
+        %th
+          = "#{period['qpf_allday']['in']}"
+          :plain
+            inch
