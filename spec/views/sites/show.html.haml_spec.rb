@@ -2,15 +2,12 @@ require 'spec_helper'
 
 describe "sites/show" do
   before(:each) do
+    @user = FactoryGirl.create(:user)
     @site = assign(:site, stub_model(Site,
-      :description => "Description",
-      :costcode => "Costcode",
-      :size => "Size",
-      :exposed_area => "Exposed Area"
+      name: "Name",
+      zipcode: "Zipcode",
+      user: @user
     ))
-    @project = FactoryGirl.create(:project)
-    @site.project_id = @project.id
-
     render
   end
 
