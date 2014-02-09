@@ -25,8 +25,8 @@ describe "alert_mailer/daily_mailer" do
 
     sites.each do |site|
       nfs = NoaaForecastService.new(site: site)
-      forecast_table = nfs.forecast_table(site)
-      @forecast_table << forecast_table
+      noaa_table = nfs.forecast_table(site)
+      @forecast_table << noaa_table
     end
 
     render
