@@ -229,6 +229,14 @@ describe Site do
     end
   end
 
+  describe '#wg_table' do
+    it 'returns wg table' do
+      site.should respond_to(:wg_table)
+      site.wg_table.count.should == 10
+      # pp site.wg_table
+    end
+  end
+
   describe '#forecast' do
     it 'returns forecast' do
       site.should respond_to(:forecast)
