@@ -8,7 +8,8 @@
     %th Date
     %th POP
   %tbody
-    - @forecastday.each do |period|
+    - site.wg_table.each do |period|
+      //- @forecastday.each do |period|
       %tr
         %td.icon
           <img src="#{period['icon_url']}" height="64" />
