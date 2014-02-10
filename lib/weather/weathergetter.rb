@@ -3,10 +3,12 @@ require 'json'
 
 include Typhoeus
 
-# APIKEY = ENV['WUNDERGROUND_APIKEY']
-
-# Chomp method removes newline from text file
-APIKEY = IO.read('./config/wunderground_apikey.txt').chomp
+begin
+  APIKEY = ENV['WUNDERGROUND_APIKEY']
+rescue
+  # Chomp method removes newline from text file
+  APIKEY = IO.read('./config/wunderground_apikey.txt').chomp
+end
 
 class WeatherGetter
 
