@@ -69,8 +69,8 @@ class Site < ActiveRecord::Base
   # accepts_nested_attributes_for :inspection_event
 
   after_validation :save_geo_coordinates, if: :zipcode_changed?
-
   validates :zipcode, :name, :zipcode, :presence => true
+  serialize :noaa_forecast, :wg_forecast
 
   def address
     "#{self.address_1} #{self.address_2} #{self.city} #{self.state} #{self.zipcode}".strip
