@@ -226,6 +226,12 @@ describe Site do
         end
         f[:rainfall].should be_between(0,100)
       end
+
+      pp site.noaa_forecast
+    end
+
+    it 'serializes and saves forecast' do
+
     end
   end
 
