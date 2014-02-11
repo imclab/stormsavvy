@@ -241,6 +241,10 @@ describe Site do
       site.wg_table.count.should == 10
       # pp site.wg_table
     end
+
+    it 'serializes and saves forecast' do
+
+    end
   end
 
   describe '#forecast' do
