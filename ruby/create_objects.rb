@@ -10,6 +10,10 @@ pp forecast
 
 site = Site.new(name: 'ecp', zipcode: 94530)
 site.save
+forecast = site.noaa_table
+site.forecast = forecast
+site.save
+
 site.lat
 site.long
 
