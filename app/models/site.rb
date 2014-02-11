@@ -52,7 +52,9 @@ class Site < ActiveRecord::Base
     :last_reap,
     :last_training,
     :last_weather_forecast,
-    :last_sampling
+    :last_sampling,
+    :noaa_forecast,
+    :wg_forecast
 
   belongs_to :user #, counter_cache: true
 
