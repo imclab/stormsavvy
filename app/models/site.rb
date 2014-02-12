@@ -71,13 +71,18 @@ class Site < ActiveRecord::Base
 
   after_validation :save_geo_coordinates, if: :zipcode_changed?
   validates :zipcode, :name, :zipcode, :presence => true
-  serialize :noaa_forecast, :wg_forecast
+  serialize :noaa_forecast, Array
+  serialize :wg_forecast, JSON
 
   def address
     "#{self.address_1} #{self.address_2} #{self.city} #{self.state} #{self.zipcode}".strip
   end
 
-  attr_reader :rain_state, :max_rain, :chance_of_rain, :forecast, :forecast_table
+  attr_reader :rain_state,
+    :max_rain,
+    :chance_of_rain,
+    :forecast,
+    :forecast_table
 
   def chance_of_rain
     nfs = NoaaForecastService.new(site: self)
