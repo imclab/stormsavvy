@@ -10,23 +10,26 @@ describe WeatherGetter do
   let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
   let(:wg) { WeatherGetter.new }
   let(:ww) { WeatherWorker.new }
-  let(:zipcode) { 94530 }
-  let(:forecast) { wg.get_forecast(zipcode) }
+  # let(:forecast) { wg.get_forecast(zipcode) }
   let(:forecastday) { wg.parse_wunderground_10day(json) }
   let(:site) { FactoryGirl.build(:site) }
+  let(:zipcode) { site.zipcode }
+
+  before :each do
+    wg.stub(:get_forecast).with(zipcode).and_return { json }
+    @forecast = wg.get_forecast(zipcode)
+  end
 
   describe '#get_forecast' do
-    it "gets the weather for 94530" do
-      wg.should respond_to(:get_forecast)
-      forecast.should include('response')
-      forecast.should include('forecast')
-      forecast.should have(2).items
+    it 'reads json and does not query' do
+      json.should have(2).items
     end
 
-    it 'extracts forecast using site zipcode' do
-      forecast = wg.get_forecast(site.zipcode)
-      forecastday = wg.parse_wunderground_10day(forecast)
-      forecastday.should have(10).items
+    it "gets the weather for 94530" do
+      wg.should respond_to(:get_forecast)
+      @forecast.should include('response')
+      @forecast.should include('forecast')
+      @forecast.should have(2).items
     end
   end
 
