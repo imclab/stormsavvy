@@ -15,36 +15,35 @@ describe Site do
 
   let!(:site) { FactoryGirl.create(
     :site
-    # name: 'Oakland Adams Point'
     )
   }
   let!(:report) { FactoryGirl.create(
     :report,
-    :site => site
+    site: site
     )
   }
-  let!(:reports) { [ report ] }
+  let(:reports) { [ report ] }
 
   let!(:inspection_event) { FactoryGirl.create(
-      :inspection_event,
-      :site => site
-      )
+    :inspection_event,
+    site: site
+    )
   }
-  let!(:inspection_events) { [inspection_event] }
+  let(:inspection_events) { [inspection_event] }
 
   let!(:sampling_event) { FactoryGirl.create(
-      :sampling_event,
-      :site => site
-      )
+    :sampling_event,
+    site: site
+    )
   }
-  let!(:sampling_events) { [sampling_event] }
+  let(:sampling_events) { [sampling_event] }
 
-  let!(:lat) { 37.81164190000001 }
-  let!(:long) { -122.255463 }
-  let!(:zipcode) { 94610 }
-  let!(:latlong) { [ lat, long ] }
-  let!(:address) { '111 Adams Street Suite 181 Oakland CA 94610' }
-  let!(:nf) { NOAAForecast.new(zipcode,168,6) }
+  let(:lat) { site.lat }
+  let(:long) { site.long }
+  let(:zipcode) { site.zipcode }
+  let(:latlong) { [ lat, long ] }
+  let(:address) { site.address }
+  let(:nf) { NOAAForecast.new(zipcode,168,6) }
 
   let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
   let(:wg) { WeatherGetter.new }
