@@ -251,11 +251,6 @@ describe Site do
   describe '#forecast' do
     it 'returns forecast' do
       site.should respond_to(:forecast)
-
-      # latlong = [lat, long]
-      # forecast = nf.get_forecast(latlong)
-      # site.forecast.should == forecast
-
       forecast = site.forecast
 
       forecast.each do |sub|
