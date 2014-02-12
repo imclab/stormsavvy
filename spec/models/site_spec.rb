@@ -1,5 +1,7 @@
 require 'spec_helper'
 require 'weather/forecast_examiner'
+require 'weather/weathergetter'
+require 'json'
 
 describe Site do
 
