@@ -297,8 +297,6 @@ ActiveRecord::Schema.define(version: 20140127163244) do
     t.date     "last_training"
     t.date     "last_weather_forecast"
     t.date     "last_sampling"
-    t.text     "noaa_forecast"
-    t.text     "wg_forecast"
   end
 
   create_table "users", force: true do |t|
