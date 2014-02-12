@@ -38,20 +38,24 @@ describe WeatherGetter do
       wg.should respond_to(:parse_wunderground_10day)
       forecastday.should have(10).items
     end
+
+    it 'extracts forecast using site zipcode' do
+      forecastday = wg.parse_wunderground_10day(@forecast)
+      forecastday.should have(10).items
+    end
   end
 
   describe '#display_forecast' do
     it 'fetches forecast using background worker' do
       ww.class.should == WeatherWorker
-      forecast = wg.display_forecast
-      forecast.should have(10).items
+      @forecast.should have(2).items
     end
   end
 
   describe '#forecast_table' do
     it 'returns forecast for given site' do
       wg.should respond_to(:forecast_table)
-      forecastday = wg.forecast_table(site)
+      # forecastday = wg.forecast_table(site)
       forecastday.each do |f|
         f['pop'].should be_between(0,100)
         f['qpf_allday'].count.should == 2
