@@ -39,6 +39,17 @@ describe Site do
   }
   let!(:sampling_events) { [sampling_event] }
 
+  let!(:lat) { 37.81164190000001 }
+  let!(:long) { -122.255463 }
+  let!(:zipcode) { 94610 }
+  let!(:latlong) { [ lat, long ] }
+  let!(:address) { '111 Adams Street Suite 181 Oakland CA 94610' }
+  let!(:nf) { NOAAForecast.new(zipcode,168,6) }
+
+  let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
+  let(:wg) { WeatherGetter.new }
+  let(:forecastday) { wg.parse_wunderground_10day(json) }
+
   describe "validations" do
     it "should have a name" do
       site.name = ''
