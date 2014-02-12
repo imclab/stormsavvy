@@ -2,6 +2,7 @@ require 'weather/noaa_forecast'
 require 'weather/forecast_examiner'
 require 'weather/weathergetter'
 require 'displaydate'
+require 'json'
 
 class Site < ActiveRecord::Base
 
