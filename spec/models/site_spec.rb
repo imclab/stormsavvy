@@ -241,8 +241,7 @@ describe Site do
   describe '#wg_table' do
     it 'returns wg table' do
       site.should respond_to(:wg_table)
-      site.wg_table.count.should == 10
-      # pp site.wg_table
+      forecastday.count.should == 10
     end
 
     it 'serializes and saves forecast' do
