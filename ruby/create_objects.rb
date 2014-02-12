@@ -8,11 +8,11 @@ nf = NOAAForecast.new(zipcode)
 forecast = nf.seven_day_weather(zipcode)
 pp forecast
 
+# return precipitation_state
 site = Site.new(name: 'ecp', zipcode: 94530)
 site.save
-forecast = site.noaa_table
-site.forecast = forecast
-site.save
+forecast = site.forecast
+site.precipitation_state(forecast)
 
 site.lat
 site.long
