@@ -249,7 +249,10 @@ describe Site do
 
     it 'serializes and saves forecast' do
       # stub out api response later
-      site.noaa_table
+      # site.noaa_table
+      # site.noaa_forecast.class.should == Array
+      site.noaa_forecast = @data
+      site.save
       site.noaa_forecast.class.should == Array
     end
   end
