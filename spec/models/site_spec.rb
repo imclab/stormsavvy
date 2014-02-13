@@ -218,7 +218,6 @@ describe Site do
     it 'returns chance of rain' do
       site.should respond_to(:chance_of_rain)
       max_rain = site.chance_of_rain
-      pp max_rain.pop
       max_rain.pop.should be_between(0,100)
     end
   end
