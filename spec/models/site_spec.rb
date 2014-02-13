@@ -237,7 +237,9 @@ describe Site do
     end
 
     it 'serializes and saves forecast' do
-
+      # stub out api response later
+      site.noaa_table
+      site.noaa_forecast.class.should == Array
     end
   end
 
