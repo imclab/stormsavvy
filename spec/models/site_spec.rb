@@ -1,17 +1,10 @@
 require 'spec_helper'
 require 'weather/forecast_examiner'
 require 'weather/weathergetter'
+require 'weather/noaa_forecast'
 require 'json'
 
 describe Site do
-
-  before(:all) do
-    @data = []
-    CSV.foreach(Rails.root.to_s + '/spec/lib/weather/ss_fc_fixture.csv') do |row|
-      @data << row
-    end
-    @data.delete_if { |r| r == [] }
-  end
 
   let!(:site) { FactoryGirl.create(
     :site
