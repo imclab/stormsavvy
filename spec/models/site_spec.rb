@@ -36,14 +36,26 @@ describe Site do
   let(:zipcode) { site.zipcode }
   let(:latlong) { [ lat, long ] }
   let(:address) { site.address }
-  let(:nf) { NOAAForecast.new(zipcode,168,6) }
+  let(:duration) { 168 }
+  let(:interval) { 6 }
 
-  let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
   let(:wg) { WeatherGetter.new }
+  let(:nf) { NOAAForecast.new(zipcode,168,6) }
+  let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
   let(:forecastday) { wg.parse_wunderground_10day(json) }
+  let(:response) { IO.read("./spec/lib/weather/noaa_response.xml") }
+
+  before(:all) do
+    @data = []
+    CSV.foreach(Rails.root.to_s + '/spec/lib/weather/ss_fc_fixture.csv') do |row|
+      @data << row
+    end
+    @data.delete_if { |r| r == [] }
+  end
 
   before :each do
     wg.stub(:wg_table) { return forecastday }
+    nf.stub(:ping_noaa).with([lat, long], duration, interval).and_return(response)
   end
 
   describe "validations" do
