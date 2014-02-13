@@ -252,7 +252,7 @@ describe Site do
     it 'serializes and saves forecast' do
       site.wg_forecast = forecastday
       site.save
-      pp site.wg_forecast
+      site.wg_forecast.class.should == Array
     end
   end
 
