@@ -49,6 +49,10 @@ describe Site do
   let(:wg) { WeatherGetter.new }
   let(:forecastday) { wg.parse_wunderground_10day(json) }
 
+  before :each do
+    wg.stub(:wg_table) { return forecastday }
+  end
+
   describe "validations" do
     it "should have a name" do
       site.name = ''
