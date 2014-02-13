@@ -222,8 +222,8 @@ describe Site do
     it 'returns forecast table' do
       site.should respond_to(:noaa_table)
 
-      forecast = site.noaa_table
-      forecast.each do |f|
+      site.noaa_table
+      site.noaa_forecast.each do |f|
         if f[:weather] == -999
           f[:weather] = 0
         end
