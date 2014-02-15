@@ -298,13 +298,24 @@ describe Site do
     it 'returns wg table' do
       site.should respond_to(:wg_table)
       forecastday.count.should == 10
+      forecastday.each do |f|
+        f['pop'].should be_between(0,100)
+        f['qpf_allday']['in'].should be_between(0,100)
+      end
+    end
+  end
+
+  describe '#save_wg' do
+    it 'saves wg forecast' do
+      # site.should respond_to(:save_wg)
+      # site.save_wg
     end
 
-    it 'serializes and saves forecast' do
+    it 'saves wg stub value' do
       site.wg_forecast = forecastday
       site.save
-      pp site.wg_forecast
       site.wg_forecast.class.should == Array
+      site.wg_forecast.should == forecastday
     end
   end
 
