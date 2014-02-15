@@ -77,7 +77,7 @@ describe Site do
     ]
   }
   let(:wg) { WeatherGetter.new }
-  let(:nf) { NOAAForecast.new(zipcode,168,6) }
+  let(:nf) { NOAAForecast.new(zipcode,duration,interval) }
   let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
   let(:forecastday) { wg.parse_wunderground_10day(json) }
   let(:response) { IO.read("./spec/lib/weather/noaa_response.xml") }
