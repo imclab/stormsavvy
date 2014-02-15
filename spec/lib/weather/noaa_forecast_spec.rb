@@ -108,42 +108,42 @@ describe NOAAForecast do
   end
 
   it "returns lat/long for given zipcode" do
-    latlong = [lat, long]
-    latlong.size.should == 2
+    lat_long.count.should == 2
     tol = 0.0001
-    latlong[0].should be_within(tol).of(38)
-    latlong[1].should be_within(tol).of(-122)
+    lat_long[0].should be_within(tol).of(38)
+    lat_long[1].should be_within(tol).of(-122)
   end
 
   describe "#get_lat_long" do
-    it "returns get_lat_long stub values" do
-      nf.get_lat_long(zipcode).should == [38, -122]
+    context 'when passing in valid zipcode' do
+      it "returns get_lat_long stub values" do
+        nf.should respond_to(:get_lat_long)
+        nf.get_lat_long(zipcode).should == [38, -122]
+      end
     end
 
-    it 'handles exceptions with benign value' do
-      nf.get_lat_long("0").should == []
+    context 'when passing in invalid zipcode' do
+      it 'handles exceptions with benign value' do
+        nf.get_lat_long("0").should == []
+      end
     end
 
     it 'validates rails api caching on class object' do
-      begin
-        zipcode = 94901
-        results = Geocoder.search(zipcode)
-        lat = results[0].data["geometry"]["location"]["lat"]
-        lng = results[0].data["geometry"]["location"]["lng"]
-        lat_long = [] << lat << lng
+      zipcode = 94901
+      results = Geocoder.search(zipcode)
+      lat = results[0].data["geometry"]["location"]["lat"]
+      lng = results[0].data["geometry"]["location"]["lng"]
+      lat_long = [] << lat << lng
 
-        Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
-        Rails.cache.clear
-        Rails.cache.fetch(zipcode.to_s + '_lat') {lat}
-        Rails.cache.fetch(zipcode.to_s + '_lat').should == lat
-        Rails.cache.fetch(zipcode.to_s + '_lng') {lng}
-        Rails.cache.fetch(zipcode.to_s + '_lng').should == lng
+      Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
+      Rails.cache.clear
+      Rails.cache.fetch(zipcode.to_s + '_lat') {lat}
+      Rails.cache.fetch(zipcode.to_s + '_lat').should == lat
+      Rails.cache.fetch(zipcode.to_s + '_lng') {lng}
+      Rails.cache.fetch(zipcode.to_s + '_lng').should == lng
 
-        nf = NOAAForecast.new(zipcode)
-        nf.get_lat_long(zipcode).should == [lat, lng]
-      rescue
-        'Not online or method throwing error'
-      end
+      nf = NOAAForecast.new(zipcode)
+      nf.get_lat_long(zipcode).should == [lat, lng]
     end
   end
 
