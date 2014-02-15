@@ -5,11 +5,12 @@ require 'time'
 describe NOAAForecast do
   let(:fullcount) { 29 }
   let(:zipcode) { 94530 }
+  let(:duration) { 168 }
+  let(:interval) { 6 }
   let(:lat) { 38 }
   let(:long) { -122 }
   let(:lat_long) { [lat, long] }
-  # let(:nf) { double(NOAAForecast) }
-  let(:nf) { NOAAForecast.new(zipcode,168,6) }
+  let(:nf) { NOAAForecast.new(zipcode,duration,interval) }
 
   let(:pop) {
     [0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0]
