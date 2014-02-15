@@ -97,13 +97,6 @@ describe NOAAForecast do
       # return zipcode
     }
 
-    nf3 = NOAAForecast.new(zipcode,168,6)
-    nf3.stub(:get_pop_table_hash) {
-
-      IO.read("./spec/fixtures/get_pop_table_hash.rb")
-      # return zipcode
-    }
-
     nf.stub(:get_forecast_array) {
       IO.read("./spec/fixtures/get_forecast_array.rb")
       # return zipcode
