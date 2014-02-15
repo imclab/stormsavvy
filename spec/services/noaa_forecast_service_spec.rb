@@ -57,7 +57,7 @@ describe NoaaForecastService do
       end
 
       describe '#save_results' do
-        it "should respond to 'save_results'" do
+        it "responds to 'save_results'" do
           nfs.should respond_to(:save_results)
         end
       end
