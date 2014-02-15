@@ -75,12 +75,12 @@ describe NoaaForecastService do
         end
 
         it 'returns correct number of elements' do
-          noaa.count.should == 28
+          forecast.count.should == 28
         end
 
         context 'when collecting pop and qpf data' do
           it 'returns values between 0 and 100' do
-            noaa.each do |f|
+            forecast.each do |f|
               f[:weather].should be_between(0,100)
               f[:rainfall].should be_between(0,100)
             end
