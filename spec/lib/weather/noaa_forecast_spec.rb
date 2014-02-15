@@ -190,16 +190,12 @@ describe NOAAForecast do
 
   describe "#seven_day_weather" do
     it "returns array from seven_day_weather" do
-      begin
-        forecast = nf.seven_day_weather(zipcode)
-        forecast[0].size.should == fullcount
-      rescue
-        'Not online or method throwing error'
-      end
+      nf.should respond_to(:seven_day_weather)
+      forecast = nf.seven_day_weather(zipcode)
+      forecast[0].size.should == fullcount
     end
 
     it 'returns correct forecast' do
-      # nf = NOAAForecast.new(94530)
       forecast = nf.seven_day_weather(zipcode)
 
       forecast[0].length.should == 29
