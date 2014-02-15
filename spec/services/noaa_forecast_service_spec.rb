@@ -56,47 +56,31 @@ describe NoaaForecastService do
           nfs.get_forecast
         end
 
-        it "should set weather_update after API query" do
-          begin
-            nfs.weather_update.class.name.should == "WeatherUpdate"
-          rescue
-            'not online or method throwing error'
-          end
+        it "sets weather_update after API query" do
+          nfs.weather_update.class.name.should == "WeatherUpdate"
         end
 
-        it "should set forecast_periods after API query" do
-          begin
-            nfs.forecast_periods.length.should == 57
-          rescue
-            'not online or method throwing error'
-          end
+        it "sets forecast_periods after api query" do
+          nfs.forecast_periods.count.should == 57
         end
 
-        it "should successfully save WeatherUpdate" do
-          begin
-            weather_update_count = WeatherUpdate.count
-            nfs.save_results
-            WeatherUpdate.count.should == weather_update_count + 1
-          rescue
-            'not online or method throwing error'
-          end
+        it "saves WeatherUpdate" do
+          weather_update_count = WeatherUpdate.count
+          nfs.save_results
+          WeatherUpdate.count.should == weather_update_count + 1
         end
 
-        it "should successfully save ForecastPeriods" do
-          begin
-            weather_update_count = ForecastPeriod.count
-            nfs.save_results
-            ForecastPeriod.count.should == weather_update_count + 57
-          rescue
-            'not online or method throwing error'
-          end
+        it "saves ForecastPeriods" do
+          weather_update_count = ForecastPeriod.count
+          nfs.save_results
+          ForecastPeriod.count.should == weather_update_count + 57
         end
       end
     end
   end
 
   describe "without a site" do
-    it "should raise an exception" do
+    it "raises an exception" do
       expect{ NoaaForecastService.new.should }.to raise_error
     end
   end
