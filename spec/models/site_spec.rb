@@ -275,15 +275,22 @@ describe Site do
         f[:rainfall].should be_between(0,100)
       end
     end
+  end
 
-    it 'serializes and saves forecast' do
-      # stub out api response later
-      # site.noaa_table
-      # site.noaa_forecast.class.should == Array
+  describe '#save_noaa' do
+    it 'saves noaa api query' do
+      site.should respond_to(:save_noaa)
+      site.save_noaa
+      site.noaa_forecast.class.should == Array
+      site.noaa_forecast.count.should == 28
+    end
+
+    it 'saves noaa stub value' do
       site.noaa_forecast = forecast
       site.save
       site.noaa_forecast.class.should == Array
       site.noaa_forecast.should == forecast
+      site.noaa_forecast.count.should == 28
     end
   end
 
