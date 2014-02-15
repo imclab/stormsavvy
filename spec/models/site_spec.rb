@@ -292,9 +292,10 @@ describe Site do
       # stub out api response later
       # site.noaa_table
       # site.noaa_forecast.class.should == Array
-      site.noaa_forecast = @data
+      site.noaa_forecast = forecast
       site.save
       site.noaa_forecast.class.should == Array
+      site.noaa_forecast.should == forecast
     end
   end
 
