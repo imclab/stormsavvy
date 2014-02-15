@@ -263,18 +263,6 @@ describe Site do
   describe '#noaa_table' do
     it 'returns forecast table' do
       site.should respond_to(:noaa_table)
-
-      # site.noaa_table
-      # site.noaa_forecast.each do |f|
-
-      # forecast = nf.parse_weather_data(response)
-      # site.noaa_forecast = forecast
-      # site.save
-
-      # forecast = site.noaa_table
-      # pp forecast
-
-      # site.noaa_table.each do |f|
       forecast.each do |f|
         if f[:weather] == -999
           f[:weather] = 0
