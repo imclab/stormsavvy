@@ -51,7 +51,6 @@ describe NOAAForecast do
     nf.stub(:seven_day_weather).with(zipcode).and_return {
       latlong = [lat, long]
       nf.get_forecast(latlong)
-      # return zipcode
     }
 
     nf.stub(:get_time_array) {
