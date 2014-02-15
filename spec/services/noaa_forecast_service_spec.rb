@@ -38,7 +38,7 @@ describe NoaaForecastService do
         end
 
         it 'returns correct number of elements' do
-          noaa.length.should == 28
+          noaa.count.should == 28
         end
 
         context 'when collecting pop and qpf data' do
