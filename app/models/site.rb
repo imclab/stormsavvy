@@ -97,16 +97,23 @@ class Site < ActiveRecord::Base
   def noaa_table
     nfs = NoaaForecastService.new(site: self)
     nfs.forecast_table(self)
-    # self.noaa_forecast = nfs.forecast_table(self)
-    # self.save
+  end
+
+  def save_noaa
+    nfs = NoaaForecastService.new(site: self)
+    self.noaa_forecast = nfs.forecast_table(self)
+    self.save
   end
 
   def wg_table
     wg = WeatherGetter.new
     wg.forecast_table(self)
-    # forecast = wg.forecast_table(self)
-    # self.wg_forecast = forecast
-    # self.save
+  end
+
+  def save_wg
+    wg = WeatherGetter.new
+    self.wg_forecast = wg.forecast_table(self)
+    self.save
   end
 
   def forecast
