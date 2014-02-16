@@ -29,16 +29,7 @@ describe User do
     user.should be_valid
   end
 
-  describe "project associations" do
-
-    it "should respond to projects" do
-      user.should respond_to(:projects)
-    end
-
-    it "has projects in correct order" do
-      user.projects.should == projects
-    end
-
+  describe "validations" do
     it "enforces unique email" do
       FactoryGirl.build(
         :user,
