@@ -65,31 +65,54 @@ namespace :scheduler do
     end
   end
 
-  desc "Delivers mailout mailer"
+  desc "delivers mailout mailer"
   task :mailout => :environment do
   	users = [
       'walter@stormsavvy.com',
       'kharma+stormsavvy@gmail.com'
-      ]
+    ]
     users.each do |address|
-      UserMailer.delay.mailout
+      UserMailer.mailout(address)
+      # UserMailer.delay.mailout
     end
   end
 
-  desc "Delivers thank you mailer"
+  desc "delivers thank you mailer"
   task :thankyou => :environment do
     test_users = [
       'walter@stormsavvy.com',
       'kharma+stormsavvy@gmail.com'
-      ]
+    ]
     test_users.each do |address|
       UserMailer.delay.thankyou(address)
     end
   end
 
-  desc "Checks inspection event workflow"
+  desc "checks inspection event workflow"
   task :iew => :environment do
     iew = InspectionEventWorkflow.new
     iew.inspection_needed?
+  end
+
+  desc "saves noaa_forecast"
+  task :noaa_forecast => :environment do
+    # Do not send to all users
+    # users = User.all
+    admins = [ (User.find_by email: 'walter@stormsavvy.com') ]
+    admins.each do |user|
+      user = User.new
+      user.noaa_forecast
+  	end
+  end
+
+  desc "saves wg_forecast"
+  task :wg_forecast => :environment do
+    # Do not send to all users
+    # users = User.all
+    admins = [ (User.find_by email: 'walter@stormsavvy.com') ]
+    admins.each do |user|
+      user = User.new
+      user.wg_forecast
+  	end
   end
 end
