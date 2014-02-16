@@ -53,6 +53,42 @@ class NOAAForecast
     return parse_weather_data(response)
   end
 
+  def ping_noaa(latlong, duration, interval)
+    # xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=168&interval=6&lat=38.2473117&lon=-122.5712101"
+    xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
+    request = Typhoeus::Request.new(xml,
+              :body          => "this is a request body",
+              :method        => :post,
+              :headers       => {:Accept => "text/html"},
+              :timeout       => 2000, # milliseconds
+              # :cache_timeout => 60, # seconds
+              :params        => {:field1 => "a field"})
+
+    hydra = Typhoeus::Hydra.new
+    hydra.queue(request)
+    hydra.run
+    request.response.body
+  end
+
+  def get_valid_dates(xmldoc)
+    doc   = Nokogiri::XML(xmldoc)
+    doc.xpath("//validDate").map { |n| n.content.to_i }
+  end
+
+  def get_forecast_creation_time(xmldoc)
+    doc   = Nokogiri::XML(xmldoc)
+    datestring = doc.xpath("//forecastCreationTime").first.content
+    DateTime.parse(datestring, "%a %b %d %H:%M:%S %Y %Z")
+  end
+
+  def parse_weather_data(xmldoc)
+    doc   = Nokogiri::XML(xmldoc)
+    @pop = doc.xpath("//pop").map { |n| n.content.to_i }
+    @qpf = doc.xpath("//qpf").map { |n| n.content.to_i }
+    noaa_forecast =  [] << @pop << @qpf
+    noaa_forecast
+  end
+
   def get_pop(zipcode)
     nf = NOAAForecast.new(zipcode,168,6)
     nf.seven_day_weather(zipcode)
