@@ -13,7 +13,7 @@ describe 'scheduler' do
     # end
 
     describe '#northbay_forecast' do
-      it 'sends northbay_forecast' do
+      xit 'sends northbay_forecast' do
         Rake::Task['scheduler:northbay_forecast'].invoke
       end
     end
@@ -31,13 +31,13 @@ describe 'scheduler' do
     end
 
     describe '#pester_admins' do
-      it 'sends pester_admins' do
+      xit 'sends pester_admins' do
         Rake::Task['scheduler:pester_admins'].invoke
       end
     end
 
     describe '#staging_mailer' do
-      it 'sends staging_mailer' do
+      xit 'sends staging_mailer' do
         Rake::Task['scheduler:staging_mailer'].invoke
       end
     end
