@@ -6,7 +6,11 @@ require 'json'
 
 describe Site do
 
-  let!(:site) { FactoryGirl.create(:site) }
+  let!(:user) { FactoryGirl.build(:user) }
+  let!(:site) { FactoryGirl.create(
+    :site,
+    user: user)
+  }
   let!(:report) { FactoryGirl.create(
     :report,
     site: site
