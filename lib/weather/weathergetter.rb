@@ -55,7 +55,8 @@ class WeatherGetter
 
   def forecast_table(site)
     wg = WeatherGetter.new
-    forecast = wg.get_forecast(site.zipcode)
+    zipcode = site.zipcode
+    forecast = wg.get_forecast(zipcode)
     forecastday = wg.parse_wunderground_10day(forecast)
     return forecastday
   end
