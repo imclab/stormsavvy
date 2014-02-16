@@ -112,7 +112,8 @@ class Site < ActiveRecord::Base
 
   def save_wg
     wg = WeatherGetter.new
-    self.wg_forecast = wg.forecast_table(self)
+    forecast = wg.forecast_table(self)
+    self.wg_forecast = forecast
     self.save
   end
 
