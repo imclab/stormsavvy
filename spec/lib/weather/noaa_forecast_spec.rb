@@ -38,6 +38,14 @@ describe NOAAForecast do
       qpf = { :rainfall => 99 }
       @qpf_array.push(qpf)
     end
+    @time_pop_hash = []
+    for i in (0..27)
+      @time_pop_hash << @time_array[i].update(@pop_array[i])
+    end
+    @pop_table_hash = []
+    for i in (0..27)
+      @time_pop_hash[i].merge!(@qpf_array[i])
+    end
 
     nf.stub(:get_lat_long).with(zipcode).and_return([lat, long])
     nf.stub(:get_lat_long).with("0").and_return([])
