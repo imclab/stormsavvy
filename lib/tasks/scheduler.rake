@@ -14,51 +14,50 @@ namespace :scheduler do
     end
   end
 
-  desc "Delivers popalert mailer"
+  desc "delivers popalert mailer"
   task :pop_alert => :environment do
     test_users = [
       'walter@stormsavvy.com',
       'kharma+stormsavvy@gmail.com',
       'wing.wingyu@gmail.com'
-      ]
+    ]
     # if user.sites.precipitation_state(forecast) == :imminent then
     test_users.each do |address|
       AlertMailer.delay.pop_alert(address)
     end
   end
 
-  desc "Delivers daily_mailer mailer"
+  desc "delivers daily_mailer mailer"
   task :daily_mailer => :environment do
     # Do not send to all users
     # users = User.all
-
     admins = [ (User.find_by email: 'walter@stormsavvy.com') ]
     admins.each do |user|
   	  AlertMailer.daily_mailer(user)
   	end
   end
 
-  desc "Delivers pester_admins mailer"
+  desc "delivers pester_admins mailer"
   task :pester_admins => :environment do
     admins = [
       'walter@stormsavvy.com',
       'kharma+stormsavvy@gmail.com',
       'wing.wingyu@gmail.com',
       'david.doolin+stormsavvy@gmail.com'
-      ]
+    ]
     admins.each do |address|
       UserMailer.pester_admins(address)
       # UserMailer.delay.pester_admins(address)
     end
   end
 
-  desc "Delivers staging_mailer mailer"
+  desc "delivers staging_mailer mailer"
   task :staging_mailer => :environment do
-    if Time.now.sunday? # weekly scheduler: http://goo.gl/Bj6zL
+    if Time.now.sunday?
       admins = [
         'walter@stormsavvy.com',
         'kharma+stormsavvy@gmail.com'
-        ]
+      ]
       admins.each do |address|
         UserMailer.staging_mailer(address)
         # UserMailer.delay.staging_mailer(address)
