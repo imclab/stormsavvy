@@ -308,8 +308,12 @@ describe Site do
 
   describe '#save_wg' do
     it 'saves wg forecast' do
-      # site.should respond_to(:save_wg)
-      # site.save_wg
+      site.should respond_to(:save_wg)
+      forecast = wg.forecast_table(site)
+      pp forecast
+      # site.wg_forecast = forecast
+      # site.save
+      # pp site.wg_forecast
     end
 
     it 'saves wg stub value' do
