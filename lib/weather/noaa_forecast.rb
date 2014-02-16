@@ -22,28 +22,28 @@ class NOAAForecast
   end
 
   def seven_day_weather(zipcode)
-    #@duration = 168
-    #@interval = 6
     latlong = get_lat_long(zipcode)
     return get_forecast(latlong)
   end
 
   def get_lat_long(zipcode)
-    lat_long ||= Rails.cache.fetch(@zipcode.to_s + '_lat_long', expires_in: 24.hours) do
-      unless lat_long == [nil, nil]
-        begin
-          results = Geocoder.search(zipcode)
-          @lat = results[0].data["geometry"]["location"]["lat"]
-          @lng = results[0].data["geometry"]["location"]["lng"]
-          lat_long = [] << @lat << @lng
+    # lat_long ||= Rails.cache.fetch(@zipcode.to_s + '_lat_long', expires_in: 24.hours) do
+    #   unless lat_long == [nil, nil]
+    #     begin
+    #       results = Geocoder.search(zipcode)
+    #       @lat = results[0].data["geometry"]["location"]["lat"]
+    #       @lng = results[0].data["geometry"]["location"]["lng"]
+    #       lat_long = [] << @lat << @lng
+    #       Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
+    #     rescue Exception => e
+    #       nil
+    #     end
+    #   end
+    # end
 
-          Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
-        rescue Exception => e
-          nil
-        end
-      end
-    end
-
+    results = Geocoder.search(zipcode)
+    @lat = results[0].data["geometry"]["location"]["lat"]
+    @lng = results[0].data["geometry"]["location"]["lng"]
     lat_long = [] << @lat << @lng
     return lat_long
   end
