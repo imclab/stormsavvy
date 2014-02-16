@@ -28,14 +28,11 @@ class User < ActiveRecord::Base
   # accepts_nested_attributes_for :projects
 
   validates :email, :presence => true
-  validates_presence_of :email,
-    :password
+  validates_presence_of :email, :password
   validates_uniqueness_of :email
 
   def has_site?
     return true if self.sites.count > 0
-    # return true if self.sites_count > 0
-
     # self.projects.each do |project|
     #   return true if project.sites_count > 0
     # end
