@@ -55,7 +55,34 @@ describe User do
 
   describe '#get_sites' do
     it 'returns site names' do
+      user.should respond_to(:get_sites)
       user.get_sites.should == [ 'ec jungle gym' ]
+    end
+  end
+
+  describe '#noaa_forecast' do
+    it 'saves noaa forecast for all sites' do
+      user.should respond_to(:noaa_forecast)
+      user.noaa_forecast
+      user.sites.each do |site|
+        site.noaa_forecast.each do |f|
+          f[:weather].should be_between(0,100)
+          f[:rainfall].should be_between(0,100)
+        end
+      end
+    end
+  end
+
+  describe '#wg_forecast' do
+    it 'saves wg forecast for all sites' do
+      user.should respond_to(:wg_forecast)
+      user.wg_forecast
+      user.sites.each do |site|
+        site.wg_forecast.each do |f|
+          f['pop'].should be_between(0,100)
+          f['qpf_allday']['in'].should be_between(0,100)
+        end
+      end
     end
   end
 end
