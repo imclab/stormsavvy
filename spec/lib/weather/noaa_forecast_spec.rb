@@ -170,12 +170,11 @@ describe NOAAForecast do
     it "returns array from seven_day_weather" do
       nf.should respond_to(:seven_day_weather)
       forecast = nf.seven_day_weather(zipcode)
-      forecast[0].size.should == fullcount
+      forecast[0].count.should == fullcount
     end
 
     it 'returns correct forecast' do
       forecast = nf.seven_day_weather(zipcode)
-
       forecast[0].length.should == 29
       forecast[0].each do |pop|
         pop.should be_between(0,100)
