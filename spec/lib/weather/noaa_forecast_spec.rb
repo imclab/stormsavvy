@@ -145,7 +145,7 @@ describe NOAAForecast do
     it "parses weather data from noaa for one week" do
       response = nf.ping_noaa([lat, long], 168, 6)
       forecast = nf.parse_weather_data(response)
-      forecast[0].size.should == fullcount
+      forecast[0].count.should == fullcount
     end
   end
 
