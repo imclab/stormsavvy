@@ -137,7 +137,6 @@ class NOAAForecast
     for i in (0..27)
       time_pop_hash << time_array[i].update(new_pop_array[i])
     end
-
     return time_pop_hash
   end
 
@@ -150,7 +149,6 @@ class NOAAForecast
     for i in (0..27)
       pop_table_hash << time_pop_hash[i].merge!(new_qpf_array[i])
     end
-
     return pop_table_hash
 
     # [
