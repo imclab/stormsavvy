@@ -190,7 +190,6 @@ describe NOAAForecast do
   describe "#get_forecast_array" do
     it "returns forecast_by_zipcode" do
       nf.should respond_to(:get_forecast_array)
-
       response = nf.ping_noaa([lat, long], 168, 6)
       forecast = nf.parse_weather_data(response)
 
@@ -205,7 +204,7 @@ describe NOAAForecast do
         forecast_array.push(date_weather_rainfall)
       end
 
-      forecast_array.length.should == 28
+      forecast_array.count.should == 28
       forecast_array.each do |f|
         f[:weather].should be_between(0,100)
         f[:rainfall].should be_between(0,100)
