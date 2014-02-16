@@ -47,14 +47,13 @@ describe WeatherGetter do
   describe '#display_forecast' do
     it 'fetches forecast using background worker' do
       ww.class.should == WeatherWorker
-      @forecast.should have(2).items
     end
   end
 
   describe '#forecast_table' do
     it 'returns forecast for given site' do
       wg.should respond_to(:forecast_table)
-      # forecastday = wg.forecast_table(site)
+      forecastday = wg.forecast_table(site)
       forecastday.each do |f|
         f['pop'].should be_between(0,100)
         f['qpf_allday'].count.should == 2
