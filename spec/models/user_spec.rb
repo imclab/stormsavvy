@@ -38,13 +38,13 @@ describe User do
     end
   end
 
-  context :has_site? do
-    xit "should respond and reply appropriately if user has_site?" do
+  describe '#has_site?' do
+    it "responds whether user has_site?" do
       user.should respond_to(:has_site?)
       assert_equal user.has_site?, true
     end
 
-    xit "should reply appropriately if user does not have site" do
+    it "responds whether user does not have site" do
       user = User.create(
         :email =>     'foo@bar.com',
         :password =>  'foobarbaz'
