@@ -1,6 +1,6 @@
 namespace :scheduler do
 
-  desc "Delivers northbay_forecast mailer"
+  desc "delivers northbay_forecast mailer"
   task :northbay_forecast => :environment do
     test_users = [
       'walter@stormsavvy.com',
