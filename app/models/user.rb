@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
     # :contractor_address_1,
     # :contractor_address_2,
     # :contractor_city,
-    # :contactor_state,
-    # :contactor_zipcode
+    # :contractor_state,
+    # :contractor_zipcode
 
   has_many :sites, :dependent => :destroy
   # accepts_nested_attributes_for :sites
