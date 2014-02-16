@@ -124,7 +124,6 @@ class NOAAForecast
     qpf_array.each do |i|
       new_qpf_array << { :rainfall => qpf_array[i].to_s }
     end
-
     return new_qpf_array
   end
 
