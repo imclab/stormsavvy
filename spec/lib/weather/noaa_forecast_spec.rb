@@ -53,66 +53,39 @@ describe NOAAForecast do
     nf.stub(:ping_noaa).with([lat, long], 168, 6) {
       IO.read("./spec/lib/weather/noaa_response.xml")
     }
-
     nf.stub(:get_forecast).with([lat, long]) {
       response = nf.ping_noaa([lat, long], 168, 6)
       nf.parse_weather_data(response)
     }
-
     nf.stub(:seven_day_weather).with(zipcode).and_return {
       latlong = [lat, long]
       nf.get_forecast(latlong)
     }
-
     nf.stub(:get_time_array) {
       time_array = []
       for t in 0..27
         time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
       end
     }
-
     nf.stub(:get_pop).with(zipcode).and_return {
-      IO.read("./spec/fixtures/get_pop_array.rb")
-      # @pop_array
+      @pop_array
     }
-
     nf.stub(:get_qpf).with(zipcode).and_return {
-      IO.read("./spec/fixtures/get_qpf_array.rb")
-      # return qpf
+      @qpf_array
     }
-
     nf.stub(:get_pop_array).with(zipcode).and_return {
-      IO.read("./spec/fixtures/new_pop_array.rb")
-      # return zipcode
+      @pop_array
     }
-
     nf.stub(:get_qpf_array) {
-      IO.read("./spec/fixtures/new_qpf_array.rb")
-      # return zipcode
+      @qpf_array
     }
-
     nf.stub(:get_time_pop_hash) {
-      # time_array = []
-      # for t in 0..27
-      #   time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
-      # end
-
-      # nf.seven_day_weather(zipcode)
-      # pop_array = nf.pop
-      # new_pop_array = []
-      # pop_array.each do |i|
-      #   new_pop_array << { :weather => i.to_s }
-      # end
-
-      IO.read("./spec/fixtures/get_time_pop_hash.rb")
-      # return zipcode
+      @time_pop_hash
     }
-
     nf.stub(:get_forecast_array) {
-      IO.read("./spec/fixtures/get_forecast_array.rb")
-      # return zipcode
+      @forecast_array
     }
-  end # end of before block
+  end
 
   it "instantiates class with valid zipcode" do
     nf.class.should == NOAAForecast
