@@ -28,20 +28,18 @@ describe WeatherGetter do
 
     it "gets the weather for 94530" do
       wg.should respond_to(:get_forecast)
-      @forecast.should include('response')
-      @forecast.should include('forecast')
-      @forecast.should have(2).items
+      forecast = wg.get_forecast(zipcode)
+      forecast.should include('response')
+      forecast.should include('forecast')
+      forecast.should have(2).items
+      forecast.count.should == 2
     end
   end
 
   describe '#parse_wunderground_10day' do
     it "extracts wunderground's 10 day txt_forecast" do
       wg.should respond_to(:parse_wunderground_10day)
-      forecastday.should have(10).items
-    end
-
-    it 'extracts forecast using site zipcode' do
-      forecastday = wg.parse_wunderground_10day(@forecast)
+      forecastday = wg.parse_wunderground_10day(json)
       forecastday.should have(10).items
     end
   end
