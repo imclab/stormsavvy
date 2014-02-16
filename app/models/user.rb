@@ -51,26 +51,33 @@ class User < ActiveRecord::Base
       zipcodes << site.zipcode
     end
 
-    # self.projects.each do |project|
-    #   self.sites.each do |site|
-    #     zipcodes << site.zipcode
-    #   end
-    # end
-
     return zipcodes
   end
 
   def get_sites
-    @site_names = []
+    site_names = []
 
-    self.sites.each do |s|
-      @site_names << s.name.to_s
+    self.sites.each do |site|
+      site_names << site.name.to_s
     end
 
-    unless @site_names.blank?
-      return @site_names
+    unless site_names.blank?
+      return site_names
     else
       'no current sites'
+    end
+  end
+
+  def noaa_forecast
+    self.sites.each do |site|
+      site.save_noaa
+    end
+  end
+
+  def wg_forecast
+    self.sites.each do |site|
+      # batch requests to prevent timing out
+      site.save_wg
     end
   end
 end
