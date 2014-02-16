@@ -215,156 +215,77 @@ describe NOAAForecast do
   describe "#get_pop" do
     it "checks pop array size" do
       nf.should respond_to(:get_pop)
-
-      pop_array = nf.get_pop(zipcode)
-      pop_array.length.should == 108 # length as string
+      nf.get_pop(zipcode)
+      @pop_array.count.should == 28
+      @pop_array.each do |f|
+        f[:weather].should be_between(0,100)
+      end
     end
 
     it 'checks pop results' do
-      @pop_array.each do |pop|
-        if pop == -999
-          pop = 0
+      @pop_array.each do |f|
+        if f == -999
+          f = 0
         end
-        pop[:weather].should be_between(0,100)
+        f[:weather].should be_between(0,100)
       end
-      # nf.get_pop(zipcode).should == pop
     end
   end
 
   describe "#get_qpf" do
     it "checks qpf array size" do
       nf.should respond_to(:get_qpf)
-
-      qpf_array = nf.get_qpf(zipcode)
-      qpf_array.length.should == 102 # length as string
+      nf.get_qpf(zipcode)
+      @qpf_array.count.should == 28
     end
 
     it 'checks qpf results' do
-      @qpf_array.each do |qpf|
-        if qpf == -999
-          qpf = 0
+      @qpf_array.each do |f|
+        if f == -999
+          f = 0
         end
-        qpf[:rainfall].should be_between(0,100)
+        f[:rainfall].should be_between(0,100)
       end
-      # nf.get_qpf(zipcode).should == qpf
     end
   end
 
   describe "#get_time_array" do
     it "returns time array" do
       nf.should respond_to(:get_time_array)
-
-      time_array = []
-      for t in (0..27)
-        time_array << { :date => ProjectLocalTime::format(Date.today + (t*6).hours) }
-      end
-
-      time_array.length.should == 28
+      nf.get_time_array
+      @time_array.count.should == 28
     end
   end
 
   describe "#get_pop_array" do
     it "returns pop array" do
       nf.should respond_to(:get_pop_array)
-      pop_array = nf.get_pop(zipcode)
-
-      new_pop_array = []
-      pop_array.each do |i|
-        new_pop_array << { :weather => pop_array[i].to_s }
-      end
-
-      new_pop_array.length.should == 28
-      # nf.get_pop_array(zipcode).should == new_pop_array
+      nf.get_pop_array(zipcode)
+      @pop_array.count.should == 28
     end
   end
 
   describe "#get_qpf_array" do
     it "returns qpf array" do
-      nf = NOAAForecast.new(zipcode)
-      nf.seven_day_weather(zipcode)
-      qpf_array = nf.qpf
-
-      new_qpf_array = []
-      qpf_array.each do |i|
-        new_qpf_array << { :rainfall => i.to_s }
-      end
-
-      new_qpf_array.length.should == 29
-      # nf.get_qpf_array(zipcode).should == new_qpf_array
+      nf.should respond_to(:get_qpf_array)
+      nf.get_qpf_array(zipcode)
+      @qpf_array.count.should == 28
     end
   end
 
   describe "#get_time_pop_hash" do
     it "returns time pop hash" do
       nf.should respond_to(:get_time_pop_hash)
+      nf.get_time_pop_hash
 
-      time_pop_hash = []
-      for i in (0..27)
-        time_pop_hash << @time_array[i].update(@pop_array[0])
-      end
-      pp time_pop_hash
-
-      time_pop_hash.length.should == 28
-      time_pop_hash.each do |f|
+      @time_pop_hash.count.should == 28
+      @time_pop_hash.each do |f|
         pop = f[:weather].to_i
         if pop == -999
           pop = 0
         end
         pop.should be_between(0,100)
       end
-=begin
-      api_call = nf.get_time_pop_hash(zipcode)
-      pp api_call
-      api_call.each do |f|
-        pop = f[:weather].to_i
-        if pop == -999
-          pop = 0
-        end
-        pop.should be_between(0,100)
-      end
-
-      new_pop_array = []
-      pop_array.each do |i|
-        new_pop_array << { :weather => i.to_s }
-      end
-
-      time_pop_hash = []
-      new_pop_array = nf.get_pop_array(zipcode)
-      for i in (0..27)
-        time_pop_hash[i] << time_array.update(new_pop_array[i])
-      end
-
-      time_pop_hash = [
-        time_array[0].update(new_pop_array[0]),
-        time_array[1].update(new_pop_array[1]),
-        time_array[2].update(new_pop_array[2]),
-        time_array[3].update(new_pop_array[3]),
-        time_array[4].update(new_pop_array[4]),
-        time_array[5].update(new_pop_array[5]),
-        time_array[6].update(new_pop_array[6]),
-        time_array[7].update(new_pop_array[7]),
-        time_array[8].update(new_pop_array[8]),
-        time_array[9].update(new_pop_array[9]),
-        time_array[10].update(new_pop_array[10]),
-        time_array[11].update(new_pop_array[11]),
-        time_array[12].update(new_pop_array[12]),
-        time_array[13].update(new_pop_array[13]),
-        time_array[14].update(new_pop_array[14]),
-        time_array[15].update(new_pop_array[15]),
-        time_array[16].update(new_pop_array[16]),
-        time_array[17].update(new_pop_array[17]),
-        time_array[18].update(new_pop_array[18]),
-        time_array[19].update(new_pop_array[19]),
-        time_array[20].update(new_pop_array[20]),
-        time_array[21].update(new_pop_array[21]),
-        time_array[22].update(new_pop_array[22]),
-        time_array[23].update(new_pop_array[23]),
-        time_array[24].update(new_pop_array[24]),
-        time_array[25].update(new_pop_array[25]),
-        time_array[26].update(new_pop_array[26]),
-        time_array[27].update(new_pop_array[27])
-      ]
-=end
     end
   end
 
