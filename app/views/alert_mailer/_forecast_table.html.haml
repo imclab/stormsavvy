@@ -191,7 +191,8 @@
         %th POP
         %th QPF
       %tbody
-        - site.wg_table.each do |period|
+        - site.wg_forecast.each do |period|
+          //- site.wg_table.each do |period|
           //- @forecastday.each do |period|
           %tr
             %td.date
