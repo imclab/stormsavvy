@@ -18,6 +18,9 @@ describe NOAAForecast do
   let(:qpf) {
     [0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0, 99, 0]
   }
+  let(:results) {
+    IO.read("./spec/lib/weather/geocoder_response.json")
+  }
 
   before(:each) do
     @time_array = []
