@@ -322,7 +322,8 @@ describe NOAAForecast do
         qpf.should be_between(0,100)
       end
 
-      pop_table_hash.length.should == 28
+      pop_table_hash = nf.get_pop_table_hash(zipcode)
+      pop_table_hash.count.should == 28
       pop_table_hash.each do |f|
         pop = f[:weather].to_i
         if pop == -999
