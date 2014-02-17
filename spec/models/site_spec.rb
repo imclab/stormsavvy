@@ -92,7 +92,7 @@ describe Site do
   end
 
   before :each do
-    wg.stub(:wg_table) { return forecastday }
+    # wg.stub(:wg_table) { return forecastday }
     site.stub(:forecast_table) { return forecast }
     nf.stub(:ping_noaa).with([lat, long],duration,interval).and_return(response)
   end
