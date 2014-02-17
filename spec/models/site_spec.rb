@@ -310,9 +310,8 @@ describe Site do
     it 'saves wg forecast' do
       site.should respond_to(:save_wg)
       forecast = wg.forecast_table(site)
-      pp forecast
-      # site.wg_forecast = forecast
-      # site.save
+      site.wg_forecast = forecast
+      site.save
       # pp site.wg_forecast
     end
 
