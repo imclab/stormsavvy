@@ -14,6 +14,11 @@ site.save
 forecast = site.forecast
 site.precipitation_state(forecast)
 
+site = Site.new(name: 'ecp', zipcode: 94530)
+site.save
+wg = WeatherGetter.new
+wg.get_forecast(site.zipcode)
+
 site.lat
 site.long
 
