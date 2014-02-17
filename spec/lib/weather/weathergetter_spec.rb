@@ -10,14 +10,13 @@ describe WeatherGetter do
   let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
   let(:wg) { WeatherGetter.new }
   let(:ww) { WeatherWorker.new }
-  # let(:forecast) { wg.get_forecast(zipcode) }
+  let(:forecast) { wg.get_forecast(zipcode) }
   let(:forecastday) { wg.parse_wunderground_10day(json) }
   let(:site) { FactoryGirl.build(:site) }
   let(:zipcode) { site.zipcode }
 
   before :each do
     wg.stub(:get_forecast).with(zipcode).and_return { json }
-    @forecast = wg.get_forecast(zipcode)
     wg.stub(:forecast_table).with(site).and_return { forecastday }
   end
 
