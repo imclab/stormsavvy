@@ -27,7 +27,6 @@ class WeatherGetter
 
   def get_forecast(zipcode)
     @hydra = Typhoeus::Hydra.new
-    # url = "http://api.wunderground.com/api/4c49577f5660cc6d/forecast10day/q/#{zipcode}.json"
     url = "http://api.wunderground.com/api/#{APIKEY}/forecast10day/q/#{zipcode}.json"
     @forecast = make_request(url)
   end
