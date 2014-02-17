@@ -3,11 +3,10 @@ require 'json'
 
 include Typhoeus
 
-begin
-  APIKEY = ENV['WUNDERGROUND_APIKEY']
-rescue
-  # Chomp method removes newline from text file
+if(Rails.env == 'development' || Rails.env == 'staging')
   APIKEY = IO.read('./config/wunderground_apikey.txt').chomp
+elsif(Rails.env == 'production')
+  APIKEY = ENV['WUNDERGROUND_APIKEY']
 end
 
 class WeatherGetter
