@@ -3,13 +3,13 @@ require 'json'
 
 include Typhoeus
 
-if(Rails.env == 'development' || Rails.env == 'staging')
-  APIKEY = IO.read('./config/wunderground_apikey.txt').chomp
-elsif(Rails.env == 'production')
-  APIKEY = ENV['WUNDERGROUND_APIKEY']
-end
-
 class WeatherGetter
+
+  if(Rails.env == 'development' || Rails.env == 'staging')
+    APIKEY = IO.read('./config/wunderground_apikey.txt').chomp
+  elsif(Rails.env == 'production')
+    APIKEY = ENV['WUNDERGROUND_APIKEY']
+  end
 
   attr_reader :forecast, :forecastday
 
