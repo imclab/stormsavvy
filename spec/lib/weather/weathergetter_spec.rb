@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'weather/weathergetter'
 require 'typhoeus'
 require 'json'
+require 'weather/weathergetter'
 
 include Typhoeus
 
