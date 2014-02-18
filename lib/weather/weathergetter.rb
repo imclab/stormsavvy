@@ -3,13 +3,14 @@ require 'json'
 
 include Typhoeus
 
-class WeatherGetter
+# if(Rails.env == 'development' || Rails.env == 'staging')
+#   APIKEY = IO.read('./config/wunderground_apikey.txt').chomp
+# elsif(Rails.env == 'production')
+#   APIKEY = ENV['WUNDERGROUND_APIKEY']
+# end
+APIKEY = Stormsavvy::Application.config.wunderground_apikey
 
-  if(Rails.env == 'development' || Rails.env == 'staging')
-    APIKEY = IO.read('./config/wunderground_apikey.txt').chomp
-  elsif(Rails.env == 'production')
-    APIKEY = ENV['WUNDERGROUND_APIKEY']
-  end
+class WeatherGetter
 
   attr_reader :forecast, :forecastday
 
