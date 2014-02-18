@@ -77,7 +77,7 @@ describe User do
     it 'saves wg forecast for all sites' do
       user.should respond_to(:wg_forecast)
       user.wg_forecast
-      user.sites.each do |site|
+      user.sites.each(batch_size: 5) do |site|
         site.wg_forecast.each do |f|
           f['pop'].should be_between(0,100)
           f['qpf_allday']['in'].should be_between(0,100)
