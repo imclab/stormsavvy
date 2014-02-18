@@ -69,15 +69,20 @@ class User < ActiveRecord::Base
   end
 
   def noaa_forecast
-    self.sites.each do |site|
-      site.save_noaa
+    self.sites.in_groups_of(4) do |group|
+      group.each do |site|
+        sleep(30)
+        site.save_noaa
+      end
     end
   end
 
   def wg_forecast
-    self.sites.each do |site|
-      # batch requests to prevent timing out
-      site.save_wg
+    self.sites.in_groups_of(4) do |group|
+      group.each do |site|
+        sleep(30)
+        site.save_wg
+      end
     end
   end
 end
