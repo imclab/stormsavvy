@@ -63,11 +63,12 @@ describe User do
   describe '#noaa_forecast' do
     it 'saves noaa forecast for all sites' do
       user.should respond_to(:noaa_forecast)
-      user.noaa_forecast
-      user.sites.each do |site|
-        site.noaa_forecast.each do |f|
-          f[:weather].should be_between(0,100)
-          f[:rainfall].should be_between(0,100)
+      user.sites.in_groups_of(4) do |group|
+        group.each do |site|
+          site.noaa_forecast.each do |f|
+            f[:weather].should be_between(0,100)
+            f[:rainfall].should be_between(0,100)
+          end
         end
       end
     end
