@@ -36,6 +36,14 @@ describe WeatherGetter do
       forecast.should have(2).items
       forecast.count.should == 2
     end
+
+    it 'sleeps 30s between queries' do
+      sites.each do |site|
+        sleep 30
+        wg.get_forecast(site.zipcode)
+        pp 'break for 30s'
+      end
+    end
   end
 
   describe '#parse_wunderground_10day' do
