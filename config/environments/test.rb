@@ -26,27 +26,26 @@ Stormsavvy::Application.configure do
   config.action_dispatch.show_exceptions = false
 
   # Disable request forgery protection in test environment
-  config.action_controller.allow_forgery_protection    = false
+  config.action_controller.allow_forgery_protection = false
 
   # Testing with production mailer settings
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = {
-    :host => 'stormsavvy.com'
-    }
+  config.action_mailer.default_url_options = { host: 'stormsavvy.com' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
   # Loads yaml password configuration file in development
   APP_CONFIG = YAML.load_file(File.join(Rails.root, 'config', 'config.yml'))[Rails.env]
   config.action_mailer.smtp_settings = {
-    :user_name            => APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
-    :password             => APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'stormsavvy.com',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true
-    }
+    user_name: APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
+    password: APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: 'stormsavvy.com',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+  config.wunderground_apikey = IO.read('./config/wunderground_apikey.txt').chomp
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
