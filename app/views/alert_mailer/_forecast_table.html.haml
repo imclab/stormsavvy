@@ -164,8 +164,8 @@
         %th Date
         %th POP
         %th QPF
-        - site.noaa_forecast.each do |f|
-          //- site.noaa_table.each do |f|
+        - site.noaa_table.each do |f|
+          //- site.noaa_forecast.each do |f|
           %tr
             %td
               = f[:date]
