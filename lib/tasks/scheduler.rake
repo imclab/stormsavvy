@@ -112,7 +112,13 @@ namespace :scheduler do
     admins = [ (User.find_by email: 'walter@stormsavvy.com') ]
     admins.each do |user|
       user = User.new
-      user.wg_forecast
+      # user.wg_forecast
+      user.sites.in_groups_of(4).each do |group|
+        group.each do |site|
+          sleep(30)
+          site.save_wg
+        end
+      end
   	end
   end
 end
