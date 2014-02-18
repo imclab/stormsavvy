@@ -312,7 +312,6 @@ describe Site do
       forecast = wg.forecast_table(site)
       site.wg_forecast = forecast
       site.save
-      # pp site.wg_forecast
     end
 
     it 'saves wg stub value' do
