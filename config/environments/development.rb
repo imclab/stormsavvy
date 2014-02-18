@@ -52,23 +52,22 @@ Stormsavvy::Application.configure do
 
   # Loads yaml password configuration file in development
   APP_CONFIG = YAML.load_file(File.join(Rails.root, 'config', 'config.yml'))[Rails.env]
-
   config.action_mailer.smtp_settings = {
-    :user_name            => APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
-    :password             => APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'stormsavvy.com',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true
+    user_name: APP_CONFIG['STORMSAVVY_GMAIL_USERNAME'],
+    password: APP_CONFIG['STORMSAVVY_GMAIL_PASSWORD'],
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: 'stormsavvy.com',
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
-
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => APP_CONFIG['AWS_BUCKET'],
-      :access_key_id => APP_CONFIG['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => APP_CONFIG['AWS_SECRET_ACCESS_KEY']
-      }
+      bucket: APP_CONFIG['AWS_BUCKET'],
+      access_key_id: APP_CONFIG['AWS_ACCESS_KEY_ID'],
+      secret_access_key: APP_CONFIG['AWS_SECRET_ACCESS_KEY']
+    }
   }
+  config.wunderground_apikey = IO.read('./config/wunderground_apikey.txt').chomp
 end
