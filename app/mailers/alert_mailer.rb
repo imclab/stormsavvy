@@ -54,9 +54,11 @@ class AlertMailer < ActionMailer::Base
         @noaa_url = "http://www.wrh.noaa.gov/forecast/wxtables/index.php?lat=#{site.lat}&lon=#{site.long}&clrindex=0&table=custom&duration=7&interval=6"
         @wg_url = "http://www.wunderground.com/cgi-bin/findweather/hdfForecast?query=#{site.zipcode}"
         @site = site
-        site.wg_forecast = site.save_wg
-        site.save
-        @forecast = site.wg_forecast # fails since it returns true
+
+        # site.wg_forecast = site.save_wg
+        # site.save
+        # fails since it returns true
+        # @forecast = site.wg_forecast
       end
 
       mail(
