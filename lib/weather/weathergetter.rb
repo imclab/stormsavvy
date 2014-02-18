@@ -37,7 +37,7 @@ class WeatherGetter
     request = Typhoeus::Request.new(
       url,
       :method        => :get,
-      :timeout       => 5000#, # milliseconds
+      :timeout       => 5000 # milliseconds
       #:cache_timeout => 60 # seconds
     )
     @hydra.queue(request)

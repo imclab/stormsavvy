@@ -13,6 +13,9 @@ describe WeatherGetter do
   let(:forecast) { wg.get_forecast(zipcode) }
   let(:forecastday) { wg.parse_wunderground_10day(json) }
   let(:site) { FactoryGirl.build(:site) }
+  let(:ucb) { FactoryGirl.build(:site, name: 'ucb') }
+  let(:ecp) { FactoryGirl.build(:site, name: 'ecp') }
+  let(:sites) { [ site, ucb, ecp ] }
   let(:zipcode) { site.zipcode }
 
   before :each do
