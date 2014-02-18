@@ -28,7 +28,7 @@ describe WeatherGetter do
       json.should have(2).items
     end
 
-    it "gets the weather for 94530" do
+    it "gets the weather for given zipcode" do
       wg.should respond_to(:get_forecast)
       forecast = wg.get_forecast(zipcode)
       forecast.should include('response')
