@@ -17,21 +17,20 @@ class WeatherGetter
   def initialize
   end
 
-  def display_forecast
-    @zipcode = 94530
-    @forecast = get_forecast(@zipcode)
-    @forecastday = parse_wunderground_10day(@forecast)
-
-    # @weathergetter = WeatherGetter.new
-    # WeatherWorker.perform_async(@weathergetter.object_id)
+  def display_forecast(zipcode)
+    forecast = get_forecast(zipcode)
+    @forecastday = parse_wunderground_10day(forecast)
   end
 
   def get_forecast(zipcode)
-    sleep(30) # sleep 30s for 10 query/min terms of use
-    pp 'sleep for 30s'
+    pp 'sleep for 10s between queries'
+    sleep(10) # sleep 10s for 10 query/min terms of use
     @hydra = Typhoeus::Hydra.new
     url = "http://api.wunderground.com/api/#{APIKEY}/forecast10day/q/#{zipcode}.json"
     @forecast = make_request(url)
+
+    # @weathergetter = WeatherGetter.new
+    # WeatherWorker.perform_async(@weathergetter.object_id)
   end
 
   def make_request(url)
