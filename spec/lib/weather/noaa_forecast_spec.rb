@@ -311,7 +311,7 @@ describe NOAAForecast do
       # end
 
       pop_table = nf.get_pop_table_hash(zipcode)
-      pop_table.count.should == 28
+      pop_table.count.should == 28 # merging array is failing spec
       pop_table.each do |f|
         pop = f[:weather].to_i
         if pop == -999
