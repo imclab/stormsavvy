@@ -57,7 +57,6 @@ class AlertMailer < ActionMailer::Base
 
         # site.wg_forecast = site.save_wg
         # site.save
-        # fails since it returns true
         # @forecast = site.wg_forecast
       end
 
