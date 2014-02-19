@@ -117,7 +117,6 @@ namespace :scheduler do
       # user.wg_forecast
       user.sites.in_groups_of(4).each do |group|
         group.each do |site|
-          sleep(30)
           site.save_wg
         end
       end
