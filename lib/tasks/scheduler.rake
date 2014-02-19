@@ -85,7 +85,8 @@ namespace :scheduler do
       'kharma+stormsavvy@gmail.com'
     ]
     test_users.each do |address|
-      UserMailer.delay.thankyou(address)
+      UserMailer.thankyou(address)
+      # UserMailer.delay.thankyou(address)
     end
   end
 
