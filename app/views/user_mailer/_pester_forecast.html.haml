@@ -10,12 +10,15 @@
           %th
             Forecast
           %th
-            Rainfall 
-          - @forecast1.each do |f|
-            %tr
-              %td
-                = f[:date]
-              %td
-                = f[:weather]
-              %td
-                = f[:rainfall]
+            Rainfall
+          - begin
+            - @forecast1.each do |f|
+              %tr
+                %td
+                  = f[:date]
+                %td
+                  = f[:weather]
+                %td
+                  = f[:rainfall]
+          - rescue
+            'forecast currently not available'
