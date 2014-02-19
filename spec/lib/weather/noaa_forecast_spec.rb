@@ -76,13 +76,16 @@ describe NOAAForecast do
     nf.stub(:get_pop_array).with(zipcode).and_return {
       @pop_array
     }
-    nf.stub(:get_qpf_array) {
+    nf.stub(:get_qpf_array).with(zipcode).and_return {
       @qpf_array
     }
-    nf.stub(:get_time_pop_hash) {
+    nf.stub(:get_time_pop_hash).with(zipcode).and_return {
       @time_pop_hash
     }
-    nf.stub(:get_forecast_array) {
+    nf.stub(:get_pop_table_hash).with(zipcode).and_return {
+      @pop_table_hash
+    }
+    nf.stub(:get_forecast_array).with(zipcode).and_return {
       @forecast_array
     }
   end
