@@ -79,7 +79,6 @@ class User < ActiveRecord::Base
   def wg_forecast
     self.sites.in_groups_of(4) do |group|
       group.each do |site|
-        sleep(30)
         site.save_wg
       end
     end
