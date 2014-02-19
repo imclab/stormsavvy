@@ -58,10 +58,18 @@ describe WeatherGetter do
       forecastday.should have(10).items
     end
   end
+end
 
   describe '#display_forecast' do
-    it 'fetches forecast using background worker' do
-      ww.class.should == WeatherWorker
+    it 'displays forecast for given zipcode' do
+      wg.should respond_to(:display_forecast)
+      forecastday = wg.display_forecast(zipcode)
+      forecastday.each do |f|
+        f['pop'].should be_between(0,100)
+        f['qpf_allday'].count.should == 2
+        f['qpf_allday']['in'].should be_between(0,100)
+        f['date']['day'].should be_between(0,31)
+      end
     end
   end
 
