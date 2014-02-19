@@ -79,7 +79,8 @@ describe User do
       user.should respond_to(:wg_forecast)
       user.sites.in_groups_of(4) do |group|
         group.each do |site|
-          sleep(30)
+          pp 'sleep for 10s between queries'
+          sleep(10)
           site.save_wg
           site.wg_forecast.each do |f|
             f['pop'].should be_between(0,100)
