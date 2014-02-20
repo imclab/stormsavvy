@@ -58,7 +58,6 @@ describe WeatherGetter do
       forecastday.should have(10).items
     end
   end
-end
 
   describe '#display_forecast' do
     it 'displays forecast for given zipcode' do
