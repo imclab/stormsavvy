@@ -157,16 +157,15 @@
         Wunderground Forecast:
         %a{ href: "http://www.wunderground.com/cgi-bin/findweather/hdfForecast?query=#{site.zipcode}" }
           = site.zipcode
-      %tr
-        %td
-          %h3 NOAA 7-Day Forecast
-      %tr
-        %th Date
-        %th POP
-        %th QPF
-        - begin
+      -begin
+        %tr
+          %td
+            %h3 NOAA 7-Day Forecast
+        %tr
+          %th Date
+          %th POP
+          %th QPF
           - site.noaa_table.each do |f|
-            //- site.noaa_forecast.each do |f|
             %tr
               %td
                 = f[:date]
