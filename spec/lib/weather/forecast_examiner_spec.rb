@@ -46,16 +46,16 @@ describe ForecastExaminer do
   describe 'all forecast events' do
     it "should check for rain watch" do
       forecast = [@data[2], @data[3]]
-      @fe = ForecastExaminer.new(site, forecast)
-      @fe.find_rain_chance(50, 27)
-      @fe.rain.should == :watch
+      fe = ForecastExaminer.new(site, forecast)
+      fe.find_rain_chance(50, 27)
+      fe.rain.should == :watch
     end
 
     it "should check for clear" do
       forecast = [@data[0], @data[1]]
-      @fe = ForecastExaminer.new(site, forecast)
-      @fe.find_rain_chance(50, 27)
-      @fe.rain.should == :clear
+      fe = ForecastExaminer.new(site, forecast)
+      fe.find_rain_chance(50, 27)
+      fe.rain.should == :clear
     end
   end
 end
