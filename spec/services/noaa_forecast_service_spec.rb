@@ -38,8 +38,8 @@ describe NoaaForecastService do
   }
 
   before :each do
-    site.stub(:forecast_table) { return forecast }
-    site.stub(:site_forecast) { return forecast }
+    nfs.stub(:forecast_table).with(site).and_return { forecast }
+    nfs.stub(:site_forecast).with(site).and_return { forecast }
   end
 
   context "with a site" do
