@@ -95,8 +95,12 @@ class Site < ActiveRecord::Base
   end
 
   def noaa_table
-    nfs = NoaaForecastService.new(site: self)
-    nfs.forecast_table(self)
+    begin
+      nfs = NoaaForecastService.new(site: self)
+      nfs.forecast_table(self)
+    rescue
+      'forecast currently not available'
+    end
   end
 
   def save_noaa
