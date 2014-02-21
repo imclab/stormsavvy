@@ -74,6 +74,9 @@ describe "sites/show" do
     rendered.should match(/Date/)
     rendered.should match(/POP/)
     rendered.should match(/QPF/)
+
+    rendered.should match(/Weather Summary/)
+    rendered.should match(/Precipitation Warning/)
   end
 
   it "has edit, back and delete links" do
