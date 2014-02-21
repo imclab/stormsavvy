@@ -39,6 +39,7 @@ describe "sites/show" do
     rendered.should match(/Time Since Last Storm/)
     rendered.should match(/Precipitation Received During Last Storm/)
     rendered.should match(/Inactive DSA/)
+
     rendered.should match(/Contractor Name/)
     rendered.should match(/Contractor Address 1/)
     rendered.should match(/Contractor Address 2/)
