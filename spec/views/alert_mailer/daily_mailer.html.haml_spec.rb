@@ -43,6 +43,7 @@ describe "alert_mailer/daily_mailer" do
     rendered.should match(/Zipcode/)
     rendered.should match(/Lat/)
     rendered.should match(/Long/)
+
     rendered.should match(/Risk Level/)
     rendered.should match(/WDID Number/)
     rendered.should match(/Construction Phase/)
