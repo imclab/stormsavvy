@@ -80,7 +80,10 @@ describe "alert_mailer/daily_mailer" do
     rendered.should match(/Last Training Report Date/)
     rendered.should match(/Last Weather Forecast Date/)
     rendered.should match(/Last Rain Event Sampling Date/)
+
     rendered.should match(/Weather Forecast Links/)
+    rendered.should match(/NOAA Forecast Table/)
+    rendered.should match(/Wunderground Forecast/)
 
     rendered.should match(/NOAA 7-Day Forecast/)
     rendered.should match(/Wunderground 7-Day Forecast/)
