@@ -11,6 +11,10 @@ describe "sites/show" do
     render
   end
 
+  it 'renders site map' do
+    rendered.should match(/Site Map/)
+  end
+
   it "renders site attributes" do
     rendered.should match(/Project EA/)
     rendered.should match(/Project Costcode/)
