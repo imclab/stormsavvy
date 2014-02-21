@@ -137,6 +137,11 @@ class Site < ActiveRecord::Base
     @rain_state = fe.rain
   end
 
+  def precipitation_warning
+    forecast = self.forecast
+    precipitation_state(forecast)
+  end
+
   def save_geo_coordinates
     unless lat.presence && long.presence
       begin
