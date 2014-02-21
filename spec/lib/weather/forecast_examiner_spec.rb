@@ -17,14 +17,16 @@ describe ForecastExaminer do
     @fe = double(ForecastExaminer)
   end
 
-  it "should be a valid class" do
-    forecast = [@data[0],@data[1]]
-    fe = ForecastExaminer.new(@site, forecast)
-    fe.class.should == ForecastExaminer
+  context 'given correct params' do
+    it "returns valid class" do
+      forecast = [@data[0],@data[1]]
+      fe = ForecastExaminer.new(@site, forecast)
+      fe.class.should == ForecastExaminer
+    end
   end
 
   describe "report generating events" do
-    it "should check for rain warning" do
+    it "checks for rain warning" do
       lambda do
         forecast = [@data[8], @data[9]]
         fe = ForecastExaminer.new(site, forecast)
