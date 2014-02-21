@@ -35,7 +35,7 @@ describe ForecastExaminer do
       end.should change(Report, :count).by(1)
     end
 
-    it "should check for rain imminent" do
+    it "checks for rain imminent" do
       lambda do
         forecast = [@data[6], @data[7]]
         fe = ForecastExaminer.new(site, forecast)
