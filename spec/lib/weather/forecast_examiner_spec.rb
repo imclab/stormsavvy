@@ -10,7 +10,6 @@ describe ForecastExaminer do
     @data.delete_if { |r| r == [] }
   end
 
-  let!(:project) { FactoryGirl.create(:project) }
   let!(:site) { FactoryGirl.create(:site) }
   let!(:fe) { double(ForecastExaminer) }
 
