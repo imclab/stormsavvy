@@ -64,7 +64,7 @@ describe NoaaForecastService do
       describe '#site_forecast' do
         it 'returns site forecast' do
           nfs.should respond_to(:site_forecast)
-          nfs.site_forecast(site).count.should == 57
+          nfs.site_forecast(site).count.should == 28
         end
       end
 
