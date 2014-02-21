@@ -4,7 +4,6 @@ describe NoaaForecastService do
   let!(:site) { site = FactoryGirl.build(:site,) }
   let!(:nfs) { NoaaForecastService.new(site: site) }
   # let!(:noaa) { nfs.forecast_table(site) }
-  # let!(:forecast) { [] }
   let(:forecast) {
     [
       {:date=>"Saturday, 15 February 2014 00:00 UTC", :weather=>6, :rainfall=>0.0},
