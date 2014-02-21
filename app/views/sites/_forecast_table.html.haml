@@ -2,6 +2,13 @@
   %table
     %tr
       %td
+        %h3 Weather Summary
+      %td
+        = @site.forecast
+      %td
+        = @site.precipitation_state(@forecast)
+    %tr
+      %td
         %h3 NOAA 7-Day Forecast
     %tr
       %th Date
