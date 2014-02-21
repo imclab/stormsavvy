@@ -54,6 +54,7 @@ describe "sites/show" do
     rendered.should match(/QSP Company/)
     rendered.should match(/QSP Phone Number/)
     rendered.should match(/QSP Emergency Phone Number/)
+
     rendered.should match(/Permits/)
     rendered.should match(/Resident Engineer Name/)
     rendered.should match(/Structures Representative Name/)
