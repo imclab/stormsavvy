@@ -15,7 +15,5 @@
           = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@site.lat}%2C#{@site.long}"
         %p
           = render 'site_info'
-        %h3
-          7-Day Forecast
         %p
           = render 'forecast_table'
