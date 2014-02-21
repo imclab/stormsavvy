@@ -23,19 +23,16 @@
             = f[:rainfall]
             :plain
               inch
-    - rescue
-      'forecast currently not available'
-  %tr
-    %td
-      %br
-      %h3 Wunderground 7-Day Forecast
-  %tr
-    %th Date
-    %th
-    %th POP
-    %th QPF
-  %tbody
-    - begin
+    %tr
+      %td
+        %br
+        %h3 Wunderground 7-Day Forecast
+    %tr
+      %th Date
+      %th
+      %th POP
+      %th QPF
+    %tbody
       - @site.wg_table.each do |period|
         //- @forecastday.each do |period|
         %tr
