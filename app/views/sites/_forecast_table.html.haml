@@ -1,12 +1,10 @@
 - begin
   %table
     %tr
-      %td
-        %h3 Weather Summary
-      %td
-        = @site.forecast
-      %td
-        = @site.precipitation_state(@forecast)
+      %h3 Weather Summary
+    %tr
+      %b Precipitation Warning:
+      = @site.precipitation_warning
     %tr
       %td
         %h3 NOAA 7-Day Forecast
