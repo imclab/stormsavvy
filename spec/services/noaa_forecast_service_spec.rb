@@ -74,7 +74,8 @@ describe NoaaForecastService do
         end
 
         it 'returns correct number of elements' do
-          forecast.count.should == 28
+          forecast_table = nfs.forecast_table(site)
+          forecast_table.count.should == 28
         end
 
         context 'when collecting pop and qpf data' do
