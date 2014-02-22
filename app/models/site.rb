@@ -137,7 +137,7 @@ class Site < ActiveRecord::Base
     @rain_state = fe.rain
   end
 
-  def precipitation_warning
+  def check_pop_alert
     forecast = self.forecast
     precipitation_state(forecast)
   end
