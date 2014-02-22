@@ -76,11 +76,18 @@ class AlertMailer < ActionMailer::Base
 
     # @user needed for template
     @user = user
-    if @user.has_site?
-      mail(
-        :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
-        :subject  => "Storm Savvy POP Alert for #{ProjectLocalTime::date_only(Date.today)}"
-        ).deliver
+    mail(
+      :to       => "<#{user.email}>",
+      # :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
+      :subject  => "Storm Savvy POP Alert for #{ProjectLocalTime::date_only(Date.today)}"
+    ).deliver
+  end
+
+  def check_pop_alert(user)
+    if user.has_site?
+      user.sites.each do |site|
+        site.check_pop_alert
+      end
     end
   end
 end
