@@ -53,5 +53,4 @@ class ForecastExaminer
       AlertMailer.pop_alert(@user)
     end
   end
-
 end
