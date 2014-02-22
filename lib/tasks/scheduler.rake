@@ -14,7 +14,7 @@ namespace :scheduler do
     end
   end
 
-  desc "delivers popalert mailer"
+  desc "delivers pop_alert mailer"
   task :pop_alert => :environment do
     # test_users = [
     #   'walter@stormsavvy.com',
