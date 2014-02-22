@@ -16,16 +16,22 @@ namespace :scheduler do
 
   desc "delivers popalert mailer"
   task :pop_alert => :environment do
-    test_users = [
-      'walter@stormsavvy.com',
-      'kharma+stormsavvy@gmail.com',
-      'wing.wingyu@gmail.com'
-    ]
+    # test_users = [
+    #   'walter@stormsavvy.com',
+    #   'kharma+stormsavvy@gmail.com'
+    # ]
     # if user.sites.precipitation_state(forecast) == :imminent then
-    test_users.each do |address|
-      AlertMailer.pop_alert(address)
-      # AlertMailer.delay.pop_alert(address)
-    end
+    # test_users.each do |address|
+    #   AlertMailer.pop_alert(address)
+    #   AlertMailer.delay.pop_alert(address)
+    # end
+    admins = [ (User.find_by email: 'walter@stormsavvy.com') ]
+    admins.each do |user|
+      user.sites.each do |site|
+        forecast = site.forecast
+        site.precipitation_state(forecast)
+      end
+  	end
   end
 
   desc "delivers daily_mailer mailer"
