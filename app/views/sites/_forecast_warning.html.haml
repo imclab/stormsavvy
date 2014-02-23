@@ -1,0 +1,6 @@
+- begin
+  %h3 Forecast Warnings
+  %b Precipitation Warning:
+  = @site.check_pop_alert
+- rescue
+  'warning currently not available'
