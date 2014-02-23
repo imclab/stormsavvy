@@ -74,8 +74,7 @@ class AlertMailer < ActionMailer::Base
     # @users.each do |user|
     # end
 
-    # @user needed for template
-    @user = user
+    @user = user # @user needed for template
     mail(
       :to       => "<#{user.email}>",
       # :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
