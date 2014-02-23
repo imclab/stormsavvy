@@ -1,0 +1,10 @@
+-begin
+  - @user.sites.each do |site|
+    %table
+      %tr
+        %h3 Forecast Warnings
+      %tr
+        %b Precipitation Warning:
+        = site.check_pop_alert
+- rescue
+  'warning currently not available'
