@@ -25,16 +25,14 @@ namespace :scheduler do
     #   AlertMailer.pop_alert(address)
     #   AlertMailer.delay.pop_alert(address)
     # end
-    user = [ (User.find_by email: 'walter@stormsavvy.com') ] unless user.present?
+    user = User.find_by(email: 'walter@stormsavvy.com') unless user.present?
     AlertMailer.pop_alert(user)
   end
 
   desc "checks for pop_alert mailer"
   task :check_pop_alert => :environment do
-    admins = [ (User.find_by email: 'walter@stormsavvy.com') ]
-    admins.each do |user|
-      AlertMailer.check_pop_alert(user)
-  	end
+    user = User.find_by(email: 'walter@stormsavvy.com') unless user.present?
+    AlertMailer.check_pop_alert(user)
   end
 
   desc "delivers daily_mailer mailer"
