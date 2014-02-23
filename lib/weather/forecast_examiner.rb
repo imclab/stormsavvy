@@ -50,7 +50,8 @@ class ForecastExaminer
 
   def mail_alert
     if @rain == :warning or @rain == :imminent
-      AlertMailer.pop_alert(@user)
+      user = User.find_by(email: 'walter@stormsavvy.com') unless user.present?
+      AlertMailer.pop_alert(user)
     end
   end
 end
