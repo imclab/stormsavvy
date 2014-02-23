@@ -75,7 +75,7 @@ describe "sites/show" do
     rendered.should match(/POP/)
     rendered.should match(/QPF/)
 
-    rendered.should match(/Weather Summary/)
+    rendered.should match(/Forecast Warnings/)
     rendered.should match(/Precipitation Warning/)
   end
 
