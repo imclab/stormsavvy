@@ -76,8 +76,7 @@ class AlertMailer < ActionMailer::Base
 
     @user = user # @user needed for template
     mail(
-      :to       => "<#{user.email}>",
-      # :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
+      :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
       :subject  => "Storm Savvy POP Alert for #{ProjectLocalTime::date_only(Date.today)}"
     ).deliver
   end
