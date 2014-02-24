@@ -34,7 +34,7 @@ describe User do
     it "enforces unique email" do
       FactoryGirl.build(
         :user,
-        :email => user.email
+        email: user.email
         ).should_not be_valid
     end
   end
