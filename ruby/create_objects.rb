@@ -1,4 +1,4 @@
-# generates objects in console
+# Generates objects in console
 time = Time.new
 values = time.to_a
 p values
@@ -6,16 +6,26 @@ p values
 zipcode = 94901
 nf = NOAAForecast.new(zipcode)
 forecast = nf.seven_day_weather(zipcode)
-pp forecast
 
-# return precipitation_state
+# Precipitation_state via forecast
 site = Site.new(name: 'ecp', zipcode: 94530)
 site.save
 forecast = site.forecast
 site.precipitation_state(forecast)
 
-site = Site.new(name: 'ecp', zipcode: 94530)
+# User/site relationship
+user = User.new(
+  email: 'name@stormsavvy.com',
+  password: 'stormpopwho?',
+  password_confirmation: 'stormpopwho?'
+)
+user.save
+site = user.sites.new(
+  name: 'ecp',
+  zipcode: 94530
+)
 site.save
+site.user
 site.wg_forecast = site.save_wg
 
 wg = WeatherGetter.new
