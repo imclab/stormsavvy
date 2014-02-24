@@ -69,18 +69,24 @@ class User < ActiveRecord::Base
   end
 
   def noaa_forecast
-    self.sites.in_groups_of(4) do |group|
-      group.each do |site|
-        site.save_noaa
-      end
+    # self.sites.in_groups_of(4) do |group|
+    #   group.each do |site|
+    # end
+    self.sites.each do |site|
+      pp 'sleep 10s between queries'
+      sleep 10
+      site.save_noaa
     end
   end
 
   def wg_forecast
-    self.sites.in_groups_of(4) do |group|
-      group.each do |site|
-        site.save_wg
-      end
+    # self.sites.in_groups_of(4) do |group|
+    #   group.each do |site|
+    # end
+    self.sites.each do |site|
+      pp 'sleep 10s between queries'
+      sleep 10
+      site.save_wg
     end
   end
 end
