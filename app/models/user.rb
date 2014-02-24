@@ -39,11 +39,6 @@ class User < ActiveRecord::Base
     return false
   end
 
-  def mail_alerts
-    @name = self.firstname
-    AlertMailer.pop_alert(self).deliver
-  end
-
   def get_site_zipcodes
     zipcodes = []
 
