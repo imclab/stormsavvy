@@ -238,8 +238,8 @@ describe Site do
 
   describe '#precipitation_state' do
     it 'sets rain state to imminent' do
-      forecast = [@data[6], @data[7]]
-      site.precipitation_state(forecast).should == :imminent
+        forecast = [@data[6], @data[7]]
+        site.precipitation_state(forecast).should == :imminent
     end
 
     it 'sets rain state to warning' do
