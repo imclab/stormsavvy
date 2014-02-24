@@ -15,16 +15,17 @@ describe User do
     :site,
     :user => user,
     # :project => project,
-    :name => 'ec jungle gym',
-    :zipcode => 94530
+    name: 'ec jungle gym',
+    zipcode: 94530,
+    user: user
     )
   }
   let!(:sites) { [site] }
 
   it "should create a valid user" do
     user = User.create(
-      :email =>     'foo@bar.com',
-      :password =>  'foobarbaz'
+      email: 'foo@bar.com',
+      password: 'foobarbaz'
       )
     user.should be_valid
   end
