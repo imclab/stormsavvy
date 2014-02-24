@@ -10,7 +10,19 @@ describe ForecastExaminer do
     @data.delete_if { |r| r == [] }
   end
 
-  let!(:site) { FactoryGirl.create(:site) }
+  let!(:user) {
+    FactoryGirl.build(
+      :user,
+      firstname: 'yogi',
+      lastname: 'bear'
+    )
+  }
+  let!(:site) {
+    FactoryGirl.create(
+      :site,
+      user: user
+    )
+  }
   let!(:fe) { double(ForecastExaminer) }
 
   before(:each) do
