@@ -10,7 +10,10 @@ describe AlertMailer do
 
   let!(:user) {
     FactoryGirl.build(
-      :user
+      :user,
+      firstname: 'yoda',
+      lastname: 'jedi',
+      email: 'yoda@starwars.com'
     )
   }
   let!(:site) {
