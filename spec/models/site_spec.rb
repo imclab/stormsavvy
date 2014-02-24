@@ -6,28 +6,33 @@ require 'weather/noaa_forecast'
 
 describe Site do
 
-  let!(:user) { FactoryGirl.build(:user) }
-  let!(:site) { FactoryGirl.create(
-    :site,
-    user: user)
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:site) {
+    FactoryGirl.create(
+      :site,
+      user: user
+    )
   }
-  let!(:report) { FactoryGirl.create(
-    :report,
-    site: site
+  let!(:report) {
+    FactoryGirl.create(
+      :report,
+      site: site
     )
   }
   let(:reports) { [ report ] }
 
-  let!(:inspection_event) { FactoryGirl.create(
-    :inspection_event,
-    site: site
+  let!(:inspection_event) {
+    FactoryGirl.create(
+      :inspection_event,
+      site: site
     )
   }
   let(:inspection_events) { [inspection_event] }
 
-  let!(:sampling_event) { FactoryGirl.create(
-    :sampling_event,
-    site: site
+  let!(:sampling_event) {
+    FactoryGirl.create(
+      :sampling_event,
+      site: site
     )
   }
   let(:sampling_events) { [sampling_event] }

@@ -8,13 +8,15 @@ describe AlertMailer do
 
   before { ActionMailer::Base.deliveries = [] }
 
-  let!(:user) { FactoryGirl.build(
-    :user
+  let!(:user) {
+    FactoryGirl.build(
+      :user
     )
   }
-  let!(:site) { FactoryGirl.create(
-    :site,
-    :user => user
+  let!(:site) {
+    FactoryGirl.create(
+      :site,
+      user: user
     )
   }
 
@@ -46,18 +48,6 @@ describe AlertMailer do
   end
 
   describe "daily_mailer" do
-    let!(:user) {
-      FactoryGirl.create(
-        :user,
-        email: 'walter@stormsavvy.com'
-      )
-    }
-    let!(:site) {
-      FactoryGirl.create(
-        :site,
-        user: user
-      )
-    }
     let!(:mailer) { AlertMailer.daily_mailer(user).deliver }
 
     it "renders the headers" do
