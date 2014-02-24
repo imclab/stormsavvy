@@ -80,16 +80,17 @@ describe User do
 
   describe '#wg_forecast' do
     it 'saves wg forecast for all sites' do
+      # user.sites.in_groups_of(4) do |group|
+      #  group.each do |site|
+      # end
       user.should respond_to(:wg_forecast)
-      user.sites.in_groups_of(4) do |group|
-        group.each do |site|
-          pp 'sleep for 10s between queries'
-          sleep(10)
-          site.save_wg
-          site.wg_forecast.each do |f|
-            f['pop'].should be_between(0,100)
-            f['qpf_allday']['in'].should be_between(0,100)
-          end
+      user.sites.each do |site|
+        pp 'sleep for 10s between queries'
+        sleep(10)
+        site.save_wg
+        site.wg_forecast.each do |f|
+          f['pop'].should be_between(0,100)
+          f['qpf_allday']['in'].should be_between(0,100)
         end
       end
     end
