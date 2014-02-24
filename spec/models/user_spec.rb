@@ -5,8 +5,8 @@ describe User do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:project) { FactoryGirl.create(
     :project,
-    :user => user,
-    :created_at => 1.day.ago
+    user: user,
+    created_at: 1.day.ago
     )
   }
   let!(:projects) { [project] }
