@@ -67,17 +67,17 @@ class AlertMailer < ActionMailer::Base
     end
   end
 
-  def pop_alert(user)
-    set_defaults
+  def pop_alert(user, site)
     # @users = User.all
     # if @forecast == :imminent then
     # @users.each do |user|
     # end
-
-    @user = user # @user needed for template
+    set_defaults
+    @user = user
+    @site = site
     mail(
       :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
-      :subject  => "Storm Savvy POP Alert for #{ProjectLocalTime::date_only(Date.today)}"
+      :subject  => "Storm Savvy POP Alert for #{ProjectLocalTime::date_only(Date.today)} - #{site.name}"
     ).deliver
   end
 
