@@ -9,7 +9,8 @@ class NoaaForecastService
     @lat = @site.lat
     @lng = @site.long
     @duration = opts[:duration] || 168
-    @interval = opts[:interval] || 3
+    @interval = opts[:interval] || 6
+    # @interval = opts[:interval] || 3
     @forecast_periods = []
   end
 
