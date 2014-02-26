@@ -14,7 +14,14 @@ class WeatherUpdate < ActiveRecord::Base
 
   def build_from_xml(xml)
     @xml = xml
-    data = { forecast_creation_time: get_forecast_creation_time, lat: get_latitude, lng: get_longitude, elevation: get_elevation, duration: get_duration, interval: get_interval }
+    data = {
+      forecast_creation_time: get_forecast_creation_time,
+      lat: get_latitude,
+      lng: get_longitude,
+      elevation: get_elevation,
+      duration: get_duration,
+      interval: get_interval
+    }
     assign_attributes(data)
   end
 
