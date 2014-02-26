@@ -1,7 +1,20 @@
 class ForecastPeriod < ActiveRecord::Base
   belongs_to :site
   belongs_to :weather_update
-  attr_accessible :dewpoint, :forecast_prediction_time, :pop, :qpf, :rh, :sky_cover, :snow_amount, :snow_level, :temperature, :wind_direction, :wind_gust, :wind_speed, :wx, :site_id
+  attr_accessible :dewpoint,
+    :forecast_prediction_time,
+    :pop,
+    :qpf,
+    :rh,
+    :sky_cover,
+    :snow_amount,
+    :snow_level,
+    :temperature,
+    :wind_direction,
+    :wind_gust,
+    :wind_speed,
+    :wx,
+    :site_id
 
   validates :forecast_prediction_time, uniqueness: {scope: :site_id}
 
