@@ -1,7 +1,12 @@
 class WeatherUpdate < ActiveRecord::Base
   belongs_to :site
   has_many :forecast_periods
-  attr_accessible :duration, :elevation, :forecast_creation_time, :interval, :lat, :lng
+  attr_accessible :duration,
+    :elevation,
+    :forecast_creation_time,
+    :interval,
+    :lat,
+    :lng
 
   validates :forecast_creation_time, uniqueness: {scope: [:lat, :lng]}
 
