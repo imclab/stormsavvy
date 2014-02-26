@@ -28,7 +28,7 @@ describe 'scheduler' do
     # end
 
     describe '#northbay_forecast' do
-      xit 'sends northbay_forecast' do
+      it 'sends northbay_forecast' do
         Rake::Task['scheduler:northbay_forecast'].invoke
       end
     end
