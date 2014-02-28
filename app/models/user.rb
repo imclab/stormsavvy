@@ -68,8 +68,8 @@ class User < ActiveRecord::Base
     #   group.each do |site|
     # end
     self.sites.each do |site|
-      pp 'sleep 10s between queries'
-      sleep 10
+      pp 'sleep 2s between queries'
+      sleep 2
       site.save_noaa
     end
   end
