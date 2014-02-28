@@ -62,14 +62,13 @@ describe AlertMailer do
   describe "daily_mailer" do
     let!(:mailer) { AlertMailer.daily_mailer(user).deliver }
 
-    it "renders the headers" do
+    it "renders headers" do
       mailer.subject.should eq("Storm Savvy Daily Mailer for #{ProjectLocalTime::date_only(Date.today)}")
       mailer.to.should eq(["#{user.email}"])
       mailer.from.should eq(["alerts@stormsavvy.com"])
     end
-    @site_pop = []
 
-    it "renders the body" do
+    it "renders body" do
       mailer.body.encoded.should match("Greetings")
       mailer.body.encoded.should match("Please email walter@stormsavvy.com")
       mailer.body.encoded.should match("The Storm Savvy Team")
