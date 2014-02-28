@@ -136,7 +136,7 @@ describe UserMailer do
     let!(:mailer) { UserMailer.mailout(email).deliver }
 
     it "delivers mailer" do
-      ActionMailer::Base.deliveries.count.should == 1
+      ActionMailer::Base.deliveries.count.should == 2
       ActionMailer::Base.deliveries.should_not be_empty
     end
 
