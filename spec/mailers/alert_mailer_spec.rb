@@ -34,20 +34,21 @@ describe AlertMailer do
   describe "#northbay_forecast" do
     let!(:mailer) { AlertMailer.northbay_forecast(user.email).deliver }
 
-    it "sets correct mailer settings" do
+    it "sets correct settings" do
       mailer.subject.should eq("Storm Savvy Daily Forecast: North Bay")
       mailer.to.should eq(["#{user.email}"])
       mailer.from.should eq(["alerts@stormsavvy.com"])
     end
 
-    it "renders the body" do
+    it "renders body" do
       mailer.body.encoded.should match("Greetings")
       mailer.body.encoded.should match("Listed below are the daily weather forecasts")
       mailer.body.encoded.should match("Please email walter@stormsavvy.com")
       mailer.body.encoded.should match("The Storm Savvy Team")
     end
 
-    it "delivers and receives mailer" do
+    it "delivers mailer" do
+      ActionMailer::Base.deliveries.count.should == 1
       ActionMailer::Base.deliveries.should_not be_empty
     end
 
