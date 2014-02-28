@@ -203,7 +203,7 @@ describe UserMailer do
       mailer.body.should_not be_empty
     end
 
-    it 'has correct greeting and salutation' do
+    it 'has correct greeting' do
       greeting.should == 'Greetings'
       salutation.should == 'The Storm Savvy Team'
     end
