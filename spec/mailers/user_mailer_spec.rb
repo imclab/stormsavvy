@@ -103,11 +103,11 @@ describe UserMailer do
       lambda { mailer }.should_not raise_error
     end
 
-    it "does not have empty text body" do
+    it "does not have empty body" do
       mailer.body.should_not be_nil
     end
 
-    it 'has correct greeting and salutation' do
+    it 'has correct greeting' do
       greeting.should == 'Greetings'
       salutation.should == 'The Storm Savvy Team'
     end
