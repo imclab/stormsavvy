@@ -190,7 +190,8 @@ describe UserMailer do
 
     let!(:mailer) { UserMailer.thankyou(email).deliver }
 
-    it "delivers mail successfully" do
+    it "delivers mailer" do
+      ActionMailer::Base.deliveries.count.should == 1
       ActionMailer::Base.deliveries.should_not be_empty
     end
 
