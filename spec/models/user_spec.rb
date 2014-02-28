@@ -70,8 +70,8 @@ describe User do
       # end
       user.should respond_to(:noaa_forecast)
       user.sites.each do |site|
-        pp 'sleep for 10s between queries'
-        sleep(10)
+        pp 'sleep for 2s between queries'
+        sleep(2)
         site.noaa_forecast.each do |f|
           f[:weather].should be_between(0,100)
           f[:rainfall].should be_between(0,100)
