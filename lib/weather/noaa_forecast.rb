@@ -54,8 +54,8 @@ class NOAAForecast
   end
 
   def ping_noaa(latlong, duration, interval)
-    pp 'sleep for 10s between queries'
-    sleep 10 # prevent slamming noaa api
+    pp 'sleep for 2s between queries'
+    sleep 2 # prevent slamming noaa api
     # xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=168&interval=6&lat=38.2473117&lon=-122.5712101"
     xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
     request = Typhoeus::Request.new(xml,
