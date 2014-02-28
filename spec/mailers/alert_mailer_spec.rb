@@ -98,6 +98,7 @@ describe AlertMailer do
     end
 
     it "delivers mail" do
+      ActionMailer::Base.deliveries.count.should == 1
       ActionMailer::Base.deliveries.should_not be_empty
     end
 
