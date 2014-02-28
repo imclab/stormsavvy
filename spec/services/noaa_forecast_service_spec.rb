@@ -111,7 +111,8 @@ describe NoaaForecastService do
         it "saves ForecastPeriods" do
           weather_update_count = ForecastPeriod.count
           nfs.save_results
-          ForecastPeriod.count.should == weather_update_count + 57
+          ForecastPeriod.count.should == weather_update_count + 29
+          # ForecastPeriod.count.should == weather_update_count + 57
         end
       end
     end
