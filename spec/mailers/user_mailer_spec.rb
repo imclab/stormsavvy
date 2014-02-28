@@ -2,7 +2,15 @@ require "spec_helper"
 
 describe UserMailer do
 
-  before { ActionMailer::Base.deliveries = [] }
+  before {
+    ActionMailer::Base.delivery_method = :test
+    ActionMailer::Base.perform_deliveries = true
+    ActionMailer::Base.deliveries = []
+  }
+
+  after {
+    ActionMailer::Base.deliveries.clear
+  }
 
   let(:email) { 'walter@stormsavvy.com' }
   let(:greeting) { 'Greetings' }
