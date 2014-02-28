@@ -16,17 +16,16 @@ describe 'homepage' do
 
   describe 'signin page' do
     it "signs in as another user" do
+    end
+
+    it "renders correct links and pages after login" do
+      # fill out form incorrectly, then correctly
       visit new_user_session_path
-      # visit user_session_path
       fill_in 'Email', :with => 'barney@stormsavvy.com'
       fill_in 'Password', :with => 'foobarbaz'
       click_button 'Sign in'
       page.should have_content 'Invalid email or password'
-    end
 
-    it "renders correct links and pages after login" do
-      visit new_user_session_path
-      # visit user_session_path
       fill_in 'Email', :with => 'demo@stormsavvy.com'
       fill_in 'Password', :with => 'savvy_demo'
       click_button 'Sign in'
