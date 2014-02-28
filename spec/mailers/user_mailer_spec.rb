@@ -149,7 +149,7 @@ describe UserMailer do
       # @mailer.body.should have_selector("ul.sites")
     end
 
-    it 'has correct greeting and salutation' do
+    it 'has correct greeting' do
       greeting.should == 'Greetings'
       salutation.should == 'The Storm Savvy Team'
     end
