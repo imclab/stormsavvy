@@ -116,13 +116,14 @@ describe AlertMailer do
   describe "pop_alert" do
     let!(:mailer) { AlertMailer.pop_alert(user, site).deliver }
 
-    it "renders the headers" do
+    it "renders headers" do
       mailer.subject.should =~ /Storm Savvy POP Alert/
       mailer.to.should eq(["#{user.email}"])
       mailer.from.should eq(["alerts@stormsavvy.com"])
     end
 
-    it "sends something via mailout" do
+    it "delivers mailer" do
+      ActionMailer::Base.deliveries.count.should == 1
       ActionMailer::Base.deliveries.should_not be_empty
     end
 
