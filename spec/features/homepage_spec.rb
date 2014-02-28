@@ -15,9 +15,6 @@ describe 'homepage' do
   }
 
   describe 'signin page' do
-    it "signs in as another user" do
-    end
-
     it "renders correct links and pages after login" do
       # fill out form incorrectly, then correctly
       visit new_user_session_path
