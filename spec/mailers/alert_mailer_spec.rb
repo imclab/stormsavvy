@@ -6,7 +6,15 @@ Warden.test_mode!
 
 describe AlertMailer do
 
-  before { ActionMailer::Base.deliveries = [] }
+  before {
+    ActionMailer::Base.delivery_method = :test
+    ActionMailer::Base.perform_deliveries = true
+    ActionMailer::Base.deliveries = []
+  }
+
+  after {
+    ActionMailer::Base.deliveries.clear
+  }
 
   let!(:user) {
     FactoryGirl.build(
