@@ -34,19 +34,19 @@ describe 'scheduler' do
     end
 
     describe '#pop_alert' do
-      it 'sends pop_alert' do
+      xit 'sends pop_alert' do
         Rake::Task['scheduler:pop_alert'].invoke
       end
     end
 
     describe '#check_pop_alert' do
-      it 'checks for pop_alert' do
+      xit 'checks for pop_alert' do
         Rake::Task['scheduler:check_pop_alert'].invoke
       end
     end
 
     describe '#daily_mailer' do
-      it 'sends daily_mailer' do
+      xit 'sends daily_mailer' do
         Rake::Task['scheduler:daily_mailer'].invoke
       end
     end
