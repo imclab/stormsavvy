@@ -279,7 +279,7 @@ describe NOAAForecast do
   describe "#get_time_pop_hash" do
     it "returns time pop hash" do
       nf.should respond_to(:get_time_pop_hash)
-      nf.get_time_pop_hash
+      nf.get_time_pop_hash(zipcode)
 
       @time_pop_hash.count.should == 28
       @time_pop_hash.each do |f|
