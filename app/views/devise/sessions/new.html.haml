@@ -16,4 +16,8 @@
           = f.label :remember_me
       .actions
         = f.submit "Sign in", :class => "btn"
+      %br
+        %script{:src => "//platform.linkedin.com/in.js", :type => "text/javascript"}
+          lang: en_US
+        %script{"data-counter" => "right", "data-url" => "http://stormsavvy.com", :type => "IN/Share"}
     = render "links"
