@@ -1,19 +1,21 @@
 !!!
-%html{"ng-app" => "Site"}
+%html{"ng-app" => "Site", :lang => "en"}
   %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %link{:href => "../../assets/ico/favicon.ico", :rel => "shortcut icon"}
+    %link{:href => "../../dist/css/bootstrap.min.css", :rel => "stylesheet"}
+    %link{:href => "jumbotron.css", :rel => "stylesheet"}
     %title #{title}
-    %link{:href => "https://plus.google.com/100567972543112604606", :rel => "publisher"}/
-    = stylesheet_link_tag  "application", media: "all"
-    = javascript_include_tag "application", controller_name
-    /= javascript_include_tag 'http://w.sharethis.com/button/buttons.js', :application
-
     %script{:src => "//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"}
     %script{:src => "//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"}
-
     = csrf_meta_tag
+    = stylesheet_link_tag  "application", media: "all"
+    = javascript_include_tag "application", controller_name
+    = javascript_include_tag 'http://w.sharethis.com/button/buttons.js', :application
+    %link{:href => "https://plus.google.com/100567972543112604606", :rel => "publisher"}
     = render 'shared/google_analytics'
-    %meta{:charset => "utf-8", :content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-
   %body{ template_id, template_class }
     %div
     /= render :partial => "shared/flash_messages", :locals => {:flash => flash}
