@@ -4,7 +4,6 @@ namespace :scheduler do
   task :northbay_forecast => :environment do
     test_users = [
       'walter@stormsavvy.com',
-      'walter_yu@dot.ca.gov',
       'kharma+stormsavvy@gmail.com',
       'wing.wingyu@gmail.com',
       'david.doolin+stormsavvy@gmail.com'
