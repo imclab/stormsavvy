@@ -23,14 +23,15 @@
     = render 'layouts/header'
     %br
     %br
-    .background
-      .container-fluid
-        .container
-          .row
-            %br
-            - flash.each do |name, msg|
-              %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-                %a.close{"data-dismiss" => "alert"} ×
-                = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
-            = yield
-    = render 'layouts/olark'
+    .container-fluid
+      .container
+        .row
+          %br
+          - flash.each do |name, msg|
+            %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+              %a.close{"data-dismiss" => "alert"} ×
+              = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+          = yield
+      = render 'layouts/olark'
+  %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
+  %script{:src => "../../dist/js/bootstrap.min.js"}
