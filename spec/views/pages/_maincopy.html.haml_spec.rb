@@ -9,7 +9,7 @@ describe "pages/_maincopy" do
   it 'checks maincopy partial view' do
     render
     rendered.should match(/Real-Time Stormwater Management/)
-    rendered.should match(/Weather Alerts, Project Updates & PDF Reports By Email/)
+    rendered.should match(/Effective, Efficient Permit Compliance/)
     rendered.should match(/Get Storm Savvy Now/)
   end
 end
