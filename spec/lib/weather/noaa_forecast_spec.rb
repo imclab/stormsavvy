@@ -293,7 +293,7 @@ describe NOAAForecast do
   end
 
   describe "#get_pop_table_hash" do
-    it "returns pop_table hash" do
+    xit "returns pop_table hash" do
       nf.should respond_to(:get_pop_table_hash)
 
       # time_pop_hash = []
