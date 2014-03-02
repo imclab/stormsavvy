@@ -1,7 +1,5 @@
 .row-fluid.bottom-10
-  .panel
-    .inner
-      %h2 Active Sites
-      = link_to 'New Site', new_site_path, :class => "btn"
-      %p
-      = render 'dashboard/sites'
+  %h2 Active Sites
+  = link_to 'New Site', new_site_path, :class => "btn"
+  %p
+  = render 'dashboard/sites'
