@@ -157,6 +157,11 @@
         Wunderground Forecast:
         %a{ href: "http://www.wunderground.com/cgi-bin/findweather/hdfForecast?query=#{site.zipcode}" }
           = site.zipcode
+      %h3 Forecast Warnings
+      %p
+        Precipitation Warning:
+        / checks pop alert mailer
+        = site.check_pop_alert
       -begin
         %tr
           %td
