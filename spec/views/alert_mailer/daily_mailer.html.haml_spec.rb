@@ -108,7 +108,7 @@ describe "alert_mailer/daily_mailer" do
     rendered.should match(/%/)
     rendered.should match(/inch/)
 
-    # rendered.should match(/Forecast Warnings/)
-    # rendered.should match(/Precipitation Warning/)
+    rendered.should match(/Forecast Warnings/)
+    rendered.should match(/Precipitation Warning/)
   end
 end
