@@ -458,6 +458,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner (= 1.0.0.RC1)
   devise
+  email_spec
   factory_girl_rails
   font-awesome-sass
   foreman
