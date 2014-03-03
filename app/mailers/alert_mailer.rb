@@ -75,6 +75,7 @@ class AlertMailer < ActionMailer::Base
     set_defaults
     @user = user
     @site = site
+
     mail(
       :to       => "#{user.firstname} #{user.lastname} <#{user.email}>",
       :subject  => "Storm Savvy POP Alert for #{ProjectLocalTime::date_only(Date.today)} - #{site.name}"
