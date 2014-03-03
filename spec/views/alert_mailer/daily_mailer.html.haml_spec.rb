@@ -1,24 +1,22 @@
 require 'spec_helper'
 
 describe "alert_mailer/daily_mailer" do
-
-  let!(:user) { FactoryGirl.build(:user) }
-  let!(:ecp) { user.sites.build(
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:ecp) { user.sites.create(
     name: 'ecp',
     zipcode: 94530
     )
   }
-  let!(:ucb) { user.sites.build(
+  let!(:ucb) { user.sites.create(
     name: 'ucb',
     zipcode: 94709
     )
   }
   let!(:sites) { [ecp, ucb] }
+  let!(:forecast) { ecp.forecast }
+  let!(:fe) { ForecastExaminer.new(ecp, forecast) }
 
-  it "renders the noaa forecast alert email view" do
-    sign_in user
-    @user = user
-
+  before {
     ecp.save
     ucb.save
     @forecast_table = []
