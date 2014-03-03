@@ -64,8 +64,9 @@ group :test, :development do
   gem 'sqlite3'
   gem 'spork-rails'
   gem 'autotest'
+  gem 'jazz_hands'
 
-  gem 'email_spec' # comment out for bundle update
+  # gem 'email_spec' # comment out for bundle update
   gem 'awesome_print'
   gem 'pdf-inspector', require: 'pdf/inspector'
   gem 'simplecov', require: false
