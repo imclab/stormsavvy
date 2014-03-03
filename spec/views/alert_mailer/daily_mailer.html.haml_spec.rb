@@ -26,8 +26,15 @@ describe "alert_mailer/daily_mailer" do
       noaa_table = nfs.forecast_table(site)
       @forecast_table << noaa_table
     end
+  }
 
+  before(:each) do
+    sign_in user
+    @user = user
     render
+  end
+
+  it "renders project info" do
     rendered.should match(/Project/)
     rendered.should match(/Project EA/)
     rendered.should match(/Project Costcode/)
