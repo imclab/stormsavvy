@@ -64,6 +64,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def thankyou(email)
+    set_vars
     mail(
       :to       => email,
       :subject  => "Storm Savvy Sign-up Confirmation"
