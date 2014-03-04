@@ -94,7 +94,7 @@ describe GeocoderService do
         result["lat"].should == nil
         result["lng"].should == nil
       rescue
-        'not online or api query error'
+        'Geocoding API connection cannot be established'
       end
     end
   end
