@@ -63,12 +63,13 @@ class NOAAForecast
     # xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=168&interval=6&lat=38.2473117&lon=-122.5712101"
     xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
     request = Typhoeus::Request.new(xml,
-              :body          => "this is a request body",
-              :method        => :post,
-              :headers       => {:Accept => "text/html"},
-              :timeout       => 2000, # milliseconds
-              # :cache_timeout => 60, # seconds
-              :params        => {:field1 => "a field"})
+      :body          => "this is a request body",
+      :method        => :post,
+      :headers       => {:Accept => "text/html"},
+      :timeout       => 2000, # milliseconds
+      # :cache_timeout => 60, # seconds
+      :params        => {:field1 => "a field"}
+    )
 
     hydra = Typhoeus::Hydra.new
     hydra.queue(request)
