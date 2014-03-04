@@ -1,21 +1,91 @@
 require 'spec_helper'
+require 'json'
+require 'weather/forecast_examiner'
+require 'weather/weathergetter'
+require 'weather/noaa_forecast'
 
 describe "sites/show" do
-  before(:each) do
-    @user = FactoryGirl.create(:user)
-    @site = assign(:site, stub_model(Site,
-      name: "Name",
-      zipcode: "Zipcode",
-      user: @user
-    ))
-    render
+  before(:all) do
+    @data = []
+    CSV.foreach(Rails.root.to_s + '/spec/lib/weather/ss_fc_fixture.csv') do |row|
+      @data << row
+    end
+    @data.delete_if { |r| r == [] }
   end
+
+  let(:wg) { WeatherGetter.new }
+  let(:nf) { NOAAForecast.new(zipcode,duration,interval) }
+
+  before {
+    @user = FactoryGirl.create(:user)
+    @site = assign(
+      :site, stub_model(
+        Site,
+        name: "Name",
+        zipcode: "Zipcode",
+        user: @user
+      )
+    )
+    wg.stub(:wg_table) { return forecastday }
+    @site.stub(:forecast_table) { return forecast }
+    nf.stub(:ping_noaa).with([lat, long],duration,interval).and_return(response)
+
+    render
+  }
+
+  let(:lat) { @site.lat }
+  let(:long) { @site.long }
+  let(:zipcode) { @site.zipcode }
+  let(:latlong) { [ lat, long ] }
+  let(:duration) { 168 }
+  let(:interval) { 6 }
+  let(:forecast_array) {
+    [
+      [90,78,16,8,7,0,14,12,14,14,14,24,50,59,65,49,11,11,5,5,4,4,5,5,6,6,8,8,11],
+      [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    ]
+  }
+  let(:forecast) {
+    [
+      {:date=>"Saturday, 15 February 2014 00:00 UTC", :weather=>6, :rainfall=>0.0},
+      {:date=>"Saturday, 15 February 2014 06:00 UTC", :weather=>6, :rainfall=>0.0},
+      {:date=>"Saturday, 15 February 2014 12:00 UTC", :weather=>10, :rainfall=>0.0},
+      {:date=>"Saturday, 15 February 2014 18:00 UTC", :weather=>10, :rainfall=>0.0},
+      {:date=>"Sunday, 16 February 2014 00:00 UTC", :weather=>20, :rainfall=>0.01},
+      {:date=>"Sunday, 16 February 2014 06:00 UTC", :weather=>20, :rainfall=>0.01},
+      {:date=>"Sunday, 16 February 2014 12:00 UTC", :weather=>22, :rainfall=>0.01},
+      {:date=>"Sunday, 16 February 2014 18:00 UTC", :weather=>22, :rainfall=>0.01},
+      {:date=>"Monday, 17 February 2014 00:00 UTC", :weather=>61, :rainfall=>0.34},
+      {:date=>"Monday, 17 February 2014 06:00 UTC", :weather=>61, :rainfall=>0.34},
+      {:date=>"Monday, 17 February 2014 12:00 UTC", :weather=>65, :rainfall=>0.04},
+      {:date=>"Monday, 17 February 2014 18:00 UTC", :weather=>65, :rainfall=>0.04},
+      {:date=>"Tuesday, 18 February 2014 00:00 UTC", :weather=>20, :rainfall=>0.01},
+      {:date=>"Tuesday, 18 February 2014 06:00 UTC", :weather=>20, :rainfall=>0.01},
+      {:date=>"Tuesday, 18 February 2014 12:00 UTC", :weather=>10, :rainfall=>0.0},
+      {:date=>"Tuesday, 18 February 2014 18:00 UTC", :weather=>10, :rainfall=>0.0},
+      {:date=>"Wednesday, 19 February 2014 00:00 UTC", :weather=>5, :rainfall=>0.0},
+      {:date=>"Wednesday, 19 February 2014 06:00 UTC", :weather=>5, :rainfall=>0.0},
+      {:date=>"Wednesday, 19 February 2014 12:00 UTC", :weather=>5, :rainfall=>0.0},
+      {:date=>"Wednesday, 19 February 2014 18:00 UTC", :weather=>5, :rainfall=>0.0},
+      {:date=>"Thursday, 20 February 2014 00:00 UTC", :weather=>7, :rainfall=>0.0},
+      {:date=>"Thursday, 20 February 2014 06:00 UTC", :weather=>7, :rainfall=>0.0},
+      {:date=>"Thursday, 20 February 2014 12:00 UTC", :weather=>7, :rainfall=>0.0},
+      {:date=>"Thursday, 20 February 2014 18:00 UTC", :weather=>7, :rainfall=>0.0},
+      {:date=>"Friday, 21 February 2014 00:00 UTC", :weather=>15, :rainfall=>0.01},
+      {:date=>"Friday, 21 February 2014 06:00 UTC", :weather=>15, :rainfall=>0.01},
+      {:date=>"Friday, 21 February 2014 12:00 UTC", :weather=>15, :rainfall=>0.01},
+      {:date=>"Friday, 21 February 2014 18:00 UTC", :weather=>15, :rainfall=>0.01}
+    ]
+  }
+  let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
+  let(:forecastday) { wg.parse_wunderground_10day(json) }
+  let(:response) { IO.read("./spec/lib/weather/noaa_response.xml") }
 
   it 'renders site map' do
     rendered.should match(/Site Map/)
   end
 
-  it "renders site attributes" do
+  it "renders site info" do
     rendered.should match(/Project EA/)
     rendered.should match(/Project Costcode/)
     rendered.should match(/Site ID/)
