@@ -69,7 +69,7 @@ describe GeocoderService do
             result["lng"].should_not == nil
             expect{ result["foobar"].should  }.to raise_error
           rescue
-            'not online or api query error'
+            'Geocoding API connection cannot be established'
           end
         end
       end
