@@ -170,22 +170,25 @@
           %th Date
           %th POP
           %th QPF
-          - site.noaa_table.each do |f|
-            %tr
-              %td
-                = f[:date]
-              %th
-                - if f[:weather] == -999
-                  = f[:weather] = 0
-                = f[:weather]
-                :plain
-                  %
-              %th
-                - if f[:rainfall] == -999
-                  = f[:rainfall] = 0
-                = f[:rainfall]
-                :plain
-                  inch
+          - begin
+            - site.noaa_table.each do |f|
+              %tr
+                %td
+                  = f[:date]
+                %th
+                  - if f[:weather] == -999
+                    = f[:weather] = 0
+                  = f[:weather]
+                  :plain
+                    %
+                %th
+                  - if f[:rainfall] == -999
+                    = f[:rainfall] = 0
+                  = f[:rainfall]
+                  :plain
+                    inch
+          - rescue
+            'NOAA API connection cannot be established'
         %tr
           %td
             %br
