@@ -24,26 +24,33 @@ class NoaaForecastService
   end
 
   def site_forecast(site)
-    @noaa = NoaaForecastService.new(:site => site)
-    @noaa.get_forecast
-    @noaa.save_results
+    begin
+      @noaa = NoaaForecastService.new(:site => site)
+      @noaa.get_forecast
+      @noaa.save_results
+    rescue
+      pp 'NOAA API connection cannot be established'
+    end
   end
 
   def forecast_table(site)
     site_forecast(site)
 
-    @forecast = []
-    for i in (0..27)
-      date = { :date => ProjectLocalTime::format(Date.today + (6*i).hours) }
-      weather = { :weather => @noaa.forecast_periods[i].pop }
-      rainfall = { :rainfall => @noaa.forecast_periods[i].qpf }
+    begin
+      @forecast = []
+      for i in (0..27)
+        date = { :date => ProjectLocalTime::format(Date.today + (6*i).hours) }
+        weather = { :weather => @noaa.forecast_periods[i].pop }
+        rainfall = { :rainfall => @noaa.forecast_periods[i].qpf }
 
-      date_weather = date.merge!(weather)
-      date_weather_rainfall = date_weather.merge!(rainfall)
-      @forecast.push(date_weather_rainfall)
+        date_weather = date.merge!(weather)
+        date_weather_rainfall = date_weather.merge!(rainfall)
+        @forecast.push(date_weather_rainfall)
+      end
+      return @forecast
+    rescue
+      pp 'NOAA API connection cannot be established'
     end
-
-    return @forecast
   end
 
   private
