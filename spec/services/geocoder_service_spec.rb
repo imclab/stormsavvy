@@ -82,7 +82,7 @@ describe GeocoderService do
         pp result["lat"]
         pp result["lng"]
       rescue
-        'not online or api query error'
+        'Geocoding API connection cannot be established'
       end
     end
   end
