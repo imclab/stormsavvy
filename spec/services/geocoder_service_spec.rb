@@ -11,7 +11,6 @@ describe GeocoderService do
 
         it "returns postal code info after API query" do
           begin
-            pp query_results.body["postalCodes"][0]
             query_results.should_not == nil
 
             result["adminName2"].should == 'Contra Costa'
