@@ -1,12 +1,12 @@
-- begin
-  %table
-    %tr
-      %td
-        %h3 NOAA 7-Day Forecast
-    %tr
-      %th Date
-      %th POP
-      %th QPF
+%table
+  %tr
+    %td
+      %h3 NOAA 7-Day Forecast
+  %tr
+    %th Date
+    %th POP
+    %th QPF
+    - begin
       - @site.noaa_table.each do |f|
         %tr
           %td
