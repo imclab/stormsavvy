@@ -154,11 +154,16 @@ describe "sites/show" do
     rendered.should match(/QPF/)
   end
 
+  it 'renders forecast table' do
+    rendered.should match(/UTC/)
+    rendered.should match(/%/)
+    rendered.should match(/inch/)
+  end
+
   it "has edit, back and delete links" do
     rendered.should match(/Edit/)
     rendered.should match(/Back/)
     rendered.should match(/Delete/)
-
     rendered.should have_link('Edit')
     rendered.should have_link('Back')
     rendered.should have_button('Delete This Site')
