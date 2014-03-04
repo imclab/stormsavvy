@@ -60,7 +60,6 @@ describe GeocoderService do
 
         it "returns postal code info after API query" do
           begin
-            # pp result
             result.should_not == nil
 
             result["lat"].should =~ 37
