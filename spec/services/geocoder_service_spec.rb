@@ -25,8 +25,15 @@ describe GeocoderService do
             result["lat"].should_not == nil
             expect{ result["foobar"].should  }.to raise_error
           rescue
-            'not online or api query error'
+            'Geocoding API connection cannot be established'
           end
+        end
+
+        it 'makes live query' do
+          pp query_results.body["postalCodes"][0]
+          pp query_results.count
+          # query_results.body["postalCodes"][0].should...
+          # query_results.count.should...
         end
       end
     end
