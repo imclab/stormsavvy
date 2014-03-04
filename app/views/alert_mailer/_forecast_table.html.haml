@@ -199,31 +199,32 @@
           %th POP
           %th QPF
         %tbody
-          - site.wg_table.each do |period|
-            //- @forecastday.each do |period|
-            %tr
-              %td.date
-                = "#{period['date']['weekday']}, "
-                = "#{period['date']['day']} "
-                = "#{period['date']['monthname']} "
-                = "#{period['date']['year']} "
-                = "#{period['date']['hour']}:#{period['date']['min']} "
-                = "#{period['date']['tz_short']}"
-                //= "#{period['date']['pretty']}"
-                //- @dd.set_epoch((period['date']['epoch']).to_i)
-                //= "#{@dd.get_day('day')},"
-                //= @dd.get_date('date')
-                //= "#{@dd.get_month('month')}."
-                //= @dd.get_year('year')
-              %td.icon
-                <img src="#{period['icon_url']}" height="64" />
-              %th.pop
-                = "#{period['pop']}"
-                :plain
-                  %
-              %th
-                = "#{period['qpf_allday']['in']}"
-                :plain
-                  inch
-      - rescue
-        'forecast currently not available'
+          - begin
+            - site.wg_table.each do |period|
+              //- @forecastday.each do |period|
+              %tr
+                %td.date
+                  = "#{period['date']['weekday']}, "
+                  = "#{period['date']['day']} "
+                  = "#{period['date']['monthname']} "
+                  = "#{period['date']['year']} "
+                  = "#{period['date']['hour']}:#{period['date']['min']} "
+                  = "#{period['date']['tz_short']}"
+                  //= "#{period['date']['pretty']}"
+                  //- @dd.set_epoch((period['date']['epoch']).to_i)
+                  //= "#{@dd.get_day('day')},"
+                  //= @dd.get_date('date')
+                  //= "#{@dd.get_month('month')}."
+                  //= @dd.get_year('year')
+                %td.icon
+                  <img src="#{period['icon_url']}" height="64" />
+                %th.pop
+                  = "#{period['pop']}"
+                  :plain
+                    %
+                %th
+                  = "#{period['qpf_allday']['in']}"
+                  :plain
+                    inch
+          - rescue
+            'Wunderground API connection cannot be established'
