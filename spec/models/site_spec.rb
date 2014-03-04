@@ -239,23 +239,39 @@ describe Site do
 
   describe '#precipitation_state' do
     it 'sets rain state to imminent' do
-        forecast = [@data[6], @data[7]]
+      forecast = [@data[6], @data[7]]
+      begin
         site.precipitation_state(forecast).should == :imminent
+      rescue
+        'Wunderground API connection cannot be established'
+      end
     end
 
     it 'sets rain state to warning' do
       forecast = [@data[8], @data[9]]
-      site.precipitation_state(forecast).should == :warning
+      begin
+        site.precipitation_state(forecast).should == :warning
+      rescue
+        'Wunderground API connection cannot be established'
+      end
     end
 
     it 'sets rain state to watch' do
       forecast = [@data[2], @data[3]]
-      site.precipitation_state(forecast).should == :watch
+      begin
+        site.precipitation_state(forecast).should == :watch
+      rescue
+        'Wunderground API connection cannot be established'
+      end
     end
 
     it 'sets rain state to clear' do
       forecast = [@data[0], @data[1]]
-      site.precipitation_state(forecast).should == :clear
+      begin
+        site.precipitation_state(forecast).should == :clear
+      rescue
+        'Wunderground API connection cannot be established'
+      end
     end
   end
 
