@@ -10,9 +10,9 @@ describe FirstReport do
   let(:filename) { "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.png" }
   let(:content) { "stormsavvy" }
 
-  before(:each) do
+  before {
     create_pdf
-  end
+  }
 
   describe 'pdf images' do
     it "returns image info object" do
@@ -24,29 +24,32 @@ describe FirstReport do
   end
 
   describe 'pdf render and background' do
-    it 'creates pdf with background image' do
+    it 'creates pdf with background image using new method' do
       background_pdf = Prawn::Document.new(
         :background => "#{Prawn::BASEDIR}/data/images/reports/CEM2030-2012_Page_01.png"
       ) do
         text "stormsavvy", size: 12, align: :right
-      end
-      background_pdf.render_file "#{Rails.root}/public/assets/background.pdf"
+      end # check public/assets for results
+      background_pdf.render_file("#{Rails.root}/public/assets/background.pdf")
+
+      result = PDF::Inspector::Page.analyze(background_pdf.render)
+      result.pages.size.should === 1
     end
 
-    it 'analyzes pdf with background image' do
+    it 'creates pdf with background image using testem method' do
       pdf = Prawn::Document.generate(
-        "#{Rails.root}/public/assets/background.png",
+        "#{Rails.root}/public/assets/testem.pdf",
+        # "#{Rails.root}/public/assets/background.png",
         background: filename,
         margin: 100
       ) do
         text "stormsavvy", size: 12, align: :right
-      end
+      end # check public/assets for results
 
-      # pdf.render_file "#{Rails.root}/app/assets/pdfs/testem.pdf"
-      # rendered_pdf = pdf.render
-      # text_analysis = PDF::Inspector::Text.analyze('stormsavvy.pdf')
-      # text_analysis = PDF::Inspector::Text.analyze(pdf)
-      # text_analysis.strings.should include("stormsavvy")
+      # breaks spec, pdf does not eof marker
+      # result = PDF::Inspector::Page.analyze("testem.pdf")
+      # result.pages.size.should === 1
+      # result.strings.should include("stormsavvy")
 
       # pdf.should be_a_kind_of(Prawn::Images::PNG)
     end
