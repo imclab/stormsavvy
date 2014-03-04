@@ -103,11 +103,15 @@ describe "alert_mailer/daily_mailer" do
     rendered.should match(/Date/)
     rendered.should match(/POP/)
     rendered.should match(/QPF/)
+  end
 
+  it 'renders forecast table' do
     rendered.should match(/UTC/)
     rendered.should match(/%/)
     rendered.should match(/inch/)
+  end
 
+  it 'renders forecast warnings' do
     rendered.should match(/Forecast Warnings/)
     rendered.should match(/Precipitation Warning/)
   end

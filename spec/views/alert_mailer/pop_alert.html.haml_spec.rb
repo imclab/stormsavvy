@@ -25,16 +25,16 @@ describe "alert_mailer/pop_alert.html.haml" do
     render
   end
 
-  it "renders POP alert" do
+  it "renders mailer" do
     rendered.should match(/NOAA POP Alert/)
     rendered.should match(/NOAA 7-Day Forecast/)
     rendered.should match(/Wunderground 7-Day Forecast/)
-  end
-
-  it 'renders forecast table' do
     rendered.should match(/Date/)
     rendered.should match(/POP/)
     rendered.should match(/QPF/)
+  end
+
+  it 'renders forecast table' do
     rendered.should match(/UTC/)
     rendered.should match(/%/)
     rendered.should match(/inch/)
