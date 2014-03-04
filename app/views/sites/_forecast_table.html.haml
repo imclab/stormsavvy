@@ -23,16 +23,19 @@
             = f[:rainfall]
             :plain
               inch
-    %tr
-      %td
-        %br
-        %h3 Wunderground 7-Day Forecast
-    %tr
-      %th Date
-      %th
-      %th POP
-      %th QPF
-    %tbody
+    - rescue
+      'NOAA API connection cannot be established'
+  %tr
+    %td
+      %br
+      %h3 Wunderground 7-Day Forecast
+  %tr
+    %th Date
+    %th
+    %th POP
+    %th QPF
+  %tbody
+    -begin
       - @site.wg_table.each do |period|
         //- @forecastday.each do |period|
         %tr
