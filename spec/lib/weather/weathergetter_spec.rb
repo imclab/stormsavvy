@@ -38,14 +38,6 @@ describe WeatherGetter do
       forecast.count.should == 2
     end
 
-    it 'sleeps 10s between queries' do
-      sites.each do |site|
-        pp 'sleep for 10s between queries'
-        sleep 10
-        wg.get_forecast(site.zipcode)
-      end
-    end
-
     it 'fetches forecast using background worker' do
       ww.class.should == WeatherWorker
     end
