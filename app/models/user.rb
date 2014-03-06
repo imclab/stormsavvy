@@ -64,24 +64,26 @@ class User < ActiveRecord::Base
   end
 
   def noaa_forecast
-    # self.sites.in_groups_of(4) do |group|
-    #   group.each do |site|
-    # end
     self.sites.each do |site|
-      pp 'sleep 2s between queries'
-      sleep 2
-      site.save_noaa
+      begin
+        site.save_noaa
+        pp 'sleep 2s between queries'
+        sleep 2
+      rescue
+        pp 'NOAA API connection cannot be established'
+      end
     end
   end
 
   def wg_forecast
-    # self.sites.in_groups_of(4) do |group|
-    #   group.each do |site|
-    # end
     self.sites.each do |site|
-      pp 'sleep 10s between queries'
-      sleep 10
-      site.save_wg
+      begin
+        site.save_wg
+        pp 'sleep 10s between queries'
+        sleep 10
+      rescue
+        pp 'Wunderground API connection cannot be established'
+      end
     end
   end
 end
