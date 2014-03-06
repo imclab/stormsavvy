@@ -100,7 +100,6 @@ describe NoaaForecastService do
 
         it "sets forecast_periods after api query" do
           nfs.forecast_periods.count.should == 29
-          # nfs.forecast_periods.count.should == 57
         end
 
         it "saves WeatherUpdate" do
