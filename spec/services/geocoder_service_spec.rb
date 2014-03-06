@@ -1,4 +1,5 @@
 require "spec_helper"
+require 'json'
 
 describe GeocoderService do
   context "when contacting geonames" do
