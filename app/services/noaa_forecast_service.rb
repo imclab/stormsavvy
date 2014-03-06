@@ -25,7 +25,7 @@ class NoaaForecastService
 
   def site_forecast(site)
     begin
-      @noaa = NoaaForecastService.new(:site => site)
+      @noaa = NoaaForecastService.new(site: site)
       @noaa.get_forecast
       @noaa.save_results
     rescue
