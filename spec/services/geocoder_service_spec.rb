@@ -30,11 +30,11 @@ describe GeocoderService do
           end
         end
 
-        it 'makes live query' do
-          pp query_results.body["postalCodes"][0]
-          pp query_results.count
-          # query_results.body["postalCodes"][0].should...
-          # query_results.count.should...
+        it 'has correct response body count' do
+          # geocoder_results = JSON.parse(IO.read('./spec/fixtures/geocoder_results.json'))
+          pp query_results
+          pp query_results.body["postalCodes"][0].count.should == 9
+          pp query_results.body.count.should == 1
         end
       end
     end
