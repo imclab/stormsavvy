@@ -1,0 +1,22 @@
+#<Unirest::HttpResponse:0x007ff1ce69fe20
+ @body=
+  {"postalCodes"=>
+    [{"adminName2"=>"Contra Costa",
+      "adminCode2"=>"013",
+      "adminCode1"=>"CA",
+      "postalCode"=>"94530",
+      "countryCode"=>"US",
+      "lng"=>-122.298521,
+      "placeName"=>"El Cerrito",
+      "lat"=>37.915633,
+      "adminName1"=>"California"}]},
+ @code=200,
+ @headers=
+  {:date=>"Thu, 06 Mar 2014 07:34:21 GMT",
+   :server=>"Apache/2.2.17 (Linux/SUSE)",
+   :cache_control=>"no-cache",
+   :access_control_allow_origin=>"*",
+   :transfer_encoding=>"chunked",
+   :content_type=>"application/json;charset=UTF-8"},
+ @raw_body=
+  "{\"postalCodes\":[{\"adminName2\":\"Contra Costa\",\"adminCode2\":\"013\",\"adminCode1\":\"CA\",\"postalCode\":\"94530\",\"countryCode\":\"US\",\"lng\":-122.298521,\"placeName\":\"El Cerrito\",\"lat\":37.915633,\"adminName1\":\"California\"}]}">
