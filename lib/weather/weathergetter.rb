@@ -54,10 +54,16 @@ class WeatherGetter
   end
 
   def forecast_table(site)
-    wg = WeatherGetter.new
-    zipcode = site.zipcode
-    forecast = wg.get_forecast(zipcode)
-    forecastday = wg.parse_wunderground_10day(forecast)
-    return forecastday
+    begin
+      wg = WeatherGetter.new
+      zipcode = site.zipcode
+      forecast = wg.get_forecast(zipcode)
+      forecastday = wg.parse_wunderground_10day(forecast)
+      pp 'sleep for 10s between queries'
+      sleep(10) # sleep 10s for 10 query/min terms of use
+      return forecastday
+    rescue
+      pp 'Wunderground API connection cannot be established'
+    end
   end
 end
