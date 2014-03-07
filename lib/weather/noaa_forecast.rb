@@ -27,15 +27,11 @@ class NOAAForecast
   end
 
   def get_lat_long(zipcode)
-    begin
-      results = Geocoder.search(zipcode)
-      @lat = results[0].data["geometry"]["location"]["lat"]
-      @lng = results[0].data["geometry"]["location"]["lng"]
-      lat_long = [] << @lat << @lng
-      return lat_long
-    rescue
-      pp 'Geocoding API connection cannot be established'
-    end
+    results = Geocoder.search(zipcode)
+    @lat = results[0].data["geometry"]["location"]["lat"]
+    @lng = results[0].data["geometry"]["location"]["lng"]
+    lat_long = [] << @lat << @lng
+    return lat_long
   end
 
   def get_forecast(latlong)
