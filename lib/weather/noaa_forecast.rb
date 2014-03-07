@@ -40,27 +40,22 @@ class NOAAForecast
   end
 
   def ping_noaa(latlong, duration, interval)
-    begin
-      xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
-      request = Typhoeus::Request.new(
-        xml,
-        body: "this is a request body",
-        method: :post,
-        headers: {:Accept => "text/html"},
-        timeout: 2000, # milliseconds
-        # cache_timeout: 60, # seconds
-        params: {:field1 => "a field"}
-      )
+    xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
+    request = Typhoeus::Request.new(xml,
+      body: "this is a request body",
+      method: :post,
+      headers: {:Accept => "text/html"},
+      timeout: 2000, # milliseconds
+      # cache_timeout: 60, # seconds
+      params: {:field1 => "a field"}
+    )
 
-      hydra = Typhoeus::Hydra.new
-      hydra.queue(request)
-      hydra.run
-      request.response.body
-      pp 'sleep for 2s between queries'
-      sleep 2 # prevent slamming noaa api
-    rescue
-      pp 'NOAA API connection cannot be established'
-    end
+    hydra = Typhoeus::Hydra.new
+    hydra.queue(request)
+    hydra.run
+    request.response.body
+    pp 'sleep for 2s between queries'
+    sleep 2 # prevent slamming noaa api
   end
 
   def get_valid_dates(xmldoc)
