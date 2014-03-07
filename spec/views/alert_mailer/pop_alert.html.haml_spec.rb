@@ -8,7 +8,8 @@ describe "alert_mailer/pop_alert.html.haml" do
       user: user
     )
   }
-  let!(:forecast) { site.forecast }
+  # let!(:forecast) { site.forecast }
+  let(:forecast) { IO.read("./spec/lib/weather/noaa_response.xml") }
   let!(:fe) { ForecastExaminer.new(site, forecast) }
 
   before {
