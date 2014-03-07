@@ -13,7 +13,8 @@ describe "alert_mailer/daily_mailer" do
     )
   }
   let!(:sites) { [ecp, ucb] }
-  let!(:forecast) { ecp.forecast }
+  # let!(:forecast) { ecp.forecast }
+  let(:forecast) { IO.read("./spec/lib/weather/noaa_response.xml") }
   let!(:fe) { ForecastExaminer.new(ecp, forecast) }
 
   before {
