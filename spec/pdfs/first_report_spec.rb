@@ -6,7 +6,6 @@ require 'pdf/reader'
 require 'pdf/inspector'
 
 describe FirstReport do
-
   let(:filename) { "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.png" }
   let(:content) { "stormsavvy" }
 
@@ -26,7 +25,7 @@ describe FirstReport do
   describe 'pdf render and background' do
     it 'creates pdf with background image using new method' do
       background_pdf = Prawn::Document.new(
-        :background => "#{Prawn::BASEDIR}/data/images/reports/CEM2030-2012_Page_01.png"
+        background: "#{Prawn::BASEDIR}/data/images/reports/CEM2030-2012_Page_01.png"
       ) do
         text "stormsavvy", size: 12, align: :right
       end # check public/assets for results
@@ -80,11 +79,11 @@ describe FirstReport do
       pdf = Prawn::Document.new(:page_size => "A4", :page_layout => :portrait)
       100.times {pdf.text "stormpop who?"}
       pdf.number_pages("<page> of <total>", {
-        :start_count_at => 1,
-        :page_filter => lambda{ |pg| pg > 0 },
-        :at => [pdf.bounds.right - 50, 0],
-        :align => :right,
-        :size => 9
+        start_count_at: 1,
+        page_filter: lambda{ |pg| pg > 0 },
+        at: [pdf.bounds.right - 50, 0],
+        align: :right,
+        size: 9
       })
       result = PDF::Inspector::Page.analyze(pdf.render)
       result.pages.first[:strings].last.should === "1 of 2"
