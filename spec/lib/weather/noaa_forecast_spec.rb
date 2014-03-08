@@ -48,8 +48,8 @@ describe NOAAForecast do
       @time_pop_hash[i].merge!(@qpf_array[i])
     end
 
-    # nf.stub(:get_lat_long).with(zipcode).and_return([lat, long])
-    # nf.stub(:get_lat_long).with("0").and_return([])
+    nf.stub(:get_lat_long).with(zipcode).and_return([lat, long])
+    nf.stub(:get_lat_long).with("0").and_return([])
 
     nf.stub(:ping_noaa).with([lat, long], 168, 6) {
       IO.read("./spec/lib/weather/noaa_response.xml")
