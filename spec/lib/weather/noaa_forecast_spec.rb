@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'geocoder'
 require 'weather/noaa_forecast'
 require 'time'
 
