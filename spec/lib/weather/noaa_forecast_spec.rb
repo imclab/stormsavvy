@@ -158,6 +158,11 @@ describe NOAAForecast do
       forecast = nf.parse_weather_data(response)
       forecast[0].count.should == fullcount
     end
+
+    it 'returns string class' do
+      response = nf.ping_noaa([lat, long], 168, 6)
+      response.class.should == String
+    end
   end
 
   describe "#get_valid_dates" do
