@@ -56,8 +56,8 @@ class WeatherGetter
 
   def forecast_table(site)
     begin
-      pp 'sleep for 10s between queries'
-      sleep(10) # sleep 10s for 10 query/min terms of use
+      pp 'sleep for 7s between queries'
+      sleep(7) # sleep 7s for 10 query/min terms of use
       wg = WeatherGetter.new
       zipcode = site.zipcode
       forecast = wg.get_forecast(zipcode)
