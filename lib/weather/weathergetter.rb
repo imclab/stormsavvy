@@ -22,11 +22,12 @@ class WeatherGetter
       # wg = WeatherGetter.new
       # WeatherWorker.perform_async(wg.object_id)
 
+      pp 'sleep for 10s between queries'
+      sleep(7) # sleep 7s for 10 query/min terms of use
+
       @hydra = Typhoeus::Hydra.new
       url = "http://api.wunderground.com/api/#{APIKEY}/forecast10day/q/#{zipcode}.json"
       @forecast = make_request(url)
-      pp 'sleep for 10s between queries'
-      sleep(10) # sleep 10s for 10 query/min terms of use
     rescue
       pp 'Wunderground API connection cannot be established'
     end
