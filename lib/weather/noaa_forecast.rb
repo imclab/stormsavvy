@@ -54,8 +54,6 @@ class NOAAForecast
     hydra.queue(request)
     hydra.run
     request.response.body
-    pp 'sleep for 2s between queries'
-    sleep 2 # prevent slamming noaa api
   end
 
   def get_valid_dates(xmldoc)
