@@ -76,10 +76,10 @@ class NoaaForecastService
 
   def contact_noaa
     begin
-      url = "#{API_URL}duration=#{@duration}&interval=#{@interval}&lat=#{@lat}&lon=#{@lng}"
-      @response = Unirest::get(url)
       pp 'sleep for 2s between queries'
       sleep 2 # prevent slamming noaa api
+      url = "#{API_URL}duration=#{@duration}&interval=#{@interval}&lat=#{@lat}&lon=#{@lng}"
+      @response = Unirest::get(url)
     rescue
       pp 'NOAA API connection cannot be established'
       @response = IO.read("./spec/lib/weather/noaa_response.xml")
