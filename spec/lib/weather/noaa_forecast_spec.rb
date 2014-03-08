@@ -106,8 +106,9 @@ describe NOAAForecast do
     context 'when passing in valid zipcode' do
       it "returns get_lat_long stub values" do
         nf.should respond_to(:get_lat_long)
-        # nf.get_lat_long(zipcode).should == [38, -122]
-        pp nf.get_lat_long(zipcode).count
+        nf.get_lat_long(zipcode).count.should == 2
+        lat_long[0].should be_between(37,39)
+        lat_long[1].should be_between(-123,-121)
       end
     end
 
