@@ -40,20 +40,35 @@ class NOAAForecast
   end
 
   def ping_noaa(latlong, duration, interval)
+    # pp 'sleep for 2s between queries'
+    # sleep(2) # sleep 2s for 10 query/min terms of use
+
     xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
     request = Typhoeus::Request.new(xml,
       body: "this is a request body",
       method: :post,
       headers: {:Accept => "text/html"},
-      timeout: 2000, # milliseconds
+      timeout: 5000, # milliseconds
       # cache_timeout: 60, # seconds
       params: {:field1 => "a field"}
     )
-
-    hydra = Typhoeus::Hydra.new
-    hydra.queue(request)
-    hydra.run
-    request.response.body
+    request.on_complete do |response|
+      if response.success?
+        hydra = Typhoeus::Hydra.new
+        hydra.queue(request)
+        hydra.run
+        request.response.body
+      elsif response.timed_out?
+        pp 'response timed out'
+        log("response timed out")
+      elsif response.code == 0
+        pp 'an error occurred, check logs'
+        log(response.return_message)
+      else
+        pp 'non-successful http response'
+        log("HTTP request failed: " + response.code.to_s)
+      end
+    end
   end
 
   def get_valid_dates(xmldoc)
