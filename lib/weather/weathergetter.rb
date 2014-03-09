@@ -20,13 +20,10 @@ class WeatherGetter
   def get_forecast(zipcode)
     # wg = WeatherGetter.new
     # WeatherWorker.perform_async(wg.object_id)
-    begin
-      @hydra = Typhoeus::Hydra.new
-      url = "http://api.wunderground.com/api/#{APIKEY}/forecast10day/q/#{zipcode}.json"
-      @forecast = make_request(url)
-    rescue
-      pp 'Wunderground API connection cannot be established'
-    end
+
+    @hydra = Typhoeus::Hydra.new
+    url = "http://api.wunderground.com/api/#{APIKEY}/forecast10day/q/#{zipcode}.json"
+    @forecast = make_request(url)
   end
 
   def make_request(url)
