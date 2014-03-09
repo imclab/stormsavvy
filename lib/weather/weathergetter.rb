@@ -22,7 +22,7 @@ class WeatherGetter
       # wg = WeatherGetter.new
       # WeatherWorker.perform_async(wg.object_id)
 
-      pp 'sleep for 10s between queries'
+      pp 'sleep for 7s between queries'
       sleep(7) # sleep 7s for 10 query/min terms of use
 
       @hydra = Typhoeus::Hydra.new
