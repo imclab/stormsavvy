@@ -30,18 +30,33 @@ class WeatherGetter
   end
 
   def make_request(url)
+    pp 'sleep for 7s between queries'
+    sleep(7) # sleep 7s for 10 query/min terms of use
+
     request = Typhoeus::Request.new(
       url,
-      :method        => :get,
-      :timeout       => 5000 # milliseconds
-      #:cache_timeout => 60 # seconds
+      method: :get,
+      timeout: 8000 # milliseconds
+      # cache_timeout: 60 # seconds
     )
-    @hydra.queue(request)
-    @hydra.run
-    response = request.response
-
-    data = JSON.parse(response.body)
-    return data
+    request.on_complete do |response|
+      if response.success?
+        @hydra.queue(request)
+        @hydra.run
+        response = request.response
+        data = JSON.parse(response.body)
+        return data
+      elsif response.timed_out?
+        pp 'response timed out'
+        log("response timed out")
+      elsif response.code == 0
+        pp 'an error occurred, check logs'
+        log(response.return_message)
+      else
+        pp 'non-successful http response'
+        log("HTTP request failed: " + response.code.to_s)
+      end
+    end
   end
 
   def parse_wunderground_10day(forecast)
