@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'geocoder'
+require 'nokogiri'
 require 'weather/noaa_forecast'
 require 'time'
 
