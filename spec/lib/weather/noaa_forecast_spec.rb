@@ -96,11 +96,32 @@ describe NOAAForecast do
     nf.class.should == NOAAForecast
   end
 
-  it "returns lat/long for given zipcode" do
+  it "returns lat_long array" do
     lat_long.count.should == 2
     tol = 0.0001
     lat_long[0].should be_within(tol).of(38)
     lat_long[1].should be_within(tol).of(-122)
+  end
+
+  describe "#seven_day_weather" do
+    it "returns array from seven_day_weather" do
+      nf.should respond_to(:seven_day_weather)
+      forecast = nf.seven_day_weather(zipcode)
+      forecast[0].count.should == fullcount
+    end
+
+    it 'returns correct forecast' do
+      forecast = nf.seven_day_weather(zipcode)
+      forecast[0].length.should == 29
+      forecast[0].each do |pop|
+        pop.should be_between(0,100)
+      end
+
+      forecast[1].length.should == 29
+      forecast[1].each do |qpf|
+        qpf.should be_between(0,100)
+      end
+    end
   end
 
   describe "#get_lat_long" do
