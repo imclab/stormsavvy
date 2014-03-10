@@ -263,8 +263,8 @@ describe "Dashboard" do
           pp current_pending_site.forecast_periods.max_by(&:pop).pop
           current_pending_site.chance_of_rain.pop.should be_between(0,100)
           current_pending_site.chance_of_rain.pop.should_not be_nil
-        rescue
-          pp 'not online or pop method error'
+        rescue => e
+          # pp 'not online or pop method error'
         end
       end
 
