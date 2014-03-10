@@ -80,17 +80,17 @@ class NoaaForecastService
       sleep 2 # prevent slamming noaa api
       url = "#{API_URL}duration=#{@duration}&interval=#{@interval}&lat=#{@lat}&lon=#{@lng}"
       @response = Unirest::get(url)
-    rescue
-      pp 'NOAA API connection cannot be established'
-      @response = IO.read("./spec/lib/weather/noaa_response.xml")
+    rescue => e
+      # pp 'NOAA API connection cannot be established'
+      # @response = IO.read("./spec/lib/weather/noaa_response.xml")
     end
   end
 
   def process_xml_response
     begin
       @xml = Nokogiri::XML(@response.body)
-    rescue
-      pp 'NOAA API connection cannot be established'
+    rescue => e
+      # pp 'NOAA API connection cannot be established'
     end
   end
 
