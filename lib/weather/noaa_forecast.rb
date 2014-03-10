@@ -63,12 +63,17 @@ class NOAAForecast
       # cache_timeout: 60, # seconds
       params: {:field1 => "a field"}
     )
+    hydra = Typhoeus::Hydra.new
+    hydra.queue(request)
+    hydra.run
+    request.response.body
+  end
+
+  def log_response(request)
     request.on_complete do |response|
       if response.success?
-        hydra = Typhoeus::Hydra.new
-        hydra.queue(request)
-        hydra.run
-        request.response.body
+        pp 'response successful'
+        log('response successful')
       elsif response.timed_out?
         pp 'response timed out'
         log("response timed out")
