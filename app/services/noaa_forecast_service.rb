@@ -98,8 +98,8 @@ class NoaaForecastService
     begin
       @weather_update = @site.weather_updates.new
       @weather_update.build_from_xml(@xml)
-    rescue
-      pp 'NOAA API connection cannot be established'
+    rescue => e
+      # pp 'NOAA API connection cannot be established'
     end
   end
 
