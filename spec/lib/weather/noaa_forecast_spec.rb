@@ -161,32 +161,56 @@ describe NOAAForecast do
       Rails.cache.fetch(zipcode.to_s + '_long') {long}
       Rails.cache.fetch(zipcode.to_s + '_long').should == long
       nf.get_lat_long(zipcode).should == lat_long
-      # nf.get_lat_long(zipcode).should == [lat, lng]
     end
   end
 
-  describe "Rails.cache.fetch" do
-    it 'caches geocoder results with rails.cache.fetch' do
-      Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
-      # pp "Rails.cache.fetch(zipcode_to.s + 'lat_long') = #{Rails.cache.fetch(zipcode.to_s + '_lat_long')}"
-      Rails.cache.clear
-      Rails.cache.fetch(zipcode.to_s + '_lat') { lat }
-      Rails.cache.fetch(zipcode.to_s + '_lat').should == lat
-      Rails.cache.fetch(zipcode.to_s + '_lng') { long }
-      Rails.cache.fetch(zipcode.to_s + '_lng').should == long
-    end
-  end
-
-  describe "#parse_weather_data" do
-    it "parses weather data from noaa for one week" do
+  describe '#get_forecast' do
+    it 'gets forecast' do
       response = nf.ping_noaa([lat, long], 168, 6)
       forecast = nf.parse_weather_data(response)
-      forecast[0].count.should == fullcount
-    end
+      forecast[0].length.should == 29
+      forecast[0].each do |pop|
+        pop.should be_between(0,100)
+      end
 
-    it 'returns string class' do
-      response = nf.ping_noaa([lat, long], 168, 6)
-      response.class.should == String
+      forecast[1].length.should == 29
+      forecast[1].each do |qpf|
+        qpf.should be_between(0,100)
+      end
+    end
+  end
+
+  describe '#ping_noaa' do
+    context 'xml' do
+      it 'returns string class' do
+        response = nf.ping_noaa([lat, long], 168, 6)
+        response.class.should == String
+      end
+
+      xit 'returns xml doc' do
+        # response = nf.ping_noaa([lat, long], 168, 6)
+        response = IO.read("./spec/lib/weather/noaa_response.xml")
+        response.body.should have_xml '//pop' "0"
+      end
+    end
+  end
+
+  describe '#log_response' do
+    it 'returns correct response message' do
+      xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{lat_long[0]}&lon=#{lat_long[1]}"
+      request = Typhoeus::Request.new(xml,
+        body: "this is a request body",
+        method: :post,
+        headers: {:Accept => "text/html"},
+        timeout: 5000, # milliseconds
+        # cache_timeout: 60, # seconds
+        params: {:field1 => "a field"}
+      )
+      hydra = Typhoeus::Hydra.new
+      hydra.queue(request)
+      hydra.run
+      # pp request.response.status_message
+      nf.log_response(request)
     end
   end
 
