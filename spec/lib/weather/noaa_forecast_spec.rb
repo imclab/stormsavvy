@@ -124,6 +124,13 @@ describe NOAAForecast do
       results[0].data["geometry"]["location"]["lng"].should be_between(-123,-121)
     end
 
+    it 'uses geocoder service' do
+      service = GeocoderService.new(zipcode: zipcode)
+      results = service.get_lat_lng
+      results[:lat].should be_between(37,39)
+      results[:long].should be_between(-123,-121)
+    end
+
     it 'validates rails api caching on class object' do
       # results = Geocoder.search(zipcode)
       # lat = results[0].data["geometry"]["location"]["lat"]
