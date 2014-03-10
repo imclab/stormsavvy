@@ -36,6 +36,14 @@ class WeatherGetter
       timeout: 8000 # milliseconds
       # cache_timeout: 60 # seconds
     )
+    @hydra.queue(request)
+    @hydra.run
+    response = request.response
+    data = JSON.parse(response.body)
+    return data
+  end
+
+  def log_response(request)
     request.on_complete do |response|
       if response.success?
         @hydra.queue(request)
