@@ -82,8 +82,8 @@ describe GeocoderService do
         result.return_results_hash
         pp result["lat"]
         pp result["lng"]
-      rescue
-        'Geocoding API connection cannot be established'
+      rescue => e
+        # 'Geocoding API connection cannot be established'
       end
     end
   end
