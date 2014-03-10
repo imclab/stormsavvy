@@ -94,8 +94,8 @@ describe GeocoderService do
         result = Geocoder.search(0)
         result["lat"].should == nil
         result["lng"].should == nil
-      rescue
-        'Geocoding API connection cannot be established'
+      rescue => e
+        # 'Geocoding API connection cannot be established'
       end
     end
   end
