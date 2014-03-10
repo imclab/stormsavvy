@@ -27,11 +27,22 @@ class NOAAForecast
   end
 
   def get_lat_long(zipcode)
-    results = Geocoder.search(zipcode)
-    @lat = results[0].data["geometry"]["location"]["lat"]
-    @lng = results[0].data["geometry"]["location"]["lng"]
-    lat_long = [] << @lat << @lng
-    return lat_long
+    begin
+      service = GeocoderService.new(zipcode: zipcode)
+      results = service.get_lat_lng
+      @lat = results[:lat]
+      @long = results[:long]
+      lat_long = [] << @lat << @lng
+      return lat_long
+    rescue => e
+    end
+
+    # user geocoderservice instead, which includes geocoder
+    # results = Geocoder.search(zipcode)
+    # @lat = results[0].data["geometry"]["location"]["lat"]
+    # @lng = results[0].data["geometry"]["location"]["lng"]
+    # lat_long = [] << @lat << @lng
+    # return lat_long
   end
 
   def get_forecast(latlong)
