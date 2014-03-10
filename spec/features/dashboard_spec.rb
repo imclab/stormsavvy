@@ -232,8 +232,8 @@ describe "Dashboard" do
             site.chance_of_rain.pop.should be_between(0,100)
             site.chance_of_rain.pop.should_not be_nil
           end
-        rescue
-          pp 'not online or pop method error'
+        rescue => e
+          # pp 'not online or pop method error'
         end
       end
 
