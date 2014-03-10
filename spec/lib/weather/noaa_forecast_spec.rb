@@ -140,25 +140,20 @@ describe NOAAForecast do
       end
     end
 
-    it 'returns geocoder response' do
+    it 'returns response using geocoder' do
       results = Geocoder.search(zipcode)
       results[0].data["geometry"]["location"]["lat"].should be_between(37,39)
       results[0].data["geometry"]["location"]["lng"].should be_between(-123,-121)
     end
 
-    it 'uses geocoder service' do
+    it 'returns response using geocoder service' do
       service = GeocoderService.new(zipcode: zipcode)
       results = service.get_lat_lng
       results[:lat].should be_between(37,39)
       results[:long].should be_between(-123,-121)
     end
 
-    it 'validates rails api caching on class object' do
-      # results = Geocoder.search(zipcode)
-      # lat = results[0].data["geometry"]["location"]["lat"]
-      # lng = results[0].data["geometry"]["location"]["lng"]
-      # lat_long = [] << lat << lng
-
+    it 'caches geocoder results with rails.cache.fetch' do
       Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
       Rails.cache.clear
       Rails.cache.fetch(zipcode.to_s + '_lat') {lat}
