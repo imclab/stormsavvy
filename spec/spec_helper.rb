@@ -1,6 +1,6 @@
-# require 'rubygems'
 require 'devise'
 require 'prawn'
+require 'nokogiri'
 require 'pdf/reader'
 require 'pdf/inspector'
 require 'email_spec'
