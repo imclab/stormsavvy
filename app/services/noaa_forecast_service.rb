@@ -109,8 +109,8 @@ class NoaaForecastService
       forecast_days.each do |forecast_day|
         parse_forecast_day(forecast_day)
       end
-    rescue
-      pp 'NOAA API connection cannot be established'
+    rescue => e
+      # pp 'NOAA API connection cannot be established'
     end
   end
 
