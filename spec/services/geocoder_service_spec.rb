@@ -25,8 +25,8 @@ describe GeocoderService do
             result["lng"].should_not == nil
             result["lat"].should_not == nil
             expect{ result["foobar"].should  }.to raise_error
-          rescue
-            'Geocoding API connection cannot be established'
+          rescue => e
+            # 'Geocoding API connection cannot be established'
           end
         end
 
