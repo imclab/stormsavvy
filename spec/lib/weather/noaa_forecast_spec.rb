@@ -224,6 +224,10 @@ describe NOAAForecast do
 
   describe "#get_forecast_creation_time" do
     it "procures forecast creation time from the NOAA response" do
+      nf.stub(:ping_noaa).with([lat, long], 168, 6) {
+        IO.read("./spec/lib/weather/noaa_response.xml")
+      }
+
       response = nf.ping_noaa([lat, long], 168, 6)
       creation_time = nf.get_forecast_creation_time(response)
       datehash = DateTime.parse("Sun Nov 18 23:02:24 2012 UTC", "%a %b %d %H:%M:%S %Y %Z")
