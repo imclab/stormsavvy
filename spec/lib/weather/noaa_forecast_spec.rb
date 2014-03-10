@@ -52,17 +52,17 @@ describe NOAAForecast do
     nf.stub(:get_lat_long).with(zipcode).and_return([lat, long])
     nf.stub(:get_lat_long).with("0").and_return([])
 
-    nf.stub(:ping_noaa).with([lat, long], 168, 6) {
-      IO.read("./spec/lib/weather/noaa_response.xml")
-    }
-    nf.stub(:get_forecast).with([lat, long]) {
-      response = nf.ping_noaa([lat, long], 168, 6)
-      nf.parse_weather_data(response)
-    }
-    nf.stub(:seven_day_weather).with(zipcode).and_return {
-      latlong = [lat, long]
-      nf.get_forecast(latlong)
-    }
+    # nf.stub(:ping_noaa).with([lat, long], 168, 6) {
+    #   IO.read("./spec/lib/weather/noaa_response.xml")
+    # }
+    # nf.stub(:get_forecast).with([lat, long]) {
+    #   response = nf.ping_noaa([lat, long], 168, 6)
+    #   nf.parse_weather_data(response)
+    # }
+    # nf.stub(:seven_day_weather).with(zipcode).and_return {
+    #   latlong = [lat, long]
+    #   nf.get_forecast(latlong)
+    # }
     nf.stub(:get_time_array) {
       time_array = []
       for t in 0..27
