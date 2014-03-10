@@ -269,6 +269,25 @@ describe NOAAForecast do
     end
   end
 
+  describe '#forecast_by_zipcode' do
+    it 'gets forecast by zipcode' do
+      nf.should respond_to(:forecast_by_zipcode)
+      forecast_array = nf.forecast_by_zipcode(zipcode)
+      forecast_array.count.should == 28
+      forecast_array.each do |f|
+        if f[:weather] == -999
+          f[:weather] = 0
+        end
+        f[:weather].should be_between(0,100)
+
+        if f[:rainfall] == -999
+          f[:rainfall] = 0
+        end
+        f[:rainfall].should be_between(0,100)
+      end
+    end
+  end
+
   describe "#get_pop" do
     it "checks pop array size" do
       nf.should respond_to(:get_pop)
