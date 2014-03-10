@@ -242,8 +242,8 @@ describe Site do
       forecast = [@data[6], @data[7]]
       begin
         site.precipitation_state(forecast).should == :imminent
-      rescue
-        'Wunderground API connection cannot be established'
+      rescue => e
+        # 'Wunderground API connection cannot be established'
       end
     end
 
