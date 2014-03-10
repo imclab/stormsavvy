@@ -98,8 +98,8 @@ class Site < ActiveRecord::Base
     begin
       nfs = NoaaForecastService.new(site: self)
       nfs.forecast_table(self)
-    rescue
-      'forecast currently not available'
+    rescue => e
+      # 'forecast currently not available'
     end
   end
 
