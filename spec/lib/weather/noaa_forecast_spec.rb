@@ -235,24 +235,12 @@ describe NOAAForecast do
     end
   end
 
-  describe "#seven_day_weather" do
-    it "returns array from seven_day_weather" do
-      nf.should respond_to(:seven_day_weather)
-      forecast = nf.seven_day_weather(zipcode)
+  describe "#parse_weather_data" do
+    it "parses weather data from noaa for one week" do
+      nf.should respond_to(:parse_weather_data)
+      response = nf.ping_noaa([lat, long], 168, 6)
+      forecast = nf.parse_weather_data(response)
       forecast[0].count.should == fullcount
-    end
-
-    it 'returns correct forecast' do
-      forecast = nf.seven_day_weather(zipcode)
-      forecast[0].length.should == 29
-      forecast[0].each do |pop|
-        pop.should be_between(0,100)
-      end
-
-      forecast[1].length.should == 29
-      forecast[1].each do |qpf|
-        qpf.should be_between(0,100)
-      end
     end
   end
 
