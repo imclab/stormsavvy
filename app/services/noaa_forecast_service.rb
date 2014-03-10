@@ -48,8 +48,8 @@ class NoaaForecastService
         @forecast.push(date_weather_rainfall)
       end
       return @forecast
-    rescue
-      pp 'NOAA API connection cannot be established'
+    rescue => e
+      # pp 'NOAA API connection cannot be established'
     end
   end
 
