@@ -71,8 +71,8 @@ class WeatherGetter
       forecast = wg.get_forecast(zipcode)
       forecastday = wg.parse_wunderground_10day(forecast)
       return forecastday
-    rescue
-      pp 'Wunderground API connection cannot be established'
+    rescue => e
+      # pp 'Wunderground API connection cannot be established'
     end
   end
 end
