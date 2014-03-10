@@ -45,8 +45,8 @@ describe GeocoderService do
       begin
         query_results = GeonamesGeocodingService.search(0)
         query_results.body["postalCodes"][0].should == nil
-      rescue
-        'Geocoding API connection cannot be established'
+      rescue => e
+        # 'Geocoding API connection cannot be established'
       end
     end
   end
