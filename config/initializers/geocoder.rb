@@ -2,5 +2,5 @@
 
 Geocoder.configure(
   lookup: :google,
-  timeout: 5,
+  timeout: 10
 )
