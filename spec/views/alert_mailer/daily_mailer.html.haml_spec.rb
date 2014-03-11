@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe "alert_mailer/daily_mailer" do
-  let!(:user) { FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.create(
+    :user,
+    email: 'vader@starwars.com'
+    )
+  }
   let!(:ecp) { user.sites.create(
     name: 'ecp',
     zipcode: 94530
