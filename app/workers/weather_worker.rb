@@ -1,10 +1,13 @@
+require 'weather/weathergetter'
+require 'redis'
+require 'sidekiq'
+
 class WeatherWorker
   include Sidekiq::Worker
   sidekiq_options queue: "high"
 
-  def perform(weathergetter_id)
-    zipcode = 94530
-    @forecast = WeatherGetter.get_forecast(zipcode)
-    @forecastday = WeatherGetter.parse_wunderground_10day(@forecast)
+  def perform(zipcode)
+    wg = WeatherGetter.new
+    wg.get_forecast(zipcode)
   end
 end
