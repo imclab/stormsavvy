@@ -15,39 +15,58 @@ describe 'homepage' do
   }
 
   describe 'signin page' do
-    it "renders correct links and pages after login" do
-      # fill out form incorrectly, then correctly
-      visit new_user_session_path
-      fill_in 'Email', :with => 'barney@stormsavvy.com'
-      fill_in 'Password', :with => 'foobarbaz'
-      click_button 'Sign in'
-      page.should have_content 'Invalid email or password'
+    before(:each) do
+      visit '/users/sign_in'
+    end
 
-      fill_in 'Email', :with => 'demo@stormsavvy.com'
-      fill_in 'Password', :with => 'savvy_demo'
-      click_button 'Sign in'
-      page.should have_content 'Signed in successfully.'
+    context 'when passing invalid credentials' do
+      it 'prevents signin' do
+        # visit new_user_session_path
+        fill_in 'Email', :with => 'barney@stormsavvy.com'
+        fill_in 'Password', :with => 'foobarbaz'
+        click_button 'Sign in'
+        page.should have_content 'Invalid email or password'
+      end
+    end
 
-      click_link "Inspections"
-      current_path.should == inspection_events_path
+    context 'when passing valid credentials' do
+      it 'allows signin' do
+        fill_in 'Email', :with => 'demo@stormsavvy.com'
+        fill_in 'Password', :with => 'savvy_demo'
+        click_button 'Sign in'
+        page.should have_content 'Signed in successfully.'
+      end
+    end
 
-      click_link "Settings"
-      current_path.should == edit_user_registration_path
+    context 'when signed in' do
+      it 'has correct links' do
+        fill_in 'Email', :with => 'demo@stormsavvy.com'
+        fill_in 'Password', :with => 'savvy_demo'
+        click_button 'Sign in'
 
-      click_link "Sign Out"
-      current_path.should == '/index'
-      # current_path.should == '/users/sign_in'
+        click_link "Inspections"
+        current_path.should == inspection_events_path
+
+        click_link "Settings"
+        current_path.should == edit_user_registration_path
+
+        click_link "Sign Out"
+        current_path.should == '/index'
+        # current_path.should == '/users/sign_in'
+      end
     end
   end
 
   describe 'signup page' do
-    it "signs up new user" do
-      visit '/users/sign_up'
-      fill_in 'Email', :with => 'demo2@stormsavvy.com'
-      fill_in 'Password', :with => 'automate_workflow'
-      fill_in 'Password confirmation', :with => 'automate_workflow'
-      click_button 'Sign up'
-      page.should have_content 'You have signed up successfully.'
+    context 'when passing valid credentials' do
+      it "signs up new user" do
+        visit '/users/sign_up'
+        fill_in 'Email', :with => 'demo2@stormsavvy.com'
+        fill_in 'Password', :with => 'automate_workflow'
+        fill_in 'Password confirmation', :with => 'automate_workflow'
+        click_button 'Sign up'
+        page.should have_content 'You have signed up successfully.'
+      end
     end
   end
 
