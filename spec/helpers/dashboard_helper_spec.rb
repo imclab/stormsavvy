@@ -28,7 +28,7 @@ describe DashboardHelper do
         @rain_state = :null
         return
       end
-      fe = ForecastExaminer.new(@site, forecast)
+      # fe = ForecastExaminer.new(@site, forecast)
     end
   end
 
