@@ -100,6 +100,8 @@ class Site < ActiveRecord::Base
       nfs = NoaaForecastService.new(site: self)
       nfs.forecast_table(self)
     rescue => e
+      Raven.capture_exception(exception)
+      Logger.log_exception(e)
       # 'forecast currently not available'
     end
   end
