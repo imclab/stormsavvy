@@ -2,15 +2,16 @@ require 'spec_helper'
 
 include ApplicationHelper
 include Warden::Test::Helpers
+
 Warden.test_mode!
 
 describe 'homepage' do
 
   let!(:user) { FactoryGirl.create(
     :user,
-    :email => 'demo@stormsavvy.com',
-    :password => 'savvy_demo',
-    :password_confirmation => 'savvy_demo'
+    email: 'demo@stormsavvy.com',
+    password: 'stormpopwho?',
+    password_confirmation: 'stormpopwho?'
     )
   }
 
