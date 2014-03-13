@@ -86,23 +86,18 @@ describe 'homepage' do
     end
 
     it "renders correct links and pages from home page" do
-      visit '/index'
       click_link 'Privacy'
       current_path.should == privacy_path
 
-      visit '/index'
       click_link 'Terms'
       current_path.should == terms_path
 
-      visit '/index'
       click_link 'Contact'
       current_path.should == contact_path
 
-      visit '/index'
       click_link 'Sign Up'
       current_path.should == new_user_registration_path
 
-      visit '/index'
       click_link 'Sign In'
       current_path.should == new_user_session_path
     end
