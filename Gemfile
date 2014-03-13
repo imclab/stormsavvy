@@ -38,6 +38,7 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
 gem 'i18n', github: 'svenfuchs/i18n'
+gem 'sentry-raven'
 
 # Rails 4 upgrade gems
 gem 'activeresource'
@@ -74,7 +75,6 @@ group :test, :development do
 end
 
 group :production do
-  gem 'sentry-raven'
   gem 'newrelic_rpm'
   gem 'foreman'
 end
