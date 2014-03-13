@@ -60,9 +60,9 @@ describe 'homepage' do
     context 'when passing valid credentials' do
       it "signs up new user" do
         visit '/users/sign_up'
-        fill_in 'Email', :with => 'demo2@stormsavvy.com'
-        fill_in 'Password', :with => 'automate_workflow'
-        fill_in 'Password confirmation', :with => 'automate_workflow'
+        fill_in 'Email', with: 'demo2@stormsavvy.com'
+        fill_in 'Password', with: 'automate_workflow'
+        fill_in 'Password confirmation', with: 'automate_workflow'
         click_button 'Sign up'
         page.should have_content 'You have signed up successfully.'
       end
