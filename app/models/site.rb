@@ -3,6 +3,7 @@ require 'weather/forecast_examiner'
 require 'weather/weathergetter'
 require 'displaydate'
 require 'json'
+require 'raven/sidekiq'
 
 class Site < ActiveRecord::Base
 
