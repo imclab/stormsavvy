@@ -83,6 +83,7 @@ describe Site do
     ]
   }
   let(:wg) { WeatherGetter.new }
+  let(:nfs) { NoaaForecastService.new(site: site) }
   let(:nf) { NOAAForecast.new(zipcode,duration,interval) }
   let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
   let(:forecastday) { wg.parse_wunderground_10day(json) }
@@ -284,6 +285,19 @@ describe Site do
   end
 
   describe '#noaa_table' do
+    context "an exception is thrown" do
+      before do
+        # site.stub(:noaa_table) { raise Exception }
+        nfs.stub(:forecast_table).with(site: site) { raise Exception }
+      end
+
+      it "should log the exception and return false" do
+        Logger.should_receive(:log_exception)
+        site.noaa_table.should be_false
+        # nfs.forecast_table.should be_false
+      end
+    end
+
     it 'returns forecast table' do
       site.should respond_to(:noaa_table)
       forecast.each do |f|
