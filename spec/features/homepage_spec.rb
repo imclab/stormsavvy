@@ -70,9 +70,12 @@ describe 'homepage' do
   end
 
   describe 'homepage' do
+    before(:each) do
+      visit '/index'
+    end
 
     it "renders landing page text" do
-      visit index_path
+      # visit index_path
       page.should have_text('Sign In')
       page.should have_text('Get Storm Savvy Now')
       page.should have_text('Real-Time Stormwater Management')
