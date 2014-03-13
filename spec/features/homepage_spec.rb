@@ -23,28 +23,26 @@ describe 'homepage' do
     context 'when passing invalid credentials' do
       it 'prevents signin' do
         # visit new_user_session_path
-        fill_in 'Email', :with => 'barney@stormsavvy.com'
-        fill_in 'Password', :with => 'foobarbaz'
+        visit '/users/sign_in'
+        fill_in 'Email', with: 'barney@stormsavvy.com'
+        fill_in 'Password', with: 'foobarbaz'
         click_button 'Sign in'
         page.should have_content 'Invalid email or password'
       end
     end
 
     context 'when passing valid credentials' do
-      it 'allows signin' do
-        fill_in 'Email', :with => 'demo@stormsavvy.com'
-        fill_in 'Password', :with => 'savvy_demo'
+      before(:each)do
+        fill_in 'Email', with: 'demo@stormsavvy.com'
+        fill_in 'Password', with: 'stormpopwho?'
         click_button 'Sign in'
+      end
+
+      it 'allows signin' do
         page.should have_content 'Signed in successfully.'
       end
-    end
 
-    context 'when signed in' do
       it 'has correct links' do
-        fill_in 'Email', :with => 'demo@stormsavvy.com'
-        fill_in 'Password', :with => 'savvy_demo'
-        click_button 'Sign in'
-
         click_link "Inspections"
         current_path.should == inspection_events_path
 
