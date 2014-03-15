@@ -14,18 +14,16 @@ forecast = site.forecast
 site.precipitation_state(forecast)
 
 # User/site relationship
-user = User.new(
-  email: 'name@stormsavvy.com',
-  password: 'stormpopwho?',
-  password_confirmation: 'stormpopwho?'
-)
-user.save
+user = (User.find_by email: 'name@stormsavvy.com')
 site = user.sites.new(
   name: 'ecp',
   zipcode: 94530
 )
 site.save
 site.user
+report = site.reports.build
+report.save!
+
 site.wg_forecast = site.save_wg
 
 wg = WeatherGetter.new
