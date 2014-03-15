@@ -5,7 +5,10 @@ describe ReportsController do
   include Devise::TestHelpers
 
   let!(:user) {
-    FactoryGirl.create(:user)
+    FactoryGirl.create(
+      :user
+      # email: 'vader@starwars.com'
+    )
   }
 
   before :each do
