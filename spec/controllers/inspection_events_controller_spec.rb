@@ -57,12 +57,12 @@ describe InspectionEventsController do
 
   let!(:current_ie) { FactoryGirl.create(
       :inspection_event,
-      :site => current_site
+      site: current_site
     )
   }
   let(:other_ie) { FactoryGirl.create(
       :inspection_event,
-      :site => other_site
+      site: other_site
     )
   }
   let!(:current_ie_array) { [ current_ie ] }
