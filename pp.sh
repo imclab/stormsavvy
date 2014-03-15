@@ -7,5 +7,5 @@ git pull --rebase stormsavvy_bitbucket master
 git pull --rebase stormsavvy_github master
 
 git push bitbucket master
-git push --rebase stormsavvy_bitbucket master
-git push --rebase stormsavvy_github master
+git push stormsavvy_bitbucket master
+git push stormsavvy_github master
