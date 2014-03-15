@@ -39,6 +39,13 @@ describe ReportsController do
     end
 
     it "renders pdf from report data" do
+      site = FactoryGirl.create(
+        :site,
+        user: user
+      )
+      current_report = site.reports.build
+      current_report.save
+
       get :show, { id: current_report.to_param }, valid_session, format: 'pdf'
       assigns(:report).should eq(current_report)
     end
