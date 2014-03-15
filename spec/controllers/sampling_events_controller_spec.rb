@@ -101,12 +101,12 @@ describe SamplingEventsController do
 
   let!(:current_se) { FactoryGirl.create(
       :sampling_event,
-      :site => current_site
+      site: current_site
     )
   }
   let(:other_se) { FactoryGirl.create(
       :sampling_event,
-      :site => other_site
+      site: other_site
     )
   }
   let!(:current_se_array) { [ current_se ] }
