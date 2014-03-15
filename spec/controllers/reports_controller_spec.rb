@@ -88,6 +88,7 @@ describe ReportsController do
 
   describe "GET edit" do
     it "assigns requested report as @report" do
+      # report = FactoryGirl.create(:report)
       report = Report.create! valid_attributes
       get :edit, {:id => report.to_param}, valid_session
       assigns(:report).should eq(report)
