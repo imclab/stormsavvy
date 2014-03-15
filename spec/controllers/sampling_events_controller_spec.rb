@@ -81,18 +81,18 @@ describe SamplingEventsController do
 
   let!(:current_site) { FactoryGirl.create(
       :site,
-      :user => current_user,
-      # :project => current_project,
-      :name => 'ec jungle gym',
-      :zipcode => 94530
+      user: current_user,
+      # project: current_project,
+      name: 'ec jungle gym',
+      zipcode: 94530
     )
   }
   let(:other_site) { FactoryGirl.create(
       :site,
-      :user => other_user,
-      # :project => other_project,
-      :name => 'berkeley high',
-      :zipcode => 94709
+      user: other_user,
+      # project: other_project,
+      name: 'berkeley high',
+      zipcode: 94709
     )
   }
   let!(:current_sites) { [ current_site ] }
