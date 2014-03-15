@@ -82,7 +82,7 @@ describe 'homepage' do
       page.should have_text('How Storm Savvy Works')
       page.should have_text('Create Free Account')
       page.should have_text('Update Your Projects')
-      page.should have_text('Check For Email Updates')
+      page.should have_text('Check For Updates')
     end
 
     it "renders correct links and pages from home page" do
