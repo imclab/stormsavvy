@@ -27,28 +27,28 @@ describe InspectionEventsController do
 
   let!(:current_user) { FactoryGirl.create(
       :user,
-      :email => 'name@stormsavvy.com'
+      email: 'name@stormsavvy.com'
     )
   }
   let(:other_user) { FactoryGirl.create(
       :user,
-      :email => 'info@stormsavvy.com'
+      email: 'info@stormsavvy.com'
     )
   }
   let(:all_users) { [ current_user, other_user ] }
 
   let!(:current_site) { FactoryGirl.create(
       :site,
-      :user => current_user,
-      :name => 'ec jungle gym',
-      :zipcode => 94530
+      user: current_user,
+      name: 'ec jungle gym',
+      zipcode: 94530
     )
   }
   let(:other_site) { FactoryGirl.create(
       :site,
-      :user => other_user,
-      :name => 'berkeley high',
-      :zipcode => 94709
+      user: other_user,
+      name: 'berkeley high',
+      zipcode: 94709
     )
   }
   let!(:current_sites) { [ current_site ] }
