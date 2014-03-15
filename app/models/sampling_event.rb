@@ -51,9 +51,9 @@ class SamplingEvent < ActiveRecord::Base
     :attachment # s3 uploads via paperclip
 
     has_attached_file :attachment,
-      :url => "http://stormsavvy.s3-website-us-east-1.amazonaws.com",
-      :storage => :s3,
-      :bucket => 'stormsavvy'
+      url: "http://stormsavvy.s3-website-us-east-1.amazonaws.com",
+      storage: :s3,
+      bucket: 'stormsavvy'
       # validates_attachment :attachment, presence: true, size: { less_than: 10.megabytes }
 
     TYPES = [
