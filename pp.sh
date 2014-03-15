@@ -3,7 +3,9 @@
 # git pull github master
 
 git pull --rebase bitbucket master
-# git pull --rebase github master
+git pull --rebase stormsavvy_bitbucket master
+git pull --rebase stormsavvy_github master
 
 git push bitbucket master
-# git push github master
+git push --rebase stormsavvy_bitbucket master
+git push --rebase stormsavvy_github master
