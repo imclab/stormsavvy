@@ -22,14 +22,14 @@ Stormsavvy::Application.configure do
   # config.assets.js_compressor = Sprockets::LazyCompressor.new { Uglifier.new(:mangle => false) }
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true # for heroku
+  # config.assets.compile = true
 
   # Generate digests for assets URLs
   config.assets.digest = true
 
   # Using devise on Heroku with Ruby on Rails 3.1 requires setting:
   config.assets.initialize_on_precompile = false
-  config.assets.precompile += %w( main.js )
+  config.assets.precompile += ['main.js']
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
