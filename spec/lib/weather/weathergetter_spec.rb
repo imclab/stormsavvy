@@ -37,10 +37,6 @@ describe WeatherGetter do
       forecast.should have(2).items
       forecast.count.should == 2
     end
-
-    it 'fetches forecast using background worker' do
-      ww.class.should == WeatherWorker
-    end
   end
 
   describe '#parse_wunderground_10day' do
