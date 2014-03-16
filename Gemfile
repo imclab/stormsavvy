@@ -39,6 +39,7 @@ gem 'sinatra', require: false
 gem 'slim'
 gem 'i18n', github: 'svenfuchs/i18n'
 gem 'sentry-raven'
+gem 'newrelic_rpm'
 
 # Rails 4 upgrade gems
 gem 'activeresource'
@@ -63,11 +64,10 @@ group :test, :development do
   gem 'capybara'
   gem 'cucumber'
   gem 'sqlite3'
-
   gem 'spork-rails'
   gem 'autotest'
   gem 'jazz_hands'
-  gem 'email_spec' # comment out for bundle update
+  # gem 'email_spec' # comment out for bundle update
   gem 'awesome_print'
   gem 'pdf-inspector', require: 'pdf/inspector'
   gem 'simplecov', require: false
@@ -75,6 +75,5 @@ group :test, :development do
 end
 
 group :production do
-  gem 'newrelic_rpm'
   gem 'foreman'
 end
