@@ -14,7 +14,7 @@ describe "pages/index" do
       rendered.should match(/How Storm Savvy Works/)
       rendered.should match(/Create Free Account/)
       rendered.should match(/Update Your Projects/)
-      rendered.should match(/Check For Email Updates/)
+      rendered.should match(/Check For Updates/)
     end
   end
 end
