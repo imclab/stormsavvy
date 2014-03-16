@@ -359,6 +359,14 @@ describe Site do
       forecast = wg.forecast_table(site)
       site.wg_forecast = forecast
       site.save
+      pp site.wg_forecast
+
+      forecast = site.wg_forecast
+      forecast.count.should == 10
+      forecast.each do |f|
+        f['pop'].should be_between(0,100)
+        f['qpf_allday']['in'].should be_between(0,100)
+      end
     end
 
     it 'saves wg stub value' do
