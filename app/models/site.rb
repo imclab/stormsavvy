@@ -118,8 +118,10 @@ class Site < ActiveRecord::Base
   end
 
   def wg_table
-    wg = WeatherGetter.new
-    wg.forecast_table(self)
+    # wg = WeatherGetter.new
+    # wg.forecast_table(self)
+    site = self
+    Wundergroundworker.perform_async(site.id)
   end
 
   def save_wg
