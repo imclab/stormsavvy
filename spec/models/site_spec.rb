@@ -338,8 +338,13 @@ describe Site do
   end
 
   describe '#wg_table' do
-    it 'returns wg table' do
+    it 'returns forecast using worker' do
       site.should respond_to(:wg_table)
+      site.wg_table.class.should == String
+    end
+
+    it 'returns forecast using stub value' do
+      forecastday = wg.parse_wunderground_10day(json)
       forecastday.count.should == 10
       forecastday.each do |f|
         f['pop'].should be_between(0,100)
