@@ -359,7 +359,7 @@ describe Site do
       forecast = wg.forecast_table(site)
       site.wg_forecast = forecast
       site.save
-      pp site.wg_forecast
+      site.wg_forecast.class.should == Array
 
       forecast = site.wg_forecast
       forecast.count.should == 10
