@@ -22,14 +22,25 @@
         Wunderground Forecast:
         %a{ href: "http://www.wunderground.com/cgi-bin/findweather/hdfForecast?query=#{site.zipcode}" }
           = site.zipcode
+
       %h3 Forecast Warnings
       %p
-        Precipitation Warning:
+        POP:
         - begin
           / checks pop alert mailer
           = site.check_pop_alert
         - rescue
           'NOAA API connection cannot be established'
+      %p
+        If over 50% POP within the follow, then:
+      %p
+        24 hrs = imminent
+      %p
+        48 hrs = warning
+      %p
+        7-day = watch
+      %p
+        none = clear
       %table
         %tr
           %td
