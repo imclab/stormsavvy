@@ -287,14 +287,17 @@ describe Site do
   describe '#noaa_table' do
     context "an exception is thrown" do
       before do
-        # site.stub(:noaa_table) { raise Exception }
-        nfs.stub(:forecast_table).with(site: site) { raise Exception }
+        site.stub(:noaa_table) { raise Exception }
+        # Logger.should_receive(:log_exception)
+        # nfs.stub(:forecast_table).with(site) { raise Exception }
       end
 
-      it "should log the exception and return false" do
-        Logger.should_receive(:log_exception)
-        site.noaa_table.should be_false
-        # nfs.forecast_table.should be_false
+      it "logs exception and returns false" do
+        expect {
+          site.noaa_table
+        }.to raise_error
+        # site.noaa_table.should be_false
+        # nfs.forecast_table(site).should should_receive(Exception)
       end
     end
 
