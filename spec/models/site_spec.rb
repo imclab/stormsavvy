@@ -3,6 +3,7 @@ require 'json'
 require 'weather/forecast_examiner'
 require 'weather/weathergetter'
 require 'weather/noaa_forecast'
+require 'raven/sidekiq'
 
 describe Site do
 
