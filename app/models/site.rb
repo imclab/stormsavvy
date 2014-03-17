@@ -106,7 +106,7 @@ class Site < ActiveRecord::Base
     rescue => e
       Raven.capture_exception(exception)
       Logger.log_exception(e)
-      throw e
+      pp e
       # 'forecast currently not available'
     end
   end
