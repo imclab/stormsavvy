@@ -78,6 +78,7 @@ class WeatherGetter
       return forecastday
     rescue => e
       # pp 'Wunderground API connection cannot be established'
+      pp e
     end
   end
 end
