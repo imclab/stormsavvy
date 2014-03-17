@@ -235,6 +235,7 @@ describe "Dashboard" do
           end
         rescue => e
           # pp 'not online or pop method error'
+          pp e
         end
       end
 
