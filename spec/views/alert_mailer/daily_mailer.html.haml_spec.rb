@@ -136,8 +136,16 @@ describe "alert_mailer/daily_mailer" do
     end
   end
 
+  it 'rescues from error using sentry' do
+    begin
+      raise Exception
+    rescue => e
+      Raven.capture_exception(e)
+    end
+  end
+
   it 'renders forecast warnings' do
     rendered.should match(/Forecast Warnings/)
-    rendered.should match(/Precipitation Warning/)
+    rendered.should match(/POP/)
   end
 end
