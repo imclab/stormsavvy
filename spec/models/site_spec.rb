@@ -7,18 +7,8 @@ require 'weather/noaa_forecast'
 describe Site do
 
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:site) {
-    FactoryGirl.create(
-      :site,
-      user: user
-    )
-  }
-  let!(:report) {
-    FactoryGirl.create(
-      :report,
-      site: site
-    )
-  }
+  let!(:site) { FactoryGirl.create(:site, user: user) }
+  let!(:report) { FactoryGirl.create(:report, site: site) }
   let(:reports) { [ report ] }
 
   let!(:inspection_event) {
@@ -98,10 +88,17 @@ describe Site do
   end
 
   before(:each) do
-    # wg.stub(:wg_table) { return forecastday }
+    wg.stub(:wg_table) { return forecastday }
+    wg.stub(:get_forecast).with(zipcode).and_return { json }
+    wg.stub(:forecast_table).with(site).and_return { forecastday }
+    wg.stub(:display_forecast).with(zipcode).and_return { forecastday }
+
+    nf.stub(:ping_noaa).with([lat, long],duration,interval).and_return(response)
+    nfs.stub(:forecast_table).with(site).and_return { forecast }
+    nfs.stub(:site_forecast).with(site).and_return { forecast }
+
     site.stub(:forecast_table) { return forecast }
     site.chance_of_rain.stub(:pop) { 99 }
-    nf.stub(:ping_noaa).with([lat, long],duration,interval).and_return(response)
   end
 
   describe "validations" do
