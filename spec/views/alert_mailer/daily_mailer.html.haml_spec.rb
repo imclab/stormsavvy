@@ -16,24 +16,40 @@ describe "alert_mailer/daily_mailer" do
     zipcode: 94709
     )
   }
+  let!(:site) { FactoryGirl.create(:site, user: user) }
+  let(:zipcode) { site.zipcode }
   let!(:sites) { [ecp, ucb] }
-  # let!(:forecast) { ecp.forecast }
   let(:forecast) { IO.read("./spec/lib/weather/noaa_response.xml") }
   let!(:fe) { ForecastExaminer.new(ecp, forecast) }
+  let(:wg) { WeatherGetter.new }
+  let(:nfs) { NoaaForecastService.new(site: site) }
+  let(:nf) { NOAAForecast.new(zipcode,duration,interval) }
+  let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
+  let(:forecastday) { wg.parse_wunderground_10day(json) }
+  let(:response) { IO.read("./spec/lib/weather/noaa_response.xml") }
 
   before {
     ecp.save
     ucb.save
-    @forecast_table = []
 
     sites.each do |site|
-      nfs = NoaaForecastService.new(site: site)
+      # nfs = NoaaForecastService.new(site: site)
       noaa_table = nfs.forecast_table(site)
+      @forecast_table = []
       @forecast_table << noaa_table
     end
   }
 
   before(:each) do
+    wg.stub(:wg_table) { return forecastday }
+    wg.stub(:get_forecast).with(zipcode).and_return { json }
+    wg.stub(:forecast_table).with(site).and_return { forecastday }
+    wg.stub(:display_forecast).with(zipcode).and_return { forecastday }
+
+    nfs.stub(:forecast_table).with(site).and_return { forecast }
+    nfs.stub(:site_forecast).with(site).and_return { forecast }
+    site.stub(:wg_forecast).and_return { forecastday }
+
     sign_in user
     @user = user
     render
