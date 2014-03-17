@@ -337,7 +337,7 @@ describe Site do
   describe '#wg_table' do
     it 'returns forecast using worker' do
       site.should respond_to(:wg_table)
-      site.wg_table.class.should == String
+      site.wg_table.class.should == Array
     end
 
     it 'returns forecast using stub value' do
