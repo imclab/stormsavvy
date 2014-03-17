@@ -218,6 +218,7 @@ describe "Dashboard" do
           site.chance_of_rain.pop.should == site.forecast_periods.max_by(&:pop).pop
         rescue => e
           # pp 'not online or pop method error'
+          pp e
         end
       end
 
