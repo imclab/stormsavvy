@@ -76,8 +76,8 @@ class NoaaForecastService
 
   def contact_noaa
     begin
-      pp 'sleep for 2s between queries'
-      sleep 2 # prevent slamming noaa api
+      # pp 'sleep for 2s between queries'
+      # sleep 2 # prevent slamming noaa api
       url = "#{API_URL}duration=#{@duration}&interval=#{@interval}&lat=#{@lat}&lon=#{@lng}"
       @response = Unirest::get(url)
     rescue => e
