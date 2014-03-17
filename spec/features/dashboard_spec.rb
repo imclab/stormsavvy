@@ -251,6 +251,7 @@ describe "Dashboard" do
           current_completed_site.chance_of_rain.pop.should_not be_nil
         rescue => e
           # pp 'not online or pop method error'
+          pp e
         end
       end
 
