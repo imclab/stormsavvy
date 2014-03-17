@@ -3,8 +3,8 @@ require 'raven/sidekiq'
 
 describe "alert_mailer/daily_mailer" do
   let!(:user) { FactoryGirl.create(
-    :user,
-    email: 'vader@starwars.com'
+    :user# ,
+    # email: 'vader@starwars.com'
     )
   }
   let!(:ecp) { user.sites.create(
