@@ -85,6 +85,7 @@ class NoaaForecastService
     rescue => e
       # pp 'NOAA API connection cannot be established'
       # @response = IO.read("./spec/lib/weather/noaa_response.xml")
+      pp e
     end
   end
 
