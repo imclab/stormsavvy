@@ -30,6 +30,7 @@ class NoaaForecastService
       @noaa.save_results
     rescue => e
       # pp 'NOAA API connection cannot be established'
+      pp e
     end
   end
 
