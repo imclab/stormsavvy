@@ -133,14 +133,16 @@ describe "alert_mailer/daily_mailer" do
       rendered.should match(/%/)
       rendered.should match(/inch/)
     rescue => e
+      pp e
     end
   end
 
   it 'rescues from error using sentry' do
     begin
-      raise Exception
+      raise StandardError
     rescue => e
       Raven.capture_exception(e)
+      pp e
     end
   end
 
