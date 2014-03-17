@@ -104,6 +104,7 @@ class NoaaForecastService
       @weather_update.build_from_xml(@xml)
     rescue => e
       # pp 'NOAA API connection cannot be established'
+      pp e
     end
   end
 
