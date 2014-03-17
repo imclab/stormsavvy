@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'raven/sidekiq'
 
 describe "alert_mailer/daily_mailer" do
   let!(:user) { FactoryGirl.create(
