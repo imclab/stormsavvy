@@ -79,8 +79,8 @@
           %th QPF
         %tbody
           - begin
-            - site.wg_forecast.each do |period|
-              //- site.wg_table.each do |period|
+            - site.wg_table.each do |period|
+              //- site.wg_forecast.each do |period|
               %tr
                 %td.date
                   = "#{period['date']['weekday']}, "
