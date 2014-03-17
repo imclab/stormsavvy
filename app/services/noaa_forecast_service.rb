@@ -51,6 +51,7 @@ class NoaaForecastService
       return @forecast
     rescue => e
       # pp 'NOAA API connection cannot be established'
+      pp e
     end
   end
 
