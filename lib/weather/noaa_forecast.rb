@@ -35,6 +35,7 @@ class NOAAForecast
       lat_long = [] << @lat << @lng
       return lat_long
     rescue => e
+      pp e
     end
 
     # user geocoderservice instead, which includes geocoder
