@@ -160,6 +160,7 @@ class Site < ActiveRecord::Base
         service = GeocoderService.new(zipcode: zipcode)
         self.update_attributes(service.get_lat_lng)
       rescue => e
+        pp e
       end
     end
   end
