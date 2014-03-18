@@ -154,6 +154,7 @@ describe NOAAForecast do
         results[0].data["geometry"]["location"]["lat"].should be_between(37,39)
         results[0].data["geometry"]["location"]["lng"].should be_between(-123,-121)
       rescue => e
+        pp e
       end
     end
 
