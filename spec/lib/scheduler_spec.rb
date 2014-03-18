@@ -32,6 +32,7 @@ describe 'scheduler' do
         begin
           Rake::Task['scheduler:northbay_forecast'].invoke
         rescue => e
+          pp e
         end
       end
     end
