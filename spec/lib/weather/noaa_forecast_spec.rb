@@ -267,6 +267,7 @@ describe NOAAForecast do
         forecast = nf.parse_weather_data(response)
         forecast[0].count.should == fullcount
       rescue => e
+        pp e
       end
     end
   end
