@@ -241,6 +241,7 @@ describe NOAAForecast do
         dates = nf.get_valid_dates(response)
         dates.count.should == 8
       rescue => e
+        pp e
       end
     end
   end
