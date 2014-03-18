@@ -62,6 +62,7 @@ describe "user_mailer/_mailout_forecast" do
       rendered.should =~ /Date/
       rendered.should =~ /Forecast/
     rescue => e
+      pp e
     end
   end
 
@@ -72,6 +73,7 @@ describe "user_mailer/_mailout_forecast" do
       rendered.should have_selector 'th', :text => "Date"
       rendered.should have_selector 'th', :text => "Forecast"
     rescue => e
+      pp e
     end
   end
 
@@ -79,6 +81,7 @@ describe "user_mailer/_mailout_forecast" do
     begin
       render 'user_mailer/mailout_forecast'
     rescue => e
+      pp e
     end
   end
 end

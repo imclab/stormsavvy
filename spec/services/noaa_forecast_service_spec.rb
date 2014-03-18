@@ -114,6 +114,7 @@ describe NoaaForecastService do
             nfs.save_results
             ForecastPeriod.count.should == weather_update_count + 29
           rescue => e
+            pp e
           end
         end
       end

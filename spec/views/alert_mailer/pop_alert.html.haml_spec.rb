@@ -41,6 +41,7 @@ describe "alert_mailer/pop_alert.html.haml" do
       rendered.should match(/%/)
       rendered.should match(/inch/)
     rescue => e
+      pp e
     end
   end
 end

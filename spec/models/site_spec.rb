@@ -273,6 +273,7 @@ describe Site do
         site.precipitation_state(forecast).should == :clear
       rescue => e
         # 'Wunderground API connection cannot be established'
+        pp e
       end
     end
   end
@@ -326,6 +327,7 @@ describe Site do
         site.noaa_forecast.class.should == Array
         site.noaa_forecast.count.should == 28
       rescue => e
+        pp e
       end
     end
 
@@ -341,7 +343,8 @@ describe Site do
   describe '#wg_table' do
     it 'returns forecast using worker' do
       site.should respond_to(:wg_table)
-      site.wg_table.class.should == Array
+      background_job = WundergroundWorker.perform_async(site.id)
+      background_job.class.should == String
     end
 
     it 'returns forecast using stub value' do
@@ -392,6 +395,7 @@ describe Site do
           end
         end
       rescue => e
+        pp e
       end
     end
   end

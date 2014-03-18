@@ -160,6 +160,7 @@ describe "sites/show" do
       rendered.should match(/%/)
       rendered.should match(/inch/)
     rescue => e
+      pp e
     end
   end
 

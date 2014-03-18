@@ -27,6 +27,7 @@ describe GeocoderService do
             expect{ result["foobar"].should  }.to raise_error
           rescue => e
             # 'Geocoding API connection cannot be established'
+            pp e
           end
         end
 
@@ -37,6 +38,7 @@ describe GeocoderService do
             query_results.body["postalCodes"][0].count.should == 9
             query_results.body.count.should == 1
           rescue => e
+            pp e
           end
         end
       end
@@ -50,6 +52,7 @@ describe GeocoderService do
         query_results.body["postalCodes"][0].should == nil
       rescue => e
         # 'Geocoding API connection cannot be established'
+        pp e
       end
     end
   end
@@ -74,6 +77,7 @@ describe GeocoderService do
             expect{ result["foobar"].should  }.to raise_error
           rescue => e
             # 'Geocoding API connection cannot be established'
+            pp e
           end
         end
       end
@@ -87,6 +91,7 @@ describe GeocoderService do
         pp result["lng"]
       rescue => e
         # 'Geocoding API connection cannot be established'
+        pp e
       end
     end
   end
@@ -99,6 +104,7 @@ describe GeocoderService do
         result["lng"].should == nil
       rescue => e
         # 'Geocoding API connection cannot be established'
+        pp e
       end
     end
   end
