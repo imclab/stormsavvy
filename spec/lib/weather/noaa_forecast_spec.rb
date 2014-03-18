@@ -165,6 +165,7 @@ describe NOAAForecast do
         results[:lat].should be_between(37,39)
         results[:long].should be_between(-123,-121)
       rescue => e
+        pp e
       end
     end
 
