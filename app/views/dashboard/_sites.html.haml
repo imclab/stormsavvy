@@ -1,28 +1,31 @@
-- unless @sites.blank?
-  - @sites.each do |site|
-    .project.closed{ :class=>"#{cycle('even','odd')}" }
-      .cf.headline
-        %h3.pull-left
-          = link_to site.name, site_path(site), class: 'project_name_link'
-          = link_to 'Remove Site', site, method: 'delete', class: 'btn'
-        .small.more_details.pull-right
-          %i{ :class => "icon icon-plus" }
-          %i{ :class => "icon icon-minus is_hidden" }
-      .more_details_box
-        %ul
-          %li
-            %b Last Updated:
-            = site.updated_at
-          %li
-            %b Site ID:
-            = site.id
-          %li
-            %b Site Lat/Long:
-            = site.lat
-            = site.long
-          %li
-            %b Site Zipcode:
-            = site.zipcode
-          %br
-- else
-  No active sites, try starting one by clicking 'new site'.
+-begin
+  - unless @sites.blank?
+    - @sites.each do |site|
+      .project.closed{ :class=>"#{cycle('even','odd')}" }
+        .cf.headline
+          %h3.pull-left
+            = link_to site.name, site_path(site), class: 'project_name_link'
+            = link_to 'Remove Site', site, method: 'delete', class: 'btn'
+          .small.more_details.pull-right
+            %i{ :class => "icon icon-plus" }
+            %i{ :class => "icon icon-minus is_hidden" }
+        .more_details_box
+          %ul
+            %li
+              %b Last Updated:
+              = site.updated_at
+            %li
+              %b Site ID:
+              = site.id
+            %li
+              %b Site Lat/Long:
+              = site.lat
+              = site.long
+            %li
+              %b Site Zipcode:
+              = site.zipcode
+            %br
+  - else
+    No active sites, try starting one by clicking 'new site'.
+- rescue => e
+  - pp e
