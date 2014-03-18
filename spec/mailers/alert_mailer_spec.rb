@@ -36,6 +36,7 @@ describe AlertMailer do
       begin
         AlertMailer.northbay_forecast(user.email).deliver
       rescue => e
+        pp e
       end
     }
 
