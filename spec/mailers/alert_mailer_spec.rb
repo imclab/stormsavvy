@@ -57,6 +57,7 @@ describe AlertMailer do
         mailer.body.encoded.should match("Please email walter@stormsavvy.com")
         mailer.body.encoded.should match("The Storm Savvy Team")
       rescue => e
+        pp e
       end
     end
 
