@@ -47,6 +47,7 @@ describe ForecastExaminer do
           fe.rain.should == :warning
         end.should change(Report, :count).by(1)
       rescue => e
+        pp e
       end
     end
 
