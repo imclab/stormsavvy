@@ -15,9 +15,6 @@ describe WundergroundWorker do
     it '#perform' do
       ww.should respond_to(:perform)
       data = ww.perform(site.id)
-
-      pp data
-      data.count.should have(8).items
       data.each do |f|
         f['pop'].should be_between(0,100)
         f['qpf_allday'].count.should == 2
