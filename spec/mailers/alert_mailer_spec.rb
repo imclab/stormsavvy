@@ -46,6 +46,7 @@ describe AlertMailer do
         mailer.to.should eq(["#{user.email}"])
         mailer.from.should eq(["alerts@stormsavvy.com"])
       rescue => e
+        pp e
       end
     end
 
