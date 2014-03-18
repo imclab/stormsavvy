@@ -60,6 +60,7 @@ describe ForecastExaminer do
           fe.rain.should == :imminent
         end.should change(Report, :count).by(1)
       rescue => e
+        pp e
       end
     end
   end
