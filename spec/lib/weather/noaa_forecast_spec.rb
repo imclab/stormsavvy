@@ -110,6 +110,7 @@ describe NOAAForecast do
         forecast = nf.seven_day_weather(zipcode)
         forecast[0].count.should == fullcount
       rescue => e
+        pp e
       end
     end
 
