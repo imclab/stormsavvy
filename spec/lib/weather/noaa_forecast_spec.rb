@@ -195,6 +195,7 @@ describe NOAAForecast do
           qpf.should be_between(0,100)
         end
       rescue => e
+        pp e
       end
     end
   end
