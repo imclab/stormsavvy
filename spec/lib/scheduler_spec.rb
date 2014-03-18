@@ -72,6 +72,7 @@ describe 'scheduler' do
         begin
           Rake::Task['scheduler:mailout'].invoke
         rescue => e
+          pp e
         end
       end
     end
