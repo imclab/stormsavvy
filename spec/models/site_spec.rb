@@ -243,6 +243,7 @@ describe Site do
         site.precipitation_state(forecast).should == :imminent
       rescue => e
         # 'Wunderground API connection cannot be established'
+        pp e
       end
     end
 
@@ -252,6 +253,7 @@ describe Site do
         site.precipitation_state(forecast).should == :warning
       rescue => e
         # 'Wunderground API connection cannot be established'
+        pp e
       end
     end
 
@@ -261,6 +263,7 @@ describe Site do
         site.precipitation_state(forecast).should == :watch
       rescue => e
         # 'Wunderground API connection cannot be established'
+        pp e
       end
     end
 

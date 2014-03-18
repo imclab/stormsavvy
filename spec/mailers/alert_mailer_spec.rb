@@ -102,6 +102,7 @@ describe AlertMailer do
           f[:rainfall].should be_between(0,100)
         end
       rescue => e
+        pp e
       end
     end
 
@@ -118,6 +119,7 @@ describe AlertMailer do
           f['pop'].should be_between(0,100)
         end
       rescue => e
+        pp e
       end
     end
 

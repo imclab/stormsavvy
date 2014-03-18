@@ -51,6 +51,7 @@ describe UserMailer do
       begin
         UserMailer.pester_admins(email).deliver
       rescue => e
+        pp e
       end
     }
 
@@ -59,6 +60,7 @@ describe UserMailer do
         ActionMailer::Base.deliveries.count.should == 2
         ActionMailer::Base.deliveries.should_not be_empty
       rescue => e
+        pp e
       end
     end
 
@@ -70,6 +72,7 @@ describe UserMailer do
       begin
         mailer.body.should_not be_nil
       rescue => e
+        pp e
       end
     end
 
@@ -107,6 +110,7 @@ describe UserMailer do
       begin
         UserMailer.staging_mailer(email).deliver
       rescue => e
+        pp e
       end
     }
 
@@ -115,6 +119,7 @@ describe UserMailer do
         ActionMailer::Base.deliveries.count.should == 2
         ActionMailer::Base.deliveries.should_not be_empty
       rescue => e
+        pp e
       end
     end
 
@@ -126,6 +131,7 @@ describe UserMailer do
       begin
         mailer.body.should_not be_nil
       rescue => e
+        pp e
       end
     end
 
