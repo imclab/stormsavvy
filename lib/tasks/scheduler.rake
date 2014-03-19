@@ -106,34 +106,38 @@ namespace :scheduler do
   end
 
   desc "checks inspection event workflow"
-  task :iew => :environment do
+  task iew: :environment do
     iew = InspectionEventWorkflow.new
     iew.inspection_needed?
   end
 
-  desc "saves noaa_forecast"
-  task :noaa_forecast => :environment do
+  desc "caches noaa_table"
+  task noaa_table: :environment do
     # Do not send to all users
     # users = User.all
-    admins = [ (User.find_by email: 'walter@stormsavvy.com') ]
-    admins.each do |user|
-      user = User.new
-      user.noaa_forecast
-  	end
+    users = [ (User.find_by email: 'walter@stormsavvy.com') ]
+    users.each do |user|
+      user.sites.each do |site|
+        Rails.cache.fetch('forecast', expires_in: 30.minutes) do
+          site.noaa_table
+        end
+        pp Rails.cache.fetch('forecast') { site.noaa_table }
+      end
+    end
   end
 
-  desc "saves wg_forecast"
-  task :wg_forecast => :environment do
+  desc "caches wg_forecast"
+  task wg_forecast: :environment do
     # Do not send to all users
     # users = User.all
-    admins = [ (User.find_by email: 'walter@stormsavvy.com') ]
-    admins.each do |user|
+    users = [ (User.find_by email: 'walter@stormsavvy.com') ]
+    users.each do |user|
       user = User.new
-      # user.wg_forecast
-      user.sites.in_groups_of(4).each do |group|
-        group.each do |site|
-          site.save_wg
+      user.sites.each do |site|
+        Rails.cache.fetch('forecast', expires_in: 30.minutes) do
+          forecast = site.wg_table
         end
+        pp Rails.cache.fetch('forecast') { site.wg_table }
       end
   	end
   end
