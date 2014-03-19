@@ -90,13 +90,17 @@ class Site < ActiveRecord::Base
     :forecast_table
 
   def chance_of_rain
-    nfs = NoaaForecastService.new(site: self)
-    nfs.site_forecast(self)
-    start_time = DateTime.now.beginning_of_day
-    finish_time = DateTime.now.end_of_day
-    forecast_period = self.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', start_time, finish_time)
-    # forecast_period = self.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day)
-    forecast_period.order('pop DESC').first
+    begin
+      nfs = NoaaForecastService.new(site: self)
+      nfs.site_forecast(self)
+      start_time = DateTime.now.beginning_of_day
+      finish_time = DateTime.now.end_of_day
+      forecast_period = self.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', start_time, finish_time)
+      # forecast_period = self.forecast_periods.where('forecast_prediction_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day)
+      forecast_period.order('pop DESC').first
+    rescue => e
+      pp e
+    end
   end
 
   def noaa_table
