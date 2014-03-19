@@ -1,7 +1,13 @@
+require 'rspec/core/rake_task'
+
 namespace :scheduler do
 
+  desc "runs rake spec"
+  RSpec::Core::RakeTask.new(:spec)
+  task run_spec: :spec
+
   desc "delivers northbay_forecast mailer"
-  task :northbay_forecast => :environment do
+  task northbay_forecast: :environment do
     test_users = [
       'walter@stormsavvy.com',
       'kharma+stormsavvy@gmail.com',
@@ -14,7 +20,7 @@ namespace :scheduler do
   end
 
   desc "delivers pop_alert mailer"
-  task :pop_alert => :environment do
+  task pop_alert: :environment do
     # test_users = [
     #   'walter@stormsavvy.com',
     #   'kharma+stormsavvy@gmail.com'
