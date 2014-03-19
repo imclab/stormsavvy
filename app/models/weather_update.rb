@@ -1,6 +1,6 @@
 class WeatherUpdate < ActiveRecord::Base
   belongs_to :site
-  has_many :forecast_periods
+  has_many :forecast_periods, dependent: :destroy
   attr_accessible :duration,
     :elevation,
     :forecast_creation_time,
