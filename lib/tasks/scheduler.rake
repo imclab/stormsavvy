@@ -94,7 +94,7 @@ namespace :scheduler do
   end
 
   desc "delivers thank you mailer"
-  task :thankyou => :environment do
+  task thankyou: :environment do
     test_users = [
       # 'walter@stormsavvy.com',
       # 'kharma+stormsavvy@gmail.com'
