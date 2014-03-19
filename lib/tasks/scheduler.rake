@@ -54,7 +54,7 @@ namespace :scheduler do
   end
 
   desc "delivers pester_admins mailer"
-  task :pester_admins => :environment do
+  task pester_admins: :environment do
     admins = [
       'walter@stormsavvy.com',
       'kharma+stormsavvy@gmail.com',
