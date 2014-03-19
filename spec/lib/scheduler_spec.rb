@@ -7,20 +7,8 @@ Stormsavvy::Application.load_tasks
 describe 'scheduler' do
   self.use_transactional_fixtures = false
 
-  let!(:user) {
-    FactoryGirl.build(
-      :user,
-      firstname: 'yoda',
-      lastname: 'jedi',
-      email: 'yoda@starwars.com'
-    )
-  }
-  let!(:site) {
-    FactoryGirl.create(
-      :site,
-      user: user
-    )
-  }
+  # let!(:user) { FactoryGirl.create(:user) }
+  # let!(:site) { FactoryGirl.create(:site, user: user) }
 
   context 'when running tasks' do
     # setup do
