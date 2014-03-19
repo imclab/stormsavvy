@@ -55,7 +55,7 @@ describe SamplingEventWorkflow do
       # sew.check_cem2052.should =~ /CEM2052 prepared/
     end
 
-    it "should not add CEM2052 if status = true, 24 hours before rain" do
+    it "does not add CEM2052 if status = true, 24 hours before rain" do
       expect{
         sew.hours_before_rain = 24
         sew.chance_of_rain = 55
