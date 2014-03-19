@@ -83,7 +83,7 @@ describe SamplingEventWorkflow do
       # end.should change(SamplingEvent, :count).by(1) # double-count?
     end
 
-    it "should check to see whether it has rained" do
+    it "checks whether it has rained" do
       sew.amount_of_rain = 0.51
       sew.has_rained?.should be_true
     end
