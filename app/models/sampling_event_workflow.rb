@@ -82,7 +82,7 @@ class SamplingEventWorkflow < ActiveRecord::Base
 
   def prepare_sampling_event
     SamplingEvent.create(
-      :sampling_date => Date.today
+      sampling_date: Date.today
     )
 
     self.sampling_event = true
