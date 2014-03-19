@@ -3,24 +3,11 @@ require 'spec_helper'
 describe SamplingEventWorkflow do
 
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:site) { FactoryGirl.create(
-    :site,
-    :user => user
-    )
-  }
-  let!(:se) { FactoryGirl.create(
-    :sampling_event,
-    :site => site
-    )
-  }
-  let!(:sew) { FactoryGirl.create(
-    :sampling_event_workflow,
-    # :site => site
-    )
-  }
+  let!(:site) { FactoryGirl.create(:site, user: user) }
+  let!(:se) { FactoryGirl.create(:sampling_event, site: site) }
+  let!(:sew) { FactoryGirl.create(:sampling_event_workflow) }
 
   describe 'associations' do
-    # Fails on model association
     xit "belongs to sites" do
       sew.should be_valid
       sew.should respond_to(:sites)
