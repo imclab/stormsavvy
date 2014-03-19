@@ -66,11 +66,12 @@ class User < ActiveRecord::Base
   def noaa_forecast
     self.sites.each do |site|
       begin
-        pp 'sleep 2s between queries'
-        sleep 2
+        # pp 'sleep 2s between queries'
+        # sleep 2
         site.save_noaa
-      rescue
-        pp 'NOAA API connection cannot be established'
+      rescue => e
+        # pp 'NOAA API connection cannot be established'
+        pp e
       end
     end
   end
