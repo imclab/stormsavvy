@@ -38,13 +38,13 @@ namespace :scheduler do
   end
 
   desc "checks for pop_alert mailer"
-  task :check_pop_alert => :environment do
+  task check_pop_alert: :environment do
     user = User.find_by(email: 'walter@stormsavvy.com')
     AlertMailer.check_pop_alert(user)
   end
 
   desc "delivers daily_mailer mailer"
-  task :daily_mailer => :environment do
+  task daily_mailer: :environment do
     # Do not send to all users
     # users = User.all
     admins = [ (User.find_by email: 'walter@stormsavvy.com') ]
