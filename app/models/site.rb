@@ -64,18 +64,18 @@ class Site < ActiveRecord::Base
 
   belongs_to :user #, counter_cache: true
 
-  has_many :reports, :dependent => :destroy
-  has_many :inspection_events, :dependent => :destroy
-  has_many :inspection_event_workflows, :dependent => :destroy
-  has_many :sampling_events, :dependent => :destroy
-  has_many :weather_updates
-  has_many :forecast_periods
+  has_many :reports, dependent: :destroy
+  has_many :inspection_events, dependent: :destroy
+  has_many :inspection_event_workflows, dependent: :destroy
+  has_many :sampling_events, dependent: :destroy
+  has_many :weather_updates, dependent: :destroy
+  has_many :forecast_periods, dependent: :destroy
 
   # accepts_nested_attributes_for :user
   # accepts_nested_attributes_for :inspection_event
 
   after_validation :save_geo_coordinates, if: :zipcode_changed?
-  validates :zipcode, :name, :zipcode, :presence => true
+  validates :zipcode, :name, :zipcode, presence: true
   serialize :noaa_forecast, Array
   serialize :wg_forecast, JSON
 
