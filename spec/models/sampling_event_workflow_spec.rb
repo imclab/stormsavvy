@@ -68,7 +68,7 @@ describe SamplingEventWorkflow do
   end
 
   describe '#sampling_event' do
-    it "checks to see if sampling is imminent" do
+    it "checks if sampling is imminent" do
       expect{
         sew.hours_before_rain = 23
         sew.chance_of_rain = 55
