@@ -5,7 +5,7 @@ describe SamplingEvent do
   let!(:site) { FactoryGirl.create(:site) }
   let!(:se) { FactoryGirl.create(
       :sampling_event,
-      :site => site
+      site: site
     )
   }
   let!(:sampling_event) { FactoryGirl.create(:sampling_event) }
