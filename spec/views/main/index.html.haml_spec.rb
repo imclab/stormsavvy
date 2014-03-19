@@ -8,6 +8,5 @@ describe "main/index.html.erb" do
 
   it 'checks maincopy partial view' do
     render
-    response.code.should == 200
   end
 end
