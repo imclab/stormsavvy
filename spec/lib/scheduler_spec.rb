@@ -71,15 +71,15 @@ describe 'scheduler' do
       end
     end
 
-    describe '#noaa_forecast' do
-      xit 'sends noaa_forecast' do
-        Rake::Task['scheduler:noaa_forecast'].invoke
+    describe '#noaa_table' do
+      xit 'caches noaa_table' do
+        Rake::Task['scheduler:noaa_table'].invoke
       end
     end
 
-    describe '#wg_forecast' do
-      xit 'sends wg_forecast' do
-        Rake::Task['scheduler:wg_forecast'].invoke
+    describe '#wg_table' do
+      xit ' caches wg_table' do
+        Rake::Task['scheduler:wg_table'].invoke
       end
     end
   end
