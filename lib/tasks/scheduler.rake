@@ -82,7 +82,7 @@ namespace :scheduler do
   end
 
   desc "delivers mailout mailer"
-  task :mailout => :environment do
+  task mailout: :environment do
   	users = [
       'walter@stormsavvy.com',
       'kharma+stormsavvy@gmail.com'
