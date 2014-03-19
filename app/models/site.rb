@@ -116,31 +116,46 @@ class Site < ActiveRecord::Base
   end
 
   def save_noaa
-    nfs = NoaaForecastService.new(site: self)
-    self.noaa_forecast = nfs.forecast_table(self)
-    self.save
+    begin
+      nfs = NoaaForecastService.new(site: self)
+      self.noaa_forecast = nfs.forecast_table(self)
+      self.save
+    rescue => e
+      pp e
+    end
   end
 
   def wg_table
-    wg = WeatherGetter.new
-    wg.forecast_table(self)
-
-    # save for later, worker returns serialized json
-    # site = self
-    # WundergroundWorker.perform_async(site.id)
+    begin
+      # save for later, worker returns serialized json
+      # site = self
+      # WundergroundWorker.perform_async(site.id)
+      wg = WeatherGetter.new
+      wg.forecast_table(self)
+    rescue => e
+      pp e
+    end
   end
 
   def save_wg
-    wg = WeatherGetter.new
-    self.wg_forecast = self.wg_table
-    self.save
+    begin
+      wg = WeatherGetter.new
+      self.wg_forecast = self.wg_table
+      self.save
+    rescue => e
+      pp e
+    end
   end
 
   def forecast
-    nf = NOAAForecast.new(zipcode.to_i)
-    forecast = nf.seven_day_weather(zipcode.to_i)
-    precipitation_state(forecast)
-    @forecast = forecast
+    begin
+      nf = NOAAForecast.new(zipcode.to_i)
+      forecast = nf.seven_day_weather(zipcode.to_i)
+      precipitation_state(forecast)
+      @forecast = forecast
+    rescue => e
+      pp e
+    end
   end
 
   def precipitation_state(forecast)
