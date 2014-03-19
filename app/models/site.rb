@@ -169,8 +169,12 @@ class Site < ActiveRecord::Base
   end
 
   def check_pop_alert
-    forecast = self.forecast
-    precipitation_state(forecast)
+    begin
+      forecast = self.forecast
+      precipitation_state(forecast)
+    rescue => e
+      pp e
+    end
   end
 
   def save_geo_coordinates
