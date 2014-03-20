@@ -76,12 +76,10 @@ describe Project do
         project.should respond_to(:sites)
       end
 
-      xit "should be able to add 1 site" do
+      it "should be able to add 1 site" do
+        pending 'site/project association removed'
         lambda{
-          FactoryGirl.create(
-            :site,
-            :project => project
-          )
+          FactoryGirl.create(:site, project: project)
         }.should change(project.sites, :count).by(1)
       end
 
