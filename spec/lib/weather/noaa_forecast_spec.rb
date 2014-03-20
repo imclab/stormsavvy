@@ -286,9 +286,9 @@ describe NOAAForecast do
 
         forecast_array = []
         for i in (0..27)
-          date = { :date => ProjectLocalTime::format(Date.today + (6*i).hours) }
-          weather = { :weather => forecast[0][i] }
-          rainfall = { :rainfall => forecast[1][i] }
+          date = { date: ProjectLocalTime::format(Date.today + (6*i).hours) }
+          weather = { weather: forecast[0][i] }
+          rainfall = { rainfall: forecast[1][i] }
 
           date_weather = date.merge!(weather)
           date_weather_rainfall = date_weather.merge!(rainfall)
