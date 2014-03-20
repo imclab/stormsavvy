@@ -142,7 +142,8 @@ describe Site do
       end
     end
 
-    xit 'returns inspection events by type' do
+    it 'returns inspection events by type' do
+      pending 'inspection types may need attribute'
       ie = site.inspection_events.build(TYPE: 'CEM2030')
       ie.save
     end
