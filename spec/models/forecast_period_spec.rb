@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe ForecastPeriod do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'does something' do
+    pending 'model needs spec'
+  end
 end
