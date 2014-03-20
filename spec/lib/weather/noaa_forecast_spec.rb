@@ -207,7 +207,8 @@ describe NOAAForecast do
         response.class.should == String
       end
 
-      xit 'returns xml doc' do
+      it 'returns xml doc' do
+        pending 'fails on io import statement'
         # response = nf.ping_noaa([lat, long], 168, 6)
         response = IO.read("./spec/lib/weather/noaa_response.xml")
         response.body.should have_xml '//pop' "0"
