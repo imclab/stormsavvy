@@ -252,7 +252,7 @@ describe NOAAForecast do
   end
 
   describe "#get_forecast_creation_time" do
-    it "procures forecast creation time from the NOAA response" do
+    it "procures forecast creation time from NOAA response" do
       nf.stub(:ping_noaa).with([lat, long], 168, 6) {
         IO.read("./spec/lib/weather/noaa_response.xml")
       }
