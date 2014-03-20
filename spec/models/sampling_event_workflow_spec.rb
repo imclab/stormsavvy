@@ -8,7 +8,8 @@ describe SamplingEventWorkflow do
   let!(:sew) { FactoryGirl.create(:sampling_event_workflow) }
 
   describe 'associations' do
-    xit "belongs to sites" do
+    it "belongs to sites" do
+      pending 'fails on factory association'
       sew.should be_valid
       sew.should respond_to(:sites)
     end

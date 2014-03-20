@@ -131,7 +131,6 @@ describe Project do
       project.sites.each do |site|
         zipcodes << site.zipcode
       end
-
       project.get_site_zipcodes.should == zipcodes
     end
   end
