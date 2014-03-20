@@ -46,7 +46,8 @@ describe SamplingEventWorkflow do
   end
 
   describe '#check_cem2052' do
-    xit "adds CEM2052 if status = false, 24 hours before rain" do
+    it "adds CEM2052 if status = false, 24 hours before rain" do
+      pending 'workflow logic broken'
       expect{
         sew.hours_before_rain = 24
         sew.chance_of_rain = 55
