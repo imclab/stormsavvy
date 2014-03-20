@@ -169,7 +169,7 @@ describe NOAAForecast do
       end
     end
 
-    it 'caches geocoder results with rails.cache.fetch' do
+    it 'caches geocoder results' do
       Rails.cache.fetch(zipcode.to_s + '_lat_long', expires_in: 24.hours) { lat_long }
       Rails.cache.clear
       Rails.cache.fetch(zipcode.to_s + '_lat') {lat}
