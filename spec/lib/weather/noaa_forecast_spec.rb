@@ -218,25 +218,29 @@ describe NOAAForecast do
 
   describe '#log_response' do
     it 'returns correct response message' do
-      xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{lat_long[0]}&lon=#{lat_long[1]}"
-      request = Typhoeus::Request.new(xml,
-        body: "this is a request body",
-        method: :post,
-        headers: {:Accept => "text/html"},
-        timeout: 5000, # milliseconds
-        # cache_timeout: 60, # seconds
-        params: {:field1 => "a field"}
-      )
-      hydra = Typhoeus::Hydra.new
-      hydra.queue(request)
-      hydra.run
-      # pp request.response.status_message
-      nf.log_response(request)
+      begin
+        xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{lat_long[0]}&lon=#{lat_long[1]}"
+        request = Typhoeus::Request.new(xml,
+          body: "this is a request body",
+          method: :post,
+          headers: {:Accept => "text/html"},
+          timeout: 5000, # milliseconds
+          # cache_timeout: 60, # seconds
+          params: {:field1 => "a field"}
+        )
+        hydra = Typhoeus::Hydra.new
+        hydra.queue(request)
+        hydra.run
+        # pp request.response.status_message
+        nf.log_response(request)
+      rescue => e
+        pp e
+      end
     end
   end
 
   describe "#get_valid_dates" do
-    it "procures the valid date from the NOAA response" do
+    it "procures valid date from NOAA response" do
       begin
         response = nf.ping_noaa([lat, long], 168, 6)
         dates = nf.get_valid_dates(response)
