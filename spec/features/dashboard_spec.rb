@@ -271,13 +271,12 @@ describe "Dashboard" do
       it 'gets pop for site' do
         begin
           pp site.name
-          noaa = NoaaForecastService.new(:site => site)
+          noaa = NoaaForecastService.new(site: site)
           noaa.get_forecast
           noaa.save_results
           site.chance_of_rain.pop.should be_between(0,100)
           site.chance_of_rain.pop.should_not be_nil
         rescue => e
-          # pp 'not online or pop method error'
           pp e
         end
       end
