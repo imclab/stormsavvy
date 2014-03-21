@@ -72,13 +72,15 @@ describe 'scheduler' do
     end
 
     describe '#noaa_table' do
-      xit 'caches noaa_table' do
+      it 'caches noaa_table' do
+        pending 'redo rake spec'
         Rake::Task['scheduler:noaa_table'].invoke
       end
     end
 
     describe '#wg_table' do
-      xit ' caches wg_table' do
+      it ' caches wg_table' do
+        pending 'redo rake spec'
         Rake::Task['scheduler:wg_table'].invoke
       end
     end
