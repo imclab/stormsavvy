@@ -15,104 +15,104 @@ describe "Dashboard" do
   let!(:other_user) { FactoryGirl.create(:user) }
   let!(:current_completed_site) { FactoryGirl.create(
       :site,
-      :user => current_user,
-      :name => 'ec jungle gym',
-      :zipcode => 94530,
-      # :lat => 37.9260,
-      # :long => -122.3060
+      user: current_user,
+      name: 'ec jungle gym',
+      zipcode: 94530,
+      # lat: 37.9260,
+      # long: -122.3060
     )
   }
   let!(:current_pending_site) { FactoryGirl.create(
       :site,
-      :user => current_user,
-      :name => 'ec slide',
-      :zipcode => 94530,
-      # :lat => 37.9260,
-      # :lng => -122.3060
+      user: current_user,
+      name: 'ec slide',
+      zipcode: 94530,
+      # lat: 37.9260,
+      # lng: -122.3060
     )
   }
   let!(:other_completed_site) { FactoryGirl.create(
       :site,
-      :user => other_user,
-      :name => 'berkeley high',
-      :zipcode => 94709,
-      # :lat => 37.8870,
-      # :lng => -122.2670
+      user: other_user,
+      name: 'berkeley high',
+      zipcode: 94709,
+      # lat: 37.8870,
+      # lng: -122.2670
     )
   }
   let!(:other_pending_site) { FactoryGirl.create(
       :site,
-      :user => other_user,
-      :name => 'peoples park',
-      :zipcode => 94709,
-      # :lat => 37.8870,
-      # :lng => -122.2670
+      user: other_user,
+      name: 'peoples park',
+      zipcode: 94709,
+      # lat: 37.8870,
+      # lng: -122.2670
     )
   }
   let!(:site) { FactoryGirl.create(
       :site,
-      :name => 'sproul hall',
-      :zipcode => 94709,
-      # :lat => 37.8870,
-      # :lng => -122.2670
+      name: 'sproul hall',
+      zipcode: 94709,
+      # lat: 37.8870,
+      # lng: -122.2670
     )
   }
   let!(:current_completed_ie) { FactoryGirl.create(
       :inspection_event,
-      :site => site,
-      :completed => true,
-      :inspection_type => 'CEM2030'
+      site: site,
+      completed: true,
+      inspection_type: 'CEM2030'
     )
   }
   let!(:current_pending_ie) { FactoryGirl.create(
       :inspection_event,
-      :site => site,
-      :completed => false,
-      :inspection_type => 'CEM2030'
+      site: site,
+      completed: false,
+      inspection_type: 'CEM2030'
     )
   }
   let!(:other_completed_ie) { FactoryGirl.create(
       :inspection_event,
-      :site => site,
-      :completed => true,
-      :inspection_type => 'CEM2031'
+      site: site,
+      completed: true,
+      inspection_type: 'CEM2031'
     )
   }
   let!(:other_pending_ie) { FactoryGirl.create(
       :inspection_event,
-      :site => site,
-      :completed => false,
-      :inspection_type => 'CEM2031'
+      site: site,
+      completed: false,
+      inspection_type: 'CEM2031'
     )
   }
   let!(:current_completed_report) { FactoryGirl.create(
       :report,
-      :site => current_completed_site,
-      :status => "completed"
+      site: current_completed_site,
+      status: "completed"
     )
   }
   let!(:current_pending_report) { FactoryGirl.create(
       :report,
-      :site => current_pending_site,
-      :status => "needs_attention"
+      site: current_pending_site,
+      status: "needs_attention"
     )
   }
   let!(:other_completed_report) { FactoryGirl.create(
       :report,
-      :site => other_completed_site,
-      :status => "completed"
+      site: other_completed_site,
+      status: "completed"
     )
   }
   let!(:other_pending_report) { FactoryGirl.create(
       :report,
-      :site => other_pending_site,
-      :status => "needs_attention"
+      site: other_pending_site,
+      status: "needs_attention"
     )
   }
 
   describe "dashboard/projects" do
     before(:each) do
-      login_as(current_user, :scope => :user)
+      login_as(current_user, scope: :user)
       visit root_path
     end
 
