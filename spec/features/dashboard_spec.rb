@@ -156,12 +156,12 @@ describe "Dashboard" do
     end
 
     it 'creates and displays new sites' do
-      login_as(current_user, :scope => :user)
+      login_as(current_user, scope: :user)
       visit root_path
       click_link 'New Site'
       current_path.should == new_site_path
 
-      fill_in "Name", with: "ecp"#, :match => :prefer_exact
+      fill_in "Name", with: "ecp"
       fill_in "Zipcode", with: 94530
       click_button 'Save'
 
