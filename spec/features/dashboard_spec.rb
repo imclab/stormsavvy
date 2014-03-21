@@ -242,13 +242,12 @@ describe "Dashboard" do
           pp current_completed_site.name
           pp current_completed_site.lat
           pp current_completed_site.lng
-          noaa = NoaaForecastService.new(:site => current_completed_site)
+          noaa = NoaaForecastService.new(site: current_completed_site)
           noaa.get_forecast
           noaa.save_results
           current_completed_site.chance_of_rain.pop.should be_between(0, 100)
           current_completed_site.chance_of_rain.pop.should_not be_nil
         rescue => e
-          # pp 'not online or pop method error'
           pp e
         end
       end
