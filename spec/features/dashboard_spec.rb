@@ -305,23 +305,25 @@ describe "Dashboard" do
         page.should have_text('Inspection event was successfully created.')
       end
 
-      xit 'shows correct inspection event to user' do
+      it 'shows correct inspection event to user' do
         login_as(current_user, :scope => :user)
         visit root_path
-        page.should have_text('CEM2030 for ec slide on 2013-04-01 00:00:00 UTC')
+        page.should have_text('Report for ec slide')
+        # page.should have_text('CEM2030 for ec slide on 2013-04-01 00:00:00 UTC')
         page.should_not have_text('CEM2030 for ec jungle gym on 2013-04-01 00:00:00 UTC')
         page.should_not have_text('No pending inspections.')
 
         login_as(other_user, :scope => :user)
         visit root_path
-        page.should have_text('CEM2031 for peoples park on 2013-04-01 00:00:00 UTC')
+        page.should have_text('Report for peoples park')
+        # page.should have_text('CEM2031 for peoples park on 2013-04-01 00:00:00 UTC')
         page.should_not have_text('CEM2031 for berkeley high on 2013-04-01 00:00:00 UTC')
         page.should_not have_text('No pending inspections.')
       end
     end
 
     describe 'pending reports' do
-      xit 'shows correct pending reports to user' do
+      it 'shows correct pending reports to user' do
         login_as(current_user, :scope => :user)
         visit root_path
         page.should have_text('Report for ec slide')
