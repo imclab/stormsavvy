@@ -145,7 +145,7 @@ describe "Dashboard" do
     end
 
     it 'shows correct site to other_user' do
-      login_as(other_user, :scope => :user)
+      login_as(other_user, scope: :user)
       visit root_path
       # page.should have_text('berkeley usd')
       # page.should have_text('# of Sites: 2')
