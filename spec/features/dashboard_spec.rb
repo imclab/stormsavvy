@@ -134,7 +134,7 @@ describe "Dashboard" do
     end
 
     it 'shows correct site to current_user' do
-      # login_as(current_user, :scope => :user)
+      # login_as(current_user, scope: :user)
       # visit root_path
       # page.should have_text('eb park and rec')
       # page.should have_text('# of Sites: 2')
