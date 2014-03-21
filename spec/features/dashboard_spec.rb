@@ -207,7 +207,7 @@ describe "Dashboard" do
       end
 
       it 'shows site pop' do
-        noaa = NoaaForecastService.new(:site => site)
+        noaa = NoaaForecastService.new(site: site)
         begin
           noaa.get_forecast
           noaa.save_results
