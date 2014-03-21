@@ -6,15 +6,10 @@ Stormsavvy::Application.load_tasks
 
 describe 'scheduler' do
   self.use_transactional_fixtures = false
-
   # let!(:user) { FactoryGirl.create(:user) }
   # let!(:site) { FactoryGirl.create(:site, user: user) }
 
   context 'when running tasks' do
-    # setup do
-    #   @out = `cd #{Rails.root} && rake scheduler:northbay_forecast`
-    # end
-
     describe '#northbay_forecast' do
       it 'sends northbay_forecast' do
         begin
