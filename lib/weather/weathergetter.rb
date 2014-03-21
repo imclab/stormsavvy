@@ -39,9 +39,6 @@ class WeatherGetter
       response = request.response
       data = JSON.parse(response.body)
       return data
-
-      pp 'sleep for 7s between queries'
-      sleep(7) # sleep 7s for 10 query/min terms of use
     rescue => e
       pp e
     end
