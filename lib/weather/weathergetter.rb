@@ -24,20 +24,24 @@ class WeatherGetter
   end
 
   def make_request(url)
-    pp 'sleep for 7s between queries'
-    sleep(7) # sleep 7s for 10 query/min terms of use
+    begin
+      request = Typhoeus::Request.new(
+        url,
+        method: :get,
+        timeout: 8000 # milliseconds
+        # cache_timeout: 60 # seconds
+      )
+      @hydra.queue(request)
+      @hydra.run
+      response = request.response
+      data = JSON.parse(response.body)
+      return data
 
-    request = Typhoeus::Request.new(
-      url,
-      method: :get,
-      timeout: 8000 # milliseconds
-      # cache_timeout: 60 # seconds
-    )
-    @hydra.queue(request)
-    @hydra.run
-    response = request.response
-    data = JSON.parse(response.body)
-    return data
+      pp 'sleep for 7s between queries'
+      sleep(7) # sleep 7s for 10 query/min terms of use
+    rescue => e
+      pp e
+    end
   end
 
   def log_response(request)
