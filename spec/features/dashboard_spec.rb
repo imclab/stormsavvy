@@ -257,14 +257,13 @@ describe "Dashboard" do
           pp current_pending_site.name
           pp current_pending_site.lat
           pp current_pending_site.lng
-          noaa = NoaaForecastService.new(:site => current_pending_site)
+          noaa = NoaaForecastService.new(site: current_pending_site)
           noaa.get_forecast
           noaa.save_results
           pp current_pending_site.forecast_periods.max_by(&:pop).pop
           current_pending_site.chance_of_rain.pop.should be_between(0,100)
           current_pending_site.chance_of_rain.pop.should_not be_nil
         rescue => e
-          # pp 'not online or pop method error'
           pp e
         end
       end
