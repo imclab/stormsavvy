@@ -189,7 +189,7 @@ describe "Dashboard" do
   describe "dashboard/sidebar" do
     describe 'weather forecast' do
       it 'shows correct site to user' do
-        login_as(current_user, :scope => :user)
+        login_as(current_user, scope: :user)
         visit root_path
         page.should have_text('ec jungle gym')
         page.should have_text('ec slide')
