@@ -370,14 +370,15 @@ describe "Dashboard" do
       end
 
       it 'visits remaining pdf reports' do
-        # visit pdf_CEM2050_path
-        # current_path.should == pdf_CEM2050_path
+        pending 'not currently using sampling report links'
+        visit pdf_CEM2050_path
+        current_path.should == pdf_CEM2050_path
 
-        # visit pdf_CEM2051_path
-        # current_path.should == pdf_CEM2051_path
+        visit pdf_CEM2051_path
+        current_path.should == pdf_CEM2051_path
 
-        # visit pdf_CEM2052_path
-        # current_path.should == pdf_CEM2052_path
+        visit pdf_CEM2052_path
+        current_path.should == pdf_CEM2052_path
       end
     end
   end
