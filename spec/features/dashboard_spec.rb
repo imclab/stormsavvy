@@ -197,7 +197,7 @@ describe "Dashboard" do
         page.should_not have_text('berkeley high')
         page.should_not have_text('No active sites')
 
-        login_as(other_user, :scope => :user)
+        login_as(other_user, scope: :user)
         visit root_path
         page.should have_text('peoples park')
         page.should have_text('berkeley high')
