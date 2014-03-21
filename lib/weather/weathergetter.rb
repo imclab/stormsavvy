@@ -25,6 +25,9 @@ class WeatherGetter
 
   def make_request(url)
     begin
+      pp 'sleep for 7s between queries'
+      sleep(7) # sleep 7s for 10 query/min terms of use
+
       request = Typhoeus::Request.new(
         url,
         method: :get,
