@@ -170,18 +170,18 @@ describe "Dashboard" do
     end
 
     it 'creates new sites for factory users' do
-      login_as(current_user, :scope => :user)
+      login_as(current_user, scope: :user)
       current_user.sites.count.should == 2
 
       site = current_user.sites.build(
-        :name => 'ECP',
-        :description => 'Plaza Improvements',
+        name: 'ECP',
+        description: 'Plaza Improvements',
         zipcode: 94530
       )
       site.save
       current_user.sites.count.should == 3
 
-      login_as(other_user, :scope => :user)
+      login_as(other_user, scope: :user)
       other_user.sites.count.should == 2
     end
   end
