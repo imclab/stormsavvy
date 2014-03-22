@@ -15,6 +15,9 @@ class NoaaForecastService
   end
 
   def get_forecast
+    # expire_time = 60.minutes
+    # @response ||= fetch_noaa_data_with_cache(expire_time)
+
     @response ||= fetch_noaa_data
   end
 
