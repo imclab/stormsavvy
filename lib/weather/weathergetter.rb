@@ -74,17 +74,27 @@ class WeatherGetter
     end
   end
 
+  def get_forecast(zipcode)
+    @hydra = Typhoeus::Hydra.new
+    url = "http://api.wunderground.com/api/#{APIKEY}/forecast10day/q/#{zipcode}.json"
+    expire_time = 60.minutes
+    @forecast = make_request_with_cache(url, expire_time) # new cache method
+    # @forecast = make_request(url)
+  end
+
   def parse_wunderground_10day(forecast)
     # Bad zipcode produces forecast['response']['error']['type'] => "querynotfound"
     # Will need to do some spec for the above.
     @forecastday = forecast['forecast']['simpleforecast']['forecastday']
   end
 
+  def display_forecast(zipcode)
+    forecast = get_forecast(zipcode)
+    @forecastday = parse_wunderground_10day(forecast)
+  end
+
   def forecast_table(site)
     begin
-      pp 'sleep for 7s between queries'
-      sleep(7) # sleep 7s for 10 query/min terms of use
-
       wg = WeatherGetter.new
       zipcode = site.zipcode
       forecast = wg.get_forecast(zipcode)
