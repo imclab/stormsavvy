@@ -13,23 +13,10 @@ class WeatherGetter
   def initialize
   end
 
-  def display_forecast(zipcode)
-    forecast = get_forecast(zipcode)
-    @forecastday = parse_wunderground_10day(forecast)
-  end
-
-  def get_forecast(zipcode)
-    @hydra = Typhoeus::Hydra.new
-    url = "http://api.wunderground.com/api/#{APIKEY}/forecast10day/q/#{zipcode}.json"
-    expire_time = 60.minutes
-    @forecast = make_request_with_cache(url, expire_time) # new cache method
-    # @forecast = make_request(url)
-  end
-
   def make_request(url)
     begin
-      pp 'sleep for 7s between queries'
-      sleep(7) # sleep 7s for 10 query/min terms of use
+      # pp 'sleep for 7s between queries'
+      # sleep(7) # sleep 7s for 10 query/min terms of use
 
       request = Typhoeus::Request.new(
         url,
