@@ -55,6 +55,18 @@ describe WeatherGetter do
     end
   end
 
+  describe '#make_request' do
+    it 'makes request' do
+      wg.should respond_to(:make_request)
+    end
+  end
+
+  describe '#make_request_with_cache' do
+    it 'makes request with cache' do
+      wg.should respond_to(:make_request_with_cache)
+    end
+  end
+
   describe '#parse_wunderground_10day' do
     it "extracts wunderground's 10 day txt_forecast" do
       wg.should respond_to(:parse_wunderground_10day)
