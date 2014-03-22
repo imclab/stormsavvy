@@ -135,7 +135,7 @@ namespace :scheduler do
         Rails.cache.fetch('forecast', expires_in: 30.minutes) do
           forecast = site.wg_table
         end
-        pp Rails.cache.fetch('forecast') { site.wg_table }
+        Rails.cache.fetch('forecast') { site.wg_table }
       end
   	end
   end
