@@ -1,5 +1,3 @@
-require 'rspec/core/rake_task'
-
 namespace :scheduler do
 
   desc "runs rake spec"
