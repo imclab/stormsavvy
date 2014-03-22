@@ -116,7 +116,7 @@ namespace :scheduler do
     users = [ (User.find_by email: 'walter@stormsavvy.com') ]
     users.each do |user|
       user.sites.each do |site|
-        Rails.cache.fetch('forecast', expires_in: 30.minutes) do
+        Rails.cache.fetch('forecast', expires_in: 60.minutes) do
           site.noaa_table
         end
         Rails.cache.fetch('forecast') { site.noaa_table }
