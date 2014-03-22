@@ -18,10 +18,26 @@ describe WeatherGetter do
   let(:sites) { [ site, ucb, ecp ] }
   let(:zipcode) { site.zipcode }
 
+  let(:apikey) { Stormsavvy::Application.config.wunderground_apikey }
+  let(:url) { "http://api.wunderground.com/api/#{apikey}/forecast10day/q/#{zipcode}.json" }
+
   before :each do
-    wg.stub(:get_forecast).with(zipcode).and_return { json }
+    # wg.stub(:get_forecast).with(zipcode).and_return { json }
     wg.stub(:forecast_table).with(site).and_return { forecastday }
     wg.stub(:display_forecast).with(zipcode).and_return { forecastday }
+  end
+
+  describe '#display_forecast' do
+    it 'displays forecast for given zipcode' do
+      wg.should respond_to(:display_forecast)
+      forecastday = wg.display_forecast(zipcode)
+      forecastday.each do |f|
+        f['pop'].should be_between(0,100)
+        f['qpf_allday'].count.should == 2
+        f['qpf_allday']['in'].should be_between(0,100)
+        f['date']['day'].should be_between(0,31)
+      end
+    end
   end
 
   describe '#get_forecast' do
