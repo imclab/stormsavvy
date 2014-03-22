@@ -1,9 +1,5 @@
 namespace :scheduler do
 
-  desc "runs rake spec"
-  RSpec::Core::RakeTask.new(:spec)
-  task run_spec: :spec
-
   desc "delivers northbay_forecast mailer"
   task northbay_forecast: :environment do
     test_users = [
