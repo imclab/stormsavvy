@@ -23,8 +23,8 @@ describe WeatherGetter do
 
   before :each do
     # wg.stub(:get_forecast).with(zipcode).and_return { json }
-    wg.stub(:forecast_table).with(site).and_return { forecastday }
-    wg.stub(:display_forecast).with(zipcode).and_return { forecastday }
+    # wg.stub(:forecast_table).with(site).and_return { forecastday }
+    # wg.stub(:display_forecast).with(zipcode).and_return { forecastday }
   end
 
   describe '#display_forecast' do
