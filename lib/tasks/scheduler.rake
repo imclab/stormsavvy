@@ -132,8 +132,8 @@ namespace :scheduler do
     users.each do |user|
       user = User.new
       user.sites.each do |site|
-        Rails.cache.fetch('forecast', expires_in: 30.minutes) do
-          forecast = site.wg_table
+        Rails.cache.fetch('forecast', expires_in: 60.minutes) do
+          site.wg_table
         end
         Rails.cache.fetch('forecast') { site.wg_table }
       end
