@@ -79,15 +79,31 @@ class NoaaForecastService
     process_forecast_periods
   end
 
+  def fetch_noaa_data_with_cache(expire_time)
+    cache_backup = Rails.cache.read('url')
+
+    # api_data = Rails.cache.fetch('url', expires_in: expire_time) do
+    Rails.cache.fetch('url', expires_in: expire_time) do
+
+      # pp 'sleep for 2s between queries'
+      # sleep 2
+      new_data = fetch_noaa_data
+
+      if new_data.blank?
+        cache_backup
+      else
+        new_data
+      end
+    end
+    # return api_data
+  end
+
   def contact_noaa
     begin
-      # pp 'sleep for 2s between queries'
-      # sleep 2 # prevent slamming noaa api
       url = "#{API_URL}duration=#{@duration}&interval=#{@interval}&lat=#{@lat}&lon=#{@lng}"
       @response = Unirest::get(url)
     rescue => e
       # pp 'NOAA API connection cannot be established'
-      # @response = IO.read("./spec/lib/weather/noaa_response.xml")
       pp e
     end
   end
