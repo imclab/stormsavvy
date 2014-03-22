@@ -77,11 +77,10 @@ class User < ActiveRecord::Base
   def wg_forecast
     self.sites.each do |site|
       begin
-        # pp 'sleep 7s between queries'
-        # sleep 7
         site.save_wg
       rescue => e
         # pp 'Wunderground API connection cannot be established'
+        pp e
       end
     end
   end
