@@ -39,12 +39,11 @@ class WeatherGetter
     api_data = Rails.cache.fetch('url', expires_in: expire_time) do
 
       pp 'sleep for 7s between queries'
-      sleep(7) # sleep 7s for 10 query/min terms of use
+      sleep(7) # 10 query/min terms of use
 
       new_data = make_request(url)
 
       if new_data.blank?
-        # if API fetch does not return valid data, return old cache state
         cache_backup
       else
         new_data
