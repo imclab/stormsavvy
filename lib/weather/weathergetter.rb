@@ -3,7 +3,7 @@ require 'json'
 
 include Typhoeus
 
-APIKEY = ENV["APIKEY"]
+APIKEY = ENV["WUNDERGROUND_APIKEY"]
 # APIKEY = Stormsavvy::Application.config.wunderground_apikey
 
 class WeatherGetter
