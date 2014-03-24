@@ -16,8 +16,10 @@ class WeatherGetter
 
   def make_request(url)
     begin
-      # pp 'sleep for 7s between queries'
-      # sleep(7) # sleep 7s for 10 query/min terms of use
+      if Rails.env == 'production'
+        pp 'sleep for 7s between queries'
+        sleep(7) # sleep 7s for 10 query/min terms of use
+      end
 
       request = Typhoeus::Request.new(
         url,
