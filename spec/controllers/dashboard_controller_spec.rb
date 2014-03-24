@@ -54,18 +54,18 @@ describe DashboardController do
 
     @completed_report = FactoryGirl.create(
       :report,
-      :site => @current_site,
-      :status => "completed"
+      site: @current_site,
+      status: 'completed'
     )
     @pending_report = FactoryGirl.create(
       :report,
-      :site => @current_site,
-      :status => "needs_attention"
+      site: @current_site,
+      status: "needs_attention"
     )
     @other_report = FactoryGirl.create(
       :report,
-      :site => @other_site,
-      :status => "needs_attention"
+      site: @other_site,
+      status: "needs_attention"
     )
     @completed_reports = [ @completed_report ]
     @pending_reports = [ @pending_report ]
