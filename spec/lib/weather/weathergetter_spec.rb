@@ -37,9 +37,7 @@ describe WeatherGetter do
 
   describe '#display_forecast' do
     it 'displays forecast for given zipcode' do
-      wg.should_not respond_to(:display_forecast)
-      expect{ wg.display_forecast(zipcode).should }.to raise_error
-
+      wg.should respond_to(:display_forecast)
       forecastday = wg.display_forecast(zipcode)
       forecastday.each do |f|
         f['pop'].should be_between(0,100)
