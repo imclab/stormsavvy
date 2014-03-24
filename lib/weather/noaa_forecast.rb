@@ -55,7 +55,9 @@ class NOAAForecast
     # pp 'sleep for 2s between queries'
     # sleep(2)
 
-    xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
+    url = "http://www.wrh.noaa.gov/forecast/xml/xml.php?"
+    xml = "#{url}?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
+    # xml = "http://www.wrh.noaa.gov/forecast/xml/xml.php?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
     request = Typhoeus::Request.new(xml,
       body: "this is a request body",
       method: :post,
