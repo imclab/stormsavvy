@@ -16,25 +16,25 @@ describe DashboardController do
   before(:each) do
     @current_user = FactoryGirl.create(
       :user,
-      :email => 'name@stormsavvy.com'
+      email: 'name@stormsavvy.com'
     )
     @other_user = FactoryGirl.create(
       :user,
-      :email => 'info@stormsavvy.com'
+      email: 'info@stormsavvy.com'
     )
     @all_users = [ @current_user, @other_user ]
 
     @current_site = FactoryGirl.create(
       :site,
-      :user => @current_user,
-      :name => 'ec jungle gym',
-      :zipcode => 94530
+      user: @current_user,
+      name: 'ec jungle gym',
+      zipcode: 94530
     )
     @other_site = FactoryGirl.create(
       :site,
-      :user => @other_user,
-      :name => 'berkeley high',
-      :zipcode => 94709
+      user: @other_user,
+      name: 'berkeley high',
+      zipcode: 94709
     )
     @current_sites = [ @current_site ]
     @other_sites = [ @other_site ]
