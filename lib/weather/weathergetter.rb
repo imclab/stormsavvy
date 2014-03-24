@@ -43,10 +43,10 @@ class WeatherGetter
     cache_backup = Rails.cache.read('url')
     api_data = Rails.cache.fetch('url', expires_in: expire_time) do
 
-      if Rails.env == 'production'
-        pp 'sleep for 7s between queries'
-        sleep(7) # 10 query/min terms of use
-      end
+      # if Rails.env == 'production'
+      pp 'sleep for 7s between queries'
+      sleep(7) # 10 query/min terms of use
+      # end
 
       new_data = make_request(url)
 
