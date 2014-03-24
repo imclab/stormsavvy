@@ -4,6 +4,8 @@ require 'json'
 include Typhoeus
 
 APIKEY = ENV["WUNDERGROUND_APIKEY"] # kharma@gmail.com account
+NCDC_CDO_KEY = ENV["NCDC_CDO_KEY"]
+
 # APIKEY = ENV["APIKEY"] # walter@stormsavvy.com account
 # APIKEY = Stormsavvy::Application.config.wunderground_apikey
 
