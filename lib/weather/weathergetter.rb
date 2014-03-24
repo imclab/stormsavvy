@@ -78,6 +78,8 @@ class WeatherGetter
     end
   end
 
+  private
+
   def get_forecast(zipcode)
     @hydra = Typhoeus::Hydra.new
     # expire_time = 60.minutes
