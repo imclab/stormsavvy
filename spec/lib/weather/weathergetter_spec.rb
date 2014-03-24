@@ -54,9 +54,7 @@ describe WeatherGetter do
     end
 
     it "gets the weather for given zipcode" do
-      wg.should_not respond_to(:get_forecast)
-      expect{ wg.get_forecast(zipcode).should }.to raise_error
-
+      wg.should respond_to(:get_forecast)
       forecast = wg.get_forecast(zipcode)
       forecast.should include('response')
       forecast.should include('forecast')
