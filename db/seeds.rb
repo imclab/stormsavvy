@@ -21,98 +21,73 @@ Location.transaction do
   end
 end
 
-pp "User seed data"
+pp 'user seed data'
 User.destroy_all
+
 user = User.create!(
-  :firstname => "Jim",
-  :lastname => "Nelson",
-  :email => "jim.nelson@test.com",
-  :password => "tester"
-  )
+  email: 'vader@starwars.com',
+  password: 'stormpopwho?',
+  password_confirmation: 'stormpopwho?'
+)
 
-pp "Project seed data"
-Project.destroy_all
-hwy_101 = Project.create!(
-  :name => "Hwy 101 Corridor",
-  :description => "Highway irmprovements in Marin/Sonoma counties", 
-  :startdate => "2011-02-20 12:01:00",
-  :finishdate => "2012-02-20 12:01:00"
-  )
+# pp "project seed data"
+# Project.destroy_all
+# hwy_101 = Project.create!(
+#   name: 'Hwy 101 Corridor',
+#   description: 'Highway Improvements',
+#   startdate: '2011-02-20 12:01:00',
+#   finishdate: '2012-02-20 12:01:00'
+# )
+# dt_oakland = Project.create!(
+#   name: 'DT Oakland',
+#   description: 'Downtown Oakland Junction',
+#   startdate: '2012-03-01 12:01:00',
+#   finishdate: '2012-03-12 12:01:00'
+# )
 
-dt_oakland = Project.create!(
-  :name => "DT Oakland",
-  :description => "Downtown Oakland Junction",
-  :startdate => "2012-03-01 12:01:00",
-  :finishdate => "2012-03-12 12:01:00"
-  )
-
-# user.projects << hwy_101
-# user.projects << dt_oakland
-
-pp "Sites seed data"
+pp 'site seed data'
 Site.destroy_all
 
-Site.create!(
-  :name => "Sausalito 101",
-  :address_1 => "HWY 101",
-  :city => "Sausalito",
-  :zipcode => "99999"
-  )
-
-Site.create!(
-  :name => "Sears Oakland",
-  :address_1 => "1955 Broadway",
-  :city => "Oakland",
-  :zipcode => "99998"
-  )
-
-Site.create!(
-  :name => "Portland",
-  :address_1 => "100 Main Street",
-  :city => "Portland",
-  :zipcode => "99997"
-  )
-
-Site.create!(
-  :name => "San Francisco",
-  :address_1 => "100 Main Street",
-  :city => "San Francisco",
-  :zipcode => "99996"
-  )
-
-Site.create!(
-  :name => "Seattle",
-  :address_1 => "100 Main Street",
-  :city => "Seattle",
-  :zipcode => "99995"
-  )
-
-Site.create!(
-  :name => "Los Angeles",
-  :address_1 => "100 Main Street",
-  :city => "Los Angeles",
-  :zipcode => "99994"
-  )
-
-hwy_101.sites << Site.all.to_a
-
-# Site seed data
-Site.create!(
-  :name => "MSN-A1",
-  :description => "Hwy 101 Novato - PM 18.6-22.3",
-  :costcode => "264064",
-  :size => "20 acres",
-  #:address1 => "320 Deere Lane",
-  #:address2 => "",
-  :state => "California",
-  :zipcode => "99999",
-  :city => "Novato",
-  :exposed_area => "10 acres"
-  )
-
-# User seed data
-User.create!(
-  :email => "name@stormsavvy.com",
-  :password => "Dark&Stormy",
-  :password_confirmation => "Dark&Stormy"
-  )
+user.sites.create!({
+  name: 'Sausalito 101',
+  address_1: 'HWY 101',
+  city: 'Sausalito',
+  zipcode: 94965,
+  user: user
+}, without_protection: true)
+user.sites.create!({
+  name: 'Sears Oakland',
+  address_1: '1955 Broadway',
+  city: 'Oakland',
+  zipcode: 94612,
+  user: user
+}, without_protection: true)
+user.sites.create!({
+  name: 'Portland',
+  address_1: '100 Main Street',
+  city: 'Portland',
+  zipcode: 97001,
+  user: user
+}, without_protection: true)
+user.sites.create!({
+  name: 'San Francisco',
+  address_1: '100 Main Street',
+  city: 'San Francisco',
+  zipcode: 94120,
+  user: user
+}, without_protection: true)
+user.sites.create!({
+  name: 'Seattle',
+  address_1: '100 Main Street',
+  city: 'Seattle',
+  zipcode: 98101,
+  user: user
+}, without_protection: true)
+user.sites.create!({
+  name: 'Los Angeles',
+  address_1: '100 Main Street',
+  city: 'Los Angeles',
+  zipcode: 99994,
+  user: user
+}, without_protection: true)
+# hwy_101.sites << Site.all.to_a
