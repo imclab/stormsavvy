@@ -73,6 +73,9 @@ class NoaaForecastService
   end
 
   def fetch_noaa_data
+    pp 'sleep for 2s between queries'
+    sleep 2
+
     contact_noaa
     process_xml_response
     process_weather_update
