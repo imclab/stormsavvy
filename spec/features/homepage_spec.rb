@@ -9,7 +9,7 @@ describe 'homepage' do
 
   let!(:user) { FactoryGirl.create(
     :user,
-    email: 'demo@stormsavvy.com',
+    email: 'obiwan@starwars.com',
     password: 'stormpopwho?',
     password_confirmation: 'stormpopwho?'
     )
