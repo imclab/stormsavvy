@@ -7,29 +7,39 @@ include Typhoeus
 
 describe WeatherGetter do
 
-  let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
-  let(:wg) { WeatherGetter.new }
-  let(:ww) { WeatherWorker.new }
-  let(:forecast) { wg.get_forecast(zipcode) }
-  let(:forecastday) { wg.parse_wunderground_10day(json) }
   let(:site) { FactoryGirl.build(:site) }
   let(:ucb) { FactoryGirl.build(:site, name: 'ucb') }
   let(:ecp) { FactoryGirl.build(:site, name: 'ecp') }
   let(:sites) { [ site, ucb, ecp ] }
   let(:zipcode) { site.zipcode }
 
-  let(:apikey) { Stormsavvy::Application.config.wunderground_apikey }
-  let(:url) { "http://api.wunderground.com/api/#{apikey}/forecast10day/q/#{zipcode}.json" }
+  let(:json) { JSON.parse(IO.read('./spec/fixtures/wunderground_10day.json')) }
+  let!(:wg) { WeatherGetter.new }
+  let(:ww) { WeatherWorker.new }
+  let(:forecast) { wg.get_forecast(zipcode) }
+  let(:forecastday) { wg.parse_wunderground_10day(json) }
+  # let(:apikey) { Stormsavvy::Application.config.wunderground_apikey }
+  # let(:apikey) { ENV["WUNDERGROUND_APIKEY"] }
+  # let(:url) { "http://api.wunderground.com/api/#{apikey}/forecast10day/q/#{zipcode}.json" }
 
-  before :each do
-    # wg.stub(:get_forecast).with(zipcode).and_return { json }
-    # wg.stub(:forecast_table).with(site).and_return { forecastday }
-    # wg.stub(:display_forecast).with(zipcode).and_return { forecastday }
+  describe '#make_request' do
+    it 'makes request' do
+      wg.class.should == WeatherGetter
+      wg.should respond_to(:make_request)
+    end
+  end
+
+  describe '#make_request_with_cache' do
+    it 'makes request with cache' do
+      wg.should respond_to(:make_request_with_cache)
+    end
   end
 
   describe '#display_forecast' do
     it 'displays forecast for given zipcode' do
-      wg.should respond_to(:display_forecast)
+      wg.should_not respond_to(:display_forecast)
+      expect{ wg.display_forecast(zipcode).should }.to raise_error
+
       forecastday = wg.display_forecast(zipcode)
       forecastday.each do |f|
         f['pop'].should be_between(0,100)
