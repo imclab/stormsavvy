@@ -73,9 +73,7 @@ describe WeatherGetter do
 
   describe '#forecast_table' do
     it 'returns forecast for given site' do
-      wg.should_not respond_to(:forecast_table)
-      expect{ wg.forecast_table(zipcode).should }.to raise_error
-
+      wg.should respond_to(:forecast_table)
       forecastday = wg.forecast_table(site)
       forecastday.each do |f|
         f['pop'].should be_between(0,100)
