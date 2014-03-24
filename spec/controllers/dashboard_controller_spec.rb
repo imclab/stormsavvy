@@ -75,7 +75,7 @@ describe DashboardController do
     sign_in @other_user
     sign_in user
 
-    # @weather_event = FactoryGirl.create(:weather_event, :site => @site)
+    # @weather_event = FactoryGirl.create(:weather_event, site: @site)
     # @weather_events = [@weather_event]
   end
 
