@@ -33,7 +33,7 @@ describe 'homepage' do
 
     context 'when passing valid credentials' do
       before(:each)do
-        fill_in 'Email', with: 'demo@stormsavvy.com'
+        fill_in 'Email', with: 'obiwan@starwars.com'
         fill_in 'Password', with: 'stormpopwho?'
         click_button 'Sign in'
       end
