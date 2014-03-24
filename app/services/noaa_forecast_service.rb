@@ -88,8 +88,6 @@ class NoaaForecastService
     # api_data = Rails.cache.fetch('url', expires_in: expire_time) do
     Rails.cache.fetch('url', expires_in: expire_time) do
 
-      # pp 'sleep for 2s between queries'
-      # sleep 2
       new_data = fetch_noaa_data
 
       if new_data.blank?
