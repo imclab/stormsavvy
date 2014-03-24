@@ -42,11 +42,11 @@ describe DashboardController do
 
     @current_ie = FactoryGirl.create(
       :inspection_event,
-      :site => @current_site
+      site: @current_site
     )
     @other_ie = FactoryGirl.create(
       :inspection_event,
-      :site => @other_site
+      site: @other_site
     )
     @current_ie_array = [ @current_ie ]
     @other_ie_array = [ @other_ie ]
