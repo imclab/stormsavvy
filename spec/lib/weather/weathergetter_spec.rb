@@ -65,9 +65,7 @@ describe WeatherGetter do
 
   describe '#parse_wunderground_10day' do
     it "extracts wunderground's 10 day txt_forecast" do
-      wg.should_not respond_to(:parse_wunderground_10day)
-      expect{ wg.parse_wunderground_10day(forecast).should }.to raise_error
-
+      wg.should respond_to(:parse_wunderground_10day)
       forecastday = wg.parse_wunderground_10day(json)
       forecastday.should have(10).items
     end
