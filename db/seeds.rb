@@ -10,10 +10,10 @@ Location.transaction do
   File.open(DATAFILE, 'r').each_with_index do |line,idx|
     zip,name,lat,long = line.split("\t").values_at(1,5,9,10)
     Location.create({
-      :zipcode => zip,
-      :lat => lat,
-      :long => long,
-      :name => name
+      zipcode: zip,
+      lat: lat,
+      long: long,
+      name: name
     })
     pp "#{idx} lines imported" if idx % 100 == 0
 
