@@ -18,17 +18,17 @@ describe "sites/show" do
 
   before {
     @user = FactoryGirl.create(:user)
-    @site = assign(
-      :site, stub_model(
+    @site = assign(:site,
+      stub_model(
         Site,
         name: "Name",
         zipcode: "Zipcode",
         user: @user
       )
     )
-    wg.stub(:wg_table) { return forecastday }
-    @site.stub(:forecast_table) { return forecast }
-    nf.stub(:ping_noaa).with([lat, long],duration,interval).and_return(response)
+    # wg.stub(:wg_table) { return forecastday }
+    # @site.stub(:forecast_table) { return forecast }
+    # nf.stub(:ping_noaa).with([lat, long],duration,interval).and_return(response)
 
     render
   }
