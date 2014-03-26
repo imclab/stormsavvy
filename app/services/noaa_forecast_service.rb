@@ -73,8 +73,10 @@ class NoaaForecastService
   end
 
   def fetch_noaa_data
-    pp 'sleep for 2s between queries'
-    sleep 2
+    if Rails.env == 'production'
+      pp 'sleep for 2s between queries'
+      sleep 2
+    end
 
     contact_noaa
     process_xml_response
