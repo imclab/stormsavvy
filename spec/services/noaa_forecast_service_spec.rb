@@ -91,6 +91,7 @@ describe NoaaForecastService do
             nfs.save_results
             ForecastPeriod.count.should == weather_update_count + 29
           rescue => e
+            pending 'NOAA API connection cannot be established'
             pp e
           end
         end
