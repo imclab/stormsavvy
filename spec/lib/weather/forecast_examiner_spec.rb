@@ -47,6 +47,7 @@ describe ForecastExaminer do
           fe.rain.should == :warning
         end.should change(Report, :count).by(1)
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end
@@ -60,6 +61,7 @@ describe ForecastExaminer do
           fe.rain.should == :imminent
         end.should change(Report, :count).by(1)
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end

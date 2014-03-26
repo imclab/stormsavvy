@@ -15,6 +15,7 @@ describe 'scheduler' do
         begin
           Rake::Task['scheduler:northbay_forecast'].invoke
         rescue => e
+          pending 'NOAA API connection cannot be established'
           pp e
         end
       end
@@ -60,6 +61,7 @@ describe 'scheduler' do
         begin
           Rake::Task['scheduler:mailout'].invoke
         rescue => e
+          pending 'NOAA API connection cannot be established'
           pp e
         end
       end

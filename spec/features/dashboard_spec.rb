@@ -217,6 +217,7 @@ describe "Dashboard" do
           pp forecast_period.class
           site.chance_of_rain.pop.should == site.forecast_periods.max_by(&:pop).pop
         rescue => e
+          pending 'NOAA API connection cannot be established'
           pp e
         end
       end
@@ -233,6 +234,7 @@ describe "Dashboard" do
             site.chance_of_rain.pop.should_not be_nil
           end
         rescue => e
+          pending 'NOAA API connection cannot be established'
           pp e
         end
       end
@@ -248,6 +250,7 @@ describe "Dashboard" do
           current_completed_site.chance_of_rain.pop.should be_between(0, 100)
           current_completed_site.chance_of_rain.pop.should_not be_nil
         rescue => e
+          pending 'NOAA API connection cannot be established'
           pp e
         end
       end
@@ -264,6 +267,7 @@ describe "Dashboard" do
           current_pending_site.chance_of_rain.pop.should be_between(0,100)
           current_pending_site.chance_of_rain.pop.should_not be_nil
         rescue => e
+          pending 'NOAA API connection cannot be established'
           pp e
         end
       end
@@ -277,6 +281,7 @@ describe "Dashboard" do
           site.chance_of_rain.pop.should be_between(0,100)
           site.chance_of_rain.pop.should_not be_nil
         rescue => e
+          pending 'NOAA API connection cannot be established'
           pp e
         end
       end

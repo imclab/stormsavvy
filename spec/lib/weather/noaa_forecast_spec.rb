@@ -110,6 +110,7 @@ describe NOAAForecast do
         forecast = nf.seven_day_weather(zipcode)
         forecast[0].count.should == fullcount
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end
@@ -127,6 +128,7 @@ describe NOAAForecast do
           qpf.should be_between(0,100)
         end
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end
@@ -154,6 +156,7 @@ describe NOAAForecast do
         results[0].data["geometry"]["location"]["lat"].should be_between(37,39)
         results[0].data["geometry"]["location"]["lng"].should be_between(-123,-121)
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end
@@ -165,6 +168,7 @@ describe NOAAForecast do
         results[:lat].should be_between(37,39)
         results[:long].should be_between(-123,-121)
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end
@@ -195,6 +199,7 @@ describe NOAAForecast do
           qpf.should be_between(0,100)
         end
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end
@@ -234,6 +239,7 @@ describe NOAAForecast do
         # pp request.response.status_message
         nf.log_response(request)
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end
@@ -246,6 +252,7 @@ describe NOAAForecast do
         dates = nf.get_valid_dates(response)
         dates.count.should == 8
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end
@@ -272,6 +279,7 @@ describe NOAAForecast do
         forecast = nf.parse_weather_data(response)
         forecast[0].count.should == fullcount
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end
@@ -301,6 +309,7 @@ describe NOAAForecast do
           f[:rainfall].should be_between(0,100)
         end
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end
@@ -324,6 +333,7 @@ describe NOAAForecast do
           f[:rainfall].should be_between(0,100)
         end
       rescue => e
+        pending 'NOAA API connection cannot be established'
         pp e
       end
     end
