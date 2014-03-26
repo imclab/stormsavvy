@@ -1,82 +1,75 @@
 require 'spec_helper'
+require 'current_user_object'
 
 describe DashboardController do
 
   include Devise::TestHelpers
 
-  let(:user) {
+  let!(:user) {
     FactoryGirl.create(:user)
     # login_as(user, :scope => :user)
   }
+  let!(:current_user) { FactoryGirl.create(
+    :user,
+    email: 'name@stormsavvy.com'
+  )}
+  let!(:other_user) { FactoryGirl.create(
+    :user,
+    email: 'info@stormsavvy.com'
+  )}
+  let!(:all_users) { [ @current_user, @other_user ] }
 
-  before :each do
-    sign_in user
-  end
+  let!(:current_site) { FactoryGirl.create(
+    :site,
+    user: current_user,
+    name: 'ec jungle gym',
+    zipcode: 94530
+  )}
+  let!(:other_site) { FactoryGirl.create(
+    :site,
+    user: other_user,
+    name: 'berkeley high',
+    zipcode: 94709
+  )}
+  let!(:current_sites) { [ current_site ] }
+  let!(:other_sites) { [ other_site ] }
+  let!(:all_sites) { [ current_site, other_site ] }
+
+  let!(:current_ie) { FactoryGirl.create(
+    :inspection_event,
+    site: current_site
+  )}
+  let!(:other_ie) { FactoryGirl.create(
+    :inspection_event,
+    site: other_site
+  )}
+  let!(:current_ie_array) { [ current_ie ] }
+  let!(:other_ie_array) { [ other_ie ] }
+  let!(:all_ie_array) { [ current_ie, other_ie ] }
+
+  let!(:completed_report) { FactoryGirl.create(
+    :report,
+    site: current_site,
+    status: 'completed'
+  )}
+  let!(:pending_report) { FactoryGirl.create(
+    :report,
+    site: current_site,
+    status: 'needs_attention'
+  )}
+  let!(:other_report) { FactoryGirl.create(
+    :report,
+    site: other_site,
+    status: 'needs_attention'
+  )}
+  let!(:completed_reports) { [ completed_report ] }
+  let!(:pending_reports) { [ pending_report ] }
+  let!(:all_reports) { [ completed_report, pending_report ] }
 
   before(:each) do
-    @current_user = FactoryGirl.create(
-      :user,
-      email: 'name@stormsavvy.com'
-    )
-    @other_user = FactoryGirl.create(
-      :user,
-      email: 'info@stormsavvy.com'
-    )
-    @all_users = [ @current_user, @other_user ]
-
-    @current_site = FactoryGirl.create(
-      :site,
-      user: @current_user,
-      name: 'ec jungle gym',
-      zipcode: 94530
-    )
-    @other_site = FactoryGirl.create(
-      :site,
-      user: @other_user,
-      name: 'berkeley high',
-      zipcode: 94709
-    )
-    @current_sites = [ @current_site ]
-    @other_sites = [ @other_site ]
-    @all_sites = [ @current_site, @other_site ]
-
-    @current_ie = FactoryGirl.create(
-      :inspection_event,
-      site: @current_site
-    )
-    @other_ie = FactoryGirl.create(
-      :inspection_event,
-      site: @other_site
-    )
-    @current_ie_array = [ @current_ie ]
-    @other_ie_array = [ @other_ie ]
-    @all_ie_array = [ @current_ie, @other_ie ]
-
-    @completed_report = FactoryGirl.create(
-      :report,
-      site: @current_site,
-      status: 'completed'
-    )
-    @pending_report = FactoryGirl.create(
-      :report,
-      site: @current_site,
-      status: "needs_attention"
-    )
-    @other_report = FactoryGirl.create(
-      :report,
-      site: @other_site,
-      status: "needs_attention"
-    )
-    @completed_reports = [ @completed_report ]
-    @pending_reports = [ @pending_report ]
-    @all_reports = [ @completed_report, @pending_report ]
-
-    sign_in @current_user
-    sign_in @other_user
+    sign_in current_user
+    sign_in other_user
     sign_in user
-
-    # @weather_event = FactoryGirl.create(:weather_event, site: @site)
-    # @weather_events = [@weather_event]
   end
 
   describe "GET 'index' for signed in user" do
