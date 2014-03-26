@@ -23,6 +23,7 @@ describe WundergroundWorker do
           f['date']['day'].should be_between(0,31)
         end
       rescue => e
+        pending 'API connection cannot be established'
         pp e
       end
     end
