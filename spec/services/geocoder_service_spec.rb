@@ -26,18 +26,19 @@ describe GeocoderService do
             result["lat"].should_not == nil
             expect{ result["foobar"].should  }.to raise_error
           rescue => e
-            # 'Geocoding API connection cannot be established'
+            pending 'Geocoding API connection cannot be established'
             pp e
           end
         end
 
         it 'has correct response body count' do
-          # geocoder_results = JSON.parse(IO.read('./spec/fixtures/geocoder_results.json'))
+          ## geocoder_results = JSON.parse(IO.read('./spec/fixtures/geocoder_results.json'))
           begin
             query_results
             query_results.body["postalCodes"][0].count.should == 9
             query_results.body.count.should == 1
           rescue => e
+            pending 'Geocoding API connection cannot be established'
             pp e
           end
         end
@@ -51,7 +52,7 @@ describe GeocoderService do
         query_results = GeonamesGeocodingService.search(0)
         query_results.body["postalCodes"][0].should == nil
       rescue => e
-        # 'Geocoding API connection cannot be established'
+        pending 'Geocoding API connection cannot be established'
         pp e
       end
     end
@@ -76,7 +77,7 @@ describe GeocoderService do
             result["lng"].should_not == nil
             expect{ result["foobar"].should  }.to raise_error
           rescue => e
-            # 'Geocoding API connection cannot be established'
+            pending 'Geocoding API connection cannot be established'
             pp e
           end
         end
@@ -90,7 +91,7 @@ describe GeocoderService do
         pp result["lat"]
         pp result["lng"]
       rescue => e
-        # 'Geocoding API connection cannot be established'
+        pending 'Geocoding API connection cannot be established'
         pp e
       end
     end
@@ -103,7 +104,7 @@ describe GeocoderService do
         result["lat"].should == nil
         result["lng"].should == nil
       rescue => e
-        # 'Geocoding API connection cannot be established'
+        pending 'Geocoding API connection cannot be established'
         pp e
       end
     end
