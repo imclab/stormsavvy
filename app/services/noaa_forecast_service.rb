@@ -106,7 +106,7 @@ class NoaaForecastService
       url = "#{API_URL}duration=#{@duration}&interval=#{@interval}&lat=#{@lat}&lon=#{@lng}"
       @response = Unirest::get(url)
     rescue => e
-      # pp 'NOAA API connection cannot be established'
+      pp 'NOAA API connection cannot be established'
       pp e
     end
   end
@@ -115,7 +115,7 @@ class NoaaForecastService
     begin
       @xml = Nokogiri::XML(@response.body)
     rescue => e
-      # pp 'NOAA API connection cannot be established'
+      pp 'NOAA API connection cannot be established'
       pp e
     end
   end
@@ -125,7 +125,7 @@ class NoaaForecastService
       @weather_update = @site.weather_updates.new
       @weather_update.build_from_xml(@xml)
     rescue => e
-      # pp 'NOAA API connection cannot be established'
+      pp 'NOAA API connection cannot be established'
       pp e
     end
   end
@@ -137,7 +137,7 @@ class NoaaForecastService
         parse_forecast_day(forecast_day)
       end
     rescue => e
-      # pp 'NOAA API connection cannot be established'
+      pp 'NOAA API connection cannot be established'
       pp e
     end
   end
