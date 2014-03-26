@@ -1,5 +1,11 @@
 namespace :scheduler do
 
+  desc "creates pdf"
+  task create_pdf: :environment do
+    first_report = FirstReport.new
+    first_report.build_report
+  end
+
   desc "delivers northbay_forecast mailer"
   task northbay_forecast: :environment do
     test_users = [
