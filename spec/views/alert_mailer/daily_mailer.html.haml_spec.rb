@@ -133,6 +133,7 @@ describe "alert_mailer/daily_mailer" do
       rendered.should match(/%/)
       rendered.should match(/inch/)
     rescue => e
+      pending 'API connection cannot be established'
       pp e
     end
   end
