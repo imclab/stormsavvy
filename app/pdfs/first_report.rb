@@ -55,8 +55,8 @@ class FirstReport < ReportsPdf
 
     filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf"
     pdf = Prawn::Document.new(
-      :template => filename,
-      :page_size => "A4"
+      template: filename,
+      page_size: "A4"
     )
     start_new_page
   end
@@ -67,8 +67,8 @@ class FirstReport < ReportsPdf
 
     filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_03.pdf"
     pdf = Prawn::Document.new(
-      :template => filename,
-      :page_size => "A4"
+      template: filename,
+      page_size: "A4"
     )
     start_new_page
   end
@@ -79,8 +79,8 @@ class FirstReport < ReportsPdf
 
     filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_04.pdf"
     pdf = Prawn::Document.new(
-      :template => filename,
-      :page_size => "A4"
+      template: filename,
+      page_size: "A4"
     )
     start_new_page
   end
@@ -91,8 +91,8 @@ class FirstReport < ReportsPdf
 
     filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_05.pdf"
     pdf = Prawn::Document.new(
-      :template => filename,
-      :page_size => "A4"
+      template: filename,
+      page_size: "A4"
     )
     start_new_page
   end
@@ -103,8 +103,8 @@ class FirstReport < ReportsPdf
 
     filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_06.pdf"
     pdf = Prawn::Document.new(
-      :template => filename,
-      :page_size => "A4"
+      template: filename,
+      page_size: "A4"
     )
     start_new_page
   end
@@ -115,8 +115,8 @@ class FirstReport < ReportsPdf
 
     filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf"
     pdf = Prawn::Document.new(
-      :template => filename,
-      :page_size => "A4"
+      template: filename,
+      page_size: "A4"
     )
     start_new_page
   end
@@ -127,8 +127,8 @@ class FirstReport < ReportsPdf
 
     filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_02.pdf"
     pdf = Prawn::Document.new(
-      :template => filename,
-      :page_size => "A4"
+      template: filename,
+      page_size: "A4"
     )
     start_new_page
   end
@@ -140,8 +140,8 @@ class FirstReport < ReportsPdf
 
     filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_09.pdf"
     pdf = Prawn::Document.new(
-      :template => filename,
-      :page_size => "A4"
+      template: filename,
+      page_size: "A4"
     )
   end
 end
