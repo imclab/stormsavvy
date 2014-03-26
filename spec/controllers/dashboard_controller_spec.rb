@@ -82,68 +82,74 @@ describe DashboardController do
   describe "dashboard variables: users and sites" do
     it 'returns current sites' do
       # sign_in @current_user
-      @current_sites.should == @current_user.sites
-      @current_sites.should_not include(@other_sites)
-      @current_sites.should_not be_nil
+      current_sites.should == current_user.sites
+      current_sites.should_not include(other_sites)
+      current_sites.should_not be_nil
     end
 
     it "returns pending inspection events" do
-      @current_ie_array.should == @current_site.inspection_events.where(:completed => false)
-      @current_ie_array.should_not include(@other_ie)
+      current_ie_array.should == current_site.inspection_events.where(completed: false)
+      current_ie_array.should_not include(other_ie)
     end
   end
 
   describe "dashboard variables: events and reports" do
     it "does not return inspection event if empty to current user" do
       inspection_events = []
-      @current_user.sites.each do |site|
+      current_user.sites.each do |site|
         site.inspection_events.each do |ie|
           if ie.completed.blank?
-            puts 'no inspection events'
+            pp 'no inspection events'
           else
             inspection_events[] << ie.completed
-            puts ie.completed
+            pp ie.completed
           end
         end
       end
 
-      inspection_events.should == @current_site.inspection_events.completed
+      inspection_events.should == current_site.inspection_events.completed
     end
 
     it "returns inspection event if present to current user" do
-      ie1 = InspectionEvent.create(
-        site: @current_site,
-        site_id: @current_site.object_id,
+      current_ie = InspectionEvent.create(
+        site: current_site,
+        site_id: current_site.object_id,
         completed: true
       )
-      ie2 = InspectionEvent.create(
-        site: @other_site,
-        site_id: @other_site.object_id,
+      other_ie = InspectionEvent.create(
+        site: other_site,
+        site_id: other_site.object_id,
         completed: true
       )
 
       inspection_events = InspectionEvent.completed
       inspection_events.blank?.should == false
 
-      ie = [] << ie1 << ie2
-      ie.should == [ie1, ie2]
+      ie = [] << current_ie << other_ie
+      ie.should == [current_ie, other_ie]
     end
 
     it "returns needs_attention reports" do
-      Report.create(:status => "needs_attention")
-      needs_attention = Report.where(:status => "needs_attention")
+      FactoryGirl.create(
+        :report,
+        status: 'needs_attention'
+      )
+      needs_attention = Report.where(status: 'needs_attention')
       needs_attention.blank?.should == false
     end
 
     it "returns completed reports" do
-      Report.create(:status => "completed")
-      completed = Report.where(:status => "completed")
+      FactoryGirl.create(
+        :report,
+        status: 'completed'
+      )
+      completed = Report.where(status: 'completed')
       completed.blank?.should == false
     end
   end
 
   describe "error handling" do
-    let(:site_error) { Site.create(:max_rain => nil) }
+    let(:site_error) { Site.create(max_rain: nil) }
     it 'renders error message if rain state = nil' do
       # rendered.should =~ /An error occurred or connection not available./
     end
