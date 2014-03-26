@@ -43,6 +43,7 @@ describe AlertMailer do
         mailer.to.should eq(["#{user.email}"])
         mailer.from.should eq(["alerts@stormsavvy.com"])
       rescue => e
+        pending 'API connection cannot be established'
         pp e
       end
     end
@@ -54,6 +55,7 @@ describe AlertMailer do
         mailer.body.encoded.should match("Please email walter@stormsavvy.com")
         mailer.body.encoded.should match("The Storm Savvy Team")
       rescue => e
+        pending 'API connection cannot be established'
         pp e
       end
     end
@@ -63,6 +65,7 @@ describe AlertMailer do
         ActionMailer::Base.deliveries.count.should == 2
         ActionMailer::Base.deliveries.should_not be_empty
       rescue => e
+        pending 'API connection cannot be established'
         pp e
       end
     end
@@ -99,6 +102,7 @@ describe AlertMailer do
           f[:rainfall].should be_between(0,100)
         end
       rescue => e
+        pending 'API connection cannot be established'
         pp e
       end
     end
@@ -116,6 +120,7 @@ describe AlertMailer do
           f['pop'].should be_between(0,100)
         end
       rescue => e
+        pending 'API connection cannot be established'
         pp e
       end
     end
