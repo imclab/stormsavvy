@@ -21,16 +21,14 @@ describe UserMailer do
 
   let!(:site) { FactoryGirl.create(
     :site,
-    :user => user
-    )
-  }
+    user: user
+  )}
   let(:sites) { [ site ] }
 
   let!(:report) { FactoryGirl.create(
     :report,
-    :site => site
-    )
-  }
+    site: site
+  )}
   let(:reports) { [ report ] }
 
   let!(:ie) { FactoryGirl.create(:inspection_event) }
