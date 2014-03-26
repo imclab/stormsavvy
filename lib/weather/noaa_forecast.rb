@@ -52,8 +52,10 @@ class NOAAForecast
   end
 
   def ping_noaa(latlong, duration, interval)
-    # pp 'sleep for 2s between queries'
-    # sleep(2)
+    if Rails.env == 'production'
+      pp 'sleep for 2s between queries'
+      sleep(2)
+    end
 
     url = "http://www.wrh.noaa.gov/forecast/xml/xml.php?"
     xml = "#{url}?duration=#{duration}&interval=#{interval}&lat=#{latlong[0]}&lon=#{latlong[1]}"
