@@ -158,88 +158,88 @@ describe DashboardController do
   describe "#get_sites" do
     it "returns all sites to current user" do
       # sign_in @current_user
-      controller.stub(:get_sites).and_return(@all_sites)
-      @all_sites.should include(@current_site)
-      @all_sites.should include(@other_site)
-      @all_sites.should_not be_nil
+      controller.stub(:get_sites).and_return(all_sites)
+      all_sites.should include(current_site)
+      all_sites.should include(other_site)
+      all_sites.should_not be_nil
     end
 
     it "returns correct sites to each user" do
-      @current_user.sites.should == @current_sites
-      @current_user.sites.should_not == @other_sites
-      @current_sites.should_not be_nil
+      current_user.sites.should == current_sites
+      current_user.sites.should_not == other_sites
+      current_sites.should_not be_nil
 
-      @other_user.sites.should == @other_sites
-      @other_user.sites.should_not == @current_sites
-      @other_sites.should_not be_nil
+      other_user.sites.should == other_sites
+      other_user.sites.should_not == current_sites
+      other_sites.should_not be_nil
     end
 
     it 'returns sites from lib class' do
       cu = CurrentUserObject.new
-      sites = cu.get_sites(@current_user)
-      sites.should == @current_sites
+      sites = cu.get_sites(current_user)
+      sites.should == current_sites
     end
   end
 
   describe "#get_ie" do
     it "returns all reports to current user" do
       # sign_in @current_user
-      controller.stub(:get_ie).and_return(@all_ie_array)
-      @all_ie_array.should include(@current_ie)
-      @all_ie_array.should include(@other_ie)
-      @all_ie_array.should_not be_nil
+      controller.stub(:get_ie).and_return(all_ie_array)
+      all_ie_array.should include(current_ie)
+      all_ie_array.should include(other_ie)
+      all_ie_array.should_not be_nil
     end
 
     it "returns correct inspection_events to each user" do
-      @current_site.inspection_events.should == @current_ie_array
-      @current_site.inspection_events.should_not == @other_ie_array
-      @other_site.inspection_events.should == @other_ie_array
-      @other_site.inspection_events.should_not == @current_ie_array
+      current_site.inspection_events.should == current_ie_array
+      current_site.inspection_events.should_not == other_ie_array
+      other_site.inspection_events.should == other_ie_array
+      other_site.inspection_events.should_not == current_ie_array
     end
 
     it 'returns pending ie from lib class' do
       cu = CurrentUserObject.new
-      ie = cu.get_ie(@current_user)
-      ie.should == @current_ie_array
+      ie = cu.get_ie(current_user)
+      ie.should == current_ie_array
     end
   end
 
   describe "#get_reports" do
     it "returns all reports to current user" do
-      # sign_in @current_user
-      controller.stub(:get_reports).and_return(@all_reports)
-      @all_reports.should include(@pending_report)
-      @all_reports.should include(@completed_report)
-      @all_reports.should_not be_nil
+      # sign_in current_user
+      controller.stub(:get_reports).and_return(all_reports)
+      all_reports.should include(pending_report)
+      all_reports.should include(completed_report)
+      all_reports.should_not be_nil
     end
 
     it 'returns reports from lib class' do
       cu = CurrentUserObject.new
-      reports = cu.get_reports(@current_user)
-      reports.should == @all_reports
+      reports = cu.get_reports(current_user)
+      reports.should == all_reports
     end
   end
 
   describe "#pending_reports" do
     it "returns pending reports to current user" do
-      # sign_in @current_user
-      controller.stub(:pending_reports).and_return(@pending_reports)
-      @pending_reports.should include(@pending_report)
-      @pending_reports.should_not include(@completed_report)
+      # sign_in current_user
+      controller.stub(:pending_reports).and_return(pending_reports)
+      pending_reports.should include(pending_report)
+      pending_reports.should_not include(completed_report)
     end
 
     it "returns correct reports to each user" do
-      # sign_in @current_user
-      controller.stub(:pending_reports).and_return(@pending_reports)
-      @current_site.reports.should include(@pending_report)
-      @current_site.reports.should_not include(@other_report)
+      # sign_in current_user
+      controller.stub(:pending_reports).and_return(pending_reports)
+      current_site.reports.should include(pending_report)
+      current_site.reports.should_not include(other_report)
     end
 
     it 'returns reports from lib class' do
       cu = CurrentUserObject.new
-      reports = cu.pending_reports(@current_user)
-      reports.should == @pending_reports
-      reports.should_not include(@completed_report)
+      reports = cu.pending_reports(current_user)
+      reports.should == pending_reports
+      reports.should_not include(other_report)
     end
   end
 end
