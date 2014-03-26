@@ -36,11 +36,13 @@ class FirstReport < ReportsPdf
     # page_background("#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf")
     # full_report_header_block
 
-    filename = "#{Prawn::DATADIR}/images/reports/CEM2030-2012_Page_01.pdf"
+    filename = "#{Prawn::DATADIR}/pdfs/cem/CEM2040_page_1.png"
     pdf = Prawn::Document.new(
-      :template => filename,
-      :page_size => "A4"
+      background: filename,
+      # template: filename,
+      page_size: "A4"
     )
+    pdf.render_file("#{Rails.root}/public/assets/first_report_page_01.pdf")
     # send_data pdf.render, type: "application/pdf", disposition: "inline"
 
     start_new_page
