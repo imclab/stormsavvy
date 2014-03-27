@@ -40,7 +40,7 @@ class FirstReport < ReportsPdf
     pdf = Prawn::Document.new(
       background: filename,
       # template: filename,
-      page_size: "A4"
+      # page_size: "A4"
     )
     pdf.render_file("#{Rails.root}/public/assets/first_report_page_01.pdf")
     # send_data pdf.render, type: "application/pdf", disposition: "inline"
