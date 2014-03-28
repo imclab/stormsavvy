@@ -1,9 +1,9 @@
 namespace :scheduler do
 
   desc "creates pdf"
-  task create_pdf: :environment do
-    first_report = FirstReport.new
-    first_report.build_report
+  task create_cem2040: :environment do
+    cem = CEM2040.new
+    cem.build_report
   end
 
   desc "delivers northbay_forecast mailer"
