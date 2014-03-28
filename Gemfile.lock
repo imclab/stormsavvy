@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/WalterYu/prawn.git
-  revision: c2b451113aa32a8140ec1e1f3645706576571f96
+  revision: c7bd9e90893e712f90fbfda05eedbaf2f833c799
   specs:
     prawn (0.14.0)
       pdf-reader (~> 1.2)
