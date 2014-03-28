@@ -77,7 +77,6 @@ describe ProjectsController do
         expect {
           post :create, {:project => valid_attributes}
         }.to change(Project, :count).by(1)
-        puts user.email
       end
 
       it "assigns a newly created project as @project" do
