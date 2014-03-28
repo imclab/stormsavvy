@@ -5,38 +5,36 @@ describe ProjectsController do
   include Devise::TestHelpers
 
   let!(:user) { FactoryGirl.create(
-      :user
-    )
-  }
+    :user
+  )}
 
   let!(:project) { FactoryGirl.create(
-      :project,
-      :user => user,
-      :name => 'ECP',
-      :description => 'Plaza Improvements'
-    )
-  }
+    :project,
+    user: user,
+    name: 'ECP',
+    description: 'Plaza Improvements'
+  )}
 
   def valid_attributes
     {
-      :name => 'My Project',
-      :description => 'What a great project',
-      :startdate => 5.days.ago,
-      :finishdate => 1.day.ago
+      name: 'My Project',
+      description: 'What a great project',
+      startdate: 5.days.ago,
+      finishdate: 1.day.ago
     }
   end
 
   def second_attributes
     {
-      :name => 'Troll Bridge',
-      :description => 'Bridge for trolls'
+      name: 'Troll Bridge',
+      description: 'Bridge for trolls'
     }
   end
 
   def third_attributes
     {
-      :name => 'Gingerbread House',
-      :description => 'House for Goldilocks'
+      name: 'Gingerbread House',
+      description: 'House for Goldilocks'
     }
   end
 
