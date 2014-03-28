@@ -65,7 +65,6 @@ describe GeocoderService do
 
     describe "with valid zipcode" do
       context "API query" do
-
         it "returns postal code info after API query" do
           begin
             result.should_not == nil
@@ -85,14 +84,17 @@ describe GeocoderService do
     end
 
     describe "#return_results_hash" do
-      begin
-        result = Geocoder.search(zipcode)
-        result.return_results_hash
-        pp result["lat"]
-        pp result["lng"]
-      rescue => e
-        pending 'Geocoding API connection cannot be established'
-        pp e
+      it 'returns results hash' do
+        begin
+          result = Geocoder.search(zipcode)
+          result.return_results_hash
+          pp result["lat"]
+          pp result["lng"]
+          expect{ result["foobar"].should  }.to raise_error
+        rescue => e
+          pending 'Geocoding API connection cannot be established'
+          pp e
+        end
       end
     end
   end
