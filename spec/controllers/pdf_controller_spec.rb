@@ -50,7 +50,8 @@ describe PdfController do
       # controller.should_receive(:CEM2030)
     end
 
-    xit 'reads the pdf' do
+    it 'reads the pdf' do
+      pending 'spec needs attention later'
       File.open("CEM2030.pdf", "rb") do |io|
         reader = PDF::Reader.new(io)
         puts reader.info
