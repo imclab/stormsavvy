@@ -96,19 +96,17 @@ describe ProjectsController do
       end
 
       it 'creates new projects for current_user' do
-        pp user.projects.count
+        pending 'user/project association removed'
         user.projects.create! valid_attributes
         user.projects.create! second_attributes
         user.projects.create! third_attributes
         user.projects.count.should == 4
-        pp user.projects
-        pp project
       end
 
       it 'creates new projects using build method' do
+        pending 'user/project association removed'
         expect{
           project_build = user.projects.build(valid_attributes)
-          # user.projects << project_build
           project_build.save
 
           project_new = user.projects.new(valid_attributes)
