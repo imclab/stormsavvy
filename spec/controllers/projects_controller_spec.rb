@@ -122,28 +122,31 @@ describe ProjectsController do
     end
 
     describe "with invalid params" do
-      xit "assigns a newly created but unsaved project as @project" do
+      it "assigns a newly created but unsaved project as @project" do
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => valid_attributes}
         # post :create, {:project => {}}
         assigns(:project).should be_a_new(Project)
       end
 
-      xit "re-renders the 'new' template" do
+      it "re-renders the 'new' template" do
+        pending 'spec needs attention later'
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => valid_attributes}
         # post :create, {:project => {}}
         response.should render_template("new")
       end
 
-      xit "responds with flash message" do
+      it "responds with flash message" do
+        pending 'spec needs attention later'
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => valid_attributes}
         # post :create, {:project => {}}
         flash[:error].should == "Error: See details below."
       end
 
-      xit "re-renders the 'new' template" do
+      it "re-renders the 'new' template" do
+        pending 'spec needs attention later'
         Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => valid_attributes}
         # post :create, {:project => {}}
