@@ -120,7 +120,8 @@ describe SamplingEventsController do
   end
 
   describe "GET index" do
-    xit "assigns all sampling_events as @sampling_events" do
+    it "assigns all sampling_events as @sampling_events" do
+      pending 'sampling events not assigned correctly'
       get :index, {}, valid_session
       assigns(:sampling_events).should eq(SamplingEvent.all)
     end
