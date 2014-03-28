@@ -26,45 +26,39 @@ describe InspectionEventsController do
   end
 
   let!(:current_user) { FactoryGirl.create(
-      :user,
-      email: 'name@stormsavvy.com'
-    )
-  }
+    :user,
+    email: 'name@stormsavvy.com'
+  )}
   let(:other_user) { FactoryGirl.create(
-      :user,
-      email: 'info@stormsavvy.com'
-    )
-  }
+    :user,
+    email: 'info@stormsavvy.com'
+  )}
   let(:all_users) { [ current_user, other_user ] }
 
   let!(:current_site) { FactoryGirl.create(
-      :site,
-      user: current_user,
-      name: 'ec jungle gym',
-      zipcode: 94530
-    )
-  }
+    :site,
+    user: current_user,
+    name: 'ec jungle gym',
+    zipcode: 94530
+  )}
   let(:other_site) { FactoryGirl.create(
-      :site,
-      user: other_user,
-      name: 'berkeley high',
-      zipcode: 94709
-    )
-  }
+    :site,
+    user: other_user,
+    name: 'berkeley high',
+    zipcode: 94709
+  )}
   let!(:current_sites) { [ current_site ] }
   let(:other_sites)  { [ other_site ] }
   let(:all_sites) { [ current_site, other_site ] }
 
   let!(:current_ie) { FactoryGirl.create(
-      :inspection_event,
-      site: current_site
-    )
-  }
+    :inspection_event,
+    site: current_site
+  )}
   let(:other_ie) { FactoryGirl.create(
-      :inspection_event,
-      site: other_site
-    )
-  }
+    :inspection_event,
+    site: other_site
+  )}
   let!(:current_ie_array) { [ current_ie ] }
   let(:other_ie_array) { [ other_ie ] }
   let(:all_ie_array) { [ current_ie, other_ie ] }
